@@ -142,9 +142,10 @@ thead, tfoot, tr:nth-child(even) { background: none; }
 
 /* Add image and change bg color */
 .title-slide {
-  background-image: url(img/logo_MA_color.png);
+/*  background-image: url(img/logo_MA_color.png);*/
+  background-image: url(img/logo.jpg);
   background-position: 50% 15%;
-  background-size: 250px;
+  background-size: 500px;
   background-color: #fff;
   padding-left: 100px;  /* delete this for 4:3 aspect ratio */
   margin: auto;

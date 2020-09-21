@@ -1,6 +1,6 @@
 ---
-title: "Apresentação no SIPEX-VI"
-subtitle: ""
+title: "Modelagem molecular"
+subtitle: "Apresentação no SIPEX-VI"
 author: "Flaviano Williams Fernandes"
 institute: "Instituto Federal do Paraná - Irati"
 date: "`r format(Sys.Date(), format='%d/%m/%Y')`"

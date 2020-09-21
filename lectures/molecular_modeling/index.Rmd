@@ -16,17 +16,18 @@ output:
       countIncrementalSlides: false
 ---
 layout: true
-<div class="my-footer"><span>
-Flaviano Williams Fernandes
-</span></div>
-<div class="my-header"><span>
-Flaviano Williams Fernandes
-</span></div>
+
+<div class="my-footer"><span>Flaviano Williams Fernandes</span></div>
+
+<div class="my-header"><span>Flaviano Williams Fernandes</span></div>
 ---
-.pull-left[
-xxxx
-]
+<div class="pull-left">xxxx</div>
 .pull-right[
-xxxx
+xxx
 ]
+---
+
+# Olá ....
+
+Olá esse é o texto tal...
 ---

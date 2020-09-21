@@ -6,6 +6,8 @@ Updated: 03/06/2018
 
 .pull-left {
   float: left;
+  position: relative;
+  top: 1cm;
   width: 47%;
 }
 .pull-right {

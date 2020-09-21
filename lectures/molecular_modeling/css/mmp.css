@@ -1,6 +1,6 @@
 /*
 CSS for xaringan slides in RU flavor
-Author: Joseph V. Casillas
+Author: Joseph V. Casillas - modificado
 Updated: 03/06/2018
 */
 
@@ -13,11 +13,13 @@ Updated: 03/06/2018
   width: 47%;
 }
 
+/*configurando rodape*/
+
 div.my-footer {
     background-color: #2A6F9A;
     position: absolute;
-    bottom: 0px;
-    left: 0px;
+    bottom: 0;
+    left: 0;
     height: 45px;
     width: 100%;
 }
@@ -33,6 +35,30 @@ div.my-footer a{
   border-bottom: 2px solid #FFFFFF;
 }
 
+/*configurando cabeçalho*/
+
+div.my-header {
+    background-color: #2A6F9A;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 45px;
+    width: 100%;
+}
+
+div.my-header span {
+    font-size: 12pt;
+    color: #FFFFFF;
+    position: absolute;
+    left: 15px;
+    bottom: 12px;
+}
+
+div.my-header a{
+  color: #FFFFFF;
+  border-bottom: 2px solid #FFFFFF;
+}
+
 /* Package defaults that we slightly tweak */
 
 a, a > code {
@@ -44,8 +70,6 @@ p, li{
   color: #515151; 
   
 }
-
-
 
 /* slightly lower and bigger than default */
 .footnote {

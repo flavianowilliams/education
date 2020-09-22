@@ -12,6 +12,8 @@ Updated: 03/06/2018
 }
 .pull-right {
   float: right;
+  position: relative;
+  top: 1cm;
   width: 47%;
 }
 
@@ -87,7 +89,7 @@ td{
 
 /* important code slightly red */
 .remark-code-line-highlighted {
-  background-color: #93c3e2 !important;
+  background-color: #93c3e2;
 }
 
 /* color tweak */

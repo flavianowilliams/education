@@ -1,13 +1,13 @@
 ---
-title: "Modelagem molecular"
-subtitle: "Apresentação no SIPEX-VI"
+title: "Atividades de pesquisa na área da química computacional no campus Irati"
+subtitle: "Apresentação no SIPEX VI"
 author: "Flaviano Williams Fernandes"
 institute: "Instituto Federal do Paraná - Irati"
 date: "`r format(Sys.Date(), format='%d/%m/%Y')`"
 encoding: "UTF-8"
 output:
   xaringan::moon_reader:
-    css: [css/default.css, css/mmp.css, css/mmp-fonts.css]
+    css: [css/defaults.css, css/mmp.css, css/mmp-fonts.css]
     chakra: libs/remark-latest.min.js
     lib_dir: libs
     nature:
@@ -17,17 +17,46 @@ output:
 ---
 layout: true
 
+```{r setup, include=FALSE}
+  options(htmltools.dir.version = FALSE)
+```
+
 <div class="my-footer"><span>Flaviano Williams Fernandes</span></div>
 
-<div class="my-header"><span>Flaviano Williams Fernandes</span></div>
 ---
-<div class="pull-left">xxxx</div>
+class: middle
+
+<div class="my-header"><span>Flaviano Williams Fernandes</span></div>
+
+# Sumário
+
+1. A simulação computacional
+2. A mecânica molecular versus Ab initio
+3. A questão ambiental
+
+---
+class: middle
+
+<div class="my-header"><span>Flaviano Williams Fernandes</span></div>
+
+# teste
+
+---
+class: middle
+
+<div class="my-header"><span>Flaviano Williams Fernandes</span></div>
+
+# Olá
+
+.pull-left[
+xxx
+]
 .pull-right[
 xxx
 ]
 ---
+class: middle, center
 
-# Olá ....
+<div class="my-header"><span>Flaviano Williams Fernandes</span></div>
 
-Olá esse é o texto tal...
----
+# Obrigado!

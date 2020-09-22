@@ -3,14 +3,15 @@ title: "Atividades de pesquisa na área da química computacional no campus Irat
 subtitle: "Apresentação no SIPEX VI"
 author: "Flaviano Williams Fernandes"
 institute: "Instituto Federal do Paraná - Irati"
-date: "`r format(Sys.Date(), format='%d/%m/%Y')`"
+date: "16 de outubro de 2020 (atualizado em `r format(Sys.Date(), format='%d/%m/%Y')`)"
 encoding: "UTF-8"
 output:
   xaringan::moon_reader:
-    css: [css/defaults.css, css/mmp.css, css/mmp-fonts.css]
+    css: [css/defaults.css, css/my-theme.css, css/my-fonts.css]
     chakra: libs/remark-latest.min.js
     lib_dir: libs
     nature:
+      slideNumberFormat: "%current% de %total%"
       highlightStyle: github
       highlightLines: true
       countIncrementalSlides: false
@@ -19,6 +20,11 @@ layout: true
 
 ```{r setup, include=FALSE}
   options(htmltools.dir.version = FALSE)
+#  knitr::opts_chunk$set(fig.path = 'img')
+```
+
+```{r, include=FALSE, eval=FALSE}
+  xaringan::inf_mr()
 ```
 
 <div class="my-footer"><span>Flaviano Williams Fernandes</span></div>
@@ -30,33 +36,99 @@ class: middle
 
 # Sumário
 
-1. A simulação computacional
-2. A mecânica molecular versus Ab initio
-3. A questão ambiental
+1. Cenário atual no campus Irati e pretensões futuras
+2. A questão ambiental
+3. As vantagens e desvantagens da simulação computacional
+4. Mecânica molecular versus Ab initio
+5. O método de dinâmica molecular
 
 ---
 class: middle
 
-<div class="my-header"><span>Flaviano Williams Fernandes</span></div>
+<div class="my-header"><span>Cenário atual no campus Irati e pretensões futuras</span></div>
+
+# Cenário atual
+
+1. Um projeto de pesquisa cadastrado no siscope.
+2. Dois alunos de iniciação científica (PIAP, Pibic-Jr).
+3. Uma publicação em revista nacional indexada na base scopus.
+4. Apresentação de um trabalho no colóquio.
+5. Recursos materiais:
+  * Um servidor xeon quadi-core (PIAP).
+  * Cenapad-Unicamp.
+
+---
+class: middle
+
+<div class="my-header"><span>Cenário atual no campus Irati e pretensões futuras</span></div>
+
+# Pretensões futuras
+
+1. Dois projetos de pesquisa cadastrados no siscope.
+2. No mínimo dois alunos de iniciação científica bolsistas (Pibic e Pibic-Jr).
+3. Alunos de iniciação científica voluntários (sem bolsa).
+4. Publicações em revistas nacionais e internacionais.
+5. Participações em eventos nacionais e internacionais (aluno e/ou professor).
+6. Desenvolvimento de softwares na área da química computacional.
+7. Apresentação de resultados da pesquisa no colóquio.
+8. Ampliação do ambiente computacional (expansão para um cluster do tipo bewoulf de alta performance).
+9. Projetos de extensão (<alert>minicursos</alert>).
+
+---
+class: left
+
+<div class="my-header"><span>A questão ambiental</span></div>
+
+A equação abaixo não funciona...
+
+\begin{eqnarray}
+  f(x) & = & ax+b,\\
+  g(x) & = & ax^2-bx+c.
+\end{eqnarray}
+
+No entanto tem outra melhor...
+
+\begin{equation}
+  \boxed{h(x)=\left<\psi|\psi\right>.}
+\end{equation}
+
+---
+
+<div class="my-header"><span>As vantagens e desvantagens da simulação computacional</span></div>
+
+.pull-left[
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+]
+.pull-right[
+
+A figura a seguir mostra a balburdia pilantreira de um condenado...
+
+```{r, echo=FALSE, fig.cap = 'Página no GitHub',fig.align='center'}
+  knitr::include_graphics("img/pagina-github.png")
+```
+
+]
+
+---
+
+<div class="my-header"><span>Mecânica molecular versus Ab initio</span></div>
+
+# teste
+
+---
+
+<div class="my-header"><span>O método de dinâmica molecular</span></div>
 
 # teste
 
 ---
 class: middle
 
-<div class="my-header"><span>Flaviano Williams Fernandes</span></div>
+<div class="my-header"><span>Agradecimentos</span></div>
 
-# Olá
+1. Proeppi pelo suporte financeiro:
 
-.pull-left[
-xxx
-]
-.pull-right[
-xxx
-]
----
-class: middle, center
-
-<div class="my-header"><span>Flaviano Williams Fernandes</span></div>
-
-# Obrigado!
+  * Pibic-Jr
+  * Piap
+  
+2. Cenapad-Unicamp pelo suporte técnico.

@@ -22,7 +22,11 @@ h1, h2, h3 {
 }
 
 li, p {
-    line-height: 120%;
+    line-height: 1.5;
 }
 .remark-code, .remark-inline-code { font-family: 'Inconsolata', monospace; }
 .remark-code-line-highlighted     { background-color: #ffff88; }
+
+alert {
+  color: red;
+}

@@ -16,7 +16,7 @@ h1, h2, h3 {
   font-family: 'Yanone Kaffeesatz';
   font-weight: normal;
   line-height: 100%;
- margin-block-start: 0.1em;
+  margin-block-start: 0.1em;
   margin-block-end: 0.1em;
 
 }

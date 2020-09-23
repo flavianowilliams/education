@@ -7,7 +7,7 @@ date: "16 de outubro de 2020 (atualizado em `r format(Sys.Date(), format='%d/%m/
 encoding: "UTF-8"
 output:
   xaringan::moon_reader:
-    css: [css/defaults.css, css/my-theme.css, css/my-fonts.css]
+    css: [css/default.css, css/my-theme.css, css/my-fonts.css]
     chakra: libs/remark-latest.min.js
     lib_dir: libs
     nature:
@@ -109,10 +109,14 @@ class: left
 xxxx
 
 ---
+class: center, middle
 
 <div class="my-header"><span>Mecânica molecular versus Ab initio</span></div>
 
-# teste
+```{r, echo=FALSE, fig.align='center',fig.cap='gif animado'}
+  knitr::include_graphics("https://media2.giphy.com/media/S857VNxM6HwlZuYXrU/giphy.gif")
+```
+
 
 ---
 

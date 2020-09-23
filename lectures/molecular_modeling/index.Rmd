@@ -93,21 +93,20 @@ No entanto tem outra melhor...
 \end{equation}
 
 ---
+class: left
 
 <div class="my-header"><span>As vantagens e desvantagens da simulação computacional</span></div>
 
 .pull-left[
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+  A figura a seguir mostra o [repositório](https://github.com/flavianowilliams) do programa HICOLM.
 ]
 .pull-right[
-
-A figura a seguir mostra a balburdia pilantreira de um condenado...
-
-```{r, echo=FALSE, fig.cap = 'Página no GitHub',fig.align='center'}
+```{r, echo=FALSE, fig.cap = 'Perfil no GitHub pages',fig.align='center'}
   knitr::include_graphics("img/pagina-github.png")
 ```
-
 ]
+
+xxxx
 
 ---
 

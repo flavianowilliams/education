@@ -101,22 +101,28 @@ class: left
   A figura a seguir mostra o [repositório](https://github.com/flavianowilliams) do programa HICOLM.
 ]
 .pull-right[
-```{r, echo=FALSE, fig.cap = 'Perfil no GitHub pages',fig.align='center'}
-  knitr::include_graphics("img/pagina-github.png")
-```
+xxxx
 ]
 
-xxxx
+A figura a seguir
+
+```{r, echo=FALSE,out.width="100%",fig.cap='Figura',fig.align='center'}
+  knitr::include_graphics("img/pagina-github.png")
+```
 
 ---
 class: center, middle
 
 <div class="my-header"><span>Mecânica molecular versus Ab initio</span></div>
 
-```{r, echo=FALSE, fig.align='center',fig.cap='gif animado'}
-  knitr::include_graphics("https://media2.giphy.com/media/S857VNxM6HwlZuYXrU/giphy.gif")
-```
+<figure>
+  <img src="img/Ar-373K.gif" width="250" height="250"/>
+  <figcaption>animacao</figcaption>
+</figure>
 
+```{r, echo=FALSE, fig.align='center',fig.cap='gif animado',out.width="25%"}
+  knitr::include_graphics("img/Ar-373K.gif")
+```
 
 ---
 

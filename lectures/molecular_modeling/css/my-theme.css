@@ -7,13 +7,13 @@ Updated: xx/xx/xxxx
 .pull-left {
   float: left;
   position: relative;
-  top: 1cm;
+  top: 0.25cm;
   width: 47%;
 }
 .pull-right {
   float: right;
   position: relative;
-  top: 1cm;
+  top: 0.25cm;
   width: 47%;
 }
 

@@ -160,21 +160,42 @@ class: left
 
 # O processo de instalação
 
-* Inicialmente o usuário baixa o programa do repositório online através do comando
+Inicialmente o usuário baixa o programa do repositório online através do comando
 
 ```
 $ wget github.com/flavianowilliams/HICOLM/archive/releases/v2.0.1.zip
 ```
 
-* Em seguida ele descompacta o arquivo e executa o script de instalação,
+Em seguida ele descompacta o arquivo e executa o script de instalação,
 
 ```
 $ sudo ./install
 ```
 
-```{r, echo=FALSE, fig.align='center',fig.cap='Etapas de instalação do programa',out.width="65%"}
+Para executar o programa basta digitar
+
+```
+$ hicolm
+```
+
+.pull-left[
+```
+Please, type the compiler or press ENTER (default: gfortran)
+
+Please, type the instructions of compilation or press ENTER
+
+Please, type the installation directory or press ENTER (default: /usr/local/bin)
+
+Please, type the auxiliary directory or press ENTER (default: /usr/local/share)
+
+Would you like to install HICOLM with graphical support? (default: no)
+```
+]
+.pull-right[
+```{r, echo=FALSE, fig.align='center',fig.cap='Etapas de instalação do programa',out.width="60%"}
   knitr::include_graphics("img/hicolm-instalacao.png")
 ```
+]
 
 ---
 class: left

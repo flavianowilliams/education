@@ -23,7 +23,7 @@ layout: true
 #  knitr::opts_chunk$set(fig.path = 'img')
 ```
 
-```{r, include=FALSE, eval=FALSE}
+```{r, include=FALSE, eval=FALSE, echo=FALSE}
   xaringan::inf_mr()
 ```
 
@@ -41,6 +41,7 @@ class: middle
 3. As vantagens e desvantagens da simulação computacional
 4. Mecânica molecular versus Ab initio
 5. O método de dinâmica molecular
+6. Implementações no programa HICOLM
 
 ---
 class: middle
@@ -129,6 +130,29 @@ class: center, middle
 <div class="my-header"><span>O método de dinâmica molecular</span></div>
 
 # teste
+
+---
+class: left
+
+<div class="my-header"><span>Implementações no programa HICOLM</span></div>
+
+# O processo de instalação
+
+* Inicialmente o usuário baixa o programa do repositório online através do comando
+
+```
+$ wget github.com/flavianowilliams/HICOLM/archive/releases/v2.0.1.zip
+```
+
+* Em seguida ele descompacta o arquivo e executa o script de instalação,
+
+```
+$ sudo ./install
+```
+
+```{r, echo=FALSE, fig.align='center',fig.cap='Etapas de instalação do programa',out.width="65%"}
+  knitr::include_graphics("img/hicolm-instalacao.png")
+```
 
 ---
 class: middle

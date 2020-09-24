@@ -16,7 +16,7 @@ class: center, middle, inverse, title-slide
 ## Apresentação no SIPEX VI
 ### Flaviano Williams Fernandes
 ### Instituto Federal do Paraná - Irati
-### 16 de outubro de 2020 (atualizado em 23/09/2020)
+### 16 de outubro de 2020 (atualizado em 24/09/2020)
 
 ---
 
@@ -137,7 +137,7 @@ class: left
 
 &lt;div class="my-header"&gt;&lt;span&gt;Implementações no programa HICOLM&lt;/span&gt;&lt;/div&gt;
 
-Alguns critérios foram adotados afim de tornar o programa inclusivo:
+# Critérios adotados para tornar o programa inclusivo
 
 * Fácil instalação exigindo o mínimo de bibliotecas externas e outras dependências (atualmente para a instalação são necessários os programas gfortran e r-base).
 
@@ -150,6 +150,8 @@ Alguns critérios foram adotados afim de tornar o programa inclusivo:
   * O usuário tem a opção de otimizar manualmente o campo de força;
   * Um relatório detalhado do campo de força é apresentado em um arquivo de log. afim de conferência.
 * Algoritmos de minimização da energia vem sendo trabalhado afim de tornar a etapa de otimização simples e rápida.
+* Suporte gráfico para análise de dados e geração de relatórios com a ferramenta R.
+* Documentação [online](https://github.com/flavianowilliams/HICOLM/wiki).
 
 ---
 class: left
@@ -180,16 +182,55 @@ class: left
 
 &lt;div class="my-header"&gt;&lt;span&gt;Implementações no programa HICOLM&lt;/span&gt;&lt;/div&gt;
 
-# Arquivos de entrada
+Arquivos de entrada
+
+.pull-left[
+
+* Seção `&amp;STRUCT`:
+
+```
+&amp;STRUCT
+ cell 10 0 0
+      0 10 0
+      0 0 10
+&amp;END
+```
+
+* Seção `&amp;MD`:
+
+```
+&amp;STRUCT
+ cell 10 0 0
+      0 10 0
+      0 0 10
+&amp;END
+```
+
+* Seção `&amp;FORCE`:
+
+```
+&amp;STRUCT
+ cell 10 0 0
+      0 10 0
+      0 0 10
+&amp;END
+```
+]
+.pull-right[
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/hicolm-arquivo-1.png" alt="HICOLM.in contendo parâmetros da simulação" width="85%" /&gt;
+&lt;p class="caption"&gt;HICOLM.in contendo parâmetros da simulação&lt;/p&gt;
+&lt;/div&gt;
+]
 
 ---
 class: left
 
 &lt;div class="my-header"&gt;&lt;span&gt;Implementações no programa HICOLM&lt;/span&gt;&lt;/div&gt;
 
-# Etapas futuras:
+# Propostas futuras
 
-* Impressão de mensagens de aviso e erro a respeito das flags de entrada, contendo dicas e sugestões para a solução do problema;
+* Impressão de mensagens de aviso e erro contendo dicas e sugestões para a solução do problema;
 
 * Melhoria nas rotinas de minimização de energia (gradiente conjugado, etc...);
 
@@ -200,6 +241,8 @@ class: left
 * Ampliação da base de dados contendo os potenciais do campo de força.
 
 * Implementação de novos algoritmos e métodos (machine learning, QM/MM, etc...).
+
+* Ofertas de minicursos na área da física, química e ciência de dados.
 
 ---
 class: middle
@@ -216,6 +259,7 @@ class: middle
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="libs/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({
+"ratio": "16:9",
 "slideNumberFormat": "%current% de %total%",
 "highlightStyle": "github",
 "highlightLines": true,

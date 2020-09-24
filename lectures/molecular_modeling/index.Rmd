@@ -11,6 +11,7 @@ output:
     chakra: libs/remark-latest.min.js
     lib_dir: libs
     nature:
+      ratio: "16:9"
       slideNumberFormat: "%current% de %total%"
       highlightStyle: github
       highlightLines: true
@@ -136,7 +137,7 @@ class: left
 
 <div class="my-header"><span>Implementações no programa HICOLM</span></div>
 
-Alguns critérios foram adotados afim de tornar o programa inclusivo:
+# Critérios adotados para tornar o programa inclusivo
 
 * Fácil instalação exigindo o mínimo de bibliotecas externas e outras dependências (atualmente para a instalação são necessários os programas gfortran e r-base).
 
@@ -149,6 +150,8 @@ Alguns critérios foram adotados afim de tornar o programa inclusivo:
   * O usuário tem a opção de otimizar manualmente o campo de força;
   * Um relatório detalhado do campo de força é apresentado em um arquivo de log. afim de conferência.
 * Algoritmos de minimização da energia vem sendo trabalhado afim de tornar a etapa de otimização simples e rápida.
+* Suporte gráfico para análise de dados e geração de relatórios com a ferramenta R.
+* Documentação [online](https://github.com/flavianowilliams/HICOLM/wiki).
 
 ---
 class: left
@@ -178,16 +181,54 @@ class: left
 
 <div class="my-header"><span>Implementações no programa HICOLM</span></div>
 
-# Arquivos de entrada
+Arquivos de entrada
+
+.pull-left[
+
+* Seção `&STRUCT`:
+
+```
+&STRUCT
+ cell 10 0 0
+      0 10 0
+      0 0 10
+&END
+```
+
+* Seção `&MD`:
+
+```
+&STRUCT
+ cell 10 0 0
+      0 10 0
+      0 0 10
+&END
+```
+
+* Seção `&FORCE`:
+
+```
+&STRUCT
+ cell 10 0 0
+      0 10 0
+      0 0 10
+&END
+```
+]
+.pull-right[
+```{r, echo=FALSE, fig.align='center',fig.cap='HICOLM.in contendo parâmetros da simulação',out.width="85%"}
+  knitr::include_graphics("img/hicolm-arquivo-1.png")
+```
+]
 
 ---
 class: left
 
 <div class="my-header"><span>Implementações no programa HICOLM</span></div>
 
-# Etapas futuras:
+# Propostas futuras
 
-* Impressão de mensagens de aviso e erro a respeito das flags de entrada, contendo dicas e sugestões para a solução do problema;
+* Impressão de mensagens de aviso e erro contendo dicas e sugestões para a solução do problema;
 
 * Melhoria nas rotinas de minimização de energia (gradiente conjugado, etc...);
 
@@ -198,6 +239,8 @@ class: left
 * Ampliação da base de dados contendo os potenciais do campo de força.
 
 * Implementação de novos algoritmos e métodos (machine learning, QM/MM, etc...).
+
+* Ofertas de minicursos na área da física, química e ciência de dados.
 
 ---
 class: middle

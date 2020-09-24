@@ -136,6 +136,25 @@ class: left
 
 <div class="my-header"><span>Implementações no programa HICOLM</span></div>
 
+Alguns critérios foram adotados afim de tornar o programa inclusivo:
+
+* Fácil instalação exigindo o mínimo de bibliotecas externas e outras dependências (atualmente para a instalação são necessários os programas gfortran e r-base).
+
+* Simplicidade na preparação dos arquivos de entrada com a quantidade mínima de flags obrigatórias.
+
+* Campo de força implementado por padrão:
+  * O programa possui uma biblioteca interna contendo os parâmetros dos potenciais baseados no modelo AMBER99;
+  * As coordenadas internas (ligação, angular e torsão) são obtidas automaticamente através da matriz Z;
+  * As interações intermoleculares são obtidas automaticamente;
+  * O usuário tem a opção de otimizar manualmente o campo de força;
+  * Um relatório detalhado do campo de força é apresentado em um arquivo de log. afim de conferência.
+* Algoritmos de minimização da energia vem sendo trabalhado afim de tornar a etapa de otimização simples e rápida.
+
+---
+class: left
+
+<div class="my-header"><span>Implementações no programa HICOLM</span></div>
+
 # O processo de instalação
 
 * Inicialmente o usuário baixa o programa do repositório online através do comando
@@ -153,6 +172,32 @@ $ sudo ./install
 ```{r, echo=FALSE, fig.align='center',fig.cap='Etapas de instalação do programa',out.width="65%"}
   knitr::include_graphics("img/hicolm-instalacao.png")
 ```
+
+---
+class: left
+
+<div class="my-header"><span>Implementações no programa HICOLM</span></div>
+
+# Arquivos de entrada
+
+---
+class: left
+
+<div class="my-header"><span>Implementações no programa HICOLM</span></div>
+
+# Etapas futuras:
+
+* Impressão de mensagens de aviso e erro a respeito das flags de entrada, contendo dicas e sugestões para a solução do problema;
+
+* Melhoria nas rotinas de minimização de energia (gradiente conjugado, etc...);
+
+* Melhoria na impressão de relatórios e visualização gráfica.
+
+* Documentação mais completa e didaticamente apresentável.
+
+* Ampliação da base de dados contendo os potenciais do campo de força.
+
+* Implementação de novos algoritmos e métodos (machine learning, QM/MM, etc...).
 
 ---
 class: middle

@@ -3,14 +3,19 @@
     <head>
         <meta charset="UTF-8">
         <style>
-            div#menu {
+            body {
+                display: block;
+            }
+            div#pai {
+                width: 357mm;
+                height: 165mm;
+                background-color: lightgreen;
+            }
+            div#filha {
                 position: relative;
                 font-size: 1cm;
                 text-align: center;
                 top: 50%;
-            }
-            div#menu ul {
-                list-style: none;
             }
         </style>
         <title>
@@ -18,12 +23,10 @@
         </title>
     </head>
     <body>
-        <div id="menu">
-            <nav>
-                <ul>
-                    <li><a  href="lectures/molecular_modeling/index.html">Apresentação</a></li>
-                </ul>
-            </nav>
+        <div id="pai">
+            <div id="filha">
+                <a  href="lectures/molecular_modeling/index.html">Apresentação</a>
+            </div>
         </div>
     </body>
 </html>

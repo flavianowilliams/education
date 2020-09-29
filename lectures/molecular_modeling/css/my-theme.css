@@ -5,12 +5,14 @@ Updated: xx/xx/xxxx
 */
 
 .pull-left {
+  text-align: left;
   float: left;
   position: relative;
   top: 0.25cm;
   width: 47%;
 }
 .pull-right {
+  text-align: left;
   float: right;
   position: relative;
   top: 0.25cm;

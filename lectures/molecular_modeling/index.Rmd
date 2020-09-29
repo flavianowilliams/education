@@ -117,14 +117,20 @@ class: center, middle
 
 <div class="my-header"><span>Mecânica molecular versus Ab initio</span></div>
 
-<figure>
-  <img src="img/Ar-373K.gif" width="250" height="250"/>
-  <figcaption>animacao</figcaption>
-</figure>
-
-```{r, echo=FALSE, fig.align='center',fig.cap='gif animado',out.width="25%"}
-  knitr::include_graphics("img/Ar-373K.gif")
+.pull-left[
+```{r, echo=FALSE, fig.align='center',fig.cap='Métodos utilizados em diversos sistemas físicos.',out.width="100%"}
+  knitr::include_graphics("img/metodos-comparacao.png")
 ```
+]
+.pull-right[
+* O custo computacional aumenta com a quantidade de átomos;
+* A precisão diminui com a quantidade de átomos;
+* O nível de detalhamento aumenta de coarse-grained para cálculos de estrutura eletrônica;
+* Quanto maior o nível de detalhamento maior será o custo computacional.
+```{r, echo=FALSE, fig.align='center',fig.cap='Escala de tempo para cada sistema.',out.width="90%"}
+  knitr::include_graphics("img/escala-tempo.png")
+```
+]
 
 ---
 

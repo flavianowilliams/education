@@ -93,25 +93,6 @@ No entanto tem outra melhor...
 \end{equation}`
 
 ---
-class: left
-
-&lt;div class="my-header"&gt;&lt;span&gt;As vantagens e desvantagens da simulação computacional&lt;/span&gt;&lt;/div&gt;
-
-.pull-left[
-  A figura a seguir mostra o [repositório](https://github.com/flavianowilliams) do programa HICOLM.
-]
-.pull-right[
-xxxx
-]
-
-A figura a seguir
-
-&lt;div class="figure" style="text-align: center"&gt;
-&lt;img src="img/pagina-github.png" alt="Figura" width="100%" /&gt;
-&lt;p class="caption"&gt;Figura&lt;/p&gt;
-&lt;/div&gt;
-
----
 class: center, middle
 
 &lt;div class="my-header"&gt;&lt;span&gt;Mecânica molecular versus Ab initio&lt;/span&gt;&lt;/div&gt;
@@ -128,8 +109,8 @@ class: center, middle
 * O nível de detalhamento aumenta de coarse-grained para cálculos de estrutura eletrônica;
 * Quanto maior o nível de detalhamento maior será o custo computacional.
 &lt;div class="figure" style="text-align: center"&gt;
-&lt;img src="img/escala-tempo.png" alt="Escala de tempo para cada sistema." width="90%" /&gt;
-&lt;p class="caption"&gt;Escala de tempo para cada sistema.&lt;/p&gt;
+&lt;img src="img/escala-tempo.png" alt="Escala de tempo de cada sistema e seu comportamento (Leandro Martínez - IFSC)." width="90%" /&gt;
+&lt;p class="caption"&gt;Escala de tempo de cada sistema e seu comportamento (Leandro Martínez - IFSC).&lt;/p&gt;
 &lt;/div&gt;
 ]
 
@@ -137,7 +118,82 @@ class: center, middle
 
 &lt;div class="my-header"&gt;&lt;span&gt;O método de dinâmica molecular&lt;/span&gt;&lt;/div&gt;
 
-# teste
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/ciclo-MD.png" alt="Fluxograma mostrando o ciclo MD." width="100%" /&gt;
+&lt;p class="caption"&gt;Fluxograma mostrando o ciclo MD.&lt;/p&gt;
+&lt;/div&gt;
+
+---
+class: left, middle
+
+&lt;div class="my-header"&gt;&lt;span&gt;Linhas de pesquisa&lt;/span&gt;&lt;/div&gt;
+
+* Cálculo de moléculas orgânicas e inorgânicas em soluções aquosas por dinâmica molecular;
+* Análise fisico-química de poluentes em meio aquoso;
+* Análise de permeabilidade seletiva de polímeros e demais materiais;
+* &lt;alert&gt;Desenvolvimento de campos de força e análise de interação intra/intermolecular de átomos e moléculas.&lt;/alert&gt;
+
+.pull-left[
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/infrared.png" alt="Espectro vibracional da água líquida" width="90%" /&gt;
+&lt;p class="caption"&gt;Espectro vibracional da água líquida&lt;/p&gt;
+&lt;/div&gt;
+]
+.pull-right[
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/hicolm-arquivo-1.png" alt="HICOLM.in contendo parâmetros da simulação" width="20%" /&gt;
+&lt;p class="caption"&gt;HICOLM.in contendo parâmetros da simulação&lt;/p&gt;
+&lt;/div&gt;
+]
+
+---
+class: left, middle
+
+&lt;div class="my-header"&gt;&lt;span&gt;Ambiente computacional&lt;/span&gt;&lt;/div&gt;
+
+* Atualmente temos disponível um servidor xeon com oito unidades de processamento.
+* Também temos acesso aos servidores da Unicamp (Cenapad-Unicamp).
+
+*No servidor diversos softwares (open source) foram instalados e configurados para o desenvolvimento do trabalho, como o gânglia para o monitoramento online.*
+
+.pull-left[
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/ganglia.png" alt="HICOLM.in contendo parâmetros da simulação" width="100%" /&gt;
+&lt;p class="caption"&gt;HICOLM.in contendo parâmetros da simulação&lt;/p&gt;
+&lt;/div&gt;
+]
+.pull-right[
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/ganglia.png" alt="HICOLM.in contendo parâmetros da simulação" width="100%" /&gt;
+&lt;p class="caption"&gt;HICOLM.in contendo parâmetros da simulação&lt;/p&gt;
+&lt;/div&gt;
+]
+
+---
+class: left, middle
+
+&lt;div class="my-header"&gt;&lt;span&gt;Programa utilizado para a MD&lt;/span&gt;&lt;/div&gt;
+
+# Para o desenvolvimento do projeto algumas etapas estão sendo providenciadas:
+
+* Ferramentas para o trabalho em equipe e online (softwares &lt;alert&gt;open source&lt;/alert&gt; e ambiente computacional);
+* Qualificação de alunos cadastrados em projetos no SISCOPE;
+* Colaborações com professores teóricos e experimentais.
+
+A figura a seguir mostra o [repositório](https://github.com/flavianowilliams) do programa HICOLM &lt;alert&gt;(leia o arquivo Readme!!!)&lt;/alert&gt;.
+
+.pull-left[
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/pagina-github.png" alt="Página inicial no GitHub." width="90%" /&gt;
+&lt;p class="caption"&gt;Página inicial no GitHub.&lt;/p&gt;
+&lt;/div&gt;
+]
+.pull-left[
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/repositorio-github.png" alt="Repositório do programa." width="90%" /&gt;
+&lt;p class="caption"&gt;Repositório do programa.&lt;/p&gt;
+&lt;/div&gt;
+]
 
 ---
 class: left
@@ -248,6 +304,24 @@ Arquivos de entrada
 &lt;div class="figure" style="text-align: center"&gt;
 &lt;img src="img/hicolm-arquivo-1.png" alt="HICOLM.in contendo parâmetros da simulação" width="85%" /&gt;
 &lt;p class="caption"&gt;HICOLM.in contendo parâmetros da simulação&lt;/p&gt;
+&lt;/div&gt;
+]
+
+---
+class: left
+
+# Suporte gráfico e estatístico através da ferramenta [R](https://www.r-graph-gallery.com/).
+
+.pull-left[
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/report-1.png" alt="Relatório da simulação." width="70%" /&gt;
+&lt;p class="caption"&gt;Relatório da simulação.&lt;/p&gt;
+&lt;/div&gt;
+]
+.pull-left[
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/report-1.png" alt="Série temporal em tempo real." width="70%" /&gt;
+&lt;p class="caption"&gt;Série temporal em tempo real.&lt;/p&gt;
 &lt;/div&gt;
 ]
 

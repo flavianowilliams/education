@@ -49,8 +49,16 @@ class: middle
 
 <div class="my-header"><span>Cenário atual no campus Irati e pretensões futuras</span></div>
 
+# Linhas de pesquisa
+
+* Cálculo de moléculas orgânicas e inorgânicas em soluções aquosas por dinâmica molecular;
+* Análise fisico-química de poluentes em meio aquoso;
+* Análise de permeabilidade seletiva de polímeros e demais materiais;
+* <alert>Desenvolvimento de campos de força e análise de interação intra/intermolecular de átomos e moléculas.</alert>
+
 # Cenário atual
 
+.pull-left70[
 1. Um projeto de pesquisa cadastrado no siscope.
 2. Dois alunos de iniciação científica (PIAP, Pibic-Jr).
 3. Uma publicação em revista nacional indexada na base scopus.
@@ -58,6 +66,12 @@ class: middle
 5. Recursos materiais:
   * Um servidor xeon quadi-core (PIAP).
   * Cenapad-Unicamp.
+]
+.pull-right30[
+```{r, echo=FALSE, fig.align='center',out.width="65%"}
+  knitr::include_graphics("img/servidor.jpeg")
+```
+]
 
 ---
 class: middle
@@ -81,18 +95,32 @@ class: left
 
 <div class="my-header"><span>A questão ambiental</span></div>
 
-A equação abaixo não funciona...
+.pull-left[
 
-\begin{eqnarray}
-  f(x) & = & ax+b,\\
-  g(x) & = & ax^2-bx+c.
-\end{eqnarray}
+<span style="text-align: center;">Aquecimento global;</span>
 
-No entanto tem outra melhor...
-
-\begin{equation}
-  \boxed{h(x)=\left<\psi|\psi\right>.}
-\end{equation}
+```{r, echo=FALSE, fig.align='center',fig.cap='Fonte: BBC Brasil.',out.width="60%"}
+  knitr::include_graphics("img/aquecimento-global.png")
+```
+]
+.pull-right[
+Surgimento de vírus e outras entitades patológicas;
+```{r, echo=FALSE, fig.align='center',fig.cap='Fonte: BBC Brasil.',out.width="60%"}
+  knitr::include_graphics("img/epidemia-aquecimento.png")
+```
+]
+.pull-left[
+* Uso desenfreado de agrotóxicos;
+```{r, echo=FALSE, fig.align='center',fig.cap='Fonte: BBC Brasil.',out.width="60%"}
+  knitr::include_graphics("img/aquecimento-global.png")
+```
+]
+.pull-right[
+* Poluição de mares e rios (era do antropocentrismo).
+```{r, echo=FALSE, fig.align='center',fig.cap='Fonte: BBC Brasil.',out.width="60%"}
+  knitr::include_graphics("img/microplastico.jpg")
+```
+]
 
 ---
 class: center, middle
@@ -125,42 +153,14 @@ class: center, middle
 ---
 class: left, middle
 
-<div class="my-header"><span>Linhas de pesquisa</span></div>
-
-* Cálculo de moléculas orgânicas e inorgânicas em soluções aquosas por dinâmica molecular;
-* Análise fisico-química de poluentes em meio aquoso;
-* Análise de permeabilidade seletiva de polímeros e demais materiais;
-* <alert>Desenvolvimento de campos de força e análise de interação intra/intermolecular de átomos e moléculas.</alert>
+<div class="my-header"><span>Publicações envolvendo dinâmica molecular</span></div>
 
 .pull-left[
-```{r, echo=FALSE, fig.align='center',fig.cap='Espectro vibracional da água líquida',out.width="90%"}
-  knitr::include_graphics("img/infrared.png")
-```
+* Pesquisa feita no google scholar revelou aproximadamente 2760 publicações em 2020 envolvendo as palavras chaves "molecular dynamics" e "COVID-19";
 ]
 .pull-right[
-```{r, echo=FALSE, fig.align='center',fig.cap='HICOLM.in contendo parâmetros da simulação',out.width="20%"}
+```{r, echo=FALSE, fig.align='center',fig.cap='Número de publicações anuais (google scholar).',out.width="80%"}
   knitr::include_graphics("img/hicolm-arquivo-1.png")
-```
-]
-
----
-class: left, middle
-
-<div class="my-header"><span>Ambiente computacional</span></div>
-
-* Atualmente temos disponível um servidor xeon com oito unidades de processamento.
-* Também temos acesso aos servidores da Unicamp (Cenapad-Unicamp).
-
-*No servidor diversos softwares (open source) foram instalados e configurados para o desenvolvimento do trabalho, como o gânglia para o monitoramento online.*
-
-.pull-left[
-```{r, echo=FALSE, fig.align='center',fig.cap='HICOLM.in contendo parâmetros da simulação',out.width="100%"}
-  knitr::include_graphics("img/ganglia.png")
-```
-]
-.pull-right[
-```{r, echo=FALSE, fig.align='center',fig.cap='HICOLM.in contendo parâmetros da simulação',out.width="100%"}
-  knitr::include_graphics("img/ganglia.png")
 ```
 ]
 
@@ -185,6 +185,27 @@ A figura a seguir mostra o [repositório](https://github.com/flavianowilliams) d
 .pull-left[
 ```{r, echo=FALSE,out.width="90%",fig.cap='Repositório do programa.',fig.align='center'}
   knitr::include_graphics("img/repositorio-github.png")
+```
+]
+
+---
+class: left, middle
+
+<div class="my-header"><span>Ambiente computacional</span></div>
+
+* Atualmente temos disponível um servidor xeon com oito unidades de processamento.
+* Também temos acesso aos servidores da Unicamp (Cenapad-Unicamp).
+
+*No servidor diversos softwares (open source) foram instalados e configurados para o desenvolvimento do trabalho, como o gânglia para o monitoramento online.*
+
+.pull-left[
+```{r, echo=FALSE, fig.align='center',fig.cap='HICOLM.in contendo parâmetros da simulação',out.width="100%"}
+  knitr::include_graphics("img/ganglia.png")
+```
+]
+.pull-right[
+```{r, echo=FALSE, fig.align='center',fig.cap='HICOLM.in contendo parâmetros da simulação',out.width="100%"}
+  knitr::include_graphics("img/ganglia.png")
 ```
 ]
 
@@ -234,7 +255,7 @@ Para executar o programa basta digitar
 $ hicolm
 ```
 
-.pull-left[
+.pull-left70[
 ```
 Please, type the compiler or press ENTER (default: gfortran)
 
@@ -247,8 +268,8 @@ Please, type the auxiliary directory or press ENTER (default: /usr/local/share)
 Would you like to install HICOLM with graphical support? (default: no)
 ```
 ]
-.pull-right[
-```{r, echo=FALSE, fig.align='center',fig.cap='Etapas de instalação do programa',out.width="60%"}
+.pull-right30[
+```{r, echo=FALSE, fig.align='center',fig.cap='Etapas de instalação do programa',out.width="90%"}
   knitr::include_graphics("img/hicolm-instalacao.png")
 ```
 ]

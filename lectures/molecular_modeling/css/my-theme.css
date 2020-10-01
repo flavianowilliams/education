@@ -18,6 +18,20 @@ Updated: xx/xx/xxxx
   top: 0.25cm;
   width: 47%;
 }
+.pull-left70 {
+  text-align: left;
+  float: left;
+  position: relative;
+  top: 0.25cm;
+  width: 69%;
+}
+.pull-right30 {
+  text-align: left;
+  float: right;
+  position: relative;
+  top: 0.25cm;
+  width: 29%;
+}
 
 /*configurando rodape*/
 

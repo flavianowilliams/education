@@ -270,49 +270,23 @@ Would you like to install HICOLM with graphical support? (default: no)
 ]
 
 ---
-class: left
+class: left, middle
 
 <div class="my-header"><span>Implementações no programa HICOLM</span></div>
 
 .pull-left[
 Praticamente o arquivo HICOLM.in é constituído por
-
 * Cabeçalho:
-```
-@ MDPREPARE
-```
 
-* Seção `&STRUCT`:
-```
-&STRUCT
- cell 10 0 0
-      0 10 0
-      0 0 10
-&END
-```
+@MDPREPARE ou @MDRUNNING
 
-* Seção `&MD`:
+* Seções `&STRUCT`, `&MD` e `&FORCE`:
 
-```
-&STRUCT
- cell 10 0 0
-      0 10 0
-      0 0 10
-&END
-```
-
-* Seção `&FORCE`:
-
-```
-&STRUCT
- cell 10 0 0
-      0 10 0
-      0 0 10
-&END
-```
+* Cada seção deve ser finalizada com a linha `&END`.
+* Existem parâmetros obrigatórios e opcionais. No caso dos opcionais, se forem omitidos o programa utilizará o valor padrão correspondente.
 ]
 .pull-right[
-```{r, echo=FALSE, fig.align='center',fig.cap='HICOLM.in contendo parâmetros da simulação',out.width="85%"}
+```{r, echo=FALSE, fig.align='center',fig.cap='HICOLM.in contendo parâmetros da simulação',out.width="90%"}
   knitr::include_graphics("img/hicolm-arquivo-1.png")
 ```
 ]

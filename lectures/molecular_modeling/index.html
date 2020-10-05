@@ -274,50 +274,24 @@ Would you like to install HICOLM with graphical support? (default: no)
 ]
 
 ---
-class: left
+class: left, middle
 
 &lt;div class="my-header"&gt;&lt;span&gt;Implementações no programa HICOLM&lt;/span&gt;&lt;/div&gt;
 
 .pull-left[
 Praticamente o arquivo HICOLM.in é constituído por
-
 * Cabeçalho:
-```
-@ MDPREPARE
-```
 
-* Seção `&amp;STRUCT`:
-```
-&amp;STRUCT
- cell 10 0 0
-      0 10 0
-      0 0 10
-&amp;END
-```
+@MDPREPARE ou @MDRUNNING
 
-* Seção `&amp;MD`:
+* Seções `&amp;STRUCT`, `&amp;MD` e `&amp;FORCE`:
 
-```
-&amp;STRUCT
- cell 10 0 0
-      0 10 0
-      0 0 10
-&amp;END
-```
-
-* Seção `&amp;FORCE`:
-
-```
-&amp;STRUCT
- cell 10 0 0
-      0 10 0
-      0 0 10
-&amp;END
-```
+* Cada seção deve ser finalizada com a linha `&amp;END`.
+* Existem parâmetros obrigatórios e opcionais. No caso dos opcionais, se forem omitidos o programa utilizará o valor padrão correspondente.
 ]
 .pull-right[
 &lt;div class="figure" style="text-align: center"&gt;
-&lt;img src="img/hicolm-arquivo-1.png" alt="HICOLM.in contendo parâmetros da simulação" width="85%" /&gt;
+&lt;img src="img/hicolm-arquivo-1.png" alt="HICOLM.in contendo parâmetros da simulação" width="90%" /&gt;
 &lt;p class="caption"&gt;HICOLM.in contendo parâmetros da simulação&lt;/p&gt;
 &lt;/div&gt;
 ]

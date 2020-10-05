@@ -107,7 +107,7 @@ class: left, middle
 ```
 ]
 .pull-left30[
-```{r, echo=FALSE, fig.align='center',out.width="100%",fig.asp=1,fig.ncol=2}
+```{r, echo=FALSE, fig.align='center',out.width="90%",fig.asp=1,fig.ncol=2}
   knitr::include_graphics("img/agrotoxicos-parana.png")
 ```
 ]
@@ -274,12 +274,15 @@ class: left
 
 <div class="my-header"><span>Implementações no programa HICOLM</span></div>
 
-Arquivos de entrada
-
 .pull-left[
+Praticamente o arquivo HICOLM.in é constituído por
+
+* Cabeçalho:
+```
+@ MDPREPARE
+```
 
 * Seção `&STRUCT`:
-
 ```
 &STRUCT
  cell 10 0 0

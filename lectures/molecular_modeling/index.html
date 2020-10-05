@@ -16,7 +16,7 @@ class: center, middle, inverse, title-slide
 ## Apresentação no SIPEX VI
 ### Flaviano Williams Fernandes
 ### Instituto Federal do Paraná - Irati
-### 16 de outubro de 2020 (atualizado em 02/10/2020)
+### 16 de outubro de 2020 (atualizado em 05/10/2020)
 
 ---
 
@@ -104,7 +104,7 @@ class: left, middle
 &lt;/div&gt;
 ]
 .pull-left30[
-&lt;img src="img/agrotoxicos-parana.png" width="100%" style="display: block; margin: auto;" /&gt;
+&lt;img src="img/agrotoxicos-parana.png" width="90%" style="display: block; margin: auto;" /&gt;
 ]
 .pull-right70[
 * O Brasil é o maior consumidor de agrotóxicos no mundo e o estado do Paraná representa 30% desse consumo ([doi:10.1590/0103-1104201811714](https://doi.org/10.1590/0103-1104201811714));
@@ -278,12 +278,15 @@ class: left
 
 &lt;div class="my-header"&gt;&lt;span&gt;Implementações no programa HICOLM&lt;/span&gt;&lt;/div&gt;
 
-Arquivos de entrada
-
 .pull-left[
+Praticamente o arquivo HICOLM.in é constituído por
+
+* Cabeçalho:
+```
+@ MDPREPARE
+```
 
 * Seção `&amp;STRUCT`:
-
 ```
 &amp;STRUCT
  cell 10 0 0

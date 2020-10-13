@@ -134,7 +134,7 @@ class: left, middle
 .pull-left[
 ```{r, echo=FALSE, fig.align='center',fig.cap='Publicações anuais (CAFE).',out.width="58%"}
 x=c(2014,2015,2016,2017,2018,2019)
-y0=c(10417,10798,7842,8566,9157,9837)
+y0=c(28458,34066,30618,33535,38529,39834)
 df=data.frame(x,y=c(rep(min(y0),6),y0),z=c(rep("a",6),rep("b",6)))
 ggplot(data=df,mapping = aes(x,y,label=y))+
   geom_col()+
@@ -145,17 +145,22 @@ ggplot(data=df,mapping = aes(x,y,label=y))+
 ```
 ]
 .pull-right[
-```{r, echo=FALSE, fig.align='center',fig.cap='Publicações envolvendo as palavras-chave "molecular dynamics" e "monte carlo".',out.width="58%"}
-scielo=c(78,87,77,74,94,58)
-webofscience=c(77,86,74,71,94,58)
-bs=c(scielo,webofscience)
-Base=c(rep("Scielo",6),rep("Web of Science",6))
+```{r, echo=FALSE, fig.align='center',fig.cap='Publicações envolvendo as palavras-chave "molecular dynamics" <alert>ou</alert> "monte carlo".',fig.width=12}
+scielo=c(55,66,50,54,70,42)
+scielo=scielo-scielo[1]
+webofscience=c(24226,25668,27104,28318,29596,30724)
+webofscience=webofscience-webofscience[1]
+scopus=c(30009,31542,31988,32178,32866,34706)
+scopus=scopus-scopus[1]
+bs=c(scielo,webofscience,scopus)
+Base=c(rep("Scielo",6),rep("Web of Science",6),rep("Scopus",6))
 df2=data.frame(x,Base,bs)
 ggplot(data=df2,mapping = aes(x,bs,color=Base))+
   geom_line()+
-  labs(x="Ano",y="Publicações")+
-  theme(legend.position = "right",text = element_text(size = 18))
-  #transition_reveal(x)
+  geom_point()+
+  labs(x="Ano",y="Crescimento em relação a 2014")+
+  theme(legend.position = "right",text = element_text(size = 18),aspect.ratio = 1)+
+  transition_reveal(x)
 ```
 ]
 

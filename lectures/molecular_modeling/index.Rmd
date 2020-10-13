@@ -121,34 +121,6 @@ class: left, middle
 ]
 
 ---
-class: center, middle
-
-<div class="my-header"><span>Mecânica molecular versus Ab initio</span></div>
-
-.pull-left[
-```{r, echo=FALSE, fig.align='center',fig.cap='Métodos utilizados em diversos sistemas físicos.',out.width="100%"}
-  knitr::include_graphics("img/metodos-comparacao.png")
-```
-]
-.pull-right[
-* O custo computacional aumenta com a quantidade de átomos;
-* A precisão diminui com a quantidade de átomos;
-* O nível de detalhamento aumenta de coarse-grained para cálculos de estrutura eletrônica;
-* Quanto maior o nível de detalhamento maior será o custo computacional.
-```{r, echo=FALSE, fig.align='center',fig.cap='Escala de tempo de cada sistema e seu comportamento (Leandro Martínez - IFSC).',out.width="90%"}
-  knitr::include_graphics("img/escala-tempo.png")
-```
-]
-
----
-
-<div class="my-header"><span>O método de dinâmica molecular</span></div>
-
-```{r, echo=FALSE, fig.align='center',fig.cap='Fluxograma mostrando o ciclo MD.',out.width="100%"}
-  knitr::include_graphics("img/ciclo-MD.png")
-```
-
----
 class: left, middle
 
 <div class="my-header"><span>Publicações envolvendo dinâmica molecular</span></div>
@@ -182,17 +154,45 @@ df2=data.frame(x,Base,bs)
 ggplot(data=df2,mapping = aes(x,bs,color=Base))+
   geom_line()+
   labs(x="Ano",y="Publicações")+
-  theme(legend.position = "right",text = element_text(size = 18))+
-  transition_reveal(x)
+  theme(legend.position = "right",text = element_text(size = 18))
+  #transition_reveal(x)
 ```
 ]
+
+---
+class: center, middle
+
+<div class="my-header"><span>Mecânica molecular versus Ab initio</span></div>
+
+.pull-left[
+```{r, echo=FALSE, fig.align='center',fig.cap='Métodos utilizados em diversos sistemas físicos.',out.width="100%"}
+  knitr::include_graphics("img/metodos-comparacao.png")
+```
+]
+.pull-right[
+* O custo computacional aumenta com a quantidade de átomos e interações;
+* A precisão diminui com a quantidade de átomos;
+* O nível de detalhamento aumenta de coarse-grained para cálculos de estrutura eletrônica;
+* Quanto maior o nível de detalhamento maior será o custo computacional.
+```{r, echo=FALSE, fig.align='center',fig.cap='Escala de tempo de cada sistema e seu comportamento (Leandro Martínez - IFSC).',out.width="90%"}
+  knitr::include_graphics("img/escala-tempo.png")
+```
+]
+
+---
+
+<div class="my-header"><span>O método de dinâmica molecular</span></div>
+
+```{r, echo=FALSE, fig.align='center',fig.cap='Fluxograma mostrando o ciclo MD.',out.width="100%"}
+  knitr::include_graphics("img/ciclo-MD.png")
+```
 
 ---
 class: left, middle
 
 <div class="my-header"><span>Programa utilizado para a MD</span></div>
 
-# Para o desenvolvimento do projeto algumas etapas estão sendo providenciadas:
+**Para o desenvolvimento do projeto algumas etapas estão sendo providenciadas.**
 
 * Ferramentas para o trabalho em equipe e online (softwares <alert>open source</alert> e ambiente computacional);
 * Qualificação de alunos cadastrados em projetos no SISCOPE;
@@ -302,14 +302,15 @@ class: left, middle
 
 <div class="my-header"><span>Implementações no programa HICOLM</span></div>
 
+**Existem parâmetros obrigatórios e opcionais. No caso dos opcionais, se forem omitidos o programa utilizará o valor padrão correspondente.**
+
 .pull-left[
+
 Praticamente o arquivo HICOLM.in é constituído por
 
 * Cabeçalho: @MDPREPARE ou @MDRUNNING
 
-* Seções `&STRUCT`, `&MD` e `&FORCE`:
-
-* Existem parâmetros obrigatórios e opcionais. No caso dos opcionais, se forem omitidos o programa utilizará o valor padrão correspondente.
+* Seção `&FORCE`:
 
 ```
   &FORCE
@@ -325,11 +326,35 @@ Praticamente o arquivo HICOLM.in é constituído por
     $END
   &END
 ```
+
 ]
 .pull-right[
-```{r, echo=FALSE, fig.align='center',fig.cap='HICOLM.in contendo parâmetros da simulação',out.width="90%"}
-  knitr::include_graphics("img/hicolm-arquivo-1.png")
+
+* Seção `&MD`:
+
 ```
+  &MD
+    teext 298
+    preext 1.0
+    ntrialmax 100000
+    ensemble nve
+    rcutoff 9.0 0.2
+  &END
+```
+
+* Seção `&STRUCT`:
+
+```
+&STRUCT
+  cell
+    20.0  0.0 0.0
+     0.0 20.0 0.0
+     0.0 0.0 20.0
+     reuse 0
+     translate 0.5 0.5 0.5
+&END
+```
+
 ]
 
 ---
@@ -416,10 +441,12 @@ class: left
 <div class="my-header"><span>Dinâmica molecular do glifosato e cadeias poliméricas</span></div>
 
 .pull-left[
-<div class="my-body"><span>Para determinar as frequências foi utilizado o cálculo Hartree-Fock com a base polarizada 6-31G*. Utilizamos o programa [NwChem](https://github.com/nwchemgit/nwchem) que já se encontra instalado e configurado no servidor. Das frequências calculadas, foram selecionadas aquelas que melhor representa o modo normal de vibração.</span></div>
+
+Para determinar as frequências foi utilizado o cálculo Hartree-Fock com a base polarizada 6-31G*. Utilizamos o programa [NwChem](https://github.com/nwchemgit/nwchem) que já se encontra instalado e configurado no servidor. Das frequências calculadas, foram selecionadas aquelas que melhor representa o modo normal de vibração.
+
 ]
 .pull-right[
-```{r, echo=FALSE, fig.align='center',out.width="60%"}
+```{r, echo=FALSE, fig.align='center',out.width="55%"}
   knitr::include_graphics("img/GLYP.png")
 ```
 ]

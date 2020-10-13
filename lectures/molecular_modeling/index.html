@@ -113,6 +113,30 @@ class: left, middle
 ]
 
 ---
+class: left, middle
+
+&lt;div class="my-header"&gt;&lt;span&gt;Publicações envolvendo dinâmica molecular&lt;/span&gt;&lt;/div&gt;
+
+* O trabalho pode ser realizado de maneira não-presencial.
+
+* O custo financeiro devido a infraestrutura pode ser reduzido com o desenvolvimento de softwares mais eficazes aliado com o advento de processadores cada vez mais rápidos.
+
+* A quantidade de publicações vem crescendo a cada ano desde 2016 ([Lam, S.D., Bordin, N., Waman, V.P. et al. Sci Rep 10, 16471 (2020)](https://doi.org/10.1038/s41598-020-71936-5));
+
+.pull-left[
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="index_files/figure-html/unnamed-chunk-5-1.png" alt="Publicações anuais (CAFE)." width="58%" /&gt;
+&lt;p class="caption"&gt;Publicações anuais (CAFE).&lt;/p&gt;
+&lt;/div&gt;
+]
+.pull-right[
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="index_files/figure-html/unnamed-chunk-6-1.png" alt="Publicações envolvendo as palavras-chave &amp;quot;molecular dynamics&amp;quot; e &amp;quot;monte carlo&amp;quot;." width="58%" /&gt;
+&lt;p class="caption"&gt;Publicações envolvendo as palavras-chave "molecular dynamics" e "monte carlo".&lt;/p&gt;
+&lt;/div&gt;
+]
+
+---
 class: center, middle
 
 &lt;div class="my-header"&gt;&lt;span&gt;Mecânica molecular versus Ab initio&lt;/span&gt;&lt;/div&gt;
@@ -124,7 +148,7 @@ class: center, middle
 &lt;/div&gt;
 ]
 .pull-right[
-* O custo computacional aumenta com a quantidade de átomos;
+* O custo computacional aumenta com a quantidade de átomos e interações;
 * A precisão diminui com a quantidade de átomos;
 * O nível de detalhamento aumenta de coarse-grained para cálculos de estrutura eletrônica;
 * Quanto maior o nível de detalhamento maior será o custo computacional.
@@ -146,33 +170,9 @@ class: center, middle
 ---
 class: left, middle
 
-&lt;div class="my-header"&gt;&lt;span&gt;Publicações envolvendo dinâmica molecular&lt;/span&gt;&lt;/div&gt;
-
-* O trabalho pode ser realizado de maneira não-presencial.
-
-* O custo financeiro devido a infraestrutura pode ser reduzido com o desenvolvimento de softwares mais eficazes aliado com o advento de processadores cada vez mais rápidos.
-
-* A quantidade de publicações vem crescendo a cada ano desde 2016 ([Lam, S.D., Bordin, N., Waman, V.P. et al. Sci Rep 10, 16471 (2020)](https://doi.org/10.1038/s41598-020-71936-5));
-
-.pull-left[
-&lt;div class="figure" style="text-align: center"&gt;
-&lt;img src="index_files/figure-html/unnamed-chunk-8-1.png" alt="Publicações anuais (CAFE)." width="58%" /&gt;
-&lt;p class="caption"&gt;Publicações anuais (CAFE).&lt;/p&gt;
-&lt;/div&gt;
-]
-.pull-right[
-&lt;div class="figure" style="text-align: center"&gt;
-&lt;img src="index_files/figure-html/unnamed-chunk-9-1.gif" alt="Publicações envolvendo as palavras-chave &amp;quot;molecular dynamics&amp;quot; e &amp;quot;monte carlo&amp;quot;." width="58%" /&gt;
-&lt;p class="caption"&gt;Publicações envolvendo as palavras-chave "molecular dynamics" e "monte carlo".&lt;/p&gt;
-&lt;/div&gt;
-]
-
----
-class: left, middle
-
 &lt;div class="my-header"&gt;&lt;span&gt;Programa utilizado para a MD&lt;/span&gt;&lt;/div&gt;
 
-# Para o desenvolvimento do projeto algumas etapas estão sendo providenciadas:
+**Para o desenvolvimento do projeto algumas etapas estão sendo providenciadas.**
 
 * Ferramentas para o trabalho em equipe e online (softwares &lt;alert&gt;open source&lt;/alert&gt; e ambiente computacional);
 * Qualificação de alunos cadastrados em projetos no SISCOPE;
@@ -287,14 +287,15 @@ class: left, middle
 
 &lt;div class="my-header"&gt;&lt;span&gt;Implementações no programa HICOLM&lt;/span&gt;&lt;/div&gt;
 
+**Existem parâmetros obrigatórios e opcionais. No caso dos opcionais, se forem omitidos o programa utilizará o valor padrão correspondente.**
+
 .pull-left[
+
 Praticamente o arquivo HICOLM.in é constituído por
 
 * Cabeçalho: @MDPREPARE ou @MDRUNNING
 
-* Seções `&amp;STRUCT`, `&amp;MD` e `&amp;FORCE`:
-
-* Existem parâmetros obrigatórios e opcionais. No caso dos opcionais, se forem omitidos o programa utilizará o valor padrão correspondente.
+* Seção `&amp;FORCE`:
 
 ```
   &amp;FORCE
@@ -310,12 +311,35 @@ Praticamente o arquivo HICOLM.in é constituído por
     $END
   &amp;END
 ```
+
 ]
 .pull-right[
-&lt;div class="figure" style="text-align: center"&gt;
-&lt;img src="img/hicolm-arquivo-1.png" alt="HICOLM.in contendo parâmetros da simulação" width="90%" /&gt;
-&lt;p class="caption"&gt;HICOLM.in contendo parâmetros da simulação&lt;/p&gt;
-&lt;/div&gt;
+
+* Seção `&amp;MD`:
+
+```
+  &amp;MD
+    teext 298
+    preext 1.0
+    ntrialmax 100000
+    ensemble nve
+    rcutoff 9.0 0.2
+  &amp;END
+```
+
+* Seção `&amp;STRUCT`:
+
+```
+&amp;STRUCT
+  cell
+    20.0  0.0 0.0
+     0.0 20.0 0.0
+     0.0 0.0 20.0
+     reuse 0
+     translate 0.5 0.5 0.5
+&amp;END
+```
+
 ]
 
 ---
@@ -388,10 +412,12 @@ class: left
 &lt;div class="my-header"&gt;&lt;span&gt;Dinâmica molecular do glifosato e cadeias poliméricas&lt;/span&gt;&lt;/div&gt;
 
 .pull-left[
-&lt;div class="my-body"&gt;&lt;span&gt;Para determinar as frequências foi utilizado o cálculo Hartree-Fock com a base polarizada 6-31G*. Utilizamos o programa [NwChem](https://github.com/nwchemgit/nwchem) que já se encontra instalado e configurado no servidor. Das frequências calculadas, foram selecionadas aquelas que melhor representa o modo normal de vibração.&lt;/span&gt;&lt;/div&gt;
+
+Para determinar as frequências foi utilizado o cálculo Hartree-Fock com a base polarizada 6-31G*. Utilizamos o programa [NwChem](https://github.com/nwchemgit/nwchem) que já se encontra instalado e configurado no servidor. Das frequências calculadas, foram selecionadas aquelas que melhor representa o modo normal de vibração.
+
 ]
 .pull-right[
-&lt;img src="img/GLYP.png" width="60%" style="display: block; margin: auto;" /&gt;
+&lt;img src="img/GLYP.png" width="55%" style="display: block; margin: auto;" /&gt;
 ]
 
 .pull-left[

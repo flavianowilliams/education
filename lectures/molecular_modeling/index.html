@@ -95,7 +95,8 @@ class: left, middle
 * Aquecimento global;
 * Surgimento de vírus e outras entidades patológicas;
 * Uso desenfreado de agrotóxicos;
-* Poluição de mares e rios.
+* Poluição de mares e rios;
+* Destruição da fauna e flora.
 ]
 .pull-right30[
 &lt;div class="figure" style="text-align: center"&gt;
@@ -108,8 +109,9 @@ class: left, middle
 ]
 .pull-right70[
 * O Brasil é o maior consumidor de agrotóxicos no mundo e região Sul representa 30% desse consumo ([doi:10.1590/0103-1104201811714](https://doi.org/10.1590/0103-1104201811714));
-* Impactos ambientais vem sendo causados em diversas cidades do estado do Paraná devido ao uso de agrotóxicos;
-* Agrotóxicos e os danos na saúde humana;
+* Impactos ambientais em rios e lagos vem sendo causados em diversas cidades do Paraná e outros estados (Cascavel, Castro, Fortaleza, etc) devido ao uso de agrotóxicos;
+* Interferência na produção de alimentos como morango, laranja, tomate, etc;
+* Certos agrotóxicos podem interferir na habilidade de vôo de abelhas polinizadoras.
 ]
 
 ---
@@ -119,19 +121,19 @@ class: left, middle
 
 * O trabalho pode ser realizado de maneira não-presencial.
 
-* O custo financeiro devido a infraestrutura pode ser amenizado com o desenvolvimento de softwares mais eficazes aliado com o advento de processadores cada vez mais rápidos.
+* O custo financeiro devido a infraestrutura pode ser amenizado com o desenvolvimento de softwares mais eficazes e processadores cada vez mais rápidos.
 
 * A quantidade de publicações envolvendo dinâmica molecular ou monte carlo vem crescendo a cada ano desde 2014 ([Lam, S.D., Bordin, N., Waman, V.P. et al. Sci Rep 10, 16471 (2020)](https://doi.org/10.1038/s41598-020-71936-5));
 
 .pull-left[
 &lt;div class="figure" style="text-align: center"&gt;
-&lt;img src="index_files/figure-html/unnamed-chunk-5-1.gif" alt="Publicações anuais (CAFE)." width="58%" /&gt;
+&lt;img src="index_files/figure-html/unnamed-chunk-5-1.png" alt="Publicações anuais (CAFE)." width="58%" /&gt;
 &lt;p class="caption"&gt;Publicações anuais (CAFE).&lt;/p&gt;
 &lt;/div&gt;
 ]
 .pull-right[
 &lt;div class="figure" style="text-align: center"&gt;
-&lt;img src="index_files/figure-html/unnamed-chunk-6-1.gif" alt="Publicações envolvendo as palavras-chave &amp;quot;molecular dynamics&amp;quot; &amp;lt;alert&amp;gt;ou&amp;lt;/alert&amp;gt; &amp;quot;monte carlo&amp;quot;."  /&gt;
+&lt;img src="index_files/figure-html/unnamed-chunk-6-1.png" alt="Publicações envolvendo as palavras-chave &amp;quot;molecular dynamics&amp;quot; &amp;lt;alert&amp;gt;ou&amp;lt;/alert&amp;gt; &amp;quot;monte carlo&amp;quot;."  /&gt;
 &lt;p class="caption"&gt;Publicações envolvendo as palavras-chave "molecular dynamics" &lt;alert&gt;ou&lt;/alert&gt; "monte carlo".&lt;/p&gt;
 &lt;/div&gt;
 ]
@@ -203,18 +205,10 @@ class: left, middle
 
 *No servidor diversos softwares (open source) foram instalados e configurados para o desenvolvimento do trabalho, como o [gânglia](http://192.168.0.107/ganglia) para o monitoramento online.*
 
-.pull-left[
 &lt;div class="figure" style="text-align: center"&gt;
-&lt;img src="img/ganglia.png" alt="http://localhost/ganglia" width="100%" /&gt;
+&lt;img src="img/montagem-programas.png" alt="http://localhost/ganglia" width="80%" /&gt;
 &lt;p class="caption"&gt;http://localhost/ganglia&lt;/p&gt;
 &lt;/div&gt;
-]
-.pull-right[
-&lt;div class="figure" style="text-align: center"&gt;
-&lt;img src="img/htop.png" alt="Visualização de processos pelo htop." width="100%" /&gt;
-&lt;p class="caption"&gt;Visualização de processos pelo htop.&lt;/p&gt;
-&lt;/div&gt;
-]
 
 ---
 class: left
@@ -350,7 +344,7 @@ class: left
 # Suporte gráfico e estatístico através da ferramenta [R](https://www.r-graph-gallery.com/).
 
 .pull-left70[
-  O programa gera um relatório no final da simulação contendo uma análise estatística das principais variáveis termodinâmicas. A partir do relatório o usuário poderá fazer aferições a respeito da simulação, como a verificação se o equilíbrio termodinâmico foi alcançado, a precisão dos resultados a partir do valor médio e desvio padrão.
+  O programa gera um [relatório](img/report.pdf) no final da simulação contendo uma análise estatística das principais variáveis termodinâmicas. A partir do relatório o usuário poderá fazer aferições a respeito da simulação, como a verificação se o equilíbrio termodinâmico foi alcançado, a precisão dos resultados a partir do valor médio e desvio padrão.
 ]
 .pull-right30[
 &lt;img src="img/report-1.png" width="80%" style="display: block; margin: auto;" /&gt;
@@ -421,7 +415,7 @@ Para determinar as frequências foi utilizado o cálculo Hartree-Fock com a base
 ]
 
 .pull-left[
-&lt;table style="margin-top: 1cm; margin-bottom: 1cm; float: center; background-color: #2A6F9A"&gt;
+&lt;table style="margin-top: 1cm; margin-bottom: 1cm; float: center; text-align: center"&gt;
   &lt;thead&gt;
     &lt;tr&gt;
       &lt;th&gt;Coordenadas&lt;/th&gt;
@@ -430,10 +424,84 @@ Para determinar as frequências foi utilizado o cálculo Hartree-Fock com a base
       &lt;th&gt;r (A)&lt;/th&gt;
     &lt;/tr&gt;
   &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;P1-O2&lt;/td&gt;
+      &lt;td&gt;1198&lt;/td&gt;
+      &lt;td&gt;55,8&lt;/td&gt;
+      &lt;td&gt;1,470&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;O4-H5&lt;/td&gt;
+      &lt;td&gt;4112&lt;/td&gt;
+      &lt;td&gt;58,5&lt;/td&gt;
+      &lt;td&gt;0,948&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;P1-O4&lt;/td&gt;
+      &lt;td&gt;0889&lt;/td&gt;
+      &lt;td&gt;30,7&lt;/td&gt;
+      &lt;td&gt;1,631&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;P1-C6&lt;/td&gt;
+      &lt;td&gt;0771&lt;/td&gt;
+      &lt;td&gt;18,9&lt;/td&gt;
+      &lt;td&gt;1,854&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;C6-H9&lt;/td&gt;
+      &lt;td&gt;3267&lt;/td&gt;
+      &lt;td&gt;36,2&lt;/td&gt;
+      &lt;td&gt;1,082&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;C6-N7&lt;/td&gt;
+      &lt;td&gt;1149&lt;/td&gt;
+      &lt;td&gt;42,0&lt;/td&gt;
+      &lt;td&gt;1,489&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;N7-H11&lt;/td&gt;
+      &lt;td&gt;3657&lt;/td&gt;
+      &lt;td&gt;45,9&lt;/td&gt;
+      &lt;td&gt;1,011&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;N7-H12&lt;/td&gt;
+      &lt;td&gt;3459&lt;/td&gt;
+      &lt;td&gt;41,1&lt;/td&gt;
+      &lt;td&gt;1,022&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;C10-N7&lt;/td&gt;
+      &lt;td&gt;1149&lt;/td&gt;
+      &lt;td&gt;42,0&lt;/td&gt;
+      &lt;td&gt;1,493&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;C10-H14&lt;/td&gt;
+      &lt;td&gt;3283&lt;/td&gt;
+      &lt;td&gt;36,6&lt;/td&gt;
+      &lt;td&gt;1,081&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;C10-C13&lt;/td&gt;
+      &lt;td&gt;957&lt;/td&gt;
+      &lt;td&gt;20,2&lt;/td&gt;
+      &lt;td&gt;1,56&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;C13-O16&lt;/td&gt;
+      &lt;td&gt;1523&lt;/td&gt;
+      &lt;td&gt;58,5&lt;/td&gt;
+      &lt;td&gt;1,242&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
 &lt;/table&gt;
 ]
 .pull-right[
-&lt;table style="margin-top: 1cm; margin-bottom: 1cm; float: center; background-color: #2A6F9A"&gt;
+&lt;table style="margin-top: 1cm; margin-bottom: 1cm; float: center; text-align: center"&gt;
   &lt;thead&gt;
     &lt;tr&gt;
       &lt;th&gt;Coordenadas&lt;/th&gt;
@@ -442,6 +510,80 @@ Para determinar as frequências foi utilizado o cálculo Hartree-Fock com a base
       &lt;th&gt;r (A)&lt;/th&gt;
     &lt;/tr&gt;
   &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;H5-O4-P1&lt;/td&gt;
+      &lt;td&gt;1162&lt;/td&gt;
+      &lt;td&gt;4,8&lt;/td&gt;
+      &lt;td&gt;117,9&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;O4-P1-O2&lt;/td&gt;
+      &lt;td&gt;426&lt;/td&gt;
+      &lt;td&gt;5,3&lt;/td&gt;
+      &lt;td&gt;107,4&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;H8-C6-H9&lt;/td&gt;
+      &lt;td&gt;1622&lt;/td&gt;
+      &lt;td&gt;4,8&lt;/td&gt;
+      &lt;td&gt;109,0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;H15-C10-H14&lt;/td&gt;
+      &lt;td&gt;1628&lt;/td&gt;
+      &lt;td&gt;4,83&lt;/td&gt;
+      &lt;td&gt;108,0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;H11-N7-H12&lt;/td&gt;
+      &lt;td&gt;1778&lt;/td&gt;
+      &lt;td&gt;5,8&lt;/td&gt;
+      &lt;td&gt;111,5&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;O16-C13-O17&lt;/td&gt;
+      &lt;td&gt;956&lt;/td&gt;
+      &lt;td&gt;26,8&lt;/td&gt;
+      &lt;td&gt;130,2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;O16-C13-C10&lt;/td&gt;
+      &lt;td&gt;551&lt;/td&gt;
+      &lt;td&gt;7,7&lt;/td&gt;
+      &lt;td&gt;115,6&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;C6-N7-C10&lt;/td&gt;
+      &lt;td&gt;456&lt;/td&gt;
+      &lt;td&gt;4,6&lt;/td&gt;
+      &lt;td&gt;116,3&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;O3-P1-C6&lt;/td&gt;
+      &lt;td&gt;513&lt;/td&gt;
+      &lt;td&gt;6,6&lt;/td&gt;
+      &lt;td&gt;101,8&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;O4-P1-C6&lt;/td&gt;
+      &lt;td&gt;235&lt;/td&gt;
+      &lt;td&gt;0,2&lt;/td&gt;
+      &lt;td&gt;99,4&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;H8-C6-N7&lt;/td&gt;
+      &lt;td&gt;1411&lt;/td&gt;
+      &lt;td&gt;7,3&lt;/td&gt;
+      &lt;td&gt;107,2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;...&lt;/td&gt;
+      &lt;td&gt;...&lt;/td&gt;
+      &lt;td&gt;...&lt;/td&gt;
+      &lt;td&gt;...&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
 &lt;/table&gt;
 ]
 

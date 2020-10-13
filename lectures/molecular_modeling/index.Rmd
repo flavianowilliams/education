@@ -102,7 +102,8 @@ class: left, middle
 * Aquecimento global;
 * Surgimento de vírus e outras entidades patológicas;
 * Uso desenfreado de agrotóxicos;
-* Poluição de mares e rios.
+* Poluição de mares e rios;
+* Destruição da fauna e flora.
 ]
 .pull-right30[
 ```{r, echo=FALSE, fig.align='center',fig.cap='Fonte: BBC Brasil.',out.width="120%",fig.asp=1,fig.ncol=2}
@@ -116,8 +117,9 @@ class: left, middle
 ]
 .pull-right70[
 * O Brasil é o maior consumidor de agrotóxicos no mundo e região Sul representa 30% desse consumo ([doi:10.1590/0103-1104201811714](https://doi.org/10.1590/0103-1104201811714));
-* Impactos ambientais vem sendo causados em diversas cidades do estado do Paraná devido ao uso de agrotóxicos;
-* Agrotóxicos e os danos na saúde humana;
+* Impactos ambientais em rios e lagos vem sendo causados em diversas cidades do Paraná e outros estados (Cascavel, Castro, Fortaleza, etc) devido ao uso de agrotóxicos;
+* Interferência na produção de alimentos como morango, laranja, tomate, etc;
+* Certos agrotóxicos podem interferir na habilidade de vôo de abelhas polinizadoras.
 ]
 
 ---
@@ -127,7 +129,7 @@ class: left, middle
 
 * O trabalho pode ser realizado de maneira não-presencial.
 
-* O custo financeiro devido a infraestrutura pode ser amenizado com o desenvolvimento de softwares mais eficazes aliado com o advento de processadores cada vez mais rápidos.
+* O custo financeiro devido a infraestrutura pode ser amenizado com o desenvolvimento de softwares mais eficazes e processadores cada vez mais rápidos.
 
 * A quantidade de publicações envolvendo dinâmica molecular ou monte carlo vem crescendo a cada ano desde 2014 ([Lam, S.D., Bordin, N., Waman, V.P. et al. Sci Rep 10, 16471 (2020)](https://doi.org/10.1038/s41598-020-71936-5));
 
@@ -138,10 +140,10 @@ y0=c(28458,34066,30618,33535,38529,39834)
 df=data.frame(x,y=c(rep(min(y0),6),y0),z=c(rep("a",6),rep("b",6)))
 ggplot(data=df,mapping = aes(x,y,label=y))+
   geom_col()+
-  geom_label()+
+  geom_label(size=5)+
   labs(x="Ano",y="Publicações")+
-  theme(text = element_text(size = 18))+
-  transition_states(z,transition_length = 2,state_length = 1)
+  theme(text = element_text(size = 18))
+  #transition_states(z,transition_length = 2,state_length = 1)
 ```
 ]
 .pull-right[
@@ -156,11 +158,11 @@ bs=c(scielo,webofscience,scopus)
 Base=c(rep("Scielo",6),rep("Web of Science",6),rep("Scopus",6))
 df2=data.frame(x,Base,bs)
 ggplot(data=df2,mapping = aes(x,bs,color=Base))+
-  geom_line()+
-  geom_point()+
+  geom_line(size=1.5)+
+  geom_point(size=2.5)+
   labs(x="Ano",y="Crescimento em relação a 2014")+
-  theme(legend.position = "right",text = element_text(size = 18),aspect.ratio = 1)+
-  transition_reveal(x)
+  theme(legend.position = "right",text = element_text(size = 18),aspect.ratio = 1)
+  #transition_reveal(x)
 ```
 ]
 
@@ -226,16 +228,9 @@ class: left, middle
 
 *No servidor diversos softwares (open source) foram instalados e configurados para o desenvolvimento do trabalho, como o [gânglia](http://192.168.0.107/ganglia) para o monitoramento online.*
 
-.pull-left[
-```{r, echo=FALSE, fig.align='center',fig.cap='http://localhost/ganglia',out.width="100%"}
-  knitr::include_graphics("img/ganglia.png")
+```{r, echo=FALSE, fig.align='center',fig.cap='http://localhost/ganglia',out.width="80%"}
+  knitr::include_graphics("img/montagem-programas.png")
 ```
-]
-.pull-right[
-```{r, echo=FALSE, fig.align='center',fig.cap='Visualização de processos pelo htop.',out.width="100%"}
-  knitr::include_graphics("img/htop.png")
-```
-]
 
 ---
 class: left
@@ -370,7 +365,7 @@ class: left
 # Suporte gráfico e estatístico através da ferramenta [R](https://www.r-graph-gallery.com/).
 
 .pull-left70[
-  O programa gera um relatório no final da simulação contendo uma análise estatística das principais variáveis termodinâmicas. A partir do relatório o usuário poderá fazer aferições a respeito da simulação, como a verificação se o equilíbrio termodinâmico foi alcançado, a precisão dos resultados a partir do valor médio e desvio padrão.
+  O programa gera um [relatório](img/report.pdf) no final da simulação contendo uma análise estatística das principais variáveis termodinâmicas. A partir do relatório o usuário poderá fazer aferições a respeito da simulação, como a verificação se o equilíbrio termodinâmico foi alcançado, a precisão dos resultados a partir do valor médio e desvio padrão.
 ]
 .pull-right30[
 ```{r, echo=FALSE, fig.align='center',out.width="80%"}
@@ -457,7 +452,7 @@ Para determinar as frequências foi utilizado o cálculo Hartree-Fock com a base
 ]
 
 .pull-left[
-<table style="margin-top: 1cm; margin-bottom: 1cm; float: center; background-color: #2A6F9A">
+<table style="margin-top: 1cm; margin-bottom: 1cm; float: center; text-align: center">
   <thead>
     <tr>
       <th>Coordenadas</th>
@@ -466,10 +461,84 @@ Para determinar as frequências foi utilizado o cálculo Hartree-Fock com a base
       <th>r (A)</th>
     </tr>
   </thead>
+  <tbody>
+    <tr>
+      <td>P1-O2</td>
+      <td>1198</td>
+      <td>55,8</td>
+      <td>1,470</td>
+    </tr>
+    <tr>
+      <td>O4-H5</td>
+      <td>4112</td>
+      <td>58,5</td>
+      <td>0,948</td>
+    </tr>
+    <tr>
+      <td>P1-O4</td>
+      <td>0889</td>
+      <td>30,7</td>
+      <td>1,631</td>
+    </tr>
+    <tr>
+      <td>P1-C6</td>
+      <td>0771</td>
+      <td>18,9</td>
+      <td>1,854</td>
+    </tr>
+    <tr>
+      <td>C6-H9</td>
+      <td>3267</td>
+      <td>36,2</td>
+      <td>1,082</td>
+    </tr>
+    <tr>
+      <td>C6-N7</td>
+      <td>1149</td>
+      <td>42,0</td>
+      <td>1,489</td>
+    </tr>
+    <tr>
+      <td>N7-H11</td>
+      <td>3657</td>
+      <td>45,9</td>
+      <td>1,011</td>
+    </tr>
+    <tr>
+      <td>N7-H12</td>
+      <td>3459</td>
+      <td>41,1</td>
+      <td>1,022</td>
+    </tr>
+    <tr>
+      <td>C10-N7</td>
+      <td>1149</td>
+      <td>42,0</td>
+      <td>1,493</td>
+    </tr>
+    <tr>
+      <td>C10-H14</td>
+      <td>3283</td>
+      <td>36,6</td>
+      <td>1,081</td>
+    </tr>
+    <tr>
+      <td>C10-C13</td>
+      <td>957</td>
+      <td>20,2</td>
+      <td>1,56</td>
+    </tr>
+    <tr>
+      <td>C13-O16</td>
+      <td>1523</td>
+      <td>58,5</td>
+      <td>1,242</td>
+    </tr>
+  </tbody>
 </table>
 ]
 .pull-right[
-<table style="margin-top: 1cm; margin-bottom: 1cm; float: center; background-color: #2A6F9A">
+<table style="margin-top: 1cm; margin-bottom: 1cm; float: center; text-align: center">
   <thead>
     <tr>
       <th>Coordenadas</th>
@@ -478,6 +547,80 @@ Para determinar as frequências foi utilizado o cálculo Hartree-Fock com a base
       <th>r (A)</th>
     </tr>
   </thead>
+  <tbody>
+    <tr>
+      <td>H5-O4-P1</td>
+      <td>1162</td>
+      <td>4,8</td>
+      <td>117,9</td>
+    </tr>
+    <tr>
+      <td>O4-P1-O2</td>
+      <td>426</td>
+      <td>5,3</td>
+      <td>107,4</td>
+    </tr>
+    <tr>
+      <td>H8-C6-H9</td>
+      <td>1622</td>
+      <td>4,8</td>
+      <td>109,0</td>
+    </tr>
+    <tr>
+      <td>H15-C10-H14</td>
+      <td>1628</td>
+      <td>4,83</td>
+      <td>108,0</td>
+    </tr>
+    <tr>
+      <td>H11-N7-H12</td>
+      <td>1778</td>
+      <td>5,8</td>
+      <td>111,5</td>
+    </tr>
+    <tr>
+      <td>O16-C13-O17</td>
+      <td>956</td>
+      <td>26,8</td>
+      <td>130,2</td>
+    </tr>
+    <tr>
+      <td>O16-C13-C10</td>
+      <td>551</td>
+      <td>7,7</td>
+      <td>115,6</td>
+    </tr>
+    <tr>
+      <td>C6-N7-C10</td>
+      <td>456</td>
+      <td>4,6</td>
+      <td>116,3</td>
+    </tr>
+    <tr>
+      <td>O3-P1-C6</td>
+      <td>513</td>
+      <td>6,6</td>
+      <td>101,8</td>
+    </tr>
+    <tr>
+      <td>O4-P1-C6</td>
+      <td>235</td>
+      <td>0,2</td>
+      <td>99,4</td>
+    </tr>
+    <tr>
+      <td>H8-C6-N7</td>
+      <td>1411</td>
+      <td>7,3</td>
+      <td>107,2</td>
+    </tr>
+    <tr>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+  </tbody>
 </table>
 ]
 

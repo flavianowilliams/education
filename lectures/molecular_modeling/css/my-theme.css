@@ -19,39 +19,35 @@ Updated: xx/xx/xxxx
   width: 47%;
 }
 .pull-left70 {
-  margin-bottom: 0.5cm;
+  margin-bottom: 0.2cm;
   margin-top: 0.2cm;
   text-align: left;
   float: left;
   position: relative;
-  top: 0.25cm;
   width: 69%;
 }
 .pull-left30 {
-  margin-bottom: 0.5cm;
+  margin-bottom: 0.2cm;
   margin-top: 0.2cm;
   text-align: left;
   float: left;
   position: relative;
-  top: 0.25cm;
   width: 29%;
 }
 .pull-right30 {
-  margin-bottom: 0.5cm;
+  margin-bottom: 0.2cm;
   margin-top: 0.2cm;
   text-align: left;
   float: right;
   position: relative;
-  top: 0.25cm;
   width: 29%;
 }
 .pull-right70 {
-  margin-bottom: 0.5cm;
+  margin-bottom: 0.2cm;
   margin-top: 0.2cm;
   text-align: left;
   float: right;
   position: relative;
-  top: 0.25cm;
   width: 69%;
 }
 
@@ -91,6 +87,20 @@ div.my-header span {
     position: absolute;
     left: 15px;
     bottom: 14px;
+}
+
+div.my-body {
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 50px;
+    width: 100%;
+}
+
+div.my-body span {
+    color: #FFFFFF;
+    position: relative;
+    text-align: center;
 }
 
 /* Package defaults that we slightly tweak */

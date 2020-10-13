@@ -21,6 +21,9 @@ layout: true
 
 ```{r setup, include=FALSE}
   options(htmltools.dir.version = FALSE)
+  library("ggplot2")
+  library("gganimate")
+  library("latex2exp")
 #  knitr::opts_chunk$set(fig.path = 'img')
 ```
 
@@ -112,7 +115,7 @@ class: left, middle
 ```
 ]
 .pull-right70[
-* O Brasil é o maior consumidor de agrotóxicos no mundo e o estado do Paraná representa 30% desse consumo ([doi:10.1590/0103-1104201811714](https://doi.org/10.1590/0103-1104201811714));
+* O Brasil é o maior consumidor de agrotóxicos no mundo e região Sul representa 30% desse consumo ([doi:10.1590/0103-1104201811714](https://doi.org/10.1590/0103-1104201811714));
 * Impactos ambientais vem sendo causados em diversas cidades do estado do Paraná devido ao uso de agrotóxicos;
 * Agrotóxicos e os danos na saúde humana;
 ]
@@ -150,12 +153,37 @@ class: left, middle
 
 <div class="my-header"><span>Publicações envolvendo dinâmica molecular</span></div>
 
+* O trabalho pode ser realizado de maneira não-presencial.
+
+* O custo financeiro devido a infraestrutura pode ser reduzido com o desenvolvimento de softwares mais eficazes aliado com o advento de processadores cada vez mais rápidos.
+
+* A quantidade de publicações vem crescendo a cada ano desde 2016 ([Lam, S.D., Bordin, N., Waman, V.P. et al. Sci Rep 10, 16471 (2020)](https://doi.org/10.1038/s41598-020-71936-5));
+
 .pull-left[
-* Pesquisa feita no google scholar revelou aproximadamente 2760 publicações em 2020 envolvendo as palavras chaves "molecular dynamics" e "COVID-19";
+```{r, echo=FALSE, fig.align='center',fig.cap='Publicações anuais (CAFE).',out.width="58%"}
+x=c(2014,2015,2016,2017,2018,2019)
+y0=c(10417,10798,7842,8566,9157,9837)
+df=data.frame(x,y=c(rep(min(y0),6),y0),z=c(rep("a",6),rep("b",6)))
+ggplot(data=df,mapping = aes(x,y,label=y))+
+  geom_col()+
+  geom_label()+
+  labs(x="Ano",y="Publicações")+
+  theme(text = element_text(size = 18))
+  #transition_states(z,transition_length = 2,state_length = 1)
+```
 ]
 .pull-right[
-```{r, echo=FALSE, fig.align='center',fig.cap='Número de publicações anuais (google scholar).',out.width="80%"}
-  knitr::include_graphics("img/hicolm-arquivo-1.png")
+```{r, echo=FALSE, fig.align='center',fig.cap='Publicações envolvendo as palavras-chave "molecular dynamics" e "monte carlo".',out.width="58%"}
+scielo=c(78,87,77,74,94,58)
+webofscience=c(77,86,74,71,94,58)
+bs=c(scielo,webofscience)
+Base=c(rep("Scielo",6),rep("Web of Science",6))
+df2=data.frame(x,Base,bs)
+ggplot(data=df2,mapping = aes(x,bs,color=Base))+
+  geom_line()+
+  labs(x="Ano",y="Publicações")+
+  theme(legend.position = "right",text = element_text(size = 18))+
+  transition_reveal(x)
 ```
 ]
 
@@ -276,14 +304,27 @@ class: left, middle
 
 .pull-left[
 Praticamente o arquivo HICOLM.in é constituído por
-* Cabeçalho:
 
-@MDPREPARE ou @MDRUNNING
+* Cabeçalho: @MDPREPARE ou @MDRUNNING
 
 * Seções `&STRUCT`, `&MD` e `&FORCE`:
 
-* Cada seção deve ser finalizada com a linha `&END`.
 * Existem parâmetros obrigatórios e opcionais. No caso dos opcionais, se forem omitidos o programa utilizará o valor padrão correspondente.
+
+```
+  &FORCE
+    $INTRA
+      molecule C2H4
+        bends* 5
+          3 1 4 harm 3.04 120.0
+        bends* 6
+          5 2 6 harm 3.04 120.0
+        dihedrals! 2
+          3 1 2 5 amber 1.0 1.1 180.0 2.0
+          4 1 2 6 amber 1.0 1.1 180.0 2.0
+    $END
+  &END
+```
 ]
 .pull-right[
 ```{r, echo=FALSE, fig.align='center',fig.cap='HICOLM.in contendo parâmetros da simulação',out.width="90%"}
@@ -294,18 +335,118 @@ Praticamente o arquivo HICOLM.in é constituído por
 ---
 class: left
 
+<div class="my-header"><span>Implementações no programa HICOLM</span></div>
+
 # Suporte gráfico e estatístico através da ferramenta [R](https://www.r-graph-gallery.com/).
 
-.pull-left[
-```{r, echo=FALSE, fig.align='center',out.width="70%"}
+.pull-left70[
+  O programa gera um relatório no final da simulação contendo uma análise estatística das principais variáveis termodinâmicas. A partir do relatório o usuário poderá fazer aferições a respeito da simulação, como a verificação se o equilíbrio termodinâmico foi alcançado, a precisão dos resultados a partir do valor médio e desvio padrão.
+]
+.pull-right30[
+```{r, echo=FALSE, fig.align='center',out.width="80%"}
   knitr::include_graphics("img/report-1.png")
 ```
 ]
 
-.pull-right[
-```{r, echo=FALSE, fig.align='center',out.width="70%"}
-  knitr::include_graphics("img/figura-rascunho.png")
+.pull-left30[
+```{r, echo=FALSE, fig.align='center',out.width="80%"}
+  knitr::include_graphics("img/report-2.png")
 ```
+]
+.pull-right70[
+  Durante a simulação o programa abre uma janela gráfica onde mostra a evolução temporal das principais variáveis termodinâmicas (no caso da dinâmica molecular). Assim o aluno poderá acompanhar em tempo real a evolução do sistema ao longo do tempo.
+]
+
+---
+class: left
+
+<div class="my-header"><span>Dinâmica molecular do glifosato e cadeias poliméricas</span></div>
+
+O campo de força pode ser representado por
+
+\begin{equation}
+  U =\sum_{{i=1\atop j<i}}U_{ij}^{coul}+\sum_{{i=1\atop     j<i}}U_{ij}^{vw}+\sum_{bond}U^{bond}+\sum_{bend}U^{bend}+\sum_{tors}U^{tors},
+\end{equation}
+onde
+.pull-left[
+\begin{align}
+  U_{LJ}^{vw}\left(R\right) & =4\varepsilon\left[\left(\frac{\sigma}{R}\right)^{12}-\left(\frac{\sigma}{R}\right)^{6}\right],\\
+U_{ij}^{coul}\left(R\right) & =\frac{1}{4\pi\varepsilon_0}\frac{q_1q_2}{R},\\
+U^{bond}\left(r\right) & =\frac{K}{2}\left(r-r_{0}\right)^{2},\\
+U^{bend}\left(\theta\right) & =\frac{\kappa}{2}\left(\theta-\theta_{0}\right)^{2},\\
+U^{tors}\left(\phi\right) & =\sum_{i=0}^{5}C_{i}\cos\left(\phi-\phi_{0}\right).
+\end{align}
+]
+.pull-right[
+```{r, echo=FALSE, fig.align='center',out.width="100%"}
+  knitr::include_graphics("img/montagem-moleculas.png")
+```
+]
+
+---
+class: left
+
+<div class="my-header"><span>Dinâmica molecular do glifosato e cadeias poliméricas</span></div>
+
+.pull-left[
+```{r, echo=FALSE, fig.align='center',out.width="75%"}
+  knitr::include_graphics("img/6-7-10-13.png")
+```
+]
+.pull-right[
+```{r, echo=FALSE, fig.align='center',out.width="75%"}
+  knitr::include_graphics("img/group1.png")
+```
+]
+
+.pull-left[
+```{r, echo=FALSE, fig.align='center',out.width="60%"}
+  knitr::include_graphics("img/GLYP.png")
+```
+]
+.pull-right[
+```{r, echo=FALSE, fig.align='center',out.width="75%"}
+  knitr::include_graphics("img/group2.png")
+```
+]
+
+---
+class: left
+
+<div class="my-header"><span>Dinâmica molecular do glifosato e cadeias poliméricas</span></div>
+
+.pull-left[
+<div class="my-body"><span>Para determinar as frequências foi utilizado o cálculo Hartree-Fock com a base polarizada 6-31G*. Utilizamos o programa [NwChem](https://github.com/nwchemgit/nwchem) que já se encontra instalado e configurado no servidor. Das frequências calculadas, foram selecionadas aquelas que melhor representa o modo normal de vibração.</span></div>
+]
+.pull-right[
+```{r, echo=FALSE, fig.align='center',out.width="60%"}
+  knitr::include_graphics("img/GLYP.png")
+```
+]
+
+.pull-left[
+<table style="margin-top: 1cm; margin-bottom: 1cm; float: center; background-color: #2A6F9A">
+  <thead>
+    <tr>
+      <th>Coordenadas</th>
+      <th>Frequência (cm-1)</th>
+      <th>k (kcal/mol)</th>
+      <th>r (A)</th>
+    </tr>
+  </thead>
+</table>
+]
+.pull-right[
+<table style="margin-top: 1cm; margin-bottom: 1cm; float: center; background-color: #2A6F9A">
+  <thead>
+    <tr>
+      <th>Coordenadas</th>
+      <th>Frequência (cm-1)</th>
+      <th>k (kcal/mol)</th>
+      <th>r (A)</th>
+    </tr>
+  </thead>
+</table>
 ]
 
 ---

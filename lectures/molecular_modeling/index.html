@@ -16,7 +16,7 @@ class: center, middle, inverse, title-slide
 ## Apresentação no SIPEX VI
 ### Flaviano Williams Fernandes
 ### Instituto Federal do Paraná - Irati
-### 16 de outubro de 2020 (atualizado em 05/10/2020)
+### 16 de outubro de 2020 (atualizado em 12/10/2020)
 
 ---
 
@@ -107,7 +107,7 @@ class: left, middle
 &lt;img src="img/agrotoxicos-parana.png" width="90%" style="display: block; margin: auto;" /&gt;
 ]
 .pull-right70[
-* O Brasil é o maior consumidor de agrotóxicos no mundo e o estado do Paraná representa 30% desse consumo ([doi:10.1590/0103-1104201811714](https://doi.org/10.1590/0103-1104201811714));
+* O Brasil é o maior consumidor de agrotóxicos no mundo e região Sul representa 30% desse consumo ([doi:10.1590/0103-1104201811714](https://doi.org/10.1590/0103-1104201811714));
 * Impactos ambientais vem sendo causados em diversas cidades do estado do Paraná devido ao uso de agrotóxicos;
 * Agrotóxicos e os danos na saúde humana;
 ]
@@ -148,13 +148,22 @@ class: left, middle
 
 &lt;div class="my-header"&gt;&lt;span&gt;Publicações envolvendo dinâmica molecular&lt;/span&gt;&lt;/div&gt;
 
+* O trabalho pode ser realizado de maneira não-presencial.
+
+* O custo financeiro devido a infraestrutura pode ser reduzido com o desenvolvimento de softwares mais eficazes aliado com o advento de processadores cada vez mais rápidos.
+
+* A quantidade de publicações vem crescendo a cada ano desde 2016 ([Lam, S.D., Bordin, N., Waman, V.P. et al. Sci Rep 10, 16471 (2020)](https://doi.org/10.1038/s41598-020-71936-5));
+
 .pull-left[
-* Pesquisa feita no google scholar revelou aproximadamente 2760 publicações em 2020 envolvendo as palavras chaves "molecular dynamics" e "COVID-19";
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="index_files/figure-html/unnamed-chunk-8-1.png" alt="Publicações anuais (CAFE)." width="58%" /&gt;
+&lt;p class="caption"&gt;Publicações anuais (CAFE).&lt;/p&gt;
+&lt;/div&gt;
 ]
 .pull-right[
 &lt;div class="figure" style="text-align: center"&gt;
-&lt;img src="img/hicolm-arquivo-1.png" alt="Número de publicações anuais (google scholar)." width="80%" /&gt;
-&lt;p class="caption"&gt;Número de publicações anuais (google scholar).&lt;/p&gt;
+&lt;img src="index_files/figure-html/unnamed-chunk-9-1.gif" alt="Publicações envolvendo as palavras-chave &amp;quot;molecular dynamics&amp;quot; e &amp;quot;monte carlo&amp;quot;." width="58%" /&gt;
+&lt;p class="caption"&gt;Publicações envolvendo as palavras-chave "molecular dynamics" e "monte carlo".&lt;/p&gt;
 &lt;/div&gt;
 ]
 
@@ -280,14 +289,27 @@ class: left, middle
 
 .pull-left[
 Praticamente o arquivo HICOLM.in é constituído por
-* Cabeçalho:
 
-@MDPREPARE ou @MDRUNNING
+* Cabeçalho: @MDPREPARE ou @MDRUNNING
 
 * Seções `&amp;STRUCT`, `&amp;MD` e `&amp;FORCE`:
 
-* Cada seção deve ser finalizada com a linha `&amp;END`.
 * Existem parâmetros obrigatórios e opcionais. No caso dos opcionais, se forem omitidos o programa utilizará o valor padrão correspondente.
+
+```
+  &amp;FORCE
+    $INTRA
+      molecule C2H4
+        bends* 5
+          3 1 4 harm 3.04 120.0
+        bends* 6
+          5 2 6 harm 3.04 120.0
+        dihedrals! 2
+          3 1 2 5 amber 1.0 1.1 180.0 2.0
+          4 1 2 6 amber 1.0 1.1 180.0 2.0
+    $END
+  &amp;END
+```
 ]
 .pull-right[
 &lt;div class="figure" style="text-align: center"&gt;
@@ -299,14 +321,102 @@ Praticamente o arquivo HICOLM.in é constituído por
 ---
 class: left
 
+&lt;div class="my-header"&gt;&lt;span&gt;Implementações no programa HICOLM&lt;/span&gt;&lt;/div&gt;
+
 # Suporte gráfico e estatístico através da ferramenta [R](https://www.r-graph-gallery.com/).
 
-.pull-left[
-&lt;img src="img/report-1.png" width="70%" style="display: block; margin: auto;" /&gt;
+.pull-left70[
+  O programa gera um relatório no final da simulação contendo uma análise estatística das principais variáveis termodinâmicas. A partir do relatório o usuário poderá fazer aferições a respeito da simulação, como a verificação se o equilíbrio termodinâmico foi alcançado, a precisão dos resultados a partir do valor médio e desvio padrão.
+]
+.pull-right30[
+&lt;img src="img/report-1.png" width="80%" style="display: block; margin: auto;" /&gt;
 ]
 
+.pull-left30[
+&lt;img src="img/report-2.png" width="80%" style="display: block; margin: auto;" /&gt;
+]
+.pull-right70[
+  Durante a simulação o programa abre uma janela gráfica onde mostra a evolução temporal das principais variáveis termodinâmicas (no caso da dinâmica molecular). Assim o aluno poderá acompanhar em tempo real a evolução do sistema ao longo do tempo.
+]
+
+---
+class: left
+
+&lt;div class="my-header"&gt;&lt;span&gt;Dinâmica molecular do glifosato e cadeias poliméricas&lt;/span&gt;&lt;/div&gt;
+
+O campo de força pode ser representado por
+
+`\begin{equation}
+  U =\sum_{{i=1\atop j&lt;i}}U_{ij}^{coul}+\sum_{{i=1\atop     j&lt;i}}U_{ij}^{vw}+\sum_{bond}U^{bond}+\sum_{bend}U^{bend}+\sum_{tors}U^{tors},
+\end{equation}`
+onde
+.pull-left[
+`\begin{align}
+  U_{LJ}^{vw}\left(R\right) &amp; =4\varepsilon\left[\left(\frac{\sigma}{R}\right)^{12}-\left(\frac{\sigma}{R}\right)^{6}\right],\\
+U_{ij}^{coul}\left(R\right) &amp; =\frac{1}{4\pi\varepsilon_0}\frac{q_1q_2}{R},\\
+U^{bond}\left(r\right) &amp; =\frac{K}{2}\left(r-r_{0}\right)^{2},\\
+U^{bend}\left(\theta\right) &amp; =\frac{\kappa}{2}\left(\theta-\theta_{0}\right)^{2},\\
+U^{tors}\left(\phi\right) &amp; =\sum_{i=0}^{5}C_{i}\cos\left(\phi-\phi_{0}\right).
+\end{align}`
+]
 .pull-right[
-&lt;img src="img/figura-rascunho.png" width="70%" style="display: block; margin: auto;" /&gt;
+&lt;img src="img/montagem-moleculas.png" width="100%" style="display: block; margin: auto;" /&gt;
+]
+
+---
+class: left
+
+&lt;div class="my-header"&gt;&lt;span&gt;Dinâmica molecular do glifosato e cadeias poliméricas&lt;/span&gt;&lt;/div&gt;
+
+.pull-left[
+&lt;img src="img/6-7-10-13.png" width="75%" style="display: block; margin: auto;" /&gt;
+]
+.pull-right[
+&lt;img src="img/group1.png" width="75%" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-left[
+&lt;img src="img/GLYP.png" width="60%" style="display: block; margin: auto;" /&gt;
+]
+.pull-right[
+&lt;img src="img/group2.png" width="75%" style="display: block; margin: auto;" /&gt;
+]
+
+---
+class: left
+
+&lt;div class="my-header"&gt;&lt;span&gt;Dinâmica molecular do glifosato e cadeias poliméricas&lt;/span&gt;&lt;/div&gt;
+
+.pull-left[
+&lt;div class="my-body"&gt;&lt;span&gt;Para determinar as frequências foi utilizado o cálculo Hartree-Fock com a base polarizada 6-31G*. Utilizamos o programa [NwChem](https://github.com/nwchemgit/nwchem) que já se encontra instalado e configurado no servidor. Das frequências calculadas, foram selecionadas aquelas que melhor representa o modo normal de vibração.&lt;/span&gt;&lt;/div&gt;
+]
+.pull-right[
+&lt;img src="img/GLYP.png" width="60%" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-left[
+&lt;table style="margin-top: 1cm; margin-bottom: 1cm; float: center; background-color: #2A6F9A"&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Coordenadas&lt;/th&gt;
+      &lt;th&gt;Frequência (cm-1)&lt;/th&gt;
+      &lt;th&gt;k (kcal/mol)&lt;/th&gt;
+      &lt;th&gt;r (A)&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+&lt;/table&gt;
+]
+.pull-right[
+&lt;table style="margin-top: 1cm; margin-bottom: 1cm; float: center; background-color: #2A6F9A"&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Coordenadas&lt;/th&gt;
+      &lt;th&gt;Frequência (cm-1)&lt;/th&gt;
+      &lt;th&gt;k (kcal/mol)&lt;/th&gt;
+      &lt;th&gt;r (A)&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+&lt;/table&gt;
 ]
 
 ---

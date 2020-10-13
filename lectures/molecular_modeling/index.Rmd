@@ -140,8 +140,8 @@ ggplot(data=df,mapping = aes(x,y,label=y))+
   geom_col()+
   geom_label()+
   labs(x="Ano",y="Publicações")+
-  theme(text = element_text(size = 18))
-  #transition_states(z,transition_length = 2,state_length = 1)
+  theme(text = element_text(size = 18))+
+  transition_states(z,transition_length = 2,state_length = 1)
 ```
 ]
 .pull-right[

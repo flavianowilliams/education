@@ -127,7 +127,7 @@ class: left, middle
 
 * O trabalho pode ser realizado de maneira não-presencial.
 
-* O custo financeiro devido a infraestrutura pode ser reduzido com o desenvolvimento de softwares mais eficazes aliado com o advento de processadores cada vez mais rápidos.
+* O custo financeiro devido a infraestrutura pode ser amenizado com o desenvolvimento de softwares mais eficazes aliado com o advento de processadores cada vez mais rápidos.
 
 * A quantidade de publicações envolvendo dinâmica molecular ou monte carlo vem crescendo a cada ano desde 2014 ([Lam, S.D., Bordin, N., Waman, V.P. et al. Sci Rep 10, 16471 (2020)](https://doi.org/10.1038/s41598-020-71936-5));
 

@@ -129,7 +129,7 @@ class: left, middle
 
 * O custo financeiro devido a infraestrutura pode ser reduzido com o desenvolvimento de softwares mais eficazes aliado com o advento de processadores cada vez mais rápidos.
 
-* A quantidade de publicações vem crescendo a cada ano desde 2016 ([Lam, S.D., Bordin, N., Waman, V.P. et al. Sci Rep 10, 16471 (2020)](https://doi.org/10.1038/s41598-020-71936-5));
+* A quantidade de publicações vem crescendo a cada ano desde 2014 ([Lam, S.D., Bordin, N., Waman, V.P. et al. Sci Rep 10, 16471 (2020)](https://doi.org/10.1038/s41598-020-71936-5));
 
 .pull-left[
 ```{r, echo=FALSE, fig.align='center',fig.cap='Publicações anuais (CAFE).',out.width="58%"}

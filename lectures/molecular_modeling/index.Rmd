@@ -48,7 +48,38 @@ class: middle
 6. Implementações no programa HICOLM
 
 ---
-class: middle
+class: left, middle
+
+<div class="my-header"><span>Motivação</span></div>
+
+# A questão ambiental
+
+.pull-left70[
+* Aquecimento global;
+* Surgimento de vírus e outras entidades patológicas;
+* Uso desenfreado de agrotóxicos;
+* Poluição de mares e rios;
+* Destruição da fauna e flora.
+]
+.pull-right30[
+```{r, echo=FALSE, fig.align='center',fig.cap='Fonte: BBC Brasil.',out.width="90%",fig.asp=1,fig.ncol=2}
+  knitr::include_graphics("img/montagem.png")
+```
+]
+.pull-left30[
+```{r, echo=FALSE, fig.align='center',out.width="70%",fig.asp=1,fig.ncol=2}
+  knitr::include_graphics("img/agrotoxicos-parana.png")
+```
+]
+.pull-right70[
+* O Brasil é o maior consumidor de agrotóxicos no mundo e região Sul representa 30% desse consumo ([doi:10.1590/0103-1104201811714](https://doi.org/10.1590/0103-1104201811714));
+* Impactos ambientais em rios e lagos vem sendo causados em diversas cidades do Paraná e outros estados (Cascavel, Castro, Fortaleza, etc) devido ao uso de agrotóxicos;
+* Interferência na produção de alimentos como morango, laranja, tomate, etc;
+* Certos agrotóxicos podem interferir na habilidade de vôo de abelhas polinizadoras.
+]
+
+---
+class: left, middle
 
 <div class="my-header"><span>Cenário atual no campus Irati e pretensões futuras</span></div>
 
@@ -57,7 +88,7 @@ class: middle
 * Cálculo de moléculas orgânicas e inorgânicas em soluções aquosas por dinâmica molecular;
 * Análise fisico-química de poluentes em meio aquoso;
 * Análise de permeabilidade seletiva de polímeros e demais materiais;
-* <alert>Desenvolvimento de campos de força e análise de interação intra/intermolecular de átomos e moléculas.</alert>
+* <alert>Compreensão detalhada de interações intra/intermolecular de átomos e moléculas.</alert>
 
 # Cenário atual
 
@@ -91,45 +122,18 @@ class: middle
 6. Desenvolvimento de softwares na área da química computacional.
 7. Apresentação de resultados da pesquisa no colóquio.
 8. Ampliação do ambiente computacional (expansão para um cluster do tipo bewoulf de alta performance).
-9. Projetos de extensão (<alert>minicursos</alert>).
+9. Projetos de extensão (<alert>minicursos na área de física, química e ciência de dados</alert>).
 
 ---
 class: left, middle
 
-<div class="my-header"><span>A questão ambiental</span></div>
+<div class="my-header"><span>A simulação computacional</span></div>
 
-.pull-left70[
-* Aquecimento global;
-* Surgimento de vírus e outras entidades patológicas;
-* Uso desenfreado de agrotóxicos;
-* Poluição de mares e rios;
-* Destruição da fauna e flora.
-]
-.pull-right30[
-```{r, echo=FALSE, fig.align='center',fig.cap='Fonte: BBC Brasil.',out.width="120%",fig.asp=1,fig.ncol=2}
-  knitr::include_graphics("img/montagem.png")
-```
-]
-.pull-left30[
-```{r, echo=FALSE, fig.align='center',out.width="90%",fig.asp=1,fig.ncol=2}
-  knitr::include_graphics("img/agrotoxicos-parana.png")
-```
-]
-.pull-right70[
-* O Brasil é o maior consumidor de agrotóxicos no mundo e região Sul representa 30% desse consumo ([doi:10.1590/0103-1104201811714](https://doi.org/10.1590/0103-1104201811714));
-* Impactos ambientais em rios e lagos vem sendo causados em diversas cidades do Paraná e outros estados (Cascavel, Castro, Fortaleza, etc) devido ao uso de agrotóxicos;
-* Interferência na produção de alimentos como morango, laranja, tomate, etc;
-* Certos agrotóxicos podem interferir na habilidade de vôo de abelhas polinizadoras.
-]
-
----
-class: left, middle
-
-<div class="my-header"><span>Publicações envolvendo dinâmica molecular</span></div>
+# Vantagens da mecânica molecular
 
 * O trabalho pode ser realizado de maneira não-presencial.
 
-* O custo financeiro devido a infraestrutura pode ser amenizado com o desenvolvimento de softwares mais eficazes e processadores cada vez mais rápidos.
+* O custo financeiro devido a infraestrutura pode ser amenizado com o desenvolvimento de novas metodologias, softwares melhores e processadores cada vez mais rápidos.
 
 * A quantidade de publicações envolvendo dinâmica molecular ou monte carlo vem crescendo a cada ano desde 2014 ([Lam, S.D., Bordin, N., Waman, V.P. et al. Sci Rep 10, 16471 (2020)](https://doi.org/10.1038/s41598-020-71936-5));
 
@@ -142,8 +146,8 @@ ggplot(data=df,mapping = aes(x,y,label=y))+
   geom_col()+
   geom_label(size=5)+
   labs(x="Ano",y="Publicações")+
-  theme(text = element_text(size = 18))+
-  transition_states(z,transition_length = 2,state_length = 1)
+  theme(text = element_text(size = 18))
+  #transition_states(z,transition_length = 2,state_length = 1)
 ```
 ]
 .pull-right[
@@ -161,43 +165,162 @@ ggplot(data=df2,mapping = aes(x,bs,color=Base))+
   geom_line(size=1.5)+
   geom_point(size=2.5)+
   labs(x="Ano",y="Crescimento em relação a 2014")+
-  theme(legend.position = "right",text = element_text(size = 18),aspect.ratio = 1)+
-  transition_reveal(x)
+  theme(legend.position = "right",text = element_text(size = 18),aspect.ratio = 1)
+  #transition_reveal(x)
 ```
 ]
 
 ---
-class: center, middle
+class: left, middle
 
-<div class="my-header"><span>Mecânica molecular versus Ab initio</span></div>
+<div class="my-header"><span>A simulação computacional</span></div>
+
+# Mecânica molecular versus Ab initio
 
 .pull-left[
-```{r, echo=FALSE, fig.align='center',fig.cap='Métodos utilizados em diversos sistemas físicos.',out.width="100%"}
+```{r, echo=FALSE, fig.align='center',fig.cap='Métodos utilizados em diversos sistemas físicos.',out.width="95%"}
   knitr::include_graphics("img/metodos-comparacao.png")
 ```
 ]
 .pull-right[
 * O custo computacional aumenta com a quantidade de átomos e interações;
 * A precisão diminui com a quantidade de átomos;
-* O nível de detalhamento aumenta de coarse-grained para cálculos de estrutura eletrônica;
-* Quanto maior o nível de detalhamento maior será o custo computacional.
+* Para reduzir o custo computacional, a estratégia seria diminuir o nível de detalhamento.
 ```{r, echo=FALSE, fig.align='center',fig.cap='Escala de tempo de cada sistema e seu comportamento (Leandro Martínez - IFSC).',out.width="90%"}
   knitr::include_graphics("img/escala-tempo.png")
 ```
 ]
 
 ---
+class: left, middle
 
-<div class="my-header"><span>O método de dinâmica molecular</span></div>
+<div class="my-header"><span>A simulação computacional</span></div>
 
-```{r, echo=FALSE, fig.align='center',fig.cap='Fluxograma mostrando o ciclo MD.',out.width="100%"}
+# Análise da interação: da escala quântica a microscópica
+
+As interações intra/intermoleculares ocorrem em nível subatômico, onde devemos tratar o sistema a partir da equação de Schroedinger,
+\begin{equation}
+  H\Phi = E\Phi.
+\end{equation}
+A hamiltoniana deve incluir todas as interações possíveis, envolvendo o núcleo atômico  e os elétrons na eletrosfera,
+
+.pull-left[
+\begin{eqnarray*}
+  H = & - & \overbrace{\sum_{A=1}^{M}\frac{1}{2}\nabla^2_A+\sum_{A=1}^{M}\sum_{B>A}^{M}\frac{Z_AZ_B}{R_{AB}}}^{\text{parte nuclear}}-\\
+  & - & \overbrace{\sum_{i=1}^{N}\frac{1}{2}\nabla^2_i-\sum_{i=1}^{N}\sum_{A=1}^{M}\frac{Z_A}{r_{iA}}+\sum_{i=1}^{N}\sum_{j>1}^{N}\frac{1}{i_{ij}}.}^{\text{parte eletrônica}}
+\end{eqnarray*}
+]
+.pull-right[
+```{r, echo=FALSE, fig.align='center',out.width="80%"}
+  knitr::include_graphics("img/modelo-molecular.png")
+```
+]
+
+O número de interações é dado por $\frac{n}{2}(n+1)$ Para a molécula de $H_2$ tériamos n=4, o que resultaria em 6 interações.
+
+---
+class: left, middle
+
+<div class="my-header"><span>A simulação computacional</span></div>
+
+# O que fazer com a parte nuclear?
+
+Para saber uma partícula deve ser tratada classicamente, o seu comprimento de onda de de Broglie deve ser muito menor que a distância média entre as partículas,
+\begin{equation}
+\lambda = \left(\frac{2\pi\hslash^2}{mk_BT}\right)^{1/2}.
+\end{equation}
+
+*"Como exemplo citamos a bola de beisebol, de acordo com o postulado de de Broglie o seu comprimento de onda é dado por $\lambda=\frac{h}{mv}$. Se a bola tiver a velocidade de $47,5\;m/s$, o seu comprimento de onda será de aproximadamente $9,3\times 10^{-33}\;cm$, que corresponde a um valor muito menor que o seu diâmetro."*
+
+No caso da molécula de hidrogênio a uma temperatura de 298 K teremos o comprimento de onda de aproximadamente $0,7\;\unicode{xC5}$, menor que o diâmetro de cada átomo!
+
+---
+class: left, middle
+
+<div class="my-header"><span>A simulação computacional</span></div>
+
+# O que fazer com a parte eletrônica?
+
+* Se nessa etapa desprezarmos o movimento dos íons, podemos utilizar a aproximação de Born-Oppenheimer e resolver a parte eletrônica usando a equação Schroedinger;
+
+* Os valores podem ser obtidos a partir de dados semi-empíricos;
+
+* A partir das idéias da mecânica molecular, a parte eletrônica pode ser **aproximada** por potenciais clássicos analíticos e parametrizáveis (campo de força).
+
+# Como obter os parâmetros que definem o campo de força?
+
+* Os parâmetros podem ser ajustados afim de reproduzir certas propriedades fisico-químicas, como a entalpia de vaporização, densidade e modos normais de vibração.
+
+* Os parâmetros também podem ser ajustados comparando os resultados da mecânica molecular com aqueles obtidos através da mecânica quântica.
+
+No caso da molécula de $H_2$ o número de interações se reduziria a apenas uma, ao invés de seis se considerarmos a distribuição eletrônica.
+
+---
+class: left, middle
+
+<div class="my-header"><span>A simulação computacional</span></div>
+
+# Exemplo de um modelo para descrever o campo de força
+
+O campo de força pode ser representado por
+
+\begin{equation}
+  U =\sum_{{i=1\atop j<i}}U_{ij}^{coul}+\sum_{{i=1\atop     j<i}}U_{ij}^{vw}+\sum_{bond}U^{bond}+\sum_{bend}U^{bend}+\sum_{tors}U^{tors},
+\end{equation}
+onde
+.pull-left[
+\begin{align}
+  U_{LJ}^{vw}\left(R\right) & =4\varepsilon\left[\left(\frac{\sigma}{R}\right)^{12}-\left(\frac{\sigma}{R}\right)^{6}\right],\\
+U_{ij}^{coul}\left(R\right) & =\frac{1}{4\pi\varepsilon_0}\frac{q_1q_2}{R},\\
+U^{bond}\left(r\right) & =\frac{K}{2}\left(r-r_{0}\right)^{2},\\
+U^{bend}\left(\theta\right) & =\frac{\kappa}{2}\left(\theta-\theta_{0}\right)^{2},\\
+U^{tors}\left(\phi\right) & =\sum_{i=0}^{5}C_{i}\cos\left(\phi-\phi_{0}\right).
+\end{align}
+]
+.pull-right[
+```{r, echo=FALSE, fig.align='center',out.width="90%"}
+  knitr::include_graphics("img/montagem-moleculas.png")
+```
+]
+
+---
+
+<div class="my-header"><span>A simulação computacional</span></div>
+
+# Como funciona a dinâmica molecular
+
+```{r, echo=FALSE, fig.align='center',fig.cap='Fluxograma mostrando o ciclo MD.',out.width="90%"}
   knitr::include_graphics("img/ciclo-MD.png")
 ```
 
 ---
 class: left, middle
 
-<div class="my-header"><span>Programa utilizado para a MD</span></div>
+<div class="my-header"><span>A simulação computacional</span></div>
+
+# A dinâmica molecular na prática
+
+1 Inicialmente montamos o sistema contendo a quantidade de átomos, tipos atômicos e suas coordenadas espaciais;
+
+2 Em seguida minimizamos a energia do sistema através de processos de otimização, como gradiente conjugado, etc;
+
+3 Aplicamos a dinâmica molecular até atingir o equilíbrio termodinâmico;
+
+4 Realizamos a dinâmica molecular em um intervalo de tempo pré-estabelecido anteriormente;
+
+5 Obtemos a análise de dados a partir das variáveis canônicas posição, momento e força.
+
+
+```{r, echo=FALSE, fig.align='center',fig.cap='Fluxograma mostrando as etapas de um processo de simulação através da dinâmica molecular.',out.width="90%"}
+  knitr::include_graphics("img/etapas-MD.png")
+```
+
+---
+class: left, middle
+
+<div class="my-header"><span>Ambiente computacional no campus Irati</span></div>
+
+# Programa utilizado para a MD
 
 **Para o desenvolvimento do projeto algumas etapas estão sendo providenciadas.**
 
@@ -221,21 +344,23 @@ A figura a seguir mostra o [repositório](https://github.com/flavianowilliams) d
 ---
 class: left, middle
 
-<div class="my-header"><span>Ambiente computacional</span></div>
+<div class="my-header"><span>Ambiente computacional no campus Irati</span></div>
+
+# Programas utilizados para a simulação computacional
 
 * Atualmente temos disponível um servidor xeon com oito unidades de processamento.
 * Também temos acesso aos servidores da Unicamp (Cenapad-Unicamp).
 
-*No servidor diversos softwares (open source) foram instalados e configurados para o desenvolvimento do trabalho, como o [gânglia](http://192.168.0.107/ganglia) para o monitoramento online.*
+*No servidor diversos softwares (open source) foram instalados e configurados para o desenvolvimento do trabalho, como o [gânglia](http://192.168.0.105/ganglia) para o monitoramento online.*
 
-```{r, echo=FALSE, fig.align='center',fig.cap='http://localhost/ganglia',out.width="80%"}
+```{r, echo=FALSE, fig.align='center',fig.cap='Exemplos de programas open source utilizados para a simulação computacional.',out.width="57%"}
   knitr::include_graphics("img/montagem-programas.png")
 ```
 
 ---
-class: left
+class: left, middle
 
-<div class="my-header"><span>Implementações no programa HICOLM</span></div>
+<div class="my-header"><span>Ambiente computacional no campus Irati</span></div>
 
 # Critérios adotados para tornar o programa inclusivo
 
@@ -254,11 +379,11 @@ class: left
 * Documentação [online](https://github.com/flavianowilliams/HICOLM/wiki).
 
 ---
-class: left
+class: left, middle
 
-<div class="my-header"><span>Implementações no programa HICOLM</span></div>
+<div class="my-header"><span>Ambiente computacional no campus Irati</span></div>
 
-# O processo de instalação
+# Instalação do programa responsável pela dinâmica molecular
 
 Inicialmente o usuário baixa o programa do repositório online através do comando
 
@@ -300,12 +425,13 @@ Would you like to install HICOLM with graphical support? (default: no)
 ---
 class: left, middle
 
-<div class="my-header"><span>Implementações no programa HICOLM</span></div>
+<div class="my-header"><span>Ambiente computacional no campus Irati</span></div>
+
+# Parâmetros da simulação que o aluno poderá fornecer
 
 **Existem parâmetros obrigatórios e opcionais. No caso dos opcionais, se forem omitidos o programa utilizará o valor padrão correspondente.**
 
 .pull-left[
-
 Praticamente o arquivo HICOLM.in é constituído por
 
 * Cabeçalho: @MDPREPARE ou @MDRUNNING
@@ -358,9 +484,9 @@ Praticamente o arquivo HICOLM.in é constituído por
 ]
 
 ---
-class: left
+class: left, middle
 
-<div class="my-header"><span>Implementações no programa HICOLM</span></div>
+<div class="my-header"><span>Ambiente computacional no campus Irati</span></div>
 
 # Suporte gráfico e estatístico através da ferramenta [R](https://www.r-graph-gallery.com/).
 
@@ -383,54 +509,50 @@ class: left
 ]
 
 ---
-class: left
+class: left, middle
 
-<div class="my-header"><span>Dinâmica molecular do glifosato e cadeias poliméricas</span></div>
+<div class="my-header"><span>Ambiente computacional no campus Irati</span></div>
 
-O campo de força pode ser representado por
+# Propostas futuras
 
-\begin{equation}
-  U =\sum_{{i=1\atop j<i}}U_{ij}^{coul}+\sum_{{i=1\atop     j<i}}U_{ij}^{vw}+\sum_{bond}U^{bond}+\sum_{bend}U^{bend}+\sum_{tors}U^{tors},
-\end{equation}
-onde
-.pull-left[
-\begin{align}
-  U_{LJ}^{vw}\left(R\right) & =4\varepsilon\left[\left(\frac{\sigma}{R}\right)^{12}-\left(\frac{\sigma}{R}\right)^{6}\right],\\
-U_{ij}^{coul}\left(R\right) & =\frac{1}{4\pi\varepsilon_0}\frac{q_1q_2}{R},\\
-U^{bond}\left(r\right) & =\frac{K}{2}\left(r-r_{0}\right)^{2},\\
-U^{bend}\left(\theta\right) & =\frac{\kappa}{2}\left(\theta-\theta_{0}\right)^{2},\\
-U^{tors}\left(\phi\right) & =\sum_{i=0}^{5}C_{i}\cos\left(\phi-\phi_{0}\right).
-\end{align}
-]
-.pull-right[
-```{r, echo=FALSE, fig.align='center',out.width="100%"}
-  knitr::include_graphics("img/montagem-moleculas.png")
-```
-]
+* Impressão de mensagens de aviso e erro contendo dicas e sugestões para a solução do problema;
+
+* Melhoria nas rotinas de minimização de energia (gradiente conjugado, etc...);
+
+* Melhoria na impressão de relatórios e visualização gráfica.
+
+* Documentação mais completa e didaticamente apresentável.
+
+* Compreensão detalhada de interações atômicas e moleculares e contribuição do campo de força
+
+  * Ampliação da base de dados utilizando protocolos específicos de parametrização.
+  * Implementação de novos algoritmos e métodos (machine learning, QM/MM, etc...).
 
 ---
-class: left
+class: left, middle
 
-<div class="my-header"><span>Dinâmica molecular do glifosato e cadeias poliméricas</span></div>
+<div class="my-header"><span>Dinâmica molecular de poluentes e cadeias poliméricas</span></div>
+
+# Contribuição dos potenciais de torsão (diedros)
 
 .pull-left[
-```{r, echo=FALSE, fig.align='center',out.width="75%"}
+```{r, echo=FALSE, fig.align='center',out.width="65%"}
   knitr::include_graphics("img/6-7-10-13.png")
 ```
 ]
 .pull-right[
-```{r, echo=FALSE, fig.align='center',out.width="75%"}
+```{r, echo=FALSE, fig.align='center',out.width="65%"}
   knitr::include_graphics("img/group1.png")
 ```
 ]
 
 .pull-left[
-```{r, echo=FALSE, fig.align='center',out.width="60%"}
+```{r, echo=FALSE, fig.align='center',out.width="70%"}
   knitr::include_graphics("img/GLYP.png")
 ```
 ]
 .pull-right[
-```{r, echo=FALSE, fig.align='center',out.width="75%"}
+```{r, echo=FALSE, fig.align='center',out.width="65%"}
   knitr::include_graphics("img/group2.png")
 ```
 ]
@@ -438,7 +560,9 @@ class: left
 ---
 class: left
 
-<div class="my-header"><span>Dinâmica molecular do glifosato e cadeias poliméricas</span></div>
+<div class="my-header"><span>Dinâmica molecular de poluentes e cadeias poliméricas</span></div>
+
+# Contribuição dos potenciais harmônicos
 
 .pull-left[
 
@@ -446,8 +570,8 @@ Para determinar as frequências foi utilizado o cálculo Hartree-Fock com a base
 
 ]
 .pull-right[
-```{r, echo=FALSE, fig.align='center',out.width="55%"}
-  knitr::include_graphics("img/GLYP.png")
+```{r, echo=FALSE, fig.align='center',out.width="60%"}
+  knitr::include_graphics("img/montagem-campo-forca.png")
 ```
 ]
 
@@ -511,28 +635,10 @@ Para determinar as frequências foi utilizado o cálculo Hartree-Fock com a base
       <td>1,022</td>
     </tr>
     <tr>
-      <td>C10-N7</td>
-      <td>1149</td>
-      <td>42,0</td>
-      <td>1,493</td>
-    </tr>
-    <tr>
-      <td>C10-H14</td>
-      <td>3283</td>
-      <td>36,6</td>
-      <td>1,081</td>
-    </tr>
-    <tr>
-      <td>C10-C13</td>
-      <td>957</td>
-      <td>20,2</td>
-      <td>1,56</td>
-    </tr>
-    <tr>
-      <td>C13-O16</td>
-      <td>1523</td>
-      <td>58,5</td>
-      <td>1,242</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
     </tr>
   </tbody>
 </table>
@@ -597,24 +703,6 @@ Para determinar as frequências foi utilizado o cálculo Hartree-Fock com a base
       <td>116,3</td>
     </tr>
     <tr>
-      <td>O3-P1-C6</td>
-      <td>513</td>
-      <td>6,6</td>
-      <td>101,8</td>
-    </tr>
-    <tr>
-      <td>O4-P1-C6</td>
-      <td>235</td>
-      <td>0,2</td>
-      <td>99,4</td>
-    </tr>
-    <tr>
-      <td>H8-C6-N7</td>
-      <td>1411</td>
-      <td>7,3</td>
-      <td>107,2</td>
-    </tr>
-    <tr>
       <td>...</td>
       <td>...</td>
       <td>...</td>
@@ -623,28 +711,6 @@ Para determinar as frequências foi utilizado o cálculo Hartree-Fock com a base
   </tbody>
 </table>
 ]
-
----
-class: left
-
-<div class="my-header"><span>Implementações no programa HICOLM</span></div>
-
-# Propostas futuras
-
-* Impressão de mensagens de aviso e erro contendo dicas e sugestões para a solução do problema;
-
-* Melhoria nas rotinas de minimização de energia (gradiente conjugado, etc...);
-
-* Melhoria na impressão de relatórios e visualização gráfica.
-
-* Documentação mais completa e didaticamente apresentável.
-
-* Compreensão detalhada de interações atômicas e moleculares e contribuição do campo de força
-
-  * Ampliação da base de dados utilizando protocolos específicos de parametrização.
-  * Implementação de novos algoritmos e métodos (machine learning, QM/MM, etc...).
-
-* Ofertas de minicursos na área da física, química e ciência de dados.
 
 ---
 class: middle

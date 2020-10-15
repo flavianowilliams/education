@@ -16,7 +16,7 @@ class: center, middle, inverse, title-slide
 ## Apresentação no SIPEX VI
 ### Flaviano Williams Fernandes
 ### Instituto Federal do Paraná - Irati
-### 16 de outubro de 2020 (atualizado em 14/10/2020)
+### 16 de outubro de 2020 (atualizado em 15/10/2020)
 
 ---
 
@@ -35,12 +35,15 @@ class: middle
 
 # Sumário
 
-1. Cenário atual no campus Irati e pretensões futuras
-2. A questão ambiental
-3. As vantagens e desvantagens da simulação computacional
-4. Mecânica molecular versus Ab initio
-5. O método de dinâmica molecular
-6. Implementações no programa HICOLM
+1. Motivação
+
+2. Cenário atual no campus Irati e pretensões futuras
+
+3. A simulação computacional
+
+4. Ambiente computacional no campus Irati
+
+5. Dinâmica molecular de poluentes e cadeias poliméricas
 
 ---
 class: left, middle
@@ -71,6 +74,19 @@ class: left, middle
 * Interferência na produção de alimentos como morango, laranja, tomate, etc;
 * Certos agrotóxicos podem interferir na habilidade de vôo de abelhas polinizadoras.
 ]
+
+---
+class: left, middle
+
+&lt;div class="my-header"&gt;&lt;span&gt;Motivação&lt;/span&gt;&lt;/div&gt;
+
+# Gastos financeiros e oportunidades envolvendo a questão ambiental
+
+* A Lei de crimes ambientais (n. 9.605 de 1998) determina que as empresas poderão pagar multas de até R$ 50 milhões por danos ao meio ambiente, e por despejar [resíduo infectante](https://g1.globo.com/pe/petrolina-regiao/noticia/2018/08/24/empresa-textil-e-multada-por-cometer-crime-ambiental-em-petrolina-pe.ghtml) em local impróprio.
+
+* Recentemente o [CNPQ](http://resultado.cnpq.br/0896397702392489) lançou uma chamada no valor de um milhão de reais para pesquisas na área ambiental.
+
+* De acordo com [Tayra e colaboradores](https://scielosp.org/article/sausoc/2012.v21n3/760-775/pt/) estimou-se que os custos relacionados diretamente à poluição atmosférica no município de Cubatão, para o período de 2000 a 2009 foram de R$ 3,44 milhões.
 
 ---
 class: left, middle
@@ -124,9 +140,7 @@ class: left, middle
 # Vantagens da mecânica molecular
 
 * O trabalho pode ser realizado de maneira não-presencial.
-
 * O custo financeiro devido a infraestrutura pode ser amenizado com o desenvolvimento de novas metodologias, softwares melhores e processadores cada vez mais rápidos.
-
 * A quantidade de publicações envolvendo dinâmica molecular ou monte carlo vem crescendo a cada ano desde 2014 ([Lam, S.D., Bordin, N., Waman, V.P. et al. Sci Rep 10, 16471 (2020)](https://doi.org/10.1038/s41598-020-71936-5));
 
 .pull-left[
@@ -188,7 +202,7 @@ A hamiltoniana deve incluir todas as interações possíveis, envolvendo o núcl
 &lt;img src="img/modelo-molecular.png" width="80%" style="display: block; margin: auto;" /&gt;
 ]
 
-O número de interações é dado por `\(\frac{n}{2}(n+1)\)` Para a molécula de `\(H_2\)` tériamos n=4, o que resultaria em 6 interações.
+O número de interações é dado por `\(\frac{n}{2}(n+1)\)`. Para a molécula de `\(H_2\)` tériamos n=4, o que resultaria em 6 interações.
 
 ---
 class: left, middle
@@ -197,12 +211,12 @@ class: left, middle
 
 # O que fazer com a parte nuclear?
 
-Para saber uma partícula deve ser tratada classicamente, o seu comprimento de onda de de Broglie deve ser muito menor que a distância média entre as partículas,
+Para que uma partícula seja tratada classicamente, o seu comprimento de onda de de Broglie deve ser muito menor que a distância média entre as partículas,
 `\begin{equation}
 \lambda = \left(\frac{2\pi\hslash^2}{mk_BT}\right)^{1/2}.
 \end{equation}`
 
-*"Como exemplo citamos a bola de beisebol, de acordo com o postulado de de Broglie o seu comprimento de onda é dado por `\(\lambda=\frac{h}{mv}\)`. Se a bola tiver a velocidade de `\(47,5\;m/s\)`, o seu comprimento de onda será de aproximadamente `\(9,3\times 10^{-33}\;cm\)`, que corresponde a um valor muito menor que o seu diâmetro."*
+*"Como exemplo citamos a bola de beisebol, de acordo com o postulado de de Broglie o seu comprimento de onda é dado por `\(\lambda=\frac{h}{mv}\)`. Se a bola se mover a velocidade de `\(47,5\;m/s\)`, o seu comprimento de onda será de aproximadamente `\(9,3\times 10^{-33}\;cm\)`, que corresponde a um valor muito menor que o seu diâmetro."*
 
 No caso da molécula de hidrogênio a uma temperatura de 298 K teremos o comprimento de onda de aproximadamente `\(0,7\;\unicode{xC5}\)`, menor que o diâmetro de cada átomo!
 
@@ -254,6 +268,46 @@ U^{tors}\left(\phi\right) &amp; =\sum_{i=0}^{5}C_{i}\cos\left(\phi-\phi_{0}\righ
 ]
 
 ---
+class: left, middle
+
+&lt;div class="my-header"&gt;&lt;span&gt;A simulação computacional&lt;/span&gt;&lt;/div&gt;
+
+# Campo de força mais populares
+
+&lt;table style="margin-top: 1cm; margin-bottom: 1cm; float: center; text-align: center"&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Campo de força&lt;/th&gt;
+      &lt;th&gt;Representação&lt;/th&gt;
+      &lt;th&gt;Características&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;xx&lt;/td&gt;
+      &lt;td&gt;MM&lt;/td&gt;
+      &lt;td&gt;Originalmente criado para representar hidrocarbonetos. Posteriormente se extendeu para outras moléculas orgânicas.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;MM&lt;/td&gt;
+      &lt;td&gt;AMBER&lt;/td&gt;
+      &lt;td&gt;Originalmente criado para representar hidrocarbonetos. Posteriormente se extendeu para outras moléculas orgânicas.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;MM&lt;/td&gt;
+      &lt;td&gt;CHARMM&lt;/td&gt;
+      &lt;td&gt;Originalmente criado para representar hidrocarbonetos. Posteriormente se extendeu para outras moléculas orgânicas.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;MM&lt;/td&gt;
+      &lt;td&gt;GROMMOS&lt;/td&gt;
+      &lt;td&gt;Originalmente criado para representar hidrocarbonetos. Posteriormente se extendeu para outras moléculas orgânicas.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+---
+class: left, middle
 
 &lt;div class="my-header"&gt;&lt;span&gt;A simulação computacional&lt;/span&gt;&lt;/div&gt;
 

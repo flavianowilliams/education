@@ -40,12 +40,15 @@ class: middle
 
 # Sumário
 
-1. Cenário atual no campus Irati e pretensões futuras
-2. A questão ambiental
-3. As vantagens e desvantagens da simulação computacional
-4. Mecânica molecular versus Ab initio
-5. O método de dinâmica molecular
-6. Implementações no programa HICOLM
+1. Motivação
+
+2. Cenário atual no campus Irati e pretensões futuras
+
+3. A simulação computacional
+
+4. Ambiente computacional no campus Irati
+
+5. Dinâmica molecular de poluentes e cadeias poliméricas
 
 ---
 class: left, middle
@@ -77,6 +80,19 @@ class: left, middle
 * Interferência na produção de alimentos como morango, laranja, tomate, etc;
 * Certos agrotóxicos podem interferir na habilidade de vôo de abelhas polinizadoras.
 ]
+
+---
+class: left, middle
+
+<div class="my-header"><span>Motivação</span></div>
+
+# Gastos financeiros e oportunidades envolvendo a questão ambiental
+
+* A Lei de crimes ambientais (n. 9.605 de 1998) determina que as empresas poderão pagar multas de até R$ 50 milhões por danos ao meio ambiente, e por despejar [resíduo infectante](https://g1.globo.com/pe/petrolina-regiao/noticia/2018/08/24/empresa-textil-e-multada-por-cometer-crime-ambiental-em-petrolina-pe.ghtml) em local impróprio.
+
+* Recentemente o [CNPQ](http://resultado.cnpq.br/0896397702392489) lançou uma chamada no valor de um milhão de reais para pesquisas na área ambiental.
+
+* De acordo com [Tayra e colaboradores](https://scielosp.org/article/sausoc/2012.v21n3/760-775/pt/) estimou-se que os custos relacionados diretamente à poluição atmosférica no município de Cubatão, para o período de 2000 a 2009 foram de R$ 3,44 milhões.
 
 ---
 class: left, middle
@@ -132,9 +148,7 @@ class: left, middle
 # Vantagens da mecânica molecular
 
 * O trabalho pode ser realizado de maneira não-presencial.
-
 * O custo financeiro devido a infraestrutura pode ser amenizado com o desenvolvimento de novas metodologias, softwares melhores e processadores cada vez mais rápidos.
-
 * A quantidade de publicações envolvendo dinâmica molecular ou monte carlo vem crescendo a cada ano desde 2014 ([Lam, S.D., Bordin, N., Waman, V.P. et al. Sci Rep 10, 16471 (2020)](https://doi.org/10.1038/s41598-020-71936-5));
 
 .pull-left[
@@ -151,7 +165,7 @@ ggplot(data=df,mapping = aes(x,y,label=y))+
 ```
 ]
 .pull-right[
-```{r, echo=FALSE, fig.align='center',fig.cap='Publicações envolvendo as palavras-chave "molecular dynamics" <alert>ou</alert> "monte carlo".',fig.width=12}
+```{r, echo=FALSE, fig.align='center',fig.cap='Publicações envolvendo as palavras-chave "molecular dynamics" <alert>ou</alert> "monte carlo".',fig.width=13}
 scielo=c(55,66,50,54,70,42)
 scielo=scielo-scielo[1]
 webofscience=c(24226,25668,27104,28318,29596,30724)
@@ -216,7 +230,7 @@ A hamiltoniana deve incluir todas as interações possíveis, envolvendo o núcl
 ```
 ]
 
-O número de interações é dado por $\frac{n}{2}(n+1)$ Para a molécula de $H_2$ tériamos n=4, o que resultaria em 6 interações.
+O número de interações é dado por $\frac{n}{2}(n+1)$. Para a molécula de $H_2$ tériamos n=4, o que resultaria em 6 interações.
 
 ---
 class: left, middle
@@ -225,12 +239,12 @@ class: left, middle
 
 # O que fazer com a parte nuclear?
 
-Para saber uma partícula deve ser tratada classicamente, o seu comprimento de onda de de Broglie deve ser muito menor que a distância média entre as partículas,
+Para que uma partícula seja tratada classicamente, o seu comprimento de onda de de Broglie deve ser muito menor que a distância média entre as partículas,
 \begin{equation}
 \lambda = \left(\frac{2\pi\hslash^2}{mk_BT}\right)^{1/2}.
 \end{equation}
 
-*"Como exemplo citamos a bola de beisebol, de acordo com o postulado de de Broglie o seu comprimento de onda é dado por $\lambda=\frac{h}{mv}$. Se a bola tiver a velocidade de $47,5\;m/s$, o seu comprimento de onda será de aproximadamente $9,3\times 10^{-33}\;cm$, que corresponde a um valor muito menor que o seu diâmetro."*
+*"Como exemplo citamos a bola de beisebol, de acordo com o postulado de de Broglie o seu comprimento de onda é dado por $\lambda=\frac{h}{mv}$. Se a bola se mover a velocidade de $47,5\;m/s$, o seu comprimento de onda será de aproximadamente $9,3\times 10^{-33}\;cm$, que corresponde a um valor muito menor que o seu diâmetro."*
 
 No caso da molécula de hidrogênio a uma temperatura de 298 K teremos o comprimento de onda de aproximadamente $0,7\;\unicode{xC5}$, menor que o diâmetro de cada átomo!
 
@@ -284,6 +298,46 @@ U^{tors}\left(\phi\right) & =\sum_{i=0}^{5}C_{i}\cos\left(\phi-\phi_{0}\right).
 ]
 
 ---
+class: left, middle
+
+<div class="my-header"><span>A simulação computacional</span></div>
+
+# Campo de força mais populares
+
+<table style="margin-top: 1cm; margin-bottom: 1cm; float: center; text-align: center">
+  <thead>
+    <tr>
+      <th>Campo de força</th>
+      <th>Representação</th>
+      <th>Características</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>xx</td>
+      <td>MM</td>
+      <td>Originalmente criado para representar hidrocarbonetos. Posteriormente se extendeu para outras moléculas orgânicas.</td>
+    </tr>
+    <tr>
+      <td>MM</td>
+      <td>AMBER</td>
+      <td>Originalmente criado para representar hidrocarbonetos. Posteriormente se extendeu para outras moléculas orgânicas.</td>
+    </tr>
+    <tr>
+      <td>MM</td>
+      <td>CHARMM</td>
+      <td>Originalmente criado para representar hidrocarbonetos. Posteriormente se extendeu para outras moléculas orgânicas.</td>
+    </tr>
+    <tr>
+      <td>MM</td>
+      <td>GROMMOS</td>
+      <td>Originalmente criado para representar hidrocarbonetos. Posteriormente se extendeu para outras moléculas orgânicas.</td>
+    </tr>
+  </tbody>
+</table>
+
+---
+class: left, middle
 
 <div class="my-header"><span>A simulação computacional</span></div>
 

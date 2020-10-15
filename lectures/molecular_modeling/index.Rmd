@@ -259,7 +259,7 @@ class: left, middle
 
 * Os valores podem ser obtidos a partir de dados semi-empíricos;
 
-* A partir das idéias da mecânica molecular, a parte eletrônica pode ser **aproximada** por potenciais clássicos analíticos e parametrizáveis (campo de força).
+* A partir das idéias da mecânica molecular, a parte eletrônica pode ser **aproximada** por potenciais clássicos analíticos e parametrizáveis (**campo de força**).
 
 # Como obter os parâmetros que definem o campo de força?
 
@@ -268,6 +268,59 @@ class: left, middle
 * Os parâmetros também podem ser ajustados comparando os resultados da mecânica molecular com aqueles obtidos através da mecânica quântica.
 
 No caso da molécula de $H_2$ o número de interações se reduziria a apenas uma, ao invés de seis se considerarmos a distribuição eletrônica.
+
+---
+class: left, middle
+
+<div class="my-header"><span>A simulação computacional</span></div>
+
+# Campo de força mais populares e seus protocolos
+
+* Com base na Mecânica Molecular (MM), as moléculas são tratadas como uma coleção de 
+átomos que pode ser descrita por forças newtonianas, ou seja, são tratadas como uma coleção de partículas mantidas unidas por forças harmônicas ou elásticas.
+* Cada campo de força foi desenvolvido de maneira independente, seguindo um protocolo específico para uma determinada classe.
+* Escolher um modelo que melhor represente o seu sistema, não significa necessariamente que encontrará todos os potenciais de que necessita (**Obter um conjunto de parâmetros que represente qualquer molécula ainda é um enorme desafio a ser alcançado**).
+
+<table style="margin-top: 1cm; margin-bottom: 1cm; float: center; text-align: center">
+  <col width="150px">
+  <col width="200px">
+  <col width="550px">
+  <col width="150px">
+  <thead>
+    <tr>
+      <th>Campo de força</th>
+      <th>Identificação</th>
+      <th>Características</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>MM</td>
+      <td>Molecular Mechanics</td>
+      <td style="text-align: left">Originalmente criado para representar hidrocarbonetos. Posteriormente se extendeu para outras moléculas orgânicas.</td>
+    </tr>
+    <tr>
+      <td>AMBER</td>
+      <td>Assisted Model Building and Energy Refinement</td>
+      <td style="text-align: left">Criado para representar especialmente aminoácidos, proteínas e ácidos nucleicos.</td>
+    </tr>
+    <tr>
+      <td>CHARMM</td>
+      <td>Chemistry at Harvard Molecular Mechanics</td>
+      <td style="text-align: left">Muito utilizado para tratar moléculas pequenas ou macromoléculas.</td>
+    </tr>
+    <tr>
+      <td>UFF</td>
+      <td>Universal Force Field</td>
+      <td style="text-align: left">Tem o propósito geral de alcançar todos os átomos da tabela periódica.</td>
+    </tr>
+    <tr>
+      <td>OPLS-AA</td>
+      <td>Optimized Potentials for Liquid Simulations</td>
+      <td style="text-align: left">Utilizado para representar sistemas condensados contendo moléculas orgânicas e peptídeos.</td>
+    </tr>
+  </tbody>
+</table>
 
 ---
 class: left, middle
@@ -296,45 +349,6 @@ U^{tors}\left(\phi\right) & =\sum_{i=0}^{5}C_{i}\cos\left(\phi-\phi_{0}\right).
   knitr::include_graphics("img/montagem-moleculas.png")
 ```
 ]
-
----
-class: left, middle
-
-<div class="my-header"><span>A simulação computacional</span></div>
-
-# Campo de força mais populares
-
-<table style="margin-top: 1cm; margin-bottom: 1cm; float: center; text-align: center">
-  <thead>
-    <tr>
-      <th>Campo de força</th>
-      <th>Representação</th>
-      <th>Características</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>xx</td>
-      <td>MM</td>
-      <td>Originalmente criado para representar hidrocarbonetos. Posteriormente se extendeu para outras moléculas orgânicas.</td>
-    </tr>
-    <tr>
-      <td>MM</td>
-      <td>AMBER</td>
-      <td>Originalmente criado para representar hidrocarbonetos. Posteriormente se extendeu para outras moléculas orgânicas.</td>
-    </tr>
-    <tr>
-      <td>MM</td>
-      <td>CHARMM</td>
-      <td>Originalmente criado para representar hidrocarbonetos. Posteriormente se extendeu para outras moléculas orgânicas.</td>
-    </tr>
-    <tr>
-      <td>MM</td>
-      <td>GROMMOS</td>
-      <td>Originalmente criado para representar hidrocarbonetos. Posteriormente se extendeu para outras moléculas orgânicas.</td>
-    </tr>
-  </tbody>
-</table>
 
 ---
 class: left, middle
@@ -620,7 +634,7 @@ class: left
 
 .pull-left[
 
-Para determinar as frequências foi utilizado o cálculo Hartree-Fock com a base polarizada 6-31G*. Utilizamos o programa [NwChem](https://github.com/nwchemgit/nwchem) que já se encontra instalado e configurado no servidor. Das frequências calculadas, foram selecionadas aquelas que melhor representa o modo normal de vibração.
+Para determinar as frequências foi utilizado o cálculo Hartree-Fock com a base polarizada 6-31G*. Utilizamos o programa [NwChem](https://nwchemgit.github.io) que já se encontra instalado e configurado no servidor. Das frequências calculadas, foram selecionadas aquelas que melhor representa o modo normal de vibração.
 
 ]
 .pull-right[

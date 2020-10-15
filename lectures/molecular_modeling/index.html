@@ -88,6 +88,11 @@ class: left, middle
 
 * De acordo com [Tayra e colaboradores](https://scielosp.org/article/sausoc/2012.v21n3/760-775/pt/) estimou-se que os custos relacionados diretamente à poluição atmosférica no município de Cubatão, para o período de 2000 a 2009 foram de R$ 3,44 milhões.
 
+* *"Considerando a média de consumo diário de 150 litros por pessoa, precisaríamos investir R$ 22 bilhões apenas para proteger bacias e nascentes"* (Édison Carlos, presidente executivo do Instituto Trata Brasil).
+
+&gt; Apesar de possuir as maiores reservas naturais do mundo, o país enfrenta o encarecimento da distribuição desse líquido essencial à população. Sem os impostos, produto engarrafado tem valor de produção menor.
+&gt; "[Agência Nacional de Águas e Saneamento Básico](https://www.ana.gov.br/noticias-antigas/agua-fica-cada-vez-mais-cara.2019-03-15.6087230157)"
+
 ---
 class: left, middle
 
@@ -105,7 +110,7 @@ class: left, middle
 .pull-left70[
 1. Um projeto de pesquisa cadastrado no siscope.
 2. Dois alunos de iniciação científica (PIAP, Pibic-Jr).
-3. Uma publicação em revista nacional indexada na base scopus.
+3. Uma publicação em revista indexada na base scopus.
 4. Apresentação de um trabalho no colóquio.
 5. Recursos materiais:
   * Um servidor xeon quadi-core (PIAP).
@@ -123,13 +128,21 @@ class: middle
 # Pretensões futuras
 
 1. Dois projetos de pesquisa cadastrados no siscope.
+
 2. No mínimo dois alunos de iniciação científica bolsistas (Pibic e Pibic-Jr).
+
 3. Alunos de iniciação científica voluntários (sem bolsa).
+
 4. Publicações em revistas nacionais e internacionais.
+
 5. Participações em eventos nacionais e internacionais (aluno e/ou professor).
+
 6. Desenvolvimento de softwares na área da química computacional.
+
 7. Apresentação de resultados da pesquisa no colóquio.
+
 8. Ampliação do ambiente computacional (expansão para um cluster do tipo bewoulf de alta performance).
+
 9. Projetos de extensão (&lt;alert&gt;minicursos na área de física, química e ciência de dados&lt;/alert&gt;).
 
 ---
@@ -220,6 +233,8 @@ Para que uma partícula seja tratada classicamente, o seu comprimento de onda de
 
 No caso da molécula de hidrogênio a uma temperatura de 298 K teremos o comprimento de onda de aproximadamente `\(0,7\;\unicode{xC5}\)`, menor que o diâmetro de cada átomo!
 
+** Portanto, podemos dizer com certa garantia que poderemos tratar a parte nuclear usando métodos da física clássica.**
+
 ---
 class: left, middle
 
@@ -227,11 +242,11 @@ class: left, middle
 
 # O que fazer com a parte eletrônica?
 
-* Se nessa etapa desprezarmos o movimento dos íons, podemos utilizar a aproximação de Born-Oppenheimer e resolver a parte eletrônica usando a equação Schroedinger;
+* Se na parte eletrônica não considerarmos o movimento dos núcleos, podemos utilizar a aproximação de Born-Oppenheimer e resolver a parte eletrônica usando a equação de Schroedinger;
 
 * Os valores podem ser obtidos a partir de dados semi-empíricos;
 
-* A partir das idéias da mecânica molecular, a parte eletrônica pode ser **aproximada** por potenciais clássicos analíticos e parametrizáveis (**campo de força**).
+* A partir das idéias da mecânica molecular, a parte eletrônica pode ser **aproximada** por potenciais analíticos e parametrizáveis (**campo de força**).
 
 # Como obter os parâmetros que definem o campo de força?
 
@@ -313,7 +328,7 @@ onde
 U_{ij}^{coul}\left(R\right) &amp; =\frac{1}{4\pi\varepsilon_0}\frac{q_1q_2}{R},\\
 U^{bond}\left(r\right) &amp; =\frac{K}{2}\left(r-r_{0}\right)^{2},\\
 U^{bend}\left(\theta\right) &amp; =\frac{\kappa}{2}\left(\theta-\theta_{0}\right)^{2},\\
-U^{tors}\left(\phi\right) &amp; =\sum_{i=0}^{5}C_{i}\cos\left(\phi-\phi_{0}\right).
+U^{tors}\left(\phi\right) &amp; =\sum_{i=0}^{5}C_{i}\cos^i\left(\phi-\phi_{0}\right).
 \end{align}`
 ]
 .pull-right[
@@ -328,7 +343,7 @@ class: left, middle
 # Como funciona a dinâmica molecular
 
 &lt;div class="figure" style="text-align: center"&gt;
-&lt;img src="img/ciclo-MD.png" alt="Fluxograma mostrando o ciclo MD." width="90%" /&gt;
+&lt;img src="img/ciclo-MD.png" alt="Fluxograma mostrando o ciclo MD." width="85%" /&gt;
 &lt;p class="caption"&gt;Fluxograma mostrando o ciclo MD.&lt;/p&gt;
 &lt;/div&gt;
 
@@ -348,7 +363,6 @@ class: left, middle
 4 Realizamos a dinâmica molecular em um intervalo de tempo pré-estabelecido anteriormente;
 
 5 Obtemos a análise de dados a partir das variáveis canônicas posição, momento e força.
-
 
 &lt;div class="figure" style="text-align: center"&gt;
 &lt;img src="img/etapas-MD.png" alt="Fluxograma mostrando as etapas de um processo de simulação através da dinâmica molecular." width="90%" /&gt;
@@ -408,9 +422,7 @@ class: left, middle
 # Critérios adotados para tornar o programa inclusivo
 
 * Fácil instalação exigindo o mínimo de bibliotecas externas e outras dependências (atualmente para a instalação são necessários os programas gfortran e r-base).
-
-* Simplicidade na preparação dos arquivos de entrada com a quantidade mínima de flags obrigatórias.
-
+* Simplicidade na preparação dos arquivos de entrada com a quantidade mínima de parâmetros obrigatórias.
 * Campo de força implementado por padrão:
   * O programa possui uma biblioteca interna contendo os parâmetros dos potenciais baseados no modelo AMBER99;
   * As coordenadas internas (ligação, angular e torsão) são obtidas automaticamente através da matriz Z;
@@ -418,7 +430,7 @@ class: left, middle
   * O usuário tem a opção de otimizar manualmente o campo de força;
   * Um relatório detalhado do campo de força é apresentado em um arquivo de log. afim de conferência.
 * Algoritmos de minimização da energia vem sendo trabalhado afim de tornar a etapa de otimização simples e rápida.
-* Suporte gráfico para análise de dados e geração de relatórios com a ferramenta R.
+* Suporte gráfico para análise de dados e produção de relatórios estatísticos com a ferramenta R.
 * Documentação [online](https://github.com/flavianowilliams/HICOLM/wiki).
 
 ---
@@ -446,6 +458,7 @@ Para executar o programa basta digitar
 $ hicolm
 ```
 
+Algumas perguntas intuitivas são feitas:
 .pull-left70[
 ```
 Please, type the compiler or press ENTER (default: gfortran)
@@ -555,11 +568,11 @@ class: left, middle
 
 # Propostas futuras
 
-* Impressão de mensagens de aviso e erro contendo dicas e sugestões para a solução do problema;
+* Impressão de mensagens de aviso e erro contendo dicas e sugestões para a solução de problemas.
 
-* Melhoria nas rotinas de minimização de energia (gradiente conjugado, etc...);
+* Melhoria nas rotinas de minimização de energia (gradiente conjugado, etc...).
 
-* Melhoria na impressão de relatórios e visualização gráfica.
+* Melhoria na impressão de relatórios e visualização gráfica com a ferramenta R.
 
 * Documentação mais completa e didaticamente apresentável.
 
@@ -594,15 +607,15 @@ class: left
 
 &lt;div class="my-header"&gt;&lt;span&gt;Dinâmica molecular de poluentes e cadeias poliméricas&lt;/span&gt;&lt;/div&gt;
 
-# Contribuição dos potenciais harmônicos
+# Contribuição dos potenciais harmônicos de ligação e angular
 
 .pull-left[
 
-Para determinar as frequências foi utilizado o cálculo Hartree-Fock com a base polarizada 6-31G*. Utilizamos o programa [NwChem](https://nwchemgit.github.io) que já se encontra instalado e configurado no servidor. Das frequências calculadas, foram selecionadas aquelas que melhor representa o modo normal de vibração.
+Para determinar as frequências foi utilizado o cálculo Hartree-Fock com a base polarizada 6-31G* (Utilizamos o programa [NwChem](https://nwchemgit.github.io) que já se encontra instalado e configurado no servidor). Das frequências já calculadas, foram selecionadas aquelas que melhor representa o modo normal de vibração correspondente.
 
 ]
 .pull-right[
-&lt;img src="img/montagem-campo-forca.png" width="60%" style="display: block; margin: auto;" /&gt;
+&lt;img src="img/montagem-campo-forca.png" width="50%" style="display: block; margin: auto;" /&gt;
 ]
 
 .pull-left[
@@ -610,9 +623,9 @@ Para determinar as frequências foi utilizado o cálculo Hartree-Fock com a base
   &lt;thead&gt;
     &lt;tr&gt;
       &lt;th&gt;Coordenadas&lt;/th&gt;
-      &lt;th&gt;Frequência (cm-1)&lt;/th&gt;
+      &lt;th&gt;Frequência (cm&lt;sup&gt;-1&lt;/sup&gt;)&lt;/th&gt;
       &lt;th&gt;k (kcal/mol)&lt;/th&gt;
-      &lt;th&gt;r (A)&lt;/th&gt;
+      &lt;th&gt;r (&lt;span&gt;&amp;#8491;&lt;/span&gt;)&lt;/th&gt;
     &lt;/tr&gt;
   &lt;/thead&gt;
   &lt;tbody&gt;
@@ -678,9 +691,9 @@ Para determinar as frequências foi utilizado o cálculo Hartree-Fock com a base
   &lt;thead&gt;
     &lt;tr&gt;
       &lt;th&gt;Coordenadas&lt;/th&gt;
-      &lt;th&gt;Frequência (cm-1)&lt;/th&gt;
+      &lt;th&gt;Frequência (cm&lt;sup&gt;-1&lt;/sup&gt;)&lt;/th&gt;
       &lt;th&gt;k (kcal/mol)&lt;/th&gt;
-      &lt;th&gt;r (A)&lt;/th&gt;
+      &lt;th&gt;r (&lt;span&gt;&amp;#8491;&lt;/span&gt;)&lt;/th&gt;
     &lt;/tr&gt;
   &lt;/thead&gt;
   &lt;tbody&gt;

@@ -173,8 +173,8 @@ ggplot(data=df,mapping = aes(x,y,label=y))+
   geom_col()+
   geom_label(size=5)+
   labs(x="Ano",y="Publicações")+
-  theme(text = element_text(size = 18))
-  #transition_states(z,transition_length = 2,state_length = 1)
+  theme(text = element_text(size = 18))+
+  transition_states(z,transition_length = 2,state_length = 1)
 ```
 ]
 .pull-right[
@@ -192,8 +192,8 @@ ggplot(data=df2,mapping = aes(x,bs,color=Base))+
   geom_line(size=1.5)+
   geom_point(size=2.5)+
   labs(x="Ano",y="Crescimento em relação a 2014")+
-  theme(legend.position = "right",text = element_text(size = 18),aspect.ratio = 1)
-  #transition_reveal(x)
+  theme(legend.position = "right",text = element_text(size = 18),aspect.ratio = 1)+
+  transition_reveal(x)
 ```
 ]
 

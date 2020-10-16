@@ -48,7 +48,9 @@ class: middle
 
 4. Ambiente computacional no campus Irati
 
-5. Dinâmica molecular de poluentes e cadeias poliméricas
+5. Apêndice A (Campo de força)
+
+6. Apêndice B (Resultados com glifosato)
 
 ---
 class: left, middle
@@ -61,7 +63,7 @@ class: left, middle
 * Aquecimento global;
 * Surgimento de vírus e outras entidades patológicas;
 * Uso desenfreado de agrotóxicos;
-* [Poluição de mares e rios](img/artigo-microplasticos.pdf);
+* Poluição de mares e rios ([Olivatto et al](img/artigo-microplasticos.pdf));
 * Destruição da fauna e flora.
 ]
 .pull-right30[
@@ -75,7 +77,7 @@ class: left, middle
 ```
 ]
 .pull-right70[
-* O Brasil é o maior consumidor de agrotóxicos no mundo e região Sul representa 30% desse consumo ([doi:10.1590/0103-1104201811714](https://doi.org/10.1590/0103-1104201811714));
+* O Brasil é o maior consumidor de agrotóxicos no mundo e região Sul representa 30% desse consumo ([Carla Vanessa Alves Lopes et al](https://doi.org/10.1590/0103-1104201811714));
 * Impactos ambientais em rios e lagos vem sendo causados em diversas cidades do Paraná e outros estados (Cascavel, Castro, Fortaleza, etc) devido ao uso de agrotóxicos;
 * Interferência na produção de alimentos como morango, laranja, tomate, etc;
 * Certos agrotóxicos podem interferir na habilidade de vôo de abelhas polinizadoras.
@@ -92,7 +94,7 @@ class: left, middle
 
 * Recentemente o [CNPQ](http://resultado.cnpq.br/0896397702392489) lançou uma chamada no valor de um milhão de reais para pesquisas na área ambiental.
 
-* De acordo com [Tayra e colaboradores](https://scielosp.org/article/sausoc/2012.v21n3/760-775/pt/) estimou-se que os custos relacionados diretamente à poluição atmosférica no município de Cubatão, para o período de 2000 a 2009 foram de R$ 3,44 milhões.
+* De acordo com [Flavio Tayra et al](https://scielosp.org/article/sausoc/2012.v21n3/760-775/pt/) estimou-se que os custos relacionados diretamente à poluição atmosférica no município de Cubatão, para o período de 2000 a 2009 foram de R$ 3,44 milhões.
 
 * *"Considerando a média de consumo diário de 150 litros por pessoa, precisaríamos investir R$ 22 bilhões apenas para proteger bacias e nascentes"* (Édison Carlos, presidente executivo do Instituto Trata Brasil).
 
@@ -162,7 +164,7 @@ class: left, middle
 
 * O trabalho pode ser realizado de maneira não-presencial.
 * O custo financeiro devido a infraestrutura pode ser amenizado com o desenvolvimento de novas metodologias, softwares melhores e processadores cada vez mais rápidos.
-* A quantidade de publicações envolvendo dinâmica molecular ou monte carlo vem crescendo a cada ano desde 2014 ([Lam, S.D., Bordin, N., Waman, V.P. et al. Sci Rep 10, 16471 (2020)](https://doi.org/10.1038/s41598-020-71936-5));
+* A quantidade de publicações envolvendo dinâmica molecular ou monte carlo vem crescendo a cada ano desde 2014 ([Lam et al](https://doi.org/10.1038/s41598-020-71936-5));
 
 .pull-left[
 ```{r, echo=FALSE, fig.align='center',fig.cap='Publicações anuais (CAFE).',out.width="58%"}
@@ -173,8 +175,8 @@ ggplot(data=df,mapping = aes(x,y,label=y))+
   geom_col()+
   geom_label(size=5)+
   labs(x="Ano",y="Publicações")+
-  theme(text = element_text(size = 18))+
-  transition_states(z,transition_length = 2,state_length = 1)
+  theme(text = element_text(size = 18))
+  #transition_states(z,transition_length = 2,state_length = 1)
 ```
 ]
 .pull-right[
@@ -192,8 +194,8 @@ ggplot(data=df2,mapping = aes(x,bs,color=Base))+
   geom_line(size=1.5)+
   geom_point(size=2.5)+
   labs(x="Ano",y="Crescimento em relação a 2014")+
-  theme(legend.position = "right",text = element_text(size = 18),aspect.ratio = 1)+
-  transition_reveal(x)
+  theme(legend.position = "right",text = element_text(size = 18),aspect.ratio = 1)
+  #transition_reveal(x)
 ```
 ]
 
@@ -223,153 +225,6 @@ class: left, middle
 
 <div class="my-header"><span>A simulação computacional</span></div>
 
-# Análise da interação: da escala quântica a microscópica
-
-As interações intra/intermoleculares ocorrem em nível subatômico, onde devemos tratar o sistema a partir da equação de Schroedinger,
-\begin{equation}
-  H\Phi = E\Phi.
-\end{equation}
-A hamiltoniana deve incluir todas as interações possíveis, envolvendo o núcleo atômico  e os elétrons na eletrosfera,
-
-.pull-left[
-\begin{eqnarray*}
-  H = & - & \overbrace{\sum_{A=1}^{M}\frac{1}{2}\nabla^2_A+\sum_{A=1}^{M}\sum_{B>A}^{M}\frac{Z_AZ_B}{R_{AB}}}^{\text{parte nuclear}}-\\
-  & - & \overbrace{\sum_{i=1}^{N}\frac{1}{2}\nabla^2_i-\sum_{i=1}^{N}\sum_{A=1}^{M}\frac{Z_A}{r_{iA}}+\sum_{i=1}^{N}\sum_{j>1}^{N}\frac{1}{i_{ij}}.}^{\text{parte eletrônica}}
-\end{eqnarray*}
-]
-.pull-right[
-```{r, echo=FALSE, fig.align='center',out.width="80%"}
-  knitr::include_graphics("img/modelo-molecular.png")
-```
-]
-
-O número de interações é dado por $\frac{n}{2}(n+1)$. Para a molécula de $H_2$ tériamos n=4, o que resultaria em 6 interações.
-
----
-class: left, middle
-
-<div class="my-header"><span>A simulação computacional</span></div>
-
-# O que fazer com a parte nuclear?
-
-Para que uma partícula seja tratada classicamente, o seu comprimento de onda de de Broglie deve ser muito menor que a distância média entre as partículas,
-\begin{equation}
-\lambda = \left(\frac{2\pi\hslash^2}{mk_BT}\right)^{1/2}.
-\end{equation}
-
-*"Como exemplo citamos a bola de beisebol, de acordo com o postulado de de Broglie o seu comprimento de onda é dado por $\lambda=\frac{h}{mv}$. Se a bola se mover a velocidade de $47,5\;m/s$, o seu comprimento de onda será de aproximadamente $9,3\times 10^{-33}\;cm$, que corresponde a um valor muito menor que o seu diâmetro."*
-
-No caso da molécula de hidrogênio a uma temperatura de 298 K teremos o comprimento de onda de aproximadamente $0,7\;\unicode{xC5}$, menor que o diâmetro de cada átomo!
-
-** Portanto, podemos dizer com certa garantia que poderemos tratar a parte nuclear usando métodos da física clássica.**
-
----
-class: left, middle
-
-<div class="my-header"><span>A simulação computacional</span></div>
-
-# O que fazer com a parte eletrônica?
-
-* Se na parte eletrônica não considerarmos o movimento dos núcleos, podemos utilizar a aproximação de Born-Oppenheimer e resolver a parte eletrônica usando a equação de Schroedinger;
-
-* Os valores podem ser obtidos a partir de dados semi-empíricos;
-
-* A partir das idéias da mecânica molecular, a parte eletrônica pode ser **aproximada** por potenciais analíticos e parametrizáveis (**campo de força**).
-
-# Como obter os parâmetros que definem o campo de força?
-
-* Os parâmetros podem ser ajustados afim de reproduzir certas propriedades fisico-químicas, como a entalpia de vaporização, densidade e modos normais de vibração.
-
-* Os parâmetros também podem ser ajustados comparando os resultados da mecânica molecular com aqueles obtidos através da mecânica quântica.
-
-No caso da molécula de $H_2$ o número de interações se reduziria a apenas uma, ao invés de seis se considerarmos a distribuição eletrônica.
-
----
-class: left, middle
-
-<div class="my-header"><span>A simulação computacional</span></div>
-
-# Campo de força mais populares e seus protocolos
-
-* Com base na Mecânica Molecular (MM), as moléculas são tratadas como uma coleção de 
-átomos que pode ser descrita por forças newtonianas, ou seja, são tratadas como uma coleção de partículas mantidas unidas por forças harmônicas ou elásticas.
-* Cada campo de força foi desenvolvido de maneira independente, seguindo um protocolo específico para uma determinada classe.
-* Escolher um modelo que melhor represente o seu sistema, não significa necessariamente que encontrará todos os potenciais de que necessita (**Obter um conjunto de parâmetros que represente qualquer molécula ainda é um enorme desafio a ser alcançado**).
-
-<table style="margin-top: 1cm; margin-bottom: 1cm; float: center; text-align: center">
-  <col width="150px">
-  <col width="200px">
-  <col width="550px">
-  <col width="150px">
-  <thead>
-    <tr>
-      <th>Campo de força</th>
-      <th>Identificação</th>
-      <th>Características</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>MM</td>
-      <td>Molecular Mechanics</td>
-      <td style="text-align: left">Originalmente criado para representar hidrocarbonetos. Posteriormente se extendeu para outras moléculas orgânicas.</td>
-    </tr>
-    <tr>
-      <td>AMBER</td>
-      <td>Assisted Model Building and Energy Refinement</td>
-      <td style="text-align: left">Criado para representar especialmente aminoácidos, proteínas e ácidos nucleicos.</td>
-    </tr>
-    <tr>
-      <td>CHARMM</td>
-      <td>Chemistry at Harvard Molecular Mechanics</td>
-      <td style="text-align: left">Muito utilizado para tratar moléculas pequenas ou macromoléculas.</td>
-    </tr>
-    <tr>
-      <td>UFF</td>
-      <td>Universal Force Field</td>
-      <td style="text-align: left">Tem o propósito geral de alcançar todos os átomos da tabela periódica.</td>
-    </tr>
-    <tr>
-      <td>OPLS-AA</td>
-      <td>Optimized Potentials for Liquid Simulations</td>
-      <td style="text-align: left">Utilizado para representar sistemas condensados contendo moléculas orgânicas e peptídeos.</td>
-    </tr>
-  </tbody>
-</table>
-
----
-class: left, middle
-
-<div class="my-header"><span>A simulação computacional</span></div>
-
-# Exemplo de um modelo para descrever o campo de força
-
-O campo de força pode ser representado por
-
-\begin{equation}
-  U =\sum_{{i=1\atop j<i}}U_{ij}^{coul}+\sum_{{i=1\atop     j<i}}U_{ij}^{vw}+\sum_{bond}U^{bond}+\sum_{bend}U^{bend}+\sum_{tors}U^{tors},
-\end{equation}
-onde
-.pull-left[
-\begin{align}
-  U_{LJ}^{vw}\left(R\right) & =4\varepsilon\left[\left(\frac{\sigma}{R}\right)^{12}-\left(\frac{\sigma}{R}\right)^{6}\right],\\
-U_{ij}^{coul}\left(R\right) & =\frac{1}{4\pi\varepsilon_0}\frac{q_1q_2}{R},\\
-U^{bond}\left(r\right) & =\frac{K}{2}\left(r-r_{0}\right)^{2},\\
-U^{bend}\left(\theta\right) & =\frac{\kappa}{2}\left(\theta-\theta_{0}\right)^{2},\\
-U^{tors}\left(\phi\right) & =\sum_{i=0}^{5}C_{i}\cos^i\left(\phi-\phi_{0}\right).
-\end{align}
-]
-.pull-right[
-```{r, echo=FALSE, fig.align='center',out.width="90%"}
-  knitr::include_graphics("img/montagem-moleculas.png")
-```
-]
-
----
-class: left, middle
-
-<div class="my-header"><span>A simulação computacional</span></div>
-
 # Como funciona a dinâmica molecular
 
 ```{r, echo=FALSE, fig.align='center',fig.cap='Fluxograma mostrando o ciclo MD.',out.width="85%"}
@@ -385,7 +240,7 @@ class: left, middle
 
 1 Inicialmente montamos o sistema contendo a quantidade de átomos, tipos atômicos e suas coordenadas espaciais;
 
-2 Em seguida minimizamos a energia do sistema através de processos de otimização, como gradiente conjugado, etc;
+2 Em seguida minimizamos a energia através de processos de otimização, como gradiente conjugado, etc;
 
 3 Aplicamos a dinâmica molecular até atingir o equilíbrio termodinâmico;
 
@@ -610,9 +465,168 @@ class: left, middle
   * Implementação de novos algoritmos e métodos (machine learning, QM/MM, etc...).
 
 ---
+class: middle
+
+<div class="my-header"><span>Agradecimentos</span></div>
+
+1. Proeppi pelo suporte financeiro:
+
+  * Pibic-Jr
+  * Piap
+  
+2. Cenapad-Unicamp pelo suporte técnico.
+
+---
 class: left, middle
 
-<div class="my-header"><span>Dinâmica molecular de poluentes e cadeias poliméricas</span></div>
+<div class="my-header"><span>Apêndice A (Campo de força)</span></div>
+
+# Análise da interação: da escala quântica a microscópica
+
+As interações intra/intermoleculares ocorrem em nível subatômico, onde devemos tratar o sistema a partir da equação de Schroedinger,
+\begin{equation}
+  H\Phi = E\Phi.
+\end{equation}
+A hamiltoniana deve incluir todas as interações possíveis, envolvendo o núcleo atômico  e os elétrons na eletrosfera,
+
+.pull-left[
+\begin{eqnarray*}
+  H = & - & \overbrace{\sum_{A=1}^{M}\frac{1}{2}\nabla^2_A+\sum_{A=1}^{M}\sum_{B>A}^{M}\frac{Z_AZ_B}{R_{AB}}}^{\text{parte nuclear}}-\\
+  & - & \overbrace{\sum_{i=1}^{N}\frac{1}{2}\nabla^2_i-\sum_{i=1}^{N}\sum_{A=1}^{M}\frac{Z_A}{r_{iA}}+\sum_{i=1}^{N}\sum_{j>1}^{N}\frac{1}{i_{ij}}.}^{\text{parte eletrônica}}
+\end{eqnarray*}
+]
+.pull-right[
+```{r, echo=FALSE, fig.align='center',out.width="80%"}
+  knitr::include_graphics("img/modelo-molecular.png")
+```
+]
+
+O número de interações é dado por $\frac{n}{2}(n+1)$. Para a molécula de $H_2$ tériamos n=4, o que resultaria em 6 interações.
+
+---
+class: left, middle
+
+<div class="my-header"><span>Apêndice A (Campo de força)</span></div>
+
+# O que fazer com a parte nuclear?
+
+Para que uma partícula seja tratada classicamente, o seu comprimento de onda de de Broglie deve ser muito menor que a distância média entre as partículas,
+\begin{equation}
+\lambda = \left(\frac{2\pi\hslash^2}{mk_BT}\right)^{1/2}.
+\end{equation}
+
+*"Como exemplo citamos a bola de beisebol, de acordo com o postulado de de Broglie o seu comprimento de onda é dado por $\lambda=\frac{h}{mv}$. Se a bola se mover a velocidade de $47,5\;m/s$, o seu comprimento de onda será de aproximadamente $9,3\times 10^{-33}\;cm$, que corresponde a um valor muito menor que o seu diâmetro."*
+
+No caso da molécula de hidrogênio a uma temperatura de 298 K teremos o comprimento de onda de aproximadamente $0,7\;\unicode{xC5}$, menor que o diâmetro de cada átomo!
+
+** Portanto, podemos dizer com certa garantia que poderemos tratar a parte nuclear usando métodos da física clássica.**
+
+---
+class: left, middle
+
+<div class="my-header"><span>Apêndice A (Campo de força)</span></div>
+
+# O que fazer com a parte eletrônica?
+
+* Se na parte eletrônica não considerarmos o movimento dos núcleos, podemos utilizar a aproximação de Born-Oppenheimer e resolver a parte eletrônica usando a equação de Schroedinger;
+
+* Os valores podem ser obtidos a partir de dados semi-empíricos;
+
+* A partir das idéias da mecânica molecular, a parte eletrônica pode ser **aproximada** por potenciais analíticos e parametrizáveis (**campo de força**).
+
+# Como obter os parâmetros que definem o campo de força?
+
+* Os parâmetros podem ser ajustados afim de reproduzir certas propriedades fisico-químicas, como a entalpia de vaporização, densidade e modos normais de vibração.
+
+* Os parâmetros também podem ser ajustados comparando os resultados da mecânica molecular com aqueles obtidos através da mecânica quântica.
+
+No caso da molécula de $H_2$ o número de interações se reduziria a apenas uma, ao invés de seis se considerarmos a distribuição eletrônica.
+
+---
+class: left, middle
+
+<div class="my-header"><span>Apêndice A (Campo de força)</span></div>
+
+# Campo de força mais populares e seus protocolos
+
+* Com base na Mecânica Molecular (MM), as moléculas são tratadas como uma coleção de 
+átomos que pode ser descrita por forças newtonianas, ou seja, são tratadas como uma coleção de partículas mantidas unidas por forças harmônicas ou elásticas.
+* Cada campo de força foi desenvolvido de maneira independente, seguindo um protocolo específico para uma determinada classe.
+* Escolher um modelo que melhor represente o seu sistema, não significa necessariamente que encontrará todos os potenciais de que necessita (**Obter um conjunto de parâmetros que represente qualquer molécula ainda é um enorme desafio a ser alcançado**).
+
+<table style="margin-top: 1cm; margin-bottom: 1cm; float: center; text-align: center">
+  <col width="150px">
+  <col width="200px">
+  <col width="550px">
+  <col width="150px">
+  <thead>
+    <tr>
+      <th>Campo de força</th>
+      <th>Identificação</th>
+      <th>Características</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>MM</td>
+      <td>Molecular Mechanics</td>
+      <td style="text-align: left">Originalmente criado para representar hidrocarbonetos. Posteriormente se extendeu para outras moléculas orgânicas.</td>
+    </tr>
+    <tr>
+      <td>AMBER</td>
+      <td>Assisted Model Building and Energy Refinement</td>
+      <td style="text-align: left">Criado para representar especialmente aminoácidos, proteínas e ácidos nucleicos.</td>
+    </tr>
+    <tr>
+      <td>CHARMM</td>
+      <td>Chemistry at Harvard Molecular Mechanics</td>
+      <td style="text-align: left">Muito utilizado para tratar moléculas pequenas ou macromoléculas.</td>
+    </tr>
+    <tr>
+      <td>UFF</td>
+      <td>Universal Force Field</td>
+      <td style="text-align: left">Tem o propósito geral de alcançar todos os átomos da tabela periódica.</td>
+    </tr>
+    <tr>
+      <td>OPLS-AA</td>
+      <td>Optimized Potentials for Liquid Simulations</td>
+      <td style="text-align: left">Utilizado para representar sistemas condensados contendo moléculas orgânicas e peptídeos.</td>
+    </tr>
+  </tbody>
+</table>
+
+---
+class: left, middle
+
+<div class="my-header"><span>Apêndice A (Campo de força)</span></div>
+
+# Exemplo de um modelo para descrever o campo de força
+
+O campo de força pode ser representado por
+
+\begin{equation}
+  U =\sum_{{i=1\atop j<i}}U_{ij}^{coul}+\sum_{{i=1\atop     j<i}}U_{ij}^{vw}+\sum_{bond}U^{bond}+\sum_{bend}U^{bend}+\sum_{tors}U^{tors},
+\end{equation}
+onde
+.pull-left[
+\begin{align}
+  U_{LJ}^{vw}\left(R\right) & =4\varepsilon\left[\left(\frac{\sigma}{R}\right)^{12}-\left(\frac{\sigma}{R}\right)^{6}\right],\\
+U^{coul}\left(R\right) & =\frac{1}{4\pi\varepsilon_0}\frac{q_1q_2}{R},\\
+U^{bond}\left(r\right) & =\frac{K}{2}\left(r-r_{0}\right)^{2},\\
+U^{bend}\left(\theta\right) & =\frac{\kappa}{2}\left(\theta-\theta_{0}\right)^{2},\\
+U^{tors}\left(\phi\right) & =\sum_{i=0}^{5}C_{i}\cos^i\left(\phi-\phi_{0}\right).
+\end{align}
+]
+.pull-right[
+```{r, echo=FALSE, fig.align='center',out.width="90%"}
+  knitr::include_graphics("img/montagem-moleculas.png")
+```
+]
+
+---
+class: left, middle
+
+<div class="my-header"><span>Apêndice B (Resultados com glifosato)</span></div>
 
 # Contribuição dos potenciais de torsão (diedros)
 
@@ -641,7 +655,7 @@ class: left, middle
 ---
 class: left
 
-<div class="my-header"><span>Dinâmica molecular de poluentes e cadeias poliméricas</span></div>
+<div class="my-header"><span>Apêndice B (Resultados com glifosato)</span></div>
 
 # Contribuição dos potenciais harmônicos de ligação e angular
 
@@ -792,15 +806,3 @@ Para determinar as frequências foi utilizado o cálculo Hartree-Fock com a base
   </tbody>
 </table>
 ]
-
----
-class: middle
-
-<div class="my-header"><span>Agradecimentos</span></div>
-
-1. Proeppi pelo suporte financeiro:
-
-  * Pibic-Jr
-  * Piap
-  
-2. Cenapad-Unicamp pelo suporte técnico.

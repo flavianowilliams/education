@@ -2,3 +2,9 @@
 .Rhistory
 .RData
 .Ruserdata
+.aux
+.log
+.snm
+.toc
+.out
+.gz

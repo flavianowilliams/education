@@ -1,0 +1,414 @@
+% Aula de óptica geométrica para o curso de Física II do ensino médio
+%
+\documentclass[brazil,aspectratio=169]{beamer}
+%
+%carregando preâmbulo
+\input{../../../../extras/preamble}
+
+%Título
+
+\title[Óptica geométrica]{Processos de eletrização}
+
+% The main document
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Sumário}
+  \tableofcontents
+\end{frame}
+
+\section{Condutividade nos sólidos}
+
+\subsection{}
+
+\begin{frame}{O modelo atômico}
+	\begin{columns}
+		\begin{column}[c]{0.6\textwidth}
+			A matéria é constituída por átomos que por sua vez são constituídos pelo núcleo atômico formado por prótons e nêutrons e ao redor orbitam os elétrons em camadas eletrônicas bem definidas. No modelo atômico os prótons e nêutrons estão presos no núcleo enquanto que os elétrons possui mair mobilidade ao redor do núcleo. Os elétrons das camadas mais internas estão mais fortemente ligados ao núcleo, enquanto que os elétrons das camadas mais externas (\alert{valência}) sofrem maiores influências de forças externas.
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.6]{figuras/modelo-atomico.png}
+				\caption*{\footnotesize Modelo atômico.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Classificação dos sólidos de acordo com a sua capacidade de conduzir eletricidade}
+	\begin{enumerate}
+		\item[\ding{51}] \alert{Condutores}: Nos condutores os elétrons possuem liberdade para se moverem ao longo do material.
+		\item[\ding{51}] \alert{Isolantes}: Nos isolantes os elétrons estão mais fortemente ligados ao átomos, e assim possuem menos liberdade para se moverem.
+		\item[\ding{51}] \alert{Semicondutores}: Nos semicondutores os elétrons podem se mover ao longo do material sob determinadas situações, como aumento da sua temperatura ou a aplicação de um campo elétrico;
+		\item[\ding{51}] \alert{Supercondutores}: Nos supercondutores, as cargas elétricas fluem no material sem praticamente nenhuma resistência, e assim sem perdas de energia.
+	\end{enumerate}
+	\begin{corollary}
+		Condutividade é usada para medir o nível de condução de um material.
+	\end{corollary}
+\end{frame}
+
+\begin{frame}{Mar de elétrons}
+	\begin{columns}
+		\begin{column}[c]{0.6\textwidth}
+			Os sólidos cristalinos possuem normalmente poucos elétrons na sua camada de valência, além de estarem pouco atraídos pelo núcleo, o que facilita que esses elétrons da última camada escapem com certa facilidade, tornando elétrons livres que transitam entre os átomos do reticulado. Os átomos que perdem os elétrons se tornam cátions, mas eles podem logo receber elétrons e voltar a se tornar átomos neutros. Esse efeito gera uma mobilidade de cargas no material, o que justifica a sua condutividade elétrica.
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.6]{figuras/eletrons-livres.jpg}
+				\caption*{\footnotesize Mar de elétrons livres.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\section{Dipolo elétrico e polarização}
+
+\subsection{}
+
+\begin{frame}{Dipolo elétrico}
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+			Um dipolo elétrico é representado por uma distribuição de duas cargas de mesma intensidade mas sinais contrários a uma certa distância uma da outra.
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\begin{figure}[c]
+%				\includegraphics[scale=1.0]{figuras/dipolo.png}
+				\begin{center}
+					\begin{tikzpicture}[scale=0.55, transform shape]
+					\useasboundingbox (-0.5,-2.5) rectangle (5.5,2.5);
+					\tikzset{>=stealth}
+					\tikzstyle{s1}=[circle, radius=0.25, ball color=gray!50];
+					%linhas de campo resultante%
+					\draw [black,->] (0,0) to [out=19, in=159] (5,0);
+					\draw [black,->] (0,0) to [out=-19, in=-159] (5,0);
+					\draw [black,->] (0,0) to [out=40, in=140] (5,0);
+					\draw [black,->] (0,0) to [out=-40, in=-140] (5,0);
+					\draw [black,->] (0,0) to [out=60, in=120] (5,0);
+					\draw [black,->] (0,0) to [out=-60, in=-120] (5,0);
+					\draw [black,->] (0,0) to [out=80, in=100] (5,0);
+					\draw [black,->] (0,0) to [out=-80, in=-100] (5,0);
+					\draw [black,->] (0,0) to [out=90, in=200] (1,1.5);
+					\draw [black,->] (0,0) to [out=-90, in=-200] (1,-1.5);
+					\draw [black,->] (0,0) to [out=110, in=-110] (0.05,1.25);
+					\draw [black,->] (0,0) to [out=-110, in=110] (0.05,-1.25);
+					\draw [black,<-] (5,0) to [out=90, in=-20] (4,1.5);
+					\draw [black,<-] (5,0) to [out=-90, in=20] (4,-1.5);
+					\draw [black,<-] (5,0) to [out=70, in=-70] (4.95,1.25);
+					\draw [black,<-] (5,0) to [out=-70, in=70] (4.95,-1.25);
+					%cargas%
+					\node [s1] (n1) at (0,0) {$+$};
+					\node [s1] (n2) at (5,0) {$-$};
+					\end{tikzpicture}
+					%\input{tikz/cargas-contrarias.pgf}
+					\caption*{\footnotesize Representação de um dipolo elétrico.}
+				\end{center}		
+			\end{figure}
+		\end{column}
+	\end{columns}
+	\begin{figure}[c]
+		\begin{subfigure}[c]{0.45\textwidth}
+			\Centering
+			\includegraphics[scale=0.12]{figuras/Ligacao-Covalente-apolar.png}
+			\caption*{\footnotesize Molécula apolar}
+		\end{subfigure}
+		\begin{subfigure}[c]{0.45\textwidth}
+			\Centering
+			\includegraphics[scale=0.12]{figuras/Ligacao-Covalente-Polar.png}
+			\caption*{\footnotesize Molécula polar}
+		\end{subfigure}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Polarização de um material}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\begin{enumerate}
+				\item[\ding{51}] Um material dielétrico é formado por moléculas polares;
+				\item[\ding{51}] A carga total de um dielétrico é zero;
+				\item[\ding{51}] Naturalmente os dipolos elétricos são orientados de maneira aleatória;
+				\item[\ding{51}] Na presença de um objeto eletrizado os dipolos elétricos se alinham e a carga residual é distribuída na superfície;
+			\end{enumerate}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}[c]
+				\includegraphics[scale=0.19]{figuras/polarizacao.jpg}
+				\caption*{\tiny Polarização de um dielétrico.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Efeitos da polarização}
+	\begin{itemize}
+		\item \href{https://www.youtube.com/watch?v=AksfFdpfs0k}{\textcolor{blue}{Arco voltaico funcionando como ponte para condução}};
+		\item \href{https://www.youtube.com/watch?v=VrY_k_pdlCs}{\textcolor{blue}{Arco voltaico de alta tensão}};
+		\item \href{https://www.youtube.com/watch?v=SuYAilWIfWU}{\textcolor{blue}{Bobina de Tesla}};
+		\item \href{https://www.youtube.com/watch?v=sKcX2bYbQlw}{\textcolor{blue}{Relâmpagos}};
+	\end{itemize}	
+\end{frame}
+
+\section{Processos de eletrização}
+
+\subsection{}
+
+\begin{frame}{Eletrização por atrito}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\begin{enumerate}
+				\item[\ding{51}] Um objeto no seu estado normal possui um número de prótons igual ao número de elétrons;
+				\item[\ding{51}] Se perder elétrons ficará com excesso de prótons e estará eletrizado positivamente;
+				\item[\ding{51}] Se receber elétrons ficará com excesso de elétrons e estará eletrizado negativamente;
+				\item[\ding{51}] A eletrização ocorre entre dois \alert{materiais isolantes} que obedecem a série triboelétrica.
+			\end{enumerate}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}[c]
+				\includegraphics[scale=0.26]{figuras/serie-triboeletrica.jpg}
+				\caption*{\footnotesize Série triboelétrica.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Eletrização por contato}
+	\begin{enumerate}
+		\item[\ding{51}] A eletrização por contato acontece de maneira efetiva \alert{se os dois objetos forem condutores};
+		\item[\ding{51}] Após o contato ambos os objetos ficam eletrizados com cargas de mesmo sinal;
+	\end{enumerate}
+	\begin{figure}[c]
+		\includegraphics[scale=0.35]{figuras/eletrizacao-por-contato.jpg}
+		\caption*{\footnotesize Processo de eletrização de um condutor.}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Eletrização por indução de um condutor}
+	\begin{enumerate}
+		\item[\ding{51}] As cargas elétricas se deslocam no \alert{condutor} se localizando em extremidades opostas na superfície;
+		\item[\ding{51}] Aterrando o condutor o objeto fica eletrizado.
+	\end{enumerate}
+	\begin{figure}[c]
+		\includegraphics[scale=0.35]{figuras/eletrizacao-por-inducao.png}
+		\caption*{\footnotesize Processo de eletrização por indução de um condutor.}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Eletrização por indução de um dielétrico}
+	\begin{enumerate}
+		\item[\ding{51}] Os dipolos se alinham na presença de um objeto eletrizado e a carga residual fica localizado em extremidades opostas na superfície;
+		\item[\ding{51}] Rigidez dielétrica é o limite que o dielétrico possui antes de haver condução de elétrons no interior.
+	\end{enumerate}
+	\begin{columns}
+		\begin{column}{0.4\textwidth}
+	\begin{figure}[c]
+		\includegraphics[scale=0.35]{figuras/eletrizacao1.png}
+%		\caption*{\tiny Processo de eletrização por indução de um condutor.}
+	\end{figure}
+		\end{column}
+		\begin{column}{0.6\textwidth}
+			\begin{itemize}
+				\item \href{https://www.youtube.com/watch?v=AiZxhvEy2ug}{\textcolor{blue}{Descarga elétrica do raio na terra}};
+				\item \href{https://www.youtube.com/watch?v=ps3zHoJ2rsw}{\textcolor{blue}{Descarga elétrica do raio entre nuvens}}.
+			\end{itemize}	
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Eletroscópio}
+	\begin{figure}[c]
+		\begin{subfigure}[c]{0.45\textwidth}
+			\Centering
+			\includegraphics[scale=1.0]{figuras/eletroscopio-1.jpg}
+		\end{subfigure}
+		\begin{subfigure}[c]{0.45\textwidth}
+			\Centering
+			\includegraphics[scale=0.1]{figuras/eletroscopio-2.jpg}
+			\caption*{\href{https://www.youtube.com/watch?v=qAsesJkyZ4Q&t=221s}{\textcolor{blue}{Eletroscópio de folhas caseiro}}.}
+		\end{subfigure}
+	\end{figure}
+\end{frame}
+
+\section{Apêndice}
+
+\subsection{}
+
+\begin{frame}{Transformar um número em notação científica}
+	\begin{corollary}
+		\begin{enumerate}[leftmargin=1.75cm]
+			\item[Passo 1:] Escrever o número incluindo a vírgula.
+			\item[Passo 2:] Andar com a vírgula até que reste somente um número diferente de zero no lado esquerdo.
+			\item[Passo 3:] Colocar no expoente da potência de 10 o número de casas decimais que tivemos que "andar" com a vírgula. Se ao andar com a vírgula o valor do número diminuiu, o expoente ficará positivo, se aumentou o expoente ficará negativo.
+		\end{enumerate}
+	\end{corollary}
+	\begin{exampleblock}{Exemplo}
+		\begin{equation*}
+			6\; 590\; 000\; 000\; 000\; 000,0 = \SI{6,59e15}{}		
+		\end{equation*}
+	\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Conversão de unidades em uma dimensão}
+	\begin{figure}
+		\begin{tikzpicture}[scale=0.65,transform shape,font=\Large]
+		
+		\tkzInit[xmin=-2,xmax=17,ymin=-6,ymax=3]
+		%\tkzGrid[color=gray!20]
+		\tkzClip
+		
+		\tikzset{compass style/.append style={->}}
+		
+		\foreach \x in {1,2,...,6}{
+			\tkzDefPoint(\x*3-3,0){\x}
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+			\node at (\x*3-3,2) {$\times 10^{1}$};
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+			\node at (\x*3-3,-2) {$\times 10^{-1}$};}
+		
+		\tkzDefPoints{-1.5/0/p1,1.5/0/p2,4.5/0/p3,7.5/-0.2/p4,10.5/0/p5,13.5/0/p6,16.5/0/p7}
+		
+		\tkzText(p1){m\_}
+		\tkzText(p2){c\_}
+		\tkzText(p3){d\_}
+		\tkzText(p4){\_}
+		\tkzText(p5){da\_}
+		\tkzText(p6){h\_}
+		\tkzText(p7){k\_}
+		
+		%exemplos
+		
+		\tkzText(3,-3.5){$1\;\text{mm}=1\times 10^{(-1)\times\alert{2}}\;\text{dm}\rightarrow 1\times 10^{-2}\;\text{dm}$}
+		\tkzText(3.1,-4.5){$2,5\;\text{kg}=2,5\times 10^{(1)\times\alert{6}}\;\text{mg}\rightarrow2,5\times 10^{6}\;\text{mg}$}
+		\tkzText(2.7,-5.5){$10\;\text{ms}=10\times 10^{(-1)\times\alert{3}}\;\text{s}\rightarrow 10\times 10^{-3}\;\text{s}$}
+		
+		\end{tikzpicture}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Conversão de unidades em duas dimensões}
+	\begin{figure}
+		\begin{tikzpicture}[scale=0.65,transform shape,font=\Large]
+	
+		\tkzInit[xmin=-2,xmax=17,ymin=-6,ymax=3]
+		%\tkzGrid[color=gray!20]
+		\tkzClip
+	
+		\tikzset{compass style/.append style={->}}
+	
+		\foreach \x in {1,2,...,6}{
+			\tkzDefPoint(\x*3-3,0){\x}
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+			\node at (\x*3-3,2) {$\times 10^{2}$};
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+			\node at (\x*3-3,-2) {$\times 10^{-2}$};}
+	
+		\tkzDefPoints{-1.5/0/p1,1.5/0/p2,4.5/0/p3,7.5/0/p4,10.5/0/p5,13.5/0/p6,16.5/0/p7}
+	
+		\tkzText(p1){$\text{m}\_^2$}
+		\tkzText(p2){$\text{c}\_^2$}
+		\tkzText(p3){$\text{d}\_^2$}
+		\tkzText(p4){$\_^2$}
+		\tkzText(p5){$\text{da}\_^2$}
+		\tkzText(p6){$\text{h}\_^2$}
+		\tkzText(p7){$\text{k}\_^2$}
+	
+		%exemplos
+	
+		\tkzText(3.3,-3.5){$1\;\text{mm}^2=1\times 10^{(-2)\times\alert{2}}\;\text{dm}^2\rightarrow 1\times 10^{-4}\;\text{dm}^2$}
+		\tkzText(3.6,-4.5){$2,5\;\text{m}^2=2,5\times 10^{(2)\times\alert{3}}\;\text{mm}^2\rightarrow2,5\times 10^{6}\;\text{mm}^2$}
+		\tkzText(3,-5.5){$10\;\text{ms}^2=10\times 10^{(-2)\times\alert{3}}\;\text{s}^2\rightarrow 10\times 10^{-6}\;\text{s}^2$}
+	
+		\end{tikzpicture}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Conversão de unidades em três dimensões}
+	\begin{figure}
+		\begin{tikzpicture}[scale=0.65,transform shape,font=\Large]
+	
+		\tkzInit[xmin=-2,xmax=17,ymin=-6,ymax=3]
+		%\tkzGrid[color=gray!20]
+		\tkzClip
+	
+		\tikzset{compass style/.append style={->}}
+	
+		\foreach \x in {1,2,...,6}{
+			\tkzDefPoint(\x*3-3,0){\x}
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+			\node at (\x*3-3,2) {$\times 10^{3}$};
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+			\node at (\x*3-3,-2) {$\times 10^{-3}$};}
+	
+		\tkzDefPoints{-1.5/0/p1,1.5/0/p2,4.5/0/p3,7.5/0/p4,10.5/0/p5,13.5/0/p6,16.5/0/p7}
+	
+		\tkzText(p1){$\text{m}\_^3$}
+		\tkzText(p2){$\text{c}\_^3$}
+		\tkzText(p3){$\text{d}\_^3$}
+		\tkzText(p4){$\_^3$}
+		\tkzText(p5){$\text{da}\_^3$}
+		\tkzText(p6){$\text{h}\_^3$}
+		\tkzText(p7){$\text{k}\_^3$}
+	
+		%exemplos
+	
+		\tkzText(3.3,-3.5){$1\;\text{mm}^3=1\times 10^{(-3)\times\alert{2}}\;\text{dm}^3\rightarrow 1\times 10^{-6}\;\text{dm}^3$}
+		\tkzText(3.6,-4.5){$2,5\;\text{m}^3=2,5\times 10^{(3)\times\alert{3}}\;\text{mm}^3\rightarrow2,5\times 10^{9}\;\text{mm}^3$}
+		\tkzText(3.5,-5.5){$2,5\;\text{km}^3=2,5\times 10^{(3)\times\alert{6}}\;\text{mm}^3\rightarrow2,5\times 10^{18}\;\text{mm}^3$}
+
+		\end{tikzpicture}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Alfabeto grego}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{table}
+				\begin{tabular}[c]{ccc}
+					Alfa & $A$ & $\alpha$\\
+					Beta & $B$ & $\beta$\\
+					Gama & $\Gamma$ & $\gamma$\\
+					Delta & $\Delta$ & $\delta$\\
+					Epsílon & $E$ & $\epsilon$,$\varepsilon$\\
+					Zeta & $Z$ & $\zeta$\\
+					Eta & $H$ & $\eta$\\
+					Teta & $\Theta$ & $\theta$\\
+					Iota & $I$ & $\iota$\\
+					Capa & $K$ & $\kappa$\\
+					Lambda & $\Lambda$ & $\lambda$\\
+					Mi & $M$ & $\mu$
+				\end{tabular}
+			\end{table}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{table}
+				\begin{tabular}[c]{ccc}
+					Ni & $N$ & $\nu$\\
+					Csi & $\Xi$ & $\xi$\\
+					ômicron & $O$ & $o$\\
+					Pi & $\Pi$ & $\pi$\\
+					Rô & $P$ & $\rho$\\
+					Sigma & $\Sigma$ & $\sigma$\\
+					Tau & $T$ & $\tau$\\
+					Ípsilon & $\Upsilon$ & $\upsilon$\\
+					Fi & $\Phi$ & $\phi$,$\varphi$\\
+					Qui & $X$ & $\chi$\\
+					Psi & $\Psi$ & $\psi$\\
+					Ômega & $\Omega$ & $\omega$
+				\end{tabular}
+			\end{table}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Referências e observações\footnote{Este material está sujeito a modificações. Recomenda-se acompanhamento permanente.}}
+	\bibliographystyle{jurabib}
+	\begin{thebibliography}{9}
+		\bibitem{alvarenga}A. Máximo, B. Alvarenga, C. Guimarães, Física. Contexto e aplicações, v.3, 2.ed., São Paulo, Scipione (2016)
+	\end{thebibliography}
+\end{frame}
+
+\end{document}

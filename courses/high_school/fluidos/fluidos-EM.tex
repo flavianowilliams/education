@@ -1,0 +1,426 @@
+% Aula de mecânica dos fluidos para o curso de Física II do ensino médio
+%
+\documentclass[brazil,aspectratio=169]{beamer}
+%
+%carregando preâmbulo
+\input{../../../../extras/preamble}
+
+%Título
+
+\title[Mecânica dos fluidos]{Fluidos}
+
+% The main document
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Sumário}
+  \tableofcontents
+\end{frame}
+
+\section{Definição de fluido}
+
+\subsection{}
+
+\begin{frame}{O que é um fluido?}
+	\begin{block}{Fluido}
+		\justifying{Líquido incompressível que assume a forma do recipiente que o contém.}
+	\end{block}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\begin{itemize}
+				\item [\ding{51}] Os sólidos são objetos que possuem forma definida, portanto não são fluidos;
+				\item [\ding{51}] O Volume de um fluido não se altera independente da temperatura que se encontra e do recipiente que o contém.
+				\item [\ding{51}] Conceitos como densidade e pressão são usados ao invés de massa e força.
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}[c]
+				\includegraphics[scale=0.25]{figuras/fluido.jpg}
+				\caption*{\footnotesize Formato de um fluido em diversos recipientes.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Fluido versus corpo rígido}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{block}{Corpo rígido}
+				\begin{small}
+					\begin{itemize}
+						\item [\ding{51}] Formato rígido e imutável;
+						\item [\ding{51}] Corpos homogêneos ou heterogêneos (a densidade pode variar ao longo da estrutura);
+						\item [\ding{51}] Usamos conceitos de massa e força.
+					\end{itemize}
+				\end{small}
+			\end{block}
+			\begin{figure}[c]
+				\includegraphics[scale=0.18]{figuras/corpo-rigido.png}
+				\caption*{\footnotesize Exemplo de um corpo rígido.}
+			\end{figure}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{block}{Fluido}
+				\begin{small}
+					\begin{itemize}
+						\item [\ding{51}] Formato flexível e se adapta ao recipiente;
+						\item [\ding{51}] Corpos homogêneos (Densidade é a mesma ao longo do fluido);
+						\item [\ding{51}] Usamos conceitos de densidade (massa específica) e pressão.
+					\end{itemize}			
+				\end{small}
+			\end{block}
+			\begin{figure}[c]
+				\includegraphics[scale=0.1]{figuras/fluido-2.jpg}
+				\caption*{\footnotesize Exemplo de um fluido.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\section{Pressão}
+
+\subsection{}
+
+\begin{frame}{O que é Pressão?}
+	\begin{columns}
+		\begin{column}[c]{0.6\textwidth}
+			\begin{block}{Pressão}
+				\justifying{A pressão p é a relação entre o módulo da força $\vec{F}$ que atua ao longo da área A.}
+				\begin{align*}
+				p = \frac{F}{A}.
+				\end{align*}
+			\end{block}	
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.5,transform shape]
+				
+				\tkzInit[xmin=-2,xmax=5,ymin=-2,ymax=2.5]
+				\tkzClip
+				%\tkzGrid
+				
+				% cubo 1
+				\pgfmathsetmacro{\cubex}{5}
+				\pgfmathsetmacro{\cubey}{5}
+				\pgfmathsetmacro{\cubez}{5}
+				
+				\draw (0,0,0) -- ++(0,0,\cubez) -- ++(\cubex,0,0) -- ++(0,0,-\cubez) -- cycle;
+				\draw[gray,fill=gray!30] (0,0.5,0) -- ++(0,0,\cubez) -- ++(\cubex,0,0) -- ++(0,0,-\cubez) -- cycle;
+				\draw[gray,fill=gray!30] (0,0,\cubez) -- ++(\cubex,0,0) -- ++(0,0.5,0) -- ++(-\cubex,0,0) -- cycle;
+				\draw[gray,fill=gray!30] (\cubex,0,0) -- ++(0,0,\cubez) -- ++(0,0.5,0) -- ++(0,0,-\cubez) -- cycle;
+				
+				\node[above,color=red,font=\Large] at (0.5,1.5,0.5) {$\frac{\vec{F}}{A}$};
+
+				\foreach \dx in {1,2,3,4,5}{
+					\foreach \dz in {1,2,3,4,5}{
+						\draw[blue] (0,0.5,0) -- ++(0,0,\dz) -- ++(\dx,0,0) -- ++(0,0,-\dz) -- cycle;}}
+					
+				\foreach \dx in {1,2,3,4,5}{
+					\foreach \dz in {1,2,3,4,5}{
+						\draw[<-,line width=1.5pt,color=red] (-0.5+\dx,0.5,\dz-0.5) --++ (0,1,0);}}
+					
+				\end{tikzpicture}
+				%\includegraphics[scale=0.25]{figuras/pressao.jpg}
+				\caption*{\footnotesize Força por unidade de área.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+	\begin{corollary}
+		Pela definição de pressão (p=F/A), temos que a unidade de medida no SI é o Pascal (Pa), onde a força F e a área A também devem estar no SI,
+		\begin{align*}
+			\SI{1}{\pascal} = \SI[per-mode=symbol]{1}{\newton\per\square\metre}.
+		\end{align*}
+	\end{corollary}
+\end{frame}
+
+\begin{frame}{Exemplos de pressão}
+	\begin{figure}
+		\centering
+		\begin{subfigure}[b]{0.3\textwidth}
+			\includegraphics[scale=0.2]{figuras/pressao-exemplo-1.jpg}
+			\caption*{\footnotesize Como a patinadora consegue deslizar em cima do gelo?}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.35\textwidth}
+			\includegraphics[scale=0.5]{figuras/pressao-exemplo-2.jpg}
+			\caption*{\footnotesize Qual dos dedos irá se machucar se apertarmos a tachinha.}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.3\textwidth}
+			\includegraphics[scale=0.2]{figuras/pressao-exemplo-3.jpg}
+			\caption*{\footnotesize Por que usamos raquete de tênis para andar na neve?}
+		\end{subfigure}
+	\end{figure}
+\end{frame}
+
+\section{Massa específica}
+
+\subsection{}
+
+\begin{frame}{O que é massa específica?}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\begin{block}{Massa específica}
+				\justifying{Massa específica ou densidade absoluta de um objeto é a razão entre sua massa e seu volume.}
+				\[\rho = \frac{m}{V}\]
+			\end{block}	
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}[c]
+				\includegraphics[scale=0.18]{figuras/densidade-iceberg.jpg}
+			\end{figure}
+		\end{column}
+	\end{columns}
+	\begin{corollary}
+		\small
+		Pela definição de densidade ($\rho=m/v$), percebe-se que a sua unidade no SI deve ser dada pela relação da massa m em $kg$ e o volume V em $m^3$.
+		\begin{align*}
+			1 \frac{g}{cm^3} = \frac{\SI{1e-3}{kg}}{\SI{1e-6}{\cubic\metre}} = 10^3\frac{kg}{m^3}.
+		\end{align*}
+	\end{corollary}
+\end{frame}
+
+\begin{frame}{A experiência de Arquimedes}
+	Arquimedes mergulhou em um recipiente contendo água:
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\begin{itemize}
+				\item Uma massa de ouro pura igual a massa da coroa;
+				\item Uma massa de prata pura igual a massa da coroa;
+				\item A coroa em questão;
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}[c]
+				\includegraphics[scale=0.25]{figuras/arquimedes.jpg}
+			\end{figure}
+		\end{column}
+	\end{columns}
+	\begin{corollary}
+		\justifying Arquimedes verificou que o volume de água recolhido tinha um valor intermediário entre aqueles recolhidos no caso do ouro e da prata. \alert{Portanto, a coroa não era de ouro puro!}
+	\end{corollary}
+\end{frame}
+
+\section{Aplicações}
+
+\subsection{}
+
+\begin{frame}{Aplicações da hidrostática}
+\begin{figure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\Centering
+		\includegraphics[scale=0.3]{figuras/hidrostatica-aplicacoes-1.jpg}
+		\caption*{\footnotesize Macaco hidráulico.}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\Centering
+		\includegraphics[scale=0.15]{figuras/hidrostatica-aplicacoes-2.jpg}
+		\caption*{\footnotesize Caixa dágua.}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\Centering
+		\includegraphics[scale=0.025]{figuras/hidrostatica-aplicacoes-3.jpg}
+		\caption*{\footnotesize Pressão atmosférica.}
+	\end{subfigure}
+\end{figure}
+\begin{figure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\Centering
+		\includegraphics[scale=0.15]{figuras/hidrostatica-aplicacoes-4.jpg}
+		\caption*{\footnotesize Submarino.}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\Centering
+		\includegraphics[scale=0.15]{figuras/hidrostatica-aplicacoes-5.jpg}
+		\caption*{\footnotesize Experiência de Arquimedes.}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\Centering
+		\includegraphics[scale=0.15]{figuras/hidrostatica-aplicacoes-6.jpg}
+		\caption*{\footnotesize Aeroplano.}
+	\end{subfigure}
+\end{figure}
+\end{frame}
+
+\section{Apêndice}
+
+\subsection{}
+
+\begin{frame}{Transformar um número em notação científica}
+	\begin{corollary}
+		\begin{enumerate}[leftmargin=1.75cm]
+			\item[Passo 1:] Escrever o número incluindo a vírgula.
+			\item[Passo 2:] Andar com a vírgula até que somente reste um número diferente de zero no lado esquerdo.
+			\item[Passo 3:] Colocar no expoente da potência de 10 o número de casas decimais que tivemos que "andar" com a vírgula. Se ao andar com a vírgula o valor do número diminuiu, o expoente ficará positivo, se aumentou o expoente ficará negativo.
+		\end{enumerate}
+	\end{corollary}
+	\begin{exampleblock}{Exemplo}
+		\begin{equation*}
+			6\; 590\; 000\; 000\; 000\; 000,0 = \SI{6,59e15}{}		
+		\end{equation*}
+	\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Conversão de unidades em uma dimensão}
+	\begin{figure}
+		\begin{tikzpicture}[scale=0.65,transform shape,font=\Large]
+		
+		\tkzInit[xmin=-2,xmax=17,ymin=-6,ymax=3]
+		%\tkzGrid[color=gray!20]
+		\tkzClip
+		
+		\tikzset{compass style/.append style={->}}
+		
+		\foreach \x in {1,2,...,6}{
+			\tkzDefPoint(\x*3-3,0){\x}
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+			\node at (\x*3-3,2) {$\times 10^{1}$};
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+			\node at (\x*3-3,-2) {$\times 10^{-1}$};}
+		
+		\tkzDefPoints{-1.5/0/p1,1.5/0/p2,4.5/0/p3,7.5/-0.2/p4,10.5/0/p5,13.5/0/p6,16.5/0/p7}
+		
+		\tkzText(p1){m\_}
+		\tkzText(p2){c\_}
+		\tkzText(p3){d\_}
+		\tkzText(p4){\_}
+		\tkzText(p5){da\_}
+		\tkzText(p6){h\_}
+		\tkzText(p7){k\_}
+		
+		%exemplos
+		
+		\tkzText(3,-3.5){$1\;\text{mm}=1\times 10^{(-1)\times\alert{2}}\;\text{dm}\rightarrow 1\times 10^{-2}\;\text{dm}$}
+		\tkzText(3.1,-4.5){$2,5\;\text{kg}=2,5\times 10^{(1)\times\alert{6}}\;\text{mg}\rightarrow2,5\times 10^{6}\;\text{mg}$}
+		\tkzText(2.5,-5.5){$10\;\text{ms}=10\times 10^{(-1)\times\alert{3}}\;\text{s}\rightarrow 10\times 10^{-3}\;\text{s}$}
+		
+		\end{tikzpicture}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Conversão de unidades em duas dimensões}
+	\begin{figure}
+		\begin{tikzpicture}[scale=0.65,transform shape,font=\Large]
+	
+		\tkzInit[xmin=-2,xmax=17,ymin=-6,ymax=3]
+		%\tkzGrid[color=gray!20]
+		\tkzClip
+	
+		\tikzset{compass style/.append style={->}}
+	
+		\foreach \x in {1,2,...,6}{
+			\tkzDefPoint(\x*3-3,0){\x}
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+			\node at (\x*3-3,2) {$\times 10^{2}$};
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+			\node at (\x*3-3,-2) {$\times 10^{-2}$};}
+	
+		\tkzDefPoints{-1.5/0/p1,1.5/0/p2,4.5/0/p3,7.5/0/p4,10.5/0/p5,13.5/0/p6,16.5/0/p7}
+	
+		\tkzText(p1){$\text{m}\_^2$}
+		\tkzText(p2){$\text{c}\_^2$}
+		\tkzText(p3){$\text{d}\_^2$}
+		\tkzText(p4){$\_^2$}
+		\tkzText(p5){$\text{da}\_^2$}
+		\tkzText(p6){$\text{h}\_^2$}
+		\tkzText(p7){$\text{k}\_^2$}
+	
+		%exemplos
+	
+		\tkzText(3.3,-3.5){$1\;\text{mm}^2=1\times 10^{(-2)\times\alert{2}}\;\text{dm}^2\rightarrow 1\times 10^{-4}\;\text{dm}^2$}
+		\tkzText(3.6,-4.5){$2,5\;\text{m}^2=2,5\times 10^{(2)\times\alert{3}}\;\text{mm}^2\rightarrow2,5\times 10^{6}\;\text{mm}^2$}
+		\tkzText(3,-5.5){$10\;\text{ms}^2=10\times 10^{(-2)\times\alert{3}}\;\text{s}^2\rightarrow 10\times 10^{-6}\;\text{s}^2$}
+	
+		\end{tikzpicture}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Conversão de unidades em três dimensões}
+	\begin{figure}
+		\begin{tikzpicture}[scale=0.65,transform shape,font=\Large]
+	
+		\tkzInit[xmin=-2,xmax=17,ymin=-6,ymax=3]
+		%\tkzGrid[color=gray!20]
+		\tkzClip
+	
+		\tikzset{compass style/.append style={->}}
+	
+		\foreach \x in {1,2,...,6}{
+			\tkzDefPoint(\x*3-3,0){\x}
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+			\node at (\x*3-3,2) {$\times 10^{3}$};
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+			\node at (\x*3-3,-2) {$\times 10^{-3}$};}
+	
+		\tkzDefPoints{-1.5/0/p1,1.5/0/p2,4.5/0/p3,7.5/0/p4,10.5/0/p5,13.5/0/p6,16.5/0/p7}
+	
+		\tkzText(p1){$\text{m}\_^3$}
+		\tkzText(p2){$\text{c}\_^3$}
+		\tkzText(p3){$\text{d}\_^3$}
+		\tkzText(p4){$\_^3$}
+		\tkzText(p5){$\text{da}\_^3$}
+		\tkzText(p6){$\text{h}\_^3$}
+		\tkzText(p7){$\text{k}\_^3$}
+	
+		%exemplos
+	
+		\tkzText(3.3,-3.5){$1\;\text{mm}^3=1\times 10^{(-3)\times\alert{2}}\;\text{dm}^3\rightarrow 1\times 10^{-6}\;\text{dm}^3$}
+		\tkzText(3.6,-4.5){$2,5\;\text{m}^3=2,5\times 10^{(3)\times\alert{3}}\;\text{mm}^3\rightarrow2,5\times 10^{9}\;\text{mm}^3$}
+		\tkzText(3.5,-5.5){$2,5\;\text{km}^3=2,5\times 10^{(3)\times\alert{6}}\;\text{mm}^3\rightarrow2,5\times 10^{18}\;\text{mm}^3$}
+
+		\end{tikzpicture}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Alfabeto grego}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{table}
+				\begin{tabular}[c]{ccc}
+					Alfa & $A$ & $\alpha$\\
+					Beta & $B$ & $\beta$\\
+					Gama & $\Gamma$ & $\gamma$\\
+					Delta & $\Delta$ & $\delta$\\
+					Epsílon & $E$ & $\epsilon$,$\varepsilon$\\
+					Zeta & $Z$ & $\zeta$\\
+					Eta & $H$ & $\eta$\\
+					Teta & $\Theta$ & $\theta$\\
+					Iota & $I$ & $\iota$\\
+					Capa & $K$ & $\kappa$\\
+					Lambda & $\Lambda$ & $\lambda$\\
+					Mi & $M$ & $\mu$
+				\end{tabular}
+			\end{table}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+	\begin{table}
+		\begin{tabular}[c]{ccc}
+			Ni & $N$ & $\nu$\\
+			Csi & $\Xi$ & $\xi$\\
+			ômicron & $O$ & $o$\\
+			Pi & $\Pi$ & $\pi$\\
+			Rô & $P$ & $\rho$\\
+			Sigma & $\Sigma$ & $\sigma$\\
+			Tau & $T$ & $\tau$\\
+			Ípsilon & $\Upsilon$ & $\upsilon$\\
+			Fi & $\Phi$ & $\phi$,$\varphi$\\
+			Qui & $X$ & $\chi$\\
+			Psi & $\Psi$ & $\psi$\\
+			Ômega & $\Omega$ & $\omega$
+		\end{tabular}
+	\end{table}
+\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Referências e observações\footnote{Este material está sujeito a modificações. Recomenda-se acompanhamento permanente.}}
+	\bibliographystyle{jurabib}
+	\begin{thebibliography}{9}
+		\bibitem{alvarenga}A. Máximo, B. Alvarenga, C. Guimarães, Física. Contexto e aplicações, v.1, 2.ed., São Paulo, Scipione (2016)
+	\end{thebibliography}
+\end{frame}
+
+\end{document}

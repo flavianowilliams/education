@@ -1,7 +1,0 @@
-\babel@toc {portuguese}{}
-\babel@toc {portuguese}{}
-\beamer@sectionintoc {1}{Defini\c c\~ao de fluido}{3}{0}{1}
-\beamer@sectionintoc {2}{Press\~ao}{5}{0}{2}
-\beamer@sectionintoc {3}{Massa espec\IeC {\'\i }fica}{7}{0}{3}
-\beamer@sectionintoc {4}{Aplica\c c\~oes}{9}{0}{4}
-\beamer@sectionintoc {5}{Ap\^endice}{10}{0}{5}

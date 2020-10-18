@@ -1,0 +1,33 @@
+% PGF style template to be used in the ktikz program
+\documentclass[brazil]{book}
+\usepackage{amsmath}
+\usepackage[charter]{mathdesign}
+\usepackage[latin1]{inputenc}
+\usepackage[LGR,T1]{fontenc}
+\usepackage{tikz,pgfplots,tikz-3dplot,bm}
+\usepackage{circuitikz}
+\usepackage{tkz-euclide,tkz-fct}
+\usepackage{tkz-base}
+\usepackage{ragged2e}
+\usepackage{animate}
+\usepackage{ifthen}
+\usepackage{color}
+\usepackage{siunitx}
+\usepackage[active,pdftex,tightpage]{preview}
+\usepackage[portuguese]{babel}
+\DeclareFontFamily{OMS}{mdbch}{\skewchar\font=48}
+\DeclareFontShape{OMS}{mdbch}{m}{n}{<->s*[0.96] mdbchr7y}{}
+\DeclareFontShape{OMS}{mdbch}{m}{it}{<->ssub * mdbch/m/n}{}
+\DeclareFontShape{OMS}{mdbch}{b}{n}{<->s*[0.96] mdbchb7y}{}
+\DeclareFontShape{OMS}{mdbch}{bx}{n}{<->ssub * mdbch/b/n}{}
+\usetikzlibrary{arrows,3d,calc,automata,positioning,shadows,math,fit,shapes}
+\usetikzlibrary{patterns,hobby,optics}
+\usetkzobj{all}
+\usepgfplotslibrary{fillbetween}
+\tikzset{>=stealth, thick, global scale/.style={scale=#1,every node/.style={scale=#1}}}
+\tikzset{mid arrow/.style={postaction={decorate,decoration={markings,mark=at position .5 with {\arrow[#1]{stealth}}}}}}
+\PreviewEnvironment[]{tikzpicture}
+\PreviewEnvironment[]{pgfpicture}
+\begin{document}
+<>
+\end{document}

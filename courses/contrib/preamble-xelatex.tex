@@ -1,0 +1,93 @@
+% Standard packages
+
+\usepackage{times}
+\usepackage{polyglossia}
+\usepackage{fontspec}
+\usepackage[T1]{fontenc}
+%\usepackage[portuguese]{babel}
+\usepackage{subcaption}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage[justifying]{ragged2e}
+\usepackage{multicol}
+\usepackage{color}
+\usepackage{mathtools}
+\usepackage{hyperref}
+\usepackage{cancel}
+\usepackage{pifont}
+\usepackage[output-decimal-marker={,}]{siunitx}
+%\usepackage{animate}
+\usepackage{tikz}
+%\usepackage{geometry}
+\usepackage{pgfplots,tikz-3dplot,circuitikz,bm,tkz-euclide,tkz-linknodes}
+\usepackage{tkz-fct,tkz-base}
+
+% Setup appearance:
+
+\usetheme{Ilmenau}
+\usefonttheme[onlylarge]{structurebold}
+\setbeamerfont*{frametitle}{size=\normalsize,series=\bfseries}
+\setbeamertemplate{navigation symbols}{}
+\setbeamercovered{transparent}
+\setlength{\columnseprule}{1pt} 
+\def\columnseprulecolor{\color{blue}} 
+%\setmainlanguage{portuges}
+\setdefaultlanguage{portuges}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+\DeclareRobustCommand{\greektext}{%
+\fontencoding{LGR}\selectfont\def\encodingdefault{LGR}}
+\DeclareRobustCommand{\textgreek}[1]{\leavevmode{\greektext #1}}
+\DeclareFontEncoding{LGR}{}{}
+\DeclareTextSymbol{\~}{LGR}{126}
+
+% Setup new commands:
+
+\renewcommand{\raggedright}{\leftskip=0pt \rightskip=0pt plus 0cm} 
+
+\newcommand\Warning{%
+ \makebox[1.4em][c]{%
+ \makebox[0pt][c]{\raisebox{.1em}{\small\textrm{!}}}%
+ \makebox[0pt][c]{\color{red}\Large$\bigtriangleup$}}}%
+
+\newcommand\doubt{%
+ \makebox[1.4em][c]{%
+ \makebox[0pt][c]{\small?}%
+ \makebox[0pt][c]{\raisebox{.1em}{\color{red}\Large$\bigtriangledown$}}}}%
+
+\newcommand{\eye}[4]% size, x, y, rotation
+{   \draw[rotate around={#4:(#2,#3)}] (#2,#3) -- ++(-.5*55:#1) (#2,#3) -- ++(.5*55:#1);
+	\draw (#2,#3) ++(#4+55:.75*#1) arc (#4+55:#4-55:.75*#1);
+	% IRIS
+	\draw[fill=gray] (#2,#3) ++(#4+55/3:.75*#1) arc (#4+180-55:#4+180+55:.28*#1);
+	%PUPIL, a filled arc 
+	\draw[fill=black] (#2,#3) ++(#4+55/3:.75*#1) arc (#4+55/3:#4-55/3:.75*#1);
+}
+
+% Setup TikZ
+
+\usepgfplotslibrary{fillbetween}
+\usetikzlibrary{arrows,3d,calc,shadows,patterns,math,fit,shapes,optics,hobby}
+\usetikzlibrary{automata,positioning,math,fit}
+\usepgfplotslibrary{fillbetween}
+
+\tikzset{>=stealth, thick, global scale/.style={scale=#1,every node/.style={scale=#1}}}
+\tikzset{mid arrow/.style={postaction={decorate,decoration={markings,mark=at position .5 with {\arrow[#1]{stealth}}}}}}
+
+\usetkzobj{all}
+
+\pgfplotsset{compat=1.15}
+
+% Setup paths
+
+\graphicspath{{imagens/}}
+
+%Autor
+
+\author[Prof. Flaviano W. Fernandes]
+{\textcolor{green!50!black}{Flaviano Williams Fernandes}}
+
+\institute[IFPR-Irati]
+{Instituto Federal do Paraná \\ Campus Irati}
+
+\justifying

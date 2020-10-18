@@ -1,0 +1,48 @@
+﻿\begin{tikzpicture}[scale=1,transform shape,font=\large]
+
+		\tkzInit[xmin=-4,xmax=4,ymin=-2,ymax=8]
+		\tkzGrid[color=gray!20]
+
+		\tkzDefPoints{0/0/O, 0/6.5/O', -3/0/A, 3/0/C}
+		\tkzDefPointsBy[translation = from O to O'](A,C){F,H}
+
+		\draw[dashed,fill=blue!0,opacity=0.25] (C) arc (0:180:3cm and 1cm);
+		\draw[fill=blue!20,opacity=0.25,draw opacity=100] (C) arc (0:-180:3cm and 1cm);
+
+		\tkzDrawSegment(A,F)
+		\tkzDrawSegment(C,H)
+
+		\tkzDefPoints{0/5/o1, -3/5/a1, 3/5/c1}
+
+		\draw[dotted] (a1) -- (c1);
+		\draw[dashed,fill=blue!20,opacity=0.25,draw opacity=100] (c1) arc (0:180:3cm and 1cm);
+		\draw (O') ellipse (3cm and 1cm);
+
+		\tkzDefPoints{0/1.5/o, 0/2.5/o', -1/1.5/a, 1/1.5/c}
+		\tkzDefPointsBy[translation = from o to o'](a,c){f,h}
+
+		\tkzDefPointsBy[translation = from o to o1](a){d1}
+		\tkzDefPointsBy[translation = from o' to o1](h){h1}
+
+		\draw[fill=gray!20,opacity=0.25] (c) arc (0:-180:1cm and 0.2cm);
+		\draw[fill=gray!20,dashed,opacity=0.25] (c) arc (0:180:1cm and 0.2cm);
+		\draw[fill=gray,draw opacity=0.25,opacity=0.25] (o') ellipse (1cm and 0.2cm);
+
+		\tkzDrawSegment[draw opacity=0.25](a,f)
+		\tkzDrawSegment[draw opacity=0.25](c,h)
+
+		\draw [<-,line width=1.5pt,color=red] (o') --++ (0,0.75) node [above] {$\vec{F}_1$};
+
+		\tkzFillPolygon[fill=blue!20,opacity=0.25](A,C,c1,a1)
+
+		\draw[fill=blue!0,opacity=0.25,draw opacity=100] (c1) arc (0:-180:3cm and 1cm);
+
+		\draw (d1) to [dim arrow'={label=$h_2$},brown] (a);
+		\draw (h1) to [dim arrow={label=$h_1$},brown] (h);
+		\draw (h) to [dim arrow={label=$h_2-h_1$},brown] (c);
+
+		\draw [<-,line width=1.5pt,color=red] (o) --++ (0,-0.75) node [below] {$\vec{F}_2$};
+
+		\tkzText[above right=0.25cm](o'){A}
+
+\end{tikzpicture}

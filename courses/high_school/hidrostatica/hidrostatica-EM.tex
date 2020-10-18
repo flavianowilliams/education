@@ -1,0 +1,804 @@
+% Aula de mecânica dos fluidos para o curso de Física II do ensino médio
+%
+\documentclass[brazil,aspectratio=169]{beamer}
+%
+%carregando preâmbulo
+\input{../../../../extras/preamble}
+
+%Título
+
+\title[Mecânica dos fluidos]{Hidrostática}
+
+% The main document
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Sumário}
+  \tableofcontents
+\end{frame}
+
+\section{Lei de Stevin}
+
+\subsection{}
+
+\begin{frame}{Cálculo da pressão no interior de um fluido}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			Supondo um cilindro totalmente imerso e imóvel no interior de um fluido como mostra a figura ao lado, verificamos que
+			\begin{itemize}
+				\item O peso do cilindro aplica uma força puxando-o para \alert{baixo};
+				\item O fluido pressiona as paredes do cilindro no intuito de espremê-lo de fora para dentro;
+				\item A somatória da pressão na base produz uma força que empurra o cilindro para \alert{cima};
+				\item A somatória da pressão no topo produz uma força que empurra o cilindro para \alert{baixo};
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}[c]
+				\begin{tikzpicture}[scale=0.5,transform shape,font=\large]
+				
+				\tkzInit[xmin=-4,xmax=4,ymin=-2,ymax=8]
+				%		\tkzGrid[color=gray!20]
+				
+				\tkzDefPoints{0/0/O, 0/6.5/O', -3/0/A, 3/0/C}
+				\tkzDefPointsBy[translation = from O to O'](A,C){F,H}
+				
+				\draw[dashed,fill=blue!0,opacity=0.25] (C) arc (0:180:3cm and 1cm);
+				\draw[fill=blue!20,opacity=0.25,draw opacity=100] (C) arc (0:-180:3cm and 1cm);
+				
+				\tkzDrawSegment(A,F)
+				\tkzDrawSegment(C,H)
+				
+				\tkzDefPoints{0/5/o1, -3/5/a1, 3/5/c1}
+				
+				\draw[dotted] (a1) -- (c1);
+				\draw[dashed,fill=blue!20,opacity=0.25,draw opacity=100] (c1) arc (0:180:3cm and 1cm);
+				\draw (O') ellipse (3cm and 1cm);
+				
+				\tkzDefPoints{0/1.5/o, 0/2.5/o', -1/1.5/a, 1/1.5/c}
+				\tkzDefPointsBy[translation = from o to o'](a,c){f,h}
+				
+				\tkzDefPointsBy[translation = from o to o1](a){d1}
+				\tkzDefPointsBy[translation = from o' to o1](h){h1}
+				
+				\draw[fill=gray!20,opacity=0.25] (c) arc (0:-180:1cm and 0.2cm);
+				\draw[fill=gray!20,dashed,opacity=0.25] (c) arc (0:180:1cm and 0.2cm);
+				\draw[fill=gray,draw opacity=0.25,opacity=0.25] (o') ellipse (1cm and 0.2cm);
+				
+				\tkzDrawSegment[draw opacity=0.25](a,f)
+				\tkzDrawSegment[draw opacity=0.25](c,h)
+				
+				\draw [<-,line width=1.0pt,color=red] (o') --++ (0,0.75) node [above] {$\vec{F}_1$};
+				
+				\tkzFillPolygon[fill=blue!20,opacity=0.25](A,C,c1,a1)
+				
+				\draw[fill=blue!0,opacity=0.25,draw opacity=100] (c1) arc (0:-180:3cm and 1cm);
+				
+				\draw (d1) to [dim arrow'={label=$h_2$},brown,line width=0.1pt] (a);
+				\draw (h1) to [dim arrow={label=$h_1$},brown,line width=0.1pt] (h);
+				\draw (h) to [dim arrow={label=$h_2-h_1$},brown,line width=0.1pt] (c);
+				
+				\draw [<-,line width=1.0pt,color=red] (o) --++ (0,-0.75) node [below] {$\vec{F}_2$};
+				
+				\tkzText[above right=0.25cm](o'){A}
+				
+				\end{tikzpicture}
+				%\includegraphics[scale=0.45]{figuras/pressao-cilindro.png}
+				\caption*{\footnotesize Forças atuando acima e abaixo do objeto submerso num fluido em repouso.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Variação da pressão com altitude e profundidade}
+	\begin{multicols}{2}
+		Pela relação da pressão p e força F, $p=\frac{F}{A}$, temos
+		\begin{align*}
+			F=(p)\times (A),
+		\end{align*}
+		portanto
+		\begin{align*}
+			F_1 & = p_1A,\\
+			F_2 & = p_2A.\\
+		\end{align*}
+		Se o cilindro está em repouso, pela segunda Lei de Newton a força resultante deve ser zero, portanto
+		\begin{align*}
+			F_2 = F_1 + P.
+		\end{align*}
+		Pela definição de densidade, $m = \rho V$, e sabendo que o volume do cilindro é a base A vezes a altura h temos
+		\begin{align*}
+			p_2\bcancel{A} & = p_1\bcancel{A} + \rho gh\bcancel{A},\\
+				\Aboxed{p_2 & = p_1 + \rho g h.}
+		\end{align*}
+	\end{multicols}
+\end{frame}
+
+\begin{frame}{Variação da pressão com a profundidade}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\begin{block}{Lei de Stevin}
+				\justifying Se a superfície de um fluido, cuja densidade é $\rho$, está submetida a uma pressão $p_{atm}$, a pressão p, no interior desse líquido, a uma profundidade h, é dada por
+				\[p=p_{atm}+\rho gh\]
+			\end{block}
+			\begin{corollary}
+				\justifying A força da gravidade puxa o fluido para baixo causando uma pressão na base e nas paredes do recipiente.
+			\end{corollary}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}[c]
+				\begin{tikzpicture}[scale=0.5,transform shape,font=\large]
+				
+				\tkzInit[xmin=-4,xmax=4,ymin=-2,ymax=8]
+				%		\tkzGrid[color=gray!20]
+				
+				\tkzDefPoints{0/0/O, 0/6.5/O', -3/0/A, 3/0/C}
+				\tkzDefPointsBy[translation = from O to O'](A,C){F,H}
+				
+				\draw[dashed,fill=blue!0,opacity=0.25] (C) arc (0:180:3cm and 1cm);
+				\draw[fill=blue!20,opacity=0.25,draw opacity=100] (C) arc (0:-180:3cm and 1cm);
+				
+				\tkzDrawSegment(A,F)
+				\tkzDrawSegment(C,H)
+				
+				\tkzDefPoints{0/5/o1, -3/5/a1, 3/5/c1}
+				
+				\draw[dashed,fill=blue!20,opacity=0.25,draw opacity=100] (c1) arc (0:180:3cm and 1cm);
+				\draw (O') ellipse (3cm and 1cm);
+				
+				\tkzDefPoints{0/2.5/o'}
+				\tkzDefPointsBy[translation = from o1 to o'](a1,c1){a',c'}
+				
+				\foreach \ox in {-3,-2,-1,0,1,2,3}{
+					\tkzDefPoints{\ox/2.5/\ox}
+					\tkzDrawPoints[fill=red,color=red,size=0.5cm](\ox)}
+				
+				\tkzFillPolygon[fill=blue!20,opacity=0.25](A,C,c1,a1)
+				
+				\draw[fill=blue!0,opacity=0.25,draw opacity=100] (c1) arc (0:-180:3cm and 1cm);
+				
+				\draw (c') to [dim arrow'={label'=$h$},brown] (c1);
+				
+				\tkzDrawLine[dotted, add=0.25cm and 0.25cm](a',c')
+				\tkzDrawLine[dotted, add=0.25cm and 0.25cm](a1,c1)
+				
+				\tkzText[left=0.25cm](a1){$p_{atm}$}
+				\tkzText[left=0.25cm](a'){$p$}
+				
+				\draw[<-,line width=2.5pt] (O') --++ (0,1.5) node [above] {Gravidade};
+
+				\end{tikzpicture}
+				%\includegraphics[scale=0.3]{figuras/lei-stevin.jpg}
+				\caption*{\footnotesize Pressão em função da profundidade h.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Variação da pressão com a altitude}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			\centering
+			\begin{corollary}
+				\justifying Para baixas altitudes ou profundidade a força da gravidade é praticamente constante, portanto a Lei de Stevin pode ser aplicada, mas para altas altitudes a força da gravidade diminui de modo que a pressão do ar varia de maneira praticamente exponencial com a altura.
+			\end{corollary}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.7]{figuras/pressao-atmosferica.jpg}
+				\caption*{\footnotesize Variação da pressão com a altitude.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Experiência de Torricelli}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\justifying Coloca-se mercúrio cuja densidade é conhecida num tubo fino e vira-o de cabeça para baixo. O líquido irá descer e irá preencher o recipiente da parte de baixo. A parte de cima como estava fechada não entrou ar e com a descida do líquido criou-se um vácuo, portanto a pressão da parte de cima será zero. Pela Lei de Stevin temos que a pressão da parte de baixo é dado por
+			\begin{align*}
+				p_{atm} = \rho g h,
+			\end{align*}
+			onde h é a coluna de mercúrio (se for medido ao nível do mar h=760mm).
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}[c]
+				\includegraphics[scale=0.25]{figuras/experiencia-torricelli.jpg}
+				\caption*{\tiny Representação da experiência de Torricelli.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Vasos comunicantes}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\begin{corollary}
+				\justifying Pela Lei de Stevin a variação da pressão em um fluido homogêneo ($\rho = constante$) somente depende da profundidade do fluido e independe da posição do líquido ao longo da horizontal, portanto é esperado que a pressão seja a mesma para cada altura independente do recipiente que está contido o fluido.
+			\end{corollary}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}[c]
+				\includegraphics[scale=0.3]{figuras/vasos-comunicantes.jpg}
+				\caption*{\tiny Pressão do fluido em diferentes recipientes (O líquido atinge a mesma altura independente do recipiente).}
+			\end{figure}
+		\end{column}
+	\end{columns}	
+\end{frame}
+
+\section{Princípio de Pascal}
+
+\subsection{}
+
+\begin{frame}{Variação da pressão na superfície do recipiente}
+	\begin{columns}
+		\begin{column}[b]{0.5\textwidth}
+			\begin{figure}
+				\Centering
+				\begin{tikzpicture}[scale=0.3,transform shape,font=\huge]
+				
+				\tkzInit[xmin=-5,xmax=5,ymin=-2,ymax=9]
+				%		\tkzGrid[color=gray!20]
+				\tkzClip
+				
+				\tkzDefPoints{0/0/O, 0/6.5/O', -3/0/A, 3/0/C}
+				\tkzDefPointsBy[translation = from O to O'](A,C){F,H}
+				
+				\draw[dashed,fill=blue!0,opacity=0.25] (C) arc (0:180:3cm and 1cm);
+				\draw[fill=blue!20,opacity=0.25,draw opacity=100] (C) arc (0:-180:3cm and 1cm);
+				
+				\tkzDrawSegment(A,F)
+				\tkzDrawSegment(C,H)
+				
+				\tkzDefPoints{0/5/o1, -3/5/a1, 3/5/c1}
+				
+				\draw[dashed,fill=blue!20,opacity=0.25,draw opacity=100] (c1) arc (0:180:3cm and 1cm);
+				\draw (O') ellipse (3cm and 1cm);
+				
+				\tkzDefPoints{0/2.5/o'}
+				\tkzDefPointsBy[translation = from o1 to o'](a1,c1){a',c'}
+				
+				\tkzFillPolygon[fill=blue!20,opacity=0.25](A,C,c1,a1)
+				
+				\draw[fill=blue!0,opacity=0.25,draw opacity=100] (c1) arc (0:-180:3cm and 1cm);
+				
+				\draw (c') to [dim arrow'={label'=$h$},brown] (c1);
+				
+				\tkzDrawLine[dotted, add=0.2cm and 0.2cm](a',c')
+
+				\tkzText[left=0.01cm](a1){$p_0$}
+				\tkzText[left=0.01cm](a'){$p$}
+				
+				\end{tikzpicture}
+				%\includegraphics[scale=0.5]{figuras/pascal-stevin.jpg}
+			\end{figure}
+			Pela Lei de Stevin a pressão nos pontos 1 e 2 equivale a
+			\begin{align*}
+				p & = p_0+\rho g h.
+			\end{align*}
+		\end{column}
+		\begin{column}[b]{0.5\textwidth}
+			\begin{figure}
+				\Centering
+				\begin{tikzpicture}[scale=0.3,transform shape,font=\huge]
+				
+				\tkzInit[xmin=-5,xmax=5,ymin=-2,ymax=9]
+				%		\tkzGrid[color=gray!20]
+				\tkzClip
+				
+				\tkzDefPoints{0/0/O, 0/6.5/O', -3/0/A, 3/0/C}
+				\tkzDefPointsBy[translation = from O to O'](A,C){F,H}
+				
+				\draw[dashed,fill=blue!0,opacity=0.25] (C) arc (0:180:3cm and 1cm);
+				\draw[fill=blue!20,opacity=0.25,draw opacity=100] (C) arc (0:-180:3cm and 1cm);
+				
+				\tkzDrawSegment(A,F)
+				\tkzDrawSegment(C,H)
+				
+				\tkzDefPoints{0/5/o1, -3/5/a1, 3/5/c1}
+				
+				\draw[fill=gray!80,opacity=0.5,draw opacity=100] (c1) arc (0:180:3cm and 1cm);
+				\draw (O') ellipse (3cm and 1cm);
+				
+				\tkzDefPoints{0/5.3/o2, -3/5.3/a2, 3/5.3/c2}
+				
+				\draw[fill=gray!80,opacity=0.5,draw opacity=100] (c2) arc (0:180:3cm and 1cm);
+				\draw[fill=gray!80,opacity=0.5,draw opacity=100] (c2) arc (0:-180:3cm and 1cm);
+				
+				\tkzDefPoints{0/2.5/o'}
+				\tkzDefPointsBy[translation = from o1 to o'](a1,c1){a',c'}
+				
+				\tkzFillPolygon[fill=blue!20,opacity=0.25](A,C,c1,a1)
+				
+				\draw[fill=gray!80,opacity=0.5,draw opacity=100] (c1) arc (0:-180:3cm and 1cm);
+				
+				\draw (c') to [dim arrow'={label'=$h$},brown] (c1);
+				
+				\tkzText[left=0.01cm](a1){$p'_0$}
+				\tkzText[left=0.01cm](a'){$p'$}
+				
+				\tkzDrawLine[dotted, add=0.2cm and 0.2cm](a',c')
+				
+				\draw[<-,line width=2.5pt] (o2) --++ (0,2.5) node [above] {$\vec{F}$};
+				
+				\end{tikzpicture}
+				%\includegraphics[scale=0.5]{figuras/pascal-stevin.jpg}
+			\end{figure}
+			Pela Lei de Stevin a pressão nos pontos 1 e 2 equivale a
+			\begin{align*}
+				p' & = p'_0+\rho g h.
+			\end{align*}
+		\end{column}
+	\end{columns}	
+\end{frame}
+
+\begin{frame}{Variação da pressão ao longo das paredes do recipiente}
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+			Caculando o quanto a pressão na posição 1 aumenta temos
+			\begin{align*}
+				\Delta p & = p'-p,\\
+				\Delta p & = (p'_0+\rho g h)-(p_0+\rho g h),\\
+				\Delta p & = p'_0+\cancel{\rho g h}-p_0-\cancel{\rho g h},\\
+				\Aboxed{\Delta p & = \Delta p_0.}
+			\end{align*}
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\begin{figure}[c]
+				\Centering
+				\begin{tikzpicture}[scale=0.38,transform shape,font=\Large]
+				
+				\tkzInit[xmin=-5,xmax=5,ymin=-2,ymax=8]
+				%		\tkzGrid[color=gray!20]
+				\tkzClip
+				
+				\tkzDefPoints{0/0/O, 0/6.5/O', -3/0/A, 3/0/C}
+				\tkzDefPointsBy[translation = from O to O'](A,C){F,H}
+				
+				\draw[dashed,fill=blue!0,opacity=0.25] (C) arc (0:180:3cm and 1cm);
+				\draw[fill=blue!20,opacity=0.25,draw opacity=100] (C) arc (0:-180:3cm and 1cm);
+				
+				\tkzDrawSegment(A,F)
+				\tkzDrawSegment(C,H)
+				
+				\foreach \x in {1,2,3,4}{
+					\draw[<-,line width=1.0pt] (-3,\x) --++ (0.75,0);
+					\draw[<-,line width=1.0pt] (3,\x) --++ (-0.75,0);}
+				\foreach \x in {1,2,3,4,5}{
+					\draw[<-,line width=1.0pt] (-3+\x,0) --++ (0,0.75);}
+				
+				\tkzDefPoints{0/5/o1, -3/5/a1, 3/5/c1}
+				
+				\draw[dashed,fill=gray!80,opacity=0.5,draw opacity=100] (c1) arc (0:180:3cm and 1cm);
+				\draw (O') ellipse (3cm and 1cm);
+				
+				\tkzDefPoints{0/5.3/o2, -3/5.3/a2, 3/5.3/c2}
+				
+				\draw[dashed,fill=gray!80,opacity=0.5,draw opacity=100] (c2) arc (0:180:3cm and 1cm);
+				\draw[fill=gray!80,opacity=0.5,draw opacity=100] (c2) arc (0:-180:3cm and 1cm);
+				
+				\tkzDefPoints{0/2.5/o'}
+				\tkzDefPointsBy[translation = from o1 to o'](a1,c1){a',c'}
+				
+				\tkzDefPoints{0/2/o, 0/3/o', -1/2/a, 1/2/c}
+				\tkzDefPointsBy[translation = from o to o'](a,c){f,h}
+				
+				\tkzDefPointsBy[translation = from o to o1](a){d1}
+				\tkzDefPointsBy[translation = from o' to o1](h){h1}
+				
+				\draw [<-,line width=1.0pt] (o') --++ (0,0.75);
+				\draw [<-,line width=1.0pt] (o) --++ (0,-0.75);
+				\draw [<-,line width=1.0pt] ($(a)+(0,0.5)$) --++ (-0.75,0);
+				\draw [<-,line width=1.0pt] ($(c)+(0,0.5)$) --++ (0.75,0);
+				
+				\draw[fill=gray!20,opacity=0.25] (c) arc (0:-180:1cm and 0.2cm);
+				\draw[fill=gray!20,dashed,opacity=0.25] (c) arc (0:180:1cm and 0.2cm);
+				\draw[fill=gray,draw opacity=0.25,opacity=0.25] (o') ellipse (1cm and 0.2cm);
+				
+				\tkzDrawSegment[draw opacity=0.25](a,f)
+				\tkzDrawSegment[draw opacity=0.25](c,h)
+				
+				\tkzFillPolygon[fill=blue!20,opacity=0.25](A,C,c1,a1)
+				
+				\draw[fill=gray!80,opacity=0.5,draw opacity=100] (c1) arc (0:-180:3cm and 1cm);
+				
+				\draw[<-,line width=2.5pt] (o2) --++ (0,1.5) node [above] {$\vec{F}$};
+				
+				\end{tikzpicture}
+				%\includegraphics[scale=0.4]{figuras/principio-pascal.jpg}
+			\end{figure}
+		\end{column}
+	\end{columns}
+	\begin{corollary}
+		\justifying O acréscimo de pressão, em um ponto de um líquido em equilíbrio, transmite-se integralmente a todos os pontos desse líquido.
+	\end{corollary}
+\end{frame}
+
+\begin{frame}{Máquinas hidráulicas}
+	\begin{columns}
+		\begin{column}{0.55\textwidth}
+			\justifying Pela definição de pressão podemos dizer que o aumento de pressão no pistão 1 é dado por
+	\begin{align*}
+		\Delta p_1 = \frac{F_1}{A_1}.
+	\end{align*}
+	Pelo princípio de Pascal esse aumento será o mesmo no pistao 2, pois  $\Delta p_1 = \Delta p_2$.
+		\begin{block}{Princípio de Pascal}
+		\begin{align*}
+		\frac{F_1}{A_1} = \frac{F_2}{A_2}.
+		\end{align*}	
+	\end{block}
+		\end{column}
+		\begin{column}{0.45\textwidth}
+			\begin{corollary}
+				O volume deslocado em um pistão é o mesmo deslocado em outro pistão.
+			\end{corollary}
+			\begin{figure}[c]
+				\Centering
+				\begin{tikzpicture}[scale=0.45,transform shape,font=\large]
+				
+				\tkzInit[xmin=-1,xmax=11,ymin=-0.5,ymax=6.5]
+				%	\tkzGrid[color=gray!30]
+				
+				%definindo pontos
+				
+				\tkzDefPoints{0/0/A,2/0/B,0/5/C,2/5/D,2/1/E,2/1.5/F}
+				\tkzDefPoints{0/0/A,5/1.5/G,5/1/H,5/1.5/I,5/0/J,10/0/K,10/5/L,5/5/M}
+				
+				%	\tkzDrawPoints[size=0.5cm](A,B,C,D,E,F,G,H,I,J,K,L,M)
+				%	\tkzLabelPoints(A,B,C,D,E,F,G,H,I,J,K,L,M)
+				
+				%pistao menor
+				
+				\tkzDefPoints{0/4.75/c,2/4.75/d}
+				\tkzDefPoints{0/2.75/c1,2/2.75/d1,0/3/c2,2/3/d2}
+				
+				\tkzFillPolygon[fill=green!20](c2,d2,d,c)
+				
+				\tkzDrawPolygon[dashed,color=gray,fill=gray!20](C,D,d,c)
+				\tkzDrawPolygon[color=gray,fill=gray!20](c1,d1,d2,c2)
+				
+				%	\tkzDrawPoints[size=0.5cm](c,d,c1,d1,c2,d2)
+				
+				\draw (c1) to [dim arrow={label=$h_1$},brown,line width=0.1pt] (c);
+				\draw (c1) to [dim arrow={label=$A_1$},brown,line width=0.1pt] (d1);
+				
+				%pistao maior
+				
+				\tkzDefPoints{5/4.75/m,10/4.75/l}
+				\tkzDefPoints{5/3.95/m1,10/3.95/l1,5/3.7/m2,10/3.7/l2}
+				
+				\tkzFillPolygon[fill=green!20](m1,l1,l,m)
+				
+				\tkzDrawPolygon[color=gray,fill=gray!20](M,L,l,m)
+				\tkzDrawPolygon[dashed,color=gray,fill=gray!20](m1,l1,l2,m2)
+				
+				%	\tkzDrawPoints[size=0.5cm](m,l,m1,l1,m2,l2)
+				
+				\draw (m2) to [short dim arrow={label=$h_2$,label near middle},brown,line width=0.1pt] (m);
+				\draw (M) to [dim arrow={label=$A_2$},brown,line width=0.1pt] (L);
+				
+				%desenhando paredes
+				
+				\tkzDrawPolygon(A,B,E,H,J,K,L,M,G,F,D,C)
+				
+				%desenhando as forças
+				
+				\foreach \x in {1}{
+					\draw[<-,line width=0.7pt] (\x,5) --++ (0,0.75) node [above] {$\vec{F}_1$};}
+				
+				\foreach \x in {0.5,1,1.5,2,2.5}{
+					\draw[<-,line width=0.7pt] (0,\x) --++ (0.5,0);}
+				
+				\foreach \x in {0.5,1.5,2,2.5}{
+					\draw[<-,line width=0.7pt] (2,\x) --++ (-0.5,0);}
+				
+				\foreach \x in {1}{
+					\draw[<-,line width=0.7pt] (\x,0) --++ (0,0.5);}
+				
+				\foreach \x in {2.5}{
+					\draw[<-,line width=0.7pt] (\x+5,3.75) --++ (0,-0.75) node [below] {$\vec{F}_2$};}
+				
+				\foreach \x in {0.5,1,1.5,2,2.5,3}{
+					\draw[<-,line width=0.7pt] (5,\x) --++ (0.5,0);}
+				
+				\foreach \x in {0.5,1,1.5,2,2.5,3}{
+					\draw[<-,line width=0.7pt] (10,\x) --++ (-0.5,0);}
+				
+				\foreach \x in {1,1.5,2,2.5,3,3.5,4}{
+					\draw[<-,line width=0.7pt] (\x+5,0) --++ (0,0.5);}
+				
+				\end{tikzpicture}
+				%\includegraphics[scale=0.2]{figuras/prensa-hidraulica.jpg}
+				\caption*{\footnotesize Prensa hidráulica}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\section{Princípio de Arquimedes}
+
+\subsection{}
+
+\begin{frame}{O que é empuxo?}
+	\begin{columns}
+		\begin{column}{0.65\textwidth}
+			\begin{corollary}
+				\begin{itemize}
+					\item A somatória de todas as forças que o fluido atua nas paredes de um objeto imerso em um fluido é igual a força resultante que atua para cima no intuito de subir o objeto;
+					\item Se a força resultante $\vec{E}$ for de mesma intensidade da força peso $\vec{P}$ do volume do fluido deslocado, essa força é chamada de empuxo;
+					\item Se o empuxo for maior que a força peso o objeto flutua, e se for menor o objeto afunda.
+				\end{itemize}
+			\end{corollary}
+		\end{column}
+		\begin{column}{0.35\textwidth}
+			\begin{figure}[c]
+				\Centering
+				\begin{tikzpicture}[scale=0.4,transform shape,font=\Large]
+				
+				\tkzInit[xmin=-4,xmax=4,ymin=-1,ymax=10]
+				%	\tkzGrid[color=gray!20]
+				\tkzClip
+				
+				%definindo reservatorio	
+				
+				\tkzDefPoints{-4/0/A,4/0/B,-4/10/E,4/10/F}
+				
+				\tkzDefSquare(A,B)\tkzGetPoints{C}{D}
+				
+				\draw[decorate,decoration={segment length=7mm, amplitude=0.25mm,snake},line width=1.0pt,color=blue] (C) -- (D);
+				
+				\tkzFillPolygon[color=blue!20,opacity=0.5](A,B,C,D)
+				\tkzDrawPolygon(A,B,F,E)
+				
+				%definindo volume de água deslocada
+				
+				\tkzDefPoints{0/4/O,2/4/c,0/10/m,0/3.5/O1,3/3.5/c1}
+				
+				%empuxo e força
+
+				\draw[->,line width=3pt,color=brown] (O) --++(0,4) node [above] {$\vec{E}$};
+				\draw[->,line width=3pt,color=brown] (O) --++(0,-4) node [below] {$\vec{P}$};
+
+				\tkzDrawCircle[R,fill=white](O,2cm)
+				
+				\tkzInterLC(O,m)(O,c)\tkzGetPoints{G}{H}
+				
+				\foreach \x in {1,2,...,5}{
+					\tkzDefPointBy[rotation=center O angle 30*\x](H)\tkzGetPoint{X}
+					\tkzInterLC(O,X)(O1,c1)\tkzGetPoints{Z}{W}
+					\draw[<-,line width=1.5pt] (X) -- (Z);}
+				
+				\tkzDefPointBy[rotation=center O angle 0](H)\tkzGetPoint{x1}
+				\tkzInterLC(O,x1)(O1,c1)\tkzGetPoints{z1}{w1}
+				\draw[<-,line width=1.5pt] (x1) -- (w1);
+				
+				\foreach \x in {7,8,9,10,11}{
+					\tkzDefPointBy[rotation=center O angle 30*\x](H)\tkzGetPoint{X}
+					\tkzInterLC(O,X)(O1,c1)\tkzGetPoints{Z}{W}
+					\draw[<-,line width=1.5pt] (X) -- (W);}
+				
+				\tkzDefPointBy[rotation=center O angle 180](H)\tkzGetPoint{x2}
+				\draw[<-,line width=1.5pt] (x2) -- (z1);
+				
+				\tkzText[text width=2.5cm,align=center](O){Volume de água em repouso}
+				
+				\end{tikzpicture}
+				%\includegraphics[scale=0.7]{figuras/empuxo.png}
+				\caption*{\footnotesize Representação de empuxo como o peso da água deslocada.}
+			\end{figure}
+		\end{column}
+	\end{columns}		
+\end{frame}
+
+\begin{frame}{Relação entre a densidade do fluido, do objeto e o princípio de Arquimedes}
+	\begin{columns}[t]
+		\begin{column}{0.55\textwidth}
+		Pela definição de empuxo E podemos dizer que
+		\begin{align*}
+			E=m_{fluido}g,
+		\end{align*}
+		mas pela definição de densidade temos $m_{fluido}=\rho_{fluido}V$, portanto
+		\begin{align*}
+			E = \rho_{fluido}Vg
+		\end{align*}
+		O peso P do objeto mergulhado no fluido é dado por $P=m_{obj}g$, portanto se o empuxo for igual ao peso do objeto temos
+		\end{column}
+		\begin{column}{0.45\textwidth}
+		\begin{align*}
+			m_{obj}g & = \rho_{fluido}Vg,\\
+			\rho_{obj}\bcancel{Vg} & = \rho_{fluido}\bcancel{Vg}.
+		\end{align*}
+			\begin{corollary}
+				\begin{itemize}
+					\small 
+					\item Se $\rho_{fluido}<\rho_{obj}$, o corpo afundará;
+					\item Se $\rho_{fluido}=\rho_{obj}$, o corpo ficará em equilíbrio;
+					\item Se $\rho_{fluido}>\rho_{obj}$, o corpo irá flutuar na superfície;
+				\end{itemize}
+			\end{corollary}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\section{Apêndice}
+
+\subsection{}
+
+\begin{frame}{Transformar um número em notação científica}
+	\begin{corollary}
+		\begin{enumerate}[leftmargin=1.75cm]
+			\item[Passo 1:] Escrever o número incluindo a vírgula.
+			\item[Passo 2:] Andar com a vírgula até que somente reste um número diferente de zero no lado esquerdo.
+			\item[Passo 3:] Colocar no expoente da potência de 10 o número de casas decimais que tivemos que "andar" com a vírgula. Se ao andar com a vírgula o valor do número diminuiu, o expoente ficará positivo, se aumentou o expoente ficará negativo.
+		\end{enumerate}
+	\end{corollary}
+	\begin{exampleblock}{Exemplo}
+		\begin{equation*}
+			6\; 590\; 000\; 000\; 000\; 000,0 = \SI{6,59e15}{}		
+		\end{equation*}
+	\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Conversão de unidades em uma dimensão}
+	\begin{figure}
+		\begin{tikzpicture}[scale=0.65,transform shape,font=\Large]
+	
+		\tkzInit[xmin=-2,xmax=17,ymin=-6,ymax=3]
+		%\tkzGrid[color=gray!20]
+		\tkzClip
+	
+	\tikzset{compass style/.append style={->}}
+	
+	\foreach \x in {1,2,...,6}{
+		\tkzDefPoint(\x*3-3,0){\x}
+		\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+		\node at (\x*3-3,2) {$\times 10^{1}$};
+		\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+		\node at (\x*3-3,-2) {$\times 10^{-1}$};}
+	
+	\tkzDefPoints{-1.5/0/p1,1.5/0/p2,4.5/0/p3,7.5/-0.2/p4,10.5/0/p5,13.5/0/p6,16.5/0/p7}
+	
+	\tkzText(p1){m\_}
+	\tkzText(p2){c\_}
+	\tkzText(p3){d\_}
+	\tkzText(p4){\_}
+	\tkzText(p5){da\_}
+	\tkzText(p6){h\_}
+	\tkzText(p7){k\_}
+	
+	%exemplos
+	
+	\tkzText(3,-3.5){$1\;\text{mm}=1\times 10^{(-1)\times\alert{2}}\;\text{dm}\rightarrow 1\times 10^{-2}\;\text{dm}$}
+	\tkzText(3.1,-4.5){$2,5\;\text{kg}=2,5\times 10^{(1)\times\alert{6}}\;\text{mg}\rightarrow2,5\times 10^{6}\;\text{mg}$}
+	\tkzText(2.5,-5.5){$10\;\text{ms}=10\times 10^{(-1)\times\alert{3}}\;\text{s}\rightarrow 10\times 10^{-3}\;\text{s}$}
+	
+	\end{tikzpicture}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Conversão de unidades em duas dimensões}
+\begin{figure}
+\begin{tikzpicture}[scale=0.65,transform shape,font=\Large]
+
+\tkzInit[xmin=-2,xmax=17,ymin=-6,ymax=3]
+%\tkzGrid[color=gray!20]
+\tkzClip
+
+\tikzset{compass style/.append style={->}}
+
+\foreach \x in {1,2,...,6}{
+	\tkzDefPoint(\x*3-3,0){\x}
+	\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+	\node at (\x*3-3,2) {$\times 10^{2}$};
+	\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+	\node at (\x*3-3,-2) {$\times 10^{-2}$};}
+
+\tkzDefPoints{-1.5/0/p1,1.5/0/p2,4.5/0/p3,7.5/0/p4,10.5/0/p5,13.5/0/p6,16.5/0/p7}
+
+\tkzText(p1){$\text{m}\_^2$}
+\tkzText(p2){$\text{c}\_^2$}
+\tkzText(p3){$\text{d}\_^2$}
+\tkzText(p4){$\_^2$}
+\tkzText(p5){$\text{da}\_^2$}
+\tkzText(p6){$\text{h}\_^2$}
+\tkzText(p7){$\text{k}\_^2$}
+
+%exemplos
+
+\tkzText(3.3,-3.5){$1\;\text{mm}^2=1\times 10^{(-2)\times\alert{2}}\;\text{dm}^2\rightarrow 1\times 10^{-4}\;\text{dm}^2$}
+\tkzText(3.6,-4.5){$2,5\;\text{m}^2=2,5\times 10^{(2)\times\alert{3}}\;\text{mm}^2\rightarrow2,5\times 10^{6}\;\text{mm}^2$}
+\tkzText(3,-5.5){$10\;\text{ms}^2=10\times 10^{(-2)\times\alert{3}}\;\text{s}^2\rightarrow 10\times 10^{-6}\;\text{s}^2$}
+
+\end{tikzpicture}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Conversão de unidades em três dimensões}
+\begin{figure}
+\begin{tikzpicture}[scale=0.65,transform shape,font=\Large]
+
+\tkzInit[xmin=-2,xmax=17,ymin=-6,ymax=3]
+%\tkzGrid[color=gray!20]
+\tkzClip
+
+\tikzset{compass style/.append style={->}}
+
+\foreach \x in {1,2,...,6}{
+\tkzDefPoint(\x*3-3,0){\x}
+\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+\node at (\x*3-3,2) {$\times 10^{3}$};
+\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+\node at (\x*3-3,-2) {$\times 10^{-3}$};}
+
+\tkzDefPoints{-1.5/0/p1,1.5/0/p2,4.5/0/p3,7.5/0/p4,10.5/0/p5,13.5/0/p6,16.5/0/p7}
+
+\tkzText(p1){$\text{m}\_^3$}
+\tkzText(p2){$\text{c}\_^3$}
+\tkzText(p3){$\text{d}\_^3$}
+\tkzText(p4){$\_^3$}
+\tkzText(p5){$\text{da}\_^3$}
+\tkzText(p6){$\text{h}\_^3$}
+\tkzText(p7){$\text{k}\_^3$}
+
+%exemplos
+
+\tkzText(3.3,-3.5){$1\;\text{mm}^3=1\times 10^{\alert{2}\times(-3)}\;\text{dm}^3\rightarrow 1\times 10^{-6}\;\text{dm}^3$}
+\tkzText(3.6,-4.5){$2,5\;\text{m}^3=2,5\times 10^{\alert{3}\times(3)}\;\text{mm}^3\rightarrow2,5\times 10^{9}\;\text{mm}^3$}
+\tkzText(3.5,-5.5){$2,5\;\text{km}^3=2,5\times 10^{\alert{6}\times(3)}\;\text{mm}^3\rightarrow2,5\times 10^{18}\;\text{mm}^3$}
+
+\end{tikzpicture}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Alfabeto grego}
+\begin{columns}
+\begin{column}[c]{0.5\textwidth}
+\begin{table}
+\begin{tabular}[c]{ccc}
+	Alfa & $A$ & $\alpha$\\
+	Beta & $B$ & $\beta$\\
+	Gama & $\Gamma$ & $\gamma$\\
+	Delta & $\Delta$ & $\delta$\\
+	Epsílon & $E$ & $\epsilon$,$\varepsilon$\\
+	Zeta & $Z$ & $\zeta$\\
+	Eta & $H$ & $\eta$\\
+	Teta & $\Theta$ & $\theta$\\
+	Iota & $I$ & $\iota$\\
+	Capa & $K$ & $\kappa$\\
+	Lambda & $\Lambda$ & $\lambda$\\
+	Mi & $M$ & $\mu$
+\end{tabular}
+\end{table}
+\end{column}
+\begin{column}[c]{0.5\textwidth}
+\begin{table}
+\begin{tabular}[c]{ccc}
+	Ni & $N$ & $\nu$\\
+	Csi & $\Xi$ & $\xi$\\
+	ômicron & $O$ & $o$\\
+	Pi & $\Pi$ & $\pi$\\
+	Rô & $P$ & $\rho$\\
+	Sigma & $\Sigma$ & $\sigma$\\
+	Tau & $T$ & $\tau$\\
+	Ípsilon & $\Upsilon$ & $\upsilon$\\
+	Fi & $\Phi$ & $\phi$,$\varphi$\\
+	Qui & $X$ & $\chi$\\
+	Psi & $\Psi$ & $\psi$\\
+	Ômega & $\Omega$ & $\omega$
+\end{tabular}
+\end{table}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Referências e observações\footnote{Este material está sujeito a modificações. Recomenda-se acompanhamento permanente.}}
+	\bibliographystyle{jurabib}
+	\begin{thebibliography}{9}
+		\bibitem{alvarenga}A. Máximo, B. Alvarenga, C. Guimarães, Física. Contexto e aplicações, v.1, 2.ed., São Paulo, Scipione (2016)
+	\end{thebibliography}
+\end{frame}
+
+\end{document}

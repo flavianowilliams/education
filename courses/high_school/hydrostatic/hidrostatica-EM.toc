@@ -1,6 +1,0 @@
-\babel@toc {portuguese}{}
-\babel@toc {portuguese}{}
-\beamer@sectionintoc {1}{Lei de Stevin}{3}{0}{1}
-\beamer@sectionintoc {2}{Princ\IeC {\'\i }pio de Pascal}{9}{0}{2}
-\beamer@sectionintoc {3}{Princ\IeC {\'\i }pio de Arquimedes}{12}{0}{3}
-\beamer@sectionintoc {4}{Ap\^endice}{14}{0}{4}

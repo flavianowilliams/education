@@ -1,0 +1,29 @@
+\begin{tikzpicture}[scale=1.0, transform shape]
+
+	\def\d{1.5}
+
+	%placa
+	\filldraw[opacity=0.2] (1,2.5+0.5*\d) rectangle (4,2.5+0.5*\d+0.5);
+	\filldraw[opacity=0.2] (1,2.5-0.5*\d) rectangle (4,2.5-0.5*\d-0.5);
+
+	%campo eletrico
+	\draw[<-] (2.5,2.5-0.5*\d-0.5) --++ (0,-0.5) node[right,midway] {$\vec{E}$};
+	\draw[->] (2.5,2.5+0.5*\d+0.5) --++ (0,0.5) node[right,midway] {$\vec{E}$};
+
+	\draw[->,color=red] (2.5,2.5+0.5*\d) --++ (0,-0.5) node[right,midway] {$\vec{E}$};
+	\draw[<-,color=red] (2.5,2.5-0.5*\d) --++ (0,0.5) node[right,midway] {$\vec{E}$};
+
+	%cargas
+	\foreach \x in {1,1.5,...,4}{
+	\draw[->,color=red] (\x,2.5+0.5*\d) --++ (0,-0.5);
+	\node at (\x,2.5-0.5*\d-0.25) {-};}
+
+	\foreach \x in {1,1.5,...,4}{
+	\draw[<-,color=red] (\x,2.5-0.5*\d) --++ (0,0.5);
+	\node at (\x,2.5+0.5*\d+0.25) {+};}
+
+	%texto
+	\node[text width=1.5cm,text centered] (t1) at (5,2.5) {Campo uniforme};
+	\draw[<->] (4.25,2.5-0.5*\d)  -- (4.25,2.5+0.5*\d);
+
+\end{tikzpicture}

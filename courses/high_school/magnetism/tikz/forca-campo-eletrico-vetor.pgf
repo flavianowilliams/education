@@ -1,0 +1,42 @@
+\begin{tikzpicture}[scale=0.4, transform shape]
+
+	%setup page
+	\useasboundingbox (-3.4,-7) rectangle (8.4,1);
+
+	%setup styles
+	\tikzstyle{s1}=[circle, radius=0.25, ball color=gray];
+	\tikzstyle{s2}=[circle, radius=0.10, ball color=gray];
+
+	%exemplo 1
+	\draw [line width=1.0pt, <-,color=red] (4.25,0) -- (4.75,0) node [pos=0.5,above left] {$\vec{F}$};
+	\draw [line width=1.0pt, ->,color=red] (5.25,0) -- (6,0) node [pos=0.5,above right] {$\vec{E}$};
+	\node [s1] (n1) at (0,0) {$+$};
+	\node [s2] (n2) at (5,0) {$-$};
+	\node  at (7.5,0) {$\left(Qq < 0\right)$};
+	\draw [dashed] (n1) -- (n2);
+
+	%exemplo 2
+	\draw [line width=1.0pt, ->,color=red] (5,-2) -- (4.25,-2) node [pos=0.5,below left] {$\vec{F}$};
+	\draw [line width=1.0pt, <-,color=red] (4,-2) -- (4.75,-2) node [pos=0.5,above left] {$\vec{E}$};
+	\node [s1] (n1) at (0,-2) {$-$};
+	\node [s2] (n2) at (5,-2) {$+$};
+	\node  at (7.5,-2) {$\left( Qq < 0\right)$};
+	\draw [dashed] (n1) -- (n2);
+
+	%exemplo 3
+	\draw [line width=1.0pt, ->,color=red] (5.25,-4) -- (5.75,-4) node [pos=0.5,below right] {$\vec{F}$};
+	\draw [line width=1.0pt, ->,color=red] (5.25,-4) -- (6,-4) node [pos=0.5,above right] {$\vec{E}$};
+	\node [s1] (n1) at (0,-4) {$+$};
+	\node [s2] (n2) at (5,-4) {$+$};
+	\node  at (7.5,-4) {$\left( Qq > 0\right)$};
+	\draw [dashed] (n1) -- (n2);
+
+	%exemplo 4
+	\draw [line width=1.0pt, ->,color=red] (5.25,-6) -- (5.75,-6) node [pos=0.5,above right] {$\vec{F}$};
+	\draw [line width=1.0pt, <-,color=red] (4,-6) -- (4.75,-6) node [pos=0.5,above left] {$\vec{E}$};
+	\node [s1] (n1) at (0,-6) {$-$};
+	\node [s2] (n2) at (5,-6) {$-$};
+	\node  at (7.5,-6) {$\left( Qq > 0\right)$};
+	\draw [dashed] (n1) -- (n2);
+
+\end{tikzpicture}

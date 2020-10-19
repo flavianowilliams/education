@@ -1,0 +1,24 @@
+\begin{tikzpicture}[scale=0.5, transform shape]
+  \useasboundingbox (-4,-4) rectangle (4,4);
+	\tikzset{>=stealth}
+	\tikzstyle{s1}=[circle, radius=0.25, ball color=gray];
+	%linhas de campo de cargas individuais%
+	%carga +
+	\draw [black,<->] (-2.5,0) -- (2.5,0);
+	\draw [black,<->] (-2.5*cos{20},-2.5*sin{20})--(2.5*cos{20},2.5*sin{20});
+	\draw [black,<->] (-2.5*cos{40},-2.5*sin{40})--(2.5*cos{40},2.5*sin{40});
+	\draw [black,<->] (-2.5*cos{60},-2.5*sin{60})--(2.5*cos{60},2.5*sin{60});
+	\draw [black,<->] (-2.5*cos{80},-2.5*sin{80})--(2.5*cos{80},2.5*sin{80});
+	\draw [black,<->] (-2.5*cos{90},-2.5*sin{90})--(2.5*cos{90},2.5*sin{90});
+	\draw [black,<->] (-2.5*cos{110},-2.5*sin{110})--(2.5*cos{110},2.5*sin{110});
+	\draw [black,<->] (-2.5*cos{-20},-2.5*sin{-20})--(2.5*cos{-20},2.5*sin{-20});
+	\draw [black,<->] (-2.5*cos{-40},-2.5*sin{-40})--(2.5*cos{-40},2.5*sin{-40});
+	\draw [black,<->] (-2.5*cos{-60},-2.5*sin{-60})--(2.5*cos{-60},2.5*sin{-60});
+	\draw [black,<->] (-2.5*cos{-80},-2.5*sin{-80})--(2.5*cos{-80},2.5*sin{-80});
+	\draw [black,<->](-2.5*cos{-110},-2.5*sin{-110})--(2.5*cos{-110},2.5*sin{-110});
+	%cargas%
+	\node [s1] (n1) at (0,0) {$+$};
+    %texto
+	\node [text justified] (t1) at (2.5,3) {Carga pontual};
+	\draw [red,->,line width=1.5pt] (t1) -- (n1);
+\end{tikzpicture}

@@ -1,0 +1,14 @@
+﻿\begin{circuitikz}[scale=0.8, transform shape]
+
+%	\useasboundingbox (-2.5,-1) rectangle (6.5,5);
+
+	\def\lx{8}
+	\def\ly{1.5}
+
+	\draw (0,-1) to (0,0);
+	\draw(0,\ly) to [/tikz/circuitikz/bipoles/length=15pt,R,l_=$r$] (0,0);
+	\draw (0,\ly+1) to [american, battery, v_>=$\varepsilon$] (0,\ly);
+	\draw[dashed] (-1,0) rectangle (1,\ly+1);
+	\draw (0,\ly+1) to (0,\ly+2);
+
+\end{circuitikz}

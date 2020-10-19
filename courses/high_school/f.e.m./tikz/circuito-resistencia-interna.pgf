@@ -1,0 +1,33 @@
+﻿\begin{circuitikz}[scale=0.49, transform shape]
+
+%	\useasboundingbox (-2.5,-1) rectangle (6.5,5);
+%	\draw[help lines, red!50] (0,0) grid (\lx,\ly);
+
+	\def\lx{5}
+	\def\ly{1.5}
+
+	\draw (0,-1) to (0,0);
+	\draw(0,\ly) to [/tikz/circuitikz/bipoles/length=15pt,R,l_=$r$] (0,0);
+	\draw (0,\ly+1) to [american, battery, v_>=$\varepsilon$] (0,\ly);
+	\draw[dashed] (-1,0) rectangle (1,\ly+1);
+	\draw (0,\ly+1) to (0,\ly+2);
+
+	\draw (0,\ly+2) to (\lx,\ly+2);
+	\draw (\lx,\ly+2) to (\lx,\ly+0.5);
+	\draw (\lx,\ly-0.5) to (\lx,-1);
+	\draw (\lx,-1) to (0,-1);
+
+	%motor eletrico
+	\node (t1) at (\lx,\ly) [text justified] {Motor eletrico};
+	\draw [fill=orange,opacity=0.25] (\lx-1.25,\ly+0.5) rectangle (\lx+1.25,\ly-0.5);
+
+	\draw[line width=1pt, color=red,->] (0.5*\lx,\ly+2.25) -- (0.5*\lx+0.5,\ly+2.25) node[above,midway] {$i(t)$};
+	\draw[line width=1pt, color=red,->] (\lx+0.25,0.25*\ly+0.5) -- (\lx+0.25,0.25*\ly) node[right,midway] {$i(t)$};
+	\draw[line width=1pt, color=red,->] (0.5*\lx+0.5,-1-0.25) -- (0.5*\lx,-1-0.25) node[below,midway] {$i(t)$};
+
+	\node at (\lx,\ly+2)[above] {A};
+	\node at (\lx,-1)[below] {B};
+	\node at (0,\ly+2)[above] {A};
+	\node at (0,-1)[below] {B};
+
+\end{circuitikz}

@@ -1,0 +1,42 @@
+  \begin{tikzpicture}[scale=0.7, transform shape, x={(-10:1cm)},y={(90:1cm)},z={(210:1cm)}]
+    % Axes
+    \draw[blue,->] (-1,0,0) -- (4,0,0) node[above] {$x$};
+    \draw[blue,->] (0,0,0) -- (0,2,0) node[above] {$y$};
+    \draw[blue,->] (0,0,0) -- (0,0,2) node[left] {$z$};
+	%definindo funcao
+	\pgfmathdeclarefunction{fe}{1}{\pgfmathparse{1.5*cos(deg(pi*\x))}}
+    % Waves
+    \draw[dashed,thick] plot[domain=0:4.5,samples=200] (\x,0,{fe(\x)});
+	%
+	\begin{scope}
+		\foreach \x in {2}{
+		\path[clip, shade] (\x-0.15,0,0) -- (\x-0.15,{fe(\x)},0) -- (\x+0.15,{fe(\x)},0) -- (\x+0.15,0,0);}
+	\end{scope}
+
+	\draw[<->] (1.875,1.75,0) -- (2.125,1.75,0) node[above,midway] {\tiny $dx$};
+	\draw[<->] (1,0,0) -- (1,1.5,0) node[left,midway] {\tiny $h$};
+
+	%vetores
+	\draw[line width=1pt,color=red,->] (1.75,0,0) -- (1.75,1,0) node[left] {\tiny $\vec{E}_{x}$};
+	\draw[line width=1pt,color=red,->] (2.25,0,0) -- (2.25,1.5,0) node[right] {\tiny $\vec{E}_{x+dx}$};
+	\draw[line width=1pt,color=green,->] (2,0,0) -- (2,0,1.5) node[anchor=north east] {\tiny $\frac{d\vec{B}}{dt}$};
+
+	%detalhe
+	\def\p{1.5}
+	\def\ty{3.5}
+	\def\tx{2}
+
+	\begin{scope}
+		\foreach \x in {2}{
+		\path[clip, shade] ({\x-0.15*\p+\tx},\ty,0) -- ({\x-0.125*\p+\tx},{\p*fe(\x)+\ty},0)
+										-- ({\x+0.15*\p+\tx},{\p*fe(\x)+\ty},0) -- ({\x+0.15*\p+\tx},\ty,0);}
+	\end{scope}
+
+	\foreach \x in {2}{
+	\draw[line width=1pt,color=red,<-] ({\x-0.125*\p+\tx},\ty,0) -- ({\x-0.125*\p+\tx},{\p*fe(\x)+\ty},0) node[left,midway] {};
+	\draw[line width=1pt,color=red,->] ({\x+0.15*\p+\tx},\ty,0) -- ({\x+0.15*\p+\tx},{\p*fe(\x)+\ty},0) node[right,midway] {};
+	\draw[line width=1pt,color=red,->] ({\x-0.125*\p+\tx},\ty,0) -- ({\x+0.125*\p+\tx},\ty,0) node[below,midway] {};
+	\draw[line width=1pt,color=red,<-] ({\x-0.125*\p+\tx},{\p*fe(\x)+\ty},0) -- ({\x+0.125*\p+\tx},{\p*fe(\x)+\ty},0) node[above,midway] {};
+	\draw[dotted] (\x+\tx,{\ty+0.5*\p*fe(\x)}) circle ({0.6*\p*fe(\x)});}
+
+  \end{tikzpicture}

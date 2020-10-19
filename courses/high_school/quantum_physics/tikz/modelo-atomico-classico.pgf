@@ -1,0 +1,21 @@
+﻿\begin{tikzpicture}
+
+	\coordinate (O) at (0,0);
+
+\tkzInit[xmin=-50,xmax=50,xstep=10,ymin=-50,ymax=50,ystep=10]
+
+	\tkzDrawPoint[size=2cm](O)
+
+%	\tkzFctPolar[domain=0:50]{0.003*t*t}
+
+	\def\r{5}
+
+	\coordinate (x) at ({\r*sin(\r)},{\r*cos(\r)});
+%	\coordinate (x) at ({\r*\r*\r},{\r*\r});
+
+	\tkzDrawPoint[color=red](x)
+
+\tkzFctPar[samples=400,domain=0:10]{t*sin(t)}{t*cos(t)}
+%\tkzFctPar[samples=1000,domain=0:3]{t*t*t}{t*t}
+
+\end{tikzpicture}

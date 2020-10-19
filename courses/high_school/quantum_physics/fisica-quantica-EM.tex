@@ -1,4 +1,4 @@
-% Aula de eletromagnetismo para o curso de Física III do ensino médio
+% Primeira aula de física moderna para o curso de Física III do ensino médio
 %
 \documentclass[brazil,aspectratio=169]{beamer}
 %
@@ -7,7 +7,7 @@
 
 %Título
 
-\title[Eletrodinâmica]{Indução eletromagnética}
+\title[Eletromagnetismo]{Física quântica}
 
 % The main document
 
@@ -21,179 +21,204 @@
   \tableofcontents
 \end{frame}
 
-\section{Lei de Faraday}
+\section{Quantização da energia}
 
 \subsection{}
 
-\begin{frame}{Definição de fluxo magnético}
+\begin{frame}{Radiação do corpo negro}
 	\begin{columns}
-		\begin{column}{0.5\textwidth}
-			Definimos fluxo do campo magnético $\vec{B}$ que atravessa uma área A como a somatória das linhas de campo magnético que atravessam perpendicularmente essa área.
-			\begin{block}{Fluxo do campo magnético}
+		\begin{column}[c]{0.6\textwidth}
+			Um corpo negro é um material que absorve toda a radiação que incide sobre ele. Após absorver a radiação, o corpo negro aquece e emite radiação própria, que por sua vez depende da temperatura.
+			\begin{corollary}
 				\begin{equation*}
-					\varphi = BAcos\theta
+					\text{Radiação} = \frac{\text{Energia}}{\text{(Área)}\text{(Tempo)}}
 				\end{equation*}
-			\end{block}
+			\end{corollary}
 		\end{column}
-		\begin{column}{0.5\textwidth}
+		\begin{column}[c]{0.4\textwidth}
 			\begin{figure}
-				\input{tikz/fluxo-magnetico.pgf}
-			\end{figure}
-		\end{column}
-	\end{columns}
-\end{frame}
-
-\begin{frame}{Fluxo magnético e a orientação de $\vec{B}$ em relação a área}
-	\begin{figure}
-		\centering
-		\begin{subfigure}[b]{0.45\textwidth}
-			\centering
-		\input{tikz/fluxo-magnetico-0.pgf}
-			\caption*{\footnotesize Fluxo magnético máximo ($\theta = 0^o$)}
-		\end{subfigure}
-		\begin{subfigure}[b]{0.45\textwidth}
-			\centering
-		\input{tikz/fluxo-magnetico-90.pgf}
-			\caption*{\footnotesize Fluxo magnético zero ($\theta = 90^o$)}
-		\end{subfigure}
-	\end{figure}
-\end{frame}
-
-\begin{frame}{Variação do fluxo magnético ao longo de uma espira}
-	\begin{columns}
-		\begin{column}{0.5\textwidth}
-			\begin{block}{Lei de Faraday}
-				Sempre que houver uma variação do fluxo magnético através de um circuito, aparecerá, nesse circuito, uma f.e.m. induzida,
-				\begin{equation*}
-					\left|\frac{\Delta \varphi}{\Delta t}\right| = \varepsilon
-				\end{equation*}
-			\end{block}
-		\end{column}
-		\begin{column}{0.5\textwidth}
-			\begin{figure}
-				\input{tikz/lei-faraday.pgf}
+				\includegraphics[scale=0.15]{corpo-negro.png}
+				\caption*{\footnotesize Representação de um corpo negro.}
 			\end{figure}
 		\end{column}
 	\end{columns}
 	\begin{corollary}
-		No SI a unidade de medida de fluxo magnético é Weber (Wb).
+		Desde Maxwell consideramos que a luz é uma onda eletromagnética, cuja intensidade é definida como energia por tempo e área;
 	\end{corollary}
 \end{frame}
 
-\begin{frame}{Maneiras de como variar o fluxo magnético}
-	\begin{corollary}
-		Podemos variar o fluxo magnético que atravessa a espira ao longo do tempo de três maneiras distintas.
-	\end{corollary}
-	\begin{figure}
-		\centering
-		\begin{subfigure}[b]{0.3\textwidth}
-			\centering
-		\includegraphics[scale=0.3]{figuras/figura-1a}
-			\caption*{\footnotesize Variação de A no tempo.}
-		\end{subfigure}
-		\begin{subfigure}[b]{0.3\textwidth}
-			\centering
-		\includegraphics[scale=0.25]{figuras/figura-1b}
-			\caption*{\footnotesize Variação de $\theta$ no tempo.}
-		\end{subfigure}
-		\begin{subfigure}[b]{0.3\textwidth}
-			\centering
-		\includegraphics[scale=0.2]{figuras/figura-2a}
-			\caption*{\footnotesize Variação de B no tempo.}
-		\end{subfigure}
-	\end{figure}
-\end{frame}
-
-\section{Lei de Lenz}
-
-\subsection{}
-
-\begin{frame}{Sentido da corrente induzida em relação a variação do fluxo}
-	\begin{block}{Lei de Lenz}
-		A corrente induzida em um circuito aparece sempre com um sentido tal que o campo magnético que ela cria tende a contrariar a variação do fluxo magnético que a originou.
+\begin{frame}{Discrepância entre a teoria clássica da radiação e a experiência}
+	\begin{block}{O que era esperado pela teoria clássica}
+		\begin{itemize}
+			\item A radiação emitida pelo corpo negro deveria assumir qualquer valor, independente da frequência da onda eletromagnética.
+			\item A intensidade da onda eletromagnética é diretamente proporcional ao quadrado da frequência, portanto a intensidade da radiação deveria aumentar com o aumento da frequência.
+		\end{itemize}
 	\end{block}
-	\begin{columns}
-		\begin{column}{0.6\textwidth}
-			\begin{figure}
-				\centering
-				\begin{subfigure}[b]{0.45\textwidth}
-					\centering
-					\includegraphics[scale=0.2]{figuras/figura-2a}
-					\caption*{\footnotesize $\frac{\Delta \varphi}{\Delta t}>0$ no tempo.}
-				\end{subfigure}
-				\begin{subfigure}[b]{0.45\textwidth}
-					\centering
-					\includegraphics[scale=0.2]{figuras/figura-2b}
-					\caption*{\footnotesize $\frac{\Delta \varphi}{\Delta t}<0$ no tempo.}
-				\end{subfigure}
-			\end{figure}
-		\end{column}
-		\begin{column}{0.4\textwidth}
-			\begin{block}{Lei de Faraday-Lenz}
-				\begin{equation*}
-					\frac{\Delta \varphi}{\Delta t} = \alert{-}\varepsilon
-				\end{equation*}
-			\end{block}
-		\end{column}
-	\end{columns}
+	\begin{block}{O que os físicos observaram}
+		A radiação emitida pelo corpo negro aumenta até uma certa frequência, atingindo um valor máximo e decaindo a zero em seguida, à medida que a frequência aumenta.
+	\end{block}
 \end{frame}
 
-\section{Aplicações da indução eletromagnética}
-
-\subsection{}
-
-\begin{frame}{Dínamo}
-	\begin{columns}
-		\begin{column}{0.6\textwidth}
-			\begin{corollary}
-				Dínamo é um aparelho baseado no princípio da indução eletromagnética que transforma energia mecânica em energia elétrica.
-			\end{corollary}
-		\end{column}
-		\begin{column}{0.4\textwidth}
-			\begin{figure}
-				\includegraphics[scale=0.25]{figuras/dinamo.png}
-			\end{figure}
-		\end{column}
-	\end{columns}
-\end{frame}
-
-\begin{frame}{Gerador de energia elétrica}
-	\begin{figure}
-		\centering
-		\begin{subfigure}[b]{0.45\textwidth}
-			\centering
-			\includegraphics[scale=0.3]{figuras/figura-1b}
-			\caption*{\footnotesize Variação de $\theta$ no tempo.}
-		\end{subfigure}
-		\begin{subfigure}[b]{0.45\textwidth}
-			\centering
-			\includegraphics[scale=0.4]{figuras/figura-6}
-			\caption*{\footnotesize f.e.m. induzida em função do tempo.}
-		\end{subfigure}
-	\end{figure}
+\begin{frame}{A Lei de Planck}
+%	\begin{corollary}
+%		A agitação das cargas elétricas aumenta após absorver a radiação.
+%	\end{corollary}
+	\begin{block}{Hipótese de Planck}
+		A energia das cargas oscilantes era uma variável discreta (quantizada) e seria proporcional a frequência da radiação emitida,
+		\begin{align*}
+			E_n & = nhf,\quad n=0,1,2,\cdots\\
+			h & \approx \SI{6,63e-34}{\joule\cdot\second},\quad\text{(Constante de Planck)}.
+		\end{align*}
+	\end{block}
 	\begin{corollary}
-		Uma f.e.m induzida que varia senoidalmente no tempo aparece devido a variação do fluxo de $\vec{B}$ em relação ao ângulo $\theta$.
+		As idéias de Plank sobre quantização da energia marca o nascimento da Física quântica.
 	\end{corollary}
 \end{frame}
 
-\begin{frame}{Transformador}
+\section{O modelo atômico}
+
+\subsection{}
+
+\begin{frame}{Modelo planetário do átomo}
 	\begin{columns}
-		\begin{column}{0.5\textwidth}
-			\begin{figure}
-				\includegraphics[scale=0.3]{figuras/figura-3b}
-			\end{figure}
-			\begin{corollary}
-				\begin{equation*}
-					V_2=N_2\frac{V_1}{N_1}
-				\end{equation*}
-			\end{corollary}
+		\begin{column}{0.7\textwidth}
+			\begin{block}{O que era esperado pela teoria clássica}
+				\begin{itemize}
+					\item Os elétrons se movem ao redor do núcleo em órbitas circulares;
+					\item Pela teoria do eletromagnetismo, cargas em movimento emitem radiação diminuindo sua energia;
+					\item À medida que a energia diminui, a órbita do elétron encolhe e ele colapsa para dentro do núcleo.
+				\end{itemize}
+			\end{block}
 		\end{column}
-		\begin{column}{0.5\textwidth}
+		\begin{column}[c]{0.3\textwidth}
 			\begin{figure}
-				\includegraphics[scale=0.5]{figuras/figura-3}
+				\Centering
+				\includegraphics[scale=0.15]{modelo-atomico-classico.png}
+				\caption*{\footnotesize Teoria clássica.}
 			\end{figure}
 		\end{column}
 	\end{columns}
+	\begin{corollary}
+		Com o colapso do elétron no interior do núcleo, não seria possível a formação de moléculas ou demais combinações envolvendo átomos.
+	\end{corollary}
+\end{frame}
+
+\begin{frame}{O átomo de Bohr}
+	\begin{columns}
+		\begin{column}[c]{0.75\textwidth}
+			\begin{block}{Postulados de Bohr}
+				\begin{itemize}
+					\item Os elétrons se movem em certas órbitas bem definidas sem irradiar energia;
+					\item O átomo emite radiação quando um elétron faz uma transição de uma órbita para outra;
+					\item No limite de grandes órbitas e altas energias, os resultados quânticos devem coincidir com a teoria clássica.
+				\end{itemize}
+			\end{block}
+		\end{column}
+		\begin{column}[c]{0.25\textwidth}
+			\begin{figure}
+				\Centering
+				\includegraphics[scale=0.3]{modelo-bohr.jpg}
+				\caption*{\footnotesize Modelo de Bohr.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+	\begin{block}{Princípio da correspondência}
+		Para grandes números quânticos, os cálculos quânticos e os clássicos levam ao mesmo resultado.
+	\end{block}
+\end{frame}
+
+\begin{frame}{Espectro de linhas do hidrogênio}
+	\begin{columns}
+		\begin{column}[t]{0.6\textwidth}
+			\begin{block}{Níveis de energia do átomo de hidrogênio}
+				\begin{align*}
+					E_n & = \frac{E_1}{n^2},\quad(n=1,2,3,\cdots),\\
+					E_1 & = \SI{-2.18e-18}{J},\quad\text{(estado fundamental)}.
+				\end{align*}
+			\end{block}
+			\begin{corollary}
+				O elétron ao redor do átomo adquire valores discretos de energia, e no limite $n\rightarrow\infty$ se aproxima do resultado clássico (energias no continuum).
+			\end{corollary}
+		\end{column}
+		\begin{column}[t]{0.4\textwidth}
+			\begin{figure}
+				\begin{tikzpicture}[scale=0.18,transform shape,font=\huge]
+
+					\tkzInit[xmin=-5,xmax=12,ymin=-23,ymax=2]
+					\tkzClip
+
+					\draw (-3,-22) -- (-3,1) node [above] {$E(\times 10^{-19}\;J)$};
+
+					\foreach \n in {1,2,3,4,6,10}{
+					\pgfmathsetmacro{\E}{-21.8/\n^2};
+					\draw[line width=1pt] (8,\E) -- (0,\E) node [left] {n=\n};
+					\node[right] at (8,\E) {\E};}
+
+					\end{tikzpicture}
+					%				\input{tikz/niveis-energia.pgf}
+				\caption*{\footnotesize Níveis de energia do hidrogênio.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\section{Dualidade onda partícula}
+
+\subsection{}
+
+\begin{frame}{O efeito fotoelétrico}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\begin{block}{O que era esperado pela teoria clássica}
+				\begin{itemize}
+					\item A energia cinética dos elétrons deveria depender da intensidade da luz;
+					\item O efeito fotoelétrico deveria ocorrer com luz de qualquer frequência;
+					\item Deveria haver um retardo no tempo, de modo que o elétron absorveria continuamente o feixe de energia.
+				\end{itemize}
+			\end{block}
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}
+				\includegraphics[scale=0.15]{efeito-fotoeletrico.jpg}
+				\caption*{\footnotesize Representação de um corpo negro.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+	\begin{block}{Hipótese de Einstein}
+		A luz é constituída por pacotes de energia $(E=hf)$ chamados fótons.
+	\end{block}
+\end{frame}
+
+\begin{frame}{Postulado de de Broglie}
+	\begin{block}{Hipótese de de Broglie}
+		Devido a simetria da natureza, o dualismo onda-partícula é um fenômeno absolutamente geral,
+		\begin{align*}
+			f & = \frac{E}{h},\quad\text{(Efeito fotoelétrico)},\\
+			\lambda & = \frac{h}{p},\quad\text{(Postulado de de Broglie)}.
+		\end{align*}
+	\end{block}
+	\begin{corollary}
+			Os elétrons se movem como ondas ao redor do núcleo, o que explica o modelo atômico de Bohr.
+	\end{corollary}
+\end{frame}
+
+\section{Aplicações}
+
+\subsection{}
+
+\begin{frame}{Laser}
+	\begin{figure}
+		\begin{subfigure}{0.4\textwidth}
+			\Centering
+			\includegraphics[scale=0.8]{laser-1.jpeg}
+			\caption*{\footnotesize Laser de Argônio \cite{laserAr}.}
+		\end{subfigure}
+		\begin{subfigure}{0.55\textwidth}
+			\Centering
+			\includegraphics[scale=0.2]{laser-2.jpeg}
+			\caption*{\footnotesize Laser usado para cortar chapas metálicas \cite{laser-cutting}.}
+		\end{subfigure}
+	\end{figure}
 \end{frame}
 
 \section{Apêndice}
@@ -392,6 +417,8 @@
 	\bibliographystyle{jurabib}
 	\begin{thebibliography}{9}
 		\bibitem{alvarenga}A. Máximo, B. Alvarenga, C. Guimarães, Física. Contexto e aplicações, v.1, 2.ed., São Paulo, Scipione (2016)
+		\bibitem{laserAr}https://nl.m.wikipedia.org/wiki/Bestand:Nci-vol-2268-300\_argon\_ion\_laser.jpg
+		\bibitem{laser-cutting}https://www.thefabricator.com/article/lasercutting/back-to-basics-the-subtle-science-of-burr-free-laser-cutting
 	\end{thebibliography}
 
 \vspace*{1cm}

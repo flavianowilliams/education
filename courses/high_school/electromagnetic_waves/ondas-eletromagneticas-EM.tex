@@ -7,7 +7,7 @@
 
 %Título
 
-\title[Eletrodinâmica]{Indução eletromagnética}
+\title[Eletromagnetismo]{Ondas eletromagnéticas}
 
 % The main document
 
@@ -21,179 +21,130 @@
   \tableofcontents
 \end{frame}
 
-\section{Lei de Faraday}
+\section{A teoria do eletromagnetismo}
 
 \subsection{}
 
-\begin{frame}{Definição de fluxo magnético}
-	\begin{columns}
-		\begin{column}{0.5\textwidth}
-			Definimos fluxo do campo magnético $\vec{B}$ que atravessa uma área A como a somatória das linhas de campo magnético que atravessam perpendicularmente essa área.
-			\begin{block}{Fluxo do campo magnético}
-				\begin{equation*}
-					\varphi = BAcos\theta
-				\end{equation*}
-			\end{block}
-		\end{column}
-		\begin{column}{0.5\textwidth}
-			\begin{figure}
-				\input{tikz/fluxo-magnetico.pgf}
-			\end{figure}
-		\end{column}
-	\end{columns}
-\end{frame}
-
-\begin{frame}{Fluxo magnético e a orientação de $\vec{B}$ em relação a área}
-	\begin{figure}
-		\centering
-		\begin{subfigure}[b]{0.45\textwidth}
-			\centering
-		\input{tikz/fluxo-magnetico-0.pgf}
-			\caption*{\footnotesize Fluxo magnético máximo ($\theta = 0^o$)}
-		\end{subfigure}
-		\begin{subfigure}[b]{0.45\textwidth}
-			\centering
-		\input{tikz/fluxo-magnetico-90.pgf}
-			\caption*{\footnotesize Fluxo magnético zero ($\theta = 90^o$)}
-		\end{subfigure}
-	\end{figure}
-\end{frame}
-
-\begin{frame}{Variação do fluxo magnético ao longo de uma espira}
-	\begin{columns}
-		\begin{column}{0.5\textwidth}
-			\begin{block}{Lei de Faraday}
-				Sempre que houver uma variação do fluxo magnético através de um circuito, aparecerá, nesse circuito, uma f.e.m. induzida,
-				\begin{equation*}
-					\left|\frac{\Delta \varphi}{\Delta t}\right| = \varepsilon
-				\end{equation*}
-			\end{block}
-		\end{column}
-		\begin{column}{0.5\textwidth}
-			\begin{figure}
+\begin{frame}{Campo elétrico induzido}
+	\begin{columns}[c]
+		\begin{column}[c]{0.5\textwidth}
+			\begin{figure}[c]
 				\input{tikz/lei-faraday.pgf}
 			\end{figure}
 		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{block}{Lei de Faraday}
+				\justify
+				A variação do fluxo do campo magnético que atravessa uma espira fechada faz aparecer um campo elétrico induzido ao redor dessa espira.
+			\end{block}
+		\end{column}
 	\end{columns}
 	\begin{corollary}
-		No SI a unidade de medida de fluxo magnético é Weber (Wb).
+		Ao contrário da corrente induzida, o campo elétrico pode existir na ausência de matéria.
 	\end{corollary}
 \end{frame}
 
-\begin{frame}{Maneiras de como variar o fluxo magnético}
-	\begin{corollary}
-		Podemos variar o fluxo magnético que atravessa a espira ao longo do tempo de três maneiras distintas.
-	\end{corollary}
-	\begin{figure}
-		\centering
-		\begin{subfigure}[b]{0.3\textwidth}
-			\centering
-		\includegraphics[scale=0.3]{figuras/figura-1a}
-			\caption*{\footnotesize Variação de A no tempo.}
-		\end{subfigure}
-		\begin{subfigure}[b]{0.3\textwidth}
-			\centering
-		\includegraphics[scale=0.25]{figuras/figura-1b}
-			\caption*{\footnotesize Variação de $\theta$ no tempo.}
-		\end{subfigure}
-		\begin{subfigure}[b]{0.3\textwidth}
-			\centering
-		\includegraphics[scale=0.2]{figuras/figura-2a}
-			\caption*{\footnotesize Variação de B no tempo.}
-		\end{subfigure}
-	\end{figure}
-\end{frame}
-
-\section{Lei de Lenz}
-
-\subsection{}
-
-\begin{frame}{Sentido da corrente induzida em relação a variação do fluxo}
-	\begin{block}{Lei de Lenz}
-		A corrente induzida em um circuito aparece sempre com um sentido tal que o campo magnético que ela cria tende a contrariar a variação do fluxo magnético que a originou.
+\begin{frame}{Campo magnético induzido}
+	\begin{block}{Simetria dos fenômenos elétricos e magnéticos}
+		Maxwell, usando a idéia de simetria, sugeriu que assim como a variação de um \alert{campo magnético} no espaço pode induzir um \alert{campo elétrico}, a variação do \alert{campo elétrico} também pode induzir um \alert{campo magnético}.
 	\end{block}
-	\begin{columns}
-		\begin{column}{0.6\textwidth}
-			\begin{figure}
-				\centering
-				\begin{subfigure}[b]{0.45\textwidth}
-					\centering
-					\includegraphics[scale=0.2]{figuras/figura-2a}
-					\caption*{\footnotesize $\frac{\Delta \varphi}{\Delta t}>0$ no tempo.}
-				\end{subfigure}
-				\begin{subfigure}[b]{0.45\textwidth}
-					\centering
-					\includegraphics[scale=0.2]{figuras/figura-2b}
-					\caption*{\footnotesize $\frac{\Delta \varphi}{\Delta t}<0$ no tempo.}
-				\end{subfigure}
+	\begin{columns}[c]
+		\begin{column}[c]{0.5\textwidth}
+			\begin{figure}[c]
+				\input{tikz/lei-maxwell2.pgf}
 			\end{figure}
 		\end{column}
-		\begin{column}{0.4\textwidth}
-			\begin{block}{Lei de Faraday-Lenz}
-				\begin{equation*}
-					\frac{\Delta \varphi}{\Delta t} = \alert{-}\varepsilon
-				\end{equation*}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{block}{Lei de Maxwell}
+				\justify
+				A variação do fluxo do campo elétrico que atravessa uma espira fechada faz aparecer um campo magnético induzido ao redor dessa espira,
 			\end{block}
 		\end{column}
 	\end{columns}
 \end{frame}
 
-\section{Aplicações da indução eletromagnética}
-
+\section{Ondas eletromagnéticas}
 \subsection{}
 
-\begin{frame}{Dínamo}
-	\begin{columns}
-		\begin{column}{0.6\textwidth}
-			\begin{corollary}
-				Dínamo é um aparelho baseado no princípio da indução eletromagnética que transforma energia mecânica em energia elétrica.
-			\end{corollary}
-		\end{column}
-		\begin{column}{0.4\textwidth}
-			\begin{figure}
-				\includegraphics[scale=0.25]{figuras/dinamo.png}
-			\end{figure}
-		\end{column}
-	\end{columns}
-\end{frame}
-
-\begin{frame}{Gerador de energia elétrica}
+\begin{frame}
 	\begin{figure}
-		\centering
 		\begin{subfigure}[b]{0.45\textwidth}
-			\centering
-			\includegraphics[scale=0.3]{figuras/figura-1b}
-			\caption*{\footnotesize Variação de $\theta$ no tempo.}
+			\input{tikz/campo-eletrico.pgf}
+			\caption*{\footnotesize Campo elétrico induzido pela variação de $\vec{B}$.}
 		\end{subfigure}
-		\begin{subfigure}[b]{0.45\textwidth}
-			\centering
-			\includegraphics[scale=0.4]{figuras/figura-6}
-			\caption*{\footnotesize f.e.m. induzida em função do tempo.}
+		\begin{subfigure}[b]{0.5\textwidth}
+			\input{tikz/campo-magnetico.pgf}
+			\caption*{\footnotesize Campo magnético induzido pela variação de $\vec{E}$.}
 		\end{subfigure}
 	\end{figure}
+\end{frame}
+
+\begin{frame}
+	A unificação das teorias do eletromagnetismo e a contribuição dada por Maxwell, sugeriu que os campos elétricos e magnéticos deveriam ser representados por funções senoidais, ou seja, tanto o campo elétrico quanto o magnético são ondas que se propagam na mesma direção e sentido e com a mesma velocidade c.
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+			\begin{figure}
+				\input{tikz/onda-eletromagnetica2.pgf}
+			\end{figure}
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			A intensidade $\alert{I}$ da onda, ou seja, energia transportada por área e por tempo, é diretamente proporcional ao quadrado da frequência de oscilação $\alert{f}$ dessa onda,
+			\begin{equation*}
+				\boxed{I\; \alpha\; f^2.}
+			\end{equation*}
+		\end{column}
+	\end{columns}
 	\begin{corollary}
-		Uma f.e.m induzida que varia senoidalmente no tempo aparece devido a variação do fluxo de $\vec{B}$ em relação ao ângulo $\theta$.
+		Uma onda transporta energia mas não transporta matéria, portanto a onda não possui massa.
 	\end{corollary}
 \end{frame}
 
-\begin{frame}{Transformador}
-	\begin{columns}
-		\begin{column}{0.5\textwidth}
-			\begin{figure}
-				\includegraphics[scale=0.3]{figuras/figura-3b}
-			\end{figure}
-			\begin{corollary}
-				\begin{equation*}
-					V_2=N_2\frac{V_1}{N_1}
-				\end{equation*}
-			\end{corollary}
-		\end{column}
-		\begin{column}{0.5\textwidth}
-			\begin{figure}
-				\includegraphics[scale=0.5]{figuras/figura-3}
-			\end{figure}
-		\end{column}
-	\end{columns}
+\begin{frame}{A velocidade da onda eletromagnética}
+		\begin{multicols}{2}
+			O campo elétrico é definido como
+			\begin{equation*}
+				E = K\frac{Q}{r^2}=\frac{1}{4\pi\varepsilon_0}\frac{Q}{r^2},
+			\end{equation*}
+			onde $\varepsilon_0 \approx 8,9\times10^{-12}\;\text{F/m}$.\\
+			O campo magnético ao redor de um fio condutor é definido como
+			\begin{equation*}
+				B = \frac{\mu_0}{2\pi}\frac{i}{r},
+			\end{equation*}
+			onde $\mu_0=4\pi\times 10^{-7}\;N/A^2$.\\
+			Pela teoria do eletromagnetismo temos que a velocidade da onda é dado por
+			\begin{equation*}
+				c = \frac{1}{\sqrt{\mu_0\varepsilon_0}}.
+			\end{equation*}
+	\end{multicols}
+	\begin{block}{Velocidade da onda eletromagnética no vácuo}
+		\[c\approx 3\times 10^8\;m/s.\]
+	\end{block}
+\end{frame}
+
+\begin{frame}{A luz como onda eletromagnética}
+	Maxwell percebeu que a velocidade c obtida à partir do eletromagnetismo é exatamente idêntica a velocidade da luz, já bem conhecida ná época através de diversas técnicas de medição.\\
+	\textit{\small "A velocidade das ondas transversais em nosso meio hipotético, calculada a partir dos experimentos electromagnéticos dos Srs. Kohrausch e Weber, concorda tão exactamente com a velocidade da luz, calculada pelos experimentos óticos do Sr. Fizeau, que é difícil evitar a inferência de que a luz consiste nas ondulações transversais do mesmo meio que é a causa dos fenômenos eléctricos e magnéticos."}
+	\begin{corollary}
+		A luz é uma onda eletromagnética capaz de se \alert{propagar no vácuo} com a velocidade de aproximadamente $3\times 10^8\;m/s$. Isso é possível, pois podemos ter variações dos campos elétrico e magnético na ausência de matéria.
+	\end{corollary}
+\end{frame}
+
+\section{Aplicações}
+
+\subsection{}
+
+\begin{frame}{Espectro eletromagnético}
+	\begin{figure}
+		\begin{subfigure}{0.6\textwidth}
+			\includegraphics[scale=0.45]{figuras/espectro.jpg}
+		\end{subfigure}
+		\begin{subfigure}{0.35\textwidth}
+			\input{tikz/onda-eletromagnetica2.pgf}
+		\end{subfigure}
+	\end{figure}
+	\begin{corollary}
+		A radiação eletromagnética está presente em todos os lugares do nosso cotidiano.
+	\end{corollary}
 \end{frame}
 
 \section{Apêndice}
@@ -393,7 +344,7 @@
 	\begin{thebibliography}{9}
 		\bibitem{alvarenga}A. Máximo, B. Alvarenga, C. Guimarães, Física. Contexto e aplicações, v.1, 2.ed., São Paulo, Scipione (2016)
 	\end{thebibliography}
-
+	
 \vspace*{1cm}
 \begin{center}
 	Esta apresentação está disponível para download no endereço\\

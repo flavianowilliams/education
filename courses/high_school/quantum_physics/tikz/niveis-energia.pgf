@@ -1,0 +1,13 @@
+﻿\begin{tikzpicture}[scale=1.18,transform shape,font=\huge]
+
+	\tkzInit[xmin=-4,xmax=12,ymin=-22,ymax=2]
+	\tkzClip
+
+	\draw (-3,-22) -- (-3,1) node [above] {$E(\times 10^{-19}\;J)$};
+
+	\foreach \n in {1,2,3,4,6,10}{
+	\pgfmathsetmacro{\E}{-21.8/\n^2};
+	\draw[line width=1pt] (8,\E) -- (0,\E) node [left] {n=\n};
+	\node[right] at (8,\E) {\E};}
+
+\end{tikzpicture}

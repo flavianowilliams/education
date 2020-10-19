@@ -1,0 +1,27 @@
+﻿  \begin{tikzpicture}[scale=0.65, transform shape, x={(-10:1cm)},y={(90:1cm)},z={(210:1cm)}]
+    % Axes
+    \draw (-1,0,0) node[above] {$x$} -- (5,0,0);
+    \draw (0,0,0) -- (0,2,0) node[above] {$y$};
+    \draw (0,0,0) -- (0,0,2) node[left] {$z$};
+	%definindo funcao
+	\pgfmathdeclarefunction{fe}{1}{\pgfmathparse{cos(deg(pi*\x))}}
+    % Propagation
+    \draw[->,ultra thick] (5,0,0) -- node[above] {$\vec{c}$} (6,0,0);
+    % Waves
+    \draw[color=red,thick] plot[domain=0:4.5,samples=200] (\x,{fe(\x)},0);
+    \draw[color=green,thick] plot[domain=0:4.5,samples=200] (\x,0,{fe(\x)});
+    % Arrows
+    \foreach \x in {0.1,0.3,...,4.4} {
+      \draw[->,help lines,color=red] (\x,0,0) -- (\x,{fe(\x)},0);
+      \draw[->,help lines,color=green] (\x,0,0) -- (\x,0,{fe(\x)});}
+    % Labels
+    \node[above right,color=red] at (0,1,0) {$\bm{\vec{E}}$};
+    \node[below,color=green] at (0,0,1) {$\bm{\vec{B}}$};
+	%area da curva
+    \fill [color=red,opacity=0.2, domain=0:4.5, variable=\x] (0, 0,0) -- plot ({\x}, {fe(\x)},0);
+    \fill [color=green,opacity=0.2, domain=0:4.5, variable=\x] (0, 0,0) -- plot ({\x},0, {fe(\x)});
+
+	%comprimento onda
+	\foreach \x in {2}
+	\draw[line width=1pt,<->] (\x,{fe(\x)+0.125},0) -- (\x+2,{fe(\x)+0.125},0) node[above,midway] {$\lambda$};
+  \end{tikzpicture}

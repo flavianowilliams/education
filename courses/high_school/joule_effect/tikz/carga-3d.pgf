@@ -1,0 +1,46 @@
+\tdplotsetmaincoords{70}{110}
+\begin{tikzpicture}
+	[scale=3.0, tdplot_main_coords,
+	axis/.style={->,blue,thick},
+   	vectora/.style={tdplot_rotated_coords,stealth-stealth,thick},
+	vectorb/.style={-stealth,thick}]
+
+	%standard tikz coordinate definition using x, y, z coords
+	\coordinate (O) at (0,0,0);
+	
+	%draw axes
+	\draw[axis] (0,0,0) -- (1,0,0) node[anchor=north east]{$x$};
+	\draw[axis] (0,0,0) -- (0,1,0) node[anchor=north west]{$y$};
+	\draw[axis] (0,0,0) -- (0,0,1) node[anchor=south]{$z$};
+	
+
+	\foreach \x in {0,30,...,180}
+	\tdplotsetrotatedcoords{\x}{0}{0}
+	\draw[vectora] (-0.8,0,0) -- (0.8,0,0);
+
+	\foreach \x in {0,30,...,180}
+	\tdplotsetrotatedcoords{0}{\x}{0}
+	\draw[vectora] (-0.8,0,0) -- (0.8,0,0);
+
+	\foreach \x in {0,30,...,180}
+	\tdplotsetrotatedcoords{0}{0}{\x}
+	\draw[vectora] (-0.8,0,0) -- (0.8,0,0);
+
+	%configurando estilo das cargas
+	\tikzstyle{s1}=[tdplot_screen_coords, circle, radius=0.001, ball 								color=gray];
+	%draw charges
+	\tdplottransformmainscreen{0.}{0.}{0.}
+	\node [s1] (n1) at (\tdplotresx,\tdplotresy) {$+$};
+
+	%draw a vector from origin to charge
+	
+	\tdplotsetcoord{P1}{1.0}{90}{45}
+	\tdplotsetcoord{P2}{1.4}{90}{45}
+	
+	\draw[vectorb] (n1) -- (P2);
+	\draw[vectorb,red] (P1) -- (P2) node[above,midway] {$\vec{E}$};
+	
+	\tdplottransformmainscreen{0.71}{0.71}{0.0}
+	\node [s1] (n2) at (\tdplotresx,\tdplotresy) {};
+
+\end{tikzpicture}

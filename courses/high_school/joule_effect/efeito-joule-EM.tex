@@ -7,7 +7,7 @@
 
 %Título
 
-\title[Eletrostática]{Corrente elétrica}
+\title[Eletrodinâmica]{Efeito Joule}
 
 % The main document
 
@@ -21,176 +21,134 @@
   \tableofcontents
 \end{frame}
 
-\section{Corrente elétrica}
-
-\begin{frame}{Definição de corrente elétrica}
-	\begin{columns}
-		\begin{column}{0.4\textwidth}
-			\begin{figure}
-				\centering
-				\includegraphics[scale=0.25]{figuras/figura-1.png}
-				\caption*{\footnotesize Portadores de carga (elétrons) no interior de um condutor e a sua relação com o sentido do campo elétrico.}
-			\end{figure}
-		\end{column}
-		\begin{column}{0.6\textwidth}
-			\begin{itemize}
-				\item Em um condutor existe grande número de elétrons que estão fracamente ligados ao núcleo de cada átomo;
-				\item Na presença de um campo elétrico, os elétrons livres, sob a ação da força elétrica, entram em movimento ordenado, formando a corrente elétrica;
-				\item A corrente de elétrons sempre flui da região de menor potencial para a região de maior potencial elétrico.
-			\end{itemize}
-		\end{column}
-	\end{columns}	
-\end{frame}
-
-\begin{frame}{Sentido da corrente elétrica}
-	\begin{figure}[c]
-		\centering
-		\begin{subfigure}[c]{0.45\textwidth}
-		\centering
-			\includegraphics[height=3cm]{figuras/figura-2.png}
-			\caption*{\footnotesize Sentido da corrente real e convencional em um circuito elétrico.}
-		\end{subfigure}
-		\hspace{1cm}
-		\begin{subfigure}[c]{0.45\textwidth}
-		\centering
-			\includegraphics[height=3cm]{figuras/figura-3.png}
-			\caption*{\footnotesize Relação entre os sentidos da corrente real e convencional com o campo elétrico.}
-		\end{subfigure}
-	\end{figure}
-	\begin{corollary}
-		Para estudar a corrente em um circuito elétrico usamos a corrente convencional.
-	\end{corollary}
-\end{frame}
-
-\subsection{Intensidade da corrente}
-
-\begin{frame}{Fluxo e eletricidade}
-%	\begin{corollary}
-%		\justifying Podemos expandir a idéia de fluxo ou vazão da hidrodinâmica para calcular a intensidade de corrente num fio condutor.
-%	\end{corollary}
-	\begin{columns}
-		\begin{column}{0.4\textwidth}
-			\begin{figure}
-				\centering
-				\includegraphics[scale=0.37]{figuras/figura-4.png}
-				\caption*{\footnotesize Portadores de carga elétrica atravessando a seção reta S.}
-			\end{figure}
-		\end{column}
-		\begin{column}{0.6\textwidth}
-			\begin{block}{Intensidade da corrente}
-				Quando uma quantidade de carga $\Delta Q$ atravessa a seção de um condutor, durante um intervalo de tempo $\Delta t$, a intensidade i da corrente nessa seção é a relação entre $\Delta Q$ e $\Delta t$,
-				\begin{align*}
-					i & = \frac{\Delta Q}{\Delta t}.
-				\end{align*}
-			\end{block}
-		\end{column}
-	\end{columns}
-	\begin{corollary}
-		\justifying No SI a unidade de medida da corrente é C/s ou Ampère (A).
-	\end{corollary}
-\end{frame}
-
-\section{Circuito elétrico}
+\section{Potência elétrica}
 
 \subsection{}
 
-\begin{frame}{Circuito elétrico simples}
-	\begin{columns}[t]
-		\begin{column}{0.4\textwidth}
-			\begin{figure}
-				\centering
-				\includegraphics[scale=0.3]{figuras/figura-7.png}
-				\caption*{\footnotesize Diagrama de um circuito elétrico simples.}
-			\end{figure}
-		\end{column}
-		\begin{column}{0.6\textwidth}
-			\begin{itemize}
-				\item Quando a corrente chega ao polo negativo, as cargas são forçadas, em virtude de reações químicas, a se deslocar no interior da bateria, passando para o pólo positivo, fechando o circuito.
-				\item Enquanto as reações químicas mantiverem a diferença de potencial (ddp) entre os pólos da bateria, teremos a corrente elétrica.
-			\end{itemize}
-		\end{column}
-	\end{columns}
+\begin{frame}{Transformação de energia elétrica em outro tipo de energia}
+%	\begin{multicols}{2}
+		A definição de potência é a taxa da variação de trabalho $\tau$ realizado por determinado aparelho a cada intervalo de tempo,
+		\begin{align*}
+			P = \frac{\Delta \tau}{\Delta t}.
+		\end{align*}
+		Sabemos que um aparelho elétrico realiza trabalho $\tau_{AB}$ de modo a deslocar a quantidade de carga $\Delta q$ do terminal A para o terminal B, ou seja,
+		\begin{align*}
+			\tau_{AB} = \varepsilon_A-\varepsilon_B,
+		\end{align*}
+		onde $\varepsilon_{AB}$ representa a energia potencial nos terminais A e B. Pela definição de diferença de potencial nesses terminais, temos de maneira equivalente
+		\begin{align*}
+			\tau_{AB} = \Delta q\cdot V_{AB}.
+		\end{align*}		
+%	\end{multicols}
 \end{frame}
 
-\begin{frame}{Analogia com a bomba d'água}
-	\begin{columns}[t]
-		\begin{column}{0.4\textwidth}
-			\begin{figure}
-				\centering
-				\includegraphics[scale=0.45]{figuras/figura-8.png}
-				\caption*{\footnotesize Representação de um circuito de uma bomba d'água.}
-			\end{figure}
-		\end{column}
-		\begin{column}{0.6\textwidth}
-			\begin{itemize}
-				\item A bomba d'água realiza trabalho deslocando água ao longo do cano.
-				\item A vazão de água no cano é a mesma em qualquer seção do condutor.
-			\end{itemize}
-		\end{column}
-	\end{columns}
-\end{frame}
-
-\begin{frame}{Pilha de Daniell}
-	\begin{columns}[t]
-		\begin{column}{0.3\textwidth}
-			\begin{figure}
-				\centering
-				\includegraphics[height=4cm]{figuras/pilha-daniell.png}
-				\caption*{\footnotesize Representação física e química da pilha de Daniell.}
-			\end{figure}
-		\end{column}
-		\begin{column}{0.7\textwidth}
-			A pilha de Daniell é constituída por uma placa de zinco mergulhado em solução de sulfato de zinco e uma placa de cobre mergulhada em uma solução de sulfato de cobre. Através de uma reação química faz surgir elétrons livres na parte de zinco. Como o zinco tem afinidade para doar elétrons e o cobre para receber, isso faz surgir uma corrente elétrica ao longo do fio, transportando elétrons até o cobre. No entanto, com o tempo vai se acumulando íons positivos na solução contendo zinco e íons negativos na solução contendo cobre, isso exige a presença de uma ponte salina, de modo a transportar íons de um lado ao outro, fechando assim o circuito elétrico.
-		\end{column}
-	\end{columns}
-\end{frame}
-
-\begin{frame}{Exemplos de bateria}
-	\begin{figure}[b]
-		\Centering
-		\begin{subfigure}[b]{0.5\textwidth}
-			\includegraphics[scale=0.35]{figuras/figura-9.png}
-			\caption*{\footnotesize Pilha seca.}
-		\end{subfigure}
-		\begin{subfigure}[b]{0.5\textwidth}
-			\includegraphics[scale=0.5]{figuras/figura-10.png}
-			\caption*{\footnotesize Bateria.}
-		\end{subfigure}
-	\end{figure}
-\end{frame}
-
-\begin{frame}{Associação de pilhas}
-	\begin{figure}
-		\includegraphics[scale=0.3]{figuras/figura-11.png}
-		\caption*{\footnotesize Exemplo de associação de baterias em uma lanterna.}
-	\end{figure}
-	\begin{corollary}
+\begin{frame}{Transformação de energia elétrica em outro tipo de energia}
+	\begin{multicols}{2}
+		Como trabalho está associado com a variação da energia elétrica $\Delta E$, temos
+		\begin{align*}
+			\Delta E = \Delta q\cdot V_{AB}.
+		\end{align*}
+		Mas $P=\frac{\Delta E}{\Delta t}$, portanto
+		\begin{align*}
+			P = \frac{\Delta E}{\Delta t} = \frac{\Delta q}{\Delta t}\cdot V_{AB}.
+		\end{align*}
+		Pela definição de corrente temos
+		\begin{align*}
+			i = \frac{\Delta q}{\Delta t}.
+		\end{align*}
+		Substituímos na equação acima e obtemos a expressão da potência no circuito.
+	\end{multicols}
+	\begin{block}{Potência elétrica de um circuito}
 		\begin{equation*}
-			V_{AB} = 1,5\;V+1,5\;V+1,5\;V
+			P = i\cdot V_{AB}.
 		\end{equation*}
-	\end{corollary}
+	\end{block}
+	A unidade de medida de potência no SI é Watt (W).
 \end{frame}
 
-\begin{frame}{Circuito de corrente alternada (CA) e corrente contínua (CC)}
-	\begin{figure}[b]
-		\Centering
-		\begin{subfigure}[c]{0.5\textwidth}
-			\centering
-			\includegraphics[scale=0.4]{figuras/figura-5.png}
-			\caption*{\footnotesize Variação da ddp no circuito CC}
-		\end{subfigure}
-		\begin{subfigure}[c]{0.5\textwidth}
-			\centering
-			\includegraphics[scale=0.4]{figuras/figura-6.png}
-			\caption*{\footnotesize Variação da ddp no circuito CA}
-		\end{subfigure}
+\section{Efeito Joule}
+
+\subsection{}
+
+\begin{frame}{Transformação de energia elétrica em energia térmica}
+	\begin{multicols}{2}
+		A potência desenvolvida em um aparelho, pela passagem de uma corrente elétrica i entre os terminais A e B, é dada por $P=iV_{AB}$. Se entre esses terminais estiver um resistor ôhmico de resistência R, onde vale a Lei de Ohm ($V=Ri$), temos
+		\begin{align*}
+			P & = i\cdot V_{AB},\\
+			P & = i\cdot (Ri),\\
+			\Aboxed{P & = Ri^2.}
+		\end{align*}
+	\end{multicols}
+	\begin{block}{Efeito Joule}
+		O efeito Joule consiste na transformação de \alert{energia elétrica em energia térmica} em um resistor percorrido por uma corrente elétrica i, segundo a relação
+		\begin{equation*}
+			P = Ri^2.
+		\end{equation*}
+	\end{block}
+\end{frame}
+
+\begin{frame}
+	\begin{figure}
+		\centering
+		\includegraphics[scale=0.3]{figuras/figura-1.png}
 	\end{figure}
-	\begin{corollary}
-		\begin{itemize}
-			\item No circuito CC, a corrente e a tensão não variam, mantendo o sentido.
-			\item No circuito CA, a corrente e a tensão variam, alterando a intensidade e sentido ao longo do tempo.
-		\end{itemize}
-	\end{corollary}
+\end{frame}
+
+\section{Instrumentos de medida}
+
+\subsection{}
+
+\begin{frame}{Medida de corrente elétrica}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\begin{itemize}
+				\item O amperímetro é o instrumento usado para medir corrente elétrica;
+				\item Para medir a corrente elétrica que atravessa um fio condutor devemos ligar o amperímetro em série com a resistência do circuito, como mostra a figura ao lado;
+				\item A resistência interna de um amperímetro deve ser menor quanto possível, para seu valor não seja acrescentada na resistência do circuito.
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.4]{figuras/figura-2.png}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Medida da diferença de potencial}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\begin{itemize}
+				\item O voltímetro é o instrumento usado para medir a ddp entre dois terminais de um circuito;
+				\item Para medir a ddp devemos ligar o voltímetro em paralelo com a resistência do circuito, como mostra a figura ao lado;
+				\item A resistência interna de um voltímetro deve ser maior quanto possível, para que parte da corrente não seja desviada para o aparelho.
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.4]{figuras/figura-3.png}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Medida da resistência}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\begin{itemize}
+				\item O ohmímetro é o instrumento usado para medir a resistência elétrica de um resistor;
+				\item Podemos determinar a resistência R combinando as leituras de um voltímetro e de um amperímetro. Os valores lidos substituímos na Lei de Ohm, $R=\frac{V}{i}$.
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.4]{figuras/figura-4.png}
+			\end{figure}
+		\end{column}
+	\end{columns}
 \end{frame}
 
 \section{Apêndice}
@@ -388,7 +346,7 @@
 \begin{frame}{Referências}
 	\bibliographystyle{jurabib}
 	\begin{thebibliography}{9}
-		\bibitem{alvarenga}A. Máximo, B. Alvarenga, C. Guimarães, Física. Contexto e aplicações, v.3, 2.ed., São Paulo, Scipione (2016)
+		\bibitem{alvarenga}A. Máximo, B. Alvarenga, C. Guimarães, Física. Contexto e aplicações, v.3, 2.ed., São Paulo, Scipione (2016)\footnote{Todas as figuras ilustrativas não referenciadas no texto foram extraídas de Alvarenga et al\cite{alvarenga}}
 	\end{thebibliography}
 
 \vspace*{1cm}

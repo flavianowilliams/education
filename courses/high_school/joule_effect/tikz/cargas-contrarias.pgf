@@ -1,0 +1,25 @@
+\begin{tikzpicture}[scale=0.8, transform shape]
+	\useasboundingbox (-0.5,-2.5) rectangle (5.5,2.5);
+	\tikzset{>=stealth}
+	\tikzstyle{s1}=[circle, radius=0.25, ball color=gray];
+	%linhas de campo resultante%
+	\draw [black,->] (0,0) to [out=19, in=159] (5,0);
+	\draw [black,->] (0,0) to [out=-19, in=-159] (5,0);
+	\draw [black,->] (0,0) to [out=40, in=140] (5,0);
+	\draw [black,->] (0,0) to [out=-40, in=-140] (5,0);
+	\draw [black,->] (0,0) to [out=60, in=120] (5,0);
+	\draw [black,->] (0,0) to [out=-60, in=-120] (5,0);
+	\draw [black,->] (0,0) to [out=80, in=100] (5,0);
+	\draw [black,->] (0,0) to [out=-80, in=-100] (5,0);
+	\draw [black,->] (0,0) to [out=90, in=200] (1,1.5);
+	\draw [black,->] (0,0) to [out=-90, in=-200] (1,-1.5);
+	\draw [black,->] (0,0) to [out=110, in=-110] (0.05,1.25);
+	\draw [black,->] (0,0) to [out=-110, in=110] (0.05,-1.25);
+	\draw [black,<-] (5,0) to [out=90, in=-20] (4,1.5);
+	\draw [black,<-] (5,0) to [out=-90, in=20] (4,-1.5);
+	\draw [black,<-] (5,0) to [out=70, in=-70] (4.95,1.25);
+	\draw [black,<-] (5,0) to [out=-70, in=70] (4.95,-1.25);
+	%cargas%
+	\node [s1] (n1) at (0,0) {$+$};
+	\node [s1] (n2) at (5,0) {$-$};
+\end{tikzpicture}

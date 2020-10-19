@@ -1,0 +1,21 @@
+﻿\begin{circuitikz}[scale=0.4, transform shape]
+
+%	\useasboundingbox (-2.5,-1) rectangle (6.5,5);
+
+	\def\lx{8}
+	\def\ly{4}
+
+%	\draw[help lines, red!50] (0,0) grid (\lx,\ly);
+
+	\draw (0,0) to (0,\ly);
+	\draw (0,\ly) to [battery1] (\lx,\ly);
+	\draw (\lx,4) to (\lx,0);
+
+	\draw[color=red] (0,0) to [R=$R_{eq}$, *-*] (8,0);
+
+	\draw[line width=1pt, color=red,<-] (1,4.25) -- (1.5,4.25) node[above,midway] {$i(t)$};
+
+	\node at (0,0)[below] {A};
+	\node at (8,0)[below] {D};
+
+\end{circuitikz}

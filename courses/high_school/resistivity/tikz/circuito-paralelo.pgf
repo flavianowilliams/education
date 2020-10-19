@@ -1,0 +1,26 @@
+﻿\begin{circuitikz}[scale=0.6, transform shape]
+
+%	\useasboundingbox (-2.5,-1) rectangle (6.5,5);
+
+	\def\lx{5}
+	\def\ly{4}
+
+%	\draw[help lines, red!50] (0,0) grid (\lx,\ly);
+
+	\draw (0,\ly) to (0,-4);
+	\draw (0,\ly) to [battery1] (\lx,\ly);
+	\draw (\lx,\ly) to (\lx,-4);
+
+	\draw (0,0) to [R=$R_1$, *-*] (\lx,0);
+	\draw (0,-2) to [R=$R_2$, *-*] (\lx,-2);
+	\draw (0,-4) to [R=$R_3$, *-*] (\lx,-4);
+
+	\draw[line width=1pt, color=red,->] (-0.5,2) -- (-0.5,0) node[left,midway] {$i$};
+	\draw[line width=1pt, color=red,->] (0.5,0.5) -- (2,0.5) node[above,midway] {$i_1$};
+	\draw[line width=1pt, color=red,->] (0.5,-1.5) -- (2,-1.5) node[above,midway] {$i_2$};
+	\draw[line width=1pt, color=red,->] (0.5,-3.5) -- (2,-3.5) node[above,midway] {$i_3$};
+
+	\node at (0,-4)[below] {A};
+	\node at (\lx,-4)[below] {B};
+
+\end{circuitikz}

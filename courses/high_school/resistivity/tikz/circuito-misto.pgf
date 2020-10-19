@@ -1,0 +1,61 @@
+﻿\begin{circuitikz}[scale=0.5, transform shape]
+
+%	\useasboundingbox (-2.5,-1) rectangle (6.5,5);
+
+	\def\lx{8}
+	\def\ly{4}
+	\def\d{12}
+
+%	\draw[help lines, red!50] (0,0) grid (\lx,\ly);
+
+	\draw (0,0) to (0,\ly);
+	\draw (0,\ly) to [battery1] (\lx,\ly);
+	\draw (\lx,4) to (\lx,0);
+
+	\draw (0,0) to (1,0);
+	\draw (0,0) to [R=$R_1$, *-*] (3,0);
+	\draw (3,0) to [R=$R_2$, *-*] (5,0);
+	\draw (5,0) to [R=$R_4$, *-*] (8,0);
+	\draw (5,0) to (5.5,1.5);
+	\draw (5.5,1.5) to [R=$R_3$, *-*] (7.5,1.5);
+	\draw (7.5,1.5) to (8,0);
+	\draw (5,0) to (5.5,-1.5);
+	\draw (5.5,-1.5) to [R=$R_5$, *-*] (7.5,-1.5);
+	\draw (7.5,-1.5) to (8,0);
+	\draw (7,0) to (8,0);
+
+	\draw[line width=1pt, color=red,<-] (1,4.25) -- (1.5,4.25) node[above,midway] {$i(t)$};
+
+	\node at (0,0)[below] {A};
+	\node at (3,0)[below] {B};
+	\node at (5,0)[below] {C};
+	\node at (8,0)[below] {D};
+
+	\draw[->,line width=3pt] (\lx+1.5,0.5*\ly) -- (\lx+2.5,0.5*\ly);
+
+	\def\lxx{\lx+\d}
+
+%	\draw[help lines, red!50] (0+\d,0) grid (\lxx,\ly);
+
+	\draw (0+\d,0) to (0+\d,\ly);
+	\draw (0+\d,\ly) to [battery1] (\lxx,\ly);
+	\draw (\lxx,4) to (\lxx,0);
+
+	\draw (0+\d,0) to (1+\d,0);
+	\draw (0+\d,0) to [R=$R_1$, *-*] (3+\d,0);
+	\draw (3+\d,0) to [R=$R_2$, *-*] (5+\d,0);
+	\draw (5+\d,0)[color=red] to [R=$\frac{R_3R_4R_5}{R_3+R_4+R_5}$, *-*] (8+\d,0);
+
+	\draw (0+\d,-1.5)[color=green] to [R=$R_{eq}$, *-*] (8+\d,-1.5);
+
+	\draw[line width=1pt, color=red,<-] (1+\d,4.25) -- (1.5+\d,4.25) node[above,midway] {$i(t)$};
+
+	\node at (0+\d,0)[below] {A};
+	\node at (3+\d,0)[below] {B};
+	\node at (5+\d,0)[below] {C};
+	\node at (8+\d,0)[below] {D};
+
+	\node at (0+\d,-1.5)[below,color=green] {A};
+	\node at (8+\d,-1.5)[below,color=green] {D};
+
+\end{circuitikz}

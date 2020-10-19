@@ -1,0 +1,456 @@
+% Aula de eletrodinâmica para o curso de Física II da graduação
+%
+\documentclass[brazil,aspectratio=169]{beamer}
+%
+%carregando preâmbulo
+\input{../../contrib/preamble}
+
+%Título
+
+\title[Eletrodinâmica]{Resistência elétrica e resistividade}
+
+% The main document
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Sumário}
+  \tableofcontents
+\end{frame}
+
+\section{Resistência elétrica}
+
+\subsection{}
+
+\begin{frame}{O que é resitência elétrica?}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\begin{corollary}
+				Quando uma diferença de potencial V é aplicada nas extremidades de um condutor, estabelecendo nele uma corrente elétrica i, a resistência desse condutor em \textcolor{red}{ohms} ($\Omega$) é dada pela relação
+				\begin{align*}
+					R=\frac{V}{i}				
+				\end{align*}
+			\end{corollary}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.33]{figuras/figura-1.png}
+				\caption*{\footnotesize Esquema de resistividade em um fio.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+	\begin{corollary}
+		Quanto maior a temperatura, maior será a oposição que o condutor oferecerá a passagem da corrente e maior será o valor de R.
+	\end{corollary}
+\end{frame}
+
+\begin{frame}{Resistividade de um material}
+	\begin{multicols}{2}
+		Foi verificado experimentalmente que a resistência R \textcolor{red}{aumenta proporcionalmente} com o comprimento L do fio condutor, ou seja,
+		\begin{align*}
+			R\;\alpha\;L.
+		\end{align*}
+		Verificou-se também que a resistência é \textcolor{red}{inversamente proporcional} a área da seção reta,
+		\begin{align*}
+			R\;\alpha\;\frac{1}{A},
+		\end{align*}
+		Reunindo ambas as informações podemos definir a resistência de um fio condutor em função da área e comprimento na forma
+		\begin{align*}
+			\Aboxed{R=\rho \frac{L}{A},}
+		\end{align*}
+		onde $\alert{\rho}$ é denominada resistividade do material, que depende das caraterísticas atômicas de cada material.
+	\end{multicols}
+\end{frame}
+
+\begin{frame}{Fatores que influenciam na resistência}
+	\begin{itemize}
+		\item A resistência de um condutor é tanto maior quanto maior for seu comprimento;
+		\item A resistência de um condutor é tanto maior quanto menor for a área de sua seção reta (quanto mais fino for o condutor);
+		\item A resistência de um condutor depende do material de que ele é feito.
+	\end{itemize}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\begin{block}{Condutividade elétrica}
+				A substância será tanto melhor condutora elétrica quanto menor for a sua resistividade.
+			\end{block}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.3]{figuras/figura-2.png}
+				\caption*{\footnotesize Resistividade de alguns materiais.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Reostato}
+	\begin{corollary}
+		Variando o comprimento ou a área de um resistor, podemos variar a sua resistência, e consequentemente a corrente elétrica no circuito. Esse é o princípio de funcionamento do reostato.
+	\end{corollary}
+	\begin{figure}
+		\begin{subfigure}[b]{0.35\textwidth}
+			\centering
+			\includegraphics[scale=0.25]{figuras/figura-3a.png}
+			\caption*{Esquema de um reostato.}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.3\textwidth}
+			\centering
+			\includegraphics[scale=0.2]{figuras/figura-3b.png}
+			\caption*{Fotografia de um reostato.}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.3\textwidth}
+			\centering
+			\includegraphics[scale=0.35]{figuras/figura-3c.png}
+			\caption*{Símbolo de um reostato.}
+		\end{subfigure}
+	\end{figure}
+\end{frame}
+
+\section{A Lei de Ohm}
+
+\subsection{}
+
+\begin{frame}{Resistor ôhmico}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\begin{block}{A Lei de Ohm}
+				Para um grande número de condutores (como os metais), o valor da resistência permanece constante, não dependendo da diferença de potencial aplicada ao condutor.
+			\end{block}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{align*}
+				\frac{(V_{AB})_1}{i_1} & =\frac{(V_{AB})_2}{i_2}=\cdots,\\
+				\Aboxed{\frac{V_{AB}}{i} & =R=\text{constante}.}
+			\end{align*}
+		\end{column}
+	\end{columns}
+	\begin{figure}
+		\centering
+		\includegraphics[scale=0.39]{figuras/figura-4a.png}
+		\caption*{\footnotesize Aumentanto a tensão a corrente aumenta proporcionalmente}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Gráfico Tensão x Corrente}
+	\begin{figure}
+		\begin{subfigure}[b]{0.45\textwidth}
+			\centering
+			\includegraphics[scale=0.4]{figuras/figura-5a.png}
+			\caption*{Resistor ôhmico.}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.45\textwidth}
+			\centering
+			\includegraphics[scale=0.45]{figuras/figura-5b.png}
+			\caption*{Resistor não-ôhmico.}
+		\end{subfigure}
+	\end{figure}
+	\begin{corollary}
+		O gráfico tensão versus corrente é uma reta passando pela origem.
+	\end{corollary}
+\end{frame}
+
+\section{Associação de resistores}
+
+\subsection{}
+
+\begin{frame}{Resistores ligados em série}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			A mesma corrente i passa pelos resistores $R_1$, $R_2$ e $R_3$, portanto
+			\begin{align*}
+				V_{AB} & =R_1i,\\
+				V_{BC} & =R_2i,\\
+				V_{CD} & =R_3i.
+			\end{align*}
+			A diferença de potencial entre os terminais A e D é dado por
+			\begin{align*}
+				V_{AD}=V_{AB}+V_{BC}+V_{CD}.
+			\end{align*}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}
+			\centering
+				%\input{tikz/circuito-serie-2.pgf}
+				\begin{circuitikz}[scale=0.6, transform shape]
+					
+					%	\useasboundingbox (-2.5,-1) rectangle (6.5,5);
+					
+					\def\lx{8}
+					\def\ly{4}
+					
+					%	\draw[help lines, red!50] (0,0) grid (\lx,\ly);
+					
+					\draw (0,0) to (0,\ly);
+					\draw (0,\ly) to [battery1] (\lx,\ly);
+					\draw (\lx,4) to (\lx,0);
+					
+					\draw (0,0) to (1,0);
+					\draw (0,0) to [R=$R_1$, *-*] (3,0);
+					\draw (3,0) to [R=$R_2$, *-*] (5,0);
+					\draw (5,0) to [R=$R_3$, *-*] (8,0);
+					\draw (7,0) to (8,0);
+					
+					\draw[line width=1pt, color=red,<-] (1,4.25) -- (1.5,4.25) node[above,midway] {$i(t)$};
+					
+					\node at (0,0)[below] {A};
+					\node at (3,0)[below] {B};
+					\node at (5,0)[below] {C};
+					\node at (8,0)[below] {D};
+					
+				\end{circuitikz}
+				\caption*{\footnotesize Exemplo de associação em série.}
+			\end{figure}
+		\end{column}
+	\end{columns}	
+\end{frame}
+
+\begin{frame}{Resistência equivalente em ligações em série}
+	\begin{columns}
+		\begin{column}{0.55\textwidth}
+			Substituindo $V_{AB}$, $V_{BC}$ e $V_{CD}$ temos
+			\begin{align*}
+				V_{AD} & = V_{AB}+V_{BC}+V_{CD},\\
+				V_{AD} & = R_1i+R_2i+R_3i,\\
+				V_{AD} & = \underbracket{(R_1+R_2+R_3)}_{\alert{R_{eq}}}i.
+			\end{align*}
+			\begin{block}{Resistência equivalente}
+				\begin{equation*}
+					R_{eq}=R_1+R_2+\cdots+R_N.
+				\end{equation*}
+			\end{block}
+		\end{column}
+		\begin{column}{0.45\textwidth}
+			\begin{figure}
+				\begin{subfigure}{0.5\textwidth}
+					\centering
+					%\input{tikz/circuito-serie.pgf}
+					\begin{circuitikz}[scale=0.4, transform shape]
+						
+						%	\useasboundingbox (-2.5,-1) rectangle (6.5,5);
+						
+						\def\lx{8}
+						\def\ly{4}
+						
+						%	\draw[help lines, red!50] (0,0) grid (\lx,\ly);
+						
+						\draw (0,0) to (0,\ly);
+						\draw (0,\ly) to [battery1] (\lx,\ly);
+						\draw (\lx,4) to (\lx,0);
+						
+						\draw (0,0) to (1,0);
+						\draw (0,0) to [R=$R_1$, *-*] (3,0);
+						\draw (3,0) to [R=$R_2$, *-*] (5,0);
+						\draw (5,0) to [R=$R_3$, *-*] (8,0);
+						\draw (7,0) to (8,0);
+						
+						\draw[line width=1pt, color=red,<-] (1,4.25) -- (1.5,4.25) node[above,midway] {$i(t)$};
+						
+						\node at (0,0)[below] {A};
+						\node at (3,0)[below] {B};
+						\node at (5,0)[below] {C};
+						\node at (8,0)[below] {D};
+						
+					\end{circuitikz}
+					\caption*{\footnotesize Circuito detalhado.}	
+				\end{subfigure}
+			\begin{subfigure}{0.5\textwidth}
+			\centering
+				%\input{tikz/circuito-serie-req.pgf}
+				\begin{circuitikz}[scale=0.4, transform shape]
+					
+					%	\useasboundingbox (-2.5,-1) rectangle (6.5,5);
+					
+					\def\lx{8}
+					\def\ly{4}
+					
+					%	\draw[help lines, red!50] (0,0) grid (\lx,\ly);
+					
+					\draw (0,0) to (0,\ly);
+					\draw (0,\ly) to [battery1] (\lx,\ly);
+					\draw (\lx,4) to (\lx,0);
+					
+					\draw[color=red] (0,0) to [R=$R_{eq}$, *-*] (8,0);
+					
+					\draw[line width=1pt, color=red,<-] (1,4.25) -- (1.5,4.25) node[above,midway] {$i(t)$};
+					
+					\node at (0,0)[below] {A};
+					\node at (8,0)[below] {D};
+					
+				\end{circuitikz}
+				\caption*{\footnotesize Circuito equivalente.}		
+			\end{subfigure}
+			\end{figure}
+		\end{column}
+	\end{columns}	
+\end{frame}
+
+\begin{frame}{Resistores ligados em paralelo}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			A corrente i que atravessa o fio condutor é dividida nos terminais A e B, o que resulta
+			\begin{align*}
+				i = i_1+i_2+i_3.
+			\end{align*}
+			Sabendo que $i=\frac{V}{R}$ temos
+			\begin{align*}
+				\frac{V_{AB}}{R_{eq}}=\frac{V_{R_1}}{R_1}+\frac{V_{R_2}}{R_2}+\frac{V_{R_3}}{R_3}.
+			\end{align*}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}
+			\centering
+				%\input{tikz/circuito-paralelo.pgf}
+				\begin{circuitikz}[scale=0.55, transform shape]
+					
+					%	\useasboundingbox (-2.5,-1) rectangle (6.5,5);
+					
+					\def\lx{5}
+					\def\ly{4}
+					
+					%	\draw[help lines, red!50] (0,0) grid (\lx,\ly);
+					
+					\draw (0,\ly) to (0,-4);
+					\draw (0,\ly) to [battery1] (\lx,\ly);
+					\draw (\lx,\ly) to (\lx,-4);
+					
+					\draw (0,0) to [R=$R_1$, *-*] (\lx,0);
+					\draw (0,-2) to [R=$R_2$, *-*] (\lx,-2);
+					\draw (0,-4) to [R=$R_3$, *-*] (\lx,-4);
+					
+					\draw[line width=1pt, color=red,->] (-0.5,2) -- (-0.5,0) node[left,midway] {$i$};
+					\draw[line width=1pt, color=red,->] (0.5,0.5) -- (2,0.5) node[above,midway] {$i_1$};
+					\draw[line width=1pt, color=red,->] (0.5,-1.5) -- (2,-1.5) node[above,midway] {$i_2$};
+					\draw[line width=1pt, color=red,->] (0.5,-3.5) -- (2,-3.5) node[above,midway] {$i_3$};
+					
+					\node at (0,-4)[below] {A};
+					\node at (\lx,-4)[below] {B};
+					
+				\end{circuitikz}
+				\caption*{\footnotesize Exemplo de associação em paralelo.}
+			\end{figure}
+		\end{column}
+	\end{columns}	
+\end{frame}
+
+\begin{frame}{Resistores ligados em paralelo}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			mas a tensão entre os terminais A e B da bateria é a mesma nos terminais dos resistores $R_1$, $R_2$ e $R_3$, ou seja, 					\begin{align*}
+				V_{AB}=V_{R_1}=V_{R_2}=V_{R_3}=V,
+			\end{align*}
+			portanto
+			\begin{align*}
+				\frac{V_{AB}}{R_{eq}} & =\frac{V}{R_{eq}}=\frac{V}{R_1}+\frac{V}{R_2}+\frac{V}{R_3},\\
+				\frac{\bcancel{V}}{R_{eq}} & =\bcancel{V}\left(\frac{1}{R_1}+\frac{1}{R_2}+\frac{1}{R_3}\right),
+			\end{align*}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{align*}
+			\frac{1}{R_{eq}} & =\frac{1}{R_1}+\frac{1}{R_2}+\frac{1}{R_3},\\
+				\Aboxed{R_{eq} & =\frac{R_2R_2R_3}{R_1R_3+R_2R_3+R_1R_2}.}
+			\end{align*}
+			\begin{block}{Resistência equivalente de ligação em paralelo}
+				\begin{align*}
+					\frac{1}{R_{eq}} =\frac{1}{R_1}+\frac{1}{R_2}+\cdots +\frac{1}{R_N}.
+				\end{align*}
+			\end{block}
+		\end{column}
+	\end{columns}	
+\end{frame}
+
+\begin{frame}{Associação mista de resistores}
+	\begin{figure}
+		\centering
+		%\input{tikz/circuito-misto.pgf}
+		\begin{circuitikz}[scale=0.5, transform shape]
+			
+			%	\useasboundingbox (-2.5,-1) rectangle (6.5,5);
+			
+			\def\lx{8}
+			\def\ly{4}
+			\def\d{12}
+			
+			%	\draw[help lines, red!50] (0,0) grid (\lx,\ly);
+			
+			\draw (0,0) to (0,\ly);
+			\draw (0,\ly) to [battery1] (\lx,\ly);
+			\draw (\lx,4) to (\lx,0);
+			
+			\draw (0,0) to (1,0);
+			\draw (0,0) to [R=$R_1$, *-*] (3,0);
+			\draw (3,0) to [R=$R_2$, *-*] (5,0);
+			\draw (5,0) to [R=$R_4$, *-*] (8,0);
+			\draw (5,0) to (5.5,1.5);
+			\draw (5.5,1.5) to [R=$R_3$, *-*] (7.5,1.5);
+			\draw (7.5,1.5) to (8,0);
+			\draw (5,0) to (5.5,-1.5);
+			\draw (5.5,-1.5) to [R=$R_5$, *-*] (7.5,-1.5);
+			\draw (7.5,-1.5) to (8,0);
+			\draw (7,0) to (8,0);
+			
+			\draw[line width=1pt, color=red,<-] (1,4.25) -- (1.5,4.25) node[above,midway] {$i(t)$};
+			
+			\node at (0,0)[below] {A};
+			\node at (3,0)[below] {B};
+			\node at (5,0)[below] {C};
+			\node at (8,0)[below] {D};
+			
+			\draw[->,line width=3pt] (\lx+1.5,0.5*\ly) -- (\lx+2.5,0.5*\ly);
+			
+			\def\lxx{\lx+\d}
+			
+			%	\draw[help lines, red!50] (0+\d,0) grid (\lxx,\ly);
+			
+			\draw (0+\d,0) to (0+\d,\ly);
+			\draw (0+\d,\ly) to [battery1] (\lxx,\ly);
+			\draw (\lxx,4) to (\lxx,0);
+			
+			\draw (0+\d,0) to (1+\d,0);
+			\draw (0+\d,0) to [R=$R_1$, *-*] (3+\d,0);
+			\draw (3+\d,0) to [R=$R_2$, *-*] (5+\d,0);
+			\draw (5+\d,0)[color=red] to [R=$\frac{R_3R_4R_5}{R_3+R_4+R_5}$, *-*] (8+\d,0);
+			
+			\draw (0+\d,-1.5)[color=green] to [R=$R_{eq}$, *-*] (8+\d,-1.5);
+			
+			\draw[line width=1pt, color=red,<-] (1+\d,4.25) -- (1.5+\d,4.25) node[above,midway] {$i(t)$};
+			
+			\node at (0+\d,0)[below] {A};
+			\node at (3+\d,0)[below] {B};
+			\node at (5+\d,0)[below] {C};
+			\node at (8+\d,0)[below] {D};
+			
+			\node at (0+\d,-1.5)[below,color=green] {A};
+			\node at (8+\d,-1.5)[below,color=green] {D};
+			
+		\end{circuitikz}
+		\caption*{\footnotesize Exemplo de associação mista.}
+	\end{figure}
+	\begin{block}{Circuito misto}
+		Associação mista de ligações de resistores em série e paralelo.
+	\end{block}
+\end{frame}
+
+\section{Referências}
+
+\subsection{}
+
+\begin{frame}{Referências}
+	\bibliographystyle{jurabib}
+	\begin{thebibliography}{9}
+		\bibitem{alvarenga}A. Máximo, B. Alvarenga, C. Guimarães, Física. Contexto e aplicações, v.1, 2.ed., São Paulo, Scipione (2016)
+	\end{thebibliography}
+
+\vspace*{1cm}
+\begin{center}
+	Esta apresentação está disponível para download no endereço\\
+	\href{https://flavianowilliams.github.io/teaching}{\textcolor{blue}{https://flavianowilliams.github.io/teaching}}
+\end{center}
+	
+\end{frame}
+
+\end{document}

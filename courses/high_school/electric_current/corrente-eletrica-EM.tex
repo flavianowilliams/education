@@ -1,0 +1,214 @@
+% Aula de eletrodinâmica para o curso de Física II da graduação
+%
+\documentclass[brazil,aspectratio=169]{beamer}
+%
+%carregando preâmbulo
+\input{../../contrib/preamble}
+
+%Título
+
+\title[Eletrostática]{Corrente elétrica}
+
+% The main document
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Sumário}
+  \tableofcontents
+\end{frame}
+
+\section{Corrente elétrica}
+
+\begin{frame}{Definição de corrente elétrica}
+	\begin{columns}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.25]{figuras/figura-1.png}
+				\caption*{\footnotesize Portadores de carga (elétrons) no interior de um condutor e a sua relação com o sentido do campo elétrico.}
+			\end{figure}
+		\end{column}
+		\begin{column}{0.6\textwidth}
+			\begin{itemize}
+				\item Em um condutor existe grande número de elétrons que estão fracamente ligados ao núcleo de cada átomo;
+				\item Na presença de um campo elétrico, os elétrons livres, sob a ação da força elétrica, entram em movimento ordenado, formando a corrente elétrica;
+				\item A corrente de elétrons sempre flui da região de menor potencial para a região de maior potencial elétrico.
+			\end{itemize}
+		\end{column}
+	\end{columns}	
+\end{frame}
+
+\begin{frame}{Sentido da corrente elétrica}
+	\begin{figure}[c]
+		\centering
+		\begin{subfigure}[c]{0.45\textwidth}
+		\centering
+			\includegraphics[height=3cm]{figuras/figura-2.png}
+			\caption*{\footnotesize Sentido da corrente real e convencional em um circuito elétrico.}
+		\end{subfigure}
+		\hspace{1cm}
+		\begin{subfigure}[c]{0.45\textwidth}
+		\centering
+			\includegraphics[height=3cm]{figuras/figura-3.png}
+			\caption*{\footnotesize Relação entre os sentidos da corrente real e convencional com o campo elétrico.}
+		\end{subfigure}
+	\end{figure}
+	\begin{corollary}
+		Para estudar a corrente em um circuito elétrico usamos a corrente convencional.
+	\end{corollary}
+\end{frame}
+
+\subsection{Intensidade da corrente}
+
+\begin{frame}{Fluxo e eletricidade}
+%	\begin{corollary}
+%		\justifying Podemos expandir a idéia de fluxo ou vazão da hidrodinâmica para calcular a intensidade de corrente num fio condutor.
+%	\end{corollary}
+	\begin{columns}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.37]{figuras/figura-4.png}
+				\caption*{\footnotesize Portadores de carga elétrica atravessando a seção reta S.}
+			\end{figure}
+		\end{column}
+		\begin{column}{0.6\textwidth}
+			\begin{block}{Intensidade da corrente}
+				Quando uma quantidade de carga $\Delta Q$ atravessa a seção de um condutor, durante um intervalo de tempo $\Delta t$, a intensidade i da corrente nessa seção é a relação entre $\Delta Q$ e $\Delta t$,
+				\begin{align*}
+					i & = \frac{\Delta Q}{\Delta t}.
+				\end{align*}
+			\end{block}
+		\end{column}
+	\end{columns}
+	\begin{corollary}
+		\justifying No SI a unidade de medida da corrente é C/s ou Ampère (A).
+	\end{corollary}
+\end{frame}
+
+\section{Circuito elétrico}
+
+\subsection{}
+
+\begin{frame}{Circuito elétrico simples}
+	\begin{columns}[t]
+		\begin{column}{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.3]{figuras/figura-7.png}
+				\caption*{\footnotesize Diagrama de um circuito elétrico simples.}
+			\end{figure}
+		\end{column}
+		\begin{column}{0.6\textwidth}
+			\begin{itemize}
+				\item Quando a corrente chega ao polo negativo, as cargas são forçadas, em virtude de reações químicas, a se deslocar no interior da bateria, passando para o pólo positivo, fechando o circuito.
+				\item Enquanto as reações químicas mantiverem a diferença de potencial (ddp) entre os pólos da bateria, teremos a corrente elétrica.
+			\end{itemize}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Analogia com a bomba d'água}
+	\begin{columns}[t]
+		\begin{column}{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.45]{figuras/figura-8.png}
+				\caption*{\footnotesize Representação de um circuito de uma bomba d'água.}
+			\end{figure}
+		\end{column}
+		\begin{column}{0.6\textwidth}
+			\begin{itemize}
+				\item A bomba d'água realiza trabalho deslocando água ao longo do cano.
+				\item A vazão de água no cano é a mesma em qualquer seção do condutor.
+			\end{itemize}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Pilha de Daniell}
+	\begin{columns}[t]
+		\begin{column}{0.3\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[height=4cm]{figuras/pilha-daniell.png}
+				\caption*{\footnotesize Representação física e química da pilha de Daniell.}
+			\end{figure}
+		\end{column}
+		\begin{column}{0.7\textwidth}
+			A pilha de Daniell é constituída por uma placa de zinco mergulhado em solução de sulfato de zinco e uma placa de cobre mergulhada em uma solução de sulfato de cobre. Através de uma reação química faz surgir elétrons livres na parte de zinco. Como o zinco tem afinidade para doar elétrons e o cobre para receber, isso faz surgir uma corrente elétrica ao longo do fio, transportando elétrons até o cobre. No entanto, com o tempo vai se acumulando íons positivos na solução contendo zinco e íons negativos na solução contendo cobre, isso exige a presença de uma ponte salina, de modo a transportar íons de um lado ao outro, fechando assim o circuito elétrico.
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Exemplos de bateria}
+	\begin{figure}[b]
+		\Centering
+		\begin{subfigure}[b]{0.5\textwidth}
+			\includegraphics[scale=0.35]{figuras/figura-9.png}
+			\caption*{\footnotesize Pilha seca.}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.5\textwidth}
+			\includegraphics[scale=0.5]{figuras/figura-10.png}
+			\caption*{\footnotesize Bateria.}
+		\end{subfigure}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Associação de pilhas}
+	\begin{figure}
+		\includegraphics[scale=0.3]{figuras/figura-11.png}
+		\caption*{\footnotesize Exemplo de associação de baterias em uma lanterna.}
+	\end{figure}
+	\begin{corollary}
+		\begin{equation*}
+			V_{AB} = 1,5\;V+1,5\;V+1,5\;V
+		\end{equation*}
+	\end{corollary}
+\end{frame}
+
+\begin{frame}{Circuito de corrente alternada (CA) e corrente contínua (CC)}
+	\begin{figure}[b]
+		\Centering
+		\begin{subfigure}[c]{0.5\textwidth}
+			\centering
+			\includegraphics[scale=0.4]{figuras/figura-5.png}
+			\caption*{\footnotesize Variação da ddp no circuito CC}
+		\end{subfigure}
+		\begin{subfigure}[c]{0.5\textwidth}
+			\centering
+			\includegraphics[scale=0.4]{figuras/figura-6.png}
+			\caption*{\footnotesize Variação da ddp no circuito CA}
+		\end{subfigure}
+	\end{figure}
+	\begin{corollary}
+		\begin{itemize}
+			\item No circuito CC, a corrente e a tensão não variam, mantendo o sentido.
+			\item No circuito CA, a corrente e a tensão variam, alterando a intensidade e sentido ao longo do tempo.
+		\end{itemize}
+	\end{corollary}
+\end{frame}
+
+\section{Referências}
+
+\subsection{}
+
+\begin{frame}{Referências}
+	\bibliographystyle{jurabib}
+	\begin{thebibliography}{9}
+		\bibitem{alvarenga}A. Máximo, B. Alvarenga, C. Guimarães, Física. Contexto e aplicações, v.3, 2.ed., São Paulo, Scipione (2016)
+	\end{thebibliography}
+
+\vspace*{1cm}
+\begin{center}
+	Esta apresentação está disponível para download no endereço\\
+	\href{https://flavianowilliams.github.io/teaching}{\textcolor{blue}{https://flavianowilliams.github.io/teaching}}
+\end{center}
+	
+\end{frame}
+
+\end{document}

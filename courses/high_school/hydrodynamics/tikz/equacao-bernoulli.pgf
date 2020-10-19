@@ -1,0 +1,85 @@
+﻿\begin{tikzpicture}
+  \def\XSTART{0}
+  \def\YSTART{3}
+  \def\YDIAONE{2.5}
+  \def\YDIATWO{2}
+  \def\YCURVE{2}
+  \def\XCURVE{2}
+  \def\XEND{15}
+  \def\XONESTART{2}
+  \def\XONEDELTA{2}
+  \def\DD{0.5}
+
+  \def\YEND{\YSTART+\YCURVE+\YDIATWO}
+  \def\XCURVESTART{\XEND/2-\XSTART/2-\XCURVE/2}
+  \def\XCURVESTARTUP{\XEND/2-\XSTART/2-\XCURVE}
+  \def\XCURVEEND{\XEND/2-\XSTART/2 + \XCURVE/2}
+  \def\XONEEND{\XONESTART+\XONEDELTA}
+  \def\XTWOSTART{\XCURVEEND+\XONESTART}
+  \def\XTWODELTA{\XONEDELTA*\YDIAONE*\YDIAONE/\YDIATWO/\YDIATWO}
+  \def\XTWOEND{\XTWOSTART+\XTWODELTA}
+  \def\YTWOMIDDLE{\YSTART+\YCURVE+\YDIATWO/2}
+  \def\GROUND{\YSTART/4}
+
+  \pgfmathsetmacro{\XMEDIO}{0.5*(\XSTART+\XEND)}
+  \pgfmathsetmacro{\YTOTAL}{\YSTART+\YCURVE+\YDIATWO+1}
+  \pgfmathsetmacro{\YONEMIDDLE}{\YSTART+\YDIAONE/2}
+  \pgfmathsetmacro{\XMIN}{\XSTART}
+  \pgfmathsetmacro{\XTOTAL}{\XEND}
+
+	\tkzInit[xmin=\XMIN,xmax=\XTOTAL,ymin=\YEND,ymax=\YTOTAL]
+	\tkzGrid[color=gray!20]
+	\tkzClip
+
+  \tikzset{partial ellipse/.style args={#1:#2:#3}{insert path={+ (#1:#3) arc (#1:#2:#3)}},dimen/.style={<->,>=latex,thin,
+        every rectangle node/.style={fill=white,midway,font=\sffamily}},}
+
+  \draw (\XSTART,\YSTART) -- (\XCURVESTART,\YSTART)
+    to[out=0, in=180, looseness=0.75]
+      (\XCURVEEND,{\YSTART+\YCURVE}) -- (\XEND,{\YSTART+\YCURVE});
+  \draw (\XSTART,{\YSTART+\YDIAONE}) -- (\XCURVESTARTUP,{\YSTART+\YDIAONE})
+    to[out=0, in=180, looseness=0.75] (\XCURVEEND,\YEND) -- (\XEND,\YEND);
+
+  \draw [fill=gray] (\XONESTART,\YSTART) coordinate (BA)
+    rectangle (\XONEEND,{\YSTART+\YDIAONE}) coordinate (BB);
+  \draw [fill=lightgray](\XONESTART,\YONEMIDDLE) node [below] {$A_1$}
+    ellipse ({\YDIAONE/6} and {\YDIAONE/2});
+  \draw [fill=gray,dashed](\XONEEND,\YONEMIDDLE)
+    ellipse ({\YDIAONE/6} and {\YDIAONE/2});
+  \draw (\XONEEND,\YONEMIDDLE)
+    [partial ellipse=-90:90:{\YDIAONE/6} and {\YDIAONE/2}];
+
+  \draw [fill=gray] (\XTWOSTART,{\YSTART+\YCURVE}) coordinate (CA)
+    rectangle (\XTWOEND,{\YSTART+\YCURVE+\YDIATWO}) coordinate (CB);
+  \draw [fill=lightgray] (\XTWOSTART,\YTWOMIDDLE) node [below] {$A_2$}
+    ellipse ({\YDIATWO/6} and {\YDIATWO/2});
+
+  \draw [style=<-,line width=1.5pt](\XTWOEND+0.25,\YTWOMIDDLE) --++ (0.5,0) node [right] {$\vec{F}_2$};
+
+  \draw [fill=gray,dashed](\XTWOEND,\YTWOMIDDLE)
+    ellipse ({\YDIATWO/6} and {\YDIATWO/2});
+  \draw (\XTWOEND,{\YSTART+\YCURVE+\YDIATWO/2})
+    [partial ellipse=-90:90:{\YDIATWO/6} and {\YDIATWO/2}];
+
+  \draw [fill=gray] (0,0) rectangle  (\XEND,\GROUND);
+
+  \draw ($(BA)+(0,\YDIAONE)$) -- ++(0,\DD) coordinate (D1) -- +(0,5pt);
+  \draw (BB) -- ++(0,\DD) coordinate (D2) -- +(0,5pt);
+  \draw [dimen] (D1) -- (D2) node {$v_1\Delta t$};
+
+  \draw ($(BA)!0.5!(BB)$) -- ++(5pt,0) coordinate (E) -- +(5pt,0);
+  \draw [dimen] let \p{E}=(E) in (\x{E},\GROUND) -- (E) node {$h_1$};
+
+  \draw [style=<-,line width=1.5pt](\XONESTART,\YONEMIDDLE) --++ (-1,0) node [left] {$\vec{F}_1$};
+
+  \draw ($(CA)+(0,\YDIATWO)$) -- ++(0,\DD) coordinate (D1) -- +(0,5pt);
+  \draw (CB) -- ++(0,\DD) coordinate (D2) -- +(0,5pt);
+  \draw [dimen] (D1) -- (D2) node {$v_2\Delta t$};
+
+  \draw ($(CA)!0.5!(CB)$) -- ++(5pt,0) coordinate (D) -- +(5pt,0);
+  \draw [dimen] let \p{D}=(D) in (\x{D},\GROUND) -- (D) node {$h_2$};
+
+	\node[color=red] at (\XMEDIO,1.75) {$\Large V=A_1v_1dt=A_2v_2dt$};
+	\node[color=red] at ($(E)+(0,\YDIAONE+0.25)$) {$\Large p_1=\frac{F_1}{A_1}$};
+	\node[color=red] at (\XTWOEND,\YDIATWO+2) {$\Large p_2=\frac{F_2}{A_2}$};
+\end{tikzpicture}

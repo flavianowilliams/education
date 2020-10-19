@@ -1,0 +1,102 @@
+﻿\begin{tikzpicture}[scale=1,transform shape,font=\Large]
+
+	\tkzInit[xmin=-3,xmax=14,ymin=-4,ymax=4]
+	\tkzGrid[color=gray!20]
+	\tkzClip
+
+	%desenhando tubo
+
+	\tkzDefPoints{0/1.5/O,13/1.5/O',4/1.5/o1,9/1.5/o2}
+	\tkzDefPoints{0/0/A,3/0/B,3.5/0/C,4/0/D,5/1/E,6.25/1/F,6.75/1/G,8/1/H,9/0/I,13/0/J}
+
+	%tubulacao
+
+	\tkzDefPointsBy[reflection= over O--O'](A,D,E,H,I,J){A1,D1,E1,H1,I1,J1}
+
+	\tkzDrawSegment(A,A1)
+	\tkzDrawSegment(A1,D1)
+	\tkzDrawSegment(D1,E1)
+	\tkzDrawSegment(E1,H1)
+	\tkzDrawSegment(H1,I1)
+	\tkzDrawSegment(I1,J1)
+	\tkzDrawSegment(J1,J)
+	\tkzDrawSegment(J,I)
+	\tkzDrawSegment(I,H)
+	\tkzDrawSegment(H,G)
+	\tkzDrawSegment(F,E)
+	\tkzDrawSegment(E,D)
+	\tkzDrawSegment(D,C)
+	\tkzDrawSegment(B,A)
+
+	\tkzText[above](2,3){1}
+	\tkzText[above](5.5,2){2}
+
+	%escoamento
+
+	\tkzDefPoints{0/0.5/a1,0/1/a2,0/2/a3,0/2.5/a4}
+	\tkzDefPoints{4/0.5/d1,4/1/d2,4/2/d3,4/2.5/d4}
+	\tkzDefPoints{5/1.2/e1,5/1.4/e2,5/1.6/e3,5/1.8/e4}
+	\tkzDefPoints{8/1.2/h1,8/1.4/h2,8/1.6/h3,8/1.8/h4}
+	\tkzDefPoints{9/0.5/i1,9/1/i2,9/2/i3,9/2.5/i4}
+	\tkzDefPoints{13/0.5/j1,13/1/j2,13/2/j3,13/2.5/j4}
+
+	\draw[red,put arrow] (a1) -- (d1);
+	\draw[red,put arrow] (d1) -- (e1);
+	\draw[red,put arrow] (e1) -- (h1);
+	\draw[red,put arrow] (h1) -- (i1);
+	\draw[red,put arrow] (i1) -- (j1);
+
+	\draw[red,put arrow] (a2) -- (d2);
+	\draw[red,put arrow] (d2) -- (e2);
+	\draw[red,put arrow] (e2) -- (h2);
+	\draw[red,put arrow] (h2) -- (i2);
+	\draw[red,put arrow] (i2) -- (j2);
+
+	\draw[red,put arrow] (a3) -- (d3);
+	\draw[red,put arrow] (d3) -- (e3);
+	\draw[red,put arrow] (e3) -- (h3);
+	\draw[red,put arrow] (h3) -- (i3);
+	\draw[red,put arrow] (i3) -- (j3);
+
+	\draw[red,put arrow] (a4) -- (d4);
+	\draw[red,put arrow] (d4) -- (e4);
+	\draw[red,put arrow] (e4) -- (h4);
+	\draw[red,put arrow] (h4) -- (i4);
+	\draw[red,put arrow] (i4) -- (j4);
+
+	\draw[red,put arrow] (O) -- (o1);
+	\draw[red,put arrow] (o1) -- (o2);
+	\draw[red,put arrow] (o2) -- (O');
+
+	\draw (A) to[dim arrow={label=$A_1$}] (A1);
+	\draw (H) to[short dim arrow={label=$A_2$, label near end}] (H1);
+
+	\draw[->,line width=1.5pt] (-2.5,1.5) --++ (1,0) node [above,midway] {$\vec{v}_1$};
+
+	%tubo
+
+	\tkzDefPoints{3/-2/p1,3.5/-2/p2,6.25/-2/p3,6.75/-2/p4,4.875/-2/p5,3/-1/p6,3.5/-1/p7,6.25/0/p8,6.75/0/p9,6.75/-1/p10}
+
+	\tkzDrawSegment(B,p1)
+	\tkzDrawSegment(C,p2)
+	\tkzDrawSegment(F,p3)
+	\tkzDrawSegment(G,p4)
+
+	\tkzDrawArc[rotate,color=black,fill=gray](p5,p1)(180)
+	\tkzDrawArc[rotate,color=black,fill=white](p5,p2)(180)
+
+	\tkzFillPolygon[,fill=gray](p1,p2,p7,p6)
+	\tkzFillPolygon[,fill=gray](p3,p4,p9,p8)
+
+	\draw[dashed] (p6) -- (p10);
+
+	\draw (p9) to[short dim arrow={label=$h$, label near middle}] (p10);
+
+	\tkzText[right](6.75,-2.5){$\rho_{Hg}$}
+
+%	\tkzDrawPoints(O,O',A,B,C,D,E,F,G,H,I,J)
+%	\tkzDrawPoints(A1,D1,E1,H1,I1,J1)
+%	\tkzDrawPoints(a1,a2,a3,a4,d1,d2,d3,d4,e1,e2,e3,e4,h1,h2,h3,h4,i1,i2,i3,i4,j1,j2,j3,j4)
+%	\tkzDrawPoints(p1,p2,p3,p4,p5,p6,p7)
+
+\end{tikzpicture}

@@ -1,0 +1,1103 @@
+% Aula de mecânica dos fluidos para o curso de Física II do ensino médio
+%
+\documentclass[brazil,aspectratio=169]{beamer}
+%
+%carregando preâmbulo
+\input{../../../../extras/preamble}
+
+%Título
+
+\title[Mecânica dos fluidos]{Hidrodinâmica}
+
+% The main document
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Sumário}
+  \tableofcontents
+\end{frame}
+
+\section{Introdução}
+
+\subsection{}
+
+\begin{frame}{O que é hidrodinâmica?}
+	\begin{block}{Dinâmica dos fluidos}
+		Estudo dos fluidos em movimento
+	\end{block}
+	\begin{figure}[c]
+		\begin{subfigure}[b]{0.3\textwidth}
+			\Centering
+			\includegraphics[scale=0.8]{figuras/hidrodinamica-aplicacao.jpg}
+			\caption*{\footnotesize Sustentação da aeronave devido ao empuxo.}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.3\textwidth}
+			\Centering
+			\includegraphics[scale=0.1]{figuras/hidrodinamica-aplicacao-2.jpg}
+			\caption*{\footnotesize Chama de uma vela.}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.3\textwidth}
+			\Centering
+			\includegraphics[scale=0.25]{figuras/hidrodinamica-aplicacao-3.jpg}
+			\caption*{\footnotesize Escoamento laminar.}
+		\end{subfigure}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Viscosidade e escoamento}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\begin{block}{Escoamento}
+				Do ponto de vista da dificuldade de escoamento do fluido, podemos citar os escoamentos
+				\begin{itemize}
+					\item Laminar: A velocidade das partículas em cada ponto não muda com o tempo.
+					\item Turbulento: A velocidade das partículas em cada ponto varia com o tempo.
+				\end{itemize}
+			\end{block}
+			\begin{block}{Viscosidade}
+				Dificuldade de escoamento do fluido
+			\end{block}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}[c]
+				\Centering
+				\includegraphics[scale=0.15]{figuras/escoamentos.png}
+				\caption*{\footnotesize Exemplos de escoamentos laminar e turbulento.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\section{Vazão ou fluxo}
+
+\subsection{}
+
+\begin{frame}{Definição de vazão ou fluxo}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\begin{block}{Fluxo}
+				Volume de fluido que atravessa uma seção transversal do tubo de corrente por unidade de tempo.
+				\begin{align*}
+					Z=\frac{Volume}{\Delta t}.
+				\end{align*}
+			\end{block}
+			\begin{corollary}
+				Pela definição de fluxo, percebe-se que a sua unidade no SI é metro cúbico por segundo ($m^3/s$).
+			\end{corollary}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}[c]
+				\includegraphics[scale=0.4]{figuras/vazao.jpg}
+				\caption*{\footnotesize Fluxo ou vazão de um fluido.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\section{Lei de conservação da massa}
+
+\subsection{Equação da continuidade}
+
+\begin{frame}[fragile]{Equação da continuidade baseada na Lei da conservação da matéria}
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+			Supondo uma quantidade de fluido que percorre uma distância $S_1$ de área $A_1$ no intervalo de tempo $\Delta t$, o volume ocupado por esse fluido é
+			\begin{align*}
+				V = \Delta S_1 A_1. 
+			\end{align*}
+			Mas sabendo que $\Delta S_1 = v_1\Delta t$, onde $v_1$ é a velocidade das moléculas do fluido que percorre esse espaço, temos
+			\begin{align*}
+				V = v_1 A_1 \Delta t.
+			\end{align*}
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\begin{figure}[c]
+				\begin{tikzpicture}[scale=0.45,transform shape,font=\Large]
+				\def\XSTART{0}
+				\def\YSTART{3}
+				\def\YDIAONE{2.5}
+				\def\YDIATWO{2}
+				\def\YCURVE{2}
+				\def\XCURVE{2}
+				\def\XEND{15}
+				\def\XONESTART{2}
+				\def\XONEDELTA{2}
+				\def\DD{0.5}
+				
+				\def\YEND{\YSTART+\YCURVE+\YDIATWO}
+				\def\XCURVESTART{\XEND/2-\XSTART/2-\XCURVE/2}
+				\def\XCURVESTARTUP{\XEND/2-\XSTART/2-\XCURVE}
+				\def\XCURVEEND{\XEND/2-\XSTART/2 + \XCURVE/2}
+				\def\XONEEND{\XONESTART+\XONEDELTA}
+				\def\XTWOSTART{\XCURVEEND+\XONESTART}
+				\def\XTWODELTA{\XONEDELTA*\YDIAONE*\YDIAONE/\YDIATWO/\YDIATWO}
+				\def\XTWOEND{\XTWOSTART+\XTWODELTA}
+				\def\YTWOMIDDLE{\YSTART+\YCURVE+\YDIATWO/2}
+				\def\GROUND{\YSTART/4}
+				
+				\pgfmathsetmacro{\XMEDIO}{0.5*(\XSTART+\XEND)}
+				\pgfmathsetmacro{\YTOTAL}{\YSTART+\YCURVE+\YDIATWO+1}
+				\pgfmathsetmacro{\YONEMIDDLE}{\YSTART+\YDIAONE/2}
+				\pgfmathsetmacro{\XTOTAL}{\XEND+1}
+				
+				\tkzInit[xmin=\XSTART,xmax=\XTOTAL,ymin=\YEND,ymax=\YTOTAL]
+				%\tkzGrid[color=gray!20]
+				\tkzClip
+				
+				\tikzset{
+					partial ellipse/.style args={#1:#2:#3}{
+						insert path={+ (#1:#3) arc (#1:#2:#3)}
+					},
+					dimen/.style={<->,>=latex,thin,
+						every rectangle node/.style={fill=white,midway,font=\sffamily}},
+				}
+				
+				\draw (\XSTART,\YSTART) -- (\XCURVESTART,\YSTART)
+				to[out=0, in=180, looseness=0.75]
+				(\XCURVEEND,{\YSTART+\YCURVE}) -- (\XEND,{\YSTART+\YCURVE});
+				\draw (\XSTART,{\YSTART+\YDIAONE}) -- (\XCURVESTARTUP,{\YSTART+\YDIAONE})
+				to[out=0, in=180, looseness=0.75] (\XCURVEEND,\YEND) -- (\XEND,\YEND);
+				
+				\draw [style=->,line width=1.5pt](\XONEEND,\YONEMIDDLE) --++ (1,0) node [right] {$\vec{v}_1$};
+				
+				\draw [fill=gray] (\XONESTART,\YSTART) coordinate (BA) rectangle (\XONEEND,{\YSTART+\YDIAONE}) coordinate (BB);
+				\draw [fill=lightgray](\XONESTART,\YONEMIDDLE) node [below] {$A_1$} ellipse ({\YDIAONE/6} and {\YDIAONE/2});
+				\draw [fill=gray,dashed](\XONEEND,\YONEMIDDLE) ellipse ({\YDIAONE/6} and {\YDIAONE/2});
+				\draw (\XONEEND,\YONEMIDDLE) [partial ellipse=-90:90:{\YDIAONE/6} and {\YDIAONE/2}];
+				
+				\draw [style=->,line width=1.5pt](\XTWOEND,\YTWOMIDDLE) --++ (1,0) node [right] {$\vec{v}_2$};
+				
+				\draw [fill=gray] (\XTWOSTART,{\YSTART+\YCURVE}) coordinate (CA) rectangle (\XTWOEND,{\YSTART+\YCURVE+\YDIATWO}) coordinate (CB);
+				\draw [fill=lightgray] (\XTWOSTART,\YTWOMIDDLE) node [below] {$A_2$} ellipse ({\YDIATWO/6} and {\YDIATWO/2});
+				\draw [fill=gray,dashed](\XTWOEND,\YTWOMIDDLE) ellipse ({\YDIATWO/6} and {\YDIATWO/2});
+				\draw (\XTWOEND,{\YSTART+\YCURVE+\YDIATWO/2}) [partial ellipse=-90:90:{\YDIATWO/6} and {\YDIATWO/2}];
+				
+				\draw ($(BA)+(0,\YDIAONE)$) -- ++(0,\DD) coordinate (D1) -- +(0,5pt);
+				\draw (BB) -- ++(0,\DD) coordinate (D2) -- +(0,5pt);
+				\draw [dimen] (D1) -- (D2) node {$v_1\Delta t$};
+				
+				\draw ($(CA)+(0,\YDIATWO)$) -- ++(0,\DD) coordinate (D1) -- +(0,5pt);
+				\draw (CB) -- ++(0,\DD) coordinate (D2) -- +(0,5pt);
+				\draw [dimen] (D1) -- (D2) node {$v_2\Delta t$};
+				
+				\node[color=red,font=\huge] at (\XMEDIO,1.75) {$V=A_1v_1\Delta t=A_2v_2\Delta t$};
+				\end{tikzpicture}
+				%\includegraphics[scale=0.35]{figuras/equacao-continuidade.jpg}
+				\caption*{\footnotesize Fluxo que atravessa duas seções transversais.}		
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Equação da continuidade como Lei da conservação da matéria (continuação)}
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+			O mesmo raciocínio vale se ele atravessar a área $A_2$ no mesmo intervalo de tempo $\Delta t$,
+			\begin{align*}
+				V = v_2 A_2 \Delta t.
+			\end{align*}
+			Supondo um fluido incompressível a massa é conservada e o volume se mantém. Sabendo que $V=Z\Delta t$ temos
+			\begin{align*}
+				Z\bcancel{\Delta t} & = v_1A_1\bcancel{\Delta t} = v_2A_2\bcancel{\Delta t},\\
+				\Aboxed{Z & = v_1A_1 = v_2A_2.}
+			\end{align*}
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\begin{figure}[c]
+				\begin{tikzpicture}[scale=0.45,transform shape,font=\Large]
+				\def\XSTART{0}
+				\def\YSTART{3}
+				\def\YDIAONE{2.5}
+				\def\YDIATWO{2}
+				\def\YCURVE{2}
+				\def\XCURVE{2}
+				\def\XEND{15}
+				\def\XONESTART{2}
+				\def\XONEDELTA{2}
+				\def\DD{0.5}
+				
+				\def\YEND{\YSTART+\YCURVE+\YDIATWO}
+				\def\XCURVESTART{\XEND/2-\XSTART/2-\XCURVE/2}
+				\def\XCURVESTARTUP{\XEND/2-\XSTART/2-\XCURVE}
+				\def\XCURVEEND{\XEND/2-\XSTART/2 + \XCURVE/2}
+				\def\XONEEND{\XONESTART+\XONEDELTA}
+				\def\XTWOSTART{\XCURVEEND+\XONESTART}
+				\def\XTWODELTA{\XONEDELTA*\YDIAONE*\YDIAONE/\YDIATWO/\YDIATWO}
+				\def\XTWOEND{\XTWOSTART+\XTWODELTA}
+				\def\YTWOMIDDLE{\YSTART+\YCURVE+\YDIATWO/2}
+				\def\GROUND{\YSTART/4}
+				
+				\pgfmathsetmacro{\XMEDIO}{0.5*(\XSTART+\XEND)}
+				\pgfmathsetmacro{\YTOTAL}{\YSTART+\YCURVE+\YDIATWO+1}
+				\pgfmathsetmacro{\YONEMIDDLE}{\YSTART+\YDIAONE/2}
+				\pgfmathsetmacro{\XTOTAL}{\XEND+1}
+				
+				\tkzInit[xmin=\XSTART,xmax=\XTOTAL,ymin=\YEND,ymax=\YTOTAL]
+				%\tkzGrid[color=gray!20]
+				\tkzClip
+				
+				\tikzset{
+					partial ellipse/.style args={#1:#2:#3}{
+						insert path={+ (#1:#3) arc (#1:#2:#3)}
+					},
+					dimen/.style={<->,>=latex,thin,
+						every rectangle node/.style={fill=white,midway,font=\sffamily}},
+				}
+				
+				\draw (\XSTART,\YSTART) -- (\XCURVESTART,\YSTART)
+				to[out=0, in=180, looseness=0.75]
+				(\XCURVEEND,{\YSTART+\YCURVE}) -- (\XEND,{\YSTART+\YCURVE});
+				\draw (\XSTART,{\YSTART+\YDIAONE}) -- (\XCURVESTARTUP,{\YSTART+\YDIAONE})
+				to[out=0, in=180, looseness=0.75] (\XCURVEEND,\YEND) -- (\XEND,\YEND);
+				
+				\draw [style=->,line width=1.5pt](\XONEEND,\YONEMIDDLE) --++ (1,0) node [right] {$\vec{v}_1$};
+				
+				\draw [fill=gray] (\XONESTART,\YSTART) coordinate (BA) rectangle (\XONEEND,{\YSTART+\YDIAONE}) coordinate (BB);
+				\draw [fill=lightgray](\XONESTART,\YONEMIDDLE) node [below] {$A_1$} ellipse ({\YDIAONE/6} and {\YDIAONE/2});
+				\draw [fill=gray,dashed](\XONEEND,\YONEMIDDLE) ellipse ({\YDIAONE/6} and {\YDIAONE/2});
+				\draw (\XONEEND,\YONEMIDDLE) [partial ellipse=-90:90:{\YDIAONE/6} and {\YDIAONE/2}];
+				
+				\draw [style=->,line width=1.5pt](\XTWOEND,\YTWOMIDDLE) --++ (1,0) node [right] {$\vec{v}_2$};
+				
+				\draw [fill=gray] (\XTWOSTART,{\YSTART+\YCURVE}) coordinate (CA) rectangle (\XTWOEND,{\YSTART+\YCURVE+\YDIATWO}) coordinate (CB);
+				\draw [fill=lightgray] (\XTWOSTART,\YTWOMIDDLE) node [below] {$A_2$} ellipse ({\YDIATWO/6} and {\YDIATWO/2});
+				\draw [fill=gray,dashed](\XTWOEND,\YTWOMIDDLE) ellipse ({\YDIATWO/6} and {\YDIATWO/2});
+				\draw (\XTWOEND,{\YSTART+\YCURVE+\YDIATWO/2}) [partial ellipse=-90:90:{\YDIATWO/6} and {\YDIATWO/2}];
+				
+				\draw ($(BA)+(0,\YDIAONE)$) -- ++(0,\DD) coordinate (D1) -- +(0,5pt);
+				\draw (BB) -- ++(0,\DD) coordinate (D2) -- +(0,5pt);
+				\draw [dimen] (D1) -- (D2) node {$v_1\Delta t$};
+				
+				\draw ($(CA)+(0,\YDIATWO)$) -- ++(0,\DD) coordinate (D1) -- +(0,5pt);
+				\draw (CB) -- ++(0,\DD) coordinate (D2) -- +(0,5pt);
+				\draw [dimen] (D1) -- (D2) node {$v_2\Delta t$};
+				
+				\node[color=red,font=\huge] at (\XMEDIO,1.75) {$V=A_1v_1\Delta t=A_2v_2\Delta t$};
+				\end{tikzpicture}
+				%\includegraphics[scale=0.35]{figuras/equacao-continuidade.jpg}
+				\caption*{\footnotesize Fluido que atravessa um volume $V$ no tempo $\Delta t$.}		
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\section{Equação de Bernoulli}
+
+\subsection{}
+
+\begin{frame}[fragile]{Pressão, velocidade e altura de um fluido em duas regiões distintas (continuação)}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			Supondo um fluido de volume V e massa m que atravessa a região 1 no intervalo de tempo $\Delta t$. O trabalho necessário para deslocá-lo a uma distância $s_1$ é dado por 
+			\begin{align*}
+				\tau_1 & = \overbracket{F_1}^{\alert{p_1A_1}}\overbracket{v_1\Delta t}^{\alert{s_1}},\\
+				\tau_1 & = p_1\underbracket{A_1s_1}_{\alert{V}}.\\
+				\Aboxed{\tau_1 & = p_1V.}
+			\end{align*}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}[c]
+				\begin{tikzpicture}[scale=0.6,transform shape,font=\Large]
+				\def\XSTART{0}
+				\def\YSTART{3}
+				\def\YDIAONE{2.5}
+				\def\YDIATWO{2}
+				\def\YCURVE{2}
+				\def\XCURVE{2}
+				\def\XEND{15}
+				\def\XONESTART{2}
+				\def\XONEDELTA{2}
+				\def\DD{0.5}
+				
+				\def\YEND{\YSTART+\YCURVE+\YDIATWO}
+				\def\XCURVESTART{\XEND/2-\XSTART/2-\XCURVE/2}
+				\def\XCURVESTARTUP{\XEND/2-\XSTART/2-\XCURVE}
+				\def\XCURVEEND{\XEND/2-\XSTART/2 + \XCURVE/2}
+				\def\XONEEND{\XONESTART+\XONEDELTA}
+				\def\XTWOSTART{\XCURVEEND+\XONESTART}
+				\def\XTWODELTA{\XONEDELTA*\YDIAONE*\YDIAONE/\YDIATWO/\YDIATWO}
+				\def\XTWOEND{\XTWOSTART+\XTWODELTA}
+				\def\YTWOMIDDLE{\YSTART+\YCURVE+\YDIATWO/2}
+				\def\GROUND{\YSTART/4}
+				
+				\pgfmathsetmacro{\XMEDIO}{0.5*(\XSTART+\XEND)}
+				\pgfmathsetmacro{\YTOTAL}{\YSTART+\YCURVE+\YDIATWO+1}
+				\pgfmathsetmacro{\YONEMIDDLE}{\YSTART+\YDIAONE/2}
+				\pgfmathsetmacro{\XTOTAL}{0.5*\XEND}
+				
+				\tkzInit[xmin=\XSTART,xmax=\XTOTAL,ymin=\YEND,ymax=\YTOTAL]
+				%\tkzGrid[color=gray!20]
+				\tkzClip
+				
+				\tikzset{partial ellipse/.style args={#1:#2:#3}{insert path={+ (#1:#3) arc (#1:#2:#3)}},dimen/.style={<->,>=latex,thin,
+						every rectangle node/.style={fill=white,midway,font=\sffamily}},}
+				
+				\draw (\XSTART,\YSTART) -- (\XCURVESTART,\YSTART)
+				to[out=0, in=180, looseness=0.75]
+				(\XCURVEEND,{\YSTART+\YCURVE}) -- (\XEND,{\YSTART+\YCURVE});
+				\draw (\XSTART,{\YSTART+\YDIAONE}) -- (\XCURVESTARTUP,{\YSTART+\YDIAONE})
+				to[out=0, in=180, looseness=0.75] (\XCURVEEND,\YEND) -- (\XEND,\YEND);
+				
+				\draw [fill=gray] (\XONESTART,\YSTART) coordinate (BA)
+				rectangle (\XONEEND,{\YSTART+\YDIAONE}) coordinate (BB);
+				\draw [fill=lightgray](\XONESTART,\YONEMIDDLE) node [below] {$A_1$}
+				ellipse ({\YDIAONE/6} and {\YDIAONE/2});
+				\draw [fill=gray,dashed](\XONEEND,\YONEMIDDLE)
+				ellipse ({\YDIAONE/6} and {\YDIAONE/2});
+				\draw (\XONEEND,\YONEMIDDLE)
+				[partial ellipse=-90:90:{\YDIAONE/6} and {\YDIAONE/2}];
+				
+				\draw [fill=gray] (\XTWOSTART,{\YSTART+\YCURVE}) coordinate (CA)
+				rectangle (\XTWOEND,{\YSTART+\YCURVE+\YDIATWO}) coordinate (CB);
+				\draw [fill=lightgray] (\XTWOSTART,\YTWOMIDDLE) node [below] {$A_2$}
+				ellipse ({\YDIATWO/6} and {\YDIATWO/2});
+				
+				\draw [style=<-,line width=1.5pt](\XTWOEND+0.25,\YTWOMIDDLE) --++ (0.5,0) node [right] {$\vec{F}_2$};
+				
+				\draw [fill=gray,dashed](\XTWOEND,\YTWOMIDDLE)
+				ellipse ({\YDIATWO/6} and {\YDIATWO/2});
+				\draw (\XTWOEND,{\YSTART+\YCURVE+\YDIATWO/2})
+				[partial ellipse=-90:90:{\YDIATWO/6} and {\YDIATWO/2}];
+				
+				\draw [fill=gray] (0,0) rectangle  (\XEND,\GROUND);
+				
+				\draw ($(BA)+(0,\YDIAONE)$) -- ++(0,\DD) coordinate (D1) -- +(0,5pt);
+				\draw (BB) -- ++(0,\DD) coordinate (D2) -- +(0,5pt);
+				\draw [dimen] (D1) -- (D2) node {$v_1\Delta t$};
+				
+				\draw ($(BA)!0.5!(BB)$) -- ++(5pt,0) coordinate (E) -- +(5pt,0);
+				\draw [dimen] let \p{E}=(E) in (\x{E},\GROUND) -- (E) node {$h_1$};
+				
+				\draw [style=<-,line width=1.5pt](\XONESTART,\YONEMIDDLE) --++ (-1,0) node [left] {$\vec{F}_1$};
+				
+				\draw ($(CA)+(0,\YDIATWO)$) -- ++(0,\DD) coordinate (D1) -- +(0,5pt);
+				\draw (CB) -- ++(0,\DD) coordinate (D2) -- +(0,5pt);
+				\draw [dimen] (D1) -- (D2) node {$v_2\Delta t$};
+				
+				\draw ($(CA)!0.5!(CB)$) -- ++(5pt,0) coordinate (D) -- +(5pt,0);
+				\draw [dimen] let \p{D}=(D) in (\x{D},\GROUND) -- (D) node {$h_2$};
+				
+				\node[color=red] at ($(E)+(0,\YDIAONE+0.25)$) {$\Large p_1=\frac{F_1}{A_1}$};
+				\end{tikzpicture}
+				%\includegraphics[scale=0.7]{figuras/fluxo.png}
+				\caption*{\footnotesize Fluxo que atravessa a região 1.}		
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Pressão, velocidade e altura de um fluido em duas regiões distintas (continuação)}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			O fluido a direita empurra o restante no sentido contrário impedindo o seu deslocamento, isso produz um trabalho negativo, ou seja,
+			\begin{align*}
+				\tau_2 & = -\overbracket{F_2}^{\alert{p_2A_2}}\overbracket{v_2\Delta t}^{\alert{s_2}},\\
+				\tau_2 & = -p_2\underbracket{A_2s_2}_{\alert{V}}.\\
+				\Aboxed{\tau_2 & = -p_2V.}
+			\end{align*}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}[c]
+				\begin{tikzpicture}[scale=0.37,transform shape,font=\Large]
+				\def\XSTART{0}
+				\def\YSTART{3}
+				\def\YDIAONE{2.5}
+				\def\YDIATWO{2}
+				\def\YCURVE{2}
+				\def\XCURVE{2}
+				\def\XEND{15}
+				\def\XONESTART{2}
+				\def\XONEDELTA{2}
+				\def\DD{0.5}
+				
+				\def\YEND{\YSTART+\YCURVE+\YDIATWO}
+				\def\XCURVESTART{\XEND/2-\XSTART/2-\XCURVE/2}
+				\def\XCURVESTARTUP{\XEND/2-\XSTART/2-\XCURVE}
+				\def\XCURVEEND{\XEND/2-\XSTART/2 + \XCURVE/2}
+				\def\XONEEND{\XONESTART+\XONEDELTA}
+				\def\XTWOSTART{\XCURVEEND+\XONESTART}
+				\def\XTWODELTA{\XONEDELTA*\YDIAONE*\YDIAONE/\YDIATWO/\YDIATWO}
+				\def\XTWOEND{\XTWOSTART+\XTWODELTA}
+				\def\YTWOMIDDLE{\YSTART+\YCURVE+\YDIATWO/2}
+				\def\GROUND{\YSTART/4}
+				
+				\pgfmathsetmacro{\XMEDIO}{0.5*(\XSTART+\XEND)}
+				\pgfmathsetmacro{\YTOTAL}{\YSTART+\YCURVE+\YDIATWO+1}
+				\pgfmathsetmacro{\YONEMIDDLE}{\YSTART+\YDIAONE/2}
+				\pgfmathsetmacro{\XTOTAL}{\XEND}
+				
+				\tkzInit[xmin=\XSTART,xmax=\XTOTAL,ymin=\YEND,ymax=\YTOTAL]
+				%\tkzGrid[color=gray!20]
+				\tkzClip
+				
+				\tikzset{partial ellipse/.style args={#1:#2:#3}{insert path={+ (#1:#3) arc (#1:#2:#3)}},dimen/.style={<->,>=latex,thin,
+						every rectangle node/.style={fill=white,midway,font=\sffamily}},}
+				
+				\draw (\XSTART,\YSTART) -- (\XCURVESTART,\YSTART)
+				to[out=0, in=180, looseness=0.75]
+				(\XCURVEEND,{\YSTART+\YCURVE}) -- (\XEND,{\YSTART+\YCURVE});
+				\draw (\XSTART,{\YSTART+\YDIAONE}) -- (\XCURVESTARTUP,{\YSTART+\YDIAONE})
+				to[out=0, in=180, looseness=0.75] (\XCURVEEND,\YEND) -- (\XEND,\YEND);
+				
+				\draw [fill=gray] (\XONESTART,\YSTART) coordinate (BA)
+				rectangle (\XONEEND,{\YSTART+\YDIAONE}) coordinate (BB);
+				\draw [fill=lightgray](\XONESTART,\YONEMIDDLE) node [below] {$A_1$}
+				ellipse ({\YDIAONE/6} and {\YDIAONE/2});
+				\draw [fill=gray,dashed](\XONEEND,\YONEMIDDLE)
+				ellipse ({\YDIAONE/6} and {\YDIAONE/2});
+				\draw (\XONEEND,\YONEMIDDLE)
+				[partial ellipse=-90:90:{\YDIAONE/6} and {\YDIAONE/2}];
+				
+				\draw [fill=gray] (\XTWOSTART,{\YSTART+\YCURVE}) coordinate (CA)
+				rectangle (\XTWOEND,{\YSTART+\YCURVE+\YDIATWO}) coordinate (CB);
+				\draw [fill=lightgray] (\XTWOSTART,\YTWOMIDDLE) node [below] {$A_2$}
+				ellipse ({\YDIATWO/6} and {\YDIATWO/2});
+				
+				\draw [style=<-,line width=1.5pt](\XTWOEND+0.25,\YTWOMIDDLE) --++ (0.5,0) node [right] {$\vec{F}_2$};
+				
+				\draw [fill=gray,dashed](\XTWOEND,\YTWOMIDDLE)
+				ellipse ({\YDIATWO/6} and {\YDIATWO/2});
+				\draw (\XTWOEND,{\YSTART+\YCURVE+\YDIATWO/2})
+				[partial ellipse=-90:90:{\YDIATWO/6} and {\YDIATWO/2}];
+				
+				\draw [fill=gray] (0,0) rectangle  (\XEND,\GROUND);
+				
+				\draw ($(BA)+(0,\YDIAONE)$) -- ++(0,\DD) coordinate (D1) -- +(0,5pt);
+				\draw (BB) -- ++(0,\DD) coordinate (D2) -- +(0,5pt);
+				\draw [dimen] (D1) -- (D2) node {$v_1\Delta t$};
+				
+				\draw ($(BA)!0.5!(BB)$) -- ++(5pt,0) coordinate (E) -- +(5pt,0);
+				\draw [dimen] let \p{E}=(E) in (\x{E},\GROUND) -- (E) node {$h_1$};
+				
+				\draw [style=<-,line width=1.5pt](\XONESTART,\YONEMIDDLE) --++ (-1,0) node [left] {$\vec{F}_1$};
+				
+				\draw ($(CA)+(0,\YDIATWO)$) -- ++(0,\DD) coordinate (D1) -- +(0,5pt);
+				\draw (CB) -- ++(0,\DD) coordinate (D2) -- +(0,5pt);
+				\draw [dimen] (D1) -- (D2) node {$v_2\Delta t$};
+				
+				\draw ($(CA)!0.5!(CB)$) -- ++(5pt,0) coordinate (D) -- +(5pt,0);
+				\draw [dimen] let \p{D}=(D) in (\x{D},\GROUND) -- (D) node {$h_2$};
+				
+				\node[color=red] at (\XMEDIO,1.75) {$\Large V=A_1v_1dt=A_2v_2dt$};
+				\node[color=red] at ($(E)+(0,\YDIAONE+0.25)$) {$\Large p_1=\frac{F_1}{A_1}$};
+				\node[color=red] at (\XTWOEND,\YDIATWO+2) {$\Large p_2=\frac{F_2}{A_2}$};
+				\end{tikzpicture}
+				%\includegraphics[scale=0.4]{figuras/bernoulli.png}
+				\caption*{\footnotesize Fluxo que atravessa as regiões 1 e 2.}		
+			\end{figure}
+		\end{column}
+	\end{columns}
+	\begin{corollary}
+		A mesma quantidade de fluido irá atravessar as regiões 1 e 2 nos intervalos $\Delta t$.
+	\end{corollary}
+\end{frame}
+
+\begin{frame}[fragile]{Pressão, velocidade e altura de um fluido em duas regiões distintas (continuação)}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			A força da gravidade é conservativa, de modo que as energias potenciais do fluido nas regiões 1 e 2,
+			\begin{align*}
+				E_{p_1} & = mgh_1\\
+				E_{p_2} & = mgh_2.
+			\end{align*}
+			As energias cinéticas que estão associadas ao movimento nas regiões 1 e 2 são
+			\begin{align*}
+				E_{c_1} & = \frac{1}{2}mv^{2}_{1},\\
+				E_{c_2} & = \frac{1}{2}mv^{2}_{2}.
+			\end{align*}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}[c]
+				\begin{tikzpicture}[scale=0.37,transform shape,font=\Large]
+				\def\XSTART{0}
+				\def\YSTART{3}
+				\def\YDIAONE{2.5}
+				\def\YDIATWO{2}
+				\def\YCURVE{2}
+				\def\XCURVE{2}
+				\def\XEND{15}
+				\def\XONESTART{2}
+				\def\XONEDELTA{2}
+				\def\DD{0.5}
+				
+				\def\YEND{\YSTART+\YCURVE+\YDIATWO}
+				\def\XCURVESTART{\XEND/2-\XSTART/2-\XCURVE/2}
+				\def\XCURVESTARTUP{\XEND/2-\XSTART/2-\XCURVE}
+				\def\XCURVEEND{\XEND/2-\XSTART/2 + \XCURVE/2}
+				\def\XONEEND{\XONESTART+\XONEDELTA}
+				\def\XTWOSTART{\XCURVEEND+\XONESTART}
+				\def\XTWODELTA{\XONEDELTA*\YDIAONE*\YDIAONE/\YDIATWO/\YDIATWO}
+				\def\XTWOEND{\XTWOSTART+\XTWODELTA}
+				\def\YTWOMIDDLE{\YSTART+\YCURVE+\YDIATWO/2}
+				\def\GROUND{\YSTART/4}
+				
+				\pgfmathsetmacro{\XMEDIO}{0.5*(\XSTART+\XEND)}
+				\pgfmathsetmacro{\YTOTAL}{\YSTART+\YCURVE+\YDIATWO+1}
+				\pgfmathsetmacro{\YONEMIDDLE}{\YSTART+\YDIAONE/2}
+				\pgfmathsetmacro{\XTOTAL}{\XEND}
+				
+				\tkzInit[xmin=\XSTART,xmax=\XTOTAL,ymin=\YEND,ymax=\YTOTAL]
+				%\tkzGrid[color=gray!20]
+				\tkzClip
+				
+				\tikzset{partial ellipse/.style args={#1:#2:#3}{insert path={+ (#1:#3) arc (#1:#2:#3)}},dimen/.style={<->,>=latex,thin,
+						every rectangle node/.style={fill=white,midway,font=\sffamily}},}
+				
+				\draw (\XSTART,\YSTART) -- (\XCURVESTART,\YSTART)
+				to[out=0, in=180, looseness=0.75]
+				(\XCURVEEND,{\YSTART+\YCURVE}) -- (\XEND,{\YSTART+\YCURVE});
+				\draw (\XSTART,{\YSTART+\YDIAONE}) -- (\XCURVESTARTUP,{\YSTART+\YDIAONE})
+				to[out=0, in=180, looseness=0.75] (\XCURVEEND,\YEND) -- (\XEND,\YEND);
+				
+				\draw [fill=gray] (\XONESTART,\YSTART) coordinate (BA)
+				rectangle (\XONEEND,{\YSTART+\YDIAONE}) coordinate (BB);
+				\draw [fill=lightgray](\XONESTART,\YONEMIDDLE) node [below] {$A_1$}
+				ellipse ({\YDIAONE/6} and {\YDIAONE/2});
+				\draw [fill=gray,dashed](\XONEEND,\YONEMIDDLE)
+				ellipse ({\YDIAONE/6} and {\YDIAONE/2});
+				\draw (\XONEEND,\YONEMIDDLE)
+				[partial ellipse=-90:90:{\YDIAONE/6} and {\YDIAONE/2}];
+				
+				\draw [fill=gray] (\XTWOSTART,{\YSTART+\YCURVE}) coordinate (CA)
+				rectangle (\XTWOEND,{\YSTART+\YCURVE+\YDIATWO}) coordinate (CB);
+				\draw [fill=lightgray] (\XTWOSTART,\YTWOMIDDLE) node [below] {$A_2$}
+				ellipse ({\YDIATWO/6} and {\YDIATWO/2});
+				
+				\draw [style=<-,line width=1.5pt](\XTWOEND+0.25,\YTWOMIDDLE) --++ (0.5,0) node [right] {$\vec{F}_2$};
+				
+				\draw [fill=gray,dashed](\XTWOEND,\YTWOMIDDLE)
+				ellipse ({\YDIATWO/6} and {\YDIATWO/2});
+				\draw (\XTWOEND,{\YSTART+\YCURVE+\YDIATWO/2})
+				[partial ellipse=-90:90:{\YDIATWO/6} and {\YDIATWO/2}];
+				
+				\draw [fill=gray] (0,0) rectangle  (\XEND,\GROUND);
+				
+				\draw ($(BA)+(0,\YDIAONE)$) -- ++(0,\DD) coordinate (D1) -- +(0,5pt);
+				\draw (BB) -- ++(0,\DD) coordinate (D2) -- +(0,5pt);
+				\draw [dimen] (D1) -- (D2) node {$v_1\Delta t$};
+				
+				\draw ($(BA)!0.5!(BB)$) -- ++(5pt,0) coordinate (E) -- +(5pt,0);
+				\draw [dimen] let \p{E}=(E) in (\x{E},\GROUND) -- (E) node {$h_1$};
+				
+				\draw [style=<-,line width=1.5pt](\XONESTART,\YONEMIDDLE) --++ (-1,0) node [left] {$\vec{F}_1$};
+				
+				\draw ($(CA)+(0,\YDIATWO)$) -- ++(0,\DD) coordinate (D1) -- +(0,5pt);
+				\draw (CB) -- ++(0,\DD) coordinate (D2) -- +(0,5pt);
+				\draw [dimen] (D1) -- (D2) node {$v_2\Delta t$};
+				
+				\draw ($(CA)!0.5!(CB)$) -- ++(5pt,0) coordinate (D) -- +(5pt,0);
+				\draw [dimen] let \p{D}=(D) in (\x{D},\GROUND) -- (D) node {$h_2$};
+				
+				\node[color=red] at (\XMEDIO,1.75) {$\Large V=A_1v_1dt=A_2v_2dt$};
+				\node[color=red] at ($(E)+(0,\YDIAONE+0.25)$) {$\Large p_1=\frac{F_1}{A_1}$};
+				\node[color=red] at (\XTWOEND,\YDIATWO+2) {$\Large p_2=\frac{F_2}{A_2}$};
+				\end{tikzpicture}
+				%\includegraphics[scale=0.35]{figuras/bernoulli.png}
+				\caption*{\footnotesize Fluxo que atravessa as regiões 1 e 2.}		
+			\end{figure}
+		\end{column}
+	\end{columns}	
+\end{frame}
+
+\begin{frame}{Pressão, velocidade e altura de um fluido em duas regiões distintas (continuação)}
+	\begin{multicols}{2}
+		\alert{Se não houver perdas de energia}, a energia mecânica do fluido permanece inalterada, de modo que o trabalho total realizado deve ser igual a variação das energias cinéticas e potenciais,
+		\begin{align*}
+			\tau_1+\tau_2 = \Delta E_m = \Delta E_c+\Delta E_p,
+		\end{align*}
+		mas
+		\begin{align*}
+			\Delta E_c & = \frac{1}{2}mv^2_2-\frac{1}{2}mv^2_1,\\
+			\Delta E_p & = mgh_2-mgh_1,
+		\end{align*}
+		portanto
+		\begin{align*}
+			\tau_1+\tau_2 & = \overbracket{\left(\frac{1}{2}mv^2_2-\frac{1}{2}mv^2_1\right)}^{\alert{\Delta E_c}}+\\
+			& +\overbracket{\left(mgh_2-mgh_1\right)}^{\alert{\Delta E_p}},\\
+			\tau_1+\tau_2 & = \frac{1}{2}mv^2_2+mgh_2-\frac{1}{2}mv^2_1-mgh_1,\\
+			\tau_1+\tau_2 & = \frac{1}{2}mv^2_2+mgh_2-\left(\frac{1}{2}mv^2_1+mgh_1\right).
+		\end{align*}
+	\end{multicols}
+\end{frame}
+
+\begin{frame}{Pressão, velocidade e altura de um fluido em duas regiões distintas (continuação)}
+	\begin{columns}
+		\begin{column}[t]{0.45\textwidth}
+			Separando os termos da região 1 da região 2 temos a equação
+			\begin{align*}
+				\tau_1 + \frac{1}{2}mv^2_1+mgh_1 & = \alert{-}\tau_2 + \frac{1}{2}mv^2_2+\\
+				& + mgh_2.
+			\end{align*}
+			Mas mostramos que
+			\begin{align*}
+				\tau_1 & = p_1V,\\
+				\tau_2 & = -p_2V.
+			\end{align*}
+		\end{column}
+		\begin{column}[t]{0.55\textwidth}
+			Substituindo na equação acima temos
+			\begin{align*}
+				\alert{p_1V} + \frac{1}{2}mv^2_1+mgh_1 & = -\left(\alert{-p_2V}\right) + \\
+				& + \frac{1}{2}mv^2_2 + mgh_2,
+			\end{align*}
+			mas sabemos que $V=\frac{m}{\rho},$
+			\begin{align*}
+				p_1\alert{\frac{\bcancel{m}}{\rho}} + \frac{1}{2}\bcancel{m}v^2_1+\bcancel{m}gh_1 & = p_2\alert{\frac{\bcancel{m}}{\rho}} + \frac{1}{2}\bcancel{m}v^2_2 + \bcancel{m}gh_2,\\
+				\frac{p_1}{\rho} + \frac{v^2_1}{2}+gh_1 & = \frac{p_2}{\rho} + \frac{v^2_2}{2} + gh_2.
+			\end{align*}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Pressão, velocidade e altura de um fluido em duas regiões distintas (continuação)}
+	\begin{block}{Equação de Bernoulli}
+		Para um fluido não viscoso com escoamento laminar a soma das parcelas hidrostáticas e hidrodinâmicas é a mesma em cada ponto do fluido, no qual vale a equação
+		\begin{align*}
+			\frac{p_1}{\rho} +gh_1 + \frac{v^2_1}{2} & = \frac{p_2}{\rho} +gh_2 + \frac{v^2_2}{2} = \cdots,\\
+			\frac{p}{\rho} +gh + \frac{v^2}{2} & = \text{constante}.
+		\end{align*}
+	\end{block}
+	\begin{corollary}
+		A equação de Bernoulli corresponde na hidrodinâmica à Lei de conservação da energia na mecânica.
+	\end{corollary}
+\end{frame}
+
+\begin{frame}{Analisando os termos da equação de Bernoulli}
+	Supondo a densidade constante ao longo de todo o fluido, podemos multiplicar todos os termos da equação por $\rho$ e obter a relação
+	\begin{align*}
+		\underbracket{\alert{\bcancel{\rho}}\frac{p}{\bcancel{\rho}} +\alert{\rho}gh}_{\text{Lei de Stevin}} + \alert{\rho}\frac{v^2}{2} = \text{constante}.
+	\end{align*}
+	\begin{corollary}
+		\begin{itemize}
+			\item Parcela hidrostática \alert{$\left(p +\rho gh\right)$}: Corresponde a pressão hidrostática no fluido;
+			\item Parcela fluidodinâmica \alert{$\left(\rho\frac{v^2}{2}\right)$}: Corresponde a pressão hidrodinâmica;
+			\item Se o fluido está em repouso $\frac{\rho v^2}{2}=0$ temos a Lei de Stevin.
+		\end{itemize}
+	\end{corollary}
+\end{frame}
+
+\section{Aplicações}
+
+\subsection{}
+
+\begin{frame}{Venturímetro}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			Supondo um escoamento horizontal ($h_1=h_2$) temos pela equação de Bernoulli
+			\begin{align*}
+				p_1 +\bcancel{\rho gh_1} + \frac{\rho v^2_1}{2} & = {p_2} +\bcancel{\rho gh_2} + \frac{\rho v^2_2}{2},\\
+				p_1 - p_2 & = \frac{\rho v^2_2}{2} - \frac{\rho v^2_1}{2}.
+			\end{align*}
+			Pela Lei de Stevin podemos dizer que a variação de pressão entre as regiões 1 e 2 vale
+			\begin{align*}
+				p_1 - p_2 = \rho_{Hg} gh
+			\end{align*}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}[c]
+				\begin{tikzpicture}[scale=0.35,transform shape,font=\Large]
+				
+				\tkzInit[xmin=-3,xmax=14,ymin=-4,ymax=4]
+				%\tkzGrid[color=gray!20]
+				\tkzClip
+				
+				%desenhando tubo
+				
+				\tkzDefPoints{0/1.5/O,13/1.5/O',4/1.5/o1,9/1.5/o2}
+				\tkzDefPoints{0/0/A,3/0/B,3.5/0/C,4/0/D,5/1/E,6.25/1/F,6.75/1/G,8/1/H,9/0/I,13/0/J}
+				
+				%tubulacao
+				
+				\tkzDefPointsBy[reflection= over O--O'](A,D,E,H,I,J){A1,D1,E1,H1,I1,J1}
+				
+				\tkzDrawSegment(A,A1)
+				\tkzDrawSegment(A1,D1)
+				\tkzDrawSegment(D1,E1)
+				\tkzDrawSegment(E1,H1)
+				\tkzDrawSegment(H1,I1)
+				\tkzDrawSegment(I1,J1)
+				\tkzDrawSegment(J1,J)
+				\tkzDrawSegment(J,I)
+				\tkzDrawSegment(I,H)
+				\tkzDrawSegment(H,G)
+				\tkzDrawSegment(F,E)
+				\tkzDrawSegment(E,D)
+				\tkzDrawSegment(D,C)
+				\tkzDrawSegment(B,A)
+				
+				\tkzText[above](2,3){1}
+				\tkzText[above](5.5,2){2}
+				
+				%escoamento
+				
+				\tkzDefPoints{0/0.5/a1,0/1/a2,0/2/a3,0/2.5/a4}
+				\tkzDefPoints{4/0.5/d1,4/1/d2,4/2/d3,4/2.5/d4}
+				\tkzDefPoints{5/1.2/e1,5/1.4/e2,5/1.6/e3,5/1.8/e4}
+				\tkzDefPoints{8/1.2/h1,8/1.4/h2,8/1.6/h3,8/1.8/h4}
+				\tkzDefPoints{9/0.5/i1,9/1/i2,9/2/i3,9/2.5/i4}
+				\tkzDefPoints{13/0.5/j1,13/1/j2,13/2/j3,13/2.5/j4}
+				
+				\draw[red,put arrow] (a1) -- (d1);
+				\draw[red,put arrow] (d1) -- (e1);
+				\draw[red,put arrow] (e1) -- (h1);
+				\draw[red,put arrow] (h1) -- (i1);
+				\draw[red,put arrow] (i1) -- (j1);
+				
+				\draw[red,put arrow] (a2) -- (d2);
+				\draw[red,put arrow] (d2) -- (e2);
+				\draw[red,put arrow] (e2) -- (h2);
+				\draw[red,put arrow] (h2) -- (i2);
+				\draw[red,put arrow] (i2) -- (j2);
+				
+				\draw[red,put arrow] (a3) -- (d3);
+				\draw[red,put arrow] (d3) -- (e3);
+				\draw[red,put arrow] (e3) -- (h3);
+				\draw[red,put arrow] (h3) -- (i3);
+				\draw[red,put arrow] (i3) -- (j3);
+				
+				\draw[red,put arrow] (a4) -- (d4);
+				\draw[red,put arrow] (d4) -- (e4);
+				\draw[red,put arrow] (e4) -- (h4);
+				\draw[red,put arrow] (h4) -- (i4);
+				\draw[red,put arrow] (i4) -- (j4);
+				
+				\draw[red,put arrow] (O) -- (o1);
+				\draw[red,put arrow] (o1) -- (o2);
+				\draw[red,put arrow] (o2) -- (O');
+				
+				\draw (A) to[dim arrow={label=$A_1$},line width=0.1pt] (A1);
+				\draw (H) to[short dim arrow={label=$A_2$, label near end},line width=0.1pt] (H1);
+				
+				\draw[->,line width=1.5pt] (-2.5,1.5) --++ (1,0) node [above,midway] {$\vec{v}_1$};
+				
+				%tubo
+				
+				\tkzDefPoints{3/-2/p1,3.5/-2/p2,6.25/-2/p3,6.75/-2/p4,4.875/-2/p5,3/-1/p6,3.5/-1/p7,6.25/0/p8,6.75/0/p9,6.75/-1/p10}
+				
+				\tkzDrawSegment(B,p1)
+				\tkzDrawSegment(C,p2)
+				\tkzDrawSegment(F,p3)
+				\tkzDrawSegment(G,p4)
+				
+				\tkzDrawArc[rotate,color=black,fill=gray](p5,p1)(180)
+				\tkzDrawArc[rotate,color=black,fill=white](p5,p2)(180)
+				
+				\tkzFillPolygon[,fill=gray](p1,p2,p7,p6)
+				\tkzFillPolygon[,fill=gray](p3,p4,p9,p8)
+				
+				\draw[dashed] (p6) -- (p10);
+				
+				\draw (p9) to[short dim arrow={label=$h$, label near middle},line width=0.1pt] (p10);
+				
+				\tkzText[right](6.75,-2.5){$\rho_{Hg}$}
+				
+				\end{tikzpicture}
+				%\includegraphics[scale=0.5]{figuras/venturi.png}
+				\caption*{\footnotesize Tubo de Venturi.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Venturímetro (continuação)}
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+			Pela equação da continuidade temos
+			\begin{align*}
+				v_2 & = \left(\frac{A_1}{A_2}\right)v_1.
+			\end{align*}
+			Substituindo temos
+			\begin{align*}
+				\overbracket{p_1 - p_2}^{\alert{\rho_{Hg} gh}} & = \frac{\rho \overbracket{v^2_2}^{\alert{\frac{A_1}{A_2}v_1}}}{2} - \frac{\rho v^2_1}{2},\\
+				\Aboxed{v^2_1 & = 2gh\frac{\rho_{Hg}}{\rho}\frac{A^2_2}{A^2_1-A^2_2}.}
+			\end{align*}
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\begin{figure}[c]
+				\begin{tikzpicture}[scale=0.4,transform shape,font=\Large]
+				
+				\tkzInit[xmin=-3,xmax=14,ymin=-4,ymax=4]
+				%\tkzGrid[color=gray!20]
+				\tkzClip
+				
+				%desenhando tubo
+				
+				\tkzDefPoints{0/1.5/O,13/1.5/O',4/1.5/o1,9/1.5/o2}
+				\tkzDefPoints{0/0/A,3/0/B,3.5/0/C,4/0/D,5/1/E,6.25/1/F,6.75/1/G,8/1/H,9/0/I,13/0/J}
+				
+				%tubulacao
+				
+				\tkzDefPointsBy[reflection= over O--O'](A,D,E,H,I,J){A1,D1,E1,H1,I1,J1}
+				
+				\tkzDrawSegment(A,A1)
+				\tkzDrawSegment(A1,D1)
+				\tkzDrawSegment(D1,E1)
+				\tkzDrawSegment(E1,H1)
+				\tkzDrawSegment(H1,I1)
+				\tkzDrawSegment(I1,J1)
+				\tkzDrawSegment(J1,J)
+				\tkzDrawSegment(J,I)
+				\tkzDrawSegment(I,H)
+				\tkzDrawSegment(H,G)
+				\tkzDrawSegment(F,E)
+				\tkzDrawSegment(E,D)
+				\tkzDrawSegment(D,C)
+				\tkzDrawSegment(B,A)
+				
+				\tkzText[above](2,3){1}
+				\tkzText[above](5.5,2){2}
+				
+				%escoamento
+				
+				\tkzDefPoints{0/0.5/a1,0/1/a2,0/2/a3,0/2.5/a4}
+				\tkzDefPoints{4/0.5/d1,4/1/d2,4/2/d3,4/2.5/d4}
+				\tkzDefPoints{5/1.2/e1,5/1.4/e2,5/1.6/e3,5/1.8/e4}
+				\tkzDefPoints{8/1.2/h1,8/1.4/h2,8/1.6/h3,8/1.8/h4}
+				\tkzDefPoints{9/0.5/i1,9/1/i2,9/2/i3,9/2.5/i4}
+				\tkzDefPoints{13/0.5/j1,13/1/j2,13/2/j3,13/2.5/j4}
+				
+				\draw[red,put arrow] (a1) -- (d1);
+				\draw[red,put arrow] (d1) -- (e1);
+				\draw[red,put arrow] (e1) -- (h1);
+				\draw[red,put arrow] (h1) -- (i1);
+				\draw[red,put arrow] (i1) -- (j1);
+				
+				\draw[red,put arrow] (a2) -- (d2);
+				\draw[red,put arrow] (d2) -- (e2);
+				\draw[red,put arrow] (e2) -- (h2);
+				\draw[red,put arrow] (h2) -- (i2);
+				\draw[red,put arrow] (i2) -- (j2);
+				
+				\draw[red,put arrow] (a3) -- (d3);
+				\draw[red,put arrow] (d3) -- (e3);
+				\draw[red,put arrow] (e3) -- (h3);
+				\draw[red,put arrow] (h3) -- (i3);
+				\draw[red,put arrow] (i3) -- (j3);
+				
+				\draw[red,put arrow] (a4) -- (d4);
+				\draw[red,put arrow] (d4) -- (e4);
+				\draw[red,put arrow] (e4) -- (h4);
+				\draw[red,put arrow] (h4) -- (i4);
+				\draw[red,put arrow] (i4) -- (j4);
+				
+				\draw[red,put arrow] (O) -- (o1);
+				\draw[red,put arrow] (o1) -- (o2);
+				\draw[red,put arrow] (o2) -- (O');
+				
+				\draw (A) to[dim arrow={label=$A_1$},line width=0.1pt] (A1);
+				\draw (H) to[short dim arrow={label=$A_2$, label near end},line width=0.1pt] (H1);
+				
+				\draw[->,line width=1.5pt] (-2.5,1.5) --++ (1,0) node [above,midway] {$\vec{v}_1$};
+				
+				%tubo
+				
+				\tkzDefPoints{3/-2/p1,3.5/-2/p2,6.25/-2/p3,6.75/-2/p4,4.875/-2/p5,3/-1/p6,3.5/-1/p7,6.25/0/p8,6.75/0/p9,6.75/-1/p10}
+				
+				\tkzDrawSegment(B,p1)
+				\tkzDrawSegment(C,p2)
+				\tkzDrawSegment(F,p3)
+				\tkzDrawSegment(G,p4)
+				
+				\tkzDrawArc[rotate,color=black,fill=gray](p5,p1)(180)
+				\tkzDrawArc[rotate,color=black,fill=white](p5,p2)(180)
+				
+				\tkzFillPolygon[,fill=gray](p1,p2,p7,p6)
+				\tkzFillPolygon[,fill=gray](p3,p4,p9,p8)
+				
+				\draw[dashed] (p6) -- (p10);
+				
+				\draw (p9) to[short dim arrow={label=$h$, label near middle},line width=0.1pt] (p10);
+				
+				\tkzText[right](6.75,-2.5){$\rho_{Hg}$}
+				
+				\end{tikzpicture}
+				%\includegraphics[scale=0.5]{figuras/venturi.png}
+				\caption*{\footnotesize Tubo de Venturi.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\section{Apêndice}
+
+\subsection{}
+
+\begin{frame}{Transformar um número em notação científica}
+	\begin{corollary}
+		\begin{enumerate}[leftmargin=1.75cm]
+			\item[Passo 1:] Escrever o número incluindo a vírgula.
+			\item[Passo 2:] Andar com a vírgula até que somente reste um número diferente de zero no lado esquerdo.
+			\item[Passo 3:] Colocar no expoente da potência de 10 o número de casas decimais que tivemos que "andar" com a vírgula. Se ao andar com a vírgula o valor do número diminuiu, o expoente ficará positivo, se aumentou o expoente ficará negativo.
+		\end{enumerate}
+	\end{corollary}
+	\begin{exampleblock}{Exemplo}
+		\begin{equation*}
+			6\; 590\; 000\; 000\; 000\; 000,0 = \SI{6,59e15}{}		
+		\end{equation*}
+	\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Conversão de unidades em uma dimensão}
+	\begin{figure}
+		\begin{tikzpicture}[scale=0.65,transform shape,font=\Large]
+		
+		\tkzInit[xmin=-2,xmax=17,ymin=-6,ymax=3]
+		%\tkzGrid[color=gray!20]
+		\tkzClip
+		
+		\tikzset{compass style/.append style={->}}
+		
+		\foreach \x in {1,2,...,6}{
+			\tkzDefPoint(\x*3-3,0){\x}
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+			\node at (\x*3-3,2) {$\times 10^{1}$};
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+			\node at (\x*3-3,-2) {$\times 10^{-1}$};}
+		
+		\tkzDefPoints{-1.5/0/p1,1.5/0/p2,4.5/0/p3,7.5/-0.2/p4,10.5/0/p5,13.5/0/p6,16.5/0/p7}
+		
+		\tkzText(p1){m\_}
+		\tkzText(p2){c\_}
+		\tkzText(p3){d\_}
+		\tkzText(p4){\_}
+		\tkzText(p5){da\_}
+		\tkzText(p6){h\_}
+		\tkzText(p7){k\_}
+		
+		%exemplos
+		
+		\tkzText(3,-3.5){$1\;\text{mm}=1\times 10^{(-1)\times\alert{2}}\;\text{dm}\rightarrow 1\times 10^{-2}\;\text{dm}$}
+		\tkzText(3.1,-4.5){$2,5\;\text{kg}=2,5\times 10^{(1)\times\alert{6}}\;\text{mg}\rightarrow2,5\times 10^{6}\;\text{mg}$}
+		\tkzText(2.5,-5.5){$10\;\text{ms}=10\times 10^{(-1)\times\alert{3}}\;\text{s}\rightarrow 10\times 10^{-3}\;\text{s}$}
+		
+		\end{tikzpicture}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Conversão de unidades em duas dimensões}
+	\begin{figure}
+		\begin{tikzpicture}[scale=0.65,transform shape,font=\Large]
+	
+		\tkzInit[xmin=-2,xmax=17,ymin=-6,ymax=3]
+		%\tkzGrid[color=gray!20]
+		\tkzClip
+	
+		\tikzset{compass style/.append style={->}}
+	
+		\foreach \x in {1,2,...,6}{
+			\tkzDefPoint(\x*3-3,0){\x}
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+			\node at (\x*3-3,2) {$\times 10^{2}$};
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+			\node at (\x*3-3,-2) {$\times 10^{-2}$};}
+	
+		\tkzDefPoints{-1.5/0/p1,1.5/0/p2,4.5/0/p3,7.5/0/p4,10.5/0/p5,13.5/0/p6,16.5/0/p7}
+	
+		\tkzText(p1){$\text{m}\_^2$}
+		\tkzText(p2){$\text{c}\_^2$}
+		\tkzText(p3){$\text{d}\_^2$}
+		\tkzText(p4){$\_^2$}
+		\tkzText(p5){$\text{da}\_^2$}
+		\tkzText(p6){$\text{h}\_^2$}
+		\tkzText(p7){$\text{k}\_^2$}
+	
+		%exemplos
+	
+		\tkzText(3.3,-3.5){$1\;\text{mm}^2=1\times 10^{(-2)\times\alert{2}}\;\text{dm}^2\rightarrow 1\times 10^{-4}\;\text{dm}^2$}
+		\tkzText(3.6,-4.5){$2,5\;\text{m}^2=2,5\times 10^{(2)\times\alert{3}}\;\text{mm}^2\rightarrow2,5\times 10^{6}\;\text{mm}^2$}
+		\tkzText(3,-5.5){$10\;\text{ms}^2=10\times 10^{(-2)\times\alert{3}}\;\text{s}^2\rightarrow 10\times 10^{-6}\;\text{s}^2$}
+	
+		\end{tikzpicture}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Conversão de unidades em três dimensões}
+	\begin{figure}
+		\begin{tikzpicture}[scale=0.65,transform shape,font=\Large]
+	
+		\tkzInit[xmin=-2,xmax=17,ymin=-6,ymax=3]
+		%\tkzGrid[color=gray!20]
+		\tkzClip
+	
+		\tikzset{compass style/.append style={->}}
+	
+		\foreach \x in {1,2,...,6}{
+			\tkzDefPoint(\x*3-3,0){\x}
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+			\node at (\x*3-3,2) {$\times 10^{3}$};
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+			\node at (\x*3-3,-2) {$\times 10^{-3}$};}
+	
+		\tkzDefPoints{-1.5/0/p1,1.5/0/p2,4.5/0/p3,7.5/0/p4,10.5/0/p5,13.5/0/p6,16.5/0/p7}
+	
+		\tkzText(p1){$\text{m}\_^3$}
+		\tkzText(p2){$\text{c}\_^3$}
+		\tkzText(p3){$\text{d}\_^3$}
+		\tkzText(p4){$\_^3$}
+		\tkzText(p5){$\text{da}\_^3$}
+		\tkzText(p6){$\text{h}\_^3$}
+		\tkzText(p7){$\text{k}\_^3$}
+	
+		%exemplos
+	
+		\tkzText(3.3,-3.5){$1\;\text{mm}^3=1\times 10^{(-3)\times\alert{2}}\;\text{dm}^3\rightarrow 1\times 10^{-6}\;\text{dm}^3$}
+		\tkzText(3.6,-4.5){$2,5\;\text{m}^3=2,5\times 10^{(3)\times\alert{3}}\;\text{mm}^3\rightarrow2,5\times 10^{9}\;\text{mm}^3$}
+		\tkzText(3.5,-5.5){$2,5\;\text{km}^3=2,5\times 10^{(3)\times\alert{6}}\;\text{mm}^3\rightarrow2,5\times 10^{18}\;\text{mm}^3$}
+
+		\end{tikzpicture}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Alfabeto grego}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{table}
+				\begin{tabular}[c]{ccc}
+					Alfa & $A$ & $\alpha$\\
+					Beta & $B$ & $\beta$\\
+					Gama & $\Gamma$ & $\gamma$\\
+					Delta & $\Delta$ & $\delta$\\
+					Epsílon & $E$ & $\epsilon$,$\varepsilon$\\
+					Zeta & $Z$ & $\zeta$\\
+					Eta & $H$ & $\eta$\\
+					Teta & $\Theta$ & $\theta$\\
+					Iota & $I$ & $\iota$\\
+					Capa & $K$ & $\kappa$\\
+					Lambda & $\Lambda$ & $\lambda$\\
+					Mi & $M$ & $\mu$
+				\end{tabular}
+			\end{table}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+	\begin{table}
+		\begin{tabular}[c]{ccc}
+			Ni & $N$ & $\nu$\\
+			Csi & $\Xi$ & $\xi$\\
+			ômicron & $O$ & $o$\\
+			Pi & $\Pi$ & $\pi$\\
+			Rô & $P$ & $\rho$\\
+			Sigma & $\Sigma$ & $\sigma$\\
+			Tau & $T$ & $\tau$\\
+			Ípsilon & $\Upsilon$ & $\upsilon$\\
+			Fi & $\Phi$ & $\phi$,$\varphi$\\
+			Qui & $X$ & $\chi$\\
+			Psi & $\Psi$ & $\psi$\\
+			Ômega & $\Omega$ & $\omega$
+		\end{tabular}
+	\end{table}
+\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Referências e observações\footnote{Este material está sujeito a modificações. Recomenda-se acompanhamento permanente.}}
+	\bibliographystyle{jurabib}
+	\begin{thebibliography}{9}
+		\bibitem{alvarenga}A. Máximo, B. Alvarenga, C. Guimarães, Física. Contexto e aplicações, v.1, 2.ed., São Paulo, Scipione (2016)
+	\end{thebibliography}
+\end{frame}
+
+\end{document}

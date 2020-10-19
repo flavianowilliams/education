@@ -1,0 +1,24 @@
+\begin{tikzpicture}[scale=0.3, transform shape]
+	\tikzstyle{s1}=[circle, radius=0.25, ball color=gray];
+	\draw [line width=1.0pt, ->] (0.25,0) -- (1,0);
+	\draw [line width=1.0pt, <-] (4,0) -- (4.75,0);
+	\draw [line width=1.0pt, ->] (0.2,0.13) -- (0.83,0.55);
+	\draw [line width=1.0pt, <-] (5.17,3.45) -- (5.79,3.86);
+	\draw [line width=1.0pt, ->] (-0.15,0.2) -- (-0.6,0.8);
+	\draw [line width=1.0pt, <-] (-2.4,3.2) -- (-2.85,3.8);
+	\draw [line width=1.0pt, ->] (-0.16,-0.2) -- (-0.625,-0.78);
+	\draw [line width=1.0pt, ->] (-3.84,-4.80) -- (-3.32,-4.15);
+	\draw [line width=1.0pt, ->] (0.16,-0.2) -- (0.625,-0.78);
+	\draw [line width=1.0pt, ->] (3.84,-4.80) -- (3.32,-4.15);
+	\node [s1] (n1) at (0,0) {1};
+	\node [s1] (n2) at (5,0) {2};
+	\node [s1] (n3) at (6,4) {3};
+	\node [s1] (n4) at (-3,4) {4};
+	\node [s1] (n5) at (-4,-5) {5};
+	\node [s1] (n6) at (4,-5) {6};
+	\draw [dashed] (n1) -- (n2);
+	\draw [dashed] (n1) -- (n3);
+	\draw [dashed] (n1) -- (n4);
+	\draw [dashed] (n1) -- (n5);
+	\draw [dashed] (n1) -- (n6);
+\end{tikzpicture}

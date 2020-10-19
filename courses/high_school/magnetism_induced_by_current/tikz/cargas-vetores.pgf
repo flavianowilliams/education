@@ -1,0 +1,65 @@
+\begin{tikzpicture}[scale=1]
+	\tikzset{>=stealth}
+	\tikzstyle{s1}=[circle, radius=0.25, ball color=gray];
+	%linhas de campo resultante%
+	\draw [black] (0,0) to [out=20, in=160] (5,0);
+	\draw [black] (0,0) to [out=-20, in=-160] (5,0);
+	\draw [black] (0,0) to [out=38, in=142] (5,0);
+	\draw [black] (0,0) to [out=-38, in=-142] (5,0);
+	\draw [black] (0,0) to [out=56, in=124] (5,0);
+	\draw [black] (0,0) to [out=-56, in=-124] (5,0);
+	\draw [black] (0,0) to [out=75, in=105] (5,0);
+	\draw [black] (0,0) to [out=-75, in=-105] (5,0);
+	\draw [black] (0,0) to [out=90, in=200] (0.9,1.5);
+	\draw [black] (0,0) to [out=-90, in=-200] (0.9,-1.5);
+	\draw [black] (0,0) to [out=110, in=-110] (0.05,1.25);
+	\draw [black] (0,0) to [out=-110, in=110] (0.05,-1.25);
+	\draw [black] (5,0) to [out=90, in=-20] (4.1,1.5);
+	\draw [black] (5,0) to [out=-90, in=20] (4.1,-1.5);
+	\draw [black] (5,0) to [out=70, in=-70] (4.95,1.25);
+	\draw [black] (5,0) to [out=-70, in=70] (4.95,-1.25);
+	%linhas de campo de cargas individuais%
+	%carga +
+	\draw [dashed,<->,black] (-2.5,0) -- (2.5,0);
+	\draw [dashed,<->, black] (-2.5*cos{20},-2.5*sin{20})--(5*cos{20},5*sin{20});
+	\draw [dashed,<->,black] (-2.5*cos{40},-2.5*sin{40})--(2.5*cos{40},2.5*sin{40});
+	\draw [dashed,<->,black] (-2.5*cos{60},-2.5*sin{60})--(2.5*cos{60},2.5*sin{60});
+	\draw [dashed,<->,black] (-2.5*cos{80},-2.5*sin{80})--(2.5*cos{80},2.5*sin{80});
+	\draw [dashed,<->,black] (-2.5*cos{90},-2.5*sin{90})--(2.5*cos{90},2.5*sin{90});
+	\draw [dashed,<->,black] (-2.5*cos{110},-2.5*sin{110})--(2.5*cos{110},2.5*sin{110});
+	\draw [dashed,<->,black] (-2.5*cos{-20},-2.5*sin{-20})--(2.5*cos{-20},2.5*sin{-20});
+	\draw [dashed,<->,black] (-2.5*cos{-40},-2.5*sin{-40})--(2.5*cos{-40},2.5*sin{-40});
+	\draw [dashed,<->,black] (-2.5*cos{-60},-2.5*sin{-60})--(2.5*cos{-60},2.5*sin{-60});
+	\draw [dashed,<->,black] (-2.5*cos{-80},-2.5*sin{-80})--(2.5*cos{-80},2.5*sin{-80});
+	\draw [dashed,<->,black](-2.5*cos{-110},-2.5*sin{-110})--(2.5*cos{-110},2.5*sin{-110});
+	%carga -
+	\draw [dashed,>-<,black] (2.5,0) -- (7.5,0);
+	\draw [dashed,>-<,black] (5-2.5*cos{20},-2.5*sin{20})--(5+2.5*cos{20},2.5*sin{20});
+	\draw [dashed,>-<,black] (5-2.5*cos{40},-2.5*sin{40})--(5+2.5*cos{40},2.5*sin{40});
+	\draw [dashed,>-<,black] (5-2.5*cos{60},-2.5*sin{60})--(5+2.5*cos{60},2.5*sin{60});
+	\draw [dashed,>-<,black] (5-2.5*cos{80},-2.5*sin{80})--(5+2.5*cos{80},2.5*sin{80});
+	\draw [dashed,>-<,black] (5-2.5*cos{90},-2.5*sin{90})--(5+2.5*cos{90},2.5*sin{90});
+	\draw [dashed,>-<,black](5-2.5*cos{110},-2.5*sin{110})--(5+2.5*cos{110},2.5*sin{110});
+	\draw [dashed,>-<,black] (5-2.5*cos{-20},-2.5*sin{-20})--(5+2.5*cos{-20},2.5*sin{-20});
+	\draw [dashed,>-<,black] (5-2.5*cos{-40},-2.5*sin{-40})--(5+2.5*cos{-40},2.5*sin{-40});
+	\draw [dashed,>-<,black] (5-2.5*cos{-60},-2.5*sin{-60})--(5+2.5*cos{-60},2.5*sin{-60});
+	\draw [dashed,>-<,black] (5-2.5*cos{-80},-2.5*sin{-80})--(5+2.5*cos{-80},2.5*sin{-80});
+	\draw [dashed,>-<,black](5-2.5*cos{-110},-2.5*sin{-110})--(5+2.5*cos{-110},2.5*sin{-110});
+	%campo eletrico resultante
+	\draw [line width=0.75pt, ->, green] (2.5,0.91) -- (2.5+0.4*cos{20}+0.4*cos{-20},0.91+0.4*sin{20}+0.4*sin{-20});
+	\draw [line width=0.75pt, ->, green] (3.49,1.27) -- (3.49+0.4*cos{20}+0.54*cos{-40},1.27+0.4*sin{20}+0.45*sin{-40});
+	\draw [line width=0.75pt, ->, green] (4.13,1.5) -- (4.13+0.35*cos{20}+0.5*cos{-60},1.5+0.35*sin{20}+0.5*sin{-60});
+	\draw [line width=0.75pt, ->, green] (4.7,1.71) -- (4.7+0.2*cos{20}+0.7*cos{-80},1.71+0.2*sin{20}+0.7*sin{-80});
+	%vetores campo eletrico
+	\draw [line width=0.75pt, ->, red] (2.5,0.91) -- (2.5+0.4*cos{20},0.91+0.4*sin{20});
+	\draw [line width=0.75pt, ->, red] (2.5,0.91) -- (2.5+0.4*cos{-20},0.91+0.4*sin{-20});
+	\draw [line width=0.75pt, ->, red] (3.49,1.27) -- (3.49+0.4*cos{20},1.27+0.4*sin{20});
+	\draw [line width=0.75pt, ->, red] (3.49,1.27) -- (3.49+0.45*cos{-40},1.27+0.45*sin{-40});
+	\draw [line width=0.75pt, ->, red] (4.13,1.5) -- (4.13+0.35*cos{20},1.5+0.35*sin{20});
+	\draw [line width=0.75pt, ->, red] (4.13,1.5) -- (4.13+0.5*cos{-60},1.5+0.5*sin{-60});
+	\draw [line width=0.75pt, ->, red] (4.7,1.71) -- (4.7+0.2*cos{20},1.71+0.2*sin{20});
+	\draw [line width=0.75pt, ->, red] (4.7,1.71) -- (4.7+0.7*cos{-80},1.71+0.7*sin{-80});
+	%cargas%
+	\node [s1] (n1) at (0,0) {$+$};
+	\node [s1] (n2) at (5,0) {$-$};
+\end{tikzpicture}

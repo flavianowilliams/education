@@ -7,7 +7,7 @@
 
 %Título
 
-\title[Eletrodinâmica]{Magnetismo}
+\title[Eletrodinâmica]{Magnetismo induzido por corrente elétrica}
 
 % The main document
 
@@ -21,266 +21,201 @@
   \tableofcontents
 \end{frame}
 
-\section{Magnetismo}
+\section{Campo magnético em um condutor}
 
 \subsection{}
 
-\begin{frame}{História do magnetismo}
+\begin{frame}{A relação entre corrente elétrica e magnetismo}
+	\begin{figure}
+		\begin{subfigure}[b]{0.45\textwidth}
+			\Centering
+			\includegraphics[scale=0.3]{figuras/figura-1a.png}
+			\caption*{\justifying Experiência de Oersted mostrando que a corrente no fio produz alguma influência sobre a bússola.}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.45\textwidth}
+			\Centering
+			\includegraphics[scale=0.3]{figuras/figura-1b.png}
+			\caption*{\justifying Campo magnético circular produzido pela corrente elétrica}
+		\end{subfigure}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Lei de Ampère}
 	\begin{columns}
 		\begin{column}{0.7\textwidth}
-			As primeira observações de fenômenos magnéticos surgiram na região da Magnésia (Ásia menor), onde existia um tipo de âmbar constituída por óxido de ferro que era capaz de atrair pequenos pedaços de ferro.
+			De acordo com experiências, a corrente que percorre um fio condutor produz um campo magnético circular $\vec{B}$, onde \alert{$B\;\alpha\; i$} e \alert{$B\;\alpha\; \frac{1}{r}$}. Podemos reunir em uma única relação de proporcionalidade,
+			\begin{equation*}
+				B\; \alpha\; \frac{i}{r}\Rightarrow B = \left(\frac{\mu_0}{2\pi}\right)\frac{i}{r}.
+			\end{equation*}
+			$\mu_0$ é chamado constante de permeabilidade magnética.
 		\end{column}
 		\begin{column}{0.3\textwidth}
 			\begin{figure}
 				\centering
-				\includegraphics[scale=0.3]{figuras/figura-1.png}
+				\includegraphics[scale=0.18]{figuras/figura-2.png}
 			\end{figure}
 		\end{column}
 	\end{columns}
-\end{frame}
-
-\begin{frame}{O ímã}
-	Similarmente a fenômenos elétricos, no ímã, polos magnéticos iguais se repelem e pólos magnéticos diferentes se atraem.
-	\begin{figure}
-		\begin{subfigure}{0.45\textwidth}
-			\centering
-			\includegraphics[scale=0.3]{figuras/figura-2a.png}
-		\end{subfigure}
-		\begin{subfigure}{0.45\textwidth}
-			\centering
-			\includegraphics[scale=0.3]{figuras/figura-2b.png}
-		\end{subfigure}
-	\end{figure}
-\end{frame}
-
-\begin{frame}{Linhas de indução e campo magnético}
-	De maneira semelhante ao campo elétrico, podemos também representar o campo magnético por meio de linhas de força chamadas \alert{linhas de indução}.
-	\begin{figure}
-		\begin{subfigure}{0.45\textwidth}
-			\centering
-			\includegraphics[scale=0.26]{figuras/figura-3a.png}
-		\end{subfigure}
-		\begin{subfigure}{0.45\textwidth}
-			\centering
-			\includegraphics[scale=0.41]{figuras/figura-3b.png}
-		\end{subfigure}
-	\end{figure}
-\end{frame}
-
-\begin{frame}{Inseparabilidade dos pólos}
-	\begin{corollary}
-		\alert{Não existe monopolos magnéticos!}
-	\end{corollary}
-	\begin{figure}
-		\includegraphics[scale=0.49]{figuras/figura-5.png}
-	\end{figure}
-\end{frame}
-
-\section{Força magnética e a corrente elétrica}
-
-\subsection{}
-
-\begin{frame}{O nascimento do eletromagnetismo}
-	\begin{columns}
-		\begin{column}{0.5\textwidth}
-			Um Físico chamado Hans Christian Oersted mostrou em 1820 que uma corrente que flui ao longo de um circuito é capaz de orientar uma bússola na direção perpendicular ao fio. Como se essa corrente fosse capaz de produzir efeitos magnéticos ao redor do fio.
-		\end{column}
-		\begin{column}{0.5\textwidth}
-			\begin{figure}
-				\centering
-				\includegraphics[scale=0.4]{figuras/figura-6.png}
-			\end{figure}
-		\end{column}
-	\end{columns}
-\end{frame}
-
-\begin{frame}{A relação entre eletricidade e magnetismo}
-	\begin{columns}
-		\begin{column}{0.5\textwidth}
-			\begin{corollary}
-				Quando duas cargas elétricas estão em movimento, manifestam-se entre elas, além da força eletrostática, uma outra força, denominada força magnética.
-			\end{corollary}
-		\end{column}
-		\begin{column}{0.5\textwidth}
-			\begin{figure}
-				\centering
-				\includegraphics[scale=0.45]{figuras/figura-13.png}
-				\caption*{Força magnética entre dois fios \cite{forcamanetica}.}
-%				\includegraphics[scale=0.35]{figuras/figura-7.png}
-			\end{figure}
-		\end{column}
-	\end{columns}
-	\begin{corollary}
-		A força magnética que atua nas cargas Q e q possui direção perpendicular ao movimento das cargas.
-	\end{corollary}
-\end{frame}
-
-\begin{frame}{A força de Lorentz}
-	\begin{columns}
-		\begin{column}{0.5\textwidth}
-			No final do século XIX, Hendrik Lorentz verificou que o módulo da força magnética depende:
-			\begin{itemize}
-				\item Do valor da carga elétrica q;
-				\item do módulo da velocidade $\vec{v}$;
-				\item do ângulo $\theta$ entre a velocidade de q e do campo magnético $\vec{B}$.
-			\end{itemize}
-		\end{column}
-		\begin{column}{0.5\textwidth}
-			\begin{figure}
-				\centering
-				\includegraphics[scale=0.35]{figuras/questao-3.png}
-			\end{figure}
-		\end{column}
-	\end{columns}	
-\end{frame}
-
-\begin{frame}{Expressão matemática da força de Lorentz}
-	\begin{multicols}{2}
-		Lorentz obteve as seguintes relações:
-		\begin{align*}
-			F & \alpha q,\\
-			F & \alpha v,\\
-			F & \alpha sen(\theta),
-		\end{align*}
-		que pode ser representado numa única relação de proporcionalidade,
+	\begin{block}{Lei de Ampère}
 		\begin{equation*}
-			F \alpha qvsen(\theta).
-		\end{equation*}
-		Foi definido que a constante de proporcionalidade é o valor do campo magnético $B$.
-	\end{multicols}
-	\begin{block}{Força de Lorentz}
-		A força magnética que atua numa carga q em movimento num campo magnético B é dado por
-		\begin{equation*}
-			F = qvBsen(\theta).
+			B = \frac{\mu_0 i}{2\pi r}.
 		\end{equation*}
 	\end{block}
 \end{frame}
 
-\begin{frame}{Direção e sentido da força magnética}
+\begin{frame}{Força magnética entre dois fios}
+	A corrente $i_1$ produzirá um campo magnético $B_1$ no fio 1. A força magnética atuando no fio 2 é $F_m=BiL$. Pela Lei de Àmpere temos $B=\frac{\mu_0i}{2\pi r}$, portanto
 	\begin{columns}
 		\begin{column}{0.6\textwidth}
-			Características da força magnética (força de Lorentz):
-			\begin{itemize}
-				\item Módulo: $F=qvBsen(\theta)$,
-				\item Direção: $\vec{F}$ é perpendicular a $\vec{v}$ e $\vec{B}$,
-				\item Sentido: Dado pela regra da mão direita.
-			\end{itemize}
-		\end{column}
-		\begin{column}{0.4\textwidth}
-			\begin{figure}
-				\centering
-				\includegraphics[scale=0.3]{figuras/figura-8.png}
-			\end{figure}
-		\end{column}
-	\end{columns}
-	\begin{corollary}
-		Se a carga q for \alert{negativa}, o \alert{sentido da força magnética} será \alert{contrário} àquele que é observado pela carga positiva.
-	\end{corollary}
-\end{frame}
-
-\begin{frame}{Força magnética em um condutor}
-	\begin{multicols}{2}
-		Considere um campo magnético entrando na tela, perpendicular a corrente elétrica que flui num condutor de comprimento L, a força de Lorentz é dada por
-		\begin{equation*}
-			F = qvB.
-		\end{equation*}
-		Se ao invés de uma carga, houver N cargas se movimentando com velocidade $\vec{v}$, a força total no fio será a soma das forças em cada 
-carga,
-		\begin{align*}
-			F_{fio} & = NF,\\
-			F_{fio} & = B\alert{Nq}v.
-		\end{align*}
-		\begin{figure}
-			\centering
-			\includegraphics[scale=0.3]{figuras/figura-9.png}
-		\end{figure}
-	\end{multicols}
-\end{frame}
-
-\begin{frame}{Força magnética em um condutor}
-	\begin{columns}
-		\begin{column}{0.6\textwidth}
-			Mas pela definição de corrente, $i=\Delta q/\Delta t$, temos
-			\begin{equation*}
-				Nq = i\Delta t.
-			\end{equation*}
-			Sabendo que $v=\frac{L}{\Delta t}$ obtemos
 			\begin{align*}
-				F & = B(i\bcancel{\Delta t})\frac{L}{\bcancel{\Delta t}} = BiL.
+				F_m & = BiL,\\
+				F_m & = \left(\frac{\mu_0i}{2\pi r}\right)iL.
 			\end{align*}
+			Se r=1m, i=1A, e L=1m a força encontrada vale $F_m=2\times 10^{-7}\;N$, substituindo
+			\begin{equation*}
+				\boxed{\mu_0 = 4\pi\times 10^{-7}\;\frac{N}{A^2}.}
+			\end{equation*}
 		\end{column}
 		\begin{column}{0.4\textwidth}
 			\begin{figure}
 				\centering
-				\includegraphics[scale=0.25]{figuras/figura-10.png}
+				\includegraphics[scale=0.8]{figuras/forca-magnetica.jpg}
 			\end{figure}
 		\end{column}
 	\end{columns}
-	\begin{corollary}
-		Se um fio retilíneo, de comprimento L, percorrido por uma corrente i, for colocado em um campo magnético B, sobre esse fio atuará uma força magnética F dada por
-		\begin{equation*}
-			F = iBLsen(\theta).
-		\end{equation*}
-	\end{corollary}
 \end{frame}
 
-\section{Aplicações do magnetismo}
+\section{Campo magnético numa espira circular}
 
 \subsection{}
 
-\begin{frame}{Campo magnético geográfico da Terra}
+\begin{frame}{O que é uma espira circular?}
+	\begin{columns}
+		\begin{column}{0.7\textwidth}
+			Sabemos que a corrente num fio condutor produz linhas de campo magnético circulares, se dobrarmos esse fio afim de possuir um formato circular de raio \alert{r}, as linhas de campo de cada pedaço do fio irão se concentrar no centro do círculo (\alert{chamamos esse círculo de espira circular}). Sabendo que $B\;\alpha\; i$ e $B\;\alpha\; \frac{1}{r}$, podemos dizer que o campo B no centro da espira é proporcional a corrente i e o raio r da espira.
+		\end{column}
+		\begin{column}{0.3\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.4]{figuras/figura-3.png}
+			\end{figure}
+		\end{column}
+	\end{columns}
+	\begin{block}{Campo magnético no centro da espira circular}
+		\begin{equation*}
+			B\;\alpha\;\frac{i}{r}.
+		\end{equation*}
+	\end{block}
+\end{frame}
+
+\section{Campo magnético num solenóide}
+
+\subsection{}
+
+\begin{frame}{O que é um solenóide?}
+	\begin{columns}
+		\begin{column}{0.7\textwidth}
+			\textit{Um solenóide é um fio enrolado de modo a formar N espiras sucessivas, todas alinhadas em um cilindro de comprimento L}. Sabendo que cada espira produz um campo magnético $\vec{B}$ no seu centro, onde \alert{$B\;\alpha\; i$} e considerando que cada espira possui o mesmo raio, para saber o campo magnético numa posição no interior do solenóide, multiplicamos o campo $\vec{B}$ de cada espira pelo número de espiras por unidade de comprimento do solenóide, \alert{n}.
+		\end{column}
+		\begin{column}{0.3\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.27]{figuras/figura-4.png}
+			\end{figure}
+		\end{column}
+	\end{columns}
+	\begin{block}{Campo magnético no interior do solenóide}
+		\begin{equation*}
+			B\;\alpha\;ni.
+		\end{equation*}
+	\end{block}
+\end{frame}
+
+\section{Materiais magnéticos}
+
+\subsection{}
+
+\begin{frame}{Tipos de materiais magnéticos}
+	Existem três classes de materiais magnéticos:
+	\begin{itemize}
+		\item Paramagnéticos:\textit{São aqueles que magnetizam fracamente aumentando ligeiramente o campo magnético no local.}
+		\item Ferromagnéticos:\textit{São aqueles que magnetizam com muita facilidade e aumentam substancialmente o campo magnético no local.}
+		\item Diamagnéticos:\textit{São aqueles que magnetizam fracamente diminuindo ligeiramente o campo magnético no local.}
+	\end{itemize}
+	\begin{corollary}
+		A magnetização do material diminui com a temperatura, pois a elevação da temperatura provoca um aumento da agitação térmica dos átomos, dificultando, então, a sua magnetização.
+	\end{corollary}
+\end{frame}
+
+\begin{frame}{Materiais paramagnéticos}
+	Na presença de um campo magnético, os ímãs elementares do material tendem a se orientarem no \alert{mesmo sentido} do campo magnético. Assim, o campo magnético é somado com o campo dos \alert{ímãs elementares}, fazendo com que ele fique \alert{fracamente aumentado}.
+	\begin{figure}[b]
+		\begin{subfigure}{0.45\textwidth}
+			\Centering
+			\includegraphics[scale=0.5]{figuras/figura-5a.png}
+			\caption*{\justifying Representação dos ímãs elementares de um material paramagnético.}
+		\end{subfigure}
+		\begin{subfigure}{0.45\textwidth}
+			\Centering
+			\includegraphics[scale=0.5]{figuras/figura-5b.png}
+			\caption*{\justifying Orientação dos ímãs elementares na presença de um campo magnético $\vec{V}$.}
+		\end{subfigure}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Materiais ferromagnéticos}
 	\begin{columns}
 		\begin{column}{0.6\textwidth}
-			\begin{itemize}
-				\item A Terra se comporta como um ímã gigante onde o polo norte magnético encontra-se \alert{próximo} do sul geográfico e vice-versa.
-				\item As linhas de indução produzem um campo magnético ao redor da Terra, o que a protege contra radiações vindas do Sol.
-				\item As cargas elétricas ao encontrarem o campo magnético sofrem uma força de Lorentz que a deslocam para o polo norte da Terra, causando o fenômeno da aurora Boreal.
-			\end{itemize}
+			Assim como no caso dos materiais paramagnéticos, nos materiais ferromagnéticos, os ímãs elementares se orientam no \alert{mesmo sentido} do campo do magnético externo, porém muito mais significativamente. Isso \alert{aumenta consideravelmente} o campo magnético no seu interior.
 		\end{column}
 		\begin{column}{0.4\textwidth}
 			\begin{figure}
 				\centering
-				\includegraphics[scale=0.25]{figuras/figura-4.png}
+				\includegraphics[scale=0.3]{figuras/figura-6.png}
 			\end{figure}
 		\end{column}
 	\end{columns}
+	\begin{corollary}
+		Existem poucos materiais na natureza que possuem propriedades ferromagnéticas, como o ferro, cobalto e níquel.
+	\end{corollary}
 \end{frame}
 
-\begin{frame}{Motor de corrente contínua}
+\begin{frame}{Materiais diamagnéticos}
 	\begin{columns}
-		\begin{column}{0.5\textwidth}
-			\begin{figure}
-				\centering
-				\includegraphics[scale=0.35]{figuras/figura-11.png}
-			\end{figure}
+		\begin{column}{0.7\textwidth}
+			Nos materiais diamagnéticos, ao contrário dos materias paramagnéticos e ferromagnéticos, os ímãs elementares do material se orientam no sentido contrário ao campo magnético externo, fazendo com que o material se comporte como ímãn com os pólos contrários.
 		\end{column}
-		\begin{column}{0.5\textwidth}
-			Uma corrente elétrica circula em uma espira retangular e devido ao campo magnético produzido pelo ímã, uma força perpendicular surge na espira produzindo um torque, o que a faz girar.
+		\begin{column}{0.3\textwidth}
 			\begin{figure}
 				\centering
-				\includegraphics[scale=0.4]{figuras/figura-12.png}
+				\includegraphics[scale=0.3]{figuras/figura-7.png}
 			\end{figure}
 		\end{column}
 	\end{columns}
+	\begin{corollary}
+		Geralmente os materiais diamagnéticos sofrem uma força de repulsão na presença de um campo magnético externo.
+	\end{corollary}
 \end{frame}
 
-\begin{frame}{A levitação magnética sem atrito (Maglev)}
-	\begin{columns}[t]
-		\begin{column}{0.6\textwidth}
-			\begin{itemize}
-				\small 
-				\item O trem levita através da repulsão magnética;
-				\item A repulsão magnética pode ser entre um íman e um supercondutor (Maglev Cobra\cite{maglev}) ou através de eletroímans (Transrapid de Xangai, JR-Maglev);
-				\item Como o movimento do trem ocorre por levitação, o atrito é praticamente zero, dissipando o mínimo de energia elétrica.
-				\item Com a falta de atrito, o trem pode alcançar velocidades supersônicas (JR-Maglev: 603 km/h, Transrapid Xangai: 430 km/h).
-			\end{itemize}
+\section{Aplicações}
+
+\subsection{}
+
+\begin{frame}{Aplicações do magnetismo e a tecnologia atual}
+	\begin{columns}[b]
+		\begin{column}{0.3\textwidth}
+		\begin{figure}
+			\Centering
+			\includegraphics[scale=0.25]{figuras/figura-8.png}
+			\caption*{\justifying Guindaste que funciona à base de eletroímã.}
+		\end{figure}
 		\end{column}
-		\begin{column}{0.4\textwidth}
-			\begin{figure}
-				\centering
-				\includegraphics[scale=0.22]{figuras/maglevcobra.jpg}
-			\end{figure}
-			\href{https://www.youtube.com/watch?v=lqsAkfXMNTw}{\textcolor{blue}{Projeto Maglev Cobra da UFRJ}}
+		\begin{column}{0.7\textwidth}
+		\begin{figure}
+			\Centering
+			\includegraphics[scale=0.2]{figuras/maglevcobra.jpg}
+			\caption*{\justifying Maglev cobra da UFRJ: As cargas que fluem nos supercondutores produz um campo magnético intenso o suficiente para repelir os ímãs permanentes e fazer levitar o veículo.}
+		\end{figure}
 		\end{column}
 	\end{columns}
 \end{frame}
@@ -480,9 +415,8 @@ carga,
 \begin{frame}{Referências}
 	\bibliographystyle{jurabib}
 	\begin{thebibliography}{9}
-		\bibitem{alvarenga}A. Máximo, B. Alvarenga, C. Guimarães, Física. Contexto e aplicações, v.3, 2.ed., São Paulo, Scipione (2016)\footnote{Todas as figuras ilustrativas não referenciadas no texto foram extraídas de Alvarenga et al\cite{alvarenga}}
+		\bibitem{alvarenga}A. Máximo, B. Alvarenga, C. Guimarães, Física. Contexto e aplicações, v.1, 2.ed., São Paulo, Scipione (2016)
 		\bibitem{maglev}www.maglevcobra.coppe.ufrj.br/
-		\bibitem{forcamanetica}\text{https://pt.m.wikipedia.org/wiki/}
 	\end{thebibliography}
 
 \vspace*{1cm}

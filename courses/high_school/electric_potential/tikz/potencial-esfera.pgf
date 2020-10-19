@@ -1,0 +1,55 @@
+﻿		\begin{tikzpicture}[scale=1,transform shape,font=\Large]
+			
+			\begin{scope}[shift={(0,0)}]
+
+				\tkzInit[xmin=0,xmax=8,ymin=0,ymax=150,ystep=40]
+%				\tkzGrid[color=gray!20]
+				\tkzClip[space=1.5]
+			
+				\tkzDrawX[label=r,below,noticks]
+				\tkzDrawY[label=E(r),pos=1.01,above,noticks]
+
+				\tkzFct[domain=2:8,color=red,line width=1.5pt]{500.0/x**2}
+				\tkzDefPointByFct(2)\tkzGetPoint{A}
+				\tkzDefPointByFct(4)\tkzGetPoint{B}
+				
+				\tkzFct[domain=0:2,color=red,line width=1.5pt]{0}
+
+				\tkzPointShowCoord[ylabel=$K\frac{Q}{R^2}$,xlabel=$R$](A)
+
+				\tkzDefPoints{6.5/100/t1,5/2/D,7.5/150/t2}
+			
+				\draw[->,line width=1.0pt] (t1) -- (B);
+				\tkzText[text centered,opacity=100,fill=gray!20](t1){$K\frac{Q}{r^2}$}
+
+				\tkzText[text centered,color=black](t2){$(a)$}
+
+			\end{scope}
+
+				\begin{scope}[shift={(0,-6)}]
+
+				\tkzInit[xmin=0,xmax=8,ymin=0,ymax=150,ystep=40]
+%				\tkzGrid[color=gray!20]
+				\tkzClip[space=1.5]
+			
+				\tkzDrawX[label=r,below,noticks]
+				\tkzDrawY[label=V(r),pos=1.01,above,noticks]
+
+				\tkzFct[domain=2:8,color=red,line width=1.5pt]{250.0/x}
+				\tkzDefPointByFct(2)\tkzGetPoint{A}
+				\tkzDefPointByFct(4)\tkzGetPoint{B}
+				
+				\tkzPointShowCoord[ylabel=$K\frac{Q}{R}$,xlabel=$R$](A)
+
+				\tkzDefPoints{6.5/100/t1,5/2/D,7.5/150/t2}
+
+				\draw[->,line width=1.0pt] (t1) -- (B);
+				\tkzText[text centered,opacity=100,fill=gray!20](t1){$K\frac{Q}{r}$}
+
+				\tkzFct[domain=0:2,color=red,line width=1.5pt]{250.0/2}
+
+				\tkzText[text centered,color=black](t2){$(b)$}
+
+				\end{scope}
+
+		\end{tikzpicture}

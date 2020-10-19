@@ -1,0 +1,26 @@
+﻿\begin{tikzpicture}[scale=1,transform shape,font=\Large,wave/.style={decorate,decoration={snake,post length=1.4mm,amplitude=0.75mm, segment length=5mm},thick}]
+
+		\tkzInit[xmin=-3,xmax=7,ymin=-3.5,ymax=3]
+		\tkzGrid[color=gray!20]
+		\tkzClip
+
+		\tkzDefPoints{0/0/O,2.25/0/A,6/0/O'}
+
+		\draw[wave] (O) -- (O');
+
+		\tkzDrawCircle[R,line width=1.5pt,fill=gray!25](O,2 cm)
+
+		\foreach \x in {10,20,...,360}{
+		\tkzDefPointsBy[rotation=center O angle \x](O,A){p1,p1'}
+		\tkzText[font=\small](p1'){+}}
+			
+		\tkzDrawCircle[R,line width=1.5pt,fill=gray!25](O',0.75 cm)
+
+		\node at (O) {1};
+
+		\tkzDefPoints{0/-3/t1,6/-3/t2}
+
+		\tkzText(t1){$V_1\neq 0$}
+		\tkzText(t2){$V_2 = 0$}
+
+\end{tikzpicture}

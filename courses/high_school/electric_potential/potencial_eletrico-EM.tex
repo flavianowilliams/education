@@ -1,0 +1,908 @@
+% Aula de eletrostática para o curso de Física II da graduação
+%
+\documentclass[brazil,aspectratio=169]{beamer}
+%
+%carregando preâmbulo
+\input{../../contrib/preamble}
+
+%Título
+
+\title[Eletrostática]{Potencial elétrico}
+
+% The main document
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Sumário}
+  \tableofcontents
+\end{frame}
+
+\section{Potencial elétrico}
+
+\subsection{}
+
+\begin{frame}{Trabalho realizado pela força elétrica}
+	\begin{columns}
+		\begin{column}[c]{0.6\textwidth}
+			Supondo duas cargas Q e q no espaço, a força $\vec{F}$ entre elas é dado pela lei de Coulomb,
+			\begin{equation*}
+				F=K\frac{Qq}{r^2}.
+			\end{equation*}
+			O trabalho necessário para trazer a carga q do ponto A ao ponto B é igual a diferença de energia potencial entre esses pontos,
+			\begin{equation*}
+				\tau_{AB} = U_{A}-U_{B}.
+			\end{equation*}		
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.5, transform shape]
+				
+				%setup page
+				\tkzInit[xmin=-2,xmax=9,ymin=-3,ymax=0]
+%				\tkzGrid[color=gray!50]
+				\tkzClip
+				
+				\tkzDefPoints{8/-2/n3,0/-2/n1,3/-2/n2}
+				
+				%setup styles
+				\tikzstyle{s1}=[circle, radius=0.25, ball color=gray!50];
+				\tikzstyle{s2}=[circle, radius=0.20, color=black,fill=white];
+				
+				\draw [dashed] (n1) -- (n3);
+				
+				%exemplo 2
+				\draw [line width=1.0pt, ->,color=red] (0,-2) -- (1,-2) node [pos=0.5,above left] {};
+				\draw [line width=1.0pt, <-,color=red] (2,-2) -- (3,-2) node [pos=0.5,above right] {};
+				
+				\node [s1] at (n1) {$Q$};
+				\node [s1] at (n2) {$q$};
+				\node [s2] at (n3) {$q$};
+				
+				\tkzDrawCircle[R,dotted](n3,0.3cm)
+				
+				\draw (n1) to [dim arrow={label=$r_{A}$}] (n2);
+				\draw (n1) to [dim arrow'={label'=$r_{B}$}] (n3);
+				
+				\tkzText[above right=0.2cm](n2){A}
+				\tkzText[above right=0.2cm](n3){B}
+				
+				\end{tikzpicture}
+				
+				\caption*{\footnotesize Carga q se deslocando do ponto A até B devido a força $\vec{F}_{qQ}$.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Energia potencial elétrica}
+%	\begin{multicols}{2}
+	\begin{columns}
+		\begin{column}[t]{0.5\textwidth}
+			Pela relação de trabalho e força
+			\begin{equation*}
+				\tau=F\Delta r,
+			\end{equation*}
+			 onde $\Delta r$ é o deslocamento realizado por q de A até B, $\Delta r = r_A-r_B$. Assim
+			\begin{equation*}
+				\tau \Rightarrow F_Ar_A-F_Br_B.
+			\end{equation*}
+			Se $F=K\frac{Qq}{r^2}$, substituímos acima
+			\begin{equation*}
+				\tau \Rightarrow  \left(\frac{KQq}{\bcancel{r^2_A}}\right)\left(\bcancel{r_A}\right)-\left(\frac{KQq}{\bcancel{r^2_B}}\right)\left(\bcancel{r_B}\right),
+			\end{equation*}
+		\end{column}
+		\begin{column}[t]{0.5\textwidth}
+			\begin{equation*}
+				\tau \Rightarrow \frac{KQq}{r_A}-\frac{KQq}{r_B}.
+			\end{equation*}
+			Definimos $U_A$ a energia potencial no ponto A e $U_B$ a energia no ponto B,
+			\begin{equation*}
+				\tau = U_A-U_B = \frac{KQq}{r_A}-\frac{KQq}{r_B},
+			\end{equation*}
+			Chegando assim na energia potencial
+			\begin{align*}
+				\Aboxed{U(r) & = K\frac{Qq}{r}.}
+			\end{align*}
+		\end{column}
+	\end{columns}
+%	\end{multicols}
+\end{frame}
+
+\begin{frame}{Diferença de potencial}
+%	\begin{multicols}{2}
+	\begin{columns}
+		\begin{column}[t]{0.5\textwidth}
+			Supondo um conjunto de carga elétrica q, o trabalho necessário para deslocar do ponto A até B cada portador de carga elementar dividimos o trabalho total pela quantidade de carga elétrica q
+			\begin{equation*}
+				V_{AB} = \frac{\tau_{AB}}{q}.
+			\end{equation*}
+			Vimos anteriormente que $\tau_{AB}=U_A-U_B$,
+		\end{column}
+		\begin{column}[t]{0.5\textwidth}
+			\begin{equation*}
+				V_{AB} = \frac{U_{AB}}{q},
+			\end{equation*}
+			mas $U=K\frac{Qq}{r}$, portanto
+			\begin{align*}
+				V_{AB} & = \frac{KQ}{\bcancel{q}r_A}\bcancel{q}-\frac{KQ}{\bcancel{q}r_B}\bcancel{q},\\
+				\Aboxed{V_{AB} & = K\frac{Q}{r_A}-K\frac{Q}{r_B}.}
+			\end{align*}
+		\end{column}
+	\end{columns}
+%	\end{multicols}
+	\begin{block}{Diferença de potencial (d.d.p.)}
+		Trabalho necessário para deslocar cada carga elementar de um ponto a outro.
+	\end{block}
+\end{frame}
+
+\begin{frame}{Potencial elétrico}
+	Se trouxermos a carga elementar do infinito até o ponto A teremos
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{align*}
+				V_A-\overbracket{V(\infty)}^{\tiny \alert{\approx 0}} & = 						K\frac{Q}{r_A}-\bcancel{K\frac{Q}{r\rightarrow\infty}},\\
+				\Aboxed{V_A & = K\frac{Q}{r_A}.}
+			\end{align*}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.45, transform shape]
+				
+				%setup page
+				\tkzInit[xmin=-2,xmax=9,ymin=-3,ymax=0]
+%				\tkzGrid[color=gray!50]
+				\tkzClip
+				
+				\tkzDefPoints{8/-2/n3,0/-2/n1,3/-2/n2}
+				
+				%setup styles
+				\tikzstyle{s1}=[circle, radius=0.25, ball color=gray!50];
+				\tikzstyle{s2}=[circle, radius=0.20, color=black,fill=white];
+				
+				\draw [dashed] (n1) -- (n3);
+				
+				%exemplo 2
+				\draw [line width=1.0pt, ->,color=red] (0,-2) -- (1,-2) node [pos=0.5,above left] {};
+				\draw [line width=1.0pt, ->,color=red] (3,-2) -- (2,-2) node [pos=0.5,above right] {};
+				
+				\node [s1] at (n1) {$Q$};
+				\node [s1] at (n2) {$q$};
+				\node [s2] at (n3) {$q$};
+				
+				\tkzDrawCircle[R,dotted](n3,0.3cm)
+				
+				\draw (n1) to [dim arrow={label=$r_{A}$}] (n2);
+				\draw (n1) to [dim arrow'={label'=$r_{B}$}] (n3);
+				
+				\tkzText[above right=0.2cm](n2){A}
+				\tkzText[above right=0.2cm](n3){B}
+				
+				\end{tikzpicture}
+				
+				\caption*{\footnotesize Carga q se deslocando do infinito até o ponto A.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+	\begin{block}{Potencial elétrico}
+		Trabalho necessário para trazer uma carga elementar do infinito até o ponto A.
+	\end{block}
+	\begin{corollary}
+		A unidade de medida do potencial elétrico no SI é Volt (V).
+	\end{corollary}
+\end{frame}
+
+\begin{frame}{Potencial elétrico versus posição de uma carga puntiforme}
+	O potencial elétrico de uma carga puntiforme é uma função hiperbólica que depende do sinal da carga elétrica.
+	\begin{figure}
+		\begin{subfigure}{0.45\textwidth}
+			\centering
+			\begin{tikzpicture}[scale=0.6,transform shape,font=\Large]
+			\tkzInit[xmin=0,xmax=6,ymin=0,ymax=4]
+%			\tkzGrid[color=gray!20]
+			\tkzClip[space=1.1]
+			
+			\tkzDrawX[label=r,below,noticks]
+			\tkzDrawY[label=V(r),pos=1.01,above,noticks]
+			
+			\tkzFct[domain=0:12,color=red,line width=1.0pt]{1/x}
+			\tkzDefPointByFct(3)\tkzGetPoint{A}
+			
+			\tkzDefPoint(4,3){t1}
+			
+			\draw[->,line width=1.0pt] (t1) -- (A);
+
+			\tkzText[text centered,opacity=100,fill=gray!20,font=\normalsize](t1){Hipérbole}
+	
+			\end{tikzpicture}
+			\caption*{\footnotesize Potencial elétrico de uma carga Q positiva.}
+		\end{subfigure}
+		\begin{subfigure}{0.5\textwidth}
+			\centering
+			\begin{tikzpicture}[scale=0.6,transform shape,font=\Large]
+			
+			\tkzInit[xmin=0,xmax=6,ymin=-4,ymax=0]
+%			\tkzGrid[color=gray!20]
+			\tkzClip[space=1.1]
+			
+			\tkzDrawX[label=r,below,noticks]
+			\tkzDrawY[label=V(r),pos=1.01,above,noticks]
+			
+			\tkzFct[domain=0:6,color=red,line width=1.0pt]{1/(-x)}
+			\tkzDefPointByFct(3)\tkzGetPoint{A}
+			
+			\tkzDefPoint(4,-3){t1}
+			
+			\draw[->,line width=1.0pt] (t1) -- (A);
+
+			\tkzText[text centered,opacity=100,fill=gray!20,font=\normalsize](t1){Hipérbole}
+			
+			\end{tikzpicture}
+			\caption*{\footnotesize Potencial elétrico de uma carga Q negativa.}
+		\end{subfigure}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Campo de várias cargas puntuais}
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+			Ao contrário do campo elétrico, para calcular o potencial elétrico em um ponto no espaço devido a uma distribuição de cargas, usamos a soma algébrica ao invés da soma vetorial, \alert{pois o potencial elétrico é uma grandeza escalar},
+			\begin{align*}
+				V_P & = V_1+V_2+V_3+V_4,\\
+				V_P & = \sum_{i=1}^{4}V_i.
+			\end{align*}
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.45, transform shape,font=\Large]
+
+				\def\nax{0}
+				\def\nay{0}
+				\def\nbx{6}
+				\def\nby{2}
+				\def\nar{1/sqrt((\nax-\nbx)^2+(\nay-\nby)^2)}
+				
+				\tikzstyle{s1}=[circle, radius=0.25, ball color=gray!50];
+				
+				\coordinate (n1) at (\nax,\nay);
+				
+				\tkzDrawPoint[size=0.75cm,fill=black,color=black](n1)
+				\tkzLabelPoint[above=0.25cm,font=\Large](n1){P}
+				
+				\node [s1] (n3) at (\nbx,\nby) {$Q_1$};
+				\node [s1] (n5) at (-4,-5) {$Q_2$};
+				\node [s1] (n6) at (4,-5) {$Q_3$};
+				\node [s1] (n7) at (-2,4) {$Q_4$};
+				
+				\draw [dashed] (n1) -- (n3);
+				\draw [dashed] (n1) -- (n5);
+				\draw [dashed] (n1) -- (n6);
+				\draw [dashed] (n1) -- (n7);
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Quatro cargas puntiformes e suas distâncias relativas em relação ao ponto P.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\section{Potencial e campo elétrico}
+
+\subsection{}
+
+\begin{frame}{Relação entre campo elétrico e potencial}
+	\begin{columns}
+		\begin{column}[c]{0.6\textwidth}
+			Para exemplificar a relação entre campo e potencial elétrico usamos duas placas paralelas carregadas eletricamente, de modo a ter um campo elétrico $\vec{E}$ uniforme no interior dessa placa. Se colocarmos uma carga elétrica em A, o trabalho necessário para deslocá-lo até B é dado por
+			\begin{equation*}
+				\tau_{AB} = qV_{AB}.
+			\end{equation*}
+			E o trabalho é força F vezes deslocamento d, portanto
+			\begin{align*}
+			\tau_{AB} = Fd = qV_{AB}.
+			\end{align*}
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.7, transform shape]
+				
+				\tkzInit[xmin=1,xmax=7,ymin=-1,ymax=5]
+%				\tkzGrid[color=gray!50]
+				\tkzClip
+				
+				\def\d{0.5}
+				
+				\coordinate (n1) at (1+\d,0);
+				\coordinate (n1b) at (1+\d,4);
+				\coordinate (n2) at (5,0);
+				\coordinate (n2b) at (5,4);
+				\coordinate (n3) at (4,3);
+				
+				%placa
+				\filldraw[opacity=0.2] (1,0) rectangle (1+\d,4);
+				\filldraw[opacity=0.2] (5,0) rectangle (5+\d,4);
+				
+				%cargas
+				\foreach \x in {0,1,...,4}{
+					\draw[->,color=black] (1+\d,\x) -- (5,\x);
+					\node at (5+0.5*\d,\x) {-};
+					\node at (1+0.5*\d,\x) {+};}
+				
+				\draw (n1) to [dim arrow'={label'=$d$}] (n2);
+				
+				\tkzText[above](n1b){A}
+				\tkzText[above](n2b){B}
+				\tkzText[above,color=black](n3){$\vec{E}$}
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Linhas de campo elétrico entre duas placas eletrizadas com cargas de sinais contrários.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Superfícies equipotenciais}
+\begin{columns}
+	\begin{column}[c]{0.6\textwidth}
+		Pela lei de Coulomb sabemos que a força elétrica é dado por $F=qE$, onde E é o campo elétrico entre as placas, assim
+		\begin{align*}
+			\bcancel{q}Ed & = \bcancel{q}V_{AB},\\
+			\Aboxed{V_{AB} & = Ed.}
+		\end{align*}
+		\begin{corollary}
+			A ligação entre pontos que possuem o mesmo potencial elétrico forma uma superfície chamada superfície equipotencial.
+		\end{corollary}
+	\end{column}
+	\begin{column}[c]{0.4\textwidth}
+		\begin{figure}
+			\centering
+			\begin{tikzpicture}[scale=0.7, transform shape]
+			
+			\tkzInit[xmin=1,xmax=7,ymin=-1,ymax=5]
+%			\tkzGrid[color=gray!50]
+			\tkzClip
+			
+			\def\d{0.5}
+			
+			\coordinate (n1) at (1+\d,0);
+			\coordinate (n1b) at (1+\d,4);
+			\coordinate (n2) at (5,0);
+			\coordinate (n2b) at (5,4);
+			\coordinate (n3) at (4,3);
+			
+			%placa
+			\filldraw[opacity=0.2] (1,0) rectangle (1+\d,4);
+			\filldraw[opacity=0.2] (5,0) rectangle (5+\d,4);
+
+			\draw[dotted] (1.5+\d,0) --++ (0,4);
+			\draw[dotted] (2.5+\d,0) --++ (0,4);
+			\draw[dotted] (3.5+\d,0) --++ (0,4);
+			
+			%cargas
+			\foreach \x in {0,1,...,4}{
+				\draw[->,color=black] (1+\d,\x) -- (5,\x);
+				\coordinate (p1) at (1.5+\d,\x);
+				\coordinate (p2) at (2.5+\d,\x);
+				\coordinate (p3) at (3.5+\d,\x);
+				\tkzDrawPoint[color=red,size=0.3cm](p1)
+				\tkzDrawPoint[color=red,size=0.3cm](p2)
+				\tkzDrawPoint[color=red,size=0.3cm](p3)
+				\node at (5+0.5*\d,\x) {-};
+				\node at (1+0.5*\d,\x) {+};}
+			
+			\draw (n1) to [dim arrow'={label'=$d$}] (n2);
+			
+			\tkzText[above](n1b){A}
+			\tkzText[above](n2b){B}
+			\tkzText[above right,color=black](n3){$\vec{E}$}
+			
+			\end{tikzpicture}
+			\caption*{\footnotesize Superfícies equipotenciais (linhas tracejadas) e campo elétrico entre placas carregadas eletricamente.}
+		\end{figure}
+	\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Características de uma superfície equipotencial}
+\begin{columns}
+	\begin{column}[c]{0.6\textwidth}
+		As características de uma superfície equipotencial são:
+		\begin{enumerate}
+			\item [\ding{51}] Perpendicular ao campo elétrico;
+			\item [\ding{51}] A d.d.p. é diferente de zero entre duas superfícies;
+			\item [\ding{51}] A d.d.p. é zero entre dois pontos da mesma superfície;
+			\item [\ding{51}] Uma carga elétrica irá se deslocar entre superfícies equipotenciais diferentes, ao invés de pontos na mesma superfície.
+		\end{enumerate}
+	\end{column}
+	\begin{column}[c]{0.4\textwidth}
+		\begin{figure}
+			\centering
+			\begin{tikzpicture}[scale=0.7, transform shape]
+			
+			\tkzInit[xmin=1,xmax=7,ymin=-1,ymax=5]
+%			\tkzGrid[color=gray!50]
+			\tkzClip
+			
+			\def\d{0.5}
+			
+			\coordinate (n1) at (1+\d,0);
+			\coordinate (n1b) at (1+\d,4);
+			\coordinate (n2) at (5,0);
+			\coordinate (n2b) at (5,4);
+			\coordinate (n3) at (4,3);
+			
+			%placa
+			\filldraw[opacity=0.2] (1,0) rectangle (1+\d,4);
+			\filldraw[opacity=0.2] (5,0) rectangle (5+\d,4);
+			
+			\draw[dotted] (1.5+\d,0) --++ (0,4);
+			\draw[dotted] (2.5+\d,0) --++ (0,4);
+			\draw[dotted] (3.5+\d,0) --++ (0,4);
+
+			%cargas
+			\foreach \x in {0,1,...,3}{
+				\foreach \y in {0,1,2}{
+					\coordinate (p0) at (1.5+\d+\y,\x+1);
+					\coordinate (p1) at (1.5+\d+\y,\x);
+					\coordinate (p2) at (2.5+\d+\y,\x);
+					\coordinate (p3) at (3.5+\d+\y,\x);
+					\tkzMarkRightAngle[color=gray!50](p2,p1,p0)}
+				}
+
+			\foreach \x in {0,1,...,4}{
+				\coordinate (p0) at (1.5+\d,\x+1);
+				\coordinate (p1) at (1.5+\d,\x);
+				\coordinate (p2) at (2.5+\d,\x);
+				\coordinate (p3) at (3.5+\d,\x);
+				\draw[->,color=black] (1+\d,\x) -- (5,\x);
+				\tkzDrawPoint[color=red,size=0.3cm](p1)
+				\tkzDrawPoint[color=red,size=0.3cm](p2)
+				\tkzDrawPoint[color=red,size=0.3cm](p3)
+				\node at (5+0.5*\d,\x) {-};
+				\node at (1+0.5*\d,\x) {+};}
+			
+			\tkzText[above](n1b){A}
+			\tkzText[above](n2b){B}
+			
+			\end{tikzpicture}
+			\caption*{\footnotesize Superfícies equipotenciais (linhas tracejadas) e campo elétrico entre placas carregadas eletricamente.}
+		\end{figure}
+	\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Superfícies equipotencais de cargas puntiformes}
+	\begin{figure}
+		\begin{subfigure}{0.45\textwidth}
+			\centering
+			\begin{tikzpicture}[scale=0.55,transform shape,font=\Large]
+			
+			\tkzInit[xmin=-5.5,xmax=5.5,ymin=-4.5,ymax=4.5]
+			%			\tkzGrid[color=gray!20]
+			\tkzClip
+			
+			\tkzDefPoints{0/0/O,4/0/A,3/0/a}
+			
+			\tikzstyle{s1}=[circle, radius=0.25, ball color=gray!50];
+			
+			\foreach \x in {1,2,3}{			
+				\tkzDrawCircle[R,dashed](O,\x cm)}
+			
+			\foreach \x in {30,60,...,360}{
+				\tkzDefPointsBy[rotation=center O angle \x](O,A){C,B}
+				\tkzDefPointsBy[rotation=center O angle \x](O,a){c,b}
+				\tkzDefPointWith[orthogonal normed](b,B)\tkzGetPoint{K}
+				\tkzMarkRightAngle[color=gray!50](B,b,K)
+				\draw[->,line width=1pt] (O) -- (B);
+				\tkzDrawPoint[size=0.5cm,color=red,fill=red](b)}
+			
+			\node [s1] (n1) at (O) {$+$};
+			
+			\tkzDefPoint(4,3.5){t1}
+			\tkzDefPointsBy[rotation=center O angle 45](O,a){c,b}
+			
+			\draw[->,line width=1pt] (t1) -- (b);
+			
+			\tkzText[text centered,opacity=100,fill=gray!20,text width=2.75cm,font=\normalsize](t1){Superfície equipotencial}
+			
+			\tkzDefPoints{1/0/p1,2/0/p2}
+			
+			\tkzText[above right,font=\normalsize](p1){A}
+			\tkzText[above right,font=\normalsize](p2){B}
+			
+			\end{tikzpicture}
+			\caption*{\footnotesize $V_A>V_B$}
+		\end{subfigure}
+		\begin{subfigure}{0.45\textwidth}
+			\centering
+			\begin{tikzpicture}[scale=0.55,transform shape,font=\Large]
+			
+			\tkzInit[xmin=-5.5,xmax=5.5,ymin=-4.5,ymax=4.5]
+			%			\tkzGrid[color=gray!20]
+			\tkzClip
+			
+			\tkzDefPoints{0/0/O,4/0/A,3/0/a}
+			
+			\tikzstyle{s1}=[circle, radius=0.25, ball color=gray!50];
+			
+			\foreach \x in {1,2,3}{
+				\tkzDrawCircle[R,dashed](O,\x cm)}
+			
+			\foreach \x in {30,60,...,360}{
+				\tkzDefPointsBy[rotation=center O angle \x](O,A){C,B}
+				\tkzDefPointsBy[rotation=center O angle \x](O,a){c,b}
+				\tkzDefPointWith[orthogonal normed](b,B)\tkzGetPoint{K}
+				\tkzMarkRightAngle[color=gray!50](B,b,K)
+				\draw[mid arrow,line width=1pt] (B) -- (O);
+				\tkzDrawPoint[size=0.5cm,color=red,fill=red](b)}
+			
+			\node [s1] (n1) at (O) {$-$};
+			
+			\tkzDefPoint(4,3.5){t1}
+			\tkzDefPointsBy[rotation=center O angle 45](O,a){c,b}
+			
+			\draw[->,line width=1pt] (t1) -- (b);
+			
+			\tkzText[text centered,opacity=100,fill=gray!20,text width=2.75cm,font=\normalsize](t1){Superfície equipotencial}
+			
+			\tkzDefPoints{1/0/p1,2/0/p2}
+			
+			\tkzText[above right,font=\normalsize](p1){A}
+			\tkzText[above right,font=\normalsize](p2){B}
+			
+			\end{tikzpicture}
+			\caption*{\footnotesize $V_A<V_B$}
+		\end{subfigure}
+	\end{figure}
+\end{frame}
+
+\section{Potencial de alguns objetos não puntuais}
+
+\subsection{}
+
+\begin{frame}{Potencial de uma esfera condutora eletrizada}
+	Características do potencial elétrico de uma esfera condutora:
+	\begin{enumerate}
+		\item[\ding{51}] Fora da esfera, ela se comporta como uma carga puntiforme;
+		\item[\ding{51}] Dentro da esfera não há cargas e o campo elétrico é zero, portanto a d.d.p. é zero o potencial é constante;
+		\item[\ding{51}] Na superfície da esfera $V=K\frac{Q}{R}$.
+	\end{enumerate}
+	\begin{figure}
+		\begin{subfigure}{0.45\textwidth}
+			\centering
+			\begin{tikzpicture}[scale=0.45,transform shape,font=\Large]
+			
+			\tkzInit[xmin=0,xmax=8,ymin=3,ymax=150,ystep=40]
+			%				\tkzGrid[color=gray!20]
+			\tkzClip[space=1.25]
+			
+			\tkzDrawX[label=r,below,noticks]
+			\tkzDrawY[label=E(r),pos=1.01,above,noticks]
+			
+			\tkzFct[domain=2:8,color=red,line width=1.0pt]{500.0/x**2}
+			\tkzDefPointByFct(2)\tkzGetPoint{A}
+			\tkzDefPointByFct(4)\tkzGetPoint{B}
+			
+			\tkzFct[domain=0:2,color=red,line width=1.0pt]{5.0}
+
+			\tkzPointShowCoord[ylabel=$K\frac{Q}{R^2}$,xlabel=$R$](A)
+			
+			\tkzDefPoints{6.5/100/t1,5/2/D,7.5/150/t2}
+			
+			\draw[->,line width=1.0pt] (t1) -- (B);
+			\tkzText[text centered,opacity=100,fill=gray!20](t1){$K\frac{Q}{r^2}$}
+			
+			\end{tikzpicture}
+			\caption*{\footnotesize Campo elétrico de uma esfera condutora.}
+			\end{subfigure}
+			\begin{subfigure}{0.45\textwidth}
+				\centering
+				\begin{tikzpicture}[scale=0.45,transform shape,font=\Large]
+				
+				\tkzInit[xmin=0,xmax=8,ymin=3,ymax=150,ystep=40]
+				%				\tkzGrid[color=gray!20]
+				\tkzClip[space=1.25]
+				
+				\tkzDrawX[label=r,below,noticks]
+				\tkzDrawY[label=V(r),pos=1.01,above,noticks]
+				
+				\tkzFct[domain=2:8,color=red,line width=1.0pt]{250.0/x}
+				\tkzDefPointByFct(2)\tkzGetPoint{A}
+				\tkzDefPointByFct(4)\tkzGetPoint{B}
+				
+				\tkzPointShowCoord[ylabel=$K\frac{Q}{R}$,xlabel=$R$](A)
+
+				\tkzFct[domain=0:2,color=red,line width=1.0pt]{250.0/2}
+				
+				\tkzDefPoints{6.5/100/t1,5/2/D,7.5/150/t2}
+				
+				\draw[->,line width=1.0pt] (t1) -- (B);
+				\tkzText[text centered,opacity=100,fill=gray!20](t1){$K\frac{Q}{r}$}
+				
+			\end{tikzpicture}
+			\caption*{\footnotesize Potencial elétrico de uma esfera condutora.}
+		\end{subfigure}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Diferença de potencial e deslocamento de cargas no condutor}
+	Se dois condutores estiverem em contato haverá transferência de cargas de um para outro até que o potencial de ambos se igualem.
+	\begin{figure}
+		\begin{subfigure}{0.5\textwidth}
+			\begin{tikzpicture}[scale=0.55,transform shape,font=\Large]
+			
+			\tkzInit[xmin=-4,xmax=8,ymin=-3.5,ymax=3]
+%			\tkzGrid[color=gray!20]
+			\tkzClip
+			
+			\tkzDefPoints{0/0/O,2.25/0/A,6/0/O'}
+			
+			\tkzDrawCircle[R,line width=1.5pt,fill=gray!25](O,2 cm)
+			
+			\foreach \x in {10,20,...,360}{
+				\tkzDefPointsBy[rotation=center O angle \x](O,A){p1,p1'}
+				\tkzText[font=\small](p1'){+}}
+			
+				\tkzDrawCircle[R,line width=1.5pt,fill=gray!25](O',0.75 cm)
+			
+				\node at (O) {1};
+				\node at (O') {2};
+			
+				\tkzDefPoints{0/-3/t1,6/-3/t2}
+
+				\tkzText(t1){$V_1\neq 0$}
+				\tkzText(t2){$V_2 = 0$}
+
+			\end{tikzpicture}
+			\caption*{\footnotesize Duas esferas condutoras (uma neutra e outra eletricamente carregada).}
+		\end{subfigure}
+		\begin{subfigure}{0.49\textwidth}
+			\begin{tikzpicture}[scale=0.55,transform shape,font=\Large,wave/.style={decorate,decoration={snake,post length=1.4mm,amplitude=0.75mm, segment length=4mm},thick}]
+			
+			\tkzInit[xmin=-4,xmax=8,ymin=-3.5,ymax=3]
+%			\tkzGrid[color=gray!20]
+			\tkzClip
+			
+			\tkzDefPoints{0/0/O,2.25/0/A,6/0/O',7/0/A'}
+			
+			\draw[wave,line width=0.5pt] (O) -- (O');
+
+			\tkzDrawCircle[R,line width=1.5pt,fill=gray!25](O,2 cm)
+			
+			\foreach \x in {20,40,...,360}{
+				\tkzDefPointsBy[rotation=center O angle \x](O,A){p1,p1'}
+				\tkzText[font=\small](p1'){+}}
+			
+			\tkzDrawCircle[R,line width=1.5pt,fill=gray!25](O',0.75 cm)
+			
+			\foreach \x in {40,80,...,360}{
+			\tkzDefPointsBy[rotation=center O' angle \x](O',A'){p1,p1'}
+			\tkzText[font=\small](p1'){+}}
+
+				\node at (O) {1};
+				\node at (O') {2};
+
+			\tkzDefPoints{3/-3/t1}
+
+			\tkzText(t1){$V_1 = V_2$}
+
+			\end{tikzpicture}
+			\caption*{\footnotesize Duas esferas condutoras após a eletrização por contato.}
+		\end{subfigure}
+	\end{figure}
+\end{frame}
+
+\section{Apêndice}
+
+\subsection{}
+
+\begin{frame}{Transformar um número em notação científica}
+	\begin{corollary}
+		\begin{enumerate}[leftmargin=1.75cm]
+			\item[Passo 1:] Escrever o número incluindo a vírgula.
+			\item[Passo 2:] Andar com a vírgula até que reste somente um número diferente de zero no lado esquerdo.
+			\item[Passo 3:] Colocar no expoente da potência de 10 o número de casas decimais que tivemos que "andar" com a vírgula. Se ao andar com a vírgula o valor do número diminuiu, o expoente ficará positivo, se aumentou o expoente ficará negativo.
+		\end{enumerate}
+	\end{corollary}
+	\begin{exampleblock}{Exemplo}
+		\begin{equation*}
+			6\; 590\; 000\; 000\; 000\; 000,0 = \SI{6,59e15}{}		
+		\end{equation*}
+	\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Conversão de unidades em uma dimensão}
+	\begin{figure}
+		\begin{tikzpicture}[scale=0.65,transform shape,font=\Large]
+		
+		\tkzInit[xmin=-2,xmax=17,ymin=-6,ymax=3]
+		%\tkzGrid[color=gray!20]
+		\tkzClip
+		
+		\tikzset{compass style/.append style={->}}
+		
+		\foreach \x in {1,2,3}{
+			\tkzDefPoint(\x*3-3,0){\x}
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+			\node at (\x*3-3,2) {$\times 10^{3}$};
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+			\node at (\x*3-3,-2) {$\times 10^{-3}$};}
+		
+		\foreach \x in {4,5,6}{
+			\tkzDefPoint(\x*3-3,0){\x}
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+			\node at (\x*3-3,2) {$\times 10^{1}$};
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+			\node at (\x*3-3,-2) {$\times 10^{-1}$};}
+		
+		\tkzDefPoints{-1.5/0/p1,1.5/0/p2,4.5/0/p3,7.5/0/p4,10.5/0/p5,13.5/0/p6,16.5/0/p7}
+		
+		\tkzText(p1){$\si{\pico}\_^{}$}
+		\tkzText(p2){$\si{\nano}\_^{}$}
+		\tkzText(p3){$\si{\micro}\_^{}$}
+		\tkzText(p4){$\si{m}\_^{}$}
+		\tkzText(p5){$\si{\centi}\_^{}$}
+		\tkzText(p6){$\si{\deci}\_^{}$}
+		\tkzText(p7){$\_^{}$}
+		
+		%exemplos
+		
+		\tkzText(3,-3.5){$1\;\text{mm}=1\times 10^{(-1)\times\alert{2}}\;\text{dm}\rightarrow 1\times 10^{-2}\;\text{dm}$}
+		\tkzText(3.25,-4.5){$2,5\;\text{g}=2,5\times 10^{(1)\times\alert{3}}\;\text{mg}\rightarrow2,5\times 10^{3}\;\text{mg}$}
+		\tkzText(3.7,-5.5){$10\;\mu\text{C}=10\times 10^{\left[(-3)\times\alert{1}+(-1)\times\alert{3}\right]}\;\text{C}\rightarrow 10\times 10^{-6}\;\text{C}$}
+		
+		\end{tikzpicture}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Conversão de unidades em duas dimensões}
+	\begin{figure}
+		\begin{tikzpicture}[scale=0.65,transform shape,font=\Large]
+	
+		\tkzInit[xmin=-2,xmax=17,ymin=-6,ymax=3]
+		%\tkzGrid[color=gray!20]
+		\tkzClip
+	
+		\tikzset{compass style/.append style={->}}
+	
+		\foreach \x in {1,2,3}{
+			\tkzDefPoint(\x*3-3,0){\x}
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+			\node at (\x*3-3,2) {$\times 10^{6}$};
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+			\node at (\x*3-3,-2) {$\times 10^{-6}$};}
+		
+		\foreach \x in {4,5,6}{
+			\tkzDefPoint(\x*3-3,0){\x}
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+			\node at (\x*3-3,2) {$\times 10^{2}$};
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+			\node at (\x*3-3,-2) {$\times 10^{-2}$};}
+		
+		\tkzDefPoints{-1.5/0/p1,1.5/0/p2,4.5/0/p3,7.5/0/p4,10.5/0/p5,13.5/0/p6,16.5/0/p7}
+	
+		\tkzText(p1){$\si{\pico}\_^{2}$}
+		\tkzText(p2){$\si{\nano}\_^{2}$}
+		\tkzText(p3){$\si{\micro}\_^{2}$}
+		\tkzText(p4){$\si{m}\_^{2}$}
+		\tkzText(p5){$\si{\centi}\_^{2}$}
+		\tkzText(p6){$\si{\deci}\_^{2}$}
+		\tkzText(p7){$\_^{2}$}
+		
+		%exemplos
+	
+		\tkzText(3.3,-3.5){$1\;\text{mm}^2=1\times 10^{(-2)\times\alert{2}}\;\text{dm}^2\rightarrow 1\times 10^{-4}\;\text{dm}^2$}
+		\tkzText(3.6,-4.5){$2,5\;\text{m}^2=2,5\times 10^{(2)\times\alert{3}}\;\text{mm}^2\rightarrow2,5\times 10^{6}\;\text{mm}^2$}
+		\tkzText(4.1,-5.5){$10\;\mu\text{m}^2=10\times 10^{\left[(-6)\times\alert{1}+(-2)\times\alert{3}\right]}\;\text{m}^2\rightarrow 10\times 10^{-12}\;\text{m}^2$}
+	
+		\end{tikzpicture}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Conversão de unidades em três dimensões}
+	\begin{figure}
+		\begin{tikzpicture}[scale=0.65,transform shape,font=\Large]
+	
+		\tkzInit[xmin=-2,xmax=17,ymin=-6,ymax=3]
+		%\tkzGrid[color=gray!20]
+		\tkzClip
+	
+		\tikzset{compass style/.append style={->}}
+	
+		\foreach \x in {1,2,3}{
+			\tkzDefPoint(\x*3-3,0){\x}
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+			\node at (\x*3-3,2) {$\times 10^{9}$};
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+			\node at (\x*3-3,-2) {$\times 10^{-9}$};}
+		
+		\foreach \x in {4,5,6}{
+			\tkzDefPoint(\x*3-3,0){\x}
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+			\node at (\x*3-3,2) {$\times 10^{3}$};
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+			\node at (\x*3-3,-2) {$\times 10^{-3}$};}
+		
+		\tkzDefPoints{-1.5/0/p1,1.5/0/p2,4.5/0/p3,7.5/0/p4,10.5/0/p5,13.5/0/p6,16.5/0/p7}
+	
+		\tkzText(p1){$\si{\pico}\_^{3}$}
+		\tkzText(p2){$\si{\nano}\_^{3}$}
+		\tkzText(p3){$\si{\micro}\_^{3}$}
+		\tkzText(p4){$\si{m}\_^{3}$}
+		\tkzText(p5){$\si{\centi}\_^{3}$}
+		\tkzText(p6){$\si{\deci}\_^{3}$}
+		\tkzText(p7){$\_^{3}$}
+		
+		%exemplos
+	
+		\tkzText(3.3,-3.5){$1\;\text{mm}^3=1\times 10^{(-3)\times\alert{2}}\;\text{dm}^3\rightarrow 1\times 10^{-6}\;\text{dm}^3$}
+		\tkzText(3.6,-4.5){$2,5\;\text{m}^3=2,5\times 10^{(3)\times\alert{3}}\;\text{mm}^3\rightarrow2,5\times 10^{9}\;\text{mm}^3$}
+		\tkzText(4.1,-5.5){$10\;\mu\text{m}^3=10\times 10^{\left[(-9)\times\alert{1}+(-3)\times\alert{3}\right]}\;\text{m}^3\rightarrow 10\times 10^{-18}\;\text{m}^3$}
+
+		\end{tikzpicture}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Alfabeto grego}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{table}
+				\begin{tabular}[c]{ccc}
+					Alfa & $A$ & $\alpha$\\
+					Beta & $B$ & $\beta$\\
+					Gama & $\Gamma$ & $\gamma$\\
+					Delta & $\Delta$ & $\delta$\\
+					Epsílon & $E$ & $\epsilon$,$\varepsilon$\\
+					Zeta & $Z$ & $\zeta$\\
+					Eta & $H$ & $\eta$\\
+					Teta & $\Theta$ & $\theta$\\
+					Iota & $I$ & $\iota$\\
+					Capa & $K$ & $\kappa$\\
+					Lambda & $\Lambda$ & $\lambda$\\
+					Mi & $M$ & $\mu$
+				\end{tabular}
+			\end{table}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{table}
+				\begin{tabular}[c]{ccc}
+					Ni & $N$ & $\nu$\\
+					Csi & $\Xi$ & $\xi$\\
+					ômicron & $O$ & $o$\\
+					Pi & $\Pi$ & $\pi$\\
+					Rô & $P$ & $\rho$\\
+					Sigma & $\Sigma$ & $\sigma$\\
+					Tau & $T$ & $\tau$\\
+					Ípsilon & $\Upsilon$ & $\upsilon$\\
+					Fi & $\Phi$ & $\phi$,$\varphi$\\
+					Qui & $X$ & $\chi$\\
+					Psi & $\Psi$ & $\psi$\\
+					Ômega & $\Omega$ & $\omega$
+				\end{tabular}
+			\end{table}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Referências e observações\footnote{Este material está sujeito a modificações. Recomenda-se acompanhamento permanente.}}
+\bibliographystyle{jurabib}
+\begin{thebibliography}{9}
+	\bibitem{alvarenga}A. Máximo, B. Alvarenga, C. Guimarães, Física. Contexto e aplicações, v.3, 2.ed., São Paulo, Scipione (2016)
+\end{thebibliography}
+
+\vspace*{1cm}
+\begin{center}
+	Esta apresentação está disponível para download no endereço\\
+	\href{https://flavianowilliams.github.io/teaching}{\textcolor{blue}{https://flavianowilliams.github.io/teaching}}
+\end{center}
+	
+\end{frame}
+
+\end{document}

@@ -1,0 +1,31 @@
+﻿\begin{tikzpicture}[scale=1.0, transform shape]
+
+	\tkzInit[xmin=1,xmax=7,ymin=-1,ymax=5]
+	\tkzGrid[color=gray!50]
+	\tkzClip
+
+	\def\d{0.5}
+
+	\coordinate (n1) at (1+\d,0);
+	\coordinate (n1b) at (1+\d,4);
+	\coordinate (n2) at (5,0);
+	\coordinate (n2b) at (5,4);
+	\coordinate (n3) at (4,3);
+
+	%placa
+	\filldraw[opacity=0.2] (1,0) rectangle (1+\d,4);
+	\filldraw[opacity=0.2] (5,0) rectangle (5+\d,4);
+
+	%cargas
+	\foreach \x in {0,1,...,4}{
+	\draw[->,color=red] (1+\d,\x) -- (5,\x);
+	\node at (5+0.5*\d,\x) {-};
+	\node at (1+0.5*\d,\x) {+};}
+
+	\draw (n1) to [dim arrow'={label'=$d$}] (n2);
+
+	\tkzText[above](n1b){A}
+	\tkzText[above](n2b){B}
+	\tkzText[above](n3){$\vec{E}$}
+
+\end{tikzpicture}

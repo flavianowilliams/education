@@ -1,0 +1,26 @@
+﻿\begin{tikzpicture}[scale=1, transform shape]
+
+	\def\nax{0}
+	\def\nay{0}
+	\def\nbx{6}
+	\def\nby{2}
+	\def\nar{1/sqrt((\nax-\nbx)^2+(\nay-\nby)^2)}
+
+	\tikzstyle{s1}=[circle, radius=0.25, ball color=gray!50];
+
+	\coordinate (n1) at (\nax,\nay);
+
+	\tkzDrawPoint[size=0.75cm,fill=black,color=black](n1)
+	\tkzLabelPoint[above=0.25cm](n1){P}
+
+	\node [s1] (n3) at (\nbx,\nby) {$Q_1$};
+	\node [s1] (n5) at (-4,-5) {$Q_2$};
+	\node [s1] (n6) at (4,-5) {$Q_3$};
+	\node [s1] (n7) at (-2,4) {$Q_4$};
+
+	\draw [dashed] (n1) -- (n3);
+	\draw [dashed] (n1) -- (n5);
+	\draw [dashed] (n1) -- (n6);
+	\draw [dashed] (n1) -- (n7);
+
+\end{tikzpicture}

@@ -1,0 +1,19 @@
+﻿\begin{tikzpicture}[scale=1,transform shape,font=\Large]
+
+		\tkzInit[xmin=0,xmax=6,ymin=-4,ymax=0]
+		\tkzGrid[color=gray!20]
+		\tkzClip[space=1.5]
+			
+		\tkzDrawX[label=x,below,noticks]
+		\tkzDrawY[label=U(x),pos=1.01,above,noticks]
+				
+		\tkzFct[domain=0:6,color=red,line width=1.0pt]{1/(-x)}
+		\tkzDefPointByFct(3)\tkzGetPoint{A}
+
+		\tkzDefPoint(4,-3){t1}
+
+		\draw[->,line width=1.0pt] (t1) -- (A);
+
+		\tkzText[text centered,opacity=100,fill=gray!20,font=\normalsize](t1){Q<0}
+
+\end{tikzpicture}

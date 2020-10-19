@@ -1,0 +1,29 @@
+﻿\begin{tikzpicture}[scale=1,transform shape,font=\Large]
+			
+		\tkzInit[xmin=-5,xmax=5,ymin=-4,ymax=4]
+%			\tkzGrid[color=gray!20]
+		\tkzClip
+		
+		\tkzDefPoints{0/0/O,4/0/A,3/0/a}
+	
+		\tikzstyle{s1}=[circle, radius=0.25, ball color=gray!50];
+
+		\foreach \x in {1,2,3}{
+		\tkzDrawCircle[R,dashed](O,\x cm)}
+
+		\foreach \x in {30,60,...,360}{
+		\tkzDefPointsBy[rotation=center O angle \x](O,A){C,B}
+		\tkzDefPointsBy[rotation=center O angle \x](O,a){c,b}
+        \draw[->,line width=1pt] (O) -- (B);
+		\tkzDrawPoint[size=0.5cm,color=red,fill=red](b)}
+
+		\node [s1] (n1) at (O) {$+$};
+
+		\tkzDefPoint(4,3.5){t1}
+		\tkzDefPointsBy[rotation=center O angle 45](O,a){c,b}
+
+		\draw[->,line width=1pt] (t1) -- (b);
+
+		\tkzText[text centered,opacity=100,fill=gray!20,text width=2cm,font=\normalsize](t1){Superfície equipotencial}
+		
+\end{tikzpicture}

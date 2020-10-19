@@ -7,7 +7,7 @@
 
 %Título
 
-\title[Eletrodinâmica]{Magnetismo induzido por corrente elétrica}
+\title[Eletrodinâmica]{Indução eletromagnética}
 
 % The main document
 
@@ -21,201 +21,177 @@
   \tableofcontents
 \end{frame}
 
-\section{Campo magnético em um condutor}
+\section{Lei de Faraday}
 
 \subsection{}
 
-\begin{frame}{A relação entre corrente elétrica e magnetismo}
+\begin{frame}{Definição de fluxo magnético}
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+			Definimos fluxo do campo magnético $\vec{B}$ que atravessa uma área A como a somatória das linhas de campo magnético que atravessam perpendicularmente essa área.
+			\begin{block}{Fluxo do campo magnético}
+				\begin{equation*}
+					\varphi = BAcos\theta
+				\end{equation*}
+			\end{block}
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\begin{figure}
+				\input{tikz/fluxo-magnetico.pgf}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Fluxo magnético e a orientação de $\vec{B}$ em relação a área}
 	\begin{figure}
+		\centering
 		\begin{subfigure}[b]{0.45\textwidth}
-			\Centering
-			\includegraphics[scale=0.3]{figuras/figura-1a.png}
-			\caption*{\justifying Experiência de Oersted mostrando que a corrente no fio produz alguma influência sobre a bússola.}
+			\centering
+		\input{tikz/fluxo-magnetico-0.pgf}
+			\caption*{\footnotesize Fluxo magnético máximo ($\theta = 0^o$)}
 		\end{subfigure}
 		\begin{subfigure}[b]{0.45\textwidth}
-			\Centering
-			\includegraphics[scale=0.3]{figuras/figura-1b.png}
-			\caption*{\justifying Campo magnético circular produzido pela corrente elétrica}
+			\centering
+		\input{tikz/fluxo-magnetico-90.pgf}
+			\caption*{\footnotesize Fluxo magnético zero ($\theta = 90^o$)}
 		\end{subfigure}
 	\end{figure}
 \end{frame}
 
-\begin{frame}{Lei de Ampère}
+\begin{frame}{Variação do fluxo magnético ao longo de uma espira}
 	\begin{columns}
-		\begin{column}{0.7\textwidth}
-			De acordo com experiências, a corrente que percorre um fio condutor produz um campo magnético circular $\vec{B}$, onde \alert{$B\;\alpha\; i$} e \alert{$B\;\alpha\; \frac{1}{r}$}. Podemos reunir em uma única relação de proporcionalidade,
-			\begin{equation*}
-				B\; \alpha\; \frac{i}{r}\Rightarrow B = \left(\frac{\mu_0}{2\pi}\right)\frac{i}{r}.
-			\end{equation*}
-			$\mu_0$ é chamado constante de permeabilidade magnética.
+		\begin{column}{0.5\textwidth}
+			\begin{block}{Lei de Faraday}
+				Sempre que houver uma variação do fluxo magnético através de um circuito, aparecerá, nesse circuito, uma f.e.m. induzida,
+				\begin{equation*}
+					\left|\frac{\Delta \varphi}{\Delta t}\right| = \varepsilon
+				\end{equation*}
+			\end{block}
 		\end{column}
-		\begin{column}{0.3\textwidth}
+		\begin{column}{0.5\textwidth}
 			\begin{figure}
-				\centering
-				\includegraphics[scale=0.18]{figuras/figura-2.png}
+				\input{tikz/lei-faraday.pgf}
 			\end{figure}
 		\end{column}
 	\end{columns}
-	\begin{block}{Lei de Ampère}
-		\begin{equation*}
-			B = \frac{\mu_0 i}{2\pi r}.
-		\end{equation*}
-	\end{block}
-\end{frame}
-
-\begin{frame}{Força magnética entre dois fios}
-	A corrente $i_1$ produzirá um campo magnético $B_1$ no fio 1. A força magnética atuando no fio 2 é $F_m=BiL$. Pela Lei de Àmpere temos $B=\frac{\mu_0i}{2\pi r}$, portanto
-	\begin{columns}
-		\begin{column}{0.6\textwidth}
-			\begin{align*}
-				F_m & = BiL,\\
-				F_m & = \left(\frac{\mu_0i}{2\pi r}\right)iL.
-			\end{align*}
-			Se r=1m, i=1A, e L=1m a força encontrada vale $F_m=2\times 10^{-7}\;N$, substituindo
-			\begin{equation*}
-				\boxed{\mu_0 = 4\pi\times 10^{-7}\;\frac{N}{A^2}.}
-			\end{equation*}
-		\end{column}
-		\begin{column}{0.4\textwidth}
-			\begin{figure}
-				\centering
-				\includegraphics[scale=0.8]{figuras/forca-magnetica.jpg}
-			\end{figure}
-		\end{column}
-	\end{columns}
-\end{frame}
-
-\section{Campo magnético numa espira circular}
-
-\subsection{}
-
-\begin{frame}{O que é uma espira circular?}
-	\begin{columns}
-		\begin{column}{0.7\textwidth}
-			Sabemos que a corrente num fio condutor produz linhas de campo magnético circulares, se dobrarmos esse fio afim de possuir um formato circular de raio \alert{r}, as linhas de campo de cada pedaço do fio irão se concentrar no centro do círculo (\alert{chamamos esse círculo de espira circular}). Sabendo que $B\;\alpha\; i$ e $B\;\alpha\; \frac{1}{r}$, podemos dizer que o campo B no centro da espira é proporcional a corrente i e o raio r da espira.
-		\end{column}
-		\begin{column}{0.3\textwidth}
-			\begin{figure}
-				\centering
-				\includegraphics[scale=0.4]{figuras/figura-3.png}
-			\end{figure}
-		\end{column}
-	\end{columns}
-	\begin{block}{Campo magnético no centro da espira circular}
-		\begin{equation*}
-			B\;\alpha\;\frac{i}{r}.
-		\end{equation*}
-	\end{block}
-\end{frame}
-
-\section{Campo magnético num solenóide}
-
-\subsection{}
-
-\begin{frame}{O que é um solenóide?}
-	\begin{columns}
-		\begin{column}{0.7\textwidth}
-			\textit{Um solenóide é um fio enrolado de modo a formar N espiras sucessivas, todas alinhadas em um cilindro de comprimento L}. Sabendo que cada espira produz um campo magnético $\vec{B}$ no seu centro, onde \alert{$B\;\alpha\; i$} e considerando que cada espira possui o mesmo raio, para saber o campo magnético numa posição no interior do solenóide, multiplicamos o campo $\vec{B}$ de cada espira pelo número de espiras por unidade de comprimento do solenóide, \alert{n}.
-		\end{column}
-		\begin{column}{0.3\textwidth}
-			\begin{figure}
-				\centering
-				\includegraphics[scale=0.27]{figuras/figura-4.png}
-			\end{figure}
-		\end{column}
-	\end{columns}
-	\begin{block}{Campo magnético no interior do solenóide}
-		\begin{equation*}
-			B\;\alpha\;ni.
-		\end{equation*}
-	\end{block}
-\end{frame}
-
-\section{Materiais magnéticos}
-
-\subsection{}
-
-\begin{frame}{Tipos de materiais magnéticos}
-	Existem três classes de materiais magnéticos:
-	\begin{itemize}
-		\item Paramagnéticos:\textit{São aqueles que magnetizam fracamente aumentando ligeiramente o campo magnético no local.}
-		\item Ferromagnéticos:\textit{São aqueles que magnetizam com muita facilidade e aumentam substancialmente o campo magnético no local.}
-		\item Diamagnéticos:\textit{São aqueles que magnetizam fracamente diminuindo ligeiramente o campo magnético no local.}
-	\end{itemize}
 	\begin{corollary}
-		A magnetização do material diminui com a temperatura, pois a elevação da temperatura provoca um aumento da agitação térmica dos átomos, dificultando, então, a sua magnetização.
+		No SI a unidade de medida de fluxo magnético é Weber (Wb).
 	\end{corollary}
 \end{frame}
 
-\begin{frame}{Materiais paramagnéticos}
-	Na presença de um campo magnético, os ímãs elementares do material tendem a se orientarem no \alert{mesmo sentido} do campo magnético. Assim, o campo magnético é somado com o campo dos \alert{ímãs elementares}, fazendo com que ele fique \alert{fracamente aumentado}.
-	\begin{figure}[b]
-		\begin{subfigure}{0.45\textwidth}
-			\Centering
-			\includegraphics[scale=0.5]{figuras/figura-5a.png}
-			\caption*{\justifying Representação dos ímãs elementares de um material paramagnético.}
+\begin{frame}{Maneiras de como variar o fluxo magnético}
+	\begin{corollary}
+		Podemos variar o fluxo magnético que atravessa a espira ao longo do tempo de três maneiras distintas.
+	\end{corollary}
+	\begin{figure}
+		\centering
+		\begin{subfigure}[b]{0.3\textwidth}
+			\centering
+		\includegraphics[scale=0.3]{figuras/figura-1a}
+			\caption*{\footnotesize Variação de A no tempo.}
 		\end{subfigure}
-		\begin{subfigure}{0.45\textwidth}
-			\Centering
-			\includegraphics[scale=0.5]{figuras/figura-5b.png}
-			\caption*{\justifying Orientação dos ímãs elementares na presença de um campo magnético $\vec{V}$.}
+		\begin{subfigure}[b]{0.3\textwidth}
+			\centering
+		\includegraphics[scale=0.25]{figuras/figura-1b}
+			\caption*{\footnotesize Variação de $\theta$ no tempo.}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.3\textwidth}
+			\centering
+		\includegraphics[scale=0.2]{figuras/figura-2a}
+			\caption*{\footnotesize Variação de B no tempo.}
 		\end{subfigure}
 	\end{figure}
 \end{frame}
 
-\begin{frame}{Materiais ferromagnéticos}
-	\begin{columns}
-		\begin{column}{0.6\textwidth}
-			Assim como no caso dos materiais paramagnéticos, nos materiais ferromagnéticos, os ímãs elementares se orientam no \alert{mesmo sentido} do campo do magnético externo, porém muito mais significativamente. Isso \alert{aumenta consideravelmente} o campo magnético no seu interior.
-		\end{column}
-		\begin{column}{0.4\textwidth}
-			\begin{figure}
-				\centering
-				\includegraphics[scale=0.3]{figuras/figura-6.png}
-			\end{figure}
-		\end{column}
-	\end{columns}
-	\begin{corollary}
-		Existem poucos materiais na natureza que possuem propriedades ferromagnéticas, como o ferro, cobalto e níquel.
-	\end{corollary}
-\end{frame}
-
-\begin{frame}{Materiais diamagnéticos}
-	\begin{columns}
-		\begin{column}{0.7\textwidth}
-			Nos materiais diamagnéticos, ao contrário dos materias paramagnéticos e ferromagnéticos, os ímãs elementares do material se orientam no sentido contrário ao campo magnético externo, fazendo com que o material se comporte como ímãn com os pólos contrários.
-		\end{column}
-		\begin{column}{0.3\textwidth}
-			\begin{figure}
-				\centering
-				\includegraphics[scale=0.3]{figuras/figura-7.png}
-			\end{figure}
-		\end{column}
-	\end{columns}
-	\begin{corollary}
-		Geralmente os materiais diamagnéticos sofrem uma força de repulsão na presença de um campo magnético externo.
-	\end{corollary}
-\end{frame}
-
-\section{Aplicações}
+\section{Lei de Lenz}
 
 \subsection{}
 
-\begin{frame}{Aplicações do magnetismo e a tecnologia atual}
-	\begin{columns}[b]
-		\begin{column}{0.3\textwidth}
-		\begin{figure}
-			\Centering
-			\includegraphics[scale=0.25]{figuras/figura-8.png}
-			\caption*{\justifying Guindaste que funciona à base de eletroímã.}
-		\end{figure}
+\begin{frame}{Sentido da corrente induzida em relação a variação do fluxo}
+	\begin{block}{Lei de Lenz}
+		A corrente induzida em um circuito aparece sempre com um sentido tal que o campo magnético que ela cria tende a contrariar a variação do fluxo magnético que a originou.
+	\end{block}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\begin{figure}
+				\centering
+				\begin{subfigure}[b]{0.45\textwidth}
+					\centering
+					\includegraphics[scale=0.2]{figuras/figura-2a}
+					\caption*{\footnotesize $\frac{\Delta \varphi}{\Delta t}>0$ no tempo.}
+				\end{subfigure}
+				\begin{subfigure}[b]{0.45\textwidth}
+					\centering
+					\includegraphics[scale=0.2]{figuras/figura-2b}
+					\caption*{\footnotesize $\frac{\Delta \varphi}{\Delta t}<0$ no tempo.}
+				\end{subfigure}
+			\end{figure}
 		\end{column}
-		\begin{column}{0.7\textwidth}
-		\begin{figure}
-			\Centering
-			\includegraphics[scale=0.2]{figuras/maglevcobra.jpg}
-			\caption*{\justifying Maglev cobra da UFRJ: As cargas que fluem nos supercondutores produz um campo magnético intenso o suficiente para repelir os ímãs permanentes e fazer levitar o veículo.}
-		\end{figure}
+		\begin{column}{0.4\textwidth}
+			\begin{block}{Lei de Faraday-Lenz}
+				\begin{equation*}
+					\frac{\Delta \varphi}{\Delta t} = \alert{-}\varepsilon
+				\end{equation*}
+			\end{block}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\section{Aplicações da indução eletromagnética}
+
+\subsection{}
+
+\begin{frame}{Dínamo}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\begin{corollary}
+				Dínamo é um aparelho baseado no princípio da indução eletromagnética que transforma energia mecânica em energia elétrica.
+			\end{corollary}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}
+				\includegraphics[scale=0.25]{figuras/dinamo.png}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Gerador de energia elétrica}
+	\begin{figure}
+		\centering
+		\begin{subfigure}[b]{0.45\textwidth}
+			\centering
+			\includegraphics[scale=0.3]{figuras/figura-1b}
+			\caption*{\footnotesize Variação de $\theta$ no tempo.}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.45\textwidth}
+			\centering
+			\includegraphics[scale=0.4]{figuras/figura-6}
+			\caption*{\footnotesize f.e.m. induzida em função do tempo.}
+		\end{subfigure}
+	\end{figure}
+	\begin{corollary}
+		Uma f.e.m induzida que varia senoidalmente no tempo aparece devido a variação do fluxo de $\vec{B}$ em relação ao ângulo $\theta$.
+	\end{corollary}
+\end{frame}
+
+\begin{frame}{Transformador}
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+			\begin{figure}
+				\includegraphics[scale=0.3]{figuras/figura-3b}
+			\end{figure}
+			\begin{corollary}
+				\begin{equation*}
+					V_2=N_2\frac{V_1}{N_1}
+				\end{equation*}
+			\end{corollary}
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\begin{figure}
+				\includegraphics[scale=0.5]{figuras/figura-3}
+			\end{figure}
 		\end{column}
 	\end{columns}
 \end{frame}
@@ -416,7 +392,6 @@
 	\bibliographystyle{jurabib}
 	\begin{thebibliography}{9}
 		\bibitem{alvarenga}A. Máximo, B. Alvarenga, C. Guimarães, Física. Contexto e aplicações, v.1, 2.ed., São Paulo, Scipione (2016)
-		\bibitem{maglev}www.maglevcobra.coppe.ufrj.br/
 	\end{thebibliography}
 
 \vspace*{1cm}

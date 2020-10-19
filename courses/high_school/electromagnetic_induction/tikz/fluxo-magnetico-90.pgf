@@ -1,0 +1,17 @@
+﻿\begin{tikzpicture}[scale=0.75, transform shape, x={(-10:1cm)},y={(90:1cm)},z={(210:1cm)}]
+
+	\filldraw[draw, opacity=0.05] (2,0,0) arc (0:360:2);
+	\draw[line width=1pt,dashed] (2,0,0) arc (0:360:2);
+%	 \node[right] at (2,0,0) {$i$};
+	\draw[line width=1pt,->] (0,0,0) -- (0,0,1) node[below] {$\hat{n}$};
+
+	%vetor B
+	\foreach \x in {-1,0,1,2}{
+	\foreach \y in {0}{
+	\draw[line width=1pt] (0,-1+\x,\x) -- (0,0+\x,0+\x);
+	\draw[line width=1pt,->] (0,0+\x+\y,0+\x) -- (0,1+\x+\y,\x) node[above] {$\vec{B}$};}}
+
+	\draw[->] (2,2,0) node[right] {A} to [out=180, in=90] (1,1,0) ;
+	\draw [<->] (0,0.25,0) arc (90:180:0.5) node[above,midway] {\footnotesize $90^o$};
+
+\end{tikzpicture}

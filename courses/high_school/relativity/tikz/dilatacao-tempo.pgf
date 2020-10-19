@@ -1,0 +1,43 @@
+﻿\begin{tikzpicture}[scale=0.35,transform shape,
+	 wave/.style={decorate,decoration={snake,post length=1.4mm,amplitude=0.75mm, segment length=3mm},thick}]
+
+\tkzInit[xmin=-3,xmax=6,ymin=-4,ymax=8]
+\tkzClip
+
+	%coordenadas
+	\coordinate (r1) at (3,0);
+	\coordinate (O) at (1.5,7);
+	\coordinate (r2) at (0,0);
+
+	%observador
+	\node[above] at (O) {$\Large \text{Observador}$};
+	\draw[->,line width=1.0pt] (O) --++ (0,-1) node [right,midway] {$-\vec{v}$};
+
+	%referencial em repouso - r1
+    \draw[->,wave] (r2) -- ($(O)-(1.5,0)$) node [color=red,right,midway,text width=1.5cm,align=center] {$\vec{c}\linebreak $\text{(Feixe A)}};
+	\node[rotate=90] at (r2) {\includegraphics[width=3cm]{car.png}};
+%	\node[,below] at ($(r2)-(0,2)$) {\text{Carro A}};
+	\draw[<-,line width=1.0pt] ($(r2)+(0,-2.5)$) --++ (0,1) node [right,midway] at ($(r2)+(0,-2.5)$) {$-\vec{v}$};
+
+	%relogio
+	\filldraw [fill=cyan] ($(r1)+(1.5,-0.75)$) circle [radius=0.4cm];
+	\foreach \angle in {0,45,...,360}
+	\draw ($(r1)+({1.5+0.3*cos(\angle)},{-0.75+0.3*sin(\angle)})$) --++ (\angle:0.1cm);
+	\draw ($(r1)+(1.5,-0.75)$) --++ (90:0.2cm);
+	\draw ($(r1)+(1.5,-0.75)$) --++ (30:0.3cm);
+
+	%referencial em movimento - r2
+    \draw[->,wave] (r1) -- ($(O)+(1.5,0)$) node [color=red,right,midway,text width=1.5cm,align=center] {$\vec{c}\linebreak $\text{(Feixe B)}};
+	\node [right] at ($(r1)+(1.0,0)$) {v=0};
+	\node[rotate=90] at (r1) {\includegraphics[width=3cm]{car.png}};
+	\node[,below] at ($(r1)-(0,2)$) {\text{Carro B}};
+
+	%relogio
+	\filldraw [fill=cyan] ($(r2)-(1.5,0.75)$) circle [radius=0.4cm];
+	\draw ($(r2)-(1.5,0.75)$) --++ (90:0.2cm);
+	\draw ($(r2)-(1.5,0.75)$) --++ (300:0.3cm);
+
+	\foreach \angle in {0,45,...,360}
+  \draw ($(r2)-({1.5-0.3*cos(\angle)},{0.75-0.3*sin(\angle)})$) --++ (\angle:0.1cm);
+
+\end{tikzpicture}

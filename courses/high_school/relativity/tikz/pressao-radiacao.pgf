@@ -1,0 +1,81 @@
+﻿\begin{tikzpicture}[scale=0.4,transform shape,
+	 wave/.style={decorate,decoration={snake,post length=1.4mm,amplitude=0.5mm, segment length=2mm},thick}]
+
+	%coordenadas
+	\coordinate (c2) at (3,0);
+	\coordinate (c1) at (0,0);
+
+	\def\dx{5}
+	\def\dy{6}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%frame 1
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+	%titulo
+	\node at ($(c2)+(0.5*\dx,3+\dy)$) {Absorcao total da luz};
+
+	%parede
+	\fill [pattern = north west lines] ($(c2)+(0.25,2)$) rectangle ($(c2)+(0,-2)$);
+	\draw ($(c2)+(0,-2)$) -- ($(c2)+(0,2)$);
+
+    \draw[->,wave] (c1) -- ($(c2)-(1,0)$) node [color=red,above,midway] {$p=\frac{E}{c}$};
+
+	%momento da parede
+%	\node[right] at ($(c2)+(0.25,0)$) {p=0};
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%frame 2
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+	\coordinate (c4) at (3+\dx,0);
+	\coordinate (c3) at (0+\dx,0);
+
+	%parede
+	\fill [pattern = north west lines] ($(c4)+(0.25,2)$) rectangle ($(c4)+(0,-2)$);
+	\draw ($(c4)+(0,-2)$) -- ($(c4)+(0,2)$);
+	
+	%foton
+    \draw[->,wave] ($(c4)-(1,0)$) -- (c3) node [color=red,above,midway] {$p=\frac{E}{c}$};
+
+	%momento do espelho
+	\draw[->,line width=1.5pt] ($(c4)+(0.25,0)$) --++ (1,0) node [right] {$2\vec{p}$};
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%frame 3
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+	%coordenadas
+	\coordinate (c2) at (3,0+\dy);
+	\coordinate (c1) at (0,0+\dy);
+
+	%titulo
+	\node at ($(c2)+(0.5*\dx,3-\dy)$) {Reflexao total da luz};
+
+	%parede
+	\fill [fill] ($(c2)+(0.25,2)$) rectangle ($(c2)+(0,-2)$);
+	\draw ($(c2)+(0,-2)$) -- ($(c2)+(0,2)$);
+
+    \draw[->,wave] (c1) -- ($(c2)-(1,0)$) node [color=red,above,midway] {$p=\frac{E}{c}$};
+
+	%momento da parede
+%	\node[right] at ($(c2)+(0.25,0)$) {p=0};
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%frame 4
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+	\coordinate (c4) at (3+\dx,0+\dy);
+	\coordinate (c3) at (0+\dx,0+\dy);
+
+	%parede
+	\fill [fill] ($(c4)+(0.25,2)$) rectangle ($(c4)+(0,-2)$);
+	\draw ($(c4)+(0,-2)$) -- ($(c4)+(0,2)$);
+	
+	%foton
+%    \draw[<-,wave] (c3) -- ($(c4)-(1,0)$) node [color=red,above,midway] {$p=\frac{E}{c}$};
+
+	%momento do espelho
+	\draw[->,line width=1.5pt] ($(c4)+(0.25,0)$) --++ (1,0) node [right] {$\vec{p}$};
+
+\end{tikzpicture}

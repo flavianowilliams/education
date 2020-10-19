@@ -1,0 +1,29 @@
+﻿\begin{tikzpicture}[scale=0.35,transform shape,
+	 wave/.style={decorate,decoration={snake,post length=1.4mm,amplitude=0.75mm, segment length=3mm},thick}]
+
+	\tkzInit[xmin=-3,xmax=6,ymin=-4,ymax=8]
+	\tkzClip
+
+	%coordenadas
+	\coordinate (r1) at (3,0);
+	\coordinate (O) at (1.5,7);
+	\coordinate (r2) at (0,0);
+
+	%observador
+	\node[above] at (O) {$\Large \text{Observador}$};
+
+	%referencial em repouso - r1
+    \draw[->,wave] (r2) -- ($(O)-(1.5,0)$) node [color=red,right,midway,text width=1.5cm,align=center] {$\vec{c}\linebreak $\text{(Feixe A)}};
+	\node [right] at ($(r2)+(1.0,0)$) {$v=0$};
+	\node[rotate=90] at (r2) {\includegraphics[width=3cm]{car.png}};
+	\node[,below] at ($(r2)-(0,2)$) {\text{Carro A}};
+	\draw[<->] ($(r2)-(1.75,-1.5)$) -- ($(O)-(3.25,0)$) node [left,midway] {$\Delta S$};
+
+	%referencial em movimento - r2
+    \draw[->,wave] (r1) -- ($(O)+(1.5,0)$) node [color=red,right,midway,text width=1.5cm,align=center] {$\vec{c}\linebreak $\text{(Feixe B)}};
+	\draw[->,line width=1.0pt] ($(r1)+(1.5,-0.5)$) --++ (0,1) node [right,midway] {$\vec{v}$};
+	\node[rotate=90] at (r1) {\includegraphics[width=3cm]{car.png}};
+	\node[,below] at ($(r1)-(0,2)$) {\text{Carro B}};
+	\draw[<->] ($(r1)+(1.75,1.5)$) -- ($(O)+(3.25,0)$) node [right,midway] {$\Delta S'$};
+
+\end{tikzpicture}

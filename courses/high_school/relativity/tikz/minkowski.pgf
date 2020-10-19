@@ -1,0 +1,21 @@
+﻿\begin{tikzpicture}
+
+	\tkzDefPoints{0/0/O,0/5.3/O',-3/0/A,3/0/C}
+	\coordinate (B) at (-90:3cm and 1.0cm);
+	\tkzDefPointsBy[symmetry  =  center O](B){D}
+	\tkzDefPointsBy[translation=from O to O'](A,B,C,D){F,G,H,E}
+
+	\tkzDrawPoints(A,B,C,D,O)
+	\tkzDrawPoints(F,G,H,E,O')
+
+	\draw[dashed] (C) arc (0:180:3cm and 1cm);
+	\draw (C) arc (0:-180:3cm and 1cm);
+	
+	\draw[fill=black,opacity=100] (O') ellipse (3cm and 1cm);
+
+	\draw (A) -- (H);
+	\draw (C) -- (F);
+
+	\tkzLabelPoints(A,B,C,D,F,G,H,E)
+
+\end{tikzpicture}

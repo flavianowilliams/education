@@ -1,0 +1,28 @@
+\begin{tikzpicture}[scale=0.6, transform shape]
+
+	%setup page
+	\useasboundingbox (-3.4,-3) rectangle (8.4,1);
+
+	%setup styles
+	\tikzstyle{s1}=[circle, radius=0.25, ball color=gray];
+	\tikzstyle{s2}=[circle, radius=0.10, ball color=gray];
+
+	%exemplo 1
+	\draw [line width=1.0pt, ->] (0.25,0) -- (1,0) node [pos=0.5,above] {$\vec{F}_{qQ}$};
+	\draw [line width=1.0pt, <-] (4,0) -- (4.75,0) node [pos=0.5,above] {$\vec{F}_{Qq}$};
+	\draw [line width=1.0pt, ->] (5,0) -- (5.75,0) node [pos=0.5,above right] {$\hat{r}_{Qq}$};
+	\node [s1] (n1) at (0,0) {$Q$};
+	\node [s2] (n2) at (5,0) {$q$};
+	\node  at (7.5,0) {$\left(Qq < 0\right)$};
+	\node  at (7.5,-2) {$\left( Qq > 0\right)$};
+	\draw [dashed] (n1) -- (n2);
+
+	%exemplo 2
+	\draw [line width=1.0pt, <-] (-1,-2) -- (-0.25,-2) node [pos=0.5,below] {$\vec{F}_{Qq}$};
+	\draw [line width=1.0pt, ->] (5,-2) -- (6.0,-2) node [pos=0.5,below] {$\vec{F}_{Qq}$};
+	\draw [line width=1.0pt, ->] (5,-2) -- (5.75,-2) node [pos=0.5,above right] {$\hat{r}_{Qq}$};
+	\node [s1] (n1) at (0,-2) {$Q$};
+	\node [s2] (n2) at (5,-2) {$q$};
+	\draw [dashed] (n1) -- (n2);
+
+\end{tikzpicture}

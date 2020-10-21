@@ -1,0 +1,23 @@
+\begin{tikzpicture}[scale=0.75,transform shape,font=\small]
+
+	\def\ang{35}	
+	\def\tang{20}
+
+	\draw[line width=1pt] (\ang:3) arc (\ang:180-\ang:3);
+	\draw[line width=1pt] (\ang:3) --++ (0:1);
+	\draw[line width=1pt] (180-\ang:3) --++ (180:1);
+
+	\draw[dashed] (0,0) -- (90-\tang:3);
+	\draw[dashed] (0,0) -- (90+\tang:3);
+	\draw[line width=1pt,dashed] (0,0) -- (90:3);
+
+	%angulos
+	\draw[line width=1pt,<->] (90:1) arc (90:90+\tang:1) node[above,midway,sloped] {$\theta$};
+	\draw[line width=1pt,<->] (90:1) arc (90:90-\tang:1) node[above,midway,sloped] {$\theta$};
+
+	%vetores
+	\draw[line width=1pt,<->] (90:3.2) -- (90-\tang:3.2) node[above,midway] {$\Delta x$};
+	\draw[line width=1.5pt,->,color=green] (90:3) --++ (0,-0.5) node[below] {$\vec{T}sen\theta$};
+	\draw[line width=1.5pt,->,color=red] (90:3) -- (90-\tang:3) node[below] {$\vec{T}$};
+
+\end{tikzpicture}

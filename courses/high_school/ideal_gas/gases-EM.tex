@@ -1,0 +1,699 @@
+% Aula de termodinâmica para o curso de Física II do ensino médio
+%
+\documentclass[brazil,aspectratio=169]{beamer}
+%
+%carregando preâmbulo
+\input{../../contrib/preamble}
+
+%pacotes adicionais
+
+\usepackage{animate}
+
+%Título
+
+\title[Termodinâmica]{Gases ideais}
+
+% The main document
+
+\begin{document}
+
+\justifying
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Sumário}
+  \tableofcontents
+\end{frame}
+
+\section{Transformações termodinâmicas}
+
+\subsection{}
+
+\begin{frame}{Os três estados da matéria}
+
+\end{frame}
+
+\begin{frame}{Propriedades que definem um gás ideal}
+	\begin{enumerate}
+		\item[\ding{51}] Entre as partículas dele, não há qualquer tipo de interação, como forças atrativas ou repulsivas (\alert{somente colisões entre esferas duras}).
+		\item[\ding{51}] As colisões são perfeitamente elástica (\alert{não há perdas de energia cinética, portanto o gás mantém a sua temperatura se o volume e a pressão não mudarem}).
+		\item[\ding{51}] O volume de cada molécula é praticamente desprezível comparado com o volume do gás (\alert{assim o espaço que as moléculas podem se mover é praticamente o volume do recipiente}).
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}{Exemplo de um gás ideal}
+	\begin{figure}
+	\Centering
+		\begin{subfigure}{0.45\textwidth}
+			\centering
+	 		\animategraphics[scale=0.2,controls,loop]{15}{videos/video-2/anim-}{1}{1}
+%	 		\animategraphics[scale=0.2,controls,loop]{15}{videos/video-2/anim-}{1}{181}
+			\caption*{\footnotesize Gás de argônio a 73 K}
+		\end{subfigure}
+		\begin{subfigure}{0.45\textwidth}
+			\centering
+		  \animategraphics[scale=0.2,controls,loop]{15}{videos/video-1/anim-}{1}{1}
+%		  \animategraphics[scale=0.2,controls,loop]{15}{videos/video-1/anim-}{1}{181}
+		  \caption*{\footnotesize Gás de argônio a 373 K}
+		\end{subfigure}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Mudança de estado}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\begin{corollary}
+%				\justifying
+				Quando um gás muda de um estado (definido pela pressão, temperatura e volume) para outro, dizemos que ele sofreu uma transformação termodinâmica.
+			\end{corollary}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.4]{figuras/figura-1.png}
+				\caption*{\footnotesize Exemplo de transformação termodinâmica.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Transformação isotérmica}
+	\begin{columns}
+		\begin{column}[t]{0.5\textwidth}
+			\begin{block}{Lei de Boyle}
+				Numa transformação termodinâmica do estado 1 para o estado 2, se a temperatura T de uma dada massa gasosa for mantida constante, o volume V desse gás será inversamente proporcional à pressão p exercida sobre ele,
+				\begin{align*}
+					p_1V_1 & = p_2V_2,\\
+					pV & = \text{constante},\;(T=\text{constante}).
+				\end{align*}
+			\end{block}
+		\end{column}
+		\begin{column}[t]{0.5\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.35,transform shape,font=\Large]
+				
+				\tkzInit[xmin=0,xmax=8,xstep=1,ymin=0,ymax=8]
+				%\tkzGrid[color=gray!20]
+				\tkzClip[space=2]
+				
+				\tkzDrawY[above=0.1cm,label=$p\;(atm)$]
+				\tkzLabelY[orig=false,label options={text=black,left = 3pt}]
+				\tkzDrawX[right=0.1cm,label=$V\;(m^3)$]
+				\tkzLabelX[label options={text=black,below = 3pt}]
+				
+				\tkzFct[domain=0:70,color=red,line width=1.0pt,samples=400]{6/x}
+				
+				\tkzDefPointByFct(1)\tkzGetPoint{p1}
+				\tkzLabelPoint[above right](p1){$(p_1,V_1)$}
+				\tkzPointShowCoord[line width=0.5pt](p1)
+				\tkzDefPointByFct(6)\tkzGetPoint{p2}
+				\tkzLabelPoint[above right](p2){$(p_2,V_2)$}
+				\tkzPointShowCoord[line width=0.5pt](p2)
+				\tkzDrawPoints[size=0.5cm](p1,p2)
+				
+				\tkzText[color=black](6,6){$p_1V_1=p_2V_2$}
+				\tkzText[color=black](6,5.25){$6\times 1=1\times 6$}
+				
+				\end{tikzpicture}
+				%\includegraphics[scale=0.4]{figuras/figura-3a.png}
+				\caption*{\footnotesize Pressão versus volume numa transformação isotérmica.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Influência da pressão na densidade}
+	\begin{figure}
+		\begin{subfigure}{0.45\textwidth}
+			\centering
+			\includegraphics[scale=0.27]{figuras/figura-2a.png}
+		\end{subfigure}
+		\begin{subfigure}{0.45\textwidth}
+			\centering
+			\includegraphics[scale=0.27]{figuras/figura-2b.png}
+		\end{subfigure}
+		\caption*{\footnotesize Aumento da pressão acompanhado da diminuição do volume onde a temperatura é constante.}
+	\end{figure}
+	\begin{corollary}
+		 Sabendo que $\rho\;\alpha\;\frac{1}{V}$ podemos concluir que $\rho\; \alpha\; p$, se mantivermos constante a temperatura de uma massa gasosa, uma vez que $p\;\alpha\;\frac{1}{V}$.
+	\end{corollary}
+\end{frame}
+
+\begin{frame}{Transformação isobárica}
+	\begin{columns}
+		\begin{column}{0.55\textwidth}
+			\begin{block}{Lei de Gay-Lussac}
+				Numa transformação termodinâmica do estado 1 para o estado 2, O volume V de uma dada massa gasosa, mantida à pressão constante, é diretamente proporcional à sua temperatura absoluta T (Kelvin), ou seja,
+				\begin{align*}
+					\frac{V_1}{T_1} & = \frac{V_2}{T_2},\\
+					\frac{V}{T} & =\text{constante},\;(p=\text{constante}).
+				\end{align*}
+			\end{block}
+		\end{column}
+		\begin{column}{0.45\textwidth}
+			\begin{figure}
+				\centering
+				%\includegraphics[scale=0.35]{figuras/figura-4.png}
+				\begin{tikzpicture}[scale=0.35,transform shape,font=\Large]
+				
+				\tkzInit[xmin=-5,xmax=8,xstep=1,ymin=0,ymax=8]
+				%\tkzGrid[color=gray!20]
+				\tkzClip[space=2.25]
+				
+				\tkzDrawY[above=0.1cm,label=$V\;(m^3)$]
+				\tkzLabelY[orig=false,label options={text=black,left = 3pt}]
+				\tkzDrawX[right=0.1cm,label=$T\;(^{\circ}C)$,noticks]
+				
+				\tkzFct[domain=-3:5,color=red,line width=1.0pt,samples=10]{3+x}
+				
+				\tkzDefPointByFct(0)\tkzGetPoint{p1}
+				\tkzLabelPoint[right=0.25cm](p1){$(T_2,V_2)$}
+				\tkzDefPointByFct(3)\tkzGetPoint{p2}
+				\tkzLabelPoint[right=0.25cm](p2){$(T_1,V_1)$}
+				\tkzDrawPoints(p1,p2)
+				\tkzPointShowCoord[line width=0.5pt](p2)
+				
+				\tkzText[color=black](7,7){$\frac{V_1}{T_1}=\frac{V_2}{T_2}$}
+				
+				%recipiente 1
+				
+				\tkzDefPoints{-3/2/O, -3/5/O', -4/2/A, -2/2/C}
+				\tkzDefPointsBy[translation = from O to O'](A,C){F,H}
+				
+				\draw[dashed,fill=blue!0,opacity=0.25] (C) arc (0:180:1cm and 0.25cm);
+				\draw[fill=blue!20,opacity=0.25,draw opacity=100] (C) arc (0:-180:1cm and 0.25cm);
+				
+				\tkzDrawSegment(A,F)
+				\tkzDrawSegment(C,H)
+				
+				\tkzDefPoints{-3/3/o1, -4/3/a1, -2/3/c1}
+				
+				\draw[dashed,fill=gray!80,opacity=0.5,draw opacity=100] (c1) arc (0:180:1cm and 0.25cm);
+				\draw (O') ellipse (1cm and 0.25cm);
+				
+				\tkzDefPoints{-3/3.3/o2, -4/3.3/a2, -2/3.3/c2}
+				
+				\draw[dashed,fill=gray!80,opacity=0.5,draw opacity=100] (c2) arc (0:180:1cm and 0.25cm);
+				\draw[fill=gray!80,opacity=0.5,draw opacity=100] (c2) arc (0:-180:1cm and 0.25cm);
+				
+				\tkzDefPoints{0/2.5/o'}
+				\tkzDefPointsBy[translation = from o1 to o'](a1,c1){a',c'}
+				
+				\tkzFillPolygon[fill=blue!20,opacity=0.25](A,C,c1,a1)
+				
+				\draw[fill=gray!80,opacity=0.5,draw opacity=100] (c1) arc (0:-180:1cm and 0.25cm);
+				
+				\draw[<-,line width=1.5pt,color=black] (o2) --++ (0,1.5) node [above] {$\vec{F}$};
+				
+				\coordinate (x1) at ($(c1)+(0.2,0)$);
+				\coordinate (x2) at ($(p1)+(-0.5,0)$);
+				
+				\draw[->,line width=2pt,color=blue] (x1) -- (x2);
+				
+				%		\tkzLabelPoints[blue](O,A,C,o1,a1,c1,o2,a2,c1,o')
+				
+				%recipiente 2
+				
+				\tkzDefPoints{5/2/O, 5/5/O', 4/2/A, 6/2/C}
+				\tkzDefPointsBy[translation = from O to O'](A,C){F,H}
+				
+				\draw[dashed,fill=blue!0,opacity=0.25] (C) arc (0:180:1cm and 0.25cm);
+				\draw[fill=blue!20,opacity=0.25,draw opacity=100] (C) arc (0:-180:1cm and 0.25cm);
+				
+				\tkzDrawSegment(A,F)
+				\tkzDrawSegment(C,H)
+				
+				\tkzDefPoints{5/4/o1, 4/4/a1, 6/4/c1}
+				
+				\draw[dashed,fill=gray!80,opacity=0.5,draw opacity=100] (c1) arc (0:180:1cm and 0.25cm);
+				\draw (O') ellipse (1cm and 0.25cm);
+				
+				\tkzDefPoints{5/4.3/o2, 4/4.3/a2, 6/4.3/c2}
+				
+				\draw[dashed,fill=gray!80,opacity=0.5,draw opacity=100] (c2) arc (0:180:1cm and 0.25cm);
+				\draw[fill=gray!80,opacity=0.5,draw opacity=100] (c2) arc (0:-180:1cm and 0.25cm);
+				
+				\tkzDefPoints{0/2.5/o'}
+				\tkzDefPointsBy[translation = from o1 to o'](a1,c1){a',c'}
+				
+				\tkzFillPolygon[fill=blue!20,opacity=0.25](A,C,c1,a1)
+				
+				\draw[fill=gray!80,opacity=0.5,draw opacity=100] (c1) arc (0:-180:1cm and 0.25cm);
+				
+				\draw[<-,line width=1.5pt,color=black] (o2) --++ (0,1.5) node [above] {$\vec{F}$};
+				
+				\coordinate (x1) at ($(a2)+(-0.1,1)$);
+				\coordinate (x2) at ($(p2)+(0.25,-0.2)$);
+				
+				\draw[->,line width=2pt,color=blue] (x1) -- (x2);
+				
+				\tkzText[color=black,align=center,below](-3,0){Zero absoluto}
+
+				%		\tkzLabelPoints[blue](O,A,C,o1,a1,c1,o2,a2,c1,o')
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Volume versus temperatura numa transformação isobárica.}
+			\end{figure}
+		\end{column}
+	\end{columns}	
+\end{frame}
+
+\begin{frame}{Influência da temperatura na densidade}
+	\begin{figure}
+		\begin{subfigure}{0.45\textwidth}
+			\centering
+			\includegraphics[scale=0.27]{figuras/figura-2a.png}
+		\end{subfigure}
+		\begin{subfigure}{0.45\textwidth}
+			\centering
+			\includegraphics[scale=0.27]{figuras/figura-2b.png}
+		\end{subfigure}
+		\caption*{\footnotesize Diminuição da temperatura acompanhado da diminuição do volume onde a pressão é constante.}
+	\end{figure}
+	\begin{corollary}
+%		\justifying
+		Diminuindo T V também diminui na mesma quantidade, pois $\frac{1}{T}\;\alpha\;\frac{1}{V}$. Sabendo que $\rho\;\alpha\;\frac{1}{V}$ podemos concluir que $\rho\;\alpha\; \frac{1}{T}$, se mantivermos a pressão constante.
+	\end{corollary}
+\end{frame}
+
+\begin{frame}{Transformação isovolumétrica}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\begin{block}{Transformação a volume constante}
+				Numa transformação termodinâmica do estado 1 para o estado 2, se considerarmos um gás confinado em um recipiente de volume constante, sua pressão p, vai variar em proporção direta a sua temperatura T,
+				\begin{align*}
+					\frac{p_1}{T_1} & = \frac{p_2}{T_2},\\
+					\frac{p}{T} & = \text{constante},\;(V=\text{constante}).
+				\end{align*}
+			\end{block}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.4]{figuras/figura-5.png}
+				\caption*{\footnotesize Aumento da pressão e temperatura a volume constante.}
+			\end{figure}
+		\end{column}
+	\end{columns}	
+\end{frame}
+
+\section{Lei de Avogadro}
+
+\subsection{}
+
+\begin{frame}{O número de Avogadro}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\begin{block}{Lei de Avogadro}
+				Volumes iguais, de gases diferentes, à mesma temperatura e pressão, contêm o mesmo número de moléculas. Esse número é chamado de número de Avogadro $N_0$,
+				\begin{equation*}
+					N_0=6,02\times 10^{23}\;\text{moléculas/mol}
+				\end{equation*}
+			\end{block}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}
+				\centering
+				%\includegraphics[scale=0.25]{figuras/figura-6.png}
+				\begin{tikzpicture}[scale=0.35,transform shape,font=\Large]
+				
+				\tkzInit[xmin=-5,xmax=5,ymin=-0.75,ymax=5]
+				%\tkzGrid[color=gray!20]
+				\tkzClip
+				
+				\tkzDefPoints{0/0/O,0/5/O'}
+				\tkzDefPoints{-5/1/A1,-1/1/B1,-1/5/C1,-5/5/D1,-5/3.5/E1,-1/3.5/F1,-3/2.25/G1}
+				
+				%recipiente 1
+				
+				\tkzDrawSegment[line width=5pt,color=gray](E1,F1)
+				\tkzDrawSegment[line width=2pt](D1,A1)
+				\tkzDrawSegment[line width=2pt](A1,B1)
+				\tkzDrawSegment[line width=2pt](B1,C1)
+				
+				\foreach \x in {0.5,1,1.5,2,2.5,3,3.5} {
+					\coordinate (X) at ($(E1)+(\x,0.25)$);
+					\draw[<-,color=red,line width=1.0pt] (X)--++(0,1);}
+				
+				\coordinate (m1) at ($(G1)+(0.9,0.1)$);
+				\coordinate (m2) at ($(G1)+(-0.6,0.1)$);
+				\coordinate (m3) at ($(G1)+(-0.3,0.9)$);
+				\coordinate (m4) at ($(G1)+(-1.2,0.75)$);
+				\coordinate (m5) at ($(G1)+(0.1,-0.6)$);
+				\coordinate (m6) at ($(G1)+(1,-1)$);
+				\coordinate (m7) at ($(G1)+(-1,-1)$);
+				\coordinate (m8) at ($(G1)+(1.5,0.8)$);
+				\coordinate (m9) at ($(G1)+(-1.5,-0.3)$);
+				\coordinate (m10) at ($(G1)+(1.5,-0.3)$);
+				\coordinate (m11) at ($(G1)+(0.2,0.5)$);
+				
+				\tkzDrawPoints[size=0.5cm,color=blue,fill=blue](m1,m2,m3,m4,m5,m6,m7,m8,m9,m10,m11)
+				
+				\draw[->,line width=1.0pt] ($(O)+(0,0.5)$) -- (G1);
+				
+				%recipiente 2
+				
+				\tkzDefPointsBy[reflection= over O--O'](A1,B1,C1,D1,E1,F1,G1){A2,B2,C2,D2,E2,F2,G2}
+				
+				\tkzDrawSegment[line width=5pt,color=gray](E2,F2)
+				\tkzDrawSegment[line width=2pt](D2,A2)
+				\tkzDrawSegment[line width=2pt](A2,B2)
+				\tkzDrawSegment[line width=2pt](B2,C2)
+				
+				\foreach \x in {0.5,1,1.5,2,2.5,3,3.5} {
+					\coordinate (X) at ($(E2)-(\x,-0.25)$);
+					\draw[<-,color=red,line width=1.0pt] (X)--++(0,1);}
+				
+				\tkzDefPointsBy[reflection= over O--O'](m1,m2,m3,m4,m5,m6,m7,m8,m9,m10,m11){mb1,mb2,mb3,mb4,mb5,mb6,mb7,mb8,mb9,mb10,mb11}
+				
+				\tkzDrawPoints[size=0.25cm,color=blue,fill=blue](mb1,mb2,mb3,mb4,mb5,mb6,mb7,mb8,mb9,mb10,mb11)
+				
+				\draw[->,line width=1.0pt] ($(O)+(0,0.5)$) -- (G2);
+				
+				%texto
+				\tkzText[text width=5cm,align=center,opacity=100](O){O mesmo número de moléculas!}
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Recipientes contendo gases diferentes.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+	\begin{corollary}
+		Podemos dizer que $\rho$ varia apenas com a massa da quantidade $N_0$ de moléculas,
+		\begin{equation*}
+			\rho\;\alpha\;M,\;\text{(p,V,T constantes)}.
+		\end{equation*}
+	\end{corollary}
+\end{frame}
+
+\begin{frame}{Massa molar}
+	\begin{columns}
+		\begin{column}{0.55\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.23]{figuras/figura-7.png}
+				\caption*{\footnotesize Identificação da massa molecular na tabela periódica.}
+			\end{figure}
+		\end{column}
+		\begin{column}{0.45\textwidth}
+			\begin{block}{Massa molar}
+				Massa molar M representa a massa em gramas de 1 mol da substância,
+				\begin{equation*}
+					\text{Massa molar}=\frac{\text{Massa total}}{\text{num.  moles}}.
+				\end{equation*}
+			\end{block}
+			Um mol equivale a $6,02\times 10^{23}$ moléculas ou átomos da substância,
+			\begin{equation*}
+				n=\frac{N}{N_0}.
+			\end{equation*}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\section{Equação do gás ideal}
+
+\subsection{}
+
+\begin{frame}{Equação do gás ideal}
+	\begin{columns}[t]
+		\begin{column}{0.5\textwidth}
+			Reunindo as Leis de Boyle, Gay-Lussac e Avogadro de um gás a pressão p, temperatura T e massa molar M na forma
+			\begin{align*}
+				\rho\; & \alpha\;p,\\
+				\rho\; & \alpha\;\frac{1}{T},\\
+				\rho\; & \alpha\;M.
+			\end{align*}
+			Reunindo em uma única relação
+			\begin{equation*}
+				\rho\;\alpha\;\frac{pM}{T}.
+			\end{equation*}
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			Mas sabemos que $\rho=\frac{m_{\text{Total}}}{V}$, portanto
+			\begin{align*}
+				\frac{m_{\text{Total}}}{V}\; & \alpha\;\frac{pM}{T},\\
+				pV & \alpha\;\left(\frac{m}{M}\right)T.
+			\end{align*}
+			Mas $n=m_{\text{Total}}/M$, resultando na relação entre a pressão, volume e temperatura de uma massa gasosa contendo n mols,
+			\begin{block}{Equação do gás ideal}
+				\begin{equation*}
+					pV = nRT.
+				\end{equation*}
+			\end{block}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Constante universal dos gases}
+	\begin{multicols}{2}
+	Verificamos anteriormente que $pV=RnT$, ou seja,
+	\begin{align*}
+		R=\frac{pV}{nT},
+	\end{align*}
+	onde R é a constante de proporcionalidade chamada \textcolor{red}{constante universal dos gases}. Experimentalmente, podemos verificar que para um mol de um gás ideal qualquer (n=1 mol), à temperatura de 273 K e à pressão de 1 atm, o gás irá ocupar um volume de 22,4 L.
+	 Substituindo na equação acima
+	\begin{align*}
+		R=0,082\;\frac{\text{atm}\cdot{L}}{\text{mol}\cdot{K}}.
+	\end{align*}
+	No SI a pressão é medida em $N/m^2$ e o volume em $m^3$, portanto após converter as unidades de medida temos
+	\begin{align*}
+		\boxed{R=8,31\;\frac{\text{J}}{\text{mol}\cdot{K}}.}
+	\end{align*}
+	\end{multicols}
+\end{frame}
+
+\section{Teoria cinética dos gases}
+
+\begin{frame}{Cálculo da pressão de um gás}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			A pressão de um gás se deve a colisões contínuas das moléculas de massa m contra as paredes do recipiente, na forma
+			\begin{align*}
+				p=\frac{1}{3}\frac{N}{V}m\left<v^2\right>.
+			\end{align*}
+			\begin{itemize}
+				\item N: Número total de moléculas;
+				\item V: Volume do recipiente;
+				\item m: Massa de cada molécula;
+				\item $\left<v^2\right>$: Média dos quadrados das velocidades.
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.35]{figuras/gas_molecules.png}
+				\caption*{\footnotesize Recipiente contendo gás ideal.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Energia interna de um gás}
+	\begin{multicols}{2}
+		Do cálculo da pressão de um gás contendo n mols de moléculas podemos ter
+		\begin{align*}
+			pV = \frac{1}{3}(nN_0)m\left<v^2\right>.
+		\end{align*}
+		Comparando com a equação do gás ideal temos
+		\begin{align*}
+			\frac{1}{3}\bcancel{n}N_0m\left<v^2\right> &=\bcancel{n}RT,\\
+			\frac{1}{2}m\left<v^2\right> &=\frac{3}{2}\underbracket{\left(\frac{R}{N_0}\right)}_{\alert{k_B}}T.
+		\end{align*}
+	\end{multicols}
+	onde $k_B$ é chamado \alert{constante de Boltzmann} ($k_B=1,38\times 10^{-23}\;\text{J/K}$).
+	\begin{block}{Energia interna de um gás ideal}
+		\begin{equation*}
+			U(T) = \frac{1}{2}Nm\left<v^2\right> = \frac{3}{2}Nk_BT.
+		\end{equation*}
+	\end{block}
+\end{frame}
+
+\section{Apêndice}
+
+\subsection{}
+
+\begin{frame}{Transformar um número em notação científica}
+	\begin{corollary}
+		\begin{enumerate}[leftmargin=1.75cm]
+			\item[Passo 1:] Escrever o número incluindo a vírgula.
+			\item[Passo 2:] Andar com a vírgula até que reste somente um número diferente de zero no lado esquerdo.
+			\item[Passo 3:] Colocar no expoente da potência de 10 o número de casas decimais que tivemos que "andar" com a vírgula. Se ao andar com a vírgula o valor do número diminuiu, o expoente ficará positivo, se aumentou o expoente ficará negativo.
+		\end{enumerate}
+	\end{corollary}
+	\begin{exampleblock}{Exemplo}
+		\begin{equation*}
+			6\; 590\; 000\; 000\; 000\; 000,0 = \SI{6,59e15}{}		
+		\end{equation*}
+	\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Conversão de unidades em uma dimensão}
+	\begin{figure}
+		\begin{tikzpicture}[scale=0.65,transform shape,font=\Large]
+		
+		\tkzInit[xmin=-2,xmax=17,ymin=-6,ymax=3]
+		%\tkzGrid[color=gray!20]
+		\tkzClip
+		
+		\tikzset{compass style/.append style={->}}
+		
+		\foreach \x in {1,2,...,6}{
+			\tkzDefPoint(\x*3-3,0){\x}
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+			\node at (\x*3-3,2) {$\times 10^{1}$};
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+			\node at (\x*3-3,-2) {$\times 10^{-1}$};}
+		
+		\tkzDefPoints{-1.5/0/p1,1.5/0/p2,4.5/0/p3,7.5/-0.2/p4,10.5/0/p5,13.5/0/p6,16.5/0/p7}
+		
+		\tkzText(p1){m\_}
+		\tkzText(p2){c\_}
+		\tkzText(p3){d\_}
+		\tkzText(p4){\_}
+		\tkzText(p5){da\_}
+		\tkzText(p6){h\_}
+		\tkzText(p7){k\_}
+		
+		%exemplos
+		
+		\tkzText(3,-3.5){$1\;\text{mm}=1\times 10^{(-1)\times\alert{2}}\;\text{dm}\rightarrow 1\times 10^{-2}\;\text{dm}$}
+		\tkzText(3.1,-4.5){$2,5\;\text{kg}=2,5\times 10^{(1)\times\alert{6}}\;\text{mg}\rightarrow2,5\times 10^{6}\;\text{mg}$}
+		\tkzText(2.7,-5.5){$10\;\text{ms}=10\times 10^{(-1)\times\alert{3}}\;\text{s}\rightarrow 10\times 10^{-3}\;\text{s}$}
+		
+		\end{tikzpicture}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Conversão de unidades em duas dimensões}
+	\begin{figure}
+		\begin{tikzpicture}[scale=0.65,transform shape,font=\Large]
+	
+		\tkzInit[xmin=-2,xmax=17,ymin=-6,ymax=3]
+		%\tkzGrid[color=gray!20]
+		\tkzClip
+	
+		\tikzset{compass style/.append style={->}}
+	
+		\foreach \x in {1,2,...,6}{
+			\tkzDefPoint(\x*3-3,0){\x}
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+			\node at (\x*3-3,2) {$\times 10^{2}$};
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+			\node at (\x*3-3,-2) {$\times 10^{-2}$};}
+	
+		\tkzDefPoints{-1.5/0/p1,1.5/0/p2,4.5/0/p3,7.5/0/p4,10.5/0/p5,13.5/0/p6,16.5/0/p7}
+	
+		\tkzText(p1){$\text{m}\_^2$}
+		\tkzText(p2){$\text{c}\_^2$}
+		\tkzText(p3){$\text{d}\_^2$}
+		\tkzText(p4){$\_^2$}
+		\tkzText(p5){$\text{da}\_^2$}
+		\tkzText(p6){$\text{h}\_^2$}
+		\tkzText(p7){$\text{k}\_^2$}
+	
+		%exemplos
+	
+		\tkzText(3.3,-3.5){$1\;\text{mm}^2=1\times 10^{(-2)\times\alert{2}}\;\text{dm}^2\rightarrow 1\times 10^{-4}\;\text{dm}^2$}
+		\tkzText(3.6,-4.5){$2,5\;\text{m}^2=2,5\times 10^{(2)\times\alert{3}}\;\text{mm}^2\rightarrow2,5\times 10^{6}\;\text{mm}^2$}
+		\tkzText(3,-5.5){$10\;\text{ms}^2=10\times 10^{(-2)\times\alert{3}}\;\text{s}^2\rightarrow 10\times 10^{-6}\;\text{s}^2$}
+	
+		\end{tikzpicture}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Conversão de unidades em três dimensões}
+	\begin{figure}
+		\begin{tikzpicture}[scale=0.65,transform shape,font=\Large]
+	
+		\tkzInit[xmin=-2,xmax=17,ymin=-6,ymax=3]
+		%\tkzGrid[color=gray!20]
+		\tkzClip
+	
+		\tikzset{compass style/.append style={->}}
+	
+		\foreach \x in {1,2,...,6}{
+			\tkzDefPoint(\x*3-3,0){\x}
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+			\node at (\x*3-3,2) {$\times 10^{3}$};
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+			\node at (\x*3-3,-2) {$\times 10^{-3}$};}
+	
+		\tkzDefPoints{-1.5/0/p1,1.5/0/p2,4.5/0/p3,7.5/0/p4,10.5/0/p5,13.5/0/p6,16.5/0/p7}
+	
+		\tkzText(p1){$\text{m}\_^3$}
+		\tkzText(p2){$\text{c}\_^3$}
+		\tkzText(p3){$\text{d}\_^3$}
+		\tkzText(p4){$\_^3$}
+		\tkzText(p5){$\text{da}\_^3$}
+		\tkzText(p6){$\text{h}\_^3$}
+		\tkzText(p7){$\text{k}\_^3$}
+	
+		%exemplos
+	
+		\tkzText(3.3,-3.5){$1\;\text{mm}^3=1\times 10^{(-3)\times\alert{2}}\;\text{dm}^3\rightarrow 1\times 10^{-6}\;\text{dm}^3$}
+		\tkzText(3.6,-4.5){$2,5\;\text{m}^3=2,5\times 10^{(3)\times\alert{3}}\;\text{mm}^3\rightarrow2,5\times 10^{9}\;\text{mm}^3$}
+		\tkzText(3.5,-5.5){$2,5\;\text{km}^3=2,5\times 10^{(3)\times\alert{6}}\;\text{mm}^3\rightarrow2,5\times 10^{18}\;\text{mm}^3$}
+
+		\end{tikzpicture}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Alfabeto grego}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{table}
+				\begin{tabular}[c]{ccc}
+					Alfa & $A$ & $\alpha$\\
+					Beta & $B$ & $\beta$\\
+					Gama & $\Gamma$ & $\gamma$\\
+					Delta & $\Delta$ & $\delta$\\
+					Epsílon & $E$ & $\epsilon$,$\varepsilon$\\
+					Zeta & $Z$ & $\zeta$\\
+					Eta & $H$ & $\eta$\\
+					Teta & $\Theta$ & $\theta$\\
+					Iota & $I$ & $\iota$\\
+					Capa & $K$ & $\kappa$\\
+					Lambda & $\Lambda$ & $\lambda$\\
+					Mi & $M$ & $\mu$
+				\end{tabular}
+			\end{table}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{table}
+				\begin{tabular}[c]{ccc}
+					Ni & $N$ & $\nu$\\
+					Csi & $\Xi$ & $\xi$\\
+					ômicron & $O$ & $o$\\
+					Pi & $\Pi$ & $\pi$\\
+					Rô & $P$ & $\rho$\\
+					Sigma & $\Sigma$ & $\sigma$\\
+					Tau & $T$ & $\tau$\\
+					Ípsilon & $\Upsilon$ & $\upsilon$\\
+					Fi & $\Phi$ & $\phi$,$\varphi$\\
+					Qui & $X$ & $\chi$\\
+					Psi & $\Psi$ & $\psi$\\
+					Ômega & $\Omega$ & $\omega$
+				\end{tabular}
+			\end{table}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Referências e observações\footnote{Este material está sujeito a modificações. Recomenda-se acompanhamento permanente.}}
+	\bibliographystyle{jurabib}
+	\begin{thebibliography}{9}
+		\bibitem{alvarenga}A. Máximo, B. Alvarenga, C. Guimarães, Física. Contexto e aplicações, v.2, 2.ed., São Paulo, Scipione (2016)
+	\end{thebibliography}
+
+\vspace*{1cm}
+\begin{center}
+	Esta apresentação está disponível para download no endereço\\
+	\href{https://flavianowilliams.github.io/education}{\textcolor{blue}{https://flavianowilliams.github.io/education}}
+\end{center}
+	
+\end{frame}
+
+\end{document}

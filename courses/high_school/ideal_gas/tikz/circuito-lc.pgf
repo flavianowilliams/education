@@ -1,0 +1,14 @@
+\begin{circuitikz}[scale=0.8, transform shape]
+
+	\draw (0,4) to (4,4);
+%	\draw[help lines, red!50] (0,0) grid (4,4);
+	\draw (4,4) to [L=$L\frac{di}{dt}\equiv\textcolor{red}{-}\Delta V_{L}$,v_> = $\Delta V_{L}$,*-*] (4,0);
+	\draw (0,0) to [C=$\frac{q}{C}$,v_> = $\Delta V_{C}$,*-*] (0,4);
+	\draw (2,0) to [switch=$chave$,*-*] (3,0);
+	\draw (0,0) to (2,0);
+	\draw (3,0) to (4,0);
+
+	\draw[line width=1pt, color=red,->] (1,4.25) -- (1.5,4.25) node[above,midway] {$i(t)$};
+	\draw[line width=1pt, color=red,<-] (3,-0.75) -- (3.5,-0.75) node[above,midway] {$i(t)$};
+
+\end{circuitikz}

@@ -1,0 +1,31 @@
+\begin{tikzpicture}[scale=0.3, transform shape,font=\LARGE]
+
+ 	\useasboundingbox (-6,-6) rectangle (6,6);
+
+	%eixos
+	\draw[line width=1.0pt,->] (-5,0) -- (5,0) node[right] {Re};
+	\draw[line width=1.0pt,->] (0,-5) -- (0,5) node[right] {Im};
+
+	%circunferencia
+	\draw[line width=1pt,-stealth] (4,0) arc (0:180:4cm);
+	\draw[line width=1pt,-stealth] (-4,0) arc (180:360:4cm);
+
+	%pontos
+	\filldraw[black] (0,0) circle (2pt) node[anchor=north east] {O};
+	\filldraw[black] (0,0) --++ (45:4) circle (2pt) node[anchor=south west] {};
+
+	%coordenadas
+	\coordinate (c1) at ({4*cos(45)},0);
+
+	%vetores
+	\draw[black] (0,0) --++ (45:4);
+	\draw[line width=1pt,red] (45:4) --++ (225:4) node [anchor=south east,midway]  {$y_{m}$};
+	\draw[line width=1pt,red] (0,0) --++ (c1) node [below,midway]  {\small $y_{m}cos\left(kx-\omega t+\varphi\right)$};
+
+	%arcos
+	\draw[line width=1pt,->] (1,0) arc (0:45:1cm) node [right,midway] {$\theta$};
+
+	%linguica
+	\draw[black,dashed] (45:4) -- (c1);
+
+\end{tikzpicture}

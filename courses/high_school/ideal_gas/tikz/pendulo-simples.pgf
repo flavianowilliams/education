@@ -1,0 +1,38 @@
+\begin{tikzpicture}[scale=1, transform shape]
+
+	%transformacao coordenadas
+	\def\ta{0}
+	\def\tb{0}
+
+	%parede
+	\fill [pattern = north west lines] (1,0.2) rectangle (-1,0);
+	\draw (-1,0) -- (1,0);
+
+	%normal
+	\draw[dashed] (0,0) -- (0,-3/cos{30}) node [left,midway] {L};
+
+	%massa
+	\filldraw (0,0) --++ (-60:3) circle (3pt) node (m) {};
+
+	%angulos
+	\draw[line width=1pt,->] (0,-0.5) arc (-90:-60:0.5) node [below,midway] {$\theta$};
+	\draw[line width=1pt,->] ($(m)+(0,-0.5)$) arc (-90:-60:0.5) node [below,midway] {$\theta$};
+
+
+	\draw[dashed] (m) --++ (-60:1);
+
+	%trajetoria
+	\draw[line width=1pt,<->] (m) arc (-60:-120:3);
+
+	%vetores
+	\draw[line width=1pt,color=red,->] (m) -- ($(m)-(0,1)$) node[below] {$\vec{P}$};
+	\draw[line width=1pt,color=red,->] (m) --++ (-60:-1) node[right] {$\vec{T}$};
+	\draw[line width=1pt,color=red,->] (m) -- (0,-3/cos{30}) node[below] {$\vec{F}$};
+
+	%eixos
+	\node (c) at (-45:3) {};
+	\node (cx) at (-53:3) {};
+	\draw[color=blue,->] ($(c)+(-45:0.5)$) --++ (-60:-1) node[above] {$y$};
+	\draw[color=blue,->] (cx) --++ (-150:-1) node[right] {$x$};
+
+\end{tikzpicture}

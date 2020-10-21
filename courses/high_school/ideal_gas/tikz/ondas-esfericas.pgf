@@ -1,0 +1,53 @@
+\begin{tikzpicture}[scale=0.5, transform shape]
+
+	%transmissor
+
+	\coordinate (a) at (1,2);
+
+	%eixos
+	\draw[color=blue,->] ($(a)+(-5,-5)$) -- ($(a)+(-4,-5)$) node[right] {$x$};
+	\draw[color=blue,->] ($(a)+(-5,-5)$) -- ($(a)+(-5,-4)$) node[above] {$y$};
+
+	\draw (0.5,0) -- (1,2);
+	\draw (1.5,0) -- (1,2);
+	\draw (0.5,0) -- (1.5,0);
+
+	\node at (1,-0.25) {Transmissor};
+
+	\filldraw (a) circle (0.1cm) node[above] {};
+
+	%ondas esfericas
+	\foreach \x in {1,2,...,5}
+	\draw[dashed,color=red] (a) circle (\x);
+
+	\draw[<->] ($(a)+(-30:2)$) --++ (-30:1) node[above,sloped,midway] {$\lambda$};
+
+	%carga oscilando
+	\draw[<->,color=red] ($(a)-(0,0.5)$) --++ (0,1) node[right,midway] {e};
+
+	%receptor
+	
+	\def\tx{5}
+	\def\ty{-3}
+
+  \node at (1+\tx,1.5+\ty) [cylinder,cylinder uses custom fill, cylinder body fill=black,cylinder end fill=black, minimum height=3cm, minimum width=0.01 cm, rotate=90] {};
+	\node[right] at (1.25+\tx,0.5+\ty) {Receptor};
+
+	\foreach \x  in {2.5,2.75,3}{
+	\draw[line width=1pt] (0+\tx,\x+\ty) --++ (2,0);
+	\draw[line width=1pt] (0+\tx,\x+\ty) --++ (2,0);}
+
+	%numeros de ondas
+	\draw[line width=1pt,->] ($(a)+(30:5)$) --++ (30:1) node[above,sloped,midway] {$\vec{k}$};
+	\draw[line width=1pt,->] ($(a)+(210:5)$) --++ (210:1) node[above,sloped,midway] {$\vec{k}$};
+	\draw[line width=1pt,->] ($(a)+(-45:5)$) --++ (-45:1) node[above,sloped,midway] {$\vec{k}$};
+	\draw[line width=1pt,->] ($(a)+(135:5)$) --++ (135:1) node[above,sloped,midway] {$\vec{k}$};
+
+	%onda plana
+	\node (dts) at ($(a)+(6,0)$) {\Huge $\cdots$};
+	\foreach \pw in {0.5,0.75,1.0}{
+	\draw[line width=1pt,dashed,color=red] ($(a)+(6.5+\pw,-2)$) -- ($(a)+(6.5+\pw,2)$);}
+	\draw[line width=1pt,->] (8.5,2) --++ (1,0) node[above,midway] {$k\hat{x}$};
+	\node[below] at ($(a)+(6.5+0.75,-2)$) {Onda plana};
+
+\end{tikzpicture}

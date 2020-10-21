@@ -1,0 +1,40 @@
+\begin{tikzpicture}[scale=0.4, auto, transform shape, samples=70]
+
+		%parametros gerais
+		\def\xm{1.2}
+		\def\lambda{3.14}
+		\def\t{-7}
+		\def\tt{2*\t}
+		\def\om{1.5}
+		\def\tx{2}
+
+		%definindo funcao
+		\pgfmathdeclarefunction{ff}{2}{\pgfmathparse{\xm*cos(deg(#1+#2))}}
+
+		%eixo
+		\draw[line width=1.0pt,->] (0,-{(\xm+1)}) -- (0,{(\xm+1)}) node[above] {y};
+		\draw[line width=1.0pt] (0,0) -- (4.5*\lambda,0);
+
+		%curva
+		\draw[line width=1.0pt,domain=0:4.5*\lambda,variable=\x,color=red] plot (\x,{ff(\x,0.0)});
+%		\draw[line width=1.0pt,domain=0:4.5*\lambda,variable=\x,color=green] plot (\x,{ff(\x,-2.0)});
+
+		%coordenadas
+		\coordinate (c1) at (0,-\xm-1);
+		\coordinate (c2) at (2*\lambda,-\xm-1);
+		\coordinate (c3) at (4*\lambda,-\xm-1);
+		\coordinate (c4) at (4.5*\lambda,-\xm-1);
+
+	%ciclos
+	\draw[line width=1pt,<->] (c1) -- (c2) node [above,midway] {Onda completa};
+	\draw[dashed] (c2) -- (2*\lambda,{ff(2*\lambda,0.0)});
+
+	\draw[line width=1pt,<->] (c2) -- (c3) node [above,midway] {Onda completa};
+	\draw[dashed] (c3) -- (4*\lambda,{ff(4*\lambda,0.0)});
+
+	\draw[line width=1pt,<-] (c3) -- (c4);
+
+	%periodicidade
+	\node at (4.75*\lambda,0) {$\large{\cdots}$};
+
+\end{tikzpicture}

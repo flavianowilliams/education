@@ -1,0 +1,30 @@
+\begin{tikzpicture}[scale=0.75, transform shape]
+
+	%eixos
+	\draw[line width=1.0pt,->] (-4,0) -- (4,0) node[right] {$x$};
+	\draw[line width=1.0pt,->] (0,0) -- (0,5) node[above] {$U(x)$};
+
+	%origem
+	\node[below] at (0,0) {O};
+
+	%parametros
+	\def\k{1}
+	\def\a{2}
+
+	%funcao
+	\pgfmathdeclarefunction{ff}{1}{\pgfmathparse{\k*0.5*(#1)^2}}
+
+	%curva
+	\draw[line width=1.0pt,domain=-(\a+1):\a+1,variable=\x,color=red,samples=50] plot (\x,{ff(\x)}) node[anchor=south west] {$\frac{1}{2}kx^{2}$};
+
+	%energia total
+	\draw[line width=1pt] (-\a,{ff(-\a)}) -- (\a,{ff(\a)}) node [right] {$E=\frac{1}{2}kx^{2}_{m}$};
+
+	%amplitude
+	\draw[dashed] (-\a,0) -- (-\a,{ff(-\a)});
+	\draw[dashed] (\a,0) -- (\a,{ff(\a)});
+
+	\node[below] at (-\a,0) {$-x_{m}$};
+	\node[below] at (\a,0) {$x_{m}$};
+
+\end{tikzpicture}

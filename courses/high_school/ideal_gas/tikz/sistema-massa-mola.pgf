@@ -1,0 +1,50 @@
+\begin{tikzpicture}[scale=0.9,transform shape]
+
+	%sistema 1
+
+	%parede
+	\fill [pattern = north west lines] (-0.2,-0.45) rectangle (0,1);
+	\draw (0,-0.45) -- (0,1);
+
+	%chao
+	\draw (0,-0.45) -- (5,-0.45);
+
+	%equilibrio
+	\node[below] at (2.5,-0.45) {$x_{0}$};
+	\node[below] at (4,-0.45) {$x$};
+
+	% bloco
+	\node[rectangle,fill=gray,inner sep=3.5mm] (a) at (4,0) {\small{m}};
+
+	%mola
+	\draw[decoration={aspect=0.3, segment length=4mm, amplitude=1.5mm,coil},decorate] (0,0) -- (a); 
+
+	%vetores
+	\draw[line width=1pt,color=red,->] (a) -- ($(a)-(1,0)$) node [above,midway] {$\vec{F}_{R}$};
+
+	%deslocamento
+	\draw[line width=1pt,<->] (2.5,-1.25) -- (4,-1.25) node[above,midway] {$x_{m}$};
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%sistema 2
+	
+	%transformacao coordenadas
+	\def\ta{2}
+
+	%parede
+	\fill [pattern = north west lines] (-0.2,-0.45+\ta) rectangle (0,1+\ta);
+	\draw (0,-0.45+\ta) -- (0,1+\ta);
+
+	%chao
+	\draw (0,-0.45+\ta) -- (5,-0.45+\ta);
+
+	%equilibrio
+	\draw[dashed] (2.5,-0.45) -- (2.5,1+\ta);
+
+	% bloco
+	\node[rectangle,fill=gray,inner sep=3.5mm] (a) at (2.5,0+\ta) {\small{m}};
+
+	%mola
+	\draw[decoration={aspect=0.3, segment length=2mm, amplitude=3mm,coil},decorate] (0,0+\ta) -- (a); 
+
+\end{tikzpicture}

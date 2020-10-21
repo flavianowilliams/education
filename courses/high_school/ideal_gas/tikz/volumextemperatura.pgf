@@ -1,0 +1,98 @@
+﻿\begin{tikzpicture}[scale=1,transform shape]
+
+	\tkzInit[xmin=-5,xmax=8,xstep=1,ymin=0,ymax=8]
+	\tkzGrid[color=gray!20]
+	\tkzClip[space=2]
+
+	\tkzDrawY[above=0.1cm,label=$V\;(m^3)$]
+	\tkzLabelY[orig=false,label options={text=black,left = 3pt}]
+	\tkzDrawX[right=0.1cm,label=$T\;(^{\circ}C)$]
+	\tkzLabelX[label options={text=black,below = 3pt}]
+
+	\tkzFct[domain=-3:5,color=red,line width=1.0pt,samples=10]{3+x}
+
+	\tkzDefPointByFct(0)\tkzGetPoint{p1}
+	\tkzLabelPoint[right=0.25cm](p1){$(V_1,T_1)$}
+	\tkzDefPointByFct(3)\tkzGetPoint{p2}
+	\tkzLabelPoint[right=0.25cm](p2){$(V_2,T_2)$}
+	\tkzDrawPoints(p1,p2)
+	\tkzPointShowCoord(p2)
+
+	\tkzText[color=black](6,7){$\frac{V_1}{T_1}=\frac{V_2}{T_2}$}
+%	\tkzText[color=black](6,6.25){$\frac{3}{273}=\frac{6}{276}$}
+
+		%recipiente 1
+
+		\tkzDefPoints{-3/2/O, -3/5/O', -4/2/A, -2/2/C}
+		\tkzDefPointsBy[translation = from O to O'](A,C){F,H}
+
+		\draw[dashed,fill=blue!0,opacity=0.25] (C) arc (0:180:1cm and 0.25cm);
+		\draw[fill=blue!20,opacity=0.25,draw opacity=100] (C) arc (0:-180:1cm and 0.25cm);
+
+		\tkzDrawSegment(A,F)
+		\tkzDrawSegment(C,H)
+
+		\tkzDefPoints{-3/3/o1, -4/3/a1, -2/3/c1}
+
+		\draw[dashed,fill=gray!80,opacity=0.5,draw opacity=100] (c1) arc (0:180:1cm and 0.25cm);
+		\draw (O') ellipse (1cm and 0.25cm);
+
+		\tkzDefPoints{-3/3.3/o2, -4/3.3/a2, -2/3.3/c2}
+
+		\draw[dashed,fill=gray!80,opacity=0.5,draw opacity=100] (c2) arc (0:180:1cm and 0.25cm);
+		\draw[fill=gray!80,opacity=0.5,draw opacity=100] (c2) arc (0:-180:1cm and 0.25cm);
+
+		\tkzDefPoints{0/2.5/o'}
+		\tkzDefPointsBy[translation = from o1 to o'](a1,c1){a',c'}
+
+		\tkzFillPolygon[fill=blue!20,opacity=0.25](A,C,c1,a1)
+
+		\draw[fill=gray!80,opacity=0.5,draw opacity=100] (c1) arc (0:-180:1cm and 0.25cm);
+
+		\draw[<-,line width=2.5pt,color=black] (o2) --++ (0,1.5) node [above] {$\vec{F}$};
+
+		\coordinate (x1) at ($(c1)+(0.2,0)$);
+		\coordinate (x2) at ($(p1)+(-0.5,0)$);
+
+		\draw[->,line width=4pt,color=blue] (x1) -- (x2);
+
+%		\tkzLabelPoints[blue](O,A,C,o1,a1,c1,o2,a2,c1,o')
+
+		%recipiente 2
+
+		\tkzDefPoints{5/2/O, 5/5/O', 4/2/A, 6/2/C}
+		\tkzDefPointsBy[translation = from O to O'](A,C){F,H}
+
+		\draw[dashed,fill=blue!0,opacity=0.25] (C) arc (0:180:1cm and 0.25cm);
+		\draw[fill=blue!20,opacity=0.25,draw opacity=100] (C) arc (0:-180:1cm and 0.25cm);
+
+		\tkzDrawSegment(A,F)
+		\tkzDrawSegment(C,H)
+
+		\tkzDefPoints{5/4/o1, 4/4/a1, 6/4/c1}
+
+		\draw[dashed,fill=gray!80,opacity=0.5,draw opacity=100] (c1) arc (0:180:1cm and 0.25cm);
+		\draw (O') ellipse (1cm and 0.25cm);
+
+		\tkzDefPoints{5/4.3/o2, 4/4.3/a2, 6/4.3/c2}
+
+		\draw[dashed,fill=gray!80,opacity=0.5,draw opacity=100] (c2) arc (0:180:1cm and 0.25cm);
+		\draw[fill=gray!80,opacity=0.5,draw opacity=100] (c2) arc (0:-180:1cm and 0.25cm);
+
+		\tkzDefPoints{0/2.5/o'}
+		\tkzDefPointsBy[translation = from o1 to o'](a1,c1){a',c'}
+
+		\tkzFillPolygon[fill=blue!20,opacity=0.25](A,C,c1,a1)
+
+		\draw[fill=gray!80,opacity=0.5,draw opacity=100] (c1) arc (0:-180:1cm and 0.25cm);
+
+		\draw[<-,line width=2.5pt,color=black] (o2) --++ (0,1.5) node [above] {$\vec{F}$};
+
+		\coordinate (x1) at ($(a2)+(-0.1,1)$);
+		\coordinate (x2) at ($(p2)+(0.25,-0.2)$);
+
+		\draw[->,line width=4pt,color=blue] (x1) -- (x2);
+
+%		\tkzLabelPoints[blue](O,A,C,o1,a1,c1,o2,a2,c1,o')
+
+\end{tikzpicture}

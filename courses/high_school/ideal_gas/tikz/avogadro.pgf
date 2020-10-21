@@ -1,0 +1,63 @@
+﻿\begin{tikzpicture}[scale=1,transform shape]
+
+	\tkzInit[xmin=-5,xmax=5,ymin=-0.5,ymax=5]
+	\tkzGrid[color=gray!20]
+	\tkzClip
+
+	\tkzDefPoints{0/0/O,0/5/O'}
+	\tkzDefPoints{-5/1/A1,-1/1/B1,-1/5/C1,-5/5/D1,-5/3.5/E1,-1/3.5/F1,-3/2.25/G1}
+
+	%recipiente 1
+
+	\tkzDrawSegment[line width=6pt,color=gray](E1,F1)
+	\tkzDrawSegment[line width=3pt](D1,A1)
+	\tkzDrawSegment[line width=3pt](A1,B1)
+	\tkzDrawSegment[line width=3pt](B1,C1)
+
+	\foreach \x in {0.5,1,1.5,2,2.5,3,3.5} {
+	\coordinate (X) at ($(E1)+(\x,0.25)$);
+	\draw[<-,color=red,line width=1.5pt] (X)--++(0,1);}
+
+	\coordinate (m1) at ($(G1)+(0.9,0.1)$);
+	\coordinate (m2) at ($(G1)+(-0.6,0.1)$);
+	\coordinate (m3) at ($(G1)+(-0.3,1)$);
+	\coordinate (m4) at ($(G1)+(-1.2,0.75)$);
+	\coordinate (m5) at ($(G1)+(0.1,-0.6)$);
+	\coordinate (m6) at ($(G1)+(1,-1)$);
+	\coordinate (m7) at ($(G1)+(-1,-1)$);
+	\coordinate (m8) at ($(G1)+(1.5,0.8)$);
+	\coordinate (m9) at ($(G1)+(-1.5,-0.3)$);
+	\coordinate (m10) at ($(G1)+(1.5,-0.3)$);
+	\coordinate (m11) at ($(G1)+(0.2,0.5)$);
+
+	\tkzDrawPoints[size=0.5cm,color=blue,fill=blue](m1,m2,m3,m4,m5,m6,m7,m8,m9,m10,m11)
+
+	\draw[->,line width=1.5pt] ($(O)+(0,0.5)$) -- (G1);
+
+%	\tkzLabelPoints(O,O',A1,B1,C1,D1,E1,F1,G1)
+
+	%recipiente 2
+
+	\tkzDefPointsBy[reflection= over O--O'](A1,B1,C1,D1,E1,F1,G1){A2,B2,C2,D2,E2,F2,G2}
+
+	\tkzDrawSegment[line width=6pt,color=gray](E2,F2)
+	\tkzDrawSegment[line width=3pt](D2,A2)
+	\tkzDrawSegment[line width=3pt](A2,B2)
+	\tkzDrawSegment[line width=3pt](B2,C2)
+
+	\foreach \x in {0.5,1,1.5,2,2.5,3,3.5} {
+	\coordinate (X) at ($(E2)-(\x,-0.25)$);
+	\draw[<-,color=red,line width=1.5pt] (X)--++(0,1);}
+
+	\tkzDefPointsBy[reflection= over O--O'](m1,m2,m3,m4,m5,m6,m7,m8,m9,m10,m11){mb1,mb2,mb3,mb4,mb5,mb6,mb7,mb8,mb9,mb10,mb11}
+
+	\tkzDrawPoints[size=0.25cm,color=blue,fill=blue](mb1,mb2,mb3,mb4,mb5,mb6,mb7,mb8,mb9,mb10,mb11)
+
+	\draw[->,line width=1.5pt] ($(O)+(0,0.5)$) -- (G2);
+
+%	\tkzLabelPoints(A2,B2,C2,D2,E2,F2,G2)
+
+	%texto
+	\tkzText[text width=3cm,align=center,opacity=100](O){O mesmo numero de moleculas!}
+
+\end{tikzpicture}

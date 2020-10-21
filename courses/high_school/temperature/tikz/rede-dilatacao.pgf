@@ -1,0 +1,26 @@
+﻿\begin{tikzpicture}[scale=1,transform shape]
+
+	\def\d{2}
+
+	\pgfmathsetmacro{\dmx}{6.25*\d}
+
+	\tkzInit[xmin=-2,xmax=\dmx,ymin=-2,ymax=5]
+	\tkzGrid
+	\tkzClip
+
+	\foreach \x in {0,1,...,5}{
+	\foreach \y in {0,1}{
+	\foreach \z in {0,1}{
+	\coordinate (X) at (\x*\d,\y*\d,\z*\d);
+	\coordinate (Y) at ((\x*\d,\y*\d+\d,\z*\d);
+	\coordinate (Z) at ((\x*\d,\y*\d,\z*\d+\d);
+	\coordinate (K) at ((\x*\d+\d,\y*\d,\z*\d);
+	\draw[decoration={aspect=0.1, segment length=2mm, amplitude=1.0mm,coil},decorate] (X) -- (Y); 
+	\draw[decoration={aspect=0.1, segment length=2mm, amplitude=1.0mm,coil},decorate] (X) -- (Z); 
+	\draw[decoration={aspect=0.1, segment length=2mm, amplitude=1.0mm,coil},decorate] (X) -- (K); 
+	\tkzDrawPoint[size=0.75cm,fill=blue](X)
+	\tkzDrawPoint[size=0.75cm,fill=blue](Y)}}}
+
+	\draw[<->,line width=1.0pt,color=red] (5*\d,\d+0.5,0) -- (6*\d,\d+0.5,0) node[above,midway] {Estiramento};
+
+\end{tikzpicture}

@@ -1,0 +1,672 @@
+% Aula de termodinâmica para o curso de Física II do ensino médio
+%
+\documentclass[brazil,aspectratio=169]{beamer}
+%
+%carregando preâmbulo
+\input{../../contrib/preamble}
+
+%pacotes adicionais
+
+\usepackage{animate}
+
+%Título
+
+\title[Termodinâmica]{Temperatura}
+
+% The main document
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Sumário}
+  \tableofcontents
+\end{frame}
+
+\section{Temperatura}
+
+\subsection{}
+
+\begin{frame}{Temperatura}
+	\begin{itemize}
+		\item Usamos a termodinâmica para analisar sistemas contendo uma quantidade muito grande de partículas, moléculas ou átomos;
+		\item Para estudar o sistema, usamos conceitos como temperatura, pressão e volume ao invés de força, massa e aceleração;
+		\item A temperatura é uma grandeza que caracteriza os estados de agitação dos objetos;
+		\item Usamos o termômetro para medir a temperatura dos objetos.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Equilíbrio térmico}
+	\begin{corollary}
+		\justifying
+		Dois ou mais objetos, inicialmente a temperaturas diferentes tendem para um estado final chamado de \alert{equilíbrio térmico}, onde as temperaturas de ambos buscam se igualarem.
+	\end{corollary}
+	\begin{figure}[c]
+		\includegraphics[scale=0.35]{figuras/figura-8.png}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Escalas termométricas}
+	\begin{itemize}
+		\item Assim como usamos uma régua para medir distâncias, para medir temperaturas é necessário graduar o termômetro.
+		\item O termômetro mais utilizado é constituído por um tubo fino preenchido por mercúrio, que possui elevado coeficiente de dilatação.
+	\end{itemize}
+	\begin{block}{Principais escalas de temperatura}
+		\begin{itemize}
+			\item Celsius ou Centígrada: Baseia-se nos pontos de fusão e ebulição da água pura;
+			\item Fahrenheit: Os pontos de fusão e ebulição da água pura estão marcados em $32\;^oF$ e $212\;^oF$;
+			\item Kelvin: Baseia-se no zero absoluto (estado de mínima energia possível);
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Relação entre as escalas termométricas}
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+			\begin{align*}
+				\frac{K-273}{373-273} & = \frac{C-0}{100-0} = \frac{F-32}{212-32},\\
+				\frac{K-273}{100} & = \frac{C}{100} = \frac{F-32}{180},\\
+				\Aboxed{\frac{K-273}{5} & = \frac{C}{5} = \frac{F-32}{9}.}
+			\end{align*}
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.7,transform shape]
+				
+				%translacao
+				\def\t{3}
+				
+				\pgfmathsetmacro{\tt}{2*\t+2}
+				
+				\tkzInit[xmin=-2.5,xmax=\tt,ymin=-1,ymax=4.5]
+				%\tkzGrid
+				\tkzClip
+				
+				%temperaturas
+				\node[below] (kf) at (0,0) {273};
+				\node[above] (ke) at (0,4) {373};
+				\draw[line width=1pt] (kf) -- (ke);
+				\node[below=5pt] at (kf) {$Kelvin (K)$};
+				\foreach \x in {0,4,...,100}
+				\draw[color=red] (-0.1,0.04*\x) -- (0.1,0.04*\x);
+				
+				\node[below] (cf) at (0+\t,0) {0};
+				\node[above] (ce) at (0+\t,4) {100};
+				\draw[line width=1pt] (cf) -- (ce);
+				\node[below=5pt] at (cf) {$Celsius (^{o}C)$};
+				\foreach \x in {0,4,...,100}
+				\draw[color=red] (-0.1+\t,0.04*\x) -- (0.1+\t,0.04*\x);
+				
+				\node[below] (ff) at (0+2*\t,0) {32};
+				\node[above] (fe) at (0+2*\t,4) {212};
+				\draw[line width=1pt] (ff) -- (fe);
+				\node[below=5pt] at (ff) {$Farenheit (^{o}F)$};
+				\foreach \x in {0,4,...,180}
+				\draw[color=red] (-0.1+2*\t,0.022*\x) -- (0.1+2*\t,0.022*\x);
+				
+				%formula
+				\node[left]  at (0,2) {K};
+				\node[left]  at (0+\t,2) {C};
+				\node[left]  at (0+2*\t,2) {F};
+				
+				%intervalos temperatura
+
+				\draw (0,2) to[dim arrow={label=$(K-273)$},font=\footnotesize] (0,0);
+				\draw (0+\t,2) to[dim arrow={label=$(C-0)$},font=\footnotesize] (0+\t,0);
+				\draw (0+2*\t,2) to[dim arrow={label=$(F-32)$},font=\footnotesize] (0+2*\t,0);
+				
+				\draw (0,4) to[dim arrow'={label'=$(373-273)$},font=\footnotesize] (0,0);
+				\draw (0+\t,4) to[dim arrow'={label'=$(100-0)$},font=\footnotesize] (0+\t,0);
+				\draw (0+2*\t,4) to[dim arrow'={label'=$(212-32)$},font=\footnotesize] (0+2*\t,0);
+				
+				\end{tikzpicture}
+				%\includegraphics[scale=0.5]{figuras/figura-12.png}
+				\caption*{\footnotesize Comparação entre as escalas termométricas.}
+			\end{figure}
+		\end{column}
+	\end{columns}	
+\end{frame}
+
+\section{Dilatação dos sólidos cristalinos}
+
+\subsection{}
+
+\begin{frame}{Exemplos de vibrações atômicas}
+	\begin{figure}
+		\begin{subfigure}{0.45\textwidth}
+		\Centering
+%		  \animategraphics[scale=0.2,controls,loop]{15}{videos/video-1/anim-}{1}{1}
+	  \animategraphics[scale=0.2,controls,loop]{15}{videos/video-1/anim-}{1}{200}
+		  \caption*{\small Átomos vibrando em uma dimensão.}
+		  \end{subfigure}
+		\begin{subfigure}{0.45\textwidth}
+			\centering
+%		   \animategraphics[scale=0.2,controls,loop]{15}{videos/video-2/anim-}{1}{1}
+		   \animategraphics[scale=0.2,controls,loop]{15}{videos/video-2/anim-}{1}{180}
+	  \caption*{\small Átomos vibrando em duas dimensões.}
+	  \end{subfigure}	  
+	\end{figure}
+\end{frame}
+
+\begin{frame}[fragile]{Por que um sólido dilata?}
+	\begin{small}
+		\begin{itemize}
+			\item Os átomos que constituem o sólido distribuem-se ordenadamente, dando origem a uma estrutura denominada rede cristalina do sólido.
+			\item A força entre os átomos são como molas que comprimem e esticam.
+			\item Quando a temperatura aumenta, há um aumento na agitação dos átomos, que ao vibrarem se afastam mais uns dos outros. Com isso, a distância média entre os átomos torna-se maior.
+		\end{itemize}
+	\end{small}
+	\begin{figure}
+		\centering
+		\begin{subfigure}[t]{0.4\textwidth}
+			\centering
+			\begin{tikzpicture}[scale=0.34,transform shape,font=\huge]
+
+			\def\d{2}
+
+			\pgfmathsetmacro{\dmx}{6.25*\d}
+
+			\tkzInit[xmin=-2,xmax=\dmx,ymin=-1.5,ymax=4.75]
+			%\tkzGrid
+			\tkzClip
+
+			\foreach \x in {0,1,...,5}{
+			\foreach \y in {0,1}{
+			\foreach \z in {0,1}{
+			\coordinate (X) at (\x*\d,\y*\d,\z*\d);
+			\coordinate (Y) at ((\x*\d,\y*\d+\d,\z*\d);
+			\coordinate (Z) at ((\x*\d,\y*\d,\z*\d+\d);
+			\coordinate (K) at ((\x*\d+\d,\y*\d,\z*\d);
+			\draw[decoration={aspect=0.1, segment length=0.75mm, amplitude=0.25mm,coil},decorate] (X) -- (Y); 
+			\draw[decoration={aspect=0.1, segment length=0.75mm, amplitude=0.25mm,coil},decorate] (X) -- (Z); 
+			\draw[decoration={aspect=0.1, segment length=0.75mm, amplitude=0.25mm,coil},decorate] (X) -- (K); 
+			\tkzDrawPoint[size=0.75cm,fill=blue](X)}}}
+
+			\draw[<->,line width=0.75pt,color=red] (5*\d,\d+0.5,0) -- (6*\d,\d+0.5,0) node[above,midway] {\SI{1}{\angstrom}};
+
+			\end{tikzpicture}
+			%\includegraphics[scale=0.25]{figuras/figura-1.png}
+			\caption*{\footnotesize Baixa temperatura.}
+		\end{subfigure}
+		\begin{subfigure}[t]{0.4\textwidth}
+			\centering
+			\begin{tikzpicture}[scale=0.34,transform shape,font=\huge]
+	
+			\def\d{2.75}
+	
+			\pgfmathsetmacro{\dmx}{6.25*\d}
+	
+			\tkzInit[xmin=-2,xmax=\dmx,ymin=-1.5,ymax=4.75]
+			%\tkzGrid
+			\tkzClip
+	
+			\foreach \x in {0,1,...,5}{
+			\foreach \y in {0,1}{
+			\foreach \z in {0,1}{
+				\coordinate (X) at (\x*\d,\y*\d,\z*\d);
+				\coordinate (Y) at ((\x*\d,\y*\d+\d,\z*\d);
+				\coordinate (Z) at ((\x*\d,\y*\d,\z*\d+\d);
+				\coordinate (K) at ((\x*\d+\d,\y*\d,\z*\d);
+				\draw[decoration={aspect=0.1, segment length=0.75mm, amplitude=0.25mm,coil},decorate] (X) -- (Y); 
+				\draw[decoration={aspect=0.1, segment length=0.75mm, amplitude=0.25mm,coil},decorate] (X) -- (Z); 
+				\draw[decoration={aspect=0.1, segment length=0.75mm, amplitude=0.25mm,coil},decorate] (X) -- (K); 
+				\tkzDrawPoint[size=1.25cm,fill=red](X)}}}
+	
+			\draw[<->,line width=0.75pt,color=red] (5*\d,\d+0.5,0) -- (6*\d,\d+0.5,0) node[above,midway] {\SI{1,4}{\angstrom}};
+	
+			\end{tikzpicture}
+			%\includegraphics[scale=0.25]{figuras/figura-1.png}
+			\caption*{\footnotesize Alta temperatura.}
+		\end{subfigure}
+	\end{figure}
+	\end{frame}
+
+\begin{frame}{Dilatação linear}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\justifying
+			Se a variação da temperatura não for muito alta, podemos supor que a dilatação de uma barra ($\Delta L$) é proporcional a variação da temperatura e ao comprimento da barra ($L_0$),
+			\begin{align*}
+				\Delta L & \alpha \Delta T,\\
+				\Delta L & \alpha L_0.
+			\end{align*}
+			Portanto, podemos dizer que
+			\begin{align*}
+				\Delta L & \alpha L_0\Delta T,\\
+				\Aboxed{\Delta L & = \alpha L_0\Delta T,}
+			\end{align*}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.5,transform shape]
+				
+				\tkzInit[xmin=-1,xmax=10,ymin=-1,ymax=7]
+				%\tkzGrid[color=gray!20]
+				\tkzClip
+				
+				%barra menor
+				
+				\tkzDefPoints{0/0/A,7/0/B,7/1/C,0/1/D,0.5/0.5/A',7.5/0.5/B',7.5/1.5/C',0.5/1.5/D'}
+				
+				\tkzDrawPoints(A,B,C,D)
+				\tkzDrawPoints(A',B',C',D')
+				%	\tkzLabelPoints(A,B,C,D,A',B',C',D')
+				
+				\tkzDrawPolygon(A,B,C,D)
+				\tkzDrawPolygon(D,D',C',C)
+				\tkzDrawPolygon(B,C,C',B')
+				
+				\tkzDrawSegment[dashed](A,A')
+				\tkzDrawSegment[dashed](A',B')
+				\tkzDrawSegment[dashed](A',D')
+				
+				%barra maior
+				
+				\tkzDefPoints{0/4/A1,7/4/B1,7/5/C1,0/5/D1,0.5/4.5/A1',7.5/4.5/B1',7.5/5.5/C1',0.5/5.5/D1'}
+				
+				\tkzDrawPolygon(D1,D1',C1',C1)
+				\tkzDrawPolygon(A1,D1,C1,B1)
+				\tkzDrawPolygon(B1,B1',C1',C1)
+				\tkzDrawSegment[dashed](A1,A1')
+				\tkzDrawSegment[dashed](D1',A1')
+				\tkzDrawSegment[dashed](A1',B1')
+				
+				\tkzDefPoints{8/4/B2,8/5/C2,8.5/4.5/B2',8.5/5.5/C2'}
+				
+				\tkzDrawPolygon[red,fill=red,opacity=0.5](B1,B2,B2',B1')
+				\tkzDrawPolygon[red,fill=red,opacity=0.5](C1,C1',C2',C2)
+				\tkzDrawPolygon[red,fill=red,opacity=0.5](B1,B2,C2,C1)
+				\tkzDrawPolygon[red,fill=red,opacity=0.5](B2,B2',C2',C2)
+				
+				\tkzDrawSegment[dotted](C',B1')
+				\tkzDrawSegment[dotted](C,B1)
+				\tkzDrawSegment[dotted](D,A1)
+				\tkzDrawSegment[dotted](D',A1')
+				
+				%	\tkzLabelPoints(A1,B1,C1,D1,B1',C1',A1',B1',D1')
+				
+				\draw (B1) to[short dim arrow'={label=$\Delta L$, label near middle}] (B2);
+				\draw (A) to[dim arrow'={label'=$L_0$}] (B);
+				\draw (D1') to[dim arrow={label=$L$}] (C2');
+				
+				\end{tikzpicture}
+				%\includegraphics[scale=0.4]{figuras/figura-2.png}
+				\caption*{\footnotesize Dilatação de uma barra.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Coeficiente de dilatação linear}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\justifying
+			Sabendo que $L=L_0+\Delta L$, temos
+			\begin{align*}
+				L & = L_0+\Delta L,\\
+				L & = L_0+\alpha L_0\Delta T,\\
+				L & = L_0(1+\alpha\Delta T),
+			\end{align*}
+			onde $\alpha$ é a constante de proporcionalidade chamada coeficiente de dilatação linear.
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{table}
+				\centering
+				\caption*{Coeficiente de dilatação linear.}
+				\begin{tabular}{cc}
+					\hline
+					Substância & $\alpha\;(^{\circ}C^{-1})$\\
+					\hline
+					\hline
+					Alumínio & \SI{23e-6}{}\\
+					Cobre & \SI{17e-6}{}\\
+					Vidro refratário & \SI{3,2e-6}{}\\
+					Diamante & \SI{0,9e-6}{}\\
+					\hline
+				\end{tabular}
+				%\includegraphics[scale=0.3]{figuras/figura-3.png}
+			\end{table}
+		\end{column}
+	\end{columns}
+	\begin{corollary}
+		A unidade de medida do coeficiente de dilatação linear é $\frac{1}{^oC}=^oC^{-1}$ ou $\frac{1}{K}=K^{-1}$.
+	\end{corollary}
+\end{frame}
+
+\section{Dilatação superficial e volumétrica}
+
+\subsection{}
+
+\begin{frame}{Dilatação superficial}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\justifying
+			Assim como no caso da barra, se a variação da temperatura não for muito alta, podemos supor que a dilatação de uma placa ($\Delta A$) é proporcional a variação da temperatura e a área da placa ($A_0$),
+			\begin{align*}
+				\Delta A & \alpha \Delta T,\\
+				\Delta A & \alpha A_0.
+			\end{align*}
+			Portanto, podemos dizer que
+			\begin{align*}
+				\Aboxed{\Delta A & = \beta A_0\Delta T,}
+			\end{align*}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.29,transform shape,font=\huge]
+				
+				\tkzInit[xmin=-1,xmax=9,ymin=-5.5,ymax=12]
+				%\tkzGrid[color=gray!20]
+				\tkzClip
+				
+				%barra menor
+				
+				\tkzDefPoints{0/-4/A,5/-4/B,5/1/C,0/1/D,0.5/-3.5/A',5.5/-3.5/B',5.5/1.5/C',0.5/1.5/D'}
+				
+				\tkzDefPointWith[linear,K=0.5](A,C)\tkzGetPoint{P2}
+				
+				\tkzDrawPolygon(A,B,C,D)
+				\tkzDrawPolygon(D,D',C',C)
+				\tkzDrawPolygon(B,C,C',B')
+				
+				\tkzDrawSegment[dashed](A,A')
+				\tkzDrawSegment[dashed](A',B')
+				\tkzDrawSegment[dashed](A',D')
+				
+				%textos
+				
+				\tkzText(P2){$A_0=x_0\times y_0$}
+				
+				%barra maior
+				
+				\tkzDefPoints{0/4/A1,7/4/B1,7/11/C1,0/11/D1,0.5/4.5/A1',7.5/4.5/B1',7.5/11.5/C1',0.5/11.5/D1'}
+				
+				\tkzDefPointWith[linear,K=0.5](A1,C1)\tkzGetPoint{P1}
+				
+				\tkzDrawPolygon(D1,D1',C1',C1)
+				\tkzDrawPolygon(A1,D1,C1,B1)
+				\tkzDrawPolygon(B1,B1',C1',C1)
+				\tkzDrawSegment[dashed](A1,A1')
+				\tkzDrawSegment[dashed](D1',A1')
+				\tkzDrawSegment[dashed](A1',B1')
+				
+				\draw (A1) to[dim arrow'={label'=$x$, label near middle}] (B1);
+				\draw (B1') to[dim arrow'={label'=$y$, label near middle}] (C1');
+				\draw (A) to[dim arrow'={label'=$x_0$}] (B);
+				\draw (B') to[dim arrow'={label'=$y_0$}] (C');
+				
+				%textos
+				
+				\tkzText(P1){$A=x\times y$}
+				
+				\end{tikzpicture}
+				%\includegraphics[scale=0.35]{figuras/figura-4.png}
+				\caption*{\footnotesize Dilatação de uma placa.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Coeficiente de dilatação superficial}
+	Sabendo que $A=A_0+\Delta A$, temos
+	\begin{align*}
+		A & = A_0+\Delta A,\\
+		A & = A_0+\beta A_0\Delta T,\\
+		A & = A_0(1+\beta\Delta T),
+	\end{align*}
+	onde $\beta$ é a constante de proporcionalidade chamada coeficiente de dilatação superficial.
+	\begin{corollary}
+		A relação entre os coeficientes de dilatação linear e superficial é dado por
+		\begin{equation*}
+			\beta = 2\alpha
+		\end{equation*}
+	\end{corollary}
+\end{frame}
+
+\begin{frame}{Dilatação volumétrica}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			Assim como no caso da barra, se a variação da temperatura não for muito alta, podemos supor que a dilatação de uma placa ($\Delta V$) é proporcional a variação da temperatura e a área da barra ($V_0$),
+			\begin{align*}
+				\Delta V & \alpha \Delta T,\\
+				\Delta V & \alpha V_0.
+			\end{align*}
+			Portanto, podemos dizer que
+			\begin{align*}
+				\Aboxed{\Delta V & = \gamma V_0\Delta T,}
+			\end{align*}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.35]{figuras/figura-5.png}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Coeficiente de dilatação volumétrica}
+	\begin{multicols}{2}
+		Sabendo que $V=V_0+\Delta V$, temos
+		\begin{align*}
+			V & = V_0+\Delta V,\\
+			V & = V_0+\gamma V_0\Delta T,\\
+			V & = V_0(1+\gamma\Delta T),
+		\end{align*}
+		onde $\gamma$ é a constante de proporcionalidade chamada coeficiente de dilatação volumétrica. Se $\Delta T$ for consideravelmente pequeno, podemos dizer que $\gamma = 3\alpha$.
+	\end{multicols}
+	\begin{corollary}
+		A relação entre os coeficientes $\alpha$, $\beta$ e $\gamma$ é dado por
+		\begin{equation*}
+			\gamma = \frac{3}{2}\beta = 3\alpha.
+		\end{equation*}
+	\end{corollary}
+\end{frame}
+
+\begin{frame}{Aplicações da dilatação linear}
+	\begin{figure}[c]
+		\Centering
+		\begin{subfigure}[t]{0.4\textwidth}
+			\Centering
+			\includegraphics[scale=0.3]{figuras/figura-6.png}
+			\caption*{\footnotesize Deformação dos trilhos em um dia quente devido a dilatação linear}
+		\end{subfigure}
+		\begin{subfigure}[t]{0.6\textwidth}
+			\Centering
+			\includegraphics[scale=0.45]{figuras/figura-7.png}
+			\caption*{\footnotesize Lâmina bimetálica. O latão dilata mais que o ferro, o que faz a barra se encurvar.}
+		\end{subfigure}
+	\end{figure}
+\end{frame}
+
+\section{Apêndice}
+
+\subsection{}
+
+\begin{frame}{Transformar um número em notação científica}
+	\begin{corollary}
+		\begin{enumerate}[leftmargin=1.75cm]
+			\item[Passo 1:] Escrever o número incluindo a vírgula.
+			\item[Passo 2:] Andar com a vírgula até que reste somente um número diferente de zero no lado esquerdo.
+			\item[Passo 3:] Colocar no expoente da potência de 10 o número de casas decimais que tivemos que "andar" com a vírgula. Se ao andar com a vírgula o valor do número diminuiu, o expoente ficará positivo, se aumentou o expoente ficará negativo.
+		\end{enumerate}
+	\end{corollary}
+	\begin{exampleblock}{Exemplo}
+		\begin{equation*}
+			6\; 590\; 000\; 000\; 000\; 000,0 = \SI{6,59e15}{}		
+		\end{equation*}
+	\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Conversão de unidades em uma dimensão}
+	\begin{figure}
+		\begin{tikzpicture}[scale=0.65,transform shape,font=\Large]
+		
+		\tkzInit[xmin=-2,xmax=17,ymin=-6,ymax=3]
+		%\tkzGrid[color=gray!20]
+		\tkzClip
+		
+		\tikzset{compass style/.append style={->}}
+		
+		\foreach \x in {1,2,...,6}{
+			\tkzDefPoint(\x*3-3,0){\x}
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+			\node at (\x*3-3,2) {$\times 10^{1}$};
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+			\node at (\x*3-3,-2) {$\times 10^{-1}$};}
+		
+		\tkzDefPoints{-1.5/0/p1,1.5/0/p2,4.5/0/p3,7.5/-0.2/p4,10.5/0/p5,13.5/0/p6,16.5/0/p7}
+		
+		\tkzText(p1){m\_}
+		\tkzText(p2){c\_}
+		\tkzText(p3){d\_}
+		\tkzText(p4){\_}
+		\tkzText(p5){da\_}
+		\tkzText(p6){h\_}
+		\tkzText(p7){k\_}
+		
+		%exemplos
+		
+		\tkzText(3,-3.5){$1\;\text{mm}=1\times 10^{(-1)\times\alert{2}}\;\text{dm}\rightarrow 1\times 10^{-2}\;\text{dm}$}
+		\tkzText(3.1,-4.5){$2,5\;\text{kg}=2,5\times 10^{(1)\times\alert{6}}\;\text{mg}\rightarrow2,5\times 10^{6}\;\text{mg}$}
+		\tkzText(2.7,-5.5){$10\;\text{ms}=10\times 10^{(-1)\times\alert{3}}\;\text{s}\rightarrow 10\times 10^{-3}\;\text{s}$}
+		
+		\end{tikzpicture}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Conversão de unidades em duas dimensões}
+	\begin{figure}
+		\begin{tikzpicture}[scale=0.65,transform shape,font=\Large]
+	
+		\tkzInit[xmin=-2,xmax=17,ymin=-6,ymax=3]
+		%\tkzGrid[color=gray!20]
+		\tkzClip
+	
+		\tikzset{compass style/.append style={->}}
+	
+		\foreach \x in {1,2,...,6}{
+			\tkzDefPoint(\x*3-3,0){\x}
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+			\node at (\x*3-3,2) {$\times 10^{2}$};
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+			\node at (\x*3-3,-2) {$\times 10^{-2}$};}
+	
+		\tkzDefPoints{-1.5/0/p1,1.5/0/p2,4.5/0/p3,7.5/0/p4,10.5/0/p5,13.5/0/p6,16.5/0/p7}
+	
+		\tkzText(p1){$\text{m}\_^2$}
+		\tkzText(p2){$\text{c}\_^2$}
+		\tkzText(p3){$\text{d}\_^2$}
+		\tkzText(p4){$\_^2$}
+		\tkzText(p5){$\text{da}\_^2$}
+		\tkzText(p6){$\text{h}\_^2$}
+		\tkzText(p7){$\text{k}\_^2$}
+	
+		%exemplos
+	
+		\tkzText(3.3,-3.5){$1\;\text{mm}^2=1\times 10^{(-2)\times\alert{2}}\;\text{dm}^2\rightarrow 1\times 10^{-4}\;\text{dm}^2$}
+		\tkzText(3.6,-4.5){$2,5\;\text{m}^2=2,5\times 10^{(2)\times\alert{3}}\;\text{mm}^2\rightarrow2,5\times 10^{6}\;\text{mm}^2$}
+		\tkzText(3,-5.5){$10\;\text{ms}^2=10\times 10^{(-2)\times\alert{3}}\;\text{s}^2\rightarrow 10\times 10^{-6}\;\text{s}^2$}
+	
+		\end{tikzpicture}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Conversão de unidades em três dimensões}
+	\begin{figure}
+		\begin{tikzpicture}[scale=0.65,transform shape,font=\Large]
+	
+		\tkzInit[xmin=-2,xmax=17,ymin=-6,ymax=3]
+		%\tkzGrid[color=gray!20]
+		\tkzClip
+	
+		\tikzset{compass style/.append style={->}}
+	
+		\foreach \x in {1,2,...,6}{
+			\tkzDefPoint(\x*3-3,0){\x}
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+			\node at (\x*3-3,2) {$\times 10^{3}$};
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+			\node at (\x*3-3,-2) {$\times 10^{-3}$};}
+	
+		\tkzDefPoints{-1.5/0/p1,1.5/0/p2,4.5/0/p3,7.5/0/p4,10.5/0/p5,13.5/0/p6,16.5/0/p7}
+	
+		\tkzText(p1){$\text{m}\_^3$}
+		\tkzText(p2){$\text{c}\_^3$}
+		\tkzText(p3){$\text{d}\_^3$}
+		\tkzText(p4){$\_^3$}
+		\tkzText(p5){$\text{da}\_^3$}
+		\tkzText(p6){$\text{h}\_^3$}
+		\tkzText(p7){$\text{k}\_^3$}
+	
+		%exemplos
+	
+		\tkzText(3.3,-3.5){$1\;\text{mm}^3=1\times 10^{(-3)\times\alert{2}}\;\text{dm}^3\rightarrow 1\times 10^{-6}\;\text{dm}^3$}
+		\tkzText(3.6,-4.5){$2,5\;\text{m}^3=2,5\times 10^{(3)\times\alert{3}}\;\text{mm}^3\rightarrow2,5\times 10^{9}\;\text{mm}^3$}
+		\tkzText(3.5,-5.5){$2,5\;\text{km}^3=2,5\times 10^{(3)\times\alert{6}}\;\text{mm}^3\rightarrow2,5\times 10^{18}\;\text{mm}^3$}
+
+		\end{tikzpicture}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Alfabeto grego}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{table}
+				\begin{tabular}[c]{ccc}
+					Alfa & $A$ & $\alpha$\\
+					Beta & $B$ & $\beta$\\
+					Gama & $\Gamma$ & $\gamma$\\
+					Delta & $\Delta$ & $\delta$\\
+					Epsílon & $E$ & $\epsilon$,$\varepsilon$\\
+					Zeta & $Z$ & $\zeta$\\
+					Eta & $H$ & $\eta$\\
+					Teta & $\Theta$ & $\theta$\\
+					Iota & $I$ & $\iota$\\
+					Capa & $K$ & $\kappa$\\
+					Lambda & $\Lambda$ & $\lambda$\\
+					Mi & $M$ & $\mu$
+				\end{tabular}
+			\end{table}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+	\begin{table}
+		\begin{tabular}[c]{ccc}
+			Ni & $N$ & $\nu$\\
+			Csi & $\Xi$ & $\xi$\\
+			ômicron & $O$ & $o$\\
+			Pi & $\Pi$ & $\pi$\\
+			Rô & $P$ & $\rho$\\
+			Sigma & $\Sigma$ & $\sigma$\\
+			Tau & $T$ & $\tau$\\
+			Ípsilon & $\Upsilon$ & $\upsilon$\\
+			Fi & $\Phi$ & $\phi$,$\varphi$\\
+			Qui & $X$ & $\chi$\\
+			Psi & $\Psi$ & $\psi$\\
+			Ômega & $\Omega$ & $\omega$
+		\end{tabular}
+	\end{table}
+\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Referências e observações\footnote{Este material está sujeito a modificações. Recomenda-se acompanhamento permanente.}}
+	\bibliographystyle{jurabib}
+	\begin{thebibliography}{9}
+		\bibitem{alvarenga}A. Máximo, B. Alvarenga, C. Guimarães, Física. Contexto e aplicações, v.2, 2.ed., São Paulo, Scipione (2016)
+	\end{thebibliography}
+
+\vspace*{1cm}
+\begin{center}
+	Esta apresentação está disponível para download no endereço\\
+	\href{https://flavianowilliams.github.io/education}{\textcolor{blue}{https://flavianowilliams.github.io/education}}
+\end{center}
+	
+\end{frame}
+
+\end{document}

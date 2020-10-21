@@ -1,0 +1,52 @@
+﻿\begin{tikzpicture}[scale=1.75,transform shape]
+
+	%translacao
+	\def\t{3}
+
+	\pgfmathsetmacro{\tt}{2*\t+2}
+
+	\tkzInit[xmin=-2,xmax=\tt,ymin=-1,ymax=4.5]
+	\tkzGrid
+	\tkzClip
+
+	%temperaturas
+	\node[below] (kf) at (0,0) {273};
+	\node[above] (ke) at (0,4) {373};
+	\draw[line width=1pt] (kf) -- (ke);
+	\node[below=5pt] at (kf) {$Kelvin (K)$};
+	\foreach \x in {0,4,...,100}
+	\draw[color=red] (-0.1,0.04*\x) -- (0.1,0.04*\x);
+
+	\node[below] (cf) at (0+\t,0) {0};
+	\node[above] (ce) at (0+\t,4) {100};
+	\draw[line width=1pt] (cf) -- (ce);
+	\node[below=5pt] at (cf) {$Celsius (^{o}C)$};
+	\foreach \x in {0,4,...,100}
+	\draw[color=red] (-0.1+\t,0.04*\x) -- (0.1+\t,0.04*\x);
+
+	\node[below] (ff) at (0+2*\t,0) {32};
+	\node[above] (fe) at (0+2*\t,4) {212};
+	\draw[line width=1pt] (ff) -- (fe);
+	\node[below=5pt] at (ff) {$Farenheit (^{o}F)$};
+	\foreach \x in {0,4,...,180}
+	\draw[color=red] (-0.1+2*\t,0.022*\x) -- (0.1+2*\t,0.022*\x);
+
+	%formula
+	\node[anchor=south east]  at (0,2) {K};
+	\node[anchor=south east]  at (0+\t,2) {C};
+	\node[anchor=south east]  at (0+2*\t,2) {F};
+	\draw[dashed] (0,2) -- (2*\t,2);
+
+	%intervalos temperatura
+	\draw[fill=white,draw opacity=0] (2.45,2.25) rectangle (1.45,1.75);
+	\draw[fill=white,draw opacity=0] (2.45+\t,2.25) rectangle (1.3+\t,1.75);
+
+	\draw (0,2) to[dim arrow={label=$K-273$},font=\footnotesize] (0,0);
+	\draw (0+\t,2) to[dim arrow={label=$C-0$},font=\footnotesize] (0+\t,0);
+	\draw (0+2*\t,2) to[dim arrow={label=$F-32$},font=\footnotesize] (0+2*\t,0);
+
+	\draw (0,4) to[dim arrow'={label'=$373-273$},font=\footnotesize] (0,0);
+	\draw (0+\t,4) to[dim arrow'={label'=$100-0$},font=\footnotesize] (0+\t,0);
+	\draw (0+2*\t,4) to[dim arrow'={label'=$212-32$},font=\footnotesize] (0+2*\t,0);
+
+\end{tikzpicture}

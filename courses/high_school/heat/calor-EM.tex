@@ -1,0 +1,414 @@
+% Aula de termodinâmica para o curso de Física II do ensino médio
+%
+\documentclass[brazil,aspectratio=169]{beamer}
+%
+%carregando preâmbulo
+
+\input{../../contrib/preamble}
+
+%Título
+
+\title[Termodinâmica]{Calor}
+
+% The main document
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Sumário}
+  \tableofcontents
+\end{frame}
+
+\section{Calor}
+
+\subsection{}
+
+\begin{frame}{O que é calor?}
+	\begin{block}{Calor}
+		\alert{Energia transferida} de um objeto para outro em virtude, unicamente, de uma diferença de temperatura entre eles (essa energia é chamada de energia interna ou térmica).
+	\end{block}
+	\begin{figure}[c]
+		\includegraphics[scale=0.35]{figuras/figura-1.png}
+	\end{figure}
+\end{frame}
+
+\section{A teoria do calórico}
+
+\begin{frame}{Caloria como unidade de medida de energia interna}
+	\begin{columns}[t]
+		\begin{column}{0.6\textwidth}
+			\begin{block}{Equivalência entre caloria e Joules}
+				Calor é energia em trânsito, portanto possui unidade de energia. A unidade mais utilizada em nutrição é a \alert{caloria}, e seu valor surge da experiência do equivalente mecânico proposto por Thompson em
+		\begin{align*}
+			\SI{1}{cal} = \SI{4,2}{J}.
+		\end{align*}	
+	\end{block}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}[c]
+				\includegraphics[scale=0.5]{figuras/figura-2.jpeg}
+				\caption*{\footnotesize Experiência do equivalente mecânico}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\section{Transferência de Calor}
+
+\subsection{}
+
+\begin{frame}
+	A transferência de calor entre dois ou mais objetos pode ocorrer de três maneiras distintas:
+	\begin{itemize}
+		\item Condução: Ocorre praticamente em sólidos.
+		\item Convecção: Ocorre em líquidos e gases.
+		\item Radiação: Ocorre em qualquer material, inclusive no vácuo.
+	\end{itemize}
+	\begin{corollary}
+		Radiação é o único processo de transferência de calor que ocorre no vácuo.
+	\end{corollary}	
+\end{frame}
+
+\begin{frame}{Condução}
+	\begin{block}{Processo de transferência por condução}
+		Os átomos de uma extremidade da barra após aquecidos vibram com maior intensidade. Essa agitação é transmitida para os átomos que estão próximos e assim sucessivamente até o final da barra. Isso faz com que o calor seja transmitido ao longo da barra através da agitação dos átomos da rede cristalina.
+	\end{block}
+	\begin{figure}[c]
+		\includegraphics[scale=0.35]{figuras/figura-2.png}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Convecção}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\begin{block}{Processo de transferência por convecção}
+				Quando a parte de baixo é aquecida, as moléculas se agitam mais o que faz a densidade do líquido diminuir. Como a densidade diminui, o líquido fica mais leve e sobe para o ocupar o espaço preenchido pela parte de cima. Enquanto isso, a parte de cima que está mais pesada desce ocupando o espaço vazio abaixo. Esse processo continua, surgindo o que chamamos de \alert{correntes de convecção}.
+			\end{block}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}[c]
+				\includegraphics[scale=0.35]{figuras/figura-3.png}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Radiação}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\begin{block}{Processo de transferência por radiação}
+				Todos os corpos quando aquecidos emitem radiações térmicas que, ao serem absorvidas por outro corpo, podem provocar nele uma elevação da temperatura.
+			\end{block}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}[c]
+				\includegraphics[scale=0.25]{figuras/figura-4.png}
+			\end{figure}
+		\end{column}
+	\end{columns}
+	\begin{corollary}
+		O calor que recebemos do sol chega até nós por radiação, uma vez que entre o Sol e a Terra existe vácuo.
+	\end{corollary}
+\end{frame}
+
+\section{Quantidade de calor}
+
+\subsection{}
+
+\begin{frame}{Capacidade térmica}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\begin{block}{Capacidade térmica}
+				Se um objeto recebe uma quantidade de calor $\Delta Q$ e sua temperatura varia de $\Delta T$, a capacidade térmica desse objeto é dada por
+				\begin{equation*}
+					C=\frac{\Delta Q}{\Delta T}.
+				\end{equation*}
+			\end{block}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}[c]
+				\includegraphics[scale=0.25]{figuras/figura-7.png}
+			\end{figure}
+		\end{column}
+	\end{columns}	
+	\vspace*{0.5cm}
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+		\begin{equation*}
+			C_A=\frac{100\;\text{cal}}{20\;^oC}\;\therefore C_A=5,0\;cal/^oC
+		\end{equation*}			
+		\end{column}
+		\begin{column}{0.5\textwidth}
+		\begin{equation*}
+			C_B=\frac{100\;\text{cal}}{10\;^oC}\;\therefore C_B=10,0\;cal/^oC
+		\end{equation*}			
+		\end{column}
+	\end{columns}	
+\end{frame}
+
+\begin{frame}{Calor específico}
+	\begin{corollary}
+		A razão entre a capacidade térmica e a massa não varia para o mesmo material,
+		\begin{equation*}
+			\frac{C_1}{m_1}=\frac{C_2}{m_2}=\frac{C_3}{m_3}=\dots=c\;\text{(mesmo material)}.
+		\end{equation*}
+	\end{corollary}
+	\begin{block}{Calor específico}
+		Se um objeto de massa m tem uma capacidade térmica C, o calor específico, c, do material que o constitui é dado por
+		\begin{equation*}
+			c=\frac{C}{m}.
+		\end{equation*}
+	\end{block}
+\end{frame}
+
+\begin{frame}{Cálculo da quantidade de calor cedido e absorvido por um objeto}
+	\begin{columns}
+		\begin{column}{0.75\textwidth}
+			\begin{block}{Quantidade de calor}
+				A quantidade de calor, Q ou $\Delta Q$, absorvida ou liberada por um objeto de massa m e calor específico c, quando sua temperatura varia de $\Delta T$, é dada por
+				\begin{equation*}
+					Q=mc\Delta T.
+				\end{equation*}
+			\end{block}
+		\end{column}
+		\begin{column}{0.25\textwidth}
+			\begin{figure}[c]
+				\begin{footnotesize}
+					\begin{table}
+						\centering
+						\caption*{\footnotesize Calores específicos}
+						\vspace*{-0.5cm}
+						\begin{tabular}[c]{cc}
+							\hline
+							Substância & $cal/g\cdot ^{\circ}C$\\
+							\hline
+							Água & 1,0\\
+							Gelo & 0,55\\
+							Vapor & 0,5\\
+							Chumbo & 0,031\\
+							\hline					
+						\end{tabular}
+					\end{table}				
+				\end{footnotesize}
+				%\includegraphics[scale=0.19]{figuras/figura-8.png}
+			\end{figure}
+		\end{column}
+	\end{columns}
+	\begin{corollary}	
+		Por conservação de energia, o calor total liberado pelos objetos que se esfriaram é igual ao calor total absorvido pelos objetos que se aqueceram,
+		\begin{equation*}
+			Q_1+Q_2+Q_3+\dots+Q_n=0.
+		\end{equation*}
+	\end{corollary}
+\end{frame}
+
+\section{Aplicações}
+
+\begin{frame}{Materiais isolantes}
+	\begin{figure}
+		\Centering
+		\begin{subfigure}[b]{0.45\textwidth}
+			\Centering
+			\includegraphics[scale=0.3]{figuras/figura-5.png}
+			\caption*{\footnotesize Transferência de calor numa parede.}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.45\textwidth}
+			\Centering
+			\includegraphics[scale=0.3]{figuras/figura-6.png}
+			\caption*{\footnotesize Exemplo de material isolante (aerogel).}
+		\end{subfigure}
+	\end{figure}
+	\begin{corollary}
+		O objetivo de um isolante térmico é impedir a transferência de calor.
+	\end{corollary}
+\end{frame}
+
+\section{Apêndice}
+
+\subsection{}
+
+\begin{frame}{Transformar um número em notação científica}
+	\begin{corollary}
+		\begin{enumerate}[leftmargin=1.75cm]
+			\item[Passo 1:] Escrever o número incluindo a vírgula.
+			\item[Passo 2:] Andar com a vírgula até que reste somente um número diferente de zero no lado esquerdo.
+			\item[Passo 3:] Colocar no expoente da potência de 10 o número de casas decimais que tivemos que "andar" com a vírgula. Se ao andar com a vírgula o valor do número diminuiu, o expoente ficará positivo, se aumentou o expoente ficará negativo.
+		\end{enumerate}
+	\end{corollary}
+	\begin{exampleblock}{Exemplo}
+		\begin{equation*}
+			6\; 590\; 000\; 000\; 000\; 000,0 = \SI{6,59e15}{}		
+		\end{equation*}
+	\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Conversão de unidades em uma dimensão}
+	\begin{figure}
+		\begin{tikzpicture}[scale=0.65,transform shape,font=\Large]
+		
+		\tkzInit[xmin=-2,xmax=17,ymin=-6,ymax=3]
+		%\tkzGrid[color=gray!20]
+		\tkzClip
+		
+		\tikzset{compass style/.append style={->}}
+		
+		\foreach \x in {1,2,...,6}{
+			\tkzDefPoint(\x*3-3,0){\x}
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+			\node at (\x*3-3,2) {$\times 10^{1}$};
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+			\node at (\x*3-3,-2) {$\times 10^{-1}$};}
+		
+		\tkzDefPoints{-1.5/0/p1,1.5/0/p2,4.5/0/p3,7.5/-0.2/p4,10.5/0/p5,13.5/0/p6,16.5/0/p7}
+		
+		\tkzText(p1){m\_}
+		\tkzText(p2){c\_}
+		\tkzText(p3){d\_}
+		\tkzText(p4){\_}
+		\tkzText(p5){da\_}
+		\tkzText(p6){h\_}
+		\tkzText(p7){k\_}
+		
+		%exemplos
+		
+		\tkzText(3,-3.5){$1\;\text{mm}=1\times 10^{(-1)\times\alert{2}}\;\text{dm}\rightarrow 1\times 10^{-2}\;\text{dm}$}
+		\tkzText(3.1,-4.5){$2,5\;\text{kg}=2,5\times 10^{(1)\times\alert{6}}\;\text{mg}\rightarrow2,5\times 10^{6}\;\text{mg}$}
+		\tkzText(2.7,-5.5){$10\;\text{ms}=10\times 10^{(-1)\times\alert{3}}\;\text{s}\rightarrow 10\times 10^{-3}\;\text{s}$}
+		
+		\end{tikzpicture}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Conversão de unidades em duas dimensões}
+	\begin{figure}
+		\begin{tikzpicture}[scale=0.65,transform shape,font=\Large]
+	
+		\tkzInit[xmin=-2,xmax=17,ymin=-6,ymax=3]
+		%\tkzGrid[color=gray!20]
+		\tkzClip
+	
+		\tikzset{compass style/.append style={->}}
+	
+		\foreach \x in {1,2,...,6}{
+			\tkzDefPoint(\x*3-3,0){\x}
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+			\node at (\x*3-3,2) {$\times 10^{2}$};
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+			\node at (\x*3-3,-2) {$\times 10^{-2}$};}
+	
+		\tkzDefPoints{-1.5/0/p1,1.5/0/p2,4.5/0/p3,7.5/0/p4,10.5/0/p5,13.5/0/p6,16.5/0/p7}
+	
+		\tkzText(p1){$\text{m}\_^2$}
+		\tkzText(p2){$\text{c}\_^2$}
+		\tkzText(p3){$\text{d}\_^2$}
+		\tkzText(p4){$\_^2$}
+		\tkzText(p5){$\text{da}\_^2$}
+		\tkzText(p6){$\text{h}\_^2$}
+		\tkzText(p7){$\text{k}\_^2$}
+	
+		%exemplos
+	
+		\tkzText(3.3,-3.5){$1\;\text{mm}^2=1\times 10^{(-2)\times\alert{2}}\;\text{dm}^2\rightarrow 1\times 10^{-4}\;\text{dm}^2$}
+		\tkzText(3.6,-4.5){$2,5\;\text{m}^2=2,5\times 10^{(2)\times\alert{3}}\;\text{mm}^2\rightarrow2,5\times 10^{6}\;\text{mm}^2$}
+		\tkzText(3,-5.5){$10\;\text{ms}^2=10\times 10^{(-2)\times\alert{3}}\;\text{s}^2\rightarrow 10\times 10^{-6}\;\text{s}^2$}
+	
+		\end{tikzpicture}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Conversão de unidades em três dimensões}
+	\begin{figure}
+		\begin{tikzpicture}[scale=0.65,transform shape,font=\Large]
+	
+		\tkzInit[xmin=-2,xmax=17,ymin=-6,ymax=3]
+		%\tkzGrid[color=gray!20]
+		\tkzClip
+	
+		\tikzset{compass style/.append style={->}}
+	
+		\foreach \x in {1,2,...,6}{
+			\tkzDefPoint(\x*3-3,0){\x}
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+			\node at (\x*3-3,2) {$\times 10^{3}$};
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+			\node at (\x*3-3,-2) {$\times 10^{-3}$};}
+	
+		\tkzDefPoints{-1.5/0/p1,1.5/0/p2,4.5/0/p3,7.5/0/p4,10.5/0/p5,13.5/0/p6,16.5/0/p7}
+	
+		\tkzText(p1){$\text{m}\_^3$}
+		\tkzText(p2){$\text{c}\_^3$}
+		\tkzText(p3){$\text{d}\_^3$}
+		\tkzText(p4){$\_^3$}
+		\tkzText(p5){$\text{da}\_^3$}
+		\tkzText(p6){$\text{h}\_^3$}
+		\tkzText(p7){$\text{k}\_^3$}
+	
+		%exemplos
+	
+		\tkzText(3.3,-3.5){$1\;\text{mm}^3=1\times 10^{(-3)\times\alert{2}}\;\text{dm}^3\rightarrow 1\times 10^{-6}\;\text{dm}^3$}
+		\tkzText(3.6,-4.5){$2,5\;\text{m}^3=2,5\times 10^{(3)\times\alert{3}}\;\text{mm}^3\rightarrow2,5\times 10^{9}\;\text{mm}^3$}
+		\tkzText(3.5,-5.5){$2,5\;\text{km}^3=2,5\times 10^{(3)\times\alert{6}}\;\text{mm}^3\rightarrow2,5\times 10^{18}\;\text{mm}^3$}
+
+		\end{tikzpicture}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Alfabeto grego}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{table}
+				\begin{tabular}[c]{ccc}
+					Alfa & $A$ & $\alpha$\\
+					Beta & $B$ & $\beta$\\
+					Gama & $\Gamma$ & $\gamma$\\
+					Delta & $\Delta$ & $\delta$\\
+					Epsílon & $E$ & $\epsilon$,$\varepsilon$\\
+					Zeta & $Z$ & $\zeta$\\
+					Eta & $H$ & $\eta$\\
+					Teta & $\Theta$ & $\theta$\\
+					Iota & $I$ & $\iota$\\
+					Capa & $K$ & $\kappa$\\
+					Lambda & $\Lambda$ & $\lambda$\\
+					Mi & $M$ & $\mu$
+				\end{tabular}
+			\end{table}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{table}
+				\begin{tabular}[c]{ccc}
+					Ni & $N$ & $\nu$\\
+					Csi & $\Xi$ & $\xi$\\
+					ômicron & $O$ & $o$\\
+					Pi & $\Pi$ & $\pi$\\
+					Rô & $P$ & $\rho$\\
+					Sigma & $\Sigma$ & $\sigma$\\
+					Tau & $T$ & $\tau$\\
+					Ípsilon & $\Upsilon$ & $\upsilon$\\
+					Fi & $\Phi$ & $\phi$,$\varphi$\\
+					Qui & $X$ & $\chi$\\
+					Psi & $\Psi$ & $\psi$\\
+					Ômega & $\Omega$ & $\omega$
+				\end{tabular}
+			\end{table}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Referências e observações\footnote{Este material está sujeito a modificações. Recomenda-se acompanhamento permanente.}}
+	\bibliographystyle{jurabib}
+	\begin{thebibliography}{9}
+		\bibitem{alvarenga}A. Máximo, B. Alvarenga, C. Guimarães, Física. Contexto e aplicações, v.2, 2.ed., São Paulo, Scipione (2016)
+	\end{thebibliography}
+
+\vspace*{1cm}
+\begin{center}
+	Esta apresentação está disponível para download no endereço\\
+	\href{https://flavianowilliams.github.io/education}{\textcolor{blue}{https://flavianowilliams.github.io/education}}
+\end{center}
+	
+\end{frame}
+
+\end{document}

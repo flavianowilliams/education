@@ -1,0 +1,486 @@
+% Aula de Termodinâmica para o curso de Física II do ensino médio
+%
+\documentclass[brazil,aspectratio=169]{beamer}
+%
+%carregando preâmbulo
+\input{../../contrib/preamble}
+
+%Título
+
+\title[Termodinâmica]{Primeira Lei da Termodinâmica}
+
+% The main document
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Sumário}
+  \tableofcontents
+\end{frame}
+
+\section{Trabalho na termodinâmica}
+
+\begin{frame}{Comportamento das moléculas em uma câmara fechada}
+	\begin{columns}
+		\begin{column}[c]{0.7\textwidth}
+			As moléculas de um gás colidem várias vezes com as paredes do recipiente, e a cada colisão as moléculas exercem uma força $\vec{F}$ nas paredes e também no pistão.
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.3]{figuras/gas_molecules.png}
+				\caption*{\footnotesize Recipiente contendo gás ideal.}
+			\end{figure}
+		\end{column}
+		\begin{column}[c]{0.3\textwidth}
+			\begin{figure}[c]
+				\centering
+				\begin{tikzpicture}[scale=0.65,transform shape]
+				
+				\useasboundingbox(-2,-1) rectangle (1.25,6);
+				
+				\tkzInit[xmin=-1,xmax=2.5,ymin=-0.5,ymax=6]
+				%\tkzGrid
+				\tkzClip
+
+				%setup styles
+				\tikzstyle{s1}=[circle, radius=0.25, ball color=gray];
+				
+				%parede
+				\fill [pattern = north west lines] (1.,0) rectangle (1.25,5);
+				\draw (1,0) -- (1,5);
+				
+				%paticulas
+				\node[s1] (n1) at (0,1) {};
+				\def\a{1}
+				\coordinate (p1) at ($(n1)+(1,\a)$);
+				
+				%particula 1
+				\draw[line width=1pt, ->] (n1) -- (${1-0.5}*(n1)+0.5*(p1)$);
+				\draw[dashed] (n1) -- (p1);
+				\draw[dashed,->] (p1) -- ($(n1)+(0,{2*\a})$);
+				
+				%particula 2
+				\node[s1] (n1) at (0,2) {};
+				\def\a{-0.75}
+				\coordinate (p1) at ($(n1)+(1,\a)$);
+				
+				\draw[line width=1pt, ->] (n1) -- (${1-0.5}*(n1)+0.5*(p1)$);
+				\draw[dashed] (n1) -- (p1);
+				\draw[dashed,->] (p1) -- ($(n1)+(0,{2*\a})$);
+				
+				%particula 3
+				\node[s1] (n1) at (0,3) {};
+				\def\a{1.25}
+				\coordinate (p1) at ($(n1)+(1,\a)$);
+				
+				\draw[line width=1pt, ->] (n1) -- (${1-0.5}*(n1)+0.5*(p1)$);
+				\draw[dashed] (n1) -- (p1) node[left,midway] {$\vec{v}_{1}$};
+				\draw[dashed,->] (p1) -- ($(n1)+(0,{2*\a})$) node[left,midway] {$\vec{v}_{2}$};
+				
+				%normal
+				\draw[line width=1pt, ->,color=red] (p1) -- ($(p1)-(-1,0)$) node[right] {$\vec{F}$};
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Moléculas colidindo com as paredes do recipiente.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Trabalho realizado por um gás}
+	\begin{columns}
+		\begin{column}{0.7\textwidth}
+			A força que o gás exerce no pistão realiza um trabalho $\tau$ sobre ele, deslocando-o para cima por uma distância $\Delta S$, segundo a relação
+			\begin{equation*}
+				\tau = F\cdot\Delta S.
+			\end{equation*}
+			Mas $F=pA$, sendo A a área do pistão, portanto
+			\begin{align*}
+				\tau & = p\overbracket{A\Delta S}^{\alert{\Delta V}},\\
+				\Aboxed{\tau & = p\Delta V.}
+			\end{align*}
+		\end{column}
+		\begin{column}{0.3\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.3]{figuras/figura-1.png}
+				\caption*{\footnotesize Aumento $\Delta V$ do volume do câmara devido ao trabalho $\tau$ realizado pelo gás.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Diagrama pressão versus volume}
+	\begin{columns}
+		\begin{column}{0.7\textwidth}
+			\begin{itemize}
+				\item Se a pressão e o volume podem variar durante uma transformação termodinâmica, podemos representar essa transformação que ocorre do estado i para o estado f em um diagrama pressão versus volume.
+				\item Na mecânica determinamos o trabalho realizado por uma força sabendo a \alert{área abaixo da curva}. Podemos proceder da mesma maneira para calcular o trabalho associado a um gás num gráfico pressão x volume.
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.3\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.48, auto, transform shape, samples=50]
+				
+				\tkzInit[xmin=-0.5,xmax=5.5,ymin=-0.5,ymax=5.5]
+				%\tkzGrid
+				\tkzClip
+				
+				%curva
+				\pgfmathdeclarefunction{ff}{1}{\pgfmathparse{5-4/#1}}
+				\pgfmathdeclarefunction{ff2}{1}{\pgfmathparse{0}}
+				
+				%area
+				\fill[shade] plot [domain=4:1] (\x,{ff2(\x)}) -- plot [domain=1:4] (\x,{ff(\x)});
+				
+				%curva
+				\draw[line width=1.5pt,domain=1:4,variable=\x,color=red,->] plot (\x,{ff(\x)});
+				
+				%estados termodinamicos
+				\node (e1) at (1,{ff(1)}) {};
+				\node (e2) at (4,{ff(4)}) {};
+				
+				\filldraw (e1) circle (1.5pt) node[above left] {i};
+				\filldraw (e2) circle (1.5pt) node[above] {f};
+				
+				%coordenadas
+				\node[below] (vf) at (1,0) {$V_{i}$};
+				\draw[dashed] (1,0) -- (e1);
+				\node[below] (vi) at (4,0) {$V_{f}$};
+				\draw[dashed] (4,0) -- (e2);
+				
+				\node[left] (pi) at (0,1) {$p_{i}$};
+				\draw[dashed] (0,1) -- (e1);
+				\node[left] (pf) at (0,4) {$p_{f}$};
+				\draw[dashed] (0,4) -- (e2);
+				
+				%eixos
+				\draw[line width=1.0pt,->] (0,0) -- (5,0) node[right] {V};
+				\draw[line width=1.0pt,->] (0,0) -- (0,5) node[above] {P};
+
+				%texto
+				\node[font=\Huge,color=blue]  at (2.5,2) {$\tau$};
+				
+				\end{tikzpicture}
+				%\includegraphics[scale=0.35]{figuras/figura-6.png}
+				\caption*{\footnotesize Trabalho realizado de i até f.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+	\begin{corollary}
+		O trabalho $\tau$ de um gás no diagrama pressão versus volume é a área da figura abaixo da curva (positivo ou negativo dependendo do sentido da transformação).
+	\end{corollary}
+\end{frame}
+
+\section{A primeira Lei da Termodinâmica}
+
+\begin{frame}{O que são sistema, vizinhança e universo?}
+	\begin{figure}
+		\centering
+		\begin{subfigure}[b]{0.6\textwidth}
+			\centering
+			\includegraphics[scale=0.25]{figuras/figura-2.png}
+			\caption*{\footnotesize Representação de sistema, vizinhança e universo}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.35\textwidth}
+			\centering
+			\includegraphics[scale=0.35]{figuras/figura-8.png}
+			\caption*{\footnotesize Exemplo de sistema e vizinhança.}
+		\end{subfigure}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Convenção de sinais de calor e trabalho na termodinâmica}
+	\begin{block}{Convenção de sinais do calor}
+		\begin{itemize}
+			\item Se o sistema recebe calor da vizinhança então Q é positivo.
+			\item Se o sistema cede calor para a vizinhança então Q é negativo.
+		\end{itemize}	
+	\end{block}
+	\begin{block}{Convenção de sinais do trabalho}
+		\begin{itemize}
+			\item Se o trabalho está sendo realizado sobre o sistema então $\tau$ é negativo.
+			\item Se o sistema realiza trabalho sobre a vizinhança então $\tau$ é positivo.
+		\end{itemize}	
+	\end{block}
+\end{frame}
+
+\begin{frame}{Primeira Lei da Termodinâmica e a Lei da conservação da energia}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			Quando um sistema vai de um estado i para o estado f e troca energia com a vizinhança, a sua energia interna aumenta ou diminui e a sua variação é dado por
+			\begin{equation*}
+				\Delta U = U_f-U_i=Q.
+			\end{equation*}
+			Se ele ao mesmo tempo realizar trabalho $\tau$, ou trabalho for feito sobre ele, a quantidade de energia interna que ele recebe ou cede é dado por
+			\begin{equation*}
+				\boxed{\Delta U = Q-\tau.}
+			\end{equation*}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.35]{figuras/figura-3.png}
+				\caption*{\footnotesize Exemplo de aplicação da primeira Lei da Termodinâmica.}
+			\end{figure}
+		\end{column}
+	\end{columns}	
+\end{frame}
+
+\section{Aplicações da Primeira Lei da Termodinâmica}
+
+\begin{frame}{Transformação adiabática}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			Na transformação adiabática \alert{o sistema não troca calor com a vizinhança}, portanto Q = 0. A variação da energia interna do gás é dado por
+			\begin{align*}
+				\Delta U & = Q - \tau,\\
+				\Aboxed{\Delta U & = -\tau.}
+			\end{align*}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.35]{figuras/figura-4.png}
+				\caption*{\footnotesize Exemplo de transformação adiabática.}
+			\end{figure}
+		\end{column}
+	\end{columns}	
+\end{frame}
+
+\begin{frame}{Transformação isotérmica}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			Na transformação isotérmica, a temperatura do sistema não muda e \alert{a energia de um gás depende somente da temperatura T}, ou seja,
+			\begin{equation*}
+				U(T)= \frac{3}{2}Nk_BT,
+			\end{equation*}
+			portanto $\Delta U=0$. Pela Primeira Lei da Termodinâmica temos
+			\begin{align*}
+				Q-\tau & = \Delta U,\\
+				Q - \tau & = 0,\\
+				\Aboxed{Q & = \tau.}
+			\end{align*}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.45]{figuras/figura-5.png}
+				\caption*{\footnotesize Exemplo de transformação isotérmica.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Transformação isovolumétrica}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			Na transformação isovolumétrica (ou isocórica), o volume do sistema não muda, portanto
+			\begin{equation*}
+				\Delta V = 0.
+			\end{equation*}
+			Mas o trabalho associado a um gás é igual a $p\Delta V$, portanto $\tau=0$. Pela Primeira Lei da Termodinâmica temos
+			\begin{align*}
+				 \Delta U & = Q-\overbracket{\tau}^{\alert{0}},\\
+				\Aboxed{\Delta U & = Q.}
+			\end{align*}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.4]{figuras/figura-7.png}
+				\caption*{\footnotesize Exemplo de transformação isocórica.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\section{Apêndice}
+
+\subsection{}
+
+\begin{frame}{Transformar um número em notação científica}
+	\begin{corollary}
+		\begin{enumerate}[leftmargin=1.75cm]
+			\item[Passo 1:] Escrever o número incluindo a vírgula.
+			\item[Passo 2:] Andar com a vírgula até que reste somente um número diferente de zero no lado esquerdo.
+			\item[Passo 3:] Colocar no expoente da potência de 10 o número de casas decimais que tivemos que "andar" com a vírgula. Se ao andar com a vírgula o valor do número diminuiu, o expoente ficará positivo, se aumentou o expoente ficará negativo.
+		\end{enumerate}
+	\end{corollary}
+	\begin{exampleblock}{Exemplo}
+		\begin{equation*}
+			6\; 590\; 000\; 000\; 000\; 000,0 = \SI{6,59e15}{}		
+		\end{equation*}
+	\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Conversão de unidades em uma dimensão}
+	\begin{figure}
+		\begin{tikzpicture}[scale=0.65,transform shape,font=\Large]
+		
+		\tkzInit[xmin=-2,xmax=17,ymin=-6,ymax=3]
+		%\tkzGrid[color=gray!20]
+		\tkzClip
+		
+		\tikzset{compass style/.append style={->}}
+		
+		\foreach \x in {1,2,...,6}{
+			\tkzDefPoint(\x*3-3,0){\x}
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+			\node at (\x*3-3,2) {$\times 10^{1}$};
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+			\node at (\x*3-3,-2) {$\times 10^{-1}$};}
+		
+		\tkzDefPoints{-1.5/0/p1,1.5/0/p2,4.5/0/p3,7.5/-0.2/p4,10.5/0/p5,13.5/0/p6,16.5/0/p7}
+		
+		\tkzText(p1){m\_}
+		\tkzText(p2){c\_}
+		\tkzText(p3){d\_}
+		\tkzText(p4){\_}
+		\tkzText(p5){da\_}
+		\tkzText(p6){h\_}
+		\tkzText(p7){k\_}
+		
+		%exemplos
+		
+		\tkzText(3,-3.5){$1\;\text{mm}=1\times 10^{(-1)\times\alert{2}}\;\text{dm}\rightarrow 1\times 10^{-2}\;\text{dm}$}
+		\tkzText(3.1,-4.5){$2,5\;\text{kg}=2,5\times 10^{(1)\times\alert{6}}\;\text{mg}\rightarrow2,5\times 10^{6}\;\text{mg}$}
+		\tkzText(2.7,-5.5){$10\;\text{ms}=10\times 10^{(-1)\times\alert{3}}\;\text{s}\rightarrow 10\times 10^{-3}\;\text{s}$}
+		
+		\end{tikzpicture}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Conversão de unidades em duas dimensões}
+	\begin{figure}
+		\begin{tikzpicture}[scale=0.65,transform shape,font=\Large]
+	
+		\tkzInit[xmin=-2,xmax=17,ymin=-6,ymax=3]
+		%\tkzGrid[color=gray!20]
+		\tkzClip
+	
+		\tikzset{compass style/.append style={->}}
+	
+		\foreach \x in {1,2,...,6}{
+			\tkzDefPoint(\x*3-3,0){\x}
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+			\node at (\x*3-3,2) {$\times 10^{2}$};
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+			\node at (\x*3-3,-2) {$\times 10^{-2}$};}
+	
+		\tkzDefPoints{-1.5/0/p1,1.5/0/p2,4.5/0/p3,7.5/0/p4,10.5/0/p5,13.5/0/p6,16.5/0/p7}
+	
+		\tkzText(p1){$\text{m}\_^2$}
+		\tkzText(p2){$\text{c}\_^2$}
+		\tkzText(p3){$\text{d}\_^2$}
+		\tkzText(p4){$\_^2$}
+		\tkzText(p5){$\text{da}\_^2$}
+		\tkzText(p6){$\text{h}\_^2$}
+		\tkzText(p7){$\text{k}\_^2$}
+	
+		%exemplos
+	
+		\tkzText(3.3,-3.5){$1\;\text{mm}^2=1\times 10^{(-2)\times\alert{2}}\;\text{dm}^2\rightarrow 1\times 10^{-4}\;\text{dm}^2$}
+		\tkzText(3.6,-4.5){$2,5\;\text{m}^2=2,5\times 10^{(2)\times\alert{3}}\;\text{mm}^2\rightarrow2,5\times 10^{6}\;\text{mm}^2$}
+		\tkzText(3,-5.5){$10\;\text{ms}^2=10\times 10^{(-2)\times\alert{3}}\;\text{s}^2\rightarrow 10\times 10^{-6}\;\text{s}^2$}
+	
+		\end{tikzpicture}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Conversão de unidades em três dimensões}
+	\begin{figure}
+		\begin{tikzpicture}[scale=0.65,transform shape,font=\Large]
+	
+		\tkzInit[xmin=-2,xmax=17,ymin=-6,ymax=3]
+		%\tkzGrid[color=gray!20]
+		\tkzClip
+	
+		\tikzset{compass style/.append style={->}}
+	
+		\foreach \x in {1,2,...,6}{
+			\tkzDefPoint(\x*3-3,0){\x}
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+			\node at (\x*3-3,2) {$\times 10^{3}$};
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+			\node at (\x*3-3,-2) {$\times 10^{-3}$};}
+	
+		\tkzDefPoints{-1.5/0/p1,1.5/0/p2,4.5/0/p3,7.5/0/p4,10.5/0/p5,13.5/0/p6,16.5/0/p7}
+	
+		\tkzText(p1){$\text{m}\_^3$}
+		\tkzText(p2){$\text{c}\_^3$}
+		\tkzText(p3){$\text{d}\_^3$}
+		\tkzText(p4){$\_^3$}
+		\tkzText(p5){$\text{da}\_^3$}
+		\tkzText(p6){$\text{h}\_^3$}
+		\tkzText(p7){$\text{k}\_^3$}
+	
+		%exemplos
+	
+		\tkzText(3.3,-3.5){$1\;\text{mm}^3=1\times 10^{(-3)\times\alert{2}}\;\text{dm}^3\rightarrow 1\times 10^{-6}\;\text{dm}^3$}
+		\tkzText(3.6,-4.5){$2,5\;\text{m}^3=2,5\times 10^{(3)\times\alert{3}}\;\text{mm}^3\rightarrow2,5\times 10^{9}\;\text{mm}^3$}
+		\tkzText(3.5,-5.5){$2,5\;\text{km}^3=2,5\times 10^{(3)\times\alert{6}}\;\text{mm}^3\rightarrow2,5\times 10^{18}\;\text{mm}^3$}
+
+		\end{tikzpicture}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Alfabeto grego}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{table}
+				\begin{tabular}[c]{ccc}
+					Alfa & $A$ & $\alpha$\\
+					Beta & $B$ & $\beta$\\
+					Gama & $\Gamma$ & $\gamma$\\
+					Delta & $\Delta$ & $\delta$\\
+					Epsílon & $E$ & $\epsilon$,$\varepsilon$\\
+					Zeta & $Z$ & $\zeta$\\
+					Eta & $H$ & $\eta$\\
+					Teta & $\Theta$ & $\theta$\\
+					Iota & $I$ & $\iota$\\
+					Capa & $K$ & $\kappa$\\
+					Lambda & $\Lambda$ & $\lambda$\\
+					Mi & $M$ & $\mu$
+				\end{tabular}
+			\end{table}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{table}
+				\begin{tabular}[c]{ccc}
+					Ni & $N$ & $\nu$\\
+					Csi & $\Xi$ & $\xi$\\
+					ômicron & $O$ & $o$\\
+					Pi & $\Pi$ & $\pi$\\
+					Rô & $P$ & $\rho$\\
+					Sigma & $\Sigma$ & $\sigma$\\
+					Tau & $T$ & $\tau$\\
+					Ípsilon & $\Upsilon$ & $\upsilon$\\
+					Fi & $\Phi$ & $\phi$,$\varphi$\\
+					Qui & $X$ & $\chi$\\
+					Psi & $\Psi$ & $\psi$\\
+					Ômega & $\Omega$ & $\omega$
+				\end{tabular}
+			\end{table}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Referências e observações\footnote{Este material está sujeito a modificações. Recomenda-se acompanhamento permanente.}}
+	\bibliographystyle{jurabib}
+	\begin{thebibliography}{9}
+		\bibitem{alvarenga}A. Máximo, B. Alvarenga, C. Guimarães, Física. Contexto e aplicações, v.2, 2.ed., São Paulo, Scipione (2016)
+	\end{thebibliography}
+
+\vspace*{1cm}
+\begin{center}
+	Esta apresentação está disponível para download no endereço\\
+	\href{https://flavianowilliams.github.io/education}{\textcolor{blue}{https://flavianowilliams.github.io/education}}
+\end{center}
+	
+\end{frame}
+
+\end{document}

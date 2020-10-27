@@ -1,0 +1,39 @@
+﻿\begin{tikzpicture}[scale=0.5, auto, transform shape, samples=50]
+
+	%eixos
+	\draw[line width=1.0pt,->] (0,0) -- (5,0) node[right] {V};
+	\draw[line width=1.0pt,->] (0,0) -- (0,5) node[above] {P};
+
+	%curva
+	\pgfmathdeclarefunction{ff}{1}{\pgfmathparse{5-4/#1}}
+	\pgfmathdeclarefunction{ff2}{1}{\pgfmathparse{4/(5-#1)}}
+
+	%area
+	\fill[shade] plot [domain=4:1] (\x,{ff2(\x)}) -- plot [domain=1:4] (\x,{ff(\x)});
+
+	%curva
+	\draw[line width=1.5pt,domain=4:1,variable=\x,color=red,->] plot (\x,{ff(\x)});
+	\draw[line width=1.5pt,domain=1:4,variable=\x,color=red,->] plot (\x,{ff2(\x)});
+
+	%estados termodinamicos
+	\node (e1) at (1,{ff(1)}) {};
+	\node (e2) at (4,{ff(4)}) {};
+
+	\filldraw (e1) circle (1.5pt) node[above left] {i};
+	\filldraw (e2) circle (1.5pt) node[above] {f};
+
+	%coordenadas
+	\node[below] (vf) at (1,0) {$V_{i}$};
+	\draw[dashed] (1,0) -- (e1);
+	\node[below] (vi) at (4,0) {$V_{f}$};
+	\draw[dashed] (4,0) -- (e2);
+
+	\node[left] (pi) at (0,1) {$p_{i}$};
+	\draw[dashed] (0,1) -- (e1);
+	\node[left] (pf) at (0,4) {$p_{f}$};
+	\draw[dashed] (0,4) -- (e2);
+
+	%texto
+	\node  at ($0.5*(e2)+0.5*(e1)$) {$\tau<0$};
+
+\end{tikzpicture}

@@ -1,0 +1,731 @@
+% Aula de termodinâmica para o curso de Física II do ensino médio
+%
+\documentclass[brazil,aspectratio=169]{beamer}
+%
+%carregando preâmbulo
+\input{../../contrib/preamble}
+
+%Título
+
+\title[Termodinâmica]{Segunda Lei da Termodinâmica}
+
+% The main document
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Sumário}
+  \tableofcontents
+\end{frame}
+
+\section{Transformações cíclicas}
+
+\subsection{}
+
+\begin{frame}[fragile]{Diagrama pressão versus volume em processos cíclicos}
+	\begin{corollary}
+		Definimos como processo cíclico quando o gás retorna para o seu estado inicial.
+	\end{corollary}
+	\begin{columns}
+		\begin{column}{0.7\textwidth}
+			A energia interna U(T) de um gás é uma função da temperatura. Se os estados i e f estão em equilíbrio térmico, podemos determinar U(T) sabendo a temperatura nesses estados, os valores \alert{não irão mudar independente do processo termodinâmico} que esse gás poderá sofrer.
+		\begin{corollary}
+			Durante uma transformação cíclica, a variação da energia interna do gás será zero (\alert{$\Delta U=0$}).
+		\end{corollary}
+		\end{column}
+		\begin{column}{0.3\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.6, auto, transform shape, samples=50]
+				
+				%eixos
+				\draw[line width=1.0pt,->] (0,0) -- (5,0) node[right] {V};
+				\draw[line width=1.0pt,->] (0,0) -- (0,5) node[above] {P};
+				
+				%curva
+				\pgfmathdeclarefunction{ff}{1}{\pgfmathparse{5-4/#1}}
+				\pgfmathdeclarefunction{ff2}{1}{\pgfmathparse{4/(5-#1)}}
+				
+				%area
+				\fill[shade] plot [domain=4:1] (\x,{ff2(\x)}) -- plot [domain=1:4] (\x,{ff(\x)});
+				
+				%curva
+				\draw[line width=1.5pt,domain=1:4,variable=\x,color=red,->] plot (\x,{ff(\x)});
+				\draw[line width=1.5pt,domain=4:1,variable=\x,color=red,->] plot (\x,{ff2(\x)});
+				
+				%estados termodinamicos
+				\node (e1) at (1,{ff(1)}) {};
+				\node (e2) at (4,{ff(4)}) {};
+				
+				\filldraw (e1) circle (1.5pt) node[above left] {i};
+				\filldraw (e2) circle (1.5pt) node[above] {f};
+				
+				%coordenadas
+				\node[below] (vf) at (1,0) {$V_{i}$};
+				\draw[dashed] (1,0) -- (e1);
+				\node[below] (vi) at (4,0) {$V_{f}$};
+				\draw[dashed] (4,0) -- (e2);
+				
+				\node[left] (pi) at (0,1) {$p_{i}$};
+				\draw[dashed] (0,1) -- (e1);
+				\node[left] (pf) at (0,4) {$p_{f}$};
+				\draw[dashed] (0,4) -- (e2);
+				
+				%texto
+				\node  at ($0.5*(e2)+0.5*(e1)$) {$\Delta U=0$};
+				
+				\end{tikzpicture}
+				%\input{tikz/processo-ciclico.pgf}
+				\caption*{\footnotesize Exemplo de processo cíclico.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Trabalho realizado pelo gás em processos cíclicos}
+	\begin{columns}
+		\begin{column}{0.7\textwidth}
+			Podemos definir o trabalho total realizado pelo gás num processo cíclico subtraindo os trabalhos individuais nos processos de i para f e o retorno (f para i),
+			\begin{equation*}
+				\tau = \tau_{(i\rightarrow f)}-\tau_{(f\rightarrow i)}.
+			\end{equation*}
+		\begin{corollary}
+			Durante uma transformação cíclica, o trabalho realizado pelo gás, ao percorrer o ciclo, é fornecido pela \alert{área entre as curvas}.
+		\end{corollary}
+		\end{column}
+		\begin{column}{0.3\textwidth}
+			\begin{figure}
+				\centering
+				%\input{tikz/processo-ciclico-2.pgf}
+				\begin{tikzpicture}[scale=0.6, auto, transform shape, samples=50]
+				
+				%eixos
+				\draw[line width=1.0pt,->] (0,0) -- (5,0) node[right] {V};
+				\draw[line width=1.0pt,->] (0,0) -- (0,5) node[above] {P};
+				
+				%curva
+				\pgfmathdeclarefunction{ff}{1}{\pgfmathparse{5-4/#1}}
+				\pgfmathdeclarefunction{ff2}{1}{\pgfmathparse{4/(5-#1)}}
+				
+				%area
+				\fill[shade] plot [domain=4:1] (\x,{ff2(\x)}) -- plot [domain=1:4] (\x,{ff(\x)});
+				
+				%curva
+				\draw[line width=1.5pt,domain=1:4,variable=\x,color=red,->] plot (\x,{ff(\x)});
+				\draw[line width=1.5pt,domain=4:1,variable=\x,color=red,->] plot (\x,{ff2(\x)});
+				
+				%estados termodinamicos
+				\node (e1) at (1,{ff(1)}) {};
+				\node (e2) at (4,{ff(4)}) {};
+				
+				\filldraw (e1) circle (1.5pt) node[above left] {i};
+				\filldraw (e2) circle (1.5pt) node[above] {f};
+				
+				%coordenadas
+				\node[below] (vf) at (1,0) {$V_{i}$};
+				\draw[dashed] (1,0) -- (e1);
+				\node[below] (vi) at (4,0) {$V_{f}$};
+				\draw[dashed] (4,0) -- (e2);
+				
+				\node[left] (pi) at (0,1) {$p_{i}$};
+				\draw[dashed] (0,1) -- (e1);
+				\node[left] (pf) at (0,4) {$p_{f}$};
+				\draw[dashed] (0,4) -- (e2);
+				
+				%texto
+				\node  at ($0.5*(e2)+0.5*(e1)$) {$\tau$};
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Representação de trabalho em um processo cíclico.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Trabalho e sentido do processo cíclico}
+	\begin{corollary}
+		\begin{itemize}
+			\item O trabalho será positivo se o processo for no sentido horário.
+			\item O trabalho será negativo se o processo for no sentido anti-horário.
+		\end{itemize}
+	\end{corollary}
+	\begin{figure}
+		\centering
+		\begin{subfigure}[b]{0.45\textwidth}
+			\centering
+			%\input{tikz/processo-ciclico-3a.pgf}
+			\begin{tikzpicture}[scale=0.5, auto, transform shape, samples=50]
+			
+			%eixos
+			\draw[line width=1.0pt,->] (0,0) -- (5,0) node[right] {V};
+			\draw[line width=1.0pt,->] (0,0) -- (0,5) node[above] {P};
+			
+			%curva
+			\pgfmathdeclarefunction{ff}{1}{\pgfmathparse{5-4/#1}}
+			\pgfmathdeclarefunction{ff2}{1}{\pgfmathparse{4/(5-#1)}}
+			
+			%area
+			\fill[shade] plot [domain=4:1] (\x,{ff2(\x)}) -- plot [domain=1:4] (\x,{ff(\x)});
+			
+			%curva
+			\draw[line width=1.5pt,domain=1:4,variable=\x,color=red,->] plot (\x,{ff(\x)});
+			\draw[line width=1.5pt,domain=4:1,variable=\x,color=red,->] plot (\x,{ff2(\x)});
+			
+			%estados termodinamicos
+			\node (e1) at (1,{ff(1)}) {};
+			\node (e2) at (4,{ff(4)}) {};
+			
+			\filldraw (e1) circle (1.5pt) node[above left] {i};
+			\filldraw (e2) circle (1.5pt) node[above] {f};
+			
+			%coordenadas
+			\node[below] (vf) at (1,0) {$V_{i}$};
+			\draw[dashed] (1,0) -- (e1);
+			\node[below] (vi) at (4,0) {$V_{f}$};
+			\draw[dashed] (4,0) -- (e2);
+			
+			\node[left] (pi) at (0,1) {$p_{i}$};
+			\draw[dashed] (0,1) -- (e1);
+			\node[left] (pf) at (0,4) {$p_{f}$};
+			\draw[dashed] (0,4) -- (e2);
+			
+			%texto
+			\node  at ($0.5*(e2)+0.5*(e1)$) {$\tau>0$};
+			
+			\end{tikzpicture}
+			\caption*{\footnotesize Sentido horário}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.45\textwidth}
+			\centering
+			%\input{tikz/processo-ciclico-3b.pgf}
+			\begin{tikzpicture}[scale=0.5, auto, transform shape, samples=50]
+			
+			%eixos
+			\draw[line width=1.0pt,->] (0,0) -- (5,0) node[right] {V};
+			\draw[line width=1.0pt,->] (0,0) -- (0,5) node[above] {P};
+			
+			%curva
+			\pgfmathdeclarefunction{ff}{1}{\pgfmathparse{5-4/#1}}
+			\pgfmathdeclarefunction{ff2}{1}{\pgfmathparse{4/(5-#1)}}
+			
+			%area
+			\fill[shade] plot [domain=4:1] (\x,{ff2(\x)}) -- plot [domain=1:4] (\x,{ff(\x)});
+			
+			%curva
+			\draw[line width=1.5pt,domain=4:1,variable=\x,color=red,->] plot (\x,{ff(\x)});
+			\draw[line width=1.5pt,domain=1:4,variable=\x,color=red,->] plot (\x,{ff2(\x)});
+			
+			%estados termodinamicos
+			\node (e1) at (1,{ff(1)}) {};
+			\node (e2) at (4,{ff(4)}) {};
+			
+			\filldraw (e1) circle (1.5pt) node[above left] {i};
+			\filldraw (e2) circle (1.5pt) node[above] {f};
+			
+			%coordenadas
+			\node[below] (vf) at (1,0) {$V_{i}$};
+			\draw[dashed] (1,0) -- (e1);
+			\node[below] (vi) at (4,0) {$V_{f}$};
+			\draw[dashed] (4,0) -- (e2);
+			
+			\node[left] (pi) at (0,1) {$p_{i}$};
+			\draw[dashed] (0,1) -- (e1);
+			\node[left] (pf) at (0,4) {$p_{f}$};
+			\draw[dashed] (0,4) -- (e2);
+			
+			%texto
+			\node  at ($0.5*(e2)+0.5*(e1)$) {$\tau<0$};
+			
+			\end{tikzpicture}
+			\caption*{\footnotesize Sentido anti-horário}
+		\end{subfigure}
+	\end{figure}
+\end{frame}
+
+\section{Máquinas térmicas}
+
+\subsection{}
+
+\begin{frame}{Definição de máquina térmica}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\begin{block}{Máquina térmica}
+				Toda máquina térmica opera num processo cíclico, onde ela recebe calor $\alert{Q_1}$ de uma fonte quente a temperatura $\alert{T_1}$ e parte desse calor ($\alert{Q_2}$) ela devolve para uma fonte fria que está a temperatura $\alert{T_2}$, onde $\alert{T_2<T_1}$.
+			\end{block}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.15]{figuras/figura-1.png}
+				\caption*{\href{https://www.youtube.com/watch?v=V9GjzQQCDa0}{\textcolor{blue}{Motor a combustão de 4 tempos}}}
+			\end{figure}
+		\end{column}
+	\end{columns}
+	\begin{corollary}
+		Parte do calor recebido pela fonte quente é convertido em trabalho e o restante é desperdiçado para a fonte fria.
+	\end{corollary}
+\end{frame}
+
+\begin{frame}[fragile]{Aplicação da Primeira Lei da Termodinâmica em máquinas térmicas}
+	\begin{columns}
+		\begin{column}{0.65\textwidth}
+			O calor total absorvido pelo gás durante o processo será o calor $Q_1$ recebido menos o calor $Q_2$ desperdiçado. Pela Primeira Lei da Termodinâmica temos
+			\begin{equation*}
+				\Delta U = (Q_1-Q_2)-\tau.
+			\end{equation*}
+			Mas $\Delta U=0$ num processo cíclico, portanto
+			\begin{equation*}
+				\boxed{\tau = Q_1-Q_2.}
+			\end{equation*}
+		\end{column}
+		\begin{column}{0.35\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.6, auto, transform shape, samples=50]
+				
+				%eixos
+				\draw[line width=1.0pt,->] (0,0) -- (5,0) node[right] {V};
+				\draw[line width=1.0pt,->] (0,0) -- (0,5) node[above] {P};
+				
+				%curva
+				\pgfmathdeclarefunction{ff}{1}{\pgfmathparse{5-4/#1}}
+				\pgfmathdeclarefunction{ff2}{1}{\pgfmathparse{4/(5-#1)}}
+				
+				%area
+				\fill[shade] plot [domain=4:1] (\x,{ff2(\x)}) -- plot [domain=1:4] (\x,{ff(\x)});
+				
+				%curva
+				\draw[line width=1.5pt,domain=1:4,variable=\x,color=red,->] plot (\x,{ff(\x)});
+				\draw[line width=1.5pt,domain=4:1,variable=\x,color=red,->] plot (\x,{ff2(\x)});
+				
+				%estados termodinamicos
+				\node (e1) at (1,{ff(1)}) {};
+				\node (e2) at (4,{ff(4)}) {};
+				
+				\filldraw (e1) circle (1.5pt) node[above left] {i};
+				\filldraw (e2) circle (1.5pt) node[above] {f};
+				
+				%coordenadas
+				\node[below] (vf) at (1,0) {$V_{i}$};
+				\draw[dashed] (1,0) -- (e1);
+				\node[below] (vi) at (4,0) {$V_{f}$};
+				\draw[dashed] (4,0) -- (e2);
+				
+				%texto
+				\node  at ($0.5*(e2)+0.5*(e1)$) {$\tau$};
+				
+				%calor entrando e saindo
+				\node [above] (q1) at (2.5,5) {$Q_1$};
+				\draw[->,line width=2pt] (q1)--($(q1)+(0,-2.5)$);
+				
+				\node [above] (q2) at (2.5,0) {$Q_2$};
+				\draw[->,line width=2pt] ($(q2)+(0,1.75)$)--(q2);
+				
+				\end{tikzpicture}
+				%\input{tikz/processo-ciclico-4.pgf}
+				\caption*{\footnotesize Representação de calor entrando $(Q_1)$ e saindo $(Q_2)$ do sistema.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Rendimento de uma máquina térmica}
+	\begin{columns}
+		\begin{column}{0.7\textwidth}
+			Definimos o rendimento R de uma máquina térmica pela \alert{quantidade de calor que ela consegue transformar em trabalho} à partir do calor que recebe da fonte quente,
+			\begin{align*}
+				R & = \frac{\tau}{Q_1},\\
+				R & = \frac{Q_1-Q_2}{Q_1},\\
+				\Aboxed{R & = 1-\frac{Q_2}{Q_1}\Rightarrow R<1.}
+			\end{align*}
+		\end{column}
+		\begin{column}{0.3\textwidth}
+			\begin{figure}
+				\vspace*{-0.5cm}
+				\centering
+				\begin{tikzpicture}[scale=0.6, auto, transform shape, samples=50]
+				
+				\tkzInit[xmin=0,xmax=5,ymin=0,ymax=5]
+				\tkzClip[space=0.5]
+				
+				%eixos
+				\draw[line width=1.0pt,->] (0,0) -- (5,0) node[right] {V};
+				\draw[line width=1.0pt,->] (0,0) -- (0,5) node[above] {P};
+				
+				%curva
+				\pgfmathdeclarefunction{ff}{1}{\pgfmathparse{5-4/#1}}
+				\pgfmathdeclarefunction{ff2}{1}{\pgfmathparse{4/(5-#1)}}
+				
+				%area
+				\fill[shade] plot [domain=4:1] (\x,{ff2(\x)}) -- plot [domain=1:4] (\x,{ff(\x)});
+				
+				%curva
+				\draw[line width=1.5pt,domain=1:4,variable=\x,color=red,->] plot (\x,{ff(\x)});
+				\draw[line width=1.5pt,domain=4:1,variable=\x,color=red,->] plot (\x,{ff2(\x)});
+				
+				%estados termodinamicos
+				\node (e1) at (1,{ff(1)}) {};
+				\node (e2) at (4,{ff(4)}) {};
+				
+				\filldraw (e1) circle (1.5pt) node[above left] {i};
+				\filldraw (e2) circle (1.5pt) node[above] {f};
+				
+				%coordenadas
+				\node[below] (vf) at (1,0) {$V_{i}$};
+				\draw[dashed] (1,0) -- (e1);
+				\node[below] (vi) at (4,0) {$V_{f}$};
+				\draw[dashed] (4,0) -- (e2);
+				
+				%texto
+				\node  at ($0.5*(e2)+0.5*(e1)$) {$\tau$};
+				
+				%calor entrando e saindo
+				\node [above] (q1) at (2.5,5) {$Q_1$};
+				\draw[->,line width=2pt] (q1)--($(q1)+(0,-2.5)$);
+				
+				\node [above] (q2) at (2.5,0) {$Q_2$};
+				\draw[->,line width=2pt] ($(q2)+(0,1.75)$)--(q2);
+				
+				\end{tikzpicture}
+				%\input{tikz/processo-ciclico-4.pgf}
+				\caption*{\footnotesize Representação de calor entrando $(Q_1)$ e saindo $(Q_2)$.}
+				\vspace*{-0.5cm}
+			\end{figure}
+		\end{column}
+	\end{columns}
+	\begin{corollary}
+		O rendimento de uma máquina térmica será sempre menor que 1.
+	\end{corollary}
+\end{frame}
+
+\begin{frame}[fragile]{Rendimento de uma máquina de Carnot}
+	Uma máquina de Carnot é uma máquina térmica que funciona em um processo cíclico formado por dois processos isotérmicos mais dois processos adiabáticos.
+	\begin{columns}
+		\begin{column}{0.7\textwidth}
+			\begin{corollary}
+				Nenhuma máquina térmica que opere entre duas fontes às temperaturas $T_1$ e $T_2$, pode ter rendimento maior que uma máquina de Carnot operando entre essas mesmas fontes.
+			\end{corollary}
+			\begin{block}{Rendimento de uma máquina de Carnot}
+				\begin{equation*}
+					R=1-\frac{T_2}{T_1}.
+				\end{equation*}
+			\end{block}
+		\end{column}
+		\begin{column}{0.3\textwidth}
+			\begin{figure}
+				\centering
+				%\input{tikz/ciclo-carnot.pgf}
+				\begin{tikzpicture}[scale=0.6, auto, transform shape, samples=50]
+				
+				%valores iniciais
+				\def\shift{1}
+				
+				\def\gamma{4.5}
+				
+				\def\ta{3}
+				\def\va{1}
+				\def\pa{\ta/\va}
+				\def\vb{3}
+				\def\pb{\ta/\vb}
+				
+				\def\tb{\ta*(\vb/\vc)^(\gamma-1)}
+				\def\vc{4}
+				\def\pc{\tb/\vc}
+				\def\vd{\vc*\va/\vb}
+				\def\pd{\tb/\vd}
+				
+				%eixos
+				\draw[line width=1.0pt,->] (0,0) -- (5,0) node[right] {V};
+				\draw[line width=1.0pt,->] (0,0) -- (0,5) node[above] {P};
+				
+				%curva
+				\pgfmathdeclarefunction{ff}{2}{\pgfmathparse{\shift+#2/#1}}
+				\pgfmathdeclarefunction{ff2}{3}{\pgfmathparse{\shift+#3*(#2/#1)^\gamma}}
+				
+				%curva
+				\draw[line width=1.5pt,domain=\va:\vb,variable=\x,color=red,->] plot (\x,{ff(\x,\ta)});
+				\draw[line width=1.5pt,domain=\vb:\vc,variable=\x,color=red,->] plot (\x,{ff2(\x,\vb,\pb)});
+				\draw[line width=1.5pt,domain=\vc:\vd,variable=\x,color=red,->] plot (\x,{ff(\x,\tb)});
+				\draw[line width=1.5pt,domain=\vd:\va,variable=\x,color=red,->] plot (\x,{ff2(\x,\va,\pa)});
+				
+				%estados termodinamicos
+				\node (e1) at (\va,{ff(\va,\ta)}) {};
+				\node (e2) at (\vb,{ff(\vb,\ta)}) {};
+				\node (e3) at (\vc,{ff(\vc,\tb)}) {};
+				\node (e4) at (\vd,{ff(\vd,\tb)}) {};
+				
+				\filldraw (e1) circle (1.5pt) node[above left] {a};
+				\filldraw (e2) circle (1.5pt) node[above] {b};
+				\filldraw (e3) circle (1.5pt) node[above] {c};
+				\filldraw (e4) circle (1.5pt) node[left] {d};
+				
+				%texto
+				\node (tau) at ($0.25*(e1)+0.25*(e2)+0.25*(e3)+0.25*(e4)-(0,0.5)$) {$\tau$};
+				
+				%calor entrando e saindo
+				\node [above] (q1) at ($(tau)+(0,1)$) {$Q_1$};
+				\draw[->,line width=2pt] (q1)--($(q1)-(0,1)$);
+				
+				\node [above] (q2) at ($(tau)+(0,-1.5)$) {$Q_2$};
+				\draw[->,line width=2pt] ($(q2)-(0,-1)$)--(q2);
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Representação gráfica de uma máquina de Carnot.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\section{Entropia}
+
+\subsection{}
+
+\begin{frame}{O que é entropia?}
+	\begin{block}{Entropia}
+		A entropia, definida pela letra S, está associada com o grau de desordem de um sistema. No SI a unidade de medida da entropia é Joule por Kelvin (J/K).
+	\end{block}
+	\begin{columns}
+		\begin{column}[c]{0.6\textwidth}
+			Por exemplo, se o processo ocorre sem variar a sua temperatura (isotérmico) a variação da entropia $\Delta S$ associado ao sistema será
+			\begin{align*}
+				\Delta S = \frac{Q}{T},
+			\end{align*}
+			onde Q é a quantidade de calor que o sistema irá receber ou ceder e T a sua temperatura.
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.1]{figuras/entropia.png}
+				\caption*{\footnotesize Exemplo de entropia usando tijolos.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Variação da entropia do universo}
+	\begin{block}{Segunda lei da termodinâmica}
+		Na natureza, a entropia total, \alert{que é a soma da entropia do sistema com a vizinhança}, sempre aumenta.
+	\end{block}
+	Definindo $\Delta S_u$ como a variação da entropia do universo, $\Delta S_s$ a variação de entropia do sistema e $\Delta S_v$ a variação da entropia da vizinhança, onde
+	\begin{align*}
+		\Delta S_u & = \Delta S_s + \Delta S_v,
+	\end{align*}
+	podemos dizer que para qualquer fenômeno que ocorre na natureza $\Delta S_u$ será sempre maior ou no mínimo igual a zero ($\Delta S_u\ge 0$).
+\end{frame}
+
+\section{Aplicações}
+
+\subsection{}
+
+\begin{frame}{Entropia e máquinas térmicas}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+%	\begin{multicols}{2}
+		No ciclo de Carnot temos que a variação da entropia $\Delta S$ nos processos adiabáticos é zero, pois Q=0. Sabendo que nos processos isotérmicos temos $\Delta S=\frac{Q}{T}$ e que $\Delta S_{\text{Total}}\ge 0$. Se $\Delta S_{\text{sistema}}=0$ temos
+		\begin{align*}
+			\Delta S_{\text{sistema}} = \Delta S_1 + \Delta S_2 = 0,
+		\end{align*}
+	\end{column}
+		\begin{column}[c]{0.5\textwidth}
+		\begin{align*}
+			\frac{Q_1}{T_1}\alert{-}\frac{Q_2}{T_2} = 0,\\
+			\frac{Q_1}{T_1} = \frac{Q_2}{T_2}.
+		\end{align*}
+		Sabemos que $T_1\ne 0$ e $T_2\ne 0$, portanto a única maneira de termos $Q_2=0$ é se $Q_1=0$ (\alert{uma máquina que não existe!}).
+	\end{column}
+%	\end{multicols}
+\end{columns}
+	\begin{corollary}
+		A segunda lei da termodinâmica impede que todo calor $Q_1$ recebido pela máquina térmica seja inteiramente convertido na forma de trabalho.
+	\end{corollary}
+\end{frame}
+
+\section{Apêndice}
+
+\subsection{}
+
+\begin{frame}{Transformar um número em notação científica}
+	\begin{corollary}
+		\begin{enumerate}[leftmargin=1.75cm]
+			\item[Passo 1:] Escrever o número incluindo a vírgula.
+			\item[Passo 2:] Andar com a vírgula até que reste somente um número diferente de zero no lado esquerdo.
+			\item[Passo 3:] Colocar no expoente da potência de 10 o número de casas decimais que tivemos que "andar" com a vírgula. Se ao andar com a vírgula o valor do número diminuiu, o expoente ficará positivo, se aumentou o expoente ficará negativo.
+		\end{enumerate}
+	\end{corollary}
+	\begin{exampleblock}{Exemplo}
+		\begin{equation*}
+			6\; 590\; 000\; 000\; 000\; 000,0 = \SI{6,59e15}{}		
+		\end{equation*}
+	\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Conversão de unidades em uma dimensão}
+	\begin{figure}
+		\begin{tikzpicture}[scale=0.65,transform shape,font=\Large]
+		
+		\tkzInit[xmin=-2,xmax=17,ymin=-6,ymax=3]
+		%\tkzGrid[color=gray!20]
+		\tkzClip
+		
+		\tikzset{compass style/.append style={->}}
+		
+		\foreach \x in {1,2,...,6}{
+			\tkzDefPoint(\x*3-3,0){\x}
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+			\node at (\x*3-3,2) {$\times 10^{1}$};
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+			\node at (\x*3-3,-2) {$\times 10^{-1}$};}
+		
+		\tkzDefPoints{-1.5/0/p1,1.5/0/p2,4.5/0/p3,7.5/-0.2/p4,10.5/0/p5,13.5/0/p6,16.5/0/p7}
+		
+		\tkzText(p1){m\_}
+		\tkzText(p2){c\_}
+		\tkzText(p3){d\_}
+		\tkzText(p4){\_}
+		\tkzText(p5){da\_}
+		\tkzText(p6){h\_}
+		\tkzText(p7){k\_}
+		
+		%exemplos
+		
+		\tkzText(3,-3.5){$1\;\text{mm}=1\times 10^{(-1)\times\alert{2}}\;\text{dm}\rightarrow 1\times 10^{-2}\;\text{dm}$}
+		\tkzText(3.1,-4.5){$2,5\;\text{kg}=2,5\times 10^{(1)\times\alert{6}}\;\text{mg}\rightarrow2,5\times 10^{6}\;\text{mg}$}
+		\tkzText(2.7,-5.5){$10\;\text{ms}=10\times 10^{(-1)\times\alert{3}}\;\text{s}\rightarrow 10\times 10^{-3}\;\text{s}$}
+		
+		\end{tikzpicture}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Conversão de unidades em duas dimensões}
+	\begin{figure}
+		\begin{tikzpicture}[scale=0.65,transform shape,font=\Large]
+	
+		\tkzInit[xmin=-2,xmax=17,ymin=-6,ymax=3]
+		%\tkzGrid[color=gray!20]
+		\tkzClip
+	
+		\tikzset{compass style/.append style={->}}
+	
+		\foreach \x in {1,2,...,6}{
+			\tkzDefPoint(\x*3-3,0){\x}
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+			\node at (\x*3-3,2) {$\times 10^{2}$};
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+			\node at (\x*3-3,-2) {$\times 10^{-2}$};}
+	
+		\tkzDefPoints{-1.5/0/p1,1.5/0/p2,4.5/0/p3,7.5/0/p4,10.5/0/p5,13.5/0/p6,16.5/0/p7}
+	
+		\tkzText(p1){$\text{m}\_^2$}
+		\tkzText(p2){$\text{c}\_^2$}
+		\tkzText(p3){$\text{d}\_^2$}
+		\tkzText(p4){$\_^2$}
+		\tkzText(p5){$\text{da}\_^2$}
+		\tkzText(p6){$\text{h}\_^2$}
+		\tkzText(p7){$\text{k}\_^2$}
+	
+		%exemplos
+	
+		\tkzText(3.3,-3.5){$1\;\text{mm}^2=1\times 10^{(-2)\times\alert{2}}\;\text{dm}^2\rightarrow 1\times 10^{-4}\;\text{dm}^2$}
+		\tkzText(3.6,-4.5){$2,5\;\text{m}^2=2,5\times 10^{(2)\times\alert{3}}\;\text{mm}^2\rightarrow2,5\times 10^{6}\;\text{mm}^2$}
+		\tkzText(3,-5.5){$10\;\text{ms}^2=10\times 10^{(-2)\times\alert{3}}\;\text{s}^2\rightarrow 10\times 10^{-6}\;\text{s}^2$}
+	
+		\end{tikzpicture}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Conversão de unidades em três dimensões}
+	\begin{figure}
+		\begin{tikzpicture}[scale=0.65,transform shape,font=\Large]
+	
+		\tkzInit[xmin=-2,xmax=17,ymin=-6,ymax=3]
+		%\tkzGrid[color=gray!20]
+		\tkzClip
+	
+		\tikzset{compass style/.append style={->}}
+	
+		\foreach \x in {1,2,...,6}{
+			\tkzDefPoint(\x*3-3,0){\x}
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+			\node at (\x*3-3,2) {$\times 10^{3}$};
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+			\node at (\x*3-3,-2) {$\times 10^{-3}$};}
+	
+		\tkzDefPoints{-1.5/0/p1,1.5/0/p2,4.5/0/p3,7.5/0/p4,10.5/0/p5,13.5/0/p6,16.5/0/p7}
+	
+		\tkzText(p1){$\text{m}\_^3$}
+		\tkzText(p2){$\text{c}\_^3$}
+		\tkzText(p3){$\text{d}\_^3$}
+		\tkzText(p4){$\_^3$}
+		\tkzText(p5){$\text{da}\_^3$}
+		\tkzText(p6){$\text{h}\_^3$}
+		\tkzText(p7){$\text{k}\_^3$}
+	
+		%exemplos
+	
+		\tkzText(3.3,-3.5){$1\;\text{mm}^3=1\times 10^{(-3)\times\alert{2}}\;\text{dm}^3\rightarrow 1\times 10^{-6}\;\text{dm}^3$}
+		\tkzText(3.6,-4.5){$2,5\;\text{m}^3=2,5\times 10^{(3)\times\alert{3}}\;\text{mm}^3\rightarrow2,5\times 10^{9}\;\text{mm}^3$}
+		\tkzText(3.5,-5.5){$2,5\;\text{km}^3=2,5\times 10^{(3)\times\alert{6}}\;\text{mm}^3\rightarrow2,5\times 10^{18}\;\text{mm}^3$}
+
+		\end{tikzpicture}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Alfabeto grego}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{table}
+				\begin{tabular}[c]{ccc}
+					Alfa & $A$ & $\alpha$\\
+					Beta & $B$ & $\beta$\\
+					Gama & $\Gamma$ & $\gamma$\\
+					Delta & $\Delta$ & $\delta$\\
+					Epsílon & $E$ & $\epsilon$,$\varepsilon$\\
+					Zeta & $Z$ & $\zeta$\\
+					Eta & $H$ & $\eta$\\
+					Teta & $\Theta$ & $\theta$\\
+					Iota & $I$ & $\iota$\\
+					Capa & $K$ & $\kappa$\\
+					Lambda & $\Lambda$ & $\lambda$\\
+					Mi & $M$ & $\mu$
+				\end{tabular}
+			\end{table}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{table}
+				\begin{tabular}[c]{ccc}
+					Ni & $N$ & $\nu$\\
+					Csi & $\Xi$ & $\xi$\\
+					ômicron & $O$ & $o$\\
+					Pi & $\Pi$ & $\pi$\\
+					Rô & $P$ & $\rho$\\
+					Sigma & $\Sigma$ & $\sigma$\\
+					Tau & $T$ & $\tau$\\
+					Ípsilon & $\Upsilon$ & $\upsilon$\\
+					Fi & $\Phi$ & $\phi$,$\varphi$\\
+					Qui & $X$ & $\chi$\\
+					Psi & $\Psi$ & $\psi$\\
+					Ômega & $\Omega$ & $\omega$
+				\end{tabular}
+			\end{table}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Referências e observações\footnote{Este material está sujeito a modificações. Recomenda-se acompanhamento permanente.}}
+	\bibliographystyle{jurabib}
+	\begin{thebibliography}{9}
+		\bibitem{alvarenga}A. Máximo, B. Alvarenga, C. Guimarães, Física. Contexto e aplicações, v.2, 2.ed., São Paulo, Scipione (2016)
+	\end{thebibliography}
+
+\vspace*{1cm}
+\begin{center}
+	Esta apresentação está disponível para download no endereço\\
+	\href{https://flavianowilliams.github.io/education}{\textcolor{blue}{https://flavianowilliams.github.io/education}}
+\end{center}
+	
+\end{frame}
+
+\end{document}

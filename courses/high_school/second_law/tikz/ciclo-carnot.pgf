@@ -1,0 +1,64 @@
+﻿\begin{tikzpicture}[scale=0.6, auto, transform shape, samples=50]
+
+	%valores iniciais
+	\def\shift{1}
+
+	\def\gamma{4.5}
+
+    \def\ta{3}
+	\def\va{1}
+	\def\pa{\ta/\va}
+	\def\vb{3}
+	\def\pb{\ta/\vb}
+
+    \def\tb{\ta*(\vb/\vc)^(\gamma-1)}
+	\def\vc{4}
+	\def\pc{\tb/\vc}
+	\def\vd{\vc*\va/\vb}
+	\def\pd{\tb/\vd}
+
+	%eixos
+	\draw[line width=1.0pt,->] (0,0) -- (5,0) node[right] {V};
+	\draw[line width=1.0pt,->] (0,0) -- (0,5) node[above] {P};
+
+	%curva
+	\pgfmathdeclarefunction{ff}{2}{\pgfmathparse{\shift+#2/#1}}
+	\pgfmathdeclarefunction{ff2}{3}{\pgfmathparse{\shift+#3*(#2/#1)^\gamma}}
+
+	%area
+%	\fill[shade] plot [domain=\vb:\va] (\x,{ff(\x,\tb)}) -- plot ([domain=\va:\vc] (\x,{ff(\x,\ta)}));
+
+	%curva
+	\draw[line width=1.5pt,domain=\va:\vb,variable=\x,color=red,->] plot (\x,{ff(\x,\ta)});
+	\draw[line width=1.5pt,domain=\vb:\vc,variable=\x,color=red,->] plot (\x,{ff2(\x,\vb,\pb)});
+	\draw[line width=1.5pt,domain=\vc:\vd,variable=\x,color=red,->] plot (\x,{ff(\x,\tb)});
+	\draw[line width=1.5pt,domain=\vd:\va,variable=\x,color=red,->] plot (\x,{ff2(\x,\va,\pa)});
+
+	%estados termodinamicos
+	\node (e1) at (\va,{ff(\va,\ta)}) {};
+	\node (e2) at (\vb,{ff(\vb,\ta)}) {};
+	\node (e3) at (\vc,{ff(\vc,\tb)}) {};
+	\node (e4) at (\vd,{ff(\vd,\tb)}) {};
+
+	\filldraw (e1) circle (1.5pt) node[above left] {a};
+	\filldraw (e2) circle (1.5pt) node[above] {b};
+	\filldraw (e3) circle (1.5pt) node[above] {c};
+	\filldraw (e4) circle (1.5pt) node[left] {d};
+
+	%coordenadas
+%	\node[below] (va) at (\va,0) {$V_{i}$};
+%	\draw[dashed] (\va,0) -- (e1);
+%	\node[below] (vb) at (\vb,0) {$V_{f}$};
+%	\draw[dashed] (\vb,0) -- (e2);
+
+	%texto
+	\node (tau) at ($0.25*(e1)+0.25*(e2)+0.25*(e3)+0.25*(e4)-(0,0.5)$) {$\tau$};
+
+	%calor entrando e saindo
+	\node [above] (q1) at ($(tau)+(0,1)$) {$Q_1$};
+	\draw[->,line width=2pt] (q1)--($(q1)-(0,1)$);
+
+	\node [above] (q2) at ($(tau)+(0,-1.5)$) {$Q_2$};
+	\draw[->,line width=2pt] ($(q2)-(0,-1)$)--(q2);
+
+\end{tikzpicture}

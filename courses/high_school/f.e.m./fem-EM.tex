@@ -139,7 +139,7 @@
 			\end{itemize}
 			Portanto, pela Lei da conservação da energia, a energia fornecida a cada  segundo para girar o motor e aquecer o resistor deve ser equivalente a potência fornecida pela bateria.
 			\begin{align*}
-				\underbracket{\varepsilon i}_{(Bateria)} & = \underbracket{\varepsilon'i+r'i^2}_{(Motor)}+\underbracket{Ri^2}_{(Resistor)},\\
+				\underbracket{\varepsilon i-ri^2}_{(Bateria)} & = \underbracket{\varepsilon'i-r'i^2}_{(Motor)}+\underbracket{Ri^2}_{(Resistor)},\\
 			\end{align*}
 		\end{column}
 		\begin{column}[c]{0.3\textwidth}
@@ -161,8 +161,8 @@
 		\begin{column}{0.7\textwidth}
 			Suponha uma bateria como na figura ao lado com uma resistência interna r. Aplicando a Lei de Kihrchoff temos
 			\begin{align*}
-				\varepsilon i & = V_{AB}i+ri^2,\\
-				V_{AB}i & = \varepsilon i-ri^2,\\				
+				\varepsilon i-ri^2& = V_{AB}i,\\
+				V_{AB}\bcancel{i} & = \varepsilon \bcancel{i}-ri^{\bcancel{2}},\\				
 				\Aboxed{V_{AB} & = \varepsilon \alert{- ri}.}
 			\end{align*}
 			Onde $V_{AB}i$ é a potência real da bateria e $V_{AB}$ a sua ddp.

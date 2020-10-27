@@ -106,8 +106,22 @@
 		\begin{column}{0.4\textwidth}
 			\begin{figure}
 				\centering
-				\input{tikz/resistencia-interna.pgf}
-				\caption*{Diagrama de uma bateria contendo uma resistência interna r.}
+				%\input{tikz/resistencia-interna.pgf}
+				\begin{circuitikz}[scale=0.8, transform shape]
+					
+					%	\useasboundingbox (-2.5,-1) rectangle (6.5,5);
+					
+					\def\lx{8}
+					\def\ly{1.5}
+					
+					\draw (0,-1) to (0,0);
+					\draw(0,\ly) to [/tikz/circuitikz/bipoles/length=15pt,R,l_=$r$] (0,0);
+					\draw (0,\ly+1) to [american, battery, v_>=$\varepsilon$] (0,\ly);
+					\draw[dashed] (-1,0) rectangle (1,\ly+1);
+					\draw (0,\ly+1) to (0,\ly+2);
+					
+				\end{circuitikz}
+				\caption*{\footnotesize Diagrama de uma bateria contendo uma resistência interna r.}
 			\end{figure}
 		\end{column}
 	\end{columns}	
@@ -115,23 +129,25 @@
 
 \begin{frame}{A Lei de Kirchhoff}
 	\begin{columns}
-		\begin{column}{0.7\textwidth}
+		\begin{column}[c]{0.7\textwidth}
    			\footnotesize
 			Podemos resumir num circuito ao lado que a cada segundo
 			\begin{itemize}
-				\item Na bateria, a energia química se transforma em energia elétrica;
-				\item No resistor, a energia elétrica se transforma em energia térmica;
-				\item No motor, a energia elétrica se transforma em energia mecânica.
+				\item na bateria, a energia química se transforma em energia elétrica;
+				\item no resistor, a energia elétrica se transforma em energia térmica;
+				\item no motor, a energia elétrica se transforma em energia mecânica.
 			\end{itemize}
-			Portanto, pela Lei da conservação da energia, a potência necessária para girar o motor e aquecer o resistor deve ser equivalente a potência fornecida pela bateria.
+			Portanto, pela Lei da conservação da energia, a energia fornecida a cada  segundo para girar o motor e aquecer o resistor deve ser equivalente a potência fornecida pela bateria.
 			\begin{align*}
 				\underbracket{\varepsilon i}_{(Bateria)} & = \underbracket{\varepsilon'i+r'i^2}_{(Motor)}+\underbracket{Ri^2}_{(Resistor)},\\
 			\end{align*}
 		\end{column}
-		\begin{column}{0.3\textwidth}
+		\begin{column}[c]{0.3\textwidth}
+			\vspace*{-0.4cm}
 			\begin{figure}
 				\centering
-				\includegraphics[scale=0.45]{figuras/figura-3.png}
+				\includegraphics[scale=0.35]{figuras/figura-3.png}
+				\caption*{\footnotesize Circuito contendo a bateria, motor (contendo resistência interna r') e resistor.}
 			\end{figure}
 		\end{column}
 	\end{columns}
@@ -140,7 +156,7 @@
 	\end{block}
 \end{frame}
 
-\begin{frame}{Diferença de potencial nos terminais de um gerador}
+\begin{frame}{Diferença de potencial nos terminais de uma bateria}
 	\begin{columns}
 		\begin{column}{0.7\textwidth}
 			Suponha uma bateria como na figura ao lado com uma resistência interna r. Aplicando a Lei de Kihrchoff temos
@@ -154,7 +170,41 @@
 		\begin{column}{0.3\textwidth}
 			\begin{figure}
 				\centering
-				\input{tikz/circuito-resistencia-interna.pgf}
+				%\input{tikz/circuito-resistencia-interna.pgf}
+				\begin{circuitikz}[scale=0.4, transform shape]
+					
+					%	\useasboundingbox (-2.5,-1) rectangle (6.5,5);
+					%	\draw[help lines, red!50] (0,0) grid (\lx,\ly);
+					
+					\def\lx{5}
+					\def\ly{1.5}
+					
+					\draw (0,-1) to (0,0);
+					\draw(0,\ly) to [/tikz/circuitikz/bipoles/length=15pt,R,l_=$r$] (0,0);
+					\draw (0,\ly+1) to [american, battery, v_>=$\varepsilon$] (0,\ly);
+					\draw[dashed] (-1,0) rectangle (1,\ly+1);
+					\draw (0,\ly+1) to (0,\ly+2);
+					
+					\draw (0,\ly+2) to (\lx,\ly+2);
+					\draw (\lx,\ly+2) to (\lx,\ly+0.5);
+					\draw (\lx,\ly-0.5) to (\lx,-1);
+					\draw (\lx,-1) to (0,-1);
+					
+					%motor eletrico
+					\node (t1) at (\lx,\ly) [text justified] {Motor eletrico};
+					\draw [fill=orange,opacity=0.25] (\lx-1.25,\ly+0.5) rectangle (\lx+1.25,\ly-0.5);
+					
+					\draw[line width=1pt, color=red,->] (0.5*\lx,\ly+2.25) -- (0.5*\lx+0.5,\ly+2.25) node[above,midway] {$i(t)$};
+					\draw[line width=1pt, color=red,->] (\lx+0.25,0.25*\ly+0.5) -- (\lx+0.25,0.25*\ly) node[right,midway] {$i(t)$};
+					\draw[line width=1pt, color=red,->] (0.5*\lx+0.5,-1-0.25) -- (0.5*\lx,-1-0.25) node[below,midway] {$i(t)$};
+					
+					\node at (\lx,\ly+2)[above] {A};
+					\node at (\lx,-1)[below] {B};
+					\node at (0,\ly+2)[above] {A};
+					\node at (0,-1)[below] {B};
+					
+				\end{circuitikz}
+				\caption*{\footnotesize Circuito elétrico contendo a bateria e um motor elétrico.}
 			\end{figure}
 		\end{column}
 	\end{columns}

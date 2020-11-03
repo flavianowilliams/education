@@ -284,45 +284,45 @@
 		\begin{column}{0.35\textwidth}
 			\begin{figure}
 				\centering
-				\begin{tikzpicture}[scale=0.6, auto, transform shape, samples=50]
+				\begin{tikzpicture}[scale=0.45, transform shape]
 				
-				%eixos
-				\draw[line width=1.0pt,->] (0,0) -- (5,0) node[right] {V};
-				\draw[line width=1.0pt,->] (0,0) -- (0,5) node[above] {P};
+				\useasboundingbox (5,9) rectangle (-2,-1);
 				
-				%curva
-				\pgfmathdeclarefunction{ff}{1}{\pgfmathparse{5-4/#1}}
-				\pgfmathdeclarefunction{ff2}{1}{\pgfmathparse{4/(5-#1)}}
+				%parametros
+				\def\p{8}
 				
-				%area
-				\fill[shade] plot [domain=4:1] (\x,{ff2(\x)}) -- plot [domain=1:4] (\x,{ff(\x)});
+				%estilos
+				\tikzstyle{blocka} = [draw, shape=rectangle,rounded corners=0.5 em,align=left,minimum width=2.5cm,minimum height=1.5cm];
+				\tikzstyle{blockb} = [draw, shape=rectangle,rounded corners=0.5 em,align=left,minimum width=2.5cm,minimum height=1.5cm];
+				\tikzstyle{blockc} = [draw, shape=rectangle,rounded corners=0.5 em,align=left,minimum width=2.5cm,minimum height=1.5cm];
+				\tikzstyle{entitya} = [top color=white, bottom color=red!50, draw=red!50!black!100, drop shadow];
+				\tikzstyle{entityb} = [top color=white, bottom color=gray!30, draw=gray!50!black!100, drop shadow];
+				\tikzstyle{entityc} = [top color=white, bottom color=blue!30, draw=blue!50!black!100, drop shadow];
 				
-				%curva
-				\draw[line width=1.5pt,domain=1:4,variable=\x,color=red,->] plot (\x,{ff(\x)});
-				\draw[line width=1.5pt,domain=4:1,variable=\x,color=red,->] plot (\x,{ff2(\x)});
+				\draw[line width=1pt] (0,0.75) rectangle (-1,{0.5*\p+0.75});
+				\draw[line width=1pt] (1,{0.5*\p+0.75}) rectangle (-1,{\p-0.75});
+				\draw[line width=1pt] (2.25,{0.5*\p-0.5}) rectangle (1.25,{0.5*\p+0.5});
+				\draw[line width=1pt] (1,{0.5*\p+0.75}) arc (180:270:0.25);
+				\draw[line width=1pt] (-0,{0.5*\p+0.75}) arc (180:270:1.25);
 				
-				%estados termodinamicos
-				\node (e1) at (1,{ff(1)}) {};
-				\node (e2) at (4,{ff(4)}) {};
+				%box
+				\node[line width=1pt,blocka,entitya] (t1) at (0,\p) {$T_{1}$};
+				\node[line width=1pt,opacity=0.85,blockb,entityb] (m) at (0,{0.5*\p}) {$\textrm{Motor} \atop \textrm{termico}$};
+				\node[line width=1pt,blocka,entityc] (t2) at (0,0) {$T_{2}$};
 				
-				\filldraw (e1) circle (1.5pt) node[above left] {i};
-				\filldraw (e2) circle (1.5pt) node[above] {f};
+				%textos
+				\node (na) at (0,{0.5*\p+2.5}) {$Q_{1}$};
+				\node (nb) at (-0.5,0) {$Q_{2}$};
+				\node (nc) at (3,{0.5*\p}) {$W$};
 				
-				%coordenadas
-				\node[below] (vf) at (1,0) {$V_{i}$};
-				\draw[dashed] (1,0) -- (e1);
-				\node[below] (vi) at (4,0) {$V_{f}$};
-				\draw[dashed] (4,0) -- (e2);
+				\draw[line width=1pt,color=red,->] (0,{0.5*\p+3.5}) -- (na);
+				\draw[line width=1pt,color=red,->] (-0.5,1) -- (nb);
+				\draw[line width=1pt,color=red,->] (2,{0.5*\p}) -- (nc);
 				
 				%texto
-				\node  at ($0.5*(e2)+0.5*(e1)$) {$\tau$};
-				
-				%calor entrando e saindo
-				\node [above] (q1) at (2.5,5) {$Q_1$};
-				\draw[->,line width=2pt] (q1)--($(q1)+(0,-2.5)$);
-				
-				\node [above] (q2) at (2.5,0) {$Q_2$};
-				\draw[->,line width=2pt] ($(q2)+(0,1.75)$)--(q2);
+				\node at (1.5,2) {$Q_{2}<Q_{1}$};
+				\node [text width=3.5cm] (t1) at (3,{0.5*\p+2}) {Trabalho necessario para remover calor da fonte fria};
+				\draw [red,->,line width=1.5pt] (t1) -- (nc);
 				
 				\end{tikzpicture}
 				%\input{tikz/processo-ciclico-4.pgf}
@@ -477,6 +477,70 @@
 			\end{figure}
 		\end{column}
 	\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Como funciona um refrigerador?}
+\begin{columns}
+	\begin{column}{0.65\textwidth}
+		O objetivo de um refrigerador é remover calor de uma fonte fria e transferí-la para uma fonte mais quente. Nesse processo inevitavelmente ele realiza trabalho. Portanto, um refrigerador seria uma máquina térmica funcionando no sentido contrário. O rendimento é medido pela capacidade de transferir calor $Q_2$ em relação ao trabalho $\tau$ que ele realiza,
+		\begin{NodesList}[margin=3cm]
+			\begin{align*}
+				R & = \frac{Q_2}{\tau},\AddNode\\
+				R & = \frac{Q_2}{Q_1-Q_2}.\AddNode
+			\end{align*}
+			\LinkNodes{\tiny$(\tau=Q_1-Q_2)$}
+		\end{NodesList}
+	\end{column}
+	\begin{column}{0.35\textwidth}
+		\begin{figure}
+			\centering
+			\vspace*{-0.25cm}
+			\begin{tikzpicture}[scale=0.45, transform shape]
+			
+			\useasboundingbox (5,9) rectangle (-2,-1);
+			
+			%parametros
+			\def\p{8}
+			
+			%estilos
+			\tikzstyle{blocka} = [draw, shape=rectangle,rounded corners=0.5 em,align=left,minimum width=2.5cm,minimum height=1.5cm];
+			\tikzstyle{blockb} = [draw, shape=rectangle,rounded corners=0.5 em,align=left,minimum width=2.5cm,minimum height=1.5cm];
+			\tikzstyle{blockc} = [draw, shape=rectangle,rounded corners=0.5 em,align=left,minimum width=2.5cm,minimum height=1.5cm];
+			\tikzstyle{entitya} = [top color=white, bottom color=red!50, draw=red!50!black!100, drop shadow];
+			\tikzstyle{entityb} = [top color=white, bottom color=gray!30, draw=gray!50!black!100, drop shadow];
+			\tikzstyle{entityc} = [top color=white, bottom color=blue!30, draw=blue!50!black!100, drop shadow];
+			
+			\draw[line width=1pt] (0,0.75) rectangle (-1,{0.5*\p+0.75});
+			\draw[line width=1pt] (1,{0.5*\p+0.75}) rectangle (-1,{\p-0.75});
+			\draw[line width=1pt] (2.25,{0.5*\p-0.5}) rectangle (1.25,{0.5*\p+0.5});
+			\draw[line width=1pt] (1,{0.5*\p+0.75}) arc (180:270:0.25);
+			\draw[line width=1pt] (-0,{0.5*\p+0.75}) arc (180:270:1.25);
+			
+			%box
+			\node[line width=1pt,blocka,entitya] (t1) at (0,\p) {$T_{1}$};
+			\node[line width=1pt,opacity=0.85,blockb,entityb] (m) at (0,{0.5*\p}) {$\textrm{Refrigerador}$};
+			\node[line width=1pt,blocka,entityc] (t2) at (0,0) {$T_{2}$};
+			
+			%textos
+			\node (na) at (0,{0.5*\p+2.5}) {$Q_{1}$};
+			\node (nb) at (-0.5,0) {$Q_{2}$};
+			\node (nc) at (3,{0.5*\p}) {$W$};
+			
+			\draw[line width=1pt,color=red,->] (na) -- (0,{0.5*\p+3.5});
+			\draw[line width=1pt,color=red,->] (nb) -- (-0.5,1);
+			\draw[line width=1pt,color=red,->] (nc) -- (2,{0.5*\p});
+			
+			%texto
+			\node at (1.5,2) {$Q_{2}<Q_{1}$};
+			\node [text width=3.5cm] (t1) at (3,{0.5*\p+2}) {Trabalho produzido pelo motor termico};
+			\draw [red,->,line width=1.5pt] (t1) -- (nc);
+			
+			\end{tikzpicture}
+			%\input{tikz/processo-ciclico-4.pgf}
+			\caption*{\footnotesize Representação de calor $Q_2$ saindo de uma fonte fria e calor $Q_1$ transferida para a fonte quente.}
+		\end{figure}
+	\end{column}
+\end{columns}
 \end{frame}
 
 \section{Entropia}

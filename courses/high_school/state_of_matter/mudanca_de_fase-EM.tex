@@ -1,0 +1,532 @@
+% Aula de termodinâmica para o curso de Física II do ensino médio
+%
+\documentclass[brazil,aspectratio=169]{beamer}
+%
+%carregando preâmbulo
+\input{../../contrib/preamble}
+
+%pacotes adicionais
+
+\usepackage{animate}
+
+%Título
+
+\title[Termodinâmica]{Mudança de fase}
+
+% The main document
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Sumário}
+  \tableofcontents
+\end{frame}
+
+\section{Estados da matéria}
+
+\subsection{}
+
+\begin{frame}{Estado sólido}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\begin{itemize}
+				\item Os átomos estão ligados muito próximos um do outro;
+				\item Existe uma ligação eletromagnética relativamente forte entre os átomos;
+				\item Os átomos vibram em torno de uma posição média.
+				\item Os átomos se organizam em uma estrutura bem definida chamada \alert{rede cristalina}, que se repete ao longo do sólido (\alert{baixa entropia}).
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}
+			 \animategraphics[scale=0.19,controls,loop]{15}{videos/video-3/anim-}{1}{180}
+%			   \animategraphics[scale=0.19,controls,loop]{15}{videos/video-3/anim-}{1}{1}
+				  \caption*{\footnotesize Rede cristalina em duas dimensões}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Estrutura cristalina e alotropia}
+	\begin{corollary}
+		A mesma substância pode se apresentar em estruturas cristalinas diferentes.
+	\end{corollary}
+	\begin{figure}
+		\begin{subfigure}[b]{0.3\textwidth}
+			\centering
+			\includegraphics[scale=0.32]{figuras/grafeno.png}
+			\caption*{\footnotesize grafeno}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.3\textwidth}
+			\centering
+			\includegraphics[scale=0.3]{figuras/diamante.jpg}
+			\caption*{\footnotesize Diamante}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.3\textwidth}
+			\centering
+			\includegraphics[scale=0.1]{figuras/nanotubo.png}
+			\caption*{\footnotesize Nanotubo de carbono}
+		\end{subfigure}
+	\end{figure}
+	\begin{block}{Sólidos amorfos}
+		Estado sólido onde os átomos não estão ordenados numa rede cristalina.
+	\end{block}
+\end{frame}
+
+\begin{frame}{Estado líquido}
+	\begin{columns}
+		\begin{column}[c]{0.6\textwidth}
+			\begin{itemize}
+				\item Os átomos (ou moléculas) se encontram mais afastados um dos outros que no estado sólido;
+				\item O aumento da distância entre os átomos enfraquece a força eletrostática;
+				\item Os átomos possuem mais liberdade para se movimentarem.
+				\item Os átomos não estão distribuídos ordenadamente (\alert{maior entropia}).
+			\end{itemize}
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}
+				\animategraphics[scale=0.19,controls,loop]{7}{videos/video-2/anim-}{1}{190}
+%				\animategraphics[scale=0.19,controls,loop]{7}{videos/video-2/anim-}{1}{1}
+				  \caption*{\footnotesize Água líquida a 298 K e 1 atm.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Estado gasoso}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\begin{itemize}
+				\item A separação entre as moléculas é muito maior que no estado líquido;
+				\item A força de ligação entre as moléculas é praticamente nula;
+				\item As moléculas estão livres para se moverem em todas as direções. Por isso, dizemos que o gás ocupa todo o recipiente que o contém (\alert{entropia elevada}).
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}
+				\animategraphics[scale=0.19,controls,loop]{15}{videos/video-1/anim-}{1}{180}
+%				\animategraphics[scale=0.19,controls,loop]{15}{videos/video-1/anim-}{1}{1}
+				  \caption*{\footnotesize Gás de argônio a 298 K e 1000 atm.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Plasma}
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+			\begin{corollary}
+				Um gás superaquecido a temperaturas elevadas pode romper as ligações entre os elétrons e os íons, formando um \alert{gás ionizado}. Portanto, dizemos que o plasma é o estado no qual as partículas que constituem o material se apresentam em forma de íons.
+			\end{corollary}
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\begin{figure}
+				\includegraphics[scale=0.4]{figuras/plasma.png}
+				  \caption*{\footnotesize Diferença entre gás e plasma \cite{fig:plasma}.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\section{Mudanças de estado}
+
+\subsection{}
+
+\begin{frame}{Mudanças de estado}
+	\begin{corollary}
+		Quando um objeto recebe calor, o aumento da temperatura causa um aumento na agitação dos átomos, o que modifica a sua organização. Isso faz com que ele \alert{mude o seu estado físico} para qualquer um dos outros quatro estados da matéria.
+	\end{corollary}
+	\begin{columns}
+		\begin{column}[c]{0.3\textwidth}
+			\begin{corollary}
+				Cada estado da matéria possui características bem definidas que a diferencia das demais.
+			\end{corollary}
+		\end{column}
+		\begin{column}[c]{0.7\textwidth}
+	\begin{figure}
+	\centering
+	\includegraphics[scale=0.4]{figuras/mudanca-fase.png}
+	\caption*{\footnotesize Estados da matéria e transições que pode ocorrer com a substância.}
+\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Curva de aquecimento}
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+			\begin{enumerate}
+				\item[\ding{51}] Durante o aquecimento do gelo, uma quantidade de calor  $\alert{Q=mc\Delta T}$ é adicionado aumentando a sua temperatura.
+				\item[\ding{51}] Durante a transição de fase, a temperatura permanece constante e uma quantidade de calor $\alert{Q=mL}$ é necessária para romper as ligações químicas da água e fazer a transição de fase. L é chamado \alert{calor latente da substância} ou calor de fusão/vaporização.
+			\end{enumerate}
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\vspace*{-0.5cm}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.43,transform shape,font=\Large]
+				
+				\def\m{50}
+				\def\ca{1}
+				\def\cb{2.5}
+				\def\cg{0.5}
+				\def\Lf{40}
+				\def\Lv{70}
+				\def\Lg{70}
+				
+				\pgfmathsetmacro{\qg}{\m*\Lf};
+				\pgfmathsetmacro{\qi}{\m*\Lf};
+				\pgfmathsetmacro{\qf}{\qi+100*\m*\ca};
+				\pgfmathsetmacro{\qx}{\qf+\m*\Lv};
+				\pgfmathsetmacro{\qz}{\qx+3000};
+				
+				\tkzInit[xmin=-1000,xmax=14000,xstep=1000,ymin=-45,ymax=150,ystep=20]
+				%\tkzGrid[color=gray!50]
+				\tkzClip[space=1]
+				
+				%		\tkzAxeX
+				\tkzDrawX[right,label={Q},noticks]
+				\tkzAxeY[above,label={T ($^\circ C$)}]
+				
+				\tkzFct[domain=0:500,color=red,line width=1.5pt]{(\x)/(\m*\cg)-20}
+				\tkzFct[domain=500:\qi,color=red,line width=1.5pt]{0}
+				\tkzFct[domain=\qi:\qf,color=red,line width=1.5pt]{(\x-\qi)/(\m*\ca)}
+				\tkzFct[domain=\qf:\qx,color=red,line width=1.5pt]{100}
+				\tkzFct[->,domain=\qx:\qz,color=red,line width=1.5pt]{100+(\x-\qx)/(\m*\cb)}
+				
+				\tkzDefPointByFct[ref=A,with=c](\qf)
+				\tkzPointShowCoord(A)
+				
+				\tkzDefPointByFct[ref=B,with=c](4000)
+				\tkzDefPointByFct[ref=C,with=a](250)
+				\tkzDefPointByFct[ref=D,with=e](12000)
+				
+				\tkzDefPoints{1200/0/t1,8700/100/t2,2000/60/t3,3000/-40/t4,13000/80/t5}
+				
+				\tkzText[below](t1){\large Fusão}
+				\tkzText[below](t2){\large Vaporização}
+				
+				\tkzText[above,color=blue](t1){$Q=mL_F$}
+				
+				\draw[->,line width=1pt] (t3) -- (B);
+				\tkzText[above,color=blue](t2){$Q=mL_V$}
+				\tkzText[text centered,opacity=100,fill=gray!20](t3){\textcolor{blue}{$Q=mc_l\Delta T$}}
+				
+				\draw[->,line width=1pt] (t4) -- (C);
+				\tkzText[text centered,opacity=100,fill=gray!20](t4){\textcolor{blue}{$Q=mc_s\Delta T$}}
+				
+				\draw[->,line width=1pt] (t5) -- (D);
+				\tkzText[text centered,opacity=100,fill=gray!20](t5){\textcolor{blue}{$Q=mc_g\Delta T$}}
+				
+				\end{tikzpicture}
+				\vspace*{-0.5cm}
+				%\includegraphics[scale=0.4]{figuras/curva-aquecimento.png}
+				  \caption*{\footnotesize Curva de aquecimento da água.}
+			\end{figure}
+		\end{column}
+	\end{columns}	
+\end{frame}
+
+\begin{frame}{Curva de resfriamento}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\begin{itemize}
+				\item Durante o resfriamento da água, uma quantidade de calor  $\alert{Q=mc\Delta T}$ é removida, diminuindo a sua temperatura.
+				\item Durante a transição de fase, a temperatura permanece constante e uma quantidade de calor $\alert{Q=mL}$ deve ser removida, de modo que a substância possa refazer as ligações químicas e retornar para o seu estado ordenado.
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}
+				\includegraphics[scale=0.4]{figuras/curva-resfriamento.png}
+				  \caption*{\footnotesize \href{https://www.youtube.com/watch?v=ph8xusY3GTM}{\textcolor{blue}{Curva de resfriamento da água.}}}
+			\end{figure}
+		\end{column}
+	\end{columns}
+	\begin{corollary}
+		Somente válido para substâncias puras.
+	\end{corollary}
+\end{frame}
+
+\section{Diagrama de fase}
+
+\begin{frame}{Influência da pressão nas mudanças de estados}
+	\begin{corollary}
+		Com o aumento da pressão ocorre o aumento da temperatura de ebulição da água.
+	\end{corollary}
+	\begin{figure}
+		\begin{subfigure}[b]{0.45\textwidth}
+			\centering
+			\includegraphics[scale=0.3]{figuras/pressaoxtemp.png}
+			\caption*{\footnotesize Diagrama de vaporização da água.}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.45\textwidth}
+			\centering
+			\includegraphics[scale=0.3]{figuras/ebulicao-temp.png}
+			\caption*{\footnotesize Ebulição a baixas temperaturas.}
+		\end{subfigure}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Diagrama de fases}
+	\begin{columns}
+		\begin{column}{0.35\textwidth}
+			\begin{itemize}
+				\item A->B: Fusão.
+				\item B->A: Solidificação.
+				\item E->D: Sublimação.
+				\item D->E: Sublimação.
+				\item B->D: Vaporização.
+				\item D->B: Condensação.
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.65\textwidth}
+			\begin{figure}
+				\includegraphics[scale=0.45]{figuras/diagrama-fase.png}
+				\caption*{\footnotesize Diagrama de fases de uma substância.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Diagrama de fases da água}
+	\begin{corollary}
+		A água é uma das poucas substâncias na natureza cuja densidade no estado sólido é menor que no estado líquido. Além disso, \alert{a temperatura de fusão diminui com o aumento da pressão}, ao contrário do que ocorre com outras substâncias.
+	\end{corollary}
+	\begin{figure}
+		\begin{subfigure}[b]{0.45\textwidth}
+			\centering
+			\includegraphics[scale=0.2]{figuras/pontes-hidrogenio.png}
+			\caption*{\footnotesize Água no estado sólido.}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.45\textwidth}
+			\centering
+			\includegraphics[scale=0.25]{figuras/diagrama-agua.png}
+			\caption*{\footnotesize Diagrama de fases da água.}
+		\end{subfigure}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Algumas considerações sobre o diagrama de fases}
+	\begin{columns}
+		\begin{column}{0.7\textwidth}
+			\begin{itemize}
+				\item \alert{Ponto Triplo}: Estado onde os três estados físicos da substância encontram-se simultaneamente em equilíbrio (o ponto triplo da água pura é aproximadamente 0,006 atm e 273 K).
+				\item \alert{Temperatura crítica}: Temperatura mínima onde o gás não consegue se liquefazer, independente da pressão aplicada sobre ele.
+				\item \alert{Pressão de vapor}: Pressão mínima aplicada sobre o gás real (diferente de um gás ideal), onde a partir desse valor ele começa a se condensar.
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.3\textwidth}
+			\begin{figure}
+				\includegraphics[scale=0.25]{figuras/diagrama-agua.png}
+				\caption*{\footnotesize Diagrama de fases da água.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\section{Aplicações}
+
+\begin{frame}{Algumas aplicações tecnológicas}
+	\begin{figure}
+		\begin{subfigure}[b]{0.45\textwidth}
+			\centering
+			\includegraphics[scale=0.2]{figuras/cristal-liquido.png}
+			\caption*{\footnotesize Cristal líquido.}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.45\textwidth}
+			\centering
+			\includegraphics[scale=0.2]{figuras/tocha-plasma.jpg}
+			\caption*{\footnotesize Tocha de plasma.}
+		\end{subfigure}
+	\end{figure}
+\end{frame}
+
+\section{Apêndice}
+
+\subsection{}
+
+\begin{frame}{Transformar um número em notação científica}
+	\begin{corollary}
+		\begin{enumerate}[leftmargin=1.75cm]
+			\item[Passo 1:] Escrever o número incluindo a vírgula.
+			\item[Passo 2:] Andar com a vírgula até que reste somente um número diferente de zero no lado esquerdo.
+			\item[Passo 3:] Colocar no expoente da potência de 10 o número de casas decimais que tivemos que "andar" com a vírgula. Se ao andar com a vírgula o valor do número diminuiu, o expoente ficará positivo, se aumentou o expoente ficará negativo.
+		\end{enumerate}
+	\end{corollary}
+	\begin{exampleblock}{Exemplo}
+		\begin{equation*}
+			6\; 590\; 000\; 000\; 000\; 000,0 = \SI{6,59e15}{}		
+		\end{equation*}
+	\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Conversão de unidades em uma dimensão}
+	\begin{figure}
+		\begin{tikzpicture}[scale=0.65,transform shape,font=\Large]
+		
+		\tkzInit[xmin=-2,xmax=17,ymin=-6,ymax=3]
+		%\tkzGrid[color=gray!20]
+		\tkzClip
+		
+		\tikzset{compass style/.append style={->}}
+		
+		\foreach \x in {1,2,...,6}{
+			\tkzDefPoint(\x*3-3,0){\x}
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+			\node at (\x*3-3,2) {$\times 10^{1}$};
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+			\node at (\x*3-3,-2) {$\times 10^{-1}$};}
+		
+		\tkzDefPoints{-1.5/0/p1,1.5/0/p2,4.5/0/p3,7.5/-0.2/p4,10.5/0/p5,13.5/0/p6,16.5/0/p7}
+		
+		\tkzText(p1){m\_}
+		\tkzText(p2){c\_}
+		\tkzText(p3){d\_}
+		\tkzText(p4){\_}
+		\tkzText(p5){da\_}
+		\tkzText(p6){h\_}
+		\tkzText(p7){k\_}
+		
+		%exemplos
+		
+		\tkzText(3,-3.5){$1\;\text{mm}=1\times 10^{(-1)\times\alert{2}}\;\text{dm}\rightarrow 1\times 10^{-2}\;\text{dm}$}
+		\tkzText(3.1,-4.5){$2,5\;\text{kg}=2,5\times 10^{(1)\times\alert{6}}\;\text{mg}\rightarrow2,5\times 10^{6}\;\text{mg}$}
+		\tkzText(2.7,-5.5){$10\;\text{ms}=10\times 10^{(-1)\times\alert{3}}\;\text{s}\rightarrow 10\times 10^{-3}\;\text{s}$}
+		
+		\end{tikzpicture}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Conversão de unidades em duas dimensões}
+	\begin{figure}
+		\begin{tikzpicture}[scale=0.65,transform shape,font=\Large]
+	
+		\tkzInit[xmin=-2,xmax=17,ymin=-6,ymax=3]
+		%\tkzGrid[color=gray!20]
+		\tkzClip
+	
+		\tikzset{compass style/.append style={->}}
+	
+		\foreach \x in {1,2,...,6}{
+			\tkzDefPoint(\x*3-3,0){\x}
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+			\node at (\x*3-3,2) {$\times 10^{2}$};
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+			\node at (\x*3-3,-2) {$\times 10^{-2}$};}
+	
+		\tkzDefPoints{-1.5/0/p1,1.5/0/p2,4.5/0/p3,7.5/0/p4,10.5/0/p5,13.5/0/p6,16.5/0/p7}
+	
+		\tkzText(p1){$\text{m}\_^2$}
+		\tkzText(p2){$\text{c}\_^2$}
+		\tkzText(p3){$\text{d}\_^2$}
+		\tkzText(p4){$\_^2$}
+		\tkzText(p5){$\text{da}\_^2$}
+		\tkzText(p6){$\text{h}\_^2$}
+		\tkzText(p7){$\text{k}\_^2$}
+	
+		%exemplos
+	
+		\tkzText(3.3,-3.5){$1\;\text{mm}^2=1\times 10^{(-2)\times\alert{2}}\;\text{dm}^2\rightarrow 1\times 10^{-4}\;\text{dm}^2$}
+		\tkzText(3.6,-4.5){$2,5\;\text{m}^2=2,5\times 10^{(2)\times\alert{3}}\;\text{mm}^2\rightarrow2,5\times 10^{6}\;\text{mm}^2$}
+		\tkzText(3,-5.5){$10\;\text{ms}^2=10\times 10^{(-2)\times\alert{3}}\;\text{s}^2\rightarrow 10\times 10^{-6}\;\text{s}^2$}
+	
+		\end{tikzpicture}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Conversão de unidades em três dimensões}
+	\begin{figure}
+		\begin{tikzpicture}[scale=0.65,transform shape,font=\Large]
+	
+		\tkzInit[xmin=-2,xmax=17,ymin=-6,ymax=3]
+		%\tkzGrid[color=gray!20]
+		\tkzClip
+	
+		\tikzset{compass style/.append style={->}}
+	
+		\foreach \x in {1,2,...,6}{
+			\tkzDefPoint(\x*3-3,0){\x}
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+			\node at (\x*3-3,2) {$\times 10^{3}$};
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+			\node at (\x*3-3,-2) {$\times 10^{-3}$};}
+	
+		\tkzDefPoints{-1.5/0/p1,1.5/0/p2,4.5/0/p3,7.5/0/p4,10.5/0/p5,13.5/0/p6,16.5/0/p7}
+	
+		\tkzText(p1){$\text{m}\_^3$}
+		\tkzText(p2){$\text{c}\_^3$}
+		\tkzText(p3){$\text{d}\_^3$}
+		\tkzText(p4){$\_^3$}
+		\tkzText(p5){$\text{da}\_^3$}
+		\tkzText(p6){$\text{h}\_^3$}
+		\tkzText(p7){$\text{k}\_^3$}
+	
+		%exemplos
+	
+		\tkzText(3.3,-3.5){$1\;\text{mm}^3=1\times 10^{(-3)\times\alert{2}}\;\text{dm}^3\rightarrow 1\times 10^{-6}\;\text{dm}^3$}
+		\tkzText(3.6,-4.5){$2,5\;\text{m}^3=2,5\times 10^{(3)\times\alert{3}}\;\text{mm}^3\rightarrow2,5\times 10^{9}\;\text{mm}^3$}
+		\tkzText(3.5,-5.5){$2,5\;\text{km}^3=2,5\times 10^{(3)\times\alert{6}}\;\text{mm}^3\rightarrow2,5\times 10^{18}\;\text{mm}^3$}
+
+		\end{tikzpicture}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Alfabeto grego}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{table}
+				\begin{tabular}[c]{ccc}
+					Alfa & $A$ & $\alpha$\\
+					Beta & $B$ & $\beta$\\
+					Gama & $\Gamma$ & $\gamma$\\
+					Delta & $\Delta$ & $\delta$\\
+					Epsílon & $E$ & $\epsilon$,$\varepsilon$\\
+					Zeta & $Z$ & $\zeta$\\
+					Eta & $H$ & $\eta$\\
+					Teta & $\Theta$ & $\theta$\\
+					Iota & $I$ & $\iota$\\
+					Capa & $K$ & $\kappa$\\
+					Lambda & $\Lambda$ & $\lambda$\\
+					Mi & $M$ & $\mu$
+				\end{tabular}
+			\end{table}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{table}
+				\begin{tabular}[c]{ccc}
+					Ni & $N$ & $\nu$\\
+					Csi & $\Xi$ & $\xi$\\
+					ômicron & $O$ & $o$\\
+					Pi & $\Pi$ & $\pi$\\
+					Rô & $P$ & $\rho$\\
+					Sigma & $\Sigma$ & $\sigma$\\
+					Tau & $T$ & $\tau$\\
+					Ípsilon & $\Upsilon$ & $\upsilon$\\
+					Fi & $\Phi$ & $\phi$,$\varphi$\\
+					Qui & $X$ & $\chi$\\
+					Psi & $\Psi$ & $\psi$\\
+					Ômega & $\Omega$ & $\omega$
+				\end{tabular}
+			\end{table}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Referências e observações\footnote{Este material está sujeito a modificações. Recomenda-se acompanhamento permanente.}}
+	\bibliographystyle{jurabib}
+	\begin{thebibliography}{9}
+		\bibitem{fig:plasma}http://www2.laps.ee/fyysika/Pildid/04\_01/
+		\bibitem{alvarenga}A. Máximo, B. Alvarenga, C. Guimarães, Física. Contexto e aplicações, v.2, 2.ed., São Paulo, Scipione (2016)
+	\end{thebibliography}
+
+\vspace*{1cm}
+\begin{center}
+	Esta apresentação está disponível para download no endereço\\
+	\href{https://flavianowilliams.github.io/education}{\textcolor{blue}{https://flavianowilliams.github.io/education}}
+\end{center}
+	
+\end{frame}
+
+\end{document}

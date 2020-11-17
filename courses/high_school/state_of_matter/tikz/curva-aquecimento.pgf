@@ -1,0 +1,55 @@
+﻿	\begin{tikzpicture}[scale=1,transform shape,font=\Large]
+
+		\def\m{50}
+		\def\ca{1}
+		\def\cb{2.5}
+		\def\cg{0.5}
+		\def\Lf{40}
+		\def\Lv{70}
+		\def\Lg{70}
+
+		\pgfmathsetmacro{\qg}{\m*\Lf};
+		\pgfmathsetmacro{\qi}{\m*\Lf};
+		\pgfmathsetmacro{\qf}{\qi+100*\m*\ca};
+		\pgfmathsetmacro{\qx}{\qf+\m*\Lv};
+		\pgfmathsetmacro{\qz}{\qx+4000};
+
+		\tkzInit[xmin=-1000,xmax=15000,xstep=1000,ymin=-50,ymax=150,ystep=20]
+		\tkzGrid[color=gray!50]
+		\tkzClip[space=2]
+
+%		\tkzAxeX
+		\tkzDrawX[right,label={Q},noticks]
+		\tkzAxeY[above,label={T ($^\circ C$)}]
+
+		\tkzFct[domain=0:500,color=red,line width=2.5pt]{(\x)/(\m*\cg)-20}
+		\tkzFct[domain=500:\qi,color=red,line width=2.5pt]{0}
+		\tkzFct[domain=\qi:\qf,color=red,line width=2.5pt]{(\x-\qi)/(\m*\ca)}
+		\tkzFct[domain=\qf:\qx,color=red,line width=2.5pt]{100}
+		\tkzFct[->,domain=\qx:\qz,color=red,line width=2.5pt]{100+(\x-\qx)/(\m*\cb)}
+
+		\tkzDefPointByFct[ref=A,with=c](\qf)
+		\tkzPointShowCoord(A)
+
+		\tkzDefPointByFct[ref=B,with=c](4000)
+		\tkzDefPointByFct[ref=C,with=a](250)
+		\tkzDefPointByFct[ref=D,with=e](12000)
+
+		\tkzDefPoints{1200/0/t1,8700/100/t2,2000/60/t3,3000/-40/t4,13000/80/t5}
+
+		\tkzText[below](t1){\large Fusão}
+		\tkzText[below](t2){\large Vaporização}
+
+		\tkzText[above,color=blue](t1){$Q=mL_F$}
+
+		\draw[->,line width=1pt] (t3) -- (B);
+		\tkzText[above,color=blue](t2){$Q=mL_V$}
+		\tkzText[text centered,opacity=100,fill=gray!20](t3){\textcolor{blue}{$Q=mc_l\Delta T$}}
+
+		\draw[->,line width=1pt] (t4) -- (C);
+		\tkzText[text centered,opacity=100,fill=gray!20](t4){\textcolor{blue}{$Q=mc_s\Delta T$}}
+
+		\draw[->,line width=1pt] (t5) -- (D);
+		\tkzText[text centered,opacity=100,fill=gray!20](t5){\textcolor{blue}{$Q=mc_g\Delta T$}}
+
+	\end{tikzpicture}

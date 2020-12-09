@@ -29,7 +29,17 @@
 	\begin{columns}[c]
 		\begin{column}[c]{0.5\textwidth}
 			\begin{figure}[c]
-				\input{tikz/lei-faraday.pgf}
+				%\input{tikz/lei-faraday.pgf}
+				\begin{tikzpicture}[scale=0.55, transform shape, x={(-10:1cm)},y={(90:1cm)},z={(210:1cm)}]
+				
+				\filldraw[draw, opacity=0.2] (2,0,0) arc (0:360:2);
+				\draw[line width=1pt,color=red,->] (2,0,0) arc (0:360:2);
+				\node[right] at (2,0,0) {$\vec{E}$};
+				\draw[line width=1pt,->] (0,0,0) -- (0,0,1) node[left] {$\frac{\Delta\Phi_{\vec{B}}}{\Delta t}$};
+				\draw[->] (2,2,0) node[right] {Area} to [out=180, in=90] (1,1,0) ;
+				\node[text width=6cm] at (1.25,-2,1) {\small $\Phi_{B}$: B por area perpendicular a espira};
+				\end{tikzpicture}
+				\caption*{\footnotesize Campo elétrico induzido $\vec{E}$.}
 			\end{figure}
 		\end{column}
 		\begin{column}[c]{0.5\textwidth}
@@ -51,7 +61,50 @@
 	\begin{columns}[c]
 		\begin{column}[c]{0.5\textwidth}
 			\begin{figure}[c]
-				\input{tikz/lei-maxwell2.pgf}
+				%\input{tikz/lei-maxwell2.pgf}
+				\begin{tikzpicture}[scale=0.4]
+				
+				\begin{scope}[scale=1, transform shape, x={(-10:1cm)},y={(90:1cm)},z={(210:1cm)}]
+				\filldraw[draw, opacity=0.2] (2,0,0) arc (0:360:2);
+				\draw[line width=1pt,color=red,->] (2,0,0) arc (0:360:2);
+				\node[right] at (2,0,0) {$\vec{B}$};
+				\draw[line width=1pt,->] (0,0,0) -- (0,0,1) node[left] {$\frac{\Delta\Phi_{\vec{E}}}{\Delta t}$};
+				\draw[->] (2,2,0) node[right] {Area} to [out=180, in=90] (1,1,0) ;
+				\end{scope}
+				
+				\begin{scope}[scale=0.5, xshift=5cm,yshift=-6cm]
+				\coordinate (p1) at (0,1.5);
+				\coordinate (p2) at (2,1.5);
+				
+				\draw[semithick] ($(p1)-(0.5,0)$) -- ($(p1)-(1,0)$);%fio de traz
+				\draw[dashed,color=gray] (0,0) arc (-90:90:0.5 and 1.5);% right half of the left ellipse
+				\draw[semithick] (0,0) arc (270:90:0.5 and 1.5);% left half of the left ellipse
+				\draw[semithick] ($(p1)+(0.25,0)$) ellipse (0.5 and 1.5) node {};% right ellipse
+				
+				\draw[semithick] (p2) -- ($(p2)+(1.5,0)$);% fio da frente
+				\draw[dashed,color=gray] (2,0) arc (-90:90:0.5 and 1.5);% right half of the left ellipse
+				\draw[semithick] (2,0) arc (270:90:0.5 and 1.5);% left half of the left ellipse
+				\draw[semithick] ($(p2)+(0.25,0)$) ellipse (0.5 and 1.5) node {};% right ellipse
+				
+				%campo magnetico induzido
+				\draw[semithick,->,line width=1pt,color=red] (1,0) arc (-90:90:0.5 and 1.5);% right half of the left ellipse
+				\draw[semithick,<-,line width=1pt,color=red] (1,0) arc (270:90:0.5 and 1.5);% left half of the left ellipse
+				%	\draw[semithick,->,color=red] (1,1.5) ellipse (0.5 and 1.5);
+				\node[below left] at (1,0) {$\vec{B}$};
+				
+				%campo magnetico
+				%	\draw[semithick,->,line width=1pt,color=red] (3,0) arc (-90:90:0.5 and 1.5);% right half of the left ellipse
+				%	\draw[semithick,<-,line width=1pt,color=red] (3,0) arc (270:90:0.5 and 1.5);% left half of the left ellipse
+				%	\draw[semithick,->,color=red] (1,1.5) ellipse (0.5 and 1.5);
+				%	\node[below left] at (3,0) {$\vec{B}$};
+				
+				%corrente
+				\draw[color=red,line width=1pt,->] (3,1.75) -- (3.5,1.75) node[above,midway] {i};
+				\draw[color=red,line width=1pt,->] (-1,1.75) -- (-0.5,1.75) node[above,midway] {i};
+				\end{scope}
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Campo magnético induzido $\vec{B}$.}
 			\end{figure}
 		\end{column}
 		\begin{column}[c]{0.5\textwidth}
@@ -69,11 +122,94 @@
 \begin{frame}
 	\begin{figure}
 		\begin{subfigure}[b]{0.45\textwidth}
-			\input{tikz/campo-eletrico.pgf}
+			  \begin{tikzpicture}[scale=0.7, transform shape, x={(-10:1cm)},y={(90:1cm)},z={(210:1cm)}]
+			% Axes
+			\draw[blue,->] (-1,0,0) -- (4,0,0) node[above] {$x$};
+			\draw[blue,->] (0,0,0) -- (0,2,0) node[above] {$y$};
+			\draw[blue,->] (0,0,0) -- (0,0,2) node[left] {$z$};
+			%definindo funcao
+			\pgfmathdeclarefunction{fe}{1}{\pgfmathparse{1.5*cos(deg(pi*\x))}}
+			% Waves
+			\draw[dashed,thick] plot[domain=0:4.5,samples=200] (\x,0,{fe(\x)});
+			%
+			\begin{scope}
+			\foreach \x in {2}{
+				\path[clip, shade] (\x-0.15,0,0) -- (\x-0.15,{fe(\x)},0) -- (\x+0.15,{fe(\x)},0) -- (\x+0.15,0,0);}
+			\end{scope}
+			
+			\draw[<->] (1.875,1.75,0) -- (2.125,1.75,0) node[above,midway] {\tiny $dx$};
+			\draw[<->] (1,0,0) -- (1,1.5,0) node[left,midway] {\tiny $h$};
+			
+			%vetores
+			\draw[line width=1pt,color=red,->] (1.75,0,0) -- (1.75,1,0) node[left] {\tiny $\vec{E}_{x}$};
+			\draw[line width=1pt,color=red,->] (2.25,0,0) -- (2.25,1.5,0) node[right] {\tiny $\vec{E}_{x+dx}$};
+			\draw[line width=1pt,color=green,->] (2,0,0) -- (2,0,1.5) node[anchor=north east] {\tiny $\frac{d\vec{B}}{dt}$};
+			
+			%detalhe
+			\def\p{1.5}
+			\def\ty{3.5}
+			\def\tx{2}
+			
+			\begin{scope}
+			\foreach \x in {2}{
+				\path[clip, shade] ({\x-0.15*\p+\tx},\ty,0) -- ({\x-0.125*\p+\tx},{\p*fe(\x)+\ty},0)
+				-- ({\x+0.15*\p+\tx},{\p*fe(\x)+\ty},0) -- ({\x+0.15*\p+\tx},\ty,0);}
+			\end{scope}
+			
+			\foreach \x in {2}{
+				\draw[line width=1pt,color=red,<-] ({\x-0.125*\p+\tx},\ty,0) -- ({\x-0.125*\p+\tx},{\p*fe(\x)+\ty},0) node[left,midway] {};
+				\draw[line width=1pt,color=red,->] ({\x+0.15*\p+\tx},\ty,0) -- ({\x+0.15*\p+\tx},{\p*fe(\x)+\ty},0) node[right,midway] {};
+				\draw[line width=1pt,color=red,->] ({\x-0.125*\p+\tx},\ty,0) -- ({\x+0.125*\p+\tx},\ty,0) node[below,midway] {};
+				\draw[line width=1pt,color=red,<-] ({\x-0.125*\p+\tx},{\p*fe(\x)+\ty},0) -- ({\x+0.125*\p+\tx},{\p*fe(\x)+\ty},0) node[above,midway] {};
+				\draw[dotted] (\x+\tx,{\ty+0.5*\p*fe(\x)}) circle ({0.6*\p*fe(\x)});}
+			
+			\end{tikzpicture}
+			%\input{tikz/campo-eletrico.pgf}
 			\caption*{\footnotesize Campo elétrico induzido pela variação de $\vec{B}$.}
 		\end{subfigure}
 		\begin{subfigure}[b]{0.5\textwidth}
-			\input{tikz/campo-magnetico.pgf}
+			%\input{tikz/campo-magnetico.pgf}
+			  \begin{tikzpicture}[scale=0.7, transform shape, x={(-10:1cm)},y={(90:1cm)},z={(210:1cm)}]
+			% Axes
+			\draw[blue,->] (-1,0,0) -- (4,0,0) node[above] {$x$};
+			\draw[blue,->] (0,0,0) -- (0,2,0) node[above] {$y$};
+			\draw[blue,->] (0,0,0) -- (0,0,2) node[left] {$z$};
+			%definindo funcao
+			\pgfmathdeclarefunction{fe}{1}{\pgfmathparse{1.5*cos(deg(pi*\x))}}
+			% Waves
+			\draw[dashed,thick] plot[domain=0:4.5,samples=200] (\x,{fe(\x)},0);
+			%
+			\begin{scope}
+			\foreach \x in {2}{
+				\path[clip, shade] (\x-0.15,0,0) -- (\x-0.15,0,{fe(\x)}) -- (\x+0.15,0,{fe(\x)}) -- (\x+0.15,0,0);}
+			\end{scope}
+			
+			\draw[<->] (1.875,1.75,0) -- (2.125,1.75,0) node[above,midway] {\tiny $dx$};
+			\draw[<->] (1,0,0) -- (1,0,1.5) node[left,midway] {\tiny $h$};
+			
+			%vetores
+			\draw[line width=1pt,color=red,->] (1.75,0,0) -- (1.75,0,1) node[left] {\tiny $\vec{B}_{x}$};
+			\draw[line width=1pt,color=red,->] (2.25,0,0) -- (2.25,0,1.5) node[below] {\tiny $\vec{B}_{x+dx}$};
+			\draw[line width=1pt,color=green,->] (2,0,0) -- (2,1.5,0) node[anchor=north east] {\tiny $\frac{d\vec{E}}{dt}$};
+			
+			%detalhe
+			\def\p{1.5}
+			\def\ty{3.5}
+			\def\tx{2}
+			\begin{scope}
+			\foreach \x in {2}{
+				\path[clip, shade] ({\x-0.15*\p+\tx},\ty,0) -- ({\x-0.125*\p+\tx},{\p*fe(\x)+\ty},0)
+				-- ({\x+0.15*\p+\tx},{\p*fe(\x)+\ty},0) -- ({\x+0.15*\p+\tx},\ty,0);}
+			\end{scope}
+			
+			\foreach \x in {2}{
+				\draw[line width=1pt,color=red,<-] ({\x-0.125*\p+\tx},\ty,0) -- ({\x-0.125*\p+\tx},{\p*fe(\x)+\ty},0) node[left,midway] {};
+				\draw[line width=1pt,color=red,->] ({\x+0.15*\p+\tx},\ty,0) -- ({\x+0.15*\p+\tx},{\p*fe(\x)+\ty},0) node[right,midway] {};
+				\draw[line width=1pt,color=red,->] ({\x-0.125*\p+\tx},\ty,0) -- ({\x+0.125*\p+\tx},\ty,0) node[below,midway] {};
+				\draw[line width=1pt,color=red,<-] ({\x-0.125*\p+\tx},{\p*fe(\x)+\ty},0) -- ({\x+0.125*\p+\tx},{\p*fe(\x)+\ty},0) node[above,midway] {};
+				\draw[dotted] (\x+\tx,{\ty+0.5*\p*fe(\x)}) circle ({0.6*\p*fe(\x)});}
+			
+			\end{tikzpicture}
 			\caption*{\footnotesize Campo magnético induzido pela variação de $\vec{E}$.}
 		\end{subfigure}
 	\end{figure}
@@ -84,7 +220,35 @@
 	\begin{columns}
 		\begin{column}{0.5\textwidth}
 			\begin{figure}
-				\input{tikz/onda-eletromagnetica2.pgf}
+				%\input{tikz/onda-eletromagnetica2.pgf}
+				  \begin{tikzpicture}[scale=0.5, transform shape, x={(-10:1cm)},y={(90:1cm)},z={(210:1cm)}]
+				% Axes
+				\draw (-1,0,0) node[above] {$x$} -- (5,0,0);
+				\draw (0,0,0) -- (0,2,0) node[above] {$y$};
+				\draw (0,0,0) -- (0,0,2) node[left] {$z$};
+				%definindo funcao
+				\pgfmathdeclarefunction{fe}{1}{\pgfmathparse{cos(deg(pi*\x))}}
+				% Propagation
+				\draw[->,ultra thick] (5,0,0) -- node[above] {$\vec{c}$} (6,0,0);
+				% Waves
+				\draw[color=red,thick] plot[domain=0:4.5,samples=200] (\x,{fe(\x)},0);
+				\draw[color=green,thick] plot[domain=0:4.5,samples=200] (\x,0,{fe(\x)});
+				% Arrows
+				\foreach \x in {0.1,0.3,...,4.4} {
+					\draw[->,help lines,color=red] (\x,0,0) -- (\x,{fe(\x)},0);
+					\draw[->,help lines,color=green] (\x,0,0) -- (\x,0,{fe(\x)});}
+				% Labels
+				\node[above right,color=red] at (0,1,0) {$\bm{\vec{E}}$};
+				\node[below,color=green] at (0,0,1) {$\bm{\vec{B}}$};
+				%area da curva
+				\fill [color=red,opacity=0.2, domain=0:4.5, variable=\x] (0, 0,0) -- plot ({\x}, {fe(\x)},0);
+				\fill [color=green,opacity=0.2, domain=0:4.5, variable=\x] (0, 0,0) -- plot ({\x},0, {fe(\x)});
+				
+				%comprimento onda
+				\foreach \x in {2}
+				\draw[line width=1pt,<->] (\x,{fe(\x)+0.125},0) -- (\x+2,{fe(\x)+0.125},0) node[above,midway] {$\lambda$};
+				\end{tikzpicture}
+				\caption*{\footnotesize Onda eletromagnética.}				
 			\end{figure}
 		\end{column}
 		\begin{column}{0.5\textwidth}
@@ -95,7 +259,7 @@
 		\end{column}
 	\end{columns}
 	\begin{corollary}
-		Uma onda transporta energia mas não transporta matéria, portanto a onda não possui massa.
+		\small Uma onda transporta energia mas não transporta matéria, portanto a onda não possui massa.
 	\end{corollary}
 \end{frame}
 
@@ -139,7 +303,35 @@
 			\includegraphics[scale=0.45]{figuras/espectro.jpg}
 		\end{subfigure}
 		\begin{subfigure}{0.35\textwidth}
-			\input{tikz/onda-eletromagnetica2.pgf}
+			%\input{tikz/onda-eletromagnetica2.pgf}
+			  \begin{tikzpicture}[scale=0.65, transform shape, x={(-10:1cm)},y={(90:1cm)},z={(210:1cm)}]
+			% Axes
+			\draw (-1,0,0) node[above] {$x$} -- (5,0,0);
+			\draw (0,0,0) -- (0,2,0) node[above] {$y$};
+			\draw (0,0,0) -- (0,0,2) node[left] {$z$};
+			%definindo funcao
+			\pgfmathdeclarefunction{fe}{1}{\pgfmathparse{cos(deg(pi*\x))}}
+			% Propagation
+			\draw[->,ultra thick] (5,0,0) -- node[above] {$\vec{c}$} (6,0,0);
+			% Waves
+			\draw[color=red,thick] plot[domain=0:4.5,samples=200] (\x,{fe(\x)},0);
+			\draw[color=green,thick] plot[domain=0:4.5,samples=200] (\x,0,{fe(\x)});
+			% Arrows
+			\foreach \x in {0.1,0.3,...,4.4} {
+				\draw[->,help lines,color=red] (\x,0,0) -- (\x,{fe(\x)},0);
+				\draw[->,help lines,color=green] (\x,0,0) -- (\x,0,{fe(\x)});}
+			% Labels
+			\node[above right,color=red] at (0,1,0) {$\bm{\vec{E}}$};
+			\node[below,color=green] at (0,0,1) {$\bm{\vec{B}}$};
+			%area da curva
+			\fill [color=red,opacity=0.2, domain=0:4.5, variable=\x] (0, 0,0) -- plot ({\x}, {fe(\x)},0);
+			\fill [color=green,opacity=0.2, domain=0:4.5, variable=\x] (0, 0,0) -- plot ({\x},0, {fe(\x)});
+			
+			%comprimento onda
+			\foreach \x in {2}
+			\draw[line width=1pt,<->] (\x,{fe(\x)+0.125},0) -- (\x+2,{fe(\x)+0.125},0) node[above,midway] {$\lambda$};
+			\end{tikzpicture}
+			\caption*{\footnotesize Onda eletromagnética.}
 		\end{subfigure}
 	\end{figure}
 	\begin{corollary}

@@ -1,0 +1,38 @@
+﻿\begin{tikzpicture}[scale=0.25, transform shape]
+
+	%transmissor
+
+	\coordinate (a) at (1,2);
+
+	\draw (0.5,0) -- (1,2);
+	\draw (1.5,0) -- (1,2);
+	\draw (0.5,0) -- (1.5,0);
+
+	\node at (1,-0.25) {Transmissor};
+
+	\filldraw (a) circle (0.1cm) node[above] {};
+
+	\foreach \x in {1,2,...,5}
+	\draw[dashed,color=red] (a) circle (\x);
+
+	\draw[<->] ($(a)+(-30:2)$) --++ (-30:1) node[above,sloped,midway] {$\lambda$};
+
+	%carga oscilando
+	\draw[<->,color=red] ($(a)-(0,0.5)$) --++ (0,1) node[right,midway] {e};
+
+	%receptor
+	
+	\def\tx{5}
+	\def\ty{-3}
+
+  \node at (1+\tx,1.5+\ty) [cylinder,cylinder uses custom fill, cylinder body fill=black,cylinder end fill=black, minimum height=3cm, minimum width=0.01 cm, rotate=90] {};
+	\node at (0+\tx,0.5+\ty) {Receptor};
+
+	\foreach \x  in {2.5,2.75,3}{
+	\draw[line width=1pt] (0+\tx,\x+\ty) --++ (2,0);
+	\draw[line width=1pt] (0+\tx,\x+\ty) --++ (2,0);}
+
+	\node at (0.5-\tx,8+\ty) [above] {Frentes de onda};
+	\draw [line width=2,->] (0.5-\tx,8+\ty) -- (-3.5,4.5);
+
+\end{tikzpicture}

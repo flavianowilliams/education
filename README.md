@@ -1,4 +1,4 @@
-[![CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)]
+![CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)
 
 # contents
 Education contents about physics, chemistry, programming, etc...

@@ -1,0 +1,32 @@
+\begin{tikzpicture}[scale=0.7, transform shape]
+
+	%parametros
+	\def\d{3.5}
+	\def\x{6}
+	\def\y{6}
+	\def\tt{atan((\y-0.5*\d)/\x)}
+
+	\def\lambda{16}
+	\def\k{4*pi/\lambda}
+	\def\om{0.5*pi}
+	\def\xm{1}
+
+	\tikzset{wave/.style={decorate,decoration={snake,post length=0mm,amplitude=5mm, segment length=\lambda},thick}}
+
+	\coordinate (a) at (\x,\y);
+
+	\draw[wave,color=red] (0,0)--(45:{sqrt(\x^2+\y^2)});
+	\draw[wave,color=green] (0,\d)--(45:{sqrt(\x^2+\y^2)});
+
+	%parede
+	\fill [pattern = north west lines] (-0.2,-0.5) rectangle (0,\d+0.5);
+	\draw (0,-0.5) -- (0,\d+0.5);
+
+	%posicao do observador
+	\filldraw (a) circle (0.05cm) node[above right] {P};
+
+	%vetores
+	\draw[->,dashed] (0,\d) -- (a) node[above,midway] {$r_2$};
+	\draw[->,dashed] (0,0) -- (a) node[above,midway] {$r_1$};
+
+\end{tikzpicture}

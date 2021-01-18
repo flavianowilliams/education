@@ -1,0 +1,27 @@
+﻿\begin{tikzpicture}[scale=0.5, auto, transform shape, samples=50]
+
+%	\useasboundingbox (-6,-6) rectangle (6,6);
+
+	%eixos
+	\draw[line width=1.0pt,->] (-4,0) -- (4,0) node[right] {$x$};
+	\draw[line width=1.0pt,->] (0,-4) -- (0,4) node[above] {$F_{R}$};
+
+	%curva
+	\pgfmathdeclarefunction{ff}{1}{\pgfmathparse{-1*#1}}
+
+	%curva
+	\draw[line width=1.5pt,domain=-3:3,variable=\x,color=red] plot (\x,{ff(\x)});
+
+	%angulo
+	\draw[line width=1pt,->] (1,0) arc (0:125:1) node[above,midway] {$\alpha$};
+
+	%texto
+	\node at (2,2) {$Tg\left(\alpha\right) = -\frac{k}{m}$};
+	\node at (3,0) [above] {$x_m$};
+	\node at (-3,0) [below] {$-x_m$};
+
+	%coordenadas
+	\draw [dashed] (-3,0) -- (-3,{ff(-3)});
+	\draw [dashed] (3,0) -- (3,{ff(3)});
+
+\end{tikzpicture}

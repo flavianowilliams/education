@@ -1,0 +1,43 @@
+﻿\begin{tikzpicture}[scale=0.6,transform shape,samples=100]
+
+	%parametros
+	\def\lambdax{8}
+	\def\a{2}
+	\def\k{4*pi/\lambdax}
+	\def\om{0.5*pi}
+	\def\xm{1}
+
+	\useasboundingbox(0,0) rectangle (\lambdax+1,4*\xm);
+
+	%setup styles
+	\tikzstyle{s1}=[circle, radius=0.25, ball color=gray];
+
+	%definindo funcao
+	\pgfmathdeclarefunction{ff}{2}{\pgfmathparse{\a+\xm*cos(deg(\k*#1-\om*#2))}}
+
+	%curva
+	\draw[line width=1.5pt,domain=0:\lambdax,variable=\x,color=gray] plot (\x,{ff(\x,1)});
+	\draw[line width=1.5pt,domain=\lambdax:0,variable=\x,color=gray,dashed] plot (\x,{ff(\x,3)});
+
+	%parede
+%	\fill [pattern = north west lines] (0,1) rectangle (-0.25,3);
+%	\draw (0,1) -- (0,3);
+
+	%parede
+	\fill [pattern = north west lines] (\lambdax,1) rectangle (0.25+\lambdax,3);
+	\draw (\lambdax,1) -- (\lambdax,3);
+
+	%vetores
+	\draw[color=red,line width=1.5pt,->] (\lambdax,\a) --++ (-0.5,1) node[above] {$\text{Reacao}$};
+	\draw[color=red,line width=1.5pt,->] (\lambdax,\a) --++ (-0.5,-1)  node[below] {$\text{Acao}$};
+
+	%ponto
+	\filldraw[fill=gray, draw=black] (\lambdax,\a) circle (2pt);
+
+	%linha de referencia
+	\draw[dashed] (0,\a) -- (\lambdax,\a);
+
+	%comprimento de onda
+	\draw[<->] (0,3.5*\xm) -- (0.5*\lambdax,3.5*\xm) node [above,midway] {$\lambda$};
+
+\end{tikzpicture}

@@ -1,0 +1,59 @@
+﻿\begin{tikzpicture}[scale=0.5,transform shape,samples=100]
+
+	%parametros
+	\def\lambdax{8}
+	\def\lambday{4}
+	\def\a{2}
+	\def\k{4*pi/\lambdax}
+	\def\kb{4*pi/\lambday}
+	\def\om{0.5*pi}
+	\def\xm{1}
+
+%	\useasboundingbox(0,0) rectangle (\lambdax+1,4*\xm);
+
+	%setup styles
+	\tikzstyle{s1}=[circle, radius=0.25, ball color=gray];
+
+	%definindo funcao
+	\pgfmathdeclarefunction{f}{2}{\pgfmathparse{\a+\xm*cos(deg(\kb*#1-\om*#2))}}
+	\pgfmathdeclarefunction{ff}{2}{\pgfmathparse{\a+\xm*cos(deg(\k*#1-\om*#2))}}
+
+	%curva
+	\draw[line width=1.5pt,domain=0:\lambdax,variable=\x,color=gray] plot (\x,{ff(\x,1)});
+	\draw[line width=4.5pt,domain=\lambdax:2*\lambdax,variable=\x,color=gray] plot (\x,{f(\x,1)});
+	\draw[line width=1.5pt,domain=\lambdax:0,variable=\x,color=gray,dashed] plot (\x,{ff(\x,3)});
+
+	%vetores
+%	\draw[color=red,line width=1.5pt,->] (\lambdax,\a) --++ (-0.5,1) node[above] {$\text{Reacao}$};
+%	\draw[color=red,line width=1.5pt,->] (\lambdax,\a) --++ (-0.5,-1)  node[below] {$\text{Acao}$};
+
+	%linha de referencia
+	\draw[dashed] (0,\a) -- (4*\lambday,\a);
+
+	%comprimento de onda
+	\draw[<->,color=gray] (0,3.5*\xm) -- (0.5*\lambdax,3.5*\xm) node [above,midway] {$\lambda_1$};
+	\draw[<->,color=gray] (\lambdax,3.5*\xm) -- (\lambdax+0.5*\lambday,3.5*\xm) node [above,midway] {$\lambda_2$};
+
+	%texto
+	\node[text width=1cm] (t1) at (0.5*\lambdax,-0.5) {$\text{Onda incidente}$};
+	\draw[->]	(t1) -- (0.4*\lambdax,\xm);
+
+	\node[text width=1cm] (t2) at (1.5*\lambdax,-0.5) {$\text{Onda refratada}$};
+	\draw[->]	(t2) -- (1.45*\lambdax,\xm);
+
+	\node[text width=1cm] (t3) at (0.1*\lambdax,-0.5) {$\text{Onda refletida}$};
+	\draw[->]	(t3) -- (0.1*\lambdax,\xm);
+
+	%velocidades
+	\draw[->,color=gray] (0.5*\lambdax+0.5,3.5*\xm) --++ (1,0) node[above,midway] {$\vec{v}_1$};	
+	\draw[<-,color=gray] (0.5*\lambdax+0.5,+\a-\xm-0.7) --++ (1,0) node[above,midway] {$-\vec{v}_1$};	
+	\draw[->,color=gray] (\lambdax+0.5*\lambday+2,3.5*\xm) --++ (1,0) node[above,midway] {$\vec{v}_2$};	
+
+	%ponto
+%	\filldraw[fill=gray, draw=black] (4*\lambday,\a) circle (2pt);
+
+	%parede
+%	\fill [pattern = north west lines] (4*\lambday,1) rectangle (0.25+4*\lambday,3);
+%	\draw (4*\lambday,1) -- (4*\lambday,3);
+
+\end{tikzpicture}

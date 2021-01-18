@@ -1,0 +1,100 @@
+﻿\begin{tikzpicture}[scale=0.14, auto, transform shape,font=\Large, samples=200]
+
+		%parametros gerais
+
+		\def\dk{6}        % delta k
+
+		%onda 1
+		\def\xa{1.2}					% Amplitude
+		\def\va{3.14}						% velocidade da onda
+		\def\fia{0} 					% fase inicial
+		\def\ka{1}						% numero de onda
+		\def\oa{\ka*\va}			% frequencia angula
+
+		%onda 2
+		\def\xb{1.2}					% Amplitude
+		\def\vb{1}					% velocidade da onda
+		\def\fib{0}				% fase inicial
+		\def\kb{\ka*\dk}						% numero de onda
+		\def\ob{\kb*\vb}			% frequencia angula
+
+		\def\ta{pi}
+		\def\t{-6.5}
+		\def\tt{2*\t}
+		\def\tx{2}
+		\def\pt{1.0*pi}
+		\def\tmp{1}
+
+		%definindo funcao
+		\pgfmathdeclarefunction{y1}{2}{\pgfmathparse{\xa*cos(deg(\ka*#1-\oa*#2+\fia))}}
+		\pgfmathdeclarefunction{y2}{2}{\pgfmathparse{\t-\xb*cos(deg(\ka*#1-\oa*#2+\fia))-\xb*cos(deg(0.5*\kb*#1-\ob*#2+\fib))}}
+		\pgfmathdeclarefunction{y3}{2}{\pgfmathparse{\tt+\xa*cos(deg(\ka*#1-\oa*#2+\fia))+\xb*cos(deg(\kb*#1-\ob*#2+\fib))}}
+
+		%eixo
+		\draw[line width=0.5pt,->] (0,-{(\xa+1)}) -- (0,{(\xa+1)}) node[above] {};
+		\draw[line width=0.5pt,->] (0,0) -- (6.5*\ta,0) node[right] {$x$};
+
+		%curva
+		\draw[line width=0.5pt,domain=0:6*\ta,variable=\x,color=red] plot (\x,{y1(\x,\tmp)});
+
+	%pontos
+	\filldraw[black] (0,0) circle (2pt) node[anchor=north east] {o};
+
+	%coordenadas
+	\node[above left] at (0,\xa) {$y_{m_{1}}$};
+	\node[above left] at (0,-\xa) {$-y_{m_{1}}$};
+
+	%texto
+%	\node[above] (t1) at (5*pi,\xa) {$y_{1}(x,t)=y_{m_{1}}cos(k_{1}x-\omega_{1} t)$};
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%		grafico 2
+
+		%eixo
+		\draw[line width=0.5pt,->] (0,{-(\xb+1)+\t}) -- (0,{(\xb+1)+\t}) node[above] {};
+		\draw[line width=0.5pt,->] (0,\t) -- (6.5*\ta,\t) node[right] {$x$};
+
+		%curva
+		\draw[line width=0.5pt,domain=0:6*\ta,variable=\x,color=red] plot (\x,{y2(\x,\tmp)});
+
+	%pontos
+	\filldraw[black] (0,\t) circle (2pt) node[anchor=north east] {o};
+
+	%coordenadas
+	\node[above left] at (0,\xb+\t) {$y_{m_{2}}$};
+	\node[above left] at (0,-\xb+\t) {$-y_{m_{2}}$};
+
+	%texto
+%	\node[above] (t1) at (5*pi,\t+\xa) {$y_{2}(x,t)=y_{m_{2}}cos(k_{2}x-\omega_{2} t)$};
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%		grafico 3
+
+		%eixo
+		\draw[line width=0.5pt,->] (0,{\tt-\xa-\xb}) -- (0,{\tt+\xa+\xb}) node[above] {};
+		\draw[line width=0.5pt,->] (0,\tt) -- (6.5*\ta,\tt) node[right] {$x$};
+
+		%curva
+		\draw[line width=0.5pt,domain=0:6*\ta,variable=\x,color=red] plot (\x,{y3(\x,\tmp)});
+
+		%posicoes
+		\foreach \x in {0.5,1,...,6}{
+		\node[below]  at (\ta*\x,\tt) {$\x\pi$};
+		\draw (\ta*\x,\tt-0.1) -- (\ta*\x,\tt+0.1);}
+
+%		\foreach \x in {0.5,1,...,6}
+%		\draw[dashed] (\ta*\x,{y3(\ta*\x)}) -- (\ta*\x,{y1(\ta*\x)});
+
+	%pontos
+	\filldraw[black] (0,\tt) circle (2pt) node[anchor=north east] {o};
+
+	\foreach \x in {1,3,5}{
+	\draw[dashed] (\pt*\x,{y1(\pt*\x,\tmp)}) -- (\pt*\x,{y3(\pt*\x,\tmp)});
+	\filldraw[green] (\pt*\x,{y1(\pt*\x,\tmp)}) circle (3pt) node {};
+	\filldraw[green] (\pt*\x,{y2(\pt*\x,\tmp)}) circle (3pt) node {};
+	\filldraw[green] (\pt*\x,{y3(\pt*\x,\tmp)}) circle (3pt) node {};}
+
+	%texto
+%	\node[above] (t1) at (5*pi,\tt+\xb+\xa) {$y_{m_{1}}cos(k_{1}x-\omega_{1} t)+y_{m_{2}}sen(k_{2}x-\omega_{2} t)$};
+
+\end{tikzpicture}

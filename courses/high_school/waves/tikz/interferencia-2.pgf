@@ -1,0 +1,53 @@
+﻿\begin{tikzpicture}[scale=0.5, transform shape]
+
+	%parametros
+	\def\d{3.5}
+	\def\x{8}
+	\def\y{5}
+	\def\tt{atan((\y/\x)}
+	\def\h{\d*sqrt(1-(\y/\x)^2)}
+
+	%transmissor
+
+	\coordinate (a) at (\x,\y);
+
+	%parede
+	\fill [pattern = north west lines] (-0.2,-0.5) rectangle (0,\d+0.5);
+	\draw (0,-0.5) -- (0,\d+0.5);
+
+	%linha tracejada
+	\draw[dashed] (0,0.5*\d) -- (\x,0.5*\d);
+
+	%posicao do observador
+	\filldraw (a) circle (0.05cm) node[above right] {P};
+
+	%vetores
+	\draw[->] (0,\d) -- (a) node[above,midway] {$r_2$};
+	\draw[->] (0,0.5*\d) -- (a) node[above,midway] {$R$};
+	\draw[->] (0,0) -- (a) node[above,midway] {$r_1$};
+
+	%angulo
+	\draw[] (0.5,0.5*\d) arc (0:\tt:0.5cm) node[right,midway] {$\theta$};
+
+	\draw[color=red] (0,\d) --++ ({\h*\y/\x},{-\h*cos(\tt)});
+%	\draw[color=red] (0,0.5*\d) --++ ({0.5*\d*sin(\tt)*cos(\tt)},{0.5*\d*(sin(\tt)*sin(\tt))});
+
+%	\draw[color=red] (0,0.5*\d) --++ ({0.5*\d*sin(\tt)*cos(\tt)-0.1},{0.5*\d*(sin(\tt)*sin(\tt)-1+0.1)});
+%	\draw[color=red] (0,0) --++ ({\h*\y/\x},{\h*cos(\tt)});
+	\draw[color=red] (0,0) -- ({\h*\y/\x},{0.5*\h*cos(\tt)});
+
+	%angulo
+%	\draw[] (0,0.5*\d-0.5) arc (-90:-90+\tt:0.5cm) node[below,midway] {$\theta$};
+	\draw[] (0,\d-0.5) arc (-90:-90+\tt:0.5cm) node[below,midway] {$\theta$};
+
+	%largura
+	\draw[<->] (-0.4,0) -- (-0.4,0.5*\d) node[left,midway] {$\frac{d}{2}$};
+	\draw[<->] (-0.4,0.5*\d) -- (-0.4,\d) node[left,midway] {$\frac{d}{2}$};
+ 
+	\draw[<->] (0.2,-0.2) --++ ({\h*\y/\x},{0.5*\h*cos(\tt)}) node[below,midway,sloped] {$dsen\theta$};
+
+	%distancia do anteparo e altura do 1st maximo
+	\draw[<->] (0,-0.75) -- (\x,-0.75) node [above,midway] {$L$};
+	\draw[<->] (\x+0.25,0.5*\d) -- (\x+0.25,\y) node [right,midway] {$\Delta y$};
+
+\end{tikzpicture}

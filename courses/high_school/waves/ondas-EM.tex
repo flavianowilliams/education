@@ -1,0 +1,1650 @@
+% Aula de movimento ondulatório para o curso de Física II do ensino médio
+%
+\documentclass[brazil,aspectratio=169]{beamer}
+%
+%carregando preâmbulo
+\input{../../../../extras/preamble}
+
+%Título
+
+\title[Movimento ondulatório]{Ondas}
+
+% The main document
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Sumário}
+  \tableofcontents
+\end{frame}
+
+\section{Ondas mecânicas}
+
+\subsection{}
+
+\begin{frame}[fragile]{Ondas mecânicas numa mola}
+	\begin{columns}
+		\begin{column}[c]{0.45\textwidth}
+			\begin{figure}
+				%\input{tikz/aplicacoes-ondas.pgf}
+				\begin{tikzpicture}[scale=0.6,transform shape]
+				
+				%sistema 1
+				
+				%transformacao coordenadas
+				\def\ta{3}
+				
+				%paredes
+				\fill [pattern = north west lines] (-0.2,-0.5) rectangle (0,0.5);
+				\draw (0,-0.5) -- (0,0.5);
+				\fill [pattern = north west lines] (5.2,-0.5) rectangle (5,0.5);
+				\draw (5,-0.5) -- (5,0.5);
+				
+				%parametro
+				\def\tx{1.5}
+				\def\ty{-1}
+				\def\teta{(atan{(1/(1))})}
+				
+				% massa
+				\filldraw[gray] (\tx,\ty) circle (3pt) node (a) {};
+				
+				%mola
+				\draw[decoration={aspect=0.3, segment length=1mm, amplitude=1.5mm,coil},decorate] (0,0) -- (a); 
+				\draw[decoration={aspect=0.3, segment length=1mm, amplitude=1.5mm,coil},decorate] (5,0) -- (a); 
+				
+				%eixos
+				\draw[color=blue,->] ($(a)-(0,1.25)$) -- ($(a)+(0,1.25)$) node[above] {$y$};
+				\draw[color=blue,->] ($(a)-(1.25,0)$) -- ($(a)+(1.25,0)$) node[right] {$x$};
+				
+				%vetores
+				\draw[line width=1pt,color=red,->] (a) --++ ($0.3*(0,0)-0.3*(a)$) node [above] {$\vec{T}_{1}$};
+				\draw[line width=1pt,color=green,->] (a) --++ ($({0.3*(0-\tx)},0)$) node [below] {$\vec{T}_{1_{x}}$};
+				\draw[line width=1pt,color=green,->] (a) --++ ($(0,{2*0.3*(0-\ty)})$) node [right] {$\vec{T}_{y}$};
+				\draw[line width=1pt,color=red,->] (a) --++ ($0.3*(5,0)-0.3*(a)$) node [above] {$\vec{T}_{2}$};
+				\draw[line width=1pt,color=green,->] (a) --++ ($({0.3*((5-\tx)-0)},0)$) node [below] {$\vec{T}_{2_{x}}$};
+				
+				%texto
+				\node at (4,-2) {$T_{2_{x}}>T_{1_{x}}$};
+				
+				%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+				%sistema 2
+				
+				%eixos
+				\draw[color=blue,->] (0,\ty-0.5+\ta) -- (0,-\ty+0.5+\ta) node[above] {$y$};
+				
+				\node[left] at (0,\ty+\ta) {$-y_{m}$};
+				\node[left] at (0,-\ty+\ta) {$y_{m}$};
+				
+				%paredes
+				\fill [pattern = north west lines] (-0.2,-0.5+\ta) rectangle (0,0.5+\ta);
+				\draw (0,-0.5+\ta) -- (0,0.5+\ta);
+				\fill [pattern = north west lines] (5.2,-0.5+\ta) rectangle (5,0.5+\ta);
+				\draw (5,-0.5+\ta) -- (5,0.5+\ta);
+				
+				% massa
+				\filldraw[gray] (\tx,\ty+\ta) circle (3pt) node (a) {};
+				\filldraw[gray] (\tx,-\ty+\ta) circle (3pt) node (aa) {};
+				
+				%mola
+				\draw[decoration={aspect=0.3, segment length=1mm, amplitude=1.5mm,coil},decorate] (0,0+\ta) -- (a); 
+				\draw[decoration={aspect=0.3, segment length=1mm, amplitude=1.5mm,coil},decorate] (5,0+\ta) -- (a); 
+				\draw[decoration={aspect=0.3, segment length=1mm, amplitude=1.5mm,coil},decorate] (0,0+\ta) -- (aa); 
+				\draw[decoration={aspect=0.3, segment length=1mm, amplitude=1.5mm,coil},decorate] (5,0+\ta) -- (aa); 
+				
+				%vetores
+				\draw[line width=1pt,color=red,->] (a) -- ($(a)-(0,0.75)$) node [right] {$\vec{F}$};
+				
+				%oscilacao
+				\draw[line width=1pt,<->] (a) -- (aa) node[right,midway] {$2y_{m}$};
+				
+				%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+				%sistema 3
+				
+				%parametro
+				\def\tt{6}
+				
+				%eixos
+				\draw[color=blue,->] (0+\tt,0+0.5*\ta) -- (0+\tt,1+0.5*\ta) node[above] {$y$};
+				\draw[color=blue,->] (0+\tt,0+0.5*\ta) -- (3.5+\tt,0+0.5*\ta) node[right] {$x$};	
+				
+				%pulso
+				\pgfmathdeclarefunction{f}{1}{\pgfmathparse{0.5*\ta+0.5*exp(-15*(#1-1.12*\tt)^2))}}
+				\draw[line width=1.5pt,domain=\tt:3+\tt,variable=\x,color=red,samples=100] plot (\x,{f(\x)});
+				
+				\draw[line width=1pt,color=red,->] (0.5+\tt,0.75+0.5*\ta) --++(0.5,0) node[above,midway] {$\vec{v}$};
+				
+				\end{tikzpicture}
+				\caption*{\href{https://www.youtube.com/watch?v=zYdho_gcCRE}{\textcolor{blue}{\footnotesize Surgimento de um pulso numa mola.}}}				
+			\end{figure}
+		\end{column}
+		\begin{column}[c]{0.55\textwidth}
+			\begin{itemize}
+				\item[\ding{51}] As forças nas direções x e y produz um pulso de energia que se propaga na horizontal com velocidade $\vec{v}$;
+				\item[\ding{51}] O pulso propaga energia mas não propaga matéria;
+				\item[\ding{51}] A força na direção y	produz um movimento harmônico simples que faz oscilar o fragmento da mola de massa m na vertical.
+			\end{itemize}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Ondas mecânicas numa corda}
+	Uma onda é formada a partir de uma série de pulsos propagando-se na mesma direção e sentido a cada intervalo de tempo igual ao período de oscilação T.
+	\begin{figure}
+		\includegraphics[scale=0.27]{figuras/figura-1.png}
+				\caption*{\href{https://www.youtube.com/watch?v=0EFK_vZTpio&t=42s}{\textcolor{blue}{\footnotesize Pulsos se propagando numa corda.}}}
+	\end{figure}
+	\begin{corollary}
+		Uma onda mecânica necessita de um meio material para se propagar.
+	\end{corollary}
+\end{frame}
+
+\begin{frame}{Tipos de ondas}
+	\begin{columns}[c]
+		\begin{column}[c]{0.5\textwidth}
+			\begin{figure}
+				\includegraphics[scale=0.7]{figuras/ondas.jpeg}
+				\caption*{\footnotesize Diferença entre onda longitudinal e transversal \cite{ondas}.}
+			\end{figure}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{itemize}
+				\item[\ding{51}] Numa onda longitudinal, a direção de oscilação é paralela a direção de propagação dessa onda.
+				\item[\ding{51}] Numa onda transversal, a direção de oscilação é perpendicular a direção de propagação dessa onda.
+			\end{itemize}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Velocidade de uma onda}
+	\begin{columns}
+		\begin{column}[c]{0.6\textwidth}
+			Se cada pulso percorrer uma distância $\Delta S$ num intervalo de tempo $\Delta t$, a velocidade v desse pulso será
+			\begin{equation*}
+				v=\frac{\Delta S}{\Delta t}.
+			\end{equation*}
+			Por exemplo, se $\Delta S=6,0\;m$ e $\Delta t=1,5\;\text{seg}$, a velocidade dessa onda será 4 m/s.
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}
+				\includegraphics[scale=0.3]{figuras/onda-velocidade.png}
+			\end{figure}
+		\end{column}
+	\end{columns}	
+	\begin{corollary}
+		A velocidade de propagação de uma onda numa corda depende da densidade (\alert{$\frac{\text{massa}}{\text{comprimento}}$}) dessa corda e da tensão aplicada sobre ela.
+	\end{corollary}
+\end{frame}
+
+\begin{frame}{Propriedades de uma onda}
+	\begin{columns}[c]
+		\begin{column}[c]{0.5\textwidth}
+			\begin{figure}
+				\includegraphics[scale=0.35]{figuras/onda-lambda.png}
+			\end{figure}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{itemize}
+				\item[\ding{51}] \alert{Amplitude da onda}: A mesma amplitude da oscilação vertical.
+				\item[\ding{51}] \alert{Frequência da onda}: A mesma frequência da oscilação vertical.
+				\item[\ding{51}] \alert{Comprimento de onda $(\lambda)$}: Distância que a onda percorre durante um período T.
+			\end{itemize}
+		\end{column}
+	\end{columns}
+	\begin{corollary}
+		Sendo v a velocidade de propagação da onda e T o período, o comprimento de onda é dado por
+		\begin{equation*}
+			\lambda = vT
+		\end{equation*}
+	\end{corollary}
+\end{frame}
+
+\begin{frame}{Ondas em duas e três dimensões}
+	\begin{itemize}
+		\item[\ding{51}] As frentes de onda de um pulso eletromagnético são esferas com o centro na origem do pulso.
+		\item[\ding{51}] As frentes de onda em um lago são circunferências com o centro na origem do pulso.
+	\end{itemize}
+	\begin{figure}
+		\begin{subfigure}[t]{0.32\textwidth}
+			\Centering
+			%\input{tikz/ondas-radio.pgf}
+			\begin{tikzpicture}[scale=0.25, transform shape,font=\huge]
+			
+			%transmissor
+			
+			\coordinate (a) at (1,2);
+			
+			\draw (0.5,0) -- (1,2);
+			\draw (1.5,0) -- (1,2);
+			\draw (0.5,0) -- (1.5,0);
+			
+			\node at (1,-0.25) {Transmissor};
+			
+			\filldraw (a) circle (0.1cm) node[above] {};
+			
+			\foreach \x in {1,2,...,5}
+			\draw[dashed,color=red] (a) circle (\x);
+			
+			\draw[<->] ($(a)+(-30:2)$) --++ (-30:1) node[above,sloped,midway] {$\lambda$};
+			
+			%carga oscilando
+			\draw[<->,color=red] ($(a)-(0,0.5)$) --++ (0,1) node[right,midway] {e};
+			
+			%receptor
+			
+			\def\tx{5}
+			\def\ty{-3}
+			
+			\node at (1+\tx,1.5+\ty) [cylinder,cylinder uses custom fill, cylinder body fill=black,cylinder end fill=black, minimum height=3cm, minimum width=0.01 cm, rotate=90] {};
+			\node[below=1cm] at (0+\tx,0.5+\ty) {Receptor};
+			
+			\foreach \x  in {2.5,2.75,3}{
+				\draw[line width=1pt] (0+\tx,\x+\ty) --++ (2,0);
+				\draw[line width=1pt] (0+\tx,\x+\ty) --++ (2,0);}
+			
+			\node at (0.5-\tx,8+\ty) [above=2pt] {Frentes de onda};
+			\draw [line width=1pt,->] (0.5-\tx,8+\ty) -- (-3.5,4.5);
+			
+			\end{tikzpicture}
+			\caption*{\footnotesize Pulso eletromagnético.}
+		\end{subfigure}
+		\begin{subfigure}[t]{0.32\textwidth}
+			\Centering
+			\includegraphics[scale=0.09]{figuras/onda-lago.jpg}
+			\caption*{\footnotesize Ondas bidimensionais.}
+		\end{subfigure}
+		\begin{subfigure}[t]{0.32\textwidth}
+			\Centering
+			\includegraphics[scale=0.5]{figuras/onda-plana.png}
+			\caption*{\href{https://www.youtube.com/watch?v=yGqfRB4EWEg&index=12&list=PL1Dg4Oxxk_RI2Ppb541vQyaUbqUuXtiuJ}{\textcolor{blue}{\footnotesize Ondas planas na água.}}}
+		\end{subfigure}
+	\end{figure}
+\end{frame}
+
+\section{Fenômenos ondulatórios}
+
+\subsection{}
+
+\begin{frame}[fragile]{Reflexão}
+	\begin{itemize}
+		\item[\ding{51}] Na extremidade móvel, o pulso é refletido e retorna igual ao pulso incidente;
+		\item[\ding{51}] Na extremidade fixa, o pulso é refletido e retorna invertido ao pulso incidente;
+		\item[\ding{51}] Numa corda, somente pode existir números inteiros de comprimentos de onda.
+	\end{itemize}
+	\begin{figure}
+		\begin{subfigure}[t]{0.45\textwidth}
+			\centering
+			%\input{tikz/onda-estacionaria4.pgf}
+			\begin{tikzpicture}[scale=0.6,transform shape,samples=100]
+			
+			%parametros
+			\def\lambdax{8}
+			\def\a{2}
+			\def\k{4*pi/\lambdax}
+			\def\om{2*pi}
+			\def\xm{1}
+			
+			\useasboundingbox(0,0) rectangle (\lambdax+1,4*\xm);
+			
+			%setup styles
+			\tikzstyle{s1}=[circle, radius=0.25, ball color=gray];
+			
+			%paredes
+			\node at (\lambdax+0.2,2) [cylinder,cylinder uses custom fill, cylinder body fill=black,cylinder end fill=black, minimum height=2cm, minimum width=2pt, rotate=90] {};
+			
+			%definindo funcao
+			\pgfmathdeclarefunction{ff}{2}{\pgfmathparse{\a+\xm*cos(deg(\k*#1-\om*#2))}}
+			
+			%curva
+			\draw[line width=1.5pt,domain=0:\lambdax,variable=\x,color=gray] plot (\x,{ff(\x,1)});
+			\draw[line width=1.5pt,domain=\lambdax:0,variable=\x,color=gray,dashed] plot (\x,{ff(\x,0.5)});
+			
+			%vetores
+			\draw[color=red,line width=1.5pt,->] (\lambdax+0.2,\a+\xm) --++ (0,1);
+			\draw[color=red,line width=1.5pt,->] (\lambdax+0.2,\a+\xm) --++ (0,-1);
+			
+			%linha de referencia
+			\draw[dashed] (0,\a) -- (\lambdax,\a);
+			
+			%anel
+			\filldraw[fill=gray, draw=black] (\lambdax,\a+\xm-0.1) rectangle (\lambdax+0.4,\a+\xm+0.1);
+			
+			%comprimento de onda
+			\draw[<->] (0,3.5*\xm) -- (0.5*\lambdax,3.5*\xm) node [above,midway] {$\lambda$};
+			
+			\end{tikzpicture}
+			\caption*{\footnotesize Extremidade móvel. A onda se propaga livremente na corda, e para manter o seu movimento ela é refletida para a esquerda.}
+		\end{subfigure}
+		\hspace*{1cm}
+		\begin{subfigure}[t]{0.45\textwidth}
+			\centering
+			%\input{tikz/onda-estacionaria3.pgf}
+			\begin{tikzpicture}[scale=0.6,transform shape,samples=100]
+			
+			%parametros
+			\def\lambdax{8}
+			\def\a{2}
+			\def\k{4*pi/\lambdax}
+			\def\om{0.5*pi}
+			\def\xm{1}
+			
+			\useasboundingbox(0,0) rectangle (\lambdax+1,4*\xm);
+			
+			%setup styles
+			\tikzstyle{s1}=[circle, radius=0.25, ball color=gray];
+			
+			%definindo funcao
+			\pgfmathdeclarefunction{ff}{2}{\pgfmathparse{\a+\xm*cos(deg(\k*#1-\om*#2))}}
+			
+			%curva
+			\draw[line width=1.5pt,domain=0:\lambdax,variable=\x,color=gray] plot (\x,{ff(\x,1)});
+			\draw[line width=1.5pt,domain=\lambdax:0,variable=\x,color=gray,dashed] plot (\x,{ff(\x,3)});
+			
+			%parede
+			\fill [pattern = north west lines] (\lambdax,1) rectangle (0.25+\lambdax,3);
+			\draw (\lambdax,1) -- (\lambdax,3);
+			
+			%vetores
+			\draw[color=red,line width=1.5pt,->] (\lambdax,\a) --++ (-0.5,1) node[above] {$\text{Reação}$};
+			\draw[color=red,line width=1.5pt,->] (\lambdax,\a) --++ (-0.5,-1)  node[below] {$\text{Ação}$};
+			
+			%ponto
+			\filldraw[fill=gray, draw=black] (\lambdax,\a) circle (2pt);
+			
+			%linha de referencia
+			\draw[dashed] (0,\a) -- (\lambdax,\a);
+			
+			%comprimento de onda
+			\draw[<->] (0,3.5*\xm) -- (0.5*\lambdax,3.5*\xm) node [above,midway] {$\lambda$};
+			
+			\end{tikzpicture}
+			\caption*{\footnotesize Extremidade fixa. Afim de satisfazer a conservação do momento, a onda refletida deve estar em sentido oposto ao onda incidente.}
+		\end{subfigure}
+	\end{figure}
+\end{frame}
+
+\begin{frame}[fragile]{Refração}
+	\begin{itemize}
+		\footnotesize
+		\item[\ding{51}] A velocidade de uma onda diminui quando ela atravessa o meio 1 (mais fino) para o meio 2 (mais grosso) $(v_2<v_1)$;
+		\item[\ding{51}] O comprimento de onda também diminui quando ela atravessa um meio mais fino para o mais grosso, $\lambda_2<\lambda_1$;
+		\item[\ding{51}] Parte do pulso é refratado e parte é refletido;
+		\item[\ding{51}] A frequência é a mesma da fonte geradora do pulso, portanto ela não se altera no processo.
+	\end{itemize}
+	\begin{figure}
+		%\input{tikz/onda-estacionaria1.pgf}
+		\begin{tikzpicture}[scale=0.5,transform shape,samples=100]
+		
+		%parametros
+		\def\lambdax{8}
+		\def\lambday{4}
+		\def\a{2}
+		\def\k{4*pi/\lambdax}
+		\def\kb{4*pi/\lambday}
+		\def\om{0.5*pi}
+		\def\xm{1}
+		
+		%setup styles
+		\tikzstyle{s1}=[circle, radius=0.25, ball color=gray];
+		
+		%definindo funcao
+		\pgfmathdeclarefunction{f}{2}{\pgfmathparse{\a+\xm*cos(deg(\kb*#1-\om*#2))}}
+		\pgfmathdeclarefunction{ff}{2}{\pgfmathparse{\a+\xm*cos(deg(\k*#1-\om*#2))}}
+		
+		%curva
+		\draw[line width=1.5pt,domain=0:\lambdax,variable=\x,color=gray] plot (\x,{ff(\x,1)});
+		\draw[line width=4.5pt,domain=\lambdax:2*\lambdax,variable=\x,color=gray] plot (\x,{f(\x,1)});
+		\draw[line width=1.5pt,domain=\lambdax:0,variable=\x,color=gray,dashed] plot (\x,{ff(\x,3)});
+		
+		%linha de referencia
+		\draw[dashed] (0,\a) -- (4*\lambday,\a);
+		
+		%comprimento de onda
+		\draw[<->,color=gray] (0,3.5*\xm) -- (0.5*\lambdax,3.5*\xm) node [above,midway] {$\lambda_1$};
+		\draw[<->,color=gray] (\lambdax,3.5*\xm) -- (\lambdax+0.5*\lambday,3.5*\xm) node [above,midway] {$\lambda_2$};
+		
+		%texto
+		\node[text width=1cm] (t1) at (0.5*\lambdax,-0.5) {$\text{Onda incidente}$};
+		\draw[->]	(t1) -- (0.4*\lambdax,\xm);
+		
+		\node[text width=1cm] (t2) at (1.5*\lambdax,-0.5) {$\text{Onda refratada}$};
+		\draw[->]	(t2) -- (1.45*\lambdax,\xm);
+		
+		\node[text width=1cm] (t3) at (0.1*\lambdax,-0.5) {$\text{Onda refletida}$};
+		\draw[->]	(t3) -- (0.1*\lambdax,\xm);
+		
+		%velocidades
+		\draw[->,color=gray] (0.5*\lambdax+0.5,3.5*\xm) --++ (1,0) node[above,midway] {$\vec{v}_1$};	
+		\draw[<-,color=gray] (0.5*\lambdax+0.5,+\a-\xm-0.7) --++ (1,0) node[above,midway] {$-\vec{v}_1$};	
+		\draw[->,color=gray] (\lambdax+0.5*\lambday+2,3.5*\xm) --++ (1,0) node[above,midway] {$\vec{v}_2$};	
+		
+		\end{tikzpicture}
+		\caption*{\footnotesize Passagem de uma onda de um meio para outro.}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Difração}
+	\begin{block}{Difração de uma onda}
+		Propriedade que uma onda possui de contornar obstáculos.
+	\end{block}
+	\begin{figure}
+		\begin{subfigure}[b]{0.4\textwidth}
+			\centering
+			\includegraphics[scale=0.15]{figuras/difracao-fenda-pequena.jpg}
+			\caption*{\footnotesize Difração em uma fenda pequena \cite{difracao}.}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.5\textwidth}
+			\centering
+			\includegraphics[scale=0.15]{figuras/difracao-fenda-grande.jpg}
+			\caption*{\footnotesize Propagação retilínea em uma fenda grande \cite{difracao}.}
+		\end{subfigure}
+	\end{figure}
+	\begin{corollary}
+		A difração é acentuada se a largura do orifício for muito menor que o comprimento de onda.
+	\end{corollary}
+\end{frame}
+
+\begin{frame}{Difração da luz e ondas sonoras}
+	\begin{corollary}
+		O comprimento de onda da luz é muito pequeno, tornando difícil observar fenômenos referentes a difração que podem ocorrer naturalmente.
+	\end{corollary}
+	\begin{figure}
+		\begin{subfigure}[b]{0.45\textwidth}
+			\Centering
+			\includegraphics[scale=0.35]{figuras/questao-5.png}
+			\caption*{\footnotesize Difração do som numa parede.}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.45\textwidth}
+			\Centering
+			\includegraphics[scale=0.38]{figuras/difracao-luz.jpg}
+			\caption*{\footnotesize Propagação linear dos raios de luz.}
+		\end{subfigure}
+	\end{figure}
+\end{frame}
+
+\section{Interferência}
+
+\subsection{}
+
+\begin{frame}[fragile]{Interferência}
+	\begin{figure}
+		\begin{subfigure}[c]{0.45\textwidth}
+			\Centering
+			%\input{tikz/interferencia-5.pgf}
+			\begin{tikzpicture}[scale=0.37,transform shape,samples=200]
+			
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			%interferencia 1
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			
+			%parametros de cada frame
+			\def\xm{1.5}
+			\def\xa{5}
+			\def\xb{10}
+			\def\xt{15}
+			\def\l{2}
+			
+			\useasboundingbox (-0.5,-9-\xm) rectangle (\xt+0.5,\xm+1);
+			
+			\draw[line width=1.0pt,->,color=blue] (0,0) -- (\xt,0) node[right] {x};
+			
+			%definindo funcao
+			\pgfmathdeclarefunction{ff}{1}{\pgfmathparse{\xm*exp(-\l*(#1-\xa)^2)}}
+			\pgfmathdeclarefunction{fff}{1}{\pgfmathparse{\xm*exp(-\l*(#1-\xb)^2)}}
+			
+			%curva
+			\draw[line width=1.5pt,domain=\xa-3:\xa+3,variable=\x,color=red] plot (\x,{ff(\x)});
+			\draw[line width=1.5pt,domain=\xb-3:\xb+3,variable=\x,color=red] plot (\x,{fff(\x)});
+			
+			%vetores
+			\draw[->,line width=1.0pt] (\xa-0.5,\xm+0.5) -- (\xa+0.5,\xm+0.5) node [ above,midway] {$\vec{v}_1$};
+			\draw[<-,line width=1.0pt] (\xb-0.5,\xm+0.5) -- (\xb+0.5,\xm+0.5) node [ above,midway] {$\vec{v}_2$};
+			
+			\draw[<->,line width=1.0pt] (\xa,0) -- (\xa,\xm) node [left,midway] {$A_1$};
+			\draw[<->,line width=1.0pt] (\xb,0) -- (\xb,\xm) node [left,midway] {$A_2$};
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			%interferencia 2
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			
+			%parametros de cada frame
+			\def\dy{-4}
+			\def\xm{1.5}
+			\def\xc{0.5*(\xa+\xb)}
+			\def\xt{15}
+			
+			\draw[line width=1.0pt,->,color=blue] (0,\dy) -- (\xt,\dy) node[right] {x};
+			
+			%definindo funcao
+			\pgfmathdeclarefunction{ffff}{1}{\pgfmathparse{\dy+2*\xm*exp(-\l*(#1-\xc)^2)}}
+			
+			%curva
+			\draw[line width=1.5pt,domain=\xc-3:\xc+3,variable=\x,color=red] plot (\x,{ffff(\x)});
+			
+			%vetores
+			\draw[<->,line width=1.0pt] ({\xc},{0+\dy}) -- ({\xc},{2*\xm+\dy}) node [left,midway] {$(A_1+A_2)$};
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			%interferencia 3
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			
+			%parametros de cada frame
+			\def\dy{-8}
+			\def\xm{1.5}
+			\def\xa{5}
+			\def\xb{10}
+			\def\xt{15}
+			\def\l{2}
+			
+			\draw[line width=1.0pt,->,color=blue] (0,+\dy) -- (\xt,+\dy) node[right] {x};
+			
+			%definindo funcao
+			\pgfmathdeclarefunction{fffff}{1}{\pgfmathparse{\dy+\xm*exp(-\l*(#1-\xa)^2)}}
+			\pgfmathdeclarefunction{ffffff}{1}{\pgfmathparse{\dy+\xm*exp(-\l*(#1-\xb)^2)}}
+			
+			%curva
+			\draw[line width=1.5pt,domain=\xa-3:\xa+3,variable=\x,color=red] plot (\x,{fffff(\x)});
+			\draw[line width=1.5pt,domain=\xb-3:\xb+3,variable=\x,color=red] plot (\x,{ffffff(\x)});
+			
+			%vetores
+			\draw[<-,line width=1.0pt] (\xa-0.5,\xm+0.5+\dy) -- (\xa+0.5,\xm+0.5+\dy) node [ above,midway] {$\vec{v}_2$};
+			\draw[->,line width=1.0pt] (\xb-0.5,\xm+0.5+\dy) -- (\xb+0.5,\xm+0.5+\dy) node [ above,midway] {$\vec{v}_1$};
+			
+			\draw[<->,line width=1.0pt] (\xa,{0+\dy}) -- (\xa,{\xm+\dy}) node [left,midway] {$A_2$};
+			\draw[<->,line width=1.0pt] (\xb,{0+\dy}) -- (\xb,{\xm+\dy}) node [left,midway] {$A_1$};
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			\end{tikzpicture}
+			\caption*{\footnotesize Interferência construtiva.}
+		\end{subfigure}
+		\begin{subfigure}[c]{0.45\textwidth}
+			\Centering
+			%\input{tikz/interferencia-6.pgf}
+			\begin{tikzpicture}[scale=0.37,transform shape,samples=200]
+			
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			%interferencia 1
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			
+			%parametros de cada frame
+			\def\xm{1.5}
+			\def\xa{5}
+			\def\xb{10}
+			\def\xt{15}
+			\def\l{2}
+			
+			\useasboundingbox (-0.5,-9-\xm) rectangle (\xt+0.5,\xm+1);
+			
+			\draw[line width=1.0pt,->,color=blue] (0,0) -- (\xt,0) node[right] {x};
+			
+			%definindo funcao
+			\pgfmathdeclarefunction{ff}{1}{\pgfmathparse{\xm*exp(-\l*(#1-\xa)^2)}}
+			\pgfmathdeclarefunction{fff}{1}{\pgfmathparse{-\xm*exp(-\l*(#1-\xb)^2)}}
+			
+			%curva
+			\draw[line width=1.5pt,domain=\xa-3:\xa+3,variable=\x,color=red] plot (\x,{ff(\x)});
+			\draw[line width=1.5pt,domain=\xb-3:\xb+3,variable=\x,color=red] plot (\x,{fff(\x)});
+			
+			%vetores
+			\draw[->,line width=1.0pt] (\xa-0.5,\xm+0.5) -- (\xa+0.5,\xm+0.5) node [ above,midway] {$\vec{v}_1$};
+			\draw[<-,line width=1.0pt] (\xb-0.5,-\xm-0.75) -- (\xb+0.5,-\xm-0.75) node [ above,midway] {$\vec{v}_2$};
+			
+			\draw[<->,line width=1.0pt] (\xa,0) -- (\xa,\xm) node [left,midway] {$A_1$};
+			\draw[<->,line width=1.0pt] (\xb,0) -- (\xb,-\xm) node [left,midway] {$A_2$};
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			%interferencia 2
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			
+			%parametros de cada frame
+			\def\dy{-4}
+			\def\xm{1.5}
+			\def\xc{0.5*(\xa+\xb)}
+			\def\xt{15}
+			
+			\draw[line width=1.0pt,->,color=blue] (0,\dy) -- (\xt,\dy) node[right] {x};
+			
+			%definindo funcao
+			\pgfmathdeclarefunction{ffff}{1}{\pgfmathparse{\dy+0*\xm*exp(-\l*(#1-\xc)^2)}}
+			
+			%curva
+			\draw[line width=1.5pt,domain=\xc-3:\xc+3,variable=\x,color=red] plot (\x,{ffff(\x)});
+			
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			%interferencia 3
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			
+			%parametros de cada frame
+			\def\dy{-8}
+			\def\xm{1.5}
+			\def\xa{5}
+			\def\xb{10}
+			\def\xt{15}
+			\def\l{2}
+			
+			%eixo
+			%		\draw[line width=1.0pt,->,color=blue] (0,{-(\xm+1)+\dy}) -- (0,{(\xm+1)+\dy}) node[above] {};
+			\draw[line width=1.0pt,->,color=blue] (0,+\dy) -- (\xt,+\dy) node[right] {x};
+			
+			%definindo funcao
+			\pgfmathdeclarefunction{fffff}{1}{\pgfmathparse{\dy-\xm*exp(-\l*(#1-\xa)^2)}}
+			\pgfmathdeclarefunction{ffffff}{1}{\pgfmathparse{\dy+\xm*exp(-\l*(#1-\xb)^2)}}
+			
+			%curva
+			\draw[line width=1.5pt,domain=\xa-3:\xa+3,variable=\x,color=red] plot (\x,{fffff(\x)});
+			\draw[line width=1.5pt,domain=\xb-3:\xb+3,variable=\x,color=red] plot (\x,{ffffff(\x)});
+			
+			%vetores
+			\draw[<-,line width=1.0pt] (\xa-0.5,-\xm-0.75+\dy) -- (\xa+0.5,-\xm-0.75+\dy) node [ above,midway] {$\vec{v}_2$};
+			\draw[->,line width=1.0pt] (\xb-0.5,\xm+0.5+\dy) -- (\xb+0.5,\xm+0.5+\dy) node [ above,midway] {$\vec{v}_1$};
+			
+			\draw[<->,line width=1.0pt] (\xa,{0+\dy}) -- (\xa,{-\xm+\dy}) node [left,midway] {$A_2$};
+			\draw[<->,line width=1.0pt] (\xb,{0+\dy}) -- (\xb,{\xm+\dy}) node [left,midway] {$A_1$};
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			\end{tikzpicture}
+			\caption*{\footnotesize Interferência destrutiva.}
+		\end{subfigure}
+	\end{figure}
+\end{frame}
+
+\begin{frame}<0>[fragile]{Interferência}
+	\begin{figure}
+		\begin{subfigure}[c]{0.45\textwidth}
+			\Centering
+			%\input{tikz/interferencia-5.pgf}
+			\begin{tikzpicture}[scale=0.37,transform shape,samples=200]
+			
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			%interferencia 1
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			
+			%parametros de cada frame
+			\def\xm{1.5}
+			\def\xa{5}
+			\def\xb{10}
+			\def\xt{15}
+			\def\l{2}
+			
+			\useasboundingbox (-0.5,-9-\xm) rectangle (\xt+0.5,\xm+1);
+			
+			\draw[line width=1.0pt,->,color=blue] (0,0) -- (\xt,0) node[right] {x};
+			
+			%definindo funcao
+			\pgfmathdeclarefunction{ff}{1}{\pgfmathparse{\xm*cos(#1-3.14)}}
+			\pgfmathdeclarefunction{fff}{1}{\pgfmathparse{\xm*exp(-\l*(#1-\xb)^2)}}
+			
+			%curva
+			\draw[line width=1.5pt,domain=\xa-3:\xa+3,variable=\x,color=red] plot (\x,{ff(\x)});
+			\draw[line width=1.5pt,domain=\xb-3:\xb+3,variable=\x,color=red] plot (\x,{fff(\x)});
+			
+			%vetores
+			\draw[->,line width=1.0pt] (\xa-0.5,\xm+0.5) -- (\xa+0.5,\xm+0.5) node [ above,midway] {$\vec{v}_1$};
+			\draw[<-,line width=1.0pt] (\xb-0.5,\xm+0.5) -- (\xb+0.5,\xm+0.5) node [ above,midway] {$\vec{v}_2$};
+			
+			\draw[<->,line width=1.0pt] (\xa,0) -- (\xa,\xm) node [left,midway] {$A_1$};
+			\draw[<->,line width=1.0pt] (\xb,0) -- (\xb,\xm) node [left,midway] {$A_2$};
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			%interferencia 2
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			
+			%parametros de cada frame
+			\def\dy{-4}
+			\def\xm{1.5}
+			\def\xc{0.5*(\xa+\xb)}
+			\def\xt{15}
+			
+			\draw[line width=1.0pt,->,color=blue] (0,\dy) -- (\xt,\dy) node[right] {x};
+			
+			%definindo funcao
+			\pgfmathdeclarefunction{ffff}{1}{\pgfmathparse{\dy+2*\xm*exp(-\l*(#1-\xc)^2)}}
+			
+			%curva
+			\draw[line width=1.5pt,domain=\xc-3:\xc+3,variable=\x,color=red] plot (\x,{ffff(\x)});
+			
+			%vetores
+			\draw[<->,line width=1.0pt] ({\xc},{0+\dy}) -- ({\xc},{2*\xm+\dy}) node [left,midway] {$(A_1+A_2)$};
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			%interferencia 3
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			
+			%parametros de cada frame
+			\def\dy{-8}
+			\def\xm{1.5}
+			\def\xa{5}
+			\def\xb{10}
+			\def\xt{15}
+			\def\l{2}
+			
+			\draw[line width=1.0pt,->,color=blue] (0,+\dy) -- (\xt,+\dy) node[right] {x};
+			
+			%definindo funcao
+			\pgfmathdeclarefunction{fffff}{1}{\pgfmathparse{\dy+\xm*exp(-\l*(#1-\xa)^2)}}
+			\pgfmathdeclarefunction{ffffff}{1}{\pgfmathparse{\dy+\xm*exp(-\l*(#1-\xb)^2)}}
+			
+			%curva
+			\draw[line width=1.5pt,domain=\xa-3:\xa+3,variable=\x,color=red] plot (\x,{fffff(\x)});
+			\draw[line width=1.5pt,domain=\xb-3:\xb+3,variable=\x,color=red] plot (\x,{ffffff(\x)});
+			
+			%vetores
+			\draw[<-,line width=1.0pt] (\xa-0.5,\xm+0.5+\dy) -- (\xa+0.5,\xm+0.5+\dy) node [ above,midway] {$\vec{v}_2$};
+			\draw[->,line width=1.0pt] (\xb-0.5,\xm+0.5+\dy) -- (\xb+0.5,\xm+0.5+\dy) node [ above,midway] {$\vec{v}_1$};
+			
+			\draw[<->,line width=1.0pt] (\xa,{0+\dy}) -- (\xa,{\xm+\dy}) node [left,midway] {$A_2$};
+			\draw[<->,line width=1.0pt] (\xb,{0+\dy}) -- (\xb,{\xm+\dy}) node [left,midway] {$A_1$};
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			\end{tikzpicture}
+			\caption*{\footnotesize Interferência construtiva.}
+		\end{subfigure}
+		\begin{subfigure}[c]{0.45\textwidth}
+			\Centering
+			%\input{tikz/interferencia-6.pgf}
+			\begin{tikzpicture}[scale=0.37,transform shape,samples=200]
+			
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			%interferencia 1
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			
+			%parametros de cada frame
+			\def\xm{1.5}
+			\def\xa{5}
+			\def\xb{10}
+			\def\xt{15}
+			\def\l{2}
+			
+			\useasboundingbox (-0.5,-9-\xm) rectangle (\xt+0.5,\xm+1);
+			
+			\draw[line width=1.0pt,->,color=blue] (0,0) -- (\xt,0) node[right] {x};
+			
+			%definindo funcao
+			\pgfmathdeclarefunction{ff}{1}{\pgfmathparse{\xm*exp(-\l*(#1-\xa)^2)}}
+			\pgfmathdeclarefunction{fff}{1}{\pgfmathparse{-\xm*exp(-\l*(#1-\xb)^2)}}
+			
+			%curva
+			\draw[line width=1.5pt,domain=\xa-3:\xa+3,variable=\x,color=red] plot (\x,{ff(\x)});
+			\draw[line width=1.5pt,domain=\xb-3:\xb+3,variable=\x,color=red] plot (\x,{fff(\x)});
+			
+			%vetores
+			\draw[->,line width=1.0pt] (\xa-0.5,\xm+0.5) -- (\xa+0.5,\xm+0.5) node [ above,midway] {$\vec{v}_1$};
+			\draw[<-,line width=1.0pt] (\xb-0.5,-\xm-0.75) -- (\xb+0.5,-\xm-0.75) node [ above,midway] {$\vec{v}_2$};
+			
+			\draw[<->,line width=1.0pt] (\xa,0) -- (\xa,\xm) node [left,midway] {$A_1$};
+			\draw[<->,line width=1.0pt] (\xb,0) -- (\xb,-\xm) node [left,midway] {$A_2$};
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			%interferencia 2
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			
+			%parametros de cada frame
+			\def\dy{-4}
+			\def\xm{1.5}
+			\def\xc{0.5*(\xa+\xb)}
+			\def\xt{15}
+			
+			\draw[line width=1.0pt,->,color=blue] (0,\dy) -- (\xt,\dy) node[right] {x};
+			
+			%definindo funcao
+			\pgfmathdeclarefunction{ffff}{1}{\pgfmathparse{\dy+0*\xm*exp(-\l*(#1-\xc)^2)}}
+			
+			%curva
+			\draw[line width=1.5pt,domain=\xc-3:\xc+3,variable=\x,color=red] plot (\x,{ffff(\x)});
+			
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			%interferencia 3
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			
+			%parametros de cada frame
+			\def\dy{-8}
+			\def\xm{1.5}
+			\def\xa{5}
+			\def\xb{10}
+			\def\xt{15}
+			\def\l{2}
+			
+			%eixo
+			%		\draw[line width=1.0pt,->,color=blue] (0,{-(\xm+1)+\dy}) -- (0,{(\xm+1)+\dy}) node[above] {};
+			\draw[line width=1.0pt,->,color=blue] (0,+\dy) -- (\xt,+\dy) node[right] {x};
+			
+			%definindo funcao
+			\pgfmathdeclarefunction{fffff}{1}{\pgfmathparse{\dy-\xm*exp(-\l*(#1-\xa)^2)}}
+			\pgfmathdeclarefunction{ffffff}{1}{\pgfmathparse{\dy+\xm*exp(-\l*(#1-\xb)^2)}}
+			
+			%curva
+			\draw[line width=1.5pt,domain=\xa-3:\xa+3,variable=\x,color=red] plot (\x,{fffff(\x)});
+			\draw[line width=1.5pt,domain=\xb-3:\xb+3,variable=\x,color=red] plot (\x,{ffffff(\x)});
+			
+			%vetores
+			\draw[<-,line width=1.0pt] (\xa-0.5,-\xm-0.75+\dy) -- (\xa+0.5,-\xm-0.75+\dy) node [ above,midway] {$\vec{v}_2$};
+			\draw[->,line width=1.0pt] (\xb-0.5,\xm+0.5+\dy) -- (\xb+0.5,\xm+0.5+\dy) node [ above,midway] {$\vec{v}_1$};
+			
+			\draw[<->,line width=1.0pt] (\xa,{0+\dy}) -- (\xa,{-\xm+\dy}) node [left,midway] {$A_2$};
+			\draw[<->,line width=1.0pt] (\xb,{0+\dy}) -- (\xb,{\xm+\dy}) node [left,midway] {$A_1$};
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			\end{tikzpicture}
+			\caption*{\footnotesize Interferência destrutiva.}
+		\end{subfigure}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Ondas com mesmo comprimento de onda saindo de dois alto-falantes}
+	\begin{figure}[c]
+		\begin{subfigure}[t]{0.45\textwidth}
+			\Centering
+			%\input{tikz/interferencia.pgf}
+			\begin{tikzpicture}[scale=0.5, transform shape]
+			
+			%parametros
+			\def\d{3.5}
+			\def\x{6}
+			\def\y{6}
+			\def\r{sqrt(2*36)}
+			\def\tt{atan(\y/\x)}
+			
+			%transmissor
+			
+			\coordinate (a) at (\x,\y);
+			
+			%parede
+			\fill [pattern = north west lines] (-0.2,-0.5) rectangle (0,\d+0.5);
+			\draw (0,-0.5) -- (0,\d+0.5);
+			
+			%autofalantes
+			\filldraw[color=brown] (0,\d-0.5) rectangle (0.25,\d+0.5);
+			\filldraw[color=brown] (0,-0.5) rectangle (0.25,0.5);
+			
+			\node[below] at (0,-0.5) {Autofalantes};
+			
+			%ondas esfericas
+			\foreach \n in {0.25,0.5,...,3}{
+				\draw[dashed,color=red] (\n,-\n) arc (-90:90:{\n});
+				\draw[dashed,color=red] (\n,\d-\n) arc (-90:90:\n);}
+			
+			\draw[dashed] (0,0.5*\d) -- (\x,0.5*\d);
+			
+			%comprimento de onda
+			\draw[<->] ($(0,0)+(-15:1)$) --++ (-15:0.5) node[above,sloped,midway] {$\lambda$};
+			
+			%posicao do observador
+			\filldraw (a) circle (0.05cm) node[above right] {P};
+			
+			%vetores
+			\draw[->] (0,\d) -- (a) node[above,midway] {$r_2$};
+			\draw[->] (0,0.5*\d) -- (a) node[above,midway] {$R$};
+			\draw[->] (0,0) -- (a) node[above,midway] {$r_1$};
+			
+			\end{tikzpicture}
+			\caption*{\footnotesize Superposição de duas ondas esfericas}
+		\end{subfigure}
+		\begin{subfigure}[t]{0.45\textwidth}
+			\Centering
+			%\input{tikz/interferencia-3.pgf}
+			\begin{tikzpicture}[scale=0.7, transform shape]
+			
+			%parametros
+			\def\d{3.5}
+			\def\x{6}
+			\def\y{6}
+			\def\tt{atan((\y-0.5*\d)/\x)}
+			
+			\def\lambda{13}
+			\def\k{4*pi/\lambda}
+			\def\om{0.5*pi}
+			\def\xm{1}
+			
+			\tikzset{wave/.style={decorate,decoration={snake,post length=0mm,amplitude=5mm, segment length=\lambda},thick}}
+			
+			\coordinate (a) at (\x,\y);
+			
+			\draw[wave,color=red] (0,0)--(45:{sqrt(\x^2+\y^2)});
+			\draw[wave,color=green] (0,\d)--(45:{sqrt(\x^2+\y^2)});
+			
+			%parede
+			\fill [pattern = north west lines] (-0.2,-0.5) rectangle (0,\d+0.5);
+			\draw (0,-0.5) -- (0,\d+0.5);
+			
+			%posicao do observador
+			\filldraw (a) circle (0.05cm) node[above right] {P};
+			
+			%vetores
+			\draw[->,dashed] (0,\d) -- (a) node[above,midway] {$r_2$};
+			\draw[->,dashed] (0,0) -- (a) node[above,midway] {$r_1$};
+			
+			\end{tikzpicture}
+			\caption*{\footnotesize Representação do caminho da onda}
+		\end{subfigure}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Interferência construtiva}
+	Teremos interferência construtiva no ponto P se a diferença dos caminhos percorridos pelas duas ondas forem números inteiros de comprimentos de onda, ou seja,
+	\begin{columns}[c]
+		\begin{column}[c]{0.6\textwidth}
+			\begin{equation*}
+				r_1-r_2 = n\lambda,\; n=\pm 0,\pm 1,\pm 2,\dots
+			\end{equation*}
+			mas $r_1-r_2=dsen\theta$, portanto
+			\begin{equation*}
+				\boxed{dsen\theta = n\lambda,\; n=\pm 0,\pm 1,\pm 2,\dots}
+			\end{equation*}
+			Sabemos também que $tg\theta = \frac{\Delta y}{L}$, se considerarmos $tg\theta \approx sen\theta$ podemos dizer que
+			\begin{equation*}
+				\boxed{\Delta y = \frac{nL}{d}\lambda,\; n=\pm 0,\pm 1,\pm 2,\dots}
+			\end{equation*}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}[c]
+				\Centering
+				%\input{tikz/interferencia-2.pgf}
+				\begin{tikzpicture}[scale=0.5, transform shape]
+				
+				%parametros
+				\def\d{3.5}
+				\def\x{8}
+				\def\y{5}
+				\def\tt{atan((\y/\x)}
+				\def\h{\d*sqrt(1-(\y/\x)^2)}
+				
+				%transmissor
+				
+				\coordinate (a) at (\x,\y);
+				
+				%parede
+				\fill [pattern = north west lines] (-0.2,-0.5) rectangle (0,\d+0.5);
+				\draw (0,-0.5) -- (0,\d+0.5);
+				
+				%linha tracejada
+				\draw[dashed] (0,0.5*\d) -- (\x,0.5*\d);
+				
+				%posicao do observador
+				\filldraw (a) circle (0.05cm) node[above right] {P};
+				
+				%vetores
+				\draw[->] (0,\d) -- (a) node[above,midway] {$r_2$};
+				\draw[->] (0,0.5*\d) -- (a) node[above,midway] {$R$};
+				\draw[->] (0,0) -- (a) node[above,midway] {$r_1$};
+				
+				%angulo
+				\draw[] (0.5,0.5*\d) arc (0:\tt:0.5cm) node[right,midway] {$\theta$};
+				
+				\draw[color=red] (0,\d) --++ ({\h*\y/\x},{-\h*cos(\tt)});
+				%	\draw[color=red] (0,0.5*\d) --++ ({0.5*\d*sin(\tt)*cos(\tt)},{0.5*\d*(sin(\tt)*sin(\tt))});
+				
+				%	\draw[color=red] (0,0.5*\d) --++ ({0.5*\d*sin(\tt)*cos(\tt)-0.1},{0.5*\d*(sin(\tt)*sin(\tt)-1+0.1)});
+				%	\draw[color=red] (0,0) --++ ({\h*\y/\x},{\h*cos(\tt)});
+				\draw[color=red] (0,0) -- ({\h*\y/\x},{0.5*\h*cos(\tt)});
+				
+				%angulo
+				%	\draw[] (0,0.5*\d-0.5) arc (-90:-90+\tt:0.5cm) node[below,midway] {$\theta$};
+				\draw[] (0,\d-0.5) arc (-90:-90+\tt:0.5cm) node[below,midway] {$\theta$};
+				
+				%largura
+				\draw[<->] (-0.4,0) -- (-0.4,0.5*\d) node[left,midway] {$\frac{d}{2}$};
+				\draw[<->] (-0.4,0.5*\d) -- (-0.4,\d) node[left,midway] {$\frac{d}{2}$};
+				
+				\draw[<->] (0.2,-0.2) --++ ({\h*\y/\x},{0.5*\h*cos(\tt)}) node[below,midway,sloped] {$dsen\theta$};
+				
+				%distancia do anteparo e altura do 1st maximo
+				\draw[<->] (0,-0.75) -- (\x,-0.75) node [above,midway] {$L$};
+				\draw[<->] (\x+0.25,0.5*\d) -- (\x+0.25,\y) node [right,midway] {$\Delta y$};
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Interferência construtiva no ponto P.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Interferência destrutiva e a experiência de Young}
+	Teremos interferência destrutiva se a diferença dos caminhos percorridos pelas duas ondas for um valor semi-inteiro do comprimento de onda, ou seja,	
+	\begin{columns}[c]
+		\begin{column}[c]{0.6\textwidth}
+			\begin{equation*}
+				r_1-r_2 = \left(n+\frac{1}{2}\right)\lambda,\; n=\pm 0,\pm 1,\pm 2,\dots
+			\end{equation*}
+			\begin{corollary}
+				\begin{align*}
+					r_1-r_2 & = dsen\theta = 
+					\begin{cases}
+						n\lambda, & \textrm{(Construtiva)}\\											\left(n+\frac{1}{2}\right)\lambda, & \textrm{(Destrutiva)}
+					\end{cases}\\
+					n & = \pm 0,\pm 1,\pm 2,\pm 3,\pm 4,\dots
+				\end{align*}
+			\end{corollary}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}[c]
+				\Centering
+				\includegraphics[scale=0.9]{figuras/interferencia.jpg}
+				\caption*{\footnotesize Interferencia de ondas na água.}
+%				\input{tikz/interferencia-4.pgf}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\section{Ondas sonoras}
+
+\subsection{}
+
+\begin{frame}{O que é som}
+	O som é uma onda mecânica longitudinal que se propaga ao longo do meio material (sólido, líquido ou gás), numa frequência entre 20 a 20000 Hz.
+	\begin{columns}
+		\begin{column}[t]{0.6\textwidth}
+			\begin{figure}
+				\Centering
+				\includegraphics[scale=0.3]{figuras/som.jpg}
+				\caption*{\footnotesize Som se propagando da fonte até o ouvido.}
+			\end{figure}
+		\end{column}
+		\begin{column}[t]{0.4\textwidth}
+			\begin{corollary}
+				 Cada pulso se propaga através da variação de pressão entre as moléculas que compõem a matéria (as moléculas que estão atrás empurram as que estão justamente a frente, e assim a energia do pulso se propaga no meio).
+			\end{corollary}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Propriedades de uma onda sonora}
+%	Podemos determinar as propriedades da onda através da amplitude, frequência e comprimento de onda.
+	\begin{block}{Qualidades usadas para distinguir o som}
+		\begin{itemize}
+			\item[\ding{51}] \alert{Intensidade}: Energia média transmitida por unidade de tempo e área (depende da amplitude da onda sonora).
+			\item[\ding{51}] \alert{Altura}: Sensação que permite distinguir entre sons graves e agudos (diretamente associado com a frequência da onda).
+			\item[\ding{51}] \alert{Timbre}: Capacidade de distinguir sons de mesma altura (frequência) e intensidade em instrumentos diferentes (coloração do som).
+		\end{itemize}	
+	\end{block}
+	\begin{corollary}
+		A velocidade da onda sonora no ar é 340 m/s e aumenta com a temperatura, além do mais, já é conhecido que $v_{\text{sólido}}>v_{\text{líquido}}>v_{\text{gás}}$.
+	\end{corollary}
+\end{frame}
+
+\begin{frame}{Altura}
+	A característica física de uma onda sonora associada a altura é a frequência.
+	\begin{table}
+		\caption*{Notas musicais (Hz).}
+		\begin{tabular}{ccccccccc}
+			\hline
+			\hline
+			Nota & Dó & Ré & Mi & Fá & Sol & Lá & Si & Dó\\
+			Freq. & 264 & 297 & 330 & 352 & 396 & 440 & 495 & 528\\
+			\hline		
+		\end{tabular}	
+	\end{table}
+	\begin{corollary}
+		\begin{itemize}
+			\item[\ding{51}] Um som grave possui baixa frequência (som baixo), enquanto que um som alto possui alta frequência (som alto);
+			\item[\ding{51}] Infrassons são ondas sonoras cuja frequência estão abaixo de 20 Hz enquanto que ultrasons estão acima de 20000 Hz.
+		\end{itemize}				
+	\end{corollary}
+\end{frame}
+
+\begin{frame}{Intensidade de uma onda sonora}
+	\begin{columns}[b]
+		\begin{column}[b]{0.5\textwidth}
+			A intensidade de uma onda é definida como
+			\begin{align*}
+				I = \frac{1}{A}\left(\frac{\Delta E}{\Delta t}\right).
+			\end{align*}
+			No SI usa-se a unidade $\left[I\right]=\frac{W}{m^{2}}$ mas na prática usa-se decibéis (dB),
+			\begin{equation*}
+				\boxed{\beta=10Log_{10}(I/I_{0})\; \textrm{dB}.}
+			\end{equation*}
+		\end{column}
+		\begin{column}[b]{0.5\textwidth}
+			\begin{figure}[c]
+				\Centering
+				\includegraphics[scale=0.22]{figuras/intensidade-sonora.png}
+				\caption*{\footnotesize Intensidades sonoras de alguns objetos.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+	\begin{corollary}
+		$I_0$ é a mínima intensidade perceptível por uma pessoa $(I_{0}=10^{-12}W/m^{2})$.
+	\end{corollary}
+\end{frame}
+
+\begin{frame}[fragile]{Timbre}
+	Embora com perfis diferentes, o ouvido humano pode perceber duas ondas sonoras periódicas de mesma frequência.
+	\begin{figure}
+		\begin{subfigure}[b]{0.45\textwidth}
+			\Centering
+			%\input{tikz/superposicao.pgf}
+			\begin{tikzpicture}[scale=0.14, auto, transform shape,font=\Large, samples=200]
+			
+			%parametros gerais
+			
+			\def\dk{6}        % delta k
+			
+			%onda 1
+			\def\xa{1.2}					% Amplitude
+			\def\va{3.14}						% velocidade da onda
+			\def\fia{0} 					% fase inicial
+			\def\ka{1}						% numero de onda
+			\def\oa{\ka*\va}			% frequencia angula
+			
+			%onda 2
+			\def\xb{1.2}					% Amplitude
+			\def\vb{1}					% velocidade da onda
+			\def\fib{0}				% fase inicial
+			\def\kb{\ka*\dk}						% numero de onda
+			\def\ob{\kb*\vb}			% frequencia angula
+			
+			\def\ta{pi}
+			\def\t{-6.5}
+			\def\tt{2*\t}
+			\def\tx{2}
+			\def\pt{1.0*pi}
+			\def\tmp{1}
+			
+			%definindo funcao
+			\pgfmathdeclarefunction{y1}{2}{\pgfmathparse{\xa*cos(deg(\ka*#1-\oa*#2+\fia))}}
+			\pgfmathdeclarefunction{y2}{2}{\pgfmathparse{\t-\xb*cos(deg(\ka*#1-\oa*#2+\fia))-\xb*cos(deg(0.5*\kb*#1-\ob*#2+\fib))}}
+			\pgfmathdeclarefunction{y3}{2}{\pgfmathparse{\tt+\xa*cos(deg(\ka*#1-\oa*#2+\fia))+\xb*cos(deg(\kb*#1-\ob*#2+\fib))}}
+			
+			%eixo
+			\draw[line width=0.5pt,->] (0,-{(\xa+1)}) -- (0,{(\xa+1)}) node[above] {};
+			\draw[line width=0.5pt,->] (0,0) -- (6.5*\ta,0) node[right] {$x$};
+			
+			%curva
+			\draw[line width=0.5pt,domain=0:6*\ta,variable=\x,color=red] plot (\x,{y1(\x,\tmp)});
+			
+			%pontos
+			\filldraw[black] (0,0) circle (2pt) node[anchor=north east] {o};
+			
+			%coordenadas
+			\node[above left] at (0,\xa) {$y_{m_{1}}$};
+			\node[above left] at (0,-\xa) {$-y_{m_{1}}$};
+			
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			%		grafico 2
+			
+			%eixo
+			\draw[line width=0.5pt,->] (0,{-(\xb+1)+\t}) -- (0,{(\xb+1)+\t}) node[above] {};
+			\draw[line width=0.5pt,->] (0,\t) -- (6.5*\ta,\t) node[right] {$x$};
+			
+			%curva
+			\draw[line width=0.5pt,domain=0:6*\ta,variable=\x,color=red] plot (\x,{y2(\x,\tmp)});
+			
+			%pontos
+			\filldraw[black] (0,\t) circle (2pt) node[anchor=north east] {o};
+			
+			%coordenadas
+			\node[above left] at (0,\xb+\t) {$y_{m_{2}}$};
+			\node[above left] at (0,-\xb+\t) {$-y_{m_{2}}$};
+			
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			%		grafico 3
+			
+			%eixo
+			\draw[line width=0.5pt,->] (0,{\tt-\xa-\xb}) -- (0,{\tt+\xa+\xb}) node[above] {};
+			\draw[line width=0.5pt,->] (0,\tt) -- (6.5*\ta,\tt) node[right] {$x$};
+			
+			%curva
+			\draw[line width=0.5pt,domain=0:6*\ta,variable=\x,color=red] plot (\x,{y3(\x,\tmp)});
+			
+			%posicoes
+			\foreach \x in {0.5,1,...,6}{
+				\node[below]  at (\ta*\x,\tt) {$\x\pi$};
+				\draw (\ta*\x,\tt-0.1) -- (\ta*\x,\tt+0.1);}
+			
+			%pontos
+			\filldraw[black] (0,\tt) circle (2pt) node[anchor=north east] {o};
+			
+			\foreach \x in {1,3,5}{
+				\draw[dashed] (\pt*\x,{y1(\pt*\x,\tmp)}) -- (\pt*\x,{y3(\pt*\x,\tmp)});
+				\filldraw[green] (\pt*\x,{y1(\pt*\x,\tmp)}) circle (3pt) node {};
+				\filldraw[green] (\pt*\x,{y2(\pt*\x,\tmp)}) circle (3pt) node {};
+				\filldraw[green] (\pt*\x,{y3(\pt*\x,\tmp)}) circle (3pt) node {};}
+			
+			\end{tikzpicture}
+			\caption*{\footnotesize Três ondas com a mesma frequência.}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.45\textwidth}
+			\Centering
+			\includegraphics[scale=0.49]{figuras/timbre.png}
+			\caption*{\footnotesize Nota Lá tocada por dois instrumentos.}
+		\end{subfigure}
+	\end{figure}
+	\begin{corollary}
+		A característica que distingue um som musical de um ruído é a periodicidade.
+	\end{corollary}
+\end{frame}
+
+\section{Aplicações}
+
+\subsection{}
+
+\begin{frame}{Efeito Doppler}
+	A frequência do som que o observador poderá ouvir muda dependendo das velocidades da fonte e do observador.
+	\begin{figure}[c]
+		\Centering
+		\begin{subfigure}[b]{0.5\textwidth}
+			\includegraphics[scale=0.4]{figuras/dopler001.jpg}
+		\caption*{\footnotesize Frequência grave ouvida pelo observador \cite{doppler}.}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.5\textwidth}
+			\includegraphics[scale=0.4]{figuras/dopler002.jpg}
+		\caption*{\footnotesize Frequência aguda ouvida pelo observador \cite{doppler}.}
+		\end{subfigure}
+	\end{figure}
+\end{frame}
+
+\begin{frame}[fragile]{Cordas vibrantes}
+	\begin{columns}
+		\begin{column}[b]{0.5\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.26]{figuras/cordasvibrando.png}
+				\caption*{\footnotesize \href{https://giphy.com/gifs/tech-japan-guitar-zBFMw5C4wj3W}{\textcolor{blue}{Ondas na corda do violão.}}}
+			\end{figure}
+		\end{column}
+		\begin{column}[b]{0.5\textwidth}
+			\begin{figure}
+				\centering
+				%\input{tikz/modos-normais.pgf}
+				\begin{tikzpicture}[scale=0.23, auto, transform shape,font=\huge, samples=200]
+				
+				%parametros gerais
+				\def\t{-3}
+				\def\tt{2*\t}
+				\def\ttt{3*\t}
+				
+				\def\l{8}
+				\def\k{pi/\l}
+				\def\om{0.5*pi}
+				\def\xm{1}
+				
+				%definindo funcao
+				\pgfmathdeclarefunction{f}{2}{\pgfmathparse{\xm*cos(deg(\k*#1-\om*#2))}}
+				
+				%parede
+				\fill [pattern = north west lines] (-0.25,-\xm) rectangle (0,\xm);
+				\draw (0,-\xm) -- (0,\xm);
+				
+				%parede
+				\fill [pattern = north west lines] (\l,-\xm) rectangle (0.25+\l,\xm);
+				\draw (\l,-\xm) -- (\l,\xm);
+				
+				%curva
+				\draw[line width=1.5pt,domain=0:\l,variable=\x,color=gray] plot (\x,{f(\x,1)});
+				\draw[line width=1.5pt,domain=\l:0,variable=\x,color=gray,dashed] plot (\x,{f(\x,3)});
+				
+				%texto
+				\node[right] at (\l+0.25,0) {$n=1\quad (\textcolor{red}{1}\lambda = 2L)$};
+				
+				%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+				%		grafico 2
+				
+				%definindo funcao
+				\pgfmathdeclarefunction{ff}{2}{\pgfmathparse{\t+\xm*cos(deg(2*\k*#1-\om*#2))}}
+				
+				%parede
+				\fill [pattern = north west lines] (-0.25,\t-\xm) rectangle (0,\t+\xm);
+				\draw (0,\t-\xm) -- (0,\t+\xm);
+				
+				%parede
+				\fill [pattern = north west lines] (\l,\t-\xm) rectangle (0.25+\l,\t+\xm);
+				\draw (\l,\t-\xm) -- (\l,\t+\xm);
+				
+				%curva
+				\draw[line width=1.5pt,domain=0:\l,variable=\x,color=gray] plot (\x,{ff(\x,1)});
+				\draw[line width=1.5pt,domain=\l:0,variable=\x,color=gray,dashed] plot (\x,{ff(\x,3)});
+				
+				%texto
+				\node[right] at (\l+0.25,\t) {$n=2\quad (\textcolor{red}{2}\lambda = 2L)$};
+				
+				%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+				%		grafico 3
+				
+				%definindo funcao
+				\pgfmathdeclarefunction{fff}{2}{\pgfmathparse{\tt+\xm*cos(deg(3*\k*#1-\om*#2))}}
+				
+				%parede
+				\fill [pattern = north west lines] (-0.25,\tt-\xm) rectangle (0,\tt+\xm);
+				\draw (0,\tt-\xm) -- (0,\tt+\xm);
+				
+				%parede
+				\fill [pattern = north west lines] (\l,\tt-\xm) rectangle (0.25+\l,\tt+\xm);
+				\draw (\l,\tt-\xm) -- (\l,\tt+\xm);
+				
+				%curva
+				\draw[line width=1.5pt,domain=0:\l,variable=\x,color=gray] plot (\x,{fff(\x,1)});
+				\draw[line width=1.5pt,domain=\l:0,variable=\x,color=gray,dashed] plot (\x,{fff(\x,3)});
+				
+				%texto
+				\node[right] at (\l+0.25,\tt) {$n=3\quad (\textcolor{red}{3}\lambda = 2L)$};
+				
+				%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+				%		grafico 4
+				
+				%definindo funcao
+				\pgfmathdeclarefunction{ffff}{2}{\pgfmathparse{\ttt+\xm*cos(deg(4*\k*#1-\om*#2))}}
+				
+				%parede
+				\fill [pattern = north west lines] (-0.25,\ttt-\xm) rectangle (0,\ttt+\xm);
+				\draw (0,\ttt-\xm) -- (0,\ttt+\xm);
+				
+				%parede
+				\fill [pattern = north west lines] (\l,\ttt-\xm) rectangle (0.25+\l,\ttt+\xm);
+				\draw (\l,\ttt-\xm) -- (\l,\ttt+\xm);
+				
+				%curva
+				\draw[line width=1.5pt,domain=0:\l,variable=\x,color=gray] plot (\x,{ffff(\x,1)});
+				\draw[line width=1.5pt,domain=\l:0,variable=\x,color=gray,dashed] plot (\x,{ffff(\x,3)});
+				
+				%linguica
+				\draw (0,\ttt-\xm-0.1) -- (0,\ttt-\xm-1.1);
+				\draw (\l,\ttt-\xm-0.1) -- (\l,\ttt-\xm-1.1);
+				\draw (0,\ttt-\xm-1) -- (\l,\ttt-\xm-1) node [above,midway] {L};
+				
+				%texto
+				\node[right] at (\l+0.25,\ttt) {$n=4\quad (\textcolor{red}{4}\lambda = 2L)$};
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Modos normais de vibração.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+	\begin{corollary}
+		À partir da tensão aplicada, densidade e o comprimento da corda, é possível gerar uma onda com frequência bem definida.
+	\end{corollary}
+\end{frame}
+
+\begin{frame}[fragile]{Tubo sonoro}
+	\begin{figure}[c]
+		\Centering
+		\begin{subfigure}[b]{0.5\textwidth}
+			\centering
+			\includegraphics[scale=0.4]{figuras/orgao.jpg}
+			\caption*{\footnotesize Órgão musical \cite{orgao}.}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.5\textwidth}
+			\centering
+			%\includegraphics[scale=0.35]{figuras/tubosonoro.png}
+			\begin{tikzpicture}[scale=0.35, auto, transform shape,font=\Large, samples=200]
+			
+			%parametros gerais
+			\def\t{-3}
+			\def\tt{2*\t}
+			\def\ttt{3*\t}
+			
+			\def\l{8}
+			\def\k{pi/\l}
+			\def\om{0.5*pi}
+			\def\xm{1}
+			
+			%definindo funcao
+			\pgfmathdeclarefunction{f}{2}{\pgfmathparse{\xm*cos(deg(\k*#1-\om*#2+0.5*pi))}}
+			
+			%secao reta
+			\draw[line width=1.0pt,dotted] (0,-\xm) -- (0,\xm);
+			\draw[line width=1.0pt,dotted] (\l,-\xm) -- (\l,\xm);
+			
+			%parede
+			\draw[line width=1.0pt,color=brown] (0,-\xm) -- (\l,-\xm);
+			\draw[line width=1.0pt,color=brown] (0,\xm) -- (\l,\xm);
+			
+			%curva
+			\draw[line width=1.0pt,domain=0:\l,variable=\x,color=gray] plot (\x,{f(\x,1)});
+			\draw[line width=1.0pt,domain=\l:0,variable=\x,color=gray,dashed] plot (\x,{f(\x,3)});
+			
+			%texto
+			\node[right] at (\l+0.25,0) {$n=1\quad (\textcolor{red}{1}\lambda = 2L)$};
+			
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			%		grafico 2
+			
+			%definindo funcao
+			\pgfmathdeclarefunction{ff}{2}{\pgfmathparse{\t+\xm*cos(deg(2*\k*#1-\om*#2+0.5*pi))}}
+			
+			%secao reta
+			\draw[line width=1.0pt,dotted] (0,\t-\xm) -- (0,\t+\xm);
+			\draw[line width=1.0pt,dotted] (\l,\t-\xm) -- (\l,\t+\xm);
+			
+			%parede
+			\draw[line width=1.0pt,color=brown] (0,\t-\xm) -- (\l,\t-\xm);
+			\draw[line width=1.0pt,color=brown] (0,\t+\xm) -- (\l,\t+\xm);
+			
+			%curva
+			\draw[line width=1.0pt,domain=0:\l,variable=\x,color=gray] plot (\x,{ff(\x,1)});
+			\draw[line width=1.0pt,domain=\l:0,variable=\x,color=gray,dashed] plot (\x,{ff(\x,3)});
+			
+			%texto
+			\node[right] at (\l+0.25,\t) {$n=2\quad (\textcolor{red}{2}\lambda = 2L)$};
+			
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			%		grafico 3
+			
+			%definindo funcao
+			\pgfmathdeclarefunction{fff}{2}{\pgfmathparse{\tt+\xm*cos(deg(3*\k*#1-\om*#2+0.5*pi))}}
+			
+			%curva
+			\draw[line width=1.0pt,domain=0:\l,variable=\x,color=gray] plot (\x,{fff(\x,1)});
+			\draw[line width=1.0pt,domain=\l:0,variable=\x,color=gray,dashed] plot (\x,{fff(\x,3)});
+			
+			%secao reta
+			\draw[line width=1.0pt,dotted] (0,\tt-\xm) -- (0,\tt+\xm);
+			\draw[line width=1.0pt,dotted] (\l,\tt-\xm) -- (\l,\tt+\xm);
+			
+			%parede
+			\draw[line width=1.0pt,color=brown] (0,\tt-\xm) -- (\l,\tt-\xm);
+			\draw[line width=1.0pt,color=brown] (0,\tt+\xm) -- (\l,\tt+\xm);
+			
+			%texto
+			\node[right] at (\l+0.25,\tt) {$n=3\quad (\textcolor{red}{3}\lambda = 2L)$};
+			
+			%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+			%		grafico 4
+			
+			%definindo funcao
+			\pgfmathdeclarefunction{ffff}{2}{\pgfmathparse{\ttt+\xm*cos(deg(4*\k*#1-\om*#2+0.5*pi))}}
+			
+			%curva
+			\draw[line width=1.0pt,domain=0:\l,variable=\x,color=gray] plot (\x,{ffff(\x,1)});
+			\draw[line width=1.0pt,domain=\l:0,variable=\x,color=gray,dashed] plot (\x,{ffff(\x,3)});
+			
+			%secao reta
+			\draw[line width=1.0pt,dotted] (0,\ttt-\xm) -- (0,\ttt+\xm);
+			\draw[line width=1.0pt,dotted] (\l,\ttt-\xm) -- (\l,\ttt+\xm);
+			
+			%parede
+			\draw[line width=1.0pt,color=brown] (0,\ttt-\xm) -- (\l,\ttt-\xm);
+			\draw[line width=1.0pt,color=brown] (0,\ttt+\xm) -- (\l,\ttt+\xm);
+			
+			%linguica
+			\draw (0,\ttt-\xm-0.1) -- (0,\ttt-\xm-1.1);
+			\draw (\l,\ttt-\xm-0.1) -- (\l,\ttt-\xm-1.1);
+			\draw (0,\ttt-\xm-1) -- (\l,\ttt-\xm-1) node [above,midway] {L};
+			
+			%texto
+			\node[right] at (\l+0.25,\ttt) {$n=4\quad (\textcolor{red}{4}\lambda = 2L)$};
+			
+			\end{tikzpicture}
+			\caption*{\footnotesize Modos normais no tubo sonoro.}
+		\end{subfigure}
+	\end{figure}
+\end{frame}
+
+\section{Apêndice}
+
+\subsection{}
+
+\begin{frame}{Transformar um número em notação científica}
+	\begin{corollary}
+		\begin{enumerate}[leftmargin=1.75cm]
+			\item[Passo 1:] Escrever o número incluindo a vírgula.
+			\item[Passo 2:] Andar com a vírgula até que reste somente um número diferente de zero no lado esquerdo.
+			\item[Passo 3:] Colocar no expoente da potência de 10 o número de casas decimais que tivemos que "andar" com a vírgula. Se ao andar com a vírgula o valor do número diminuiu, o expoente ficará positivo, se aumentou o expoente ficará negativo.
+		\end{enumerate}
+	\end{corollary}
+	\begin{exampleblock}{Exemplo}
+		\begin{equation*}
+			6\; 590\; 000\; 000\; 000\; 000,0 = \SI{6,59e15}{}		
+		\end{equation*}
+	\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Conversão de unidades em uma dimensão}
+	\begin{figure}
+		\begin{tikzpicture}[scale=0.65,transform shape,font=\Large]
+		
+		\tkzInit[xmin=-2,xmax=17,ymin=-6,ymax=3]
+		%\tkzGrid[color=gray!20]
+		\tkzClip
+		
+		\tikzset{compass style/.append style={->}}
+		
+		\foreach \x in {1,2,...,6}{
+			\tkzDefPoint(\x*3-3,0){\x}
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+			\node at (\x*3-3,2) {$\times 10^{1}$};
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+			\node at (\x*3-3,-2) {$\times 10^{-1}$};}
+		
+		\tkzDefPoints{-1.5/0/p1,1.5/0/p2,4.5/0/p3,7.5/-0.2/p4,10.5/0/p5,13.5/0/p6,16.5/0/p7}
+		
+		\tkzText(p1){m\_}
+		\tkzText(p2){c\_}
+		\tkzText(p3){d\_}
+		\tkzText(p4){\_}
+		\tkzText(p5){da\_}
+		\tkzText(p6){h\_}
+		\tkzText(p7){k\_}
+		
+		%exemplos
+		
+		\tkzText(3,-3.5){$1\;\text{mm}=1\times 10^{(-1)\times\alert{2}}\;\text{dm}\rightarrow 1\times 10^{-2}\;\text{dm}$}
+		\tkzText(3.1,-4.5){$2,5\;\text{kg}=2,5\times 10^{(1)\times\alert{6}}\;\text{mg}\rightarrow2,5\times 10^{6}\;\text{mg}$}
+		\tkzText(2.7,-5.5){$10\;\text{ms}=10\times 10^{(-1)\times\alert{3}}\;\text{s}\rightarrow 10\times 10^{-3}\;\text{s}$}
+		
+		\end{tikzpicture}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Conversão de unidades em duas dimensões}
+	\begin{figure}
+		\begin{tikzpicture}[scale=0.65,transform shape,font=\Large]
+	
+		\tkzInit[xmin=-2,xmax=17,ymin=-6,ymax=3]
+		%\tkzGrid[color=gray!20]
+		\tkzClip
+	
+		\tikzset{compass style/.append style={->}}
+	
+		\foreach \x in {1,2,...,6}{
+			\tkzDefPoint(\x*3-3,0){\x}
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+			\node at (\x*3-3,2) {$\times 10^{2}$};
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+			\node at (\x*3-3,-2) {$\times 10^{-2}$};}
+	
+		\tkzDefPoints{-1.5/0/p1,1.5/0/p2,4.5/0/p3,7.5/0/p4,10.5/0/p5,13.5/0/p6,16.5/0/p7}
+	
+		\tkzText(p1){$\text{m}\_^2$}
+		\tkzText(p2){$\text{c}\_^2$}
+		\tkzText(p3){$\text{d}\_^2$}
+		\tkzText(p4){$\_^2$}
+		\tkzText(p5){$\text{da}\_^2$}
+		\tkzText(p6){$\text{h}\_^2$}
+		\tkzText(p7){$\text{k}\_^2$}
+	
+		%exemplos
+	
+		\tkzText(3.3,-3.5){$1\;\text{mm}^2=1\times 10^{(-2)\times\alert{2}}\;\text{dm}^2\rightarrow 1\times 10^{-4}\;\text{dm}^2$}
+		\tkzText(3.6,-4.5){$2,5\;\text{m}^2=2,5\times 10^{(2)\times\alert{3}}\;\text{mm}^2\rightarrow2,5\times 10^{6}\;\text{mm}^2$}
+		\tkzText(3,-5.5){$10\;\text{ms}^2=10\times 10^{(-2)\times\alert{3}}\;\text{s}^2\rightarrow 10\times 10^{-6}\;\text{s}^2$}
+	
+		\end{tikzpicture}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Conversão de unidades em três dimensões}
+	\begin{figure}
+		\begin{tikzpicture}[scale=0.65,transform shape,font=\Large]
+	
+		\tkzInit[xmin=-2,xmax=17,ymin=-6,ymax=3]
+		%\tkzGrid[color=gray!20]
+		\tkzClip
+	
+		\tikzset{compass style/.append style={->}}
+	
+		\foreach \x in {1,2,...,6}{
+			\tkzDefPoint(\x*3-3,0){\x}
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+			\node at (\x*3-3,2) {$\times 10^{3}$};
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+			\node at (\x*3-3,-2) {$\times 10^{-3}$};}
+	
+		\tkzDefPoints{-1.5/0/p1,1.5/0/p2,4.5/0/p3,7.5/0/p4,10.5/0/p5,13.5/0/p6,16.5/0/p7}
+	
+		\tkzText(p1){$\text{m}\_^3$}
+		\tkzText(p2){$\text{c}\_^3$}
+		\tkzText(p3){$\text{d}\_^3$}
+		\tkzText(p4){$\_^3$}
+		\tkzText(p5){$\text{da}\_^3$}
+		\tkzText(p6){$\text{h}\_^3$}
+		\tkzText(p7){$\text{k}\_^3$}
+	
+		%exemplos
+	
+		\tkzText(3.3,-3.5){$1\;\text{mm}^3=1\times 10^{(-3)\times\alert{2}}\;\text{dm}^3\rightarrow 1\times 10^{-6}\;\text{dm}^3$}
+		\tkzText(3.6,-4.5){$2,5\;\text{m}^3=2,5\times 10^{(3)\times\alert{3}}\;\text{mm}^3\rightarrow2,5\times 10^{9}\;\text{mm}^3$}
+		\tkzText(3.5,-5.5){$2,5\;\text{km}^3=2,5\times 10^{(3)\times\alert{6}}\;\text{mm}^3\rightarrow2,5\times 10^{18}\;\text{mm}^3$}
+
+		\end{tikzpicture}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Alfabeto grego}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{table}
+				\begin{tabular}[c]{ccc}
+					Alfa & $A$ & $\alpha$\\
+					Beta & $B$ & $\beta$\\
+					Gama & $\Gamma$ & $\gamma$\\
+					Delta & $\Delta$ & $\delta$\\
+					Epsílon & $E$ & $\epsilon$,$\varepsilon$\\
+					Zeta & $Z$ & $\zeta$\\
+					Eta & $H$ & $\eta$\\
+					Teta & $\Theta$ & $\theta$\\
+					Iota & $I$ & $\iota$\\
+					Capa & $K$ & $\kappa$\\
+					Lambda & $\Lambda$ & $\lambda$\\
+					Mi & $M$ & $\mu$
+				\end{tabular}
+			\end{table}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{table}
+				\begin{tabular}[c]{ccc}
+					Ni & $N$ & $\nu$\\
+					Csi & $\Xi$ & $\xi$\\
+					ômicron & $O$ & $o$\\
+					Pi & $\Pi$ & $\pi$\\
+					Rô & $P$ & $\rho$\\
+					Sigma & $\Sigma$ & $\sigma$\\
+					Tau & $T$ & $\tau$\\
+					Ípsilon & $\Upsilon$ & $\upsilon$\\
+					Fi & $\Phi$ & $\phi$,$\varphi$\\
+					Qui & $X$ & $\chi$\\
+					Psi & $\Psi$ & $\psi$\\
+					Ômega & $\Omega$ & $\omega$
+				\end{tabular}
+			\end{table}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Referências e observações\footnote{Este material está sujeito a modificações. Recomenda-se acompanhamento permanente.}}
+	\bibliographystyle{unsrt}
+	\begin{thebibliography}{9}
+		\bibitem{alvarenga}A. Máximo, B. Alvarenga, C. Guimarães, Física. Contexto e aplicações, v.2, 2.ed., São Paulo, Scipione (2016)
+		
+		\bibitem{orgao}\text{http://www.snpcultura.org/vol\_festival\_orgao\_madeira\_2010.html}
+		
+		\bibitem{ondas}\text{http://www.explicatorium.com/cfq-8/caracteristicas-das-ondas.html}
+		
+		\bibitem{difracao}\text{https://brasilescola.uol.com.br/o-que-e/fisica/o-que-e-difracao.htm}
+		
+		\bibitem{doppler}\text{https://www.colegioweb.com.br/acustica/efeito-doppler-fizeau.html}
+	\end{thebibliography}
+\end{frame}
+
+\end{document}

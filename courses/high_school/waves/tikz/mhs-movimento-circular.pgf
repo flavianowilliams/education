@@ -1,0 +1,131 @@
+﻿\begin{tikzpicture}[scale=0.3]
+
+%	\useasboundingbox (-13,-13) rectangle (13,13);
+
+	%eixos
+	\draw[line width=1.0pt,->] (-5,0) -- (5,0) node[right] {$x$};
+	\draw[line width=1.0pt,->] (0,-5) -- (0,5) node[right] {};
+
+	%circunferencia
+	\draw[line width=1pt,-stealth] (4,0) arc (0:180:4cm);
+	\draw[line width=1pt,-stealth] (-4,0) arc (180:360:4cm);
+
+	%pontos
+	\filldraw[black] (0,0) circle (2pt) node[anchor=north east] {O};
+	\filldraw[black] (0,0) --++ (45:4) circle (2pt) node[anchor=south west] {};
+
+	%coordenadas
+	\coordinate (c1) at ({4*cos(45)},0);
+
+	%vetores
+	\draw[black] (0,0) --++ (45:4);
+	\draw[line width=1pt,red] (45:4) --++ (225:4) node [anchor=south east,midway]  {$x_{m}$};
+	\draw[line width=1pt,red] (0,0) --++ (c1) node [below,midway]  {$x(t)$};
+
+	%arcos
+	\draw[line width=1pt,->] (1,0) arc (0:45:1cm) node [right,midway] {$\theta$};
+
+	%linguica
+	\draw[black,dashed] (45:4) -- (c1);
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%sistema 1
+	
+	%transformacao coordenadas
+	\def\ta{7}
+	\def\tb{0}
+
+	%parede
+	\fill [pattern = north west lines] (-0.2+\ta,-0.45+\tb) rectangle (\ta,1+\tb);
+	\draw (\ta,-0.45+\tb) -- (\ta,1+\tb);
+
+	%chao
+	\draw (\ta,-0.45+\tb) -- (6+\ta,-0.45+\tb);
+
+	%posicoes
+	\node[below] at (3+\ta,-0.45+\tb) {$0$};
+	\node[below] at (1+\ta,-0.45+\tb) {$-x_{m}$};
+	\node[below] at (5+\ta,-0.45+\tb) {$x_{m}$};
+
+	% bloco
+	\node[rectangle,fill=gray,inner sep=1.5mm] (a) at (5+\ta,0+\tb) {\small{m}};
+
+	%mola
+	\draw[decoration={aspect=0.3, segment length=2mm, amplitude=0.5mm,coil},decorate] (\ta,0+\tb) -- (a); 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%sistema 2
+	
+	%transformacao coordenadas
+	\def\ta{-3}
+	\def\tb{7}
+
+	%parede
+	\fill [pattern = north west lines] (-0.2+\ta,-0.45+\tb) rectangle (\ta,1+\tb);
+	\draw (\ta,-0.45+\tb) -- (\ta,1+\tb);
+
+	%chao
+	\draw (\ta,-0.45+\tb) -- (6+\ta,-0.45+\tb);
+
+	%posicoes
+	\node[below] at (3+\ta,-0.45+\tb) {$0$};
+	\node[below] at (1+\ta,-0.45+\tb) {$-x_{m}$};
+	\node[below] at (5+\ta,-0.45+\tb) {$x_{m}$};
+
+	% bloco
+	\node[rectangle,fill=gray,inner sep=1.5mm] (a) at (3+\ta,0+\tb) {\small{m}};
+
+	%mola
+	\draw[decoration={aspect=0.3, segment length=1mm, amplitude=1mm,coil},decorate] (\ta,0+\tb) -- (a); 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%sistema 3
+	
+	%transformacao coordenadas
+	\def\ta{-12}
+	\def\tb{0}
+
+	%parede
+	\fill [pattern = north west lines] (-0.2+\ta,-0.45+\tb) rectangle (\ta,1+\tb);
+	\draw (\ta,-0.45+\tb) -- (\ta,1+\tb);
+
+	%chao
+	\draw (\ta,-0.45+\tb) -- (6+\ta,-0.45+\tb);
+
+	%posicoes
+	\node[below] at (3+\ta,-0.45+\tb) {$0$};
+	\node[below] at (1+\ta,-0.45+\tb) {$-x_{m}$};
+	\node[below] at (5+\ta,-0.45+\tb) {$x_{m}$};
+
+	% bloco
+	\node[rectangle,fill=gray,inner sep=1.5mm] (a) at (1+\ta,0+\tb) {\small{m}};
+
+	%mola
+	\draw[decoration={aspect=0.3, segment length=0.5mm, amplitude=1mm,coil},decorate] (\ta,0+\tb) -- (a); 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%sistema 4
+	
+	%transformacao coordenadas
+	\def\ta{-3}
+	\def\tb{-7}
+
+	%parede
+	\fill [pattern = north west lines] (-0.2+\ta,-0.45+\tb) rectangle (\ta,1+\tb);
+	\draw (\ta,-0.45+\tb) -- (\ta,1+\tb);
+
+	%chao
+	\draw (\ta,-0.45+\tb) -- (6+\ta,-0.45+\tb);
+
+	%posicoes
+	\node[below] at (3+\ta,-0.45+\tb) {$0$};
+	\node[below] at (1+\ta,-0.45+\tb) {$-x_{m}$};
+	\node[below] at (5+\ta,-0.45+\tb) {$x_{m}$};
+
+	% bloco
+	\node[rectangle,fill=gray,inner sep=1.5mm] (a) at (3+\ta,0+\tb) {\small{m}};
+
+	%mola
+	\draw[decoration={aspect=0.3, segment length=1mm, amplitude=1mm,coil},decorate] (\ta,0+\tb) -- (a); 
+
+\end{tikzpicture}

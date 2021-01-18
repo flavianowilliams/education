@@ -3,4 +3,4 @@
 # contents
 Education contents about physics, chemistry, programming, etc...
 
-<img src="cc.logo.large.png" style="width:50px;" /> This work is licensed under a [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).
+<img src="cc.logo.large.png" height="10"/> This work is licensed under a [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).

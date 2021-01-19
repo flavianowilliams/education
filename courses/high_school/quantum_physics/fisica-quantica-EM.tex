@@ -37,7 +37,42 @@
 		\end{column}
 		\begin{column}[c]{0.4\textwidth}
 			\begin{figure}
-				\includegraphics[scale=0.15]{corpo-negro.png}
+				%\includegraphics[scale=0.15]{corpo-negro.png}
+				\centering
+				\begin{tikzpicture}[scale=0.32,transform shape, font=\Large]
+				
+				\tikzstyle{wave}=[decorate,decoration={snake,post length=2mm,amplitude=1mm, segment length=4mm},thick]
+				
+				\tkzInit[xmin=-4.5,xmax=4.5,ymin=-4.5,ymax=4.5]
+				%\tkzGrid[color=gray!50]
+				\tkzClip
+				
+				\tkzDefPoints{-3/-3/A,3/-3/B,3/-0.75/E,3/0.75/F,2.5/-0.75/G,2.5/0.75/H,-2.5/-2.5/a,2.5/-2.5/b}
+				
+				\tkzDefSquare(A,B)\tkzGetPoints{C}{D}
+				\tkzDefSquare(a,b)\tkzGetPoints{c}{d}
+				
+				\tkzDrawPolygon[fill=gray!50](A,B,E,G,b,a,d,c,H,F,C,D)
+				
+				%\tkzLabelPoints(A,B,E,F,G,H,a,b,c,d,C,D)
+				
+				%carga oscilando
+				\tkzFct[domain=-2.5:2.5]{0.25*sin(3*2*pi*(x+2.5)/5)-2}
+				\tkzFct[domain=-2.5:2.5,dashed]{0.25*sin(3*2*pi*(x+2.5)/5-pi)-2}
+				
+				\tkzDefPointByFct[with=a](-0.5)\tkzGetPoint{p1}
+				
+				\tkzDrawPoints[size=0.75cm,fill=blue](p1)
+				
+				%radiacao incidente
+				\draw[wave,->,line width=1.5pt] (5,-1) -- (-2,2.5);
+				
+				%radiacao emitida
+				\draw[wave,->,line width=1.5pt,color=red] (0,-3) --++ (0,-1.5) node [right=0.25,midway] {$\nu$};
+				\draw[wave,->,line width=1.5pt,color=red] (-3,0) --++ (-1.5,0) node [above=0.25,midway] {$\nu$};
+				\draw[wave,->,line width=1.5pt,color=red] (0,3) --++ (0,1.5) node [right=0.25,midway] {$\nu$};
+				
+				\end{tikzpicture}
 				\caption*{\footnotesize Representação de um corpo negro.}
 			\end{figure}
 		\end{column}
@@ -50,7 +85,7 @@
 \begin{frame}{Discrepância entre a teoria clássica da radiação e a experiência}
 	\begin{block}{O que era esperado pela teoria clássica}
 		\begin{itemize}
-			\item A radiação emitida pelo corpo negro deveria assumir qualquer valor, independente da frequência da onda eletromagnética.
+			\item A radiação emitida pelo corpo negro \alert{deveria assumir qualquer valor}, independente da frequência da onda eletromagnética.
 			\item A intensidade da onda eletromagnética é diretamente proporcional ao quadrado da frequência, portanto a intensidade da radiação deveria aumentar com o aumento da frequência.
 		\end{itemize}
 	\end{block}
@@ -64,7 +99,7 @@
 %		A agitação das cargas elétricas aumenta após absorver a radiação.
 %	\end{corollary}
 	\begin{block}{Hipótese de Planck}
-		A energia das cargas oscilantes era uma variável discreta (quantizada) e seria proporcional a frequência da radiação emitida,
+		A energia das cargas oscilantes no interior do corpo negro não pode assumir qualquer valor, mas sim valores discretos (quantizados), e que seria proporcional a frequência da radiação emitida,
 		\begin{align*}
 			E_n & = nhf,\quad n=0,1,2,\cdots\\
 			h & \approx \SI{6,63e-34}{\joule\cdot\second},\quad\text{(Constante de Planck)}.

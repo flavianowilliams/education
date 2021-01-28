@@ -1,0 +1,76 @@
+﻿\begin{tikzpicture}[use optics,scale=0.75,transform shape]
+
+\tkzInit[xmin=-2.5,xmax=4,ymin=-1.5,ymax=1.5]
+\tkzClip
+
+\coordinate (K) at (1,0);
+
+\node[convex mirror,draw,object height=2cm,anchor=mirror center,spherical mirror angle=65,draw mirror focus={circle,fill},draw mirror center={circle,fill}] (M) at (K) {};
+
+\coordinate (X) at (-1.75,0);
+\coordinate (Z) at (-1.75,1);
+\coordinate (C) at (1,0);
+\coordinate (V) at (M.180);
+\coordinate (o) at ($(M.160)+(2,0)$);
+\coordinate (P) at (M.160);
+
+%definindo foco
+\tkzDefMidPoint(C,V)
+\tkzGetPoint{F}
+
+%interceptando o ponto O
+\tkzInterLL(X,Z)(o,P)
+\tkzGetPoint{O}
+
+\tkzInterLC(O,F)(C,V)
+\tkzGetPoints{P1}{P2}
+
+\tkzInterLC[R](F,P)(C,2.5cm)
+\tkzGetPoints{A1}{A2}
+
+\tkzDefLine[parallel=through P2](C,V)
+\tkzGetPoint{D}
+
+%interceptando a imagem
+\tkzInterLL(P2,D)(P,F)
+\tkzGetPoint{I}
+
+%definindo imagem
+\tkzDefPointBy[projection=onto C--V](I)
+\tkzGetPoint{DI}
+
+\tkzDefPointBy[projection=onto P2--I](X)
+\tkzGetPoint{G}
+
+%\tkzDrawCircle[color=red,opacity=100](C,V)
+%\tkzDrawCircle[R,color=red,opacity=100](C,2.5cm)
+
+\tkzDrawPoints(V)
+\tkzDrawPoints(I)
+%\tkzDrawPoints(G)
+%\tkzDrawPoints(D)
+%\tkzDrawPoints(P)
+%\tkzDrawPoints(P2)
+
+\tkzLabelPoints[font=\tiny,below left](V)
+\tkzLabelPoints[font=\tiny,below](C)
+\tkzLabelPoints[font=\tiny,below](F)
+\tkzLabelPoints[font=\tiny,above](O)
+\tkzLabelPoints[font=\tiny,above](I)
+%\tkzLabelPoints[font=\tiny,below](P2)
+%\tkzLabelPoints[font=\tiny,below](P)
+%\tkzLabelPoints[font=\tiny,below](D)
+%\tkzLabelPoints[font=\tiny,below](G)
+
+%raios de luz
+\draw[dashed] (-2,0) -- (2,0);
+\draw[->,line width=1.5pt,color=red] (X) -- (O);
+\draw[->,line width=1.5pt,color=red] (DI) -- (I);
+\draw[put arrow={at=0.75}] (O) -- (P2);
+\draw[put arrow={at=0.75}] (P2) -- (G);
+\draw[put arrow={at=0.75}] (O) -- (P);
+\draw[put arrow={at=0.75}] (P) -- (A2);
+\draw[densely dotted] (P) -- (F);
+\draw[densely dotted] (P2) -- (I);
+
+\end{tikzpicture}

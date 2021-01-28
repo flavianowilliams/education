@@ -1,0 +1,19 @@
+﻿\begin{tikzpicture}[scale=1, transform shape]
+
+\pgfmathsetmacro{\cubex}{4}
+\pgfmathsetmacro{\cubey}{2}
+\pgfmathsetmacro{\cubez}{3}
+
+\draw[red,fill=red] (0,0,\cubez) -- ++(\cubex,0,0) -- ++(0,0,-\cubez) -- ++(-\cubex,0,0) -- cycle;
+\draw[red,fill=cyan,opacity=0.25] (0.5*\cubex,0,\cubez) -- ++(0,\cubey,0) -- ++(0,0,-\cubez) -- ++(0,-\cubey,0) -- cycle;
+
+%luz incidente
+\draw[->,line width=1.0pt] (0.5*\cubex,\cubey,\cubez) -- (0.5*\cubex,0,0.5*\cubez) node [above,at start,text width=1.5cm] {\tiny raio incidente};
+
+%luz refletida
+\draw[->,line width=1.0pt] (0.5*\cubex,0,0.5*\cubez) -- (0.5*\cubex,\cubey,0) node [above,at end,text width=1.5cm] {\tiny raio refletido};;
+
+%normal
+\draw[dashed] (0.5*\cubex,0,0.5*\cubez) -- (0.5*\cubex,\cubey,0.5*\cubez);
+
+\end{tikzpicture}

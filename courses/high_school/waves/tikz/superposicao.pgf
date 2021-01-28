@@ -1,4 +1,4 @@
-﻿\begin{tikzpicture}[scale=0.14, auto, transform shape,font=\Large, samples=200]
+﻿\begin{tikzpicture}[scale=0.5, auto, transform shape,font=\Large, samples=200]
 
 		%parametros gerais
 

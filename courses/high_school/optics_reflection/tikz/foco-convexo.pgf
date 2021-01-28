@@ -1,0 +1,21 @@
+﻿\begin{tikzpicture}[use optics,scale=1,transform shape]
+
+\useasboundingbox (2.25,1.25) rectangle (-2.25,-1.25);
+
+\coordinate (O) at (2,0);
+\coordinate (P) at (-2,1);
+
+\node[convex mirror,draw,object height=2cm,anchor=mirror center,spherical mirror angle=70] (M) at (O) {};
+\node[convex mirror,draw opacity=0,object height=3cm,anchor=mirror center,spherical mirror angle=70] (N) at (O) {};
+
+\draw[dashed] (-2,0) -- (M.0);
+
+\foreach \tt in {210,200,...,150}{
+\draw[dashed] (O) -- (M.\tt);
+\draw[-<-,color=red]  (M.\tt) --++ (-2,0);
+\draw[->-,color=red] (M.\tt) -- (N.\tt);}
+
+\node[below] at (O) {\tiny C};
+\node[below right] at (M.180) {\tiny V};
+
+\end{tikzpicture}

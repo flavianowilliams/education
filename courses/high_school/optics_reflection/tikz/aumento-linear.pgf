@@ -1,0 +1,70 @@
+﻿\begin{tikzpicture}[use optics,scale=1.5,transform shape]
+
+\tkzInit[xmin=-2.5,xmax=4,ymin=-1.5,ymax=1.0]
+\tkzClip
+
+\coordinate (K) at (-1,0);
+
+\node[concave mirror,draw,object height=2cm,anchor=mirror center,spherical mirror angle=60,draw mirror focus={circle,fill},draw mirror center={circle,fill}] (M) at (K) {};
+
+\coordinate (A) at (-2,0);
+\coordinate (B) at (-2,0.5);
+\coordinate (L) at (-2,-0.5);
+\coordinate (C) at (-1,0);
+\coordinate (V) at (M.0);
+
+%\tkzDrawCircle[color=red,opacity=100](C,V)
+
+%definindo foco
+\tkzDefMidPoint(C,V)
+\tkzGetPoint{F}
+
+%interceptando raio secundario no espelho
+\tkzInterLC(B,C)(C,V)
+\tkzGetPoints{P1}{P2}
+
+%interceptando a imagem
+\tkzInterLL(B,P2)(V,L)
+\tkzGetPoint{B'}
+
+%definindo imagem
+\tkzDefPointBy[projection=onto C--V](B')
+\tkzGetPoint{A'}
+
+%definindo triangulos semelhantes
+\tkzDrawPolygon[color=white,fill=green!10](A,B,C)
+\tkzDrawPolygon[color=white,fill=green!10](A',B',C)
+
+\tkzDrawPoints(V)
+%\tkzDrawPoints(B)
+%\tkzDrawPoints(I)
+%\tkzDrawPoints(P2)
+%\tkzDrawPoints(DI)
+
+\tkzLabelPoints[font=\tiny](V)
+\tkzLabelPoints[font=\tiny,below](C)
+\tkzLabelPoints[font=\tiny,below](A)
+\tkzLabelPoints[font=\tiny,above](A')
+\tkzLabelPoints[font=\tiny,above](B)
+\tkzLabelPoints[font=\tiny,below](B')
+%\tkzLabelPoints[font=\tiny,above](P2)
+
+\tkzMarkAngle(B,V,C)
+\tkzMarkAngle(C,V,B')
+
+\tkzLabelAngle[pos=1,font=\tiny,above](B,V,C){$\hat{i}$}
+\tkzLabelAngle[pos=1,font=\tiny,below](B',V,B'){$\hat{r}$}
+
+%raios de luz e prolongamentos
+\draw[dashed] (2,0) -- (M.180);
+\draw[->,line width=1.5pt,color=red] (A) -- (B);
+\draw[->,line width=1.5pt,color=red] (A') -- (B');
+
+\tkzDrawLine[put arrow={at=0.75},add=0cm and 1cm](V,B')
+\tkzDrawSegment[put arrow={at=0.75}](P2,B)
+\tkzDrawSegment[put arrow={at=0.75}](B,P2)
+\tkzDrawSegment[put arrow={at=0.75}](B,V)
+
+\node at (-0.5,-0.4,) {\tiny $\hat{i}=\hat{r}$};
+
+\end{tikzpicture}

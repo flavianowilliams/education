@@ -1,0 +1,37 @@
+﻿\begin{tikzpicture}[use optics, scale=0.8, transform shape,samples=100]
+
+	\def\x{2}
+	\def\y{2}
+
+	\def\lambda{2}
+	\def\fia{0}
+	\def\fib{pi}
+	\def\xm{0.25}
+	\def\ya{1.5}
+
+	\useasboundingbox (2.75,2.75) rectangle (-2.75,-2.75);
+
+	\pgfmathsetmacro{\tt}{atan(\y/\x)}
+	\pgfmathsetmacro{\k}{2*pi/\lambda}
+
+	%definindo ondas
+	\pgfmathdeclarefunction{f}{1}{\pgfmathparse{\ya+\xm*cos(deg(\k*#1-\fia))}}
+	\pgfmathdeclarefunction{ff}{1}{\pgfmathparse{-\ya+\xm*cos(deg(\k*#1-\fib))}}
+
+	%objeto
+	\draw[line width=1.0pt,domain=-\x:\x,variable=\x,color=red] plot (\x,{f(\x)});
+
+	%imagem
+	\draw[dashed,line width=1.0pt,domain=-\x:\x,variable=\x,color=red] plot (\x,{ff(\x)});
+
+	%raios incidentes
+	\foreach \dx in {-2,-1,0,1,2}{
+	\draw[put arrow] (\dx,0) -- (\dx,{f(\dx)});
+	\draw[put arrow] (\dx,{f(\dx)}) -- (\dx,0);
+	\draw[dashed] (\dx,0) -- (\dx,{ff(\dx)});}
+
+	%espelho
+	\fill [pattern = north west lines] (\x,-0.25) rectangle (-\x,0);
+	\draw (-\x,0) -- (\x,0);
+
+\end{tikzpicture}

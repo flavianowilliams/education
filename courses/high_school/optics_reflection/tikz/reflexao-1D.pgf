@@ -1,0 +1,41 @@
+﻿\begin{tikzpicture}[scale=1, transform shape,samples=100]
+
+	\def\x{2}
+	\def\y{2}
+
+	\def\lambda{0.5}
+	\def\om{0.5*pi}
+	\def\xm{0.25}
+
+	\pgfmathsetmacro{\tt}{atan(\y/\x)}
+	\pgfmathsetmacro{\k}{2*pi/\lambda}
+
+%\draw[->] (0,0,0) -- (5,0,0) node [right] {x (cm)};
+%\draw[->] (0,0,0) -- (0,3,0) node [right] {y (cm)};
+%\draw[->] (0,0,0) -- (0,0,5) node [below left] {z (cm)};
+
+	%definindo ondas
+	\pgfmathdeclarefunction{ff}{2}{\pgfmathparse{\xm*cos(deg(\k*#1-\om*#2))}}
+
+	%luz incidente
+	\draw[->] (-\x,\y) -- (0,0) node [above,at start] (o1) {\tiny onda incidente};
+	\draw[line width=1.0pt,domain=0:2.5,variable=\x,color=red,rotate=135] plot (\x,{ff(\x,pi)});
+
+	%angulo incidente
+	\draw[<->] ({-0.75*cos(\tt)},{0.75*sin(\tt)}) arc (135:90:0.75cm) node[above,midway] {\small $\hat{i}$};
+
+	%luz refletida
+	\draw[->] (0,0) -- (\x,\y) node [above, at end] (o2) {\tiny onda refletida};
+	\draw[line width=1.0pt,domain=0:2.5,variable=\x,color=red,rotate=45] plot (\x,{ff(\x,pi)});
+
+	%angulo reflexao
+	\draw[<->] ({0.75*cos(\tt)},{0.75*sin(\tt)}) arc (45:90:0.75cm) node[above,midway] {\small $\hat{r}$};
+
+%normal
+\draw[dashed] (0,0) -- (0,\y) node [above] (n) {\tiny normal};
+
+	%espelho
+	\fill [pattern = north west lines] (\x,-0.25) rectangle (-\x,0);
+	\draw (-\x,0) -- (\x,0);
+
+\end{tikzpicture}

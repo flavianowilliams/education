@@ -1,0 +1,52 @@
+﻿\begin{tikzpicture}[scale=0.8, transform shape,samples=100]
+
+	\def\x{2}
+	\def\y{2}
+
+	\pgfmathsetmacro{\tt}{atan(\y/\x)}
+
+	\useasboundingbox (2.75,2.75) rectangle (-2.75,-2.75);
+
+	%definindo pontos
+	\tkzDefPoints{-\x/0/A,0/-0.25/B}
+
+	%luz incidente
+	\draw[->] (-\x,\y) -- (0,0) node [above,at start] (o1) {\tiny O};
+
+	%angulo incidente
+	\draw[<->] ({-0.75*cos(\tt)},{0.75*sin(\tt)}) arc (135:90:0.75cm) node[above,midway] {\tiny $\hat{i}$};
+	\draw[<->] ({-\x+0.75*cos(\tt)},{\y-0.75*sin(\tt)}) arc (315:270:0.75cm) node[below,midway] {\tiny $\hat{i}$};
+
+	%luz refletida
+	\draw[->] (0,0) -- (\x,\y) node [above, at end] (o2) {\tiny raio refletido};
+
+	%angulo reflexao
+	\draw[<->] ({0.75*cos(\tt)},{0.75*sin(\tt)}) arc (45:90:0.75cm) node[above,midway] {\tiny $\hat{r}$};
+	\draw[<->] ({-\x+0.75*cos(\tt)},{-\y+0.75*sin(\tt)}) arc (45:90:0.75cm) node[above,midway] {\tiny $\hat{r}$};
+
+	%normal
+	\draw[dashed] (0,0) -- (0,\y) node [above] (n) {\tiny normal};
+
+	%espelho
+	\fill [pattern = north west lines] (\x,-0.25) rectangle (-\x,0);
+	\draw (-\x,0) -- (\x,0);
+
+	%imagem
+	\draw[dashed] (-\x,-\y) -- (0,0) node [below,at start] (o1) {\tiny I};
+
+	%angulo da imagem
+	\draw[<->] ({-0.75*cos(\tt)},{0.75*sin(\tt)}) arc (135:90:0.75cm) node[above,midway] {\tiny $\hat{i}$};
+
+	%raios e prolongamentos extras
+	\draw[dashed] (-\x,-\y) -- (-\x,0);
+	\draw[<->] (-\x,\y) -- (-\x,0);
+
+	%distancia focal e distancia da imagem
+	\draw[<->] ({-\x-0.125},0) -- ({-\x-0.125},\y) node [left,midway] (d0) {\tiny $D_O$};
+	\draw[<->] ({-\x-0.125},0) -- ({-\x-0.125},-\y) node [left,midway] (d0) {\tiny $D_I$};
+
+	%vertices dos triangulos retangulos
+	\node[below]at (B) {\tiny B};
+	\node[above right] at (A) {\tiny A};
+
+\end{tikzpicture}

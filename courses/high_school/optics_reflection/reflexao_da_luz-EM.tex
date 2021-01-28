@@ -1,0 +1,1739 @@
+% Aula de óptica geométrica para o curso de Física II do ensino médio
+%
+\documentclass[brazil,aspectratio=169]{beamer}
+%
+%carregando preâmbulo
+\input{../../contrib/preamble}
+
+%Título
+
+\title[Óptica geométrica-OPT]{Reflexão da luz}
+
+% The main document
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Sumário}
+  \tableofcontents
+\end{frame}
+
+\section{Introdução}
+
+\subsection{}
+
+\begin{frame}{O que é a luz?}
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+			O estudo da luz é algo que vem desde a Grécia antiga, através de Platão e Aristóteles. Newton verificou que a luz se propaga de maneira retilínea, além de verificar que a luz branca era nada mais que a combinação de sete cores. Atualmente, através das descobertas de Maxwell, sabemos que \alert{a luz é a combinação de duas ondas transversais que se propagam no vácuo à uma velocidade $c=3\times 10^8\;\si{\m/s}$}.
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\begin{figure}
+				\Centering
+				\includegraphics[scale=0.09]{figuras/newton-luz.jpg}
+				\caption*{\footnotesize Isaac Newton observando a propagação retilínea da luz.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Propriedades da luz}
+	\begin{itemize}
+		\item[\ding{51}] \alert{Propagação retilínea da luz}: Em um meio homogêneo, a luz tende a se propagar em linha reta.
+		\item[\ding{51}] \alert{Princípio de reversibilidade dos raios de luz}: Os raios de luz são reversíveis.
+		\item[\ding{51}] \alert{Princípio de independência dos raios de luz}: Os raios de luz são independentes entre si.
+	\end{itemize}
+	\begin{figure}
+		\begin{subfigure}[b]{0.3\textwidth}
+			\Centering
+			\includegraphics[scale=0.37]{figuras/luz-propriedades-1.jpg}
+			\caption*{\footnotesize Propagação retilínea \cite{reversibilidade}.}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.3\textwidth}
+			\Centering
+			\includegraphics[scale=0.25]{figuras/luz-propriedades-2.jpg}
+			\caption*{\footnotesize Reversibilidade da luz \cite{reversibilidade}.}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.3\textwidth}
+			\Centering
+			\includegraphics[scale=0.25]{figuras/questao-3.png}
+			\caption*{\footnotesize Cruzamento entre raios.}
+		\end{subfigure}
+	\end{figure}
+\end{frame}
+
+\begin{frame}[fragile]{Analogia com ondas mecânicas}
+	\begin{figure}
+		\begin{subfigure}[b]{0.45\textwidth}
+			\Centering
+			%\input{tikz/reflexao-refracao-corda.pgf}
+			\begin{tikzpicture}[scale=0.3,transform shape,samples=100]
+			
+			%parametros
+			\def\lambdax{8}
+			\def\lambday{4}
+			\def\a{2}
+			\def\om{0.5*pi}
+			\def\xm{1}
+			
+			\pgfmathsetmacro{\k}{4*pi/\lambdax}
+			\pgfmathsetmacro{\kb}{4*pi/\lambday}
+			
+			%setup styles
+			\tikzstyle{s1}=[circle, radius=0.25, ball color=gray];
+			
+			%definindo funcao
+			\pgfmathdeclarefunction{f}{2}{\pgfmathparse{\a+\xm*cos(deg(\kb*#1-\om*#2))}}
+			\pgfmathdeclarefunction{ff}{2}{\pgfmathparse{\a+\xm*cos(deg(\k*#1-\om*#2))}}
+			
+			%curva
+			\draw[line width=1.5pt,domain=0:\lambdax,variable=\x,color=gray] plot (\x,{ff(\x,1)});
+			\draw[line width=4.5pt,domain=\lambdax:2*\lambdax,variable=\x,color=gray] plot (\x,{f(\x,1)});
+			\draw[line width=1.5pt,domain=\lambdax:0,variable=\x,color=gray,dashed] plot (\x,{ff(\x,3)});
+			
+			%linha de referencia
+			\draw[dashed] (0,\a) -- (4*\lambday,\a);
+			
+			%comprimento de onda
+			\draw[<->,color=gray] (0,3.5*\xm) -- (0.5*\lambdax,3.5*\xm) node [above,midway] {$\lambda_1$};
+			\draw[<->,color=gray] (\lambdax,3.5*\xm) -- (\lambdax+0.5*\lambday,3.5*\xm) node [above,midway] {$\lambda_2$};
+			
+			%texto
+			\node[text width=1cm] (t1) at (0.5*\lambdax,-0.5) {$\text{Onda incidente}$};
+			\draw[->]	(t1) -- (0.4*\lambdax,\xm);
+			
+			\node[text width=1cm] (t2) at (1.5*\lambdax,-0.5) {$\text{Onda refratada}$};
+			\draw[->]	(t2) -- (1.45*\lambdax,\xm);
+			
+			\node[text width=1cm] (t3) at (0.1*\lambdax,-0.5) {$\text{Onda refletida}$};
+			\draw[->]	(t3) -- (0.1*\lambdax,\xm);
+			
+			%velocidades
+			\draw[->,color=gray] (0.5*\lambdax+0.5,3.5*\xm) --++ (1,0) node[above,midway] {$\vec{v}_1$};	
+			\draw[<-,color=gray] (0.5*\lambdax+0.5,+\a-\xm-0.7) --++ (1,0) node[above,midway] {$-\vec{v}_1$};	
+			\draw[->,color=gray] (\lambdax+0.5*\lambday+2,3.5*\xm) --++ (1,0) node[above,midway] {$\vec{v}_2$};	
+			
+			\end{tikzpicture}
+			\caption*{\footnotesize Reflexão e refração da onda numa corda.}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.45\textwidth}
+			\Centering
+%			\input{tikz/polarizacao-reflexao.pgf}
+			\begin{tikzpicture}[scale=0.5, transform shape,media/.style={font={\footnotesize\sffamily}},
+				wave/.style={decorate,decoration={snake,post length=1.4mm,amplitude=1mm, segment length=2mm},thick},
+				interface/.style={
+				postaction={draw,decorate,decoration={border,angle=-45,
+				amplitude=0.3cm,segment length=2mm}}},]
+			
+				% Round rectangle
+				\fill[gray!10,rounded corners] (-4,-3) rectangle (4,0);
+				
+				% Interface
+				\draw[blue,line width=.5pt,interface](-4,0)--(4,0);
+				
+				% Vertical dashed line
+				\draw[dashed,gray](0,-3)--(0,3);
+
+				% Incidence
+				\draw[->,wave] (135:3.2cm)--(135:0cm)node[above, at start]{Onda incidente};
+				\path (0,0)++(113:1cm) node{$\phi$};
+				\draw[<->] (0,0.75) arc(90:135:.75cm);
+				
+				% Transmission
+				\draw[->,wave] (-30:0cm)--(-50:3.2cm)node[below]{Onda transmitida};
+
+				% Reflection
+				\draw[->,wave] (45:0cm)--(45:3.2cm)node[above]{Onda refletida};
+				\path (0,0)++(67.5:1.25cm) node{$\phi$};
+				\draw[<->] (45:1cm) arc(45:90:1cm);
+				
+				% Media names
+				\path[media] (-3,.6)  node {$n_{1}$} (-3,-.6) node {$n_{2}>n_{1}$};
+				
+				% Interface pointer
+				\draw[-latex,thick](2.75,0.5)node[right]{$\mathsf{Interface}$} to[out=180,in=90] (2.5,0);
+			\end{tikzpicture}
+			\caption*{\footnotesize Reflexão e refração dos raios de luz.}
+		\end{subfigure}
+	\end{figure}
+	\begin{corollary}
+		A luz como qualquer onda apresenta certos fenômenos ondulatórios, como reflexão, refração, difração e interferência.
+	\end{corollary}
+\end{frame}
+
+\begin{frame}{Diferença entre reflexão e difusão da luz}
+	\begin{figure}
+		\begin{subfigure}[b]{0.45\textwidth}
+			\Centering
+			\begin{tikzpicture}[scale=1,transform shape]
+				\shadedraw[thick,top color=gray!10,bottom color=gray,
+				postaction=decorate,
+				decoration={markings,
+				mark= between positions 1cm and 3cm step 5mm with {% Places five of them
+				\node[transform shape,inner sep=1pt] 
+				(mark-\pgfkeysvalueof{/pgf/decoration/mark info/sequence number}) {};
+				}}]{decorate[decoration={random steps,segment length=1.5mm,amplitude=1pt}]%Roughness is amplitude
+				{(0,0) -- ++(4,0)}} -- ++(0,-5mm) -- ++(-4cm,0) -- cycle;
+				\foreach \x in {1,2,...,5}{
+				\draw[postaction=decorate,
+				decoration={markings,
+				mark=between positions 0.25 and 0.75 step 0.5 with{\arrow{latex}}}] 
+				(mark-\x.center)+(135:2cm)  --(mark-\x.center)
+				--($(mark-\x.north west)!2cm!45:(mark-\x.north east)$);}
+			\end{tikzpicture}
+			%\input{tikz/difusao-luz.pgf}
+			\caption*{\footnotesize Difusão dos raios de luz ao incidir numa superfície rugosa.}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.45\textwidth}
+			\Centering
+			%\input{tikz/reflexao-luz.pgf}
+			\begin{tikzpicture}[scale=1,transform shape]
+				\shadedraw[thick,top color=gray!10,bottom color=gray,
+				postaction=decorate,
+				decoration={markings,
+				mark= between positions 1cm and 3cm step 5mm with {% Places five of them
+				\node[transform shape,inner sep=1pt] 
+				(mark-\pgfkeysvalueof{/pgf/decoration/mark info/sequence number}) {};}}]{decorate[decoration={random steps,segment length=1.5mm,amplitude=0pt}]%Roughness is amplitude
+				{(0,0) -- ++(4,0)}} -- ++(0,-5mm) -- ++(-4cm,0) -- cycle;
+				\foreach \x in {1,2,...,5}{
+				\draw[postaction=decorate,
+				decoration={markings,
+					mark=between positions 0.25 and 0.75 step 0.5 with{\arrow{latex}}}] 
+				(mark-\x.center)+(135:2cm)  --(mark-\x.center)
+				--($(mark-\x.north west)!2cm!45:(mark-\x.north east)$);}
+			\end{tikzpicture}
+			\caption*{\footnotesize Reflexão dos raios de luz ao incidir numa superfície perfeitamente lisa.}
+		\end{subfigure}
+	\end{figure}
+\end{frame}
+
+\begin{frame}[fragile]{As leis da reflexão}
+	\begin{itemize}
+		\item[\ding{51}] O raio incidente, a normal à superfície refletora no ponto de incidência e o raio refletido estão situados em um mesmo plano.
+		\item[\ding{51}] O ângulo de incidência $\hat{i}$ é igual ao ângulo de reflexão $\hat{r}$.
+	\end{itemize}
+	\begin{figure}
+		\begin{subfigure}[b]{0.45\textwidth}
+			\Centering
+			%\input{tikz/reflexao-1D.pgf}
+			\begin{tikzpicture}[scale=1, transform shape,samples=100]
+			
+			\def\x{2}
+			\def\y{2}
+			
+			\def\lambda{0.5}
+			\def\om{0.5*pi}
+			\def\xm{0.25}
+			
+			\pgfmathsetmacro{\tt}{atan(\y/\x)}
+			\pgfmathsetmacro{\k}{2*pi/\lambda}
+			
+			%definindo ondas
+			\pgfmathdeclarefunction{ff}{2}{\pgfmathparse{\xm*cos(deg(\k*#1-\om*#2))}}
+			
+			%luz incidente
+			\draw[->] (-\x,\y) -- (0,0) node [above,at start] (o1) {\tiny onda incidente};
+			\draw[line width=1.0pt,domain=0:2.5,variable=\x,color=red,rotate=135] plot (\x,{ff(\x,pi)});
+			
+			%angulo incidente
+			\draw[<->] ({-0.75*cos(\tt)},{0.75*sin(\tt)}) arc (135:90:0.75cm) node[above,midway] {\small $\hat{i}$};
+			
+			%luz refletida
+			\draw[->] (0,0) -- (\x,\y) node [above, at end] (o2) {\tiny onda refletida};
+			\draw[line width=1.0pt,domain=0:2.5,variable=\x,color=red,rotate=45] plot (\x,{ff(\x,pi)});
+			
+			%angulo reflexao
+			\draw[<->] ({0.75*cos(\tt)},{0.75*sin(\tt)}) arc (45:90:0.75cm) node[above,midway] {\small $\hat{r}$};
+			
+			%normal
+			\draw[dashed] (0,0) -- (0,\y) node [above] (n) {\tiny normal};
+			
+			%espelho
+			\fill [pattern = north west lines] (\x,-0.25) rectangle (-\x,0);
+			\draw (-\x,0) -- (\x,0);
+			
+			\end{tikzpicture}
+			\caption*{\footnotesize Ângulos de incidência $\hat{i}$ e reflexão $\hat{r}$.}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.45\textwidth}
+			\Centering
+			%\input{tikz/reflexao-3D.pgf}
+			\begin{tikzpicture}[scale=1, transform shape]
+			
+			\pgfmathsetmacro{\cubex}{4}
+			\pgfmathsetmacro{\cubey}{2}
+			\pgfmathsetmacro{\cubez}{3}
+			
+			\draw[brown,fill=brown] (0,0,\cubez) -- ++(\cubex,0,0) -- ++(0,0,-\cubez) -- ++(-\cubex,0,0) -- cycle;
+			\draw[red,fill=cyan,opacity=0.25] (0.5*\cubex,0,\cubez) -- ++(0,\cubey,0) -- ++(0,0,-\cubez) -- ++(0,-\cubey,0) -- cycle;
+			
+			%luz incidente
+			\draw[->,line width=1.0pt] (0.5*\cubex,\cubey,\cubez) -- (0.5*\cubex,0,0.5*\cubez) node [above,at start,text width=1.5cm] {\tiny raio incidente};
+			
+			%luz refletida
+			\draw[->,line width=1.0pt] (0.5*\cubex,0,0.5*\cubez) -- (0.5*\cubex,\cubey,0) node [above,at end,text width=1.5cm] {\tiny raio refletido};;
+			
+			%normal
+			\draw[dashed] (0.5*\cubex,0,0.5*\cubez) -- (0.5*\cubex,\cubey,0.5*\cubez);
+			\end{tikzpicture}
+			\caption*{\footnotesize Raio incidente e refletido no mesmo plano.}
+		\end{subfigure}
+	\end{figure}
+\end{frame}
+
+\section{Espelho plano}
+
+\subsection{}
+
+\begin{frame}{Formação da imagem num espelho plano}
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+			A luz emitida por um objeto e refletida em um espelho plano chega aos olhos de um observador como se estivesse vindo do ponto de encontro dos prolongamentos dos raios refletidos. Nesse ponto, o observador vê uma imagem virtual do objeto.
+			\begin{block}{Imagem virtual}
+				Uma imagem virtual é sempre formada pelos prolongamentos dos raios de luz.
+			\end{block}
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\begin{figure}
+				\Centering
+				%\input{tikz/espelho-plano-1.pgf}
+				\begin{tikzpicture}[scale=0.8, transform shape,samples=100]
+				
+				\def\x{2}
+				\def\y{2}
+				
+				\useasboundingbox (2.75,2.75) rectangle (-2.75,-2.75);
+				
+				%espelho
+				\fill [pattern = north west lines] (\x,-0.25) rectangle (-\x,0);
+				\draw (-\x,0) -- (\x,0);
+				
+				%objeto
+				\node[above] (O) at (0,\y) {\tiny Objeto};
+				
+				%raios incidentes
+				\foreach \tt in {-40,-30,...,40}{
+					\draw[->] (0,\y) -- ({\y*tan(\tt)},0);}
+				
+				%prolongamentos dos raios
+				\foreach \tt in {-40,-30,...,40}{
+					\draw[dashed] (0,-\y) -- ({\y*tan(\tt)},0);}
+				
+				%imagem
+				\node[below] (I) at (0,-\y) {\tiny Imagem};
+				
+				%raios refletidos
+				\foreach \tt in {-40,-30,...,40}{
+					\draw[->] ({\y*tan(\tt)},0) -- ({(\y+1)*tan(\tt)},1);}
+				
+				%texto
+				\node[text width=1.5cm,text depth=1cm] (t1) at (0.75*\x,-0.75*\y) {\tiny Prolongamento dos raios de luz};
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Formação da imagem virtual de um objeto em um espelho plano.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Propriedades do espelho plano}
+	\begin{columns}
+		\begin{column}{0.55\textwidth}
+			Como $\hat{r}=\hat{i}$, podemos dizer que os triângulos OAB e IAB são iguais entre si, portanto podemos dizer que $D_O=D_I$.
+			\begin{corollary}
+				\begin{itemize}
+					\item[\ding{51}] Geometricamente, podemos formar uma imagem à partir do encontro de dois ou mais prolongamentos dos raios de luz.
+					\item[\ding{51}] A imagem de um objeto em um espelho plano é simétrica em relação a esse espelho;
+				\end{itemize}
+			\end{corollary}
+		\end{column}
+		\begin{column}{0.45\textwidth}
+			\begin{figure}
+				\Centering
+				%\input{tikz/espelho-plano-2.pgf}
+				\begin{tikzpicture}[scale=0.8, transform shape,samples=100]
+				
+				\def\x{2}
+				\def\y{2}
+				
+				\pgfmathsetmacro{\tt}{atan(\y/\x)}
+				
+				\useasboundingbox (2.75,2.75) rectangle (-2.75,-2.75);
+				
+				%definindo pontos
+				\tkzDefPoints{-\x/0/A,0/-0.25/B}
+				
+				%luz incidente
+				\draw[->] (-\x,\y) -- (0,0) node [above,at start] (o1) {\tiny O};
+				
+				%angulo incidente
+				\draw[<->] ({-0.75*cos(\tt)},{0.75*sin(\tt)}) arc (135:90:0.75cm) node[above,midway] {\tiny $\hat{i}$};
+				\draw[<->] ({-\x+0.75*cos(\tt)},{\y-0.75*sin(\tt)}) arc (315:270:0.75cm) node[below,midway] {\tiny $\hat{i}$};
+				
+				%luz refletida
+				\draw[->] (0,0) -- (\x,\y) node [above, at end] (o2) {\tiny raio refletido};
+				
+				%angulo reflexao
+				\draw[<->] ({0.75*cos(\tt)},{0.75*sin(\tt)}) arc (45:90:0.75cm) node[above,midway] {\tiny $\hat{r}$};
+				\draw[<->] ({-\x+0.75*cos(\tt)},{-\y+0.75*sin(\tt)}) arc (45:90:0.75cm) node[above,midway] {\tiny $\hat{r}$};
+				
+				%normal
+				\draw[dashed] (0,0) -- (0,\y) node [above] (n) {\tiny normal};
+				
+				%espelho
+				\fill [pattern = north west lines] (\x,-0.25) rectangle (-\x,0);
+				\draw (-\x,0) -- (\x,0);
+				
+				%imagem
+				\draw[dashed] (-\x,-\y) -- (0,0) node [below,at start] (o1) {\tiny I};
+				
+				%angulo da imagem
+				\draw[<->] ({-0.75*cos(\tt)},{0.75*sin(\tt)}) arc (135:90:0.75cm) node[above,midway] {\tiny $\hat{i}$};
+				
+				%raios e prolongamentos extras
+				\draw[dashed] (-\x,-\y) -- (-\x,0);
+				\draw[<->] (-\x,\y) -- (-\x,0);
+				
+				%distancia focal e distancia da imagem
+				\draw[<->] ({-\x-0.125},0) -- ({-\x-0.125},\y) node [left,midway] (d0) {\tiny $D_O$};
+				\draw[<->] ({-\x-0.125},0) -- ({-\x-0.125},-\y) node [left,midway] (d0) {\tiny $D_I$};
+				
+				%vertices dos triangulos retangulos
+				\node[below]at (B) {\tiny B};
+				\node[above right] at (A) {\tiny A};
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Distância do objeto e da imagem num espelho plano.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Imagem de um objeto extenso}
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+			Cada ponto do objeto extenso irá incidir raios de luz no espelho, que por sua vez irá formar uma imagem simétrica a esse ponto. O conjunto de imagens formadas resultará numa imagem única do objeto extenso de mesmo formato e tamanho, porém simétrica em relação ao espelho.
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\begin{figure}
+				\Centering
+				%\input{tikz/reflexao-objeto.pgf}
+				\begin{tikzpicture}[use optics, scale=0.8, transform shape,samples=100]
+				
+				\def\x{2}
+				\def\y{2}
+				
+				\def\lambda{2}
+				\def\fia{0}
+				\def\fib{pi}
+				\def\xm{0.25}
+				\def\ya{1.5}
+				
+				\useasboundingbox (2.75,2.75) rectangle (-2.75,-2.75);
+				
+				\pgfmathsetmacro{\tt}{atan(\y/\x)}
+				\pgfmathsetmacro{\k}{2*pi/\lambda}
+				
+				%definindo ondas
+				\pgfmathdeclarefunction{f}{1}{\pgfmathparse{\ya+\xm*cos(deg(\k*#1-\fia))}}
+				\pgfmathdeclarefunction{ff}{1}{\pgfmathparse{-\ya+\xm*cos(deg(\k*#1-\fib))}}
+				
+				%objeto
+				\draw[line width=1.0pt,domain=-\x:\x,variable=\x,color=red] plot (\x,{f(\x)});
+				
+				%imagem
+				\draw[dashed,line width=1.0pt,domain=-\x:\x,variable=\x,color=red] plot (\x,{ff(\x)});
+				
+				%raios incidentes
+				\foreach \dx in {-2,-1,0,1,2}{
+					\draw[put arrow] (\dx,0) -- (\dx,{f(\dx)});
+					\draw[put arrow] (\dx,{f(\dx)}) -- (\dx,0);
+					\draw[dashed] (\dx,0) -- (\dx,{ff(\dx)});}
+				
+				%espelho
+				\fill [pattern = north west lines] (\x,-0.25) rectangle (-\x,0);
+				\draw (-\x,0) -- (\x,0);
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Imagem de um objeto extenso formada no espelho plano.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\section{Espelhos esféricos}
+
+\subsection{}
+
+\begin{frame}{Diferenças entre espelho côncavo e convexo}
+	\begin{figure}
+		\begin{subfigure}[b]{0.45\textwidth}
+			\Centering
+			%\input{tikz/espelho-esferico-concavo.pgf}
+			\begin{tikzpicture}[use optics,scale=0.5,transform shape]
+			
+			\useasboundingbox (2.75,2.75) rectangle (-2.75,-2.75);
+			
+			\coordinate (O) at (0,0);
+			\coordinate (P) at (-2,1);
+			
+			\node[circle,draw, inner sep=0, outer sep=0,minimum height=4cm, densely dashed, gray!90] (C) at (O) {};
+			
+			\node[spherical mirror,draw,object height=4cm,anchor=mirror center,spherical mirror angle=180] (M) at (O) {};
+			
+			\draw[dashed] (-2,0) -- (M.0);
+			\draw[put arrow] (O) -- (M.30) node [above,sloped,midway] {\tiny f};
+			
+			\foreach \tt in {-50,-30,...,50}{
+				\draw[->-, red,shorten >=-1cm] (M.\tt) --++ (-3,0);}
+			
+			\node[below] at (O) {\tiny C};
+			\node[below right] at (M.0) {\tiny V};
+			
+			\end{tikzpicture}
+			\caption*{\footnotesize Espelho côncavo.}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.45\textwidth}
+			\Centering
+			%\input{tikz/espelho-esferico-convexo.pgf}
+			\begin{tikzpicture}[use optics,scale=0.5,transform shape]
+			
+			\useasboundingbox (2.75,2.75) rectangle (-2.75,-2.75);
+			
+			\coordinate (O) at (2,0);
+			\coordinate (P) at (-2,1);
+			
+			\node[circle,draw, inner sep=0, outer sep=0,minimum height=4cm, densely dashed, gray!90] (C) at (O) {};
+			
+			\node[convex mirror,draw,object height=4cm,anchor=mirror center,spherical mirror angle=180] (M) at (O) {};
+			
+			\draw[dashed] (-2,0) -- (M.0);
+			\draw[put arrow] (O) -- (M.150) node [above,sloped,midway] {\tiny f};
+			
+			\foreach \tt in {250,230,...,110}{
+				\draw[-<-, red,shorten >=-1cm]  (M.\tt) --++ (-2,0);}
+			
+			\node[below] at (O) {\tiny C};
+			\node[below right] at (M.180) {\tiny V};
+			
+			\end{tikzpicture}
+			\caption*{\footnotesize Espelho convexo.}
+		\end{subfigure}
+	\end{figure}
+	\begin{corollary}
+		Se o ângulo entre o raio refletido e o espelho for suficientemente pequeno ($<10^\circ$), podemos tratar o espelho como se fosse parabólico, onde os raios refletidos convergem para um ponto chamado distância focal.
+	\end{corollary}
+\end{frame}
+
+\begin{frame}{Foco de um espelho}
+	Um feixe de raios luminosos, incidindo paralelamente ao eixo de um espelho côncavo, é refletido convergindo para um foco real; incidindo em um espelho convexo, diverge, como se fosse emitido de um foco virtual.
+	\begin{figure}
+		\begin{subfigure}[b]{0.45\textwidth}
+			\Centering
+			%\input{tikz/foco-concavo.pgf}
+			\begin{tikzpicture}[use optics,scale=1,transform shape]
+			
+				\useasboundingbox (2.25,1.25) rectangle (-2.25,-1.25);
+			
+				\coordinate (O) at (0,0);
+				\coordinate (P) at (-2,1);
+			
+				\node[spherical mirror,draw,object height=2cm,anchor=mirror center,spherical mirror angle=70] (M) at (O) {};
+			
+				\draw[dashed] (-2,0) -- (M.0);
+				\draw (O) -- (M.30) node [above,sloped,midway] {\tiny f};
+			
+				\foreach \tt in {-30,-20,...,30}{
+				\draw[put arrow,red] (M.\tt) -- (O);
+				\draw[-<-, red,shorten >=-1cm] (M.\tt) --++ (-3,0);}
+			
+				\node[below] at (O) {\tiny C};
+				\node[below right] at (M.0) {\tiny V};
+			
+			\end{tikzpicture}
+			\caption*{\footnotesize Raios paralelos convergindo no foco.}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.45\textwidth}
+			\Centering
+			%\input{tikz/foco-convexo.pgf}
+			\begin{tikzpicture}[use optics,scale=1,transform shape]
+			
+				\useasboundingbox (2.25,1.25) rectangle (-2.25,-1.25);
+			
+				\coordinate (O) at (2,0);
+				\coordinate (P) at (-2,1);
+				\coordinate (F) at (1,0);
+			
+				\node[convex mirror,draw,object height=2cm,anchor=mirror center,spherical mirror angle=70] (M) at (O) {};
+				\node[convex mirror,draw opacity=0,object height=3cm,anchor=mirror center,spherical mirror angle=70] (N) at (O) {};
+			
+				\draw[dashed] (-2,0) -- (M.0);
+			
+				\foreach \tt in {210,200,...,150}{
+				\draw[dashed] (O) -- (M.\tt);
+				\draw[-<-,color=red]  (M.\tt) --++ (-2,0);
+				\draw[->-,color=red] (M.\tt) -- (N.\tt);}
+			
+				\node[below] at (O) {\tiny C};
+				\node[below right] at (M.180) {\tiny V};
+			
+			\end{tikzpicture}
+			\caption*{\footnotesize Raios paralelos divergindo do foco.}
+		\end{subfigure}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Distância focal}
+	A distância focal, f, de um espelho esférico é aproximadamente igual à metade do seu raio de curvatura, isto é, f=R/2.
+	\begin{figure}
+		\begin{subfigure}[b]{0.45\textwidth}
+			\Centering
+			%\input{tikz/distancia-focal.pgf}
+			\begin{tikzpicture}[use optics,scale=1.5,transform shape]
+			
+				\tkzInit[xmin=-1.5,xmax=3,ymin=-1.25,ymax=1.25]
+				\tkzClip
+			
+				\coordinate (O) at (0,0);
+			
+				\node[spherical mirror,draw,object height=2cm,anchor=mirror center,spherical mirror angle=60,draw mirror focus={circle,fill},draw mirror center={circle,fill}] (M) at (O) {};
+			
+				\coordinate (X) at ($(M.25)-(1,0)$);
+				\coordinate (P) at (M.25);
+				\coordinate (V) at (M.0);
+				\coordinate (F) at ($0.5*(M.0)-0.5*(O)$);
+			
+				%raios de luz
+				\draw[dashed] (-1,0) -- (M.0);
+				\draw[put arrow] (M.25) -- ($(-1,0)+(M.0)$);
+				\draw[put arrow] ($(M.25)+(-3,0)$) -- (M.25);
+			
+				\tkzDrawPolygon(P,O,F)
+			
+				\tkzDrawPoints(V)
+				\tkzDrawPoints(O)
+				\tkzDrawPoints(F)
+			
+				\tkzLabelPoints[font=\tiny](V)
+				\tkzLabelPoints[font=\tiny,below](O)
+				\tkzLabelPoints[font=\tiny,below](F)
+			
+				\tkzMarkAngle[size=0.15](P,F,O)
+				\tkzMarkAngle[size=0.5](F,O,P)
+				\tkzMarkAngle[size=0.6](O,P,F)
+				\tkzMarkAngle[size=0.6](X,P,O)
+			
+				\tkzLabelAngle[pos=0.25,font=\tiny](O,F,P){a}
+				\tkzLabelAngle[pos=0.6,font=\tiny](P,O,F){$\alpha$}
+				\tkzLabelAngle[pos=0.7,font=\tiny](O,P,F){$\hat{r}$}
+				\tkzLabelAngle[pos=-0.7,font=\tiny](X,P,O){$\hat{i}$}
+			
+				\draw[<->,color=red] ($(V)-(0,0.4)$) -- ($(F)-(0,0.4)$) node [above,midway,font=\tiny] {$f$};
+			
+				\draw[<->,color=red] ($(V)-(0,0.8)$) -- ($(O)-(0,0.8)$) node [above=0.1pt,midway,font=\tiny] {$R$};
+
+				\node at (0.75,-0.75,) {\tiny $\alpha=\hat{i}=\hat{r}$};
+			
+			\end{tikzpicture}
+			\caption*{\footnotesize Raio paralelo convergindo no foco.}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.45\textwidth}
+			\Centering
+			%\input{tikz/distancia-focal-2.pgf}
+			\begin{tikzpicture}[use optics,scale=1.5,transform shape]
+			
+				\tkzInit[xmin=-1.5,xmax=3,ymin=-1.25,ymax=1.25]
+				\tkzClip
+			
+				\coordinate (O) at (0,0);
+			
+				\node[spherical mirror,draw,object height=2cm,anchor=mirror center,spherical mirror angle=60,draw mirror focus={circle,fill},draw mirror center={circle,fill}] (M) at (O) {};
+			
+				\coordinate (X) at ($(M.25)-(1,0)$);
+				\coordinate (P) at (M.25);
+				\coordinate (V) at (M.0);
+				\coordinate (F) at ($0.5*(M.0)-0.5*(O)$);
+			
+				%raios de luz
+				\draw[dashed] (-1,0) -- (M.0);
+				\draw[put arrow] ($(-1,0)+(M.0)$) -- (M.25);
+				\draw[put arrow] (M.25) --++ (-3,0);
+			
+				\tkzDrawPolygon(P,O,F)
+			
+				\tkzDrawPoints(V)
+				\tkzDrawPoints(O)
+				\tkzDrawPoints(F)
+			
+				\tkzLabelPoints[font=\tiny](V)
+				\tkzLabelPoints[font=\tiny,below](O)
+				\tkzLabelPoints[font=\tiny,below](F)
+			
+				\tkzMarkAngle[size=0.15](P,F,O)
+				\tkzMarkAngle[size=0.5](F,O,P)
+				\tkzMarkAngle[size=0.6](O,P,F)
+				\tkzMarkAngle[size=0.6](X,P,O)
+			
+				\tkzLabelAngle[pos=0.25,font=\tiny](O,F,P){a}
+				\tkzLabelAngle[pos=0.6,font=\tiny](P,O,F){$\alpha$}
+				\tkzLabelAngle[pos=0.7,font=\tiny](O,P,F){$\hat{r}$}
+				\tkzLabelAngle[pos=-0.7,font=\tiny](X,P,O){$\hat{i}$}
+			
+				\draw[<->,color=red] ($(V)-(0,0.4)$) -- ($(F)-(0,0.4)$) node [above=0.1pt,midway,font=\tiny] {$f$};
+			
+				\draw[<->,color=red] ($(V)-(0,0.8)$) -- ($(O)-(0,0.8)$) node [above=0.1pt,midway,font=\tiny] {$R$};
+
+				\node at (0.75,-0.75,) {\tiny $\alpha=\hat{i}=\hat{r}$};
+			\end{tikzpicture}
+			\caption*{\footnotesize Raio paralelo divergindo do foco.}
+		\end{subfigure}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Raios principais (Reflexão de um raio paralelo ao eixo)}
+	\begin{figure}
+		\begin{subfigure}[b]{0.45\textwidth}
+			\Centering
+			%\input{tikz/raio-principal-1a.pgf}
+			\begin{tikzpicture}[use optics,scale=1.5,transform shape]
+			
+				\tkzInit[xmin=-2.5,xmax=4,ymin=-1.0,ymax=1.5]
+				\tkzClip
+			
+				\coordinate (K) at (-1,0);
+			
+				\node[concave mirror,draw,object height=2cm,anchor=mirror center,spherical mirror angle=60,draw mirror focus={circle,fill},draw mirror center={circle,fill}] (M) at (K) {};
+			
+				\coordinate (X) at (-1.4,0);
+				\coordinate (Z) at (-1.4,1);
+				\coordinate (C) at (-1,0);
+				\coordinate (V) at (M.0);
+				\coordinate (F) at ($(M.0)-(1,0)$);
+				\coordinate (O) at ($(M.25)+(2,0)$);
+				\coordinate (P) at (M.25);
+			
+				%interceptando o ponto D
+				\tkzInterLL(F,P)(X,Z)
+				\tkzGetPoint{D}
+			
+				%interceptando o ponto O
+				\tkzInterLL(X,Z)(O,P)
+				\tkzGetPoint{O}
+			
+				\tkzDrawPoints(V)
+				
+				\tkzLabelPoints[font=\tiny](V)
+				\tkzLabelPoints[font=\tiny,below](C)
+				\tkzLabelPoints[font=\tiny,below](F)
+				\tkzLabelPoints[font=\tiny,above](O)
+			
+				%raios de luz
+				\draw[dashed] (2,0) -- (M.180);
+				\draw[put arrow] (O) -- (M.25);
+				\draw[put arrow] (P) -- (D);
+				\draw[->,line width=3.5pt,color=red] (X) -- (O);
+			\end{tikzpicture}
+			\caption*{\footnotesize Espelho côncavo.}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.45\textwidth}
+			\Centering
+			%\input{tikz/raio-principal-1b.pgf}
+			\begin{tikzpicture}[use optics,scale=1.5,transform shape]
+			
+				\tkzInit[xmin=-2.5,xmax=2,ymin=-1.0,ymax=1.5]
+				\tkzClip
+			
+				\coordinate (K) at (1,0);
+			
+				\node[convex mirror,draw,object height=2cm,anchor=mirror center,spherical mirror angle=60,draw mirror focus={circle,fill},draw mirror center={circle,fill}] (M) at (K) {};
+			
+				\coordinate (X) at (-1.4,0);
+				\coordinate (Z) at (-1.4,1);
+				\coordinate (C) at (1,0);
+				\coordinate (V) at (M.180);
+				\coordinate (F) at ($(M.180)+(1,0)$);
+				\coordinate (o) at ($(M.155)-(2,0)$);
+				\coordinate (P) at (M.155);
+			
+				%interceptando o ponto D
+				\tkzInterLL(F,P)(X,Z)
+				\tkzGetPoint{D}
+			
+				%interceptando o ponto O
+				\tkzInterLL(X,Z)(o,P)
+				\tkzGetPoint{O}
+			
+				\tkzDrawPoints(V)
+			
+				\tkzLabelPoints[font=\tiny,below left](V)
+				\tkzLabelPoints[font=\tiny,below](C)
+				\tkzLabelPoints[font=\tiny,below](F)
+				\tkzLabelPoints[font=\tiny,above](O)
+			
+				%raios de luz
+				\draw[dashed] (-2,0) -- (M.0);
+				\draw[put arrow] (O) -- (M.155);
+				\draw[dashed] (M.155) -- (F);
+				\draw[put arrow] (P) -- (D);
+				\draw[->,line width=3.5pt,color=red] (X) -- (O);
+			\end{tikzpicture}
+			\caption*{\footnotesize Espelho convexo.}
+		\end{subfigure}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Raios principais (reflexão de um raio passando pelo foco)}
+	\begin{figure}
+		\begin{subfigure}[b]{0.45\textwidth}
+			\Centering
+			%\input{tikz/raio-principal-2a.pgf}
+			\begin{tikzpicture}[use optics,scale=1.3,transform shape]
+			
+				\tkzInit[xmin=-2.5,xmax=4,ymin=-1.5,ymax=2.0]
+				\tkzClip
+			
+				\coordinate (K) at (-1,0);
+			
+				\node[concave mirror,draw,object height=2cm,anchor=mirror center,spherical mirror angle=60,draw mirror focus={circle,fill},draw mirror center={circle,fill}] (M) at (K) {};
+			
+				\coordinate (X) at (-1.4,0);
+				\coordinate (Z) at (-1.4,1);
+				\coordinate (C) at (-1,0);
+				\coordinate (V) at (M.0);
+				\coordinate (F) at ($(M.0)-(1,0)$);
+				\coordinate (D) at ($(M.-20)-(2,0)$);
+				\coordinate (P) at (M.-20);
+			
+				%interceptando o ponto D
+				\tkzInterLL(F,P)(X,Z)
+				\tkzGetPoint{O}
+			
+				\tkzDrawPoints(V)
+			
+				\tkzLabelPoints[font=\tiny](V)
+				\tkzLabelPoints[font=\tiny,below](C)
+				\tkzLabelPoints[font=\tiny,below](F)
+				\tkzLabelPoints[font=\tiny,above](O)
+			
+				%raios de luz
+				\draw[dashed] (2,0) -- (M.180);
+				\draw[put arrow] (O) -- (M.-20);
+				\draw[put arrow] (P) -- (D);
+				\draw[->,line width=3.5pt,color=red] (X) -- (O);
+			\end{tikzpicture}
+			\caption*{\footnotesize Espelho côncavo.}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.45\textwidth}
+			\Centering
+			%\input{tikz/raio-principal-2b.pgf}
+			\begin{tikzpicture}[use optics,scale=1.3,transform shape]
+			
+			\tkzInit[xmin=-2.5,xmax=2,ymin=-1.5,ymax=2.0]
+			\tkzClip
+			
+			\coordinate (K) at (1,0);
+			
+			\node[convex mirror,draw,object height=2cm,anchor=mirror center,spherical mirror angle=60,draw mirror focus={circle,fill},draw mirror center={circle,fill}] (M) at (K) {};
+			
+			\coordinate (X) at (-1.4,0);
+			\coordinate (Z) at (-1.4,1);
+			\coordinate (C) at (1,0);
+			\coordinate (V) at (M.180);
+			\coordinate (F) at ($(M.180)+(1,0)$);
+			\coordinate (d) at ($(M.160)-(2,0)$);
+			\coordinate (P) at (M.160);
+			
+			%interceptando o ponto D
+			\tkzInterLL(F,P)(X,Z)
+			\tkzGetPoint{O}
+			
+			%interceptando o ponto O
+			\tkzInterLL(X,Z)(d,P)
+			\tkzGetPoint{D}
+			
+			\tkzDrawPoints(V)
+			\tkzDrawPoints(F)
+			
+			\tkzLabelPoints[font=\tiny,below left](V)
+			\tkzLabelPoints[font=\tiny,below](C)
+			\tkzLabelPoints[font=\tiny,below](F)
+			\tkzLabelPoints[font=\tiny,above](O)
+			
+			%raios de luz
+			\draw[dashed] (-2,0) -- (M.0);
+			\draw[put arrow] (M.160) -- (D);
+			\draw[dashed] (M.160) -- (F);
+			\draw[put arrow] (O) -- (P);
+			\draw[->,line width=3.5pt,color=red] (X) -- (O);
+			\end{tikzpicture}
+			\caption*{\footnotesize Espelho convexo.}
+		\end{subfigure}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Raios principais (reflexão de um raio passando pelo centro de curvatura)}
+	\begin{figure}
+		\begin{subfigure}[b]{0.45\textwidth}
+			\Centering
+			%\input{tikz/raio-principal-3a.pgf}
+			\begin{tikzpicture}[use optics,scale=1.3,transform shape]
+			
+			\tkzInit[xmin=-2.5,xmax=4,ymin=-1.5,ymax=2.0]
+			\tkzClip
+			
+			\coordinate (K) at (-1,0);
+			
+			\node[concave mirror,draw,object height=2cm,anchor=mirror center,spherical mirror angle=60,draw mirror focus={circle,fill},draw mirror center={circle,fill}] (M) at (K) {};
+			
+			\coordinate (X) at (-2,0);
+			\coordinate (Z) at (-2,1);
+			\coordinate (C) at (-1,0);
+			\coordinate (V) at (M.0);
+			\coordinate (F) at ($(M.0)-(1,0)$);
+			\coordinate (P) at (M.-20);
+			
+			%interceptando o ponto D
+			\tkzInterLL(C,P)(X,Z)
+			\tkzGetPoint{O}
+			
+			\tkzDrawPoints(V)
+			\tkzDrawPoints(O)
+			
+			\tkzLabelPoints[font=\tiny](V)
+			\tkzLabelPoints[font=\tiny,below](C)
+			\tkzLabelPoints[font=\tiny,below](F)
+			\tkzLabelPoints[font=\tiny,above](O)
+			
+			%raios de luz
+			\draw[dashed] (2,0) -- (M.180);
+			\draw[put arrow] (O) -- (M.-20);
+			\draw[put arrow] (M.-20) -- (O);
+			\draw[->,line width=3.5pt,color=red] (X) -- (O);
+			
+			\end{tikzpicture}
+			\caption*{\footnotesize Espelho côncavo.}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.45\textwidth}
+			\Centering
+			%\input{tikz/raio-principal-3b.pgf}
+			\begin{tikzpicture}[use optics,scale=1.3,transform shape]
+			
+			\tkzInit[xmin=-2.5,xmax=2,ymin=-1.5,ymax=2.0]
+			\tkzClip
+			
+			\coordinate (K) at (1,0);
+			
+			\node[convex mirror,draw,object height=2cm,anchor=mirror center,spherical mirror angle=60,draw mirror focus={circle,fill},draw mirror center={circle,fill}] (M) at (K) {};
+			
+			\coordinate (X) at (-1.4,0);
+			\coordinate (Z) at (-1.4,1);
+			\coordinate (C) at (1,0);
+			\coordinate (V) at (M.180);
+			\coordinate (F) at ($(M.180)+(1,0)$);
+			\coordinate (d) at ($(M.160)-(2,0)$);
+			\coordinate (P) at (M.160);
+			
+			%interceptando o ponto D
+			\tkzInterLL(C,P)(X,Z)
+			\tkzGetPoint{O}
+			
+			%interceptando o ponto O
+			\tkzInterLL(X,Z)(d,P)
+			\tkzGetPoint{D}
+			
+			\tkzDrawPoints(V)
+			\tkzDrawPoints(F)
+			
+			\tkzLabelPoints[font=\tiny,below left](V)
+			\tkzLabelPoints[font=\tiny,below](C)
+			\tkzLabelPoints[font=\tiny,below](F)
+			\tkzLabelPoints[font=\tiny,above](O)
+			
+			%raios de luz
+			\draw[dashed] (-2,0) -- (M.0);
+			\draw[dashed] (M.160) -- (C);
+			\draw[put arrow] (O) -- (P);
+			\draw[put arrow] (P) -- (O);
+			\draw[->,line width=3.5pt,color=red] (X) -- (O);
+			
+			\end{tikzpicture}
+			\caption*{\footnotesize Espelho convexo.}
+		\end{subfigure}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Raios principais (reflexão de um raio passando pelo vértice)}
+	\begin{figure}
+		\begin{subfigure}[b]{0.45\textwidth}
+			\Centering
+			%\input{tikz/raio-principal-4a.pgf}
+			\begin{tikzpicture}[use optics,scale=1.3,transform shape]
+			
+			\tkzInit[xmin=-2.5,xmax=4,ymin=-1.5,ymax=2.0]
+			\tkzClip
+			
+			\coordinate (K) at (-1,0);
+			
+			\node[concave mirror,draw,object height=2cm,anchor=mirror center,spherical mirror angle=60,draw mirror focus={circle,fill},draw mirror center={circle,fill}] (M) at (K) {};
+			
+			\coordinate (X) at (-2,0);
+			\coordinate (O) at (-2,0.75);
+			\coordinate (L) at (-2,-0.75);
+			\coordinate (C) at (-1,0);
+			\coordinate (V) at (M.0);
+			\coordinate (F) at ($(M.0)-(1,0)$);
+			
+			\tkzDrawPoints(V)
+			\tkzDrawPoints(O)
+			
+			\tkzLabelPoints[font=\tiny](V)
+			\tkzLabelPoints[font=\tiny,below](C)
+			\tkzLabelPoints[font=\tiny,below](F)
+			\tkzLabelPoints[font=\tiny,above](O)
+			
+			%raios de luz
+			\draw[dashed] (2,0) -- (M.180);
+			\draw[put arrow] (O) -- (M.0);
+			\draw[put arrow] (M.0) -- (L);
+			\draw[->,line width=3.5pt,color=red] (X) -- (O);
+			
+			\end{tikzpicture}
+			\caption*{\footnotesize Espelho côncavo.}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.45\textwidth}
+			\Centering
+			%\input{tikz/raio-principal-4b.pgf}
+			\begin{tikzpicture}[use optics,scale=1.3,transform shape]
+			
+			\tkzInit[xmin=-2.5,xmax=2,ymin=-1.5,ymax=2.0]
+			\tkzClip
+			
+			\coordinate (K) at (1,0);
+			
+			\node[convex mirror,draw,object height=2cm,anchor=mirror center,spherical mirror angle=60,draw mirror focus={circle,fill},draw mirror center={circle,fill}] (M) at (K) {};
+			
+			\coordinate (X) at (-1.4,0);
+			\coordinate (O) at (-1.4,0.75);
+			\coordinate (W) at (-1.4,-0.75);
+			\coordinate (C) at (1,0);
+			\coordinate (V) at (M.180);
+			\coordinate (F) at ($(M.180)+(1,0)$);
+			
+			\tkzDrawPoints(V)
+			\tkzDrawPoints(F)
+			\tkzDrawPoints(O)
+			%\tkzDrawPoints(X)
+			%\tkzDrawPoints(Z)
+			
+			\tkzLabelPoints[font=\tiny,below left](V)
+			\tkzLabelPoints[font=\tiny,below](C)
+			\tkzLabelPoints[font=\tiny,below](F)
+			\tkzLabelPoints[font=\tiny,above](O)
+			%\tkzLabelPoints[font=\tiny,below](X)
+			
+			%raios de luz
+			\draw[dashed] (-2,0) -- (M.0);
+			\draw[put arrow] (M.180) -- (W);
+			\draw[put arrow] (O) -- (M.180);
+			\draw[->,line width=3.5pt,color=red] (X) -- (O);
+			
+			\end{tikzpicture}
+			\caption*{\footnotesize Espelho convexo.}
+		\end{subfigure}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Formação de imagem num espelho esférico}
+	\begin{figure}
+		\begin{subfigure}[b]{0.45\textwidth}
+			\Centering
+			%\input{tikz/reflexao-co1.pgf}
+			\begin{tikzpicture}[use optics,scale=0.75,transform shape]
+			
+			\tkzInit[xmin=-2.5,xmax=4,ymin=-1.5,ymax=1.5]
+			\tkzClip
+			
+			\coordinate (K) at (-1,0);
+			
+			\node[concave mirror,draw,object height=2cm,anchor=mirror center,spherical mirror angle=60,draw mirror focus={circle,fill},draw mirror center={circle,fill}] (M) at (K) {};
+			
+			\coordinate (X) at (-2.25,0);
+			\coordinate (Z) at (-2.25,1);
+			\coordinate (Y) at (-0.7,0);
+			\coordinate (W) at (-0.7,-1);
+			\coordinate (C) at (-1,0);
+			\coordinate (V) at (M.0);
+			\coordinate (o) at ($(M.20)+(2,0)$);
+			\coordinate (P) at (M.20);
+			
+			%definindo foco
+			\tkzDefMidPoint(C,V)
+			\tkzGetPoint{F}
+			
+			%interceptando o ponto O
+			\tkzInterLL(X,Z)(o,P)
+			\tkzGetPoint{O}
+			
+			\tkzInterLC(O,F)(C,V)
+			\tkzGetPoints{P1}{P2}
+			
+			\tkzDefLine[parallel=through P2](C,V)
+			\tkzGetPoint{D}
+			
+			%interceptando a imagem
+			\tkzInterLL(P2,D)(P,F)
+			\tkzGetPoint{I}
+			
+			%definindo imagem
+			\tkzDefPointBy[projection=onto C--V](I)
+			\tkzGetPoint{DI}
+			
+			\tkzDrawPoints(V)
+			\tkzDrawPoints(I)
+			
+			\tkzLabelPoints[font=\tiny](V)
+			\tkzLabelPoints[font=\tiny,below](C)
+			\tkzLabelPoints[font=\tiny,below](F)
+			\tkzLabelPoints[font=\tiny,above](O)
+			\tkzLabelPoints[font=\tiny,below](I)
+			
+			%raios de luz
+			\draw[dashed] (2,0) -- (M.180);
+			\draw[put arrow={at=0.5}] (O) -- (P2);
+			\draw[put arrow={at=0.5}] (O) -- (P);
+			\draw[put arrow={at=0.5}] (P2) -- (I);
+			\draw[put arrow={at=0.5}] (P) -- (I);
+			\draw[->,line width=1.5pt,color=red] (X) -- (O);
+			\draw[->,line width=1.5pt,color=red] (DI) -- (I);
+			
+			\end{tikzpicture}
+			\caption*{\footnotesize Real, invertida e menor.}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.45\textwidth}
+			\Centering
+			%\input{tikz/reflexao-co2.pgf}
+			\begin{tikzpicture}[use optics,scale=0.75,transform shape]
+			
+			\tkzInit[xmin=-2.5,xmax=4,ymin=-1.5,ymax=1.5]
+			\tkzClip
+			
+			\coordinate (K) at (-1,0);
+			
+			\node[concave mirror,draw,object height=2cm,anchor=mirror center,spherical mirror angle=60,draw mirror focus={circle,fill},draw mirror center={circle,fill}] (M) at (K) {};
+			
+			\coordinate (X) at (-0.5,0);
+			\coordinate (Z) at (-0.5,1);
+			\coordinate (Y) at (-0.7,0);
+			\coordinate (W) at (-0.7,-1);
+			\coordinate (C) at (-1,0);
+			\coordinate (V) at (M.0);
+			\coordinate (o) at ($(M.20)+(2,0)$);
+			\coordinate (P) at (M.20);
+			
+			\tkzDrawCircle[color=red,opacity=0](C,V)
+			
+			%definindo foco
+			\tkzDefMidPoint(C,V)
+			\tkzGetPoint{F}
+			
+			%interceptando o ponto O
+			\tkzInterLL(X,Z)(o,P)
+			\tkzGetPoint{O}
+			
+			\tkzInterLC(O,F)(C,V)
+			\tkzGetPoints{P1}{P2}
+			
+			\tkzDefLine[parallel=through P2](C,V)
+			\tkzGetPoint{D}
+			
+			%interceptando a imagem
+			\tkzInterLL(P2,D)(P,F)
+			\tkzGetPoint{I}
+			
+			%definindo imagem
+			\tkzDefPointBy[projection=onto C--V](I)
+			\tkzGetPoint{DI}
+			
+			\tkzDrawPoints(V)
+			\tkzDrawPoints(I)
+			
+			\tkzLabelPoints[font=\tiny](V)
+			\tkzLabelPoints[font=\tiny,below](C)
+			\tkzLabelPoints[font=\tiny,below](F)
+			\tkzLabelPoints[font=\tiny,above](O)
+			\tkzLabelPoints[font=\tiny,below](I)
+			
+			%raios de luz
+			\draw[dashed] (2,0) -- (M.180);
+			\draw[put arrow={at=0.75}] (O) -- (P2);
+			\draw[put arrow={at=0.75}] (O) -- (P);
+			\draw[put arrow={at=0.75}] (P2) -- (I);
+			\draw[put arrow={at=0.75}] (P) -- (I);
+			\draw[->,line width=1.5pt,color=red] (X) -- (O);
+			\draw[->,line width=1.5pt,color=red] (DI) -- (I);
+			
+			\end{tikzpicture}
+			\caption*{\footnotesize Real, invertida e maior.}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.45\textwidth}
+			\Centering
+			%\input{tikz/reflexao-co3.pgf}
+			\begin{tikzpicture}[use optics,scale=0.75,transform shape]
+			
+			\tkzInit[xmin=-2.5,xmax=4,ymin=-1.5,ymax=1.5]
+			\tkzClip
+			
+			\coordinate (K) at (-1,0);
+			
+			\node[concave mirror,draw,object height=2cm,anchor=mirror center,spherical mirror angle=65,draw mirror focus={circle,fill},draw mirror center={circle,fill}] (M) at (K) {};
+			
+			\coordinate (X) at (0.4,0);
+			\coordinate (Z) at (0.4,1);
+			\coordinate (C) at (-1,0);
+			\coordinate (V) at (M.0);
+			\coordinate (o) at ($(M.20)+(2,0)$);
+			\coordinate (P) at (M.20);
+			
+			\tkzDrawCircle[color=red,opacity=0](C,V)
+			
+			%definindo foco
+			\tkzDefMidPoint(C,V)
+			\tkzGetPoint{F}
+			
+			%interceptando o ponto O
+			\tkzInterLL(X,Z)(o,P)
+			\tkzGetPoint{O}
+			
+			\tkzInterLC(O,F)(C,V)
+			\tkzGetPoints{P1}{P2}
+			
+			\tkzDefLine[parallel=through P1](C,V)
+			\tkzGetPoint{D}
+			
+			%interceptando a imagem
+			\tkzInterLL(P1,D)(P,F)
+			\tkzGetPoint{I}
+			
+			%definindo imagem
+			\tkzDefPointBy[projection=onto C--V](I)
+			\tkzGetPoint{DI}
+			
+			\tkzDefPointBy[projection=onto P1--I](C)
+			\tkzGetPoint{G}
+			
+			\tkzDrawPoints(V)
+			
+			\tkzLabelPoints[font=\tiny](V)
+			\tkzLabelPoints[font=\tiny,below](C)
+			\tkzLabelPoints[font=\tiny,below](F)
+			
+			%raios de luz
+			\draw[dashed] (-2,0) -- (2,0);
+			\draw[->,line width=1.5pt,color=red] (X) -- (O);
+			\draw[->,line width=1.5pt,color=red] (DI) -- (I);
+			\draw[put arrow={at=0.75}] (O) -- (P1);
+			\draw[put arrow={at=0.75}] (P1) -- (G);
+			\draw[put arrow={at=0.75}] (O) -- (P);
+			\draw[put arrow={at=0.75}] (P) -- (F);
+			\draw[dashed] (P1) -- (I);
+			\draw[dashed] (P) -- (I);
+			
+			\end{tikzpicture}
+			\caption*{\footnotesize Virtual, direita e maior.}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.45\textwidth}
+			\Centering
+			%\input{tikz/reflexao-cx1.pgf}
+			\begin{tikzpicture}[use optics,scale=0.75,transform shape]
+			
+			\tkzInit[xmin=-2.5,xmax=4,ymin=-1.5,ymax=1.5]
+			\tkzClip
+			
+			\coordinate (K) at (1,0);
+			
+			\node[convex mirror,draw,object height=2cm,anchor=mirror center,spherical mirror angle=65,draw mirror focus={circle,fill},draw mirror center={circle,fill}] (M) at (K) {};
+			
+			\coordinate (X) at (-1.75,0);
+			\coordinate (Z) at (-1.75,1);
+			\coordinate (C) at (1,0);
+			\coordinate (V) at (M.180);
+			\coordinate (o) at ($(M.160)+(2,0)$);
+			\coordinate (P) at (M.160);
+			
+			%definindo foco
+			\tkzDefMidPoint(C,V)
+			\tkzGetPoint{F}
+			
+			%interceptando o ponto O
+			\tkzInterLL(X,Z)(o,P)
+			\tkzGetPoint{O}
+			
+			\tkzInterLC(O,F)(C,V)
+			\tkzGetPoints{P1}{P2}
+			
+			\tkzInterLC[R](F,P)(C,2.5cm)
+			\tkzGetPoints{A1}{A2}
+			
+			\tkzDefLine[parallel=through P2](C,V)
+			\tkzGetPoint{D}
+			
+			%interceptando a imagem
+			\tkzInterLL(P2,D)(P,F)
+			\tkzGetPoint{I}
+			
+			%definindo imagem
+			\tkzDefPointBy[projection=onto C--V](I)
+			\tkzGetPoint{DI}
+			
+			\tkzDefPointBy[projection=onto P2--I](X)
+			\tkzGetPoint{G}
+			
+			\tkzDrawPoints(V)
+			\tkzDrawPoints(I)
+			
+			\tkzLabelPoints[font=\tiny,below left](V)
+			\tkzLabelPoints[font=\tiny,below](C)
+			\tkzLabelPoints[font=\tiny,below](F)
+			\tkzLabelPoints[font=\tiny,above](O)
+			\tkzLabelPoints[font=\tiny,above](I)
+			
+			%raios de luz
+			\draw[dashed] (-2,0) -- (2,0);
+			\draw[->,line width=1.5pt,color=red] (X) -- (O);
+			\draw[->,line width=1.5pt,color=red] (DI) -- (I);
+			\draw[put arrow={at=0.75}] (O) -- (P2);
+			\draw[put arrow={at=0.75}] (P2) -- (G);
+			\draw[put arrow={at=0.75}] (O) -- (P);
+			\draw[put arrow={at=0.75}] (P) -- (A2);
+			\draw[densely dotted] (P) -- (F);
+			\draw[densely dotted] (P2) -- (I);
+			
+			\end{tikzpicture}
+			\caption*{\footnotesize Virtual, direita e menor.}
+		\end{subfigure}
+	\end{figure}
+\end{frame}
+
+\section{A equação dos espelhos esféricos}
+
+\subsection{}
+
+\begin{frame}{Aumento linear}
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+			Podemos observar na figura que os triângulos ABV e A'B'V são semelhantes, portanto
+			\begin{equation*}
+				\frac{A'B'}{AB}=\frac{A'V}{AV}.
+			\end{equation*}
+			Mas percebemos que A'V é a distância da imagem e AV é a distância do objeto até o vértice do espelho, portanto
+			\begin{equation*}
+				\boxed{\frac{A'B'}{AB}=\frac{D_i}{D_o}.}
+			\end{equation*}				
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\begin{figure}
+				%\input{tikz/aumento-linear.pgf}
+				\begin{tikzpicture}[use optics,scale=1.5,transform shape]
+				
+				\tkzInit[xmin=-3,xmax=3,ymin=-1.5,ymax=1.0]
+				\tkzClip
+				%\tkzGrid
+				
+				\coordinate (K) at (-1,0);
+				
+				\node[concave mirror,draw,object height=2cm,anchor=mirror center,spherical mirror angle=60,draw mirror focus={circle,fill},draw mirror center={circle,fill}] (M) at (K) {};
+				
+				\coordinate (A) at (-2,0);
+				\coordinate (B) at (-2,0.5);
+				\coordinate (L) at (-2,-0.5);
+				\coordinate (C) at (-1,0);
+				\coordinate (V) at (M.0);
+				
+				%definindo foco
+				\tkzDefMidPoint(C,V)
+				\tkzGetPoint{F}
+				
+				%interceptando raio secundario no espelho
+				\tkzInterLC(B,C)(C,V)
+				\tkzGetPoints{P1}{P2}
+				
+				%interceptando a imagem
+				\tkzInterLL(B,P2)(V,L)
+				\tkzGetPoint{B'}
+				
+				%definindo imagem
+				\tkzDefPointBy[projection=onto C--V](B')
+				\tkzGetPoint{A'}
+				
+				%definindo triangulos semelhantes
+				\tkzDrawPolygon[color=white,fill=blue!10](A,B,V)
+				\tkzDrawPolygon[color=white,fill=green!10](A',B',V)
+				
+				\tkzDrawPoints(V)
+				
+				\tkzLabelPoints[font=\tiny](V)
+				\tkzLabelPoints[font=\tiny,below](C)
+				\tkzLabelPoints[font=\tiny,below](A)
+				\tkzLabelPoints[font=\tiny,above](A')
+				\tkzLabelPoints[font=\tiny,above](B)
+				\tkzLabelPoints[font=\tiny,below](B')
+				
+				\tkzMarkAngle(B,V,C)
+				\tkzMarkAngle(C,V,B')
+				
+				\tkzLabelAngle[pos=1,font=\tiny,above](B,V,C){$\hat{i}$}
+				\tkzLabelAngle[pos=1,font=\tiny,below](B',V,B'){$\hat{r}$}
+				
+				%raios de luz e prolongamentos
+				\draw[dashed] (2,0) -- (M.180);
+				\draw[->,line width=1.5pt,color=red] (A) -- (B);
+				\draw[->,line width=1.5pt,color=red] (A') -- (B');
+				
+				\tkzDrawLine[put arrow={at=0.75},add=0cm and 1cm](V,B')
+				\tkzDrawSegment[put arrow={at=0.75}](P2,B)
+				\tkzDrawSegment[put arrow={at=0.75}](B,P2)
+				\tkzDrawSegment[put arrow={at=0.75}](B,V)
+				
+				\node at (-0.5,-0.5,) {\tiny $\hat{i}=\hat{r}$};
+				
+				\end{tikzpicture}
+				\caption*{Semelhança entre os triângulos ABV e A'B'V}
+			\end{figure}
+		\end{column}		
+	\end{columns}
+\end{frame}
+
+\begin{frame}{A equação dos espelhos esféricos}
+	\begin{columns}
+	\begin{column}{0.5\textwidth}
+		Podemos observar na figura que os triângulos ABC e A'B'C são semelhantes, portanto
+		\begin{equation*}
+			\frac{A'B'}{AB}=\frac{A'C}{AC}.
+		\end{equation*}
+		No entanto, podemos perceber também que
+		\begin{align*}
+			A'C & = CV-A'V = R-D_i=2f-D_i,\\
+			AC & = AV-CV = D_o-R=D_o-2f.
+		\end{align*}
+	\end{column}
+	\begin{column}{0.5\textwidth}
+		\begin{figure}
+			\Centering
+			%\input{tikz/aumento-linear-2.pgf}
+			\begin{tikzpicture}[use optics,scale=1,transform shape]
+			
+			\tkzInit[xmin=-3,xmax=2,ymin=-1,ymax=0.8]
+			\tkzClip
+			%\tkzGrid
+			
+			\coordinate (K) at (-1,0);
+			
+			\node[concave mirror,draw,object height=2cm,anchor=mirror center,spherical mirror angle=60,draw mirror focus={circle,fill},draw mirror center={circle,fill}] (M) at (K) {};
+			
+			\coordinate (A) at (-2,0);
+			\coordinate (B) at (-2,0.5);
+			\coordinate (L) at (-2,-0.5);
+			\coordinate (C) at (-1,0);
+			\coordinate (V) at (M.0);
+			
+			%definindo foco
+			\tkzDefMidPoint(C,V)
+			\tkzGetPoint{F}
+			
+			%interceptando raio secundario no espelho
+			\tkzInterLC(B,C)(C,V)
+			\tkzGetPoints{P1}{P2}
+			
+			%interceptando a imagem
+			\tkzInterLL(B,P2)(V,L)
+			\tkzGetPoint{B'}
+			
+			%definindo imagem
+			\tkzDefPointBy[projection=onto C--V](B')
+			\tkzGetPoint{A'}
+			
+			%definindo triangulos semelhantes
+			\tkzDrawPolygon[color=white,fill=blue!10](A,B,C)
+			\tkzDrawPolygon[color=white,fill=green!10](A',B',C)
+			
+			\tkzDrawPoints(V)
+			
+			\tkzLabelPoints[font=\tiny](V)
+			\tkzLabelPoints[font=\tiny,below](C)
+			\tkzLabelPoints[font=\tiny,below](A)
+			\tkzLabelPoints[font=\tiny,above](A')
+			\tkzLabelPoints[font=\tiny,above](B)
+			\tkzLabelPoints[font=\tiny,below](B')
+			
+			%raios de luz e prolongamentos
+			\draw[dashed] (2,0) -- (M.180);
+			\draw[->,line width=1.5pt,color=red] (A) -- (B);
+			\draw[->,line width=1.5pt,color=red] (A') -- (B');
+			
+			\tkzDrawLine[put arrow={at=0.75},add=0cm and 1cm](V,B')
+			\tkzDrawSegment[put arrow={at=0.75}](P2,B)
+			\tkzDrawSegment[put arrow={at=0.75}](B,P2)
+			\tkzDrawSegment[put arrow={at=0.75}](B,V)
+			
+			\node at (-0.5,-0.4,) {\tiny $\hat{i}=\hat{r}$};
+			
+			\end{tikzpicture}
+			\caption*{\footnotesize Semelhança entre os triângulos ABC e A'B'C}
+		\end{figure}
+		Dividindo as duas equações acima temos
+		\begin{align*}
+			\frac{A'C}{AC} = \frac{2f-D_i}{D_o-2f}.
+		\end{align*}
+	\end{column}		
+\end{columns}
+\end{frame}
+
+\begin{frame}{A equação dos espelhos esféricos (continuação)}
+	\begin{multicols}{2}
+		Sabendo que $\frac{A'B'}{AB}=\frac{A'C}{AC}$ temos
+		\begin{NodesList}[margin=1.5cm]
+			\begin{align*}
+				\frac{A'C}{AC} & = \frac{2f-D_i}{D_o-2f},\AddNode\\
+				\frac{A'B}{AB} & = \frac{2f-D_i}{D_o-2f}.\AddNode
+			\end{align*}
+			\LinkNodes{\footnotesize $\frac{A'C}{AC}=\frac{A'B}{AB}$}
+		\end{NodesList}
+		Mas como foi mostrado anteriormente, sabemos que $\frac{A'B}{AB}=\frac{D_i}{D_o}$, portanto
+		\begin{align*}
+			\frac{D_i}{D_o} = \frac{2f-D_i}{D_o-2f}.
+		\end{align*}
+		Multiplicando cruzado temos
+		\begin{align*}
+			D_i\left(D_o-2f\right) & = D_o\left(2f-D_i\right),\\
+			D_iD_o-2D_if & = 2D_of-D_oD_i,\\
+			2D_oD_i & = 2fD_o+2fD_i.
+		\end{align*}
+		Dividindo todos os termos por $2fD_oD_i$ temos
+		\begin{equation*}
+			\boxed{\frac{1}{f} = \frac{1}{D_o}+\frac{1}{D_i}.}
+		\end{equation*}
+	\end{multicols}
+\end{frame}
+
+\begin{frame}{Convenção de sinais em óptica}
+	As equações do espelho esférico pode ser utilizada para qualquer tipo de espelho.
+	\begin{block}{Equações do espelho esférico}
+		\begin{align*}
+			\frac{1}{f} & = \frac{1}{D_o}+\frac{1}{D_i}, & \text{(Equação dos espelhos)},\\
+			\frac{A'B'}{AB} & = \alert{-}\frac{D_i}{D_o}, & \text{(Aumento linear)}.
+		\end{align*}
+	\end{block}
+	\begin{corollary}
+		Podemos dizer que as distâncias do lado esquerdo do
+	espelho serão positivas e do lado direito serão negativas, e se a imagem for invertida ela será negativa.
+	\end{corollary}
+\end{frame}
+
+\section{Aplicações}
+
+\subsection{}
+
+\begin{frame}{Aplicações envolvendo espelhos esféricos}
+	\begin{figure}
+		\begin{subfigure}[b]{0.45\textwidth}
+			\includegraphics[scale=0.2]{figuras/espelho-1.jpg}
+			\caption*{Espelhos retrovisores.}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.45\textwidth}
+			\includegraphics[scale=0.4]{figuras/telescopio.jpg}
+			\caption*{Telescópio refletor \cite{telescopio}.}
+		\end{subfigure}
+	\end{figure}
+\end{frame}
+
+\section{Apêndice}
+
+\subsection{}
+
+\begin{frame}{Transformar um número em notação científica}
+	\begin{corollary}
+		\begin{enumerate}[leftmargin=1.75cm]
+			\item[Passo 1:] Escrever o número incluindo a vírgula.
+			\item[Passo 2:] Andar com a vírgula até que reste somente um número diferente de zero no lado esquerdo.
+			\item[Passo 3:] Colocar no expoente da potência de 10 o número de casas decimais que tivemos que "andar" com a vírgula. Se ao andar com a vírgula o valor do número diminuiu, o expoente ficará positivo, se aumentou o expoente ficará negativo.
+		\end{enumerate}
+	\end{corollary}
+	\begin{exampleblock}{Exemplo}
+		\begin{equation*}
+			6\; 590\; 000\; 000\; 000\; 000,0 = \SI{6,59e15}{}		
+		\end{equation*}
+	\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Conversão de unidades em uma dimensão}
+	\begin{figure}
+		\begin{tikzpicture}[scale=0.65,transform shape,font=\Large]
+		
+		\tkzInit[xmin=-2,xmax=17,ymin=-6,ymax=3]
+		%\tkzGrid[color=gray!20]
+		\tkzClip
+		
+		\tikzset{compass style/.append style={->}}
+		
+		\foreach \x in {1,2,...,6}{
+			\tkzDefPoint(\x*3-3,0){\x}
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+			\node at (\x*3-3,2) {$\times 10^{1}$};
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+			\node at (\x*3-3,-2) {$\times 10^{-1}$};}
+		
+		\tkzDefPoints{-1.5/0/p1,1.5/0/p2,4.5/0/p3,7.5/-0.2/p4,10.5/0/p5,13.5/0/p6,16.5/0/p7}
+		
+		\tkzText(p1){m\_}
+		\tkzText(p2){c\_}
+		\tkzText(p3){d\_}
+		\tkzText(p4){\_}
+		\tkzText(p5){da\_}
+		\tkzText(p6){h\_}
+		\tkzText(p7){k\_}
+		
+		%exemplos
+		
+		\tkzText(3,-3.5){$1\;\text{mm}=1\times 10^{(-1)\times\alert{2}}\;\text{dm}\rightarrow 1\times 10^{-2}\;\text{dm}$}
+		\tkzText(3.1,-4.5){$2,5\;\text{kg}=2,5\times 10^{(1)\times\alert{6}}\;\text{mg}\rightarrow2,5\times 10^{6}\;\text{mg}$}
+		\tkzText(2.7,-5.5){$10\;\text{ms}=10\times 10^{(-1)\times\alert{3}}\;\text{s}\rightarrow 10\times 10^{-3}\;\text{s}$}
+		
+		\end{tikzpicture}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Conversão de unidades em duas dimensões}
+	\begin{figure}
+		\begin{tikzpicture}[scale=0.65,transform shape,font=\Large]
+	
+		\tkzInit[xmin=-2,xmax=17,ymin=-6,ymax=3]
+		%\tkzGrid[color=gray!20]
+		\tkzClip
+	
+		\tikzset{compass style/.append style={->}}
+	
+		\foreach \x in {1,2,...,6}{
+			\tkzDefPoint(\x*3-3,0){\x}
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+			\node at (\x*3-3,2) {$\times 10^{2}$};
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+			\node at (\x*3-3,-2) {$\times 10^{-2}$};}
+	
+		\tkzDefPoints{-1.5/0/p1,1.5/0/p2,4.5/0/p3,7.5/0/p4,10.5/0/p5,13.5/0/p6,16.5/0/p7}
+	
+		\tkzText(p1){$\text{m}\_^2$}
+		\tkzText(p2){$\text{c}\_^2$}
+		\tkzText(p3){$\text{d}\_^2$}
+		\tkzText(p4){$\_^2$}
+		\tkzText(p5){$\text{da}\_^2$}
+		\tkzText(p6){$\text{h}\_^2$}
+		\tkzText(p7){$\text{k}\_^2$}
+	
+		%exemplos
+	
+		\tkzText(3.3,-3.5){$1\;\text{mm}^2=1\times 10^{(-2)\times\alert{2}}\;\text{dm}^2\rightarrow 1\times 10^{-4}\;\text{dm}^2$}
+		\tkzText(3.6,-4.5){$2,5\;\text{m}^2=2,5\times 10^{(2)\times\alert{3}}\;\text{mm}^2\rightarrow2,5\times 10^{6}\;\text{mm}^2$}
+		\tkzText(3,-5.5){$10\;\text{ms}^2=10\times 10^{(-2)\times\alert{3}}\;\text{s}^2\rightarrow 10\times 10^{-6}\;\text{s}^2$}
+	
+		\end{tikzpicture}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Conversão de unidades em três dimensões}
+	\begin{figure}
+		\begin{tikzpicture}[scale=0.65,transform shape,font=\Large]
+	
+		\tkzInit[xmin=-2,xmax=17,ymin=-6,ymax=3]
+		%\tkzGrid[color=gray!20]
+		\tkzClip
+	
+		\tikzset{compass style/.append style={->}}
+	
+		\foreach \x in {1,2,...,6}{
+			\tkzDefPoint(\x*3-3,0){\x}
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+			\node at (\x*3-3,2) {$\times 10^{3}$};
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+			\node at (\x*3-3,-2) {$\times 10^{-3}$};}
+	
+		\tkzDefPoints{-1.5/0/p1,1.5/0/p2,4.5/0/p3,7.5/0/p4,10.5/0/p5,13.5/0/p6,16.5/0/p7}
+	
+		\tkzText(p1){$\text{m}\_^3$}
+		\tkzText(p2){$\text{c}\_^3$}
+		\tkzText(p3){$\text{d}\_^3$}
+		\tkzText(p4){$\_^3$}
+		\tkzText(p5){$\text{da}\_^3$}
+		\tkzText(p6){$\text{h}\_^3$}
+		\tkzText(p7){$\text{k}\_^3$}
+	
+		%exemplos
+	
+		\tkzText(3.3,-3.5){$1\;\text{mm}^3=1\times 10^{(-3)\times\alert{2}}\;\text{dm}^3\rightarrow 1\times 10^{-6}\;\text{dm}^3$}
+		\tkzText(3.6,-4.5){$2,5\;\text{m}^3=2,5\times 10^{(3)\times\alert{3}}\;\text{mm}^3\rightarrow2,5\times 10^{9}\;\text{mm}^3$}
+		\tkzText(3.5,-5.5){$2,5\;\text{km}^3=2,5\times 10^{(3)\times\alert{6}}\;\text{mm}^3\rightarrow2,5\times 10^{18}\;\text{mm}^3$}
+
+		\end{tikzpicture}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Alfabeto grego}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{table}
+				\begin{tabular}[c]{ccc}
+					Alfa & $A$ & $\alpha$\\
+					Beta & $B$ & $\beta$\\
+					Gama & $\Gamma$ & $\gamma$\\
+					Delta & $\Delta$ & $\delta$\\
+					Epsílon & $E$ & $\epsilon$,$\varepsilon$\\
+					Zeta & $Z$ & $\zeta$\\
+					Eta & $H$ & $\eta$\\
+					Teta & $\Theta$ & $\theta$\\
+					Iota & $I$ & $\iota$\\
+					Capa & $K$ & $\kappa$\\
+					Lambda & $\Lambda$ & $\lambda$\\
+					Mi & $M$ & $\mu$
+				\end{tabular}
+			\end{table}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{table}
+				\begin{tabular}[c]{ccc}
+					Ni & $N$ & $\nu$\\
+					Csi & $\Xi$ & $\xi$\\
+					ômicron & $O$ & $o$\\
+					Pi & $\Pi$ & $\pi$\\
+					Rô & $P$ & $\rho$\\
+					Sigma & $\Sigma$ & $\sigma$\\
+					Tau & $T$ & $\tau$\\
+					Ípsilon & $\Upsilon$ & $\upsilon$\\
+					Fi & $\Phi$ & $\phi$,$\varphi$\\
+					Qui & $X$ & $\chi$\\
+					Psi & $\Psi$ & $\psi$\\
+					Ômega & $\Omega$ & $\omega$
+				\end{tabular}
+			\end{table}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Referências e observações\footnote{Este material está sujeito a modificações. Recomenda-se acompanhamento permanente.}}
+	\bibliographystyle{jurabib}
+	\begin{thebibliography}{9}
+		\bibitem{alvarenga}A. Máximo, B. Alvarenga, C. Guimarães, Física. Contexto e aplicações, v.2, 2.ed., São Paulo, Scipione (2016)
+		\bibitem{reversibilidade}http://educacao.globo.com/fisica/assunto/ondas-e-luz/principios-da-propagacao-da-luz.html
+		\bibitem{telescopio}https://www.apolo11.com/tudo\_sobre\_telescopios\_2.php
+	\end{thebibliography}
+	
+\vspace*{0.25cm}
+\begin{center}
+	Esta apresentação está disponível para download no endereço\\
+	\href{https://flavianowilliams.github.io/education}{\textcolor{blue}{https://flavianowilliams.github.io/education}}
+\end{center}
+	
+\end{frame}
+
+\end{document}

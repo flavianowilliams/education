@@ -1,0 +1,33 @@
+﻿\begin{tikzpicture}[scale=0.8, transform shape,samples=100]
+
+	\def\x{2}
+	\def\y{2}
+
+	\useasboundingbox (2.75,2.75) rectangle (-2.75,-2.75);
+
+	%espelho
+	\fill [pattern = north west lines] (\x,-0.25) rectangle (-\x,0);
+	\draw (-\x,0) -- (\x,0);
+
+	%objeto
+	\node[above] (O) at (0,\y) {\tiny Objeto};
+
+	%raios incidentes
+	\foreach \tt in {-40,-30,...,40}{
+	\draw[->] (0,\y) -- ({\y*tan(\tt)},0);}
+
+	%prolongamentos dos raios
+	\foreach \tt in {-40,-30,...,40}{
+	\draw[dashed] (0,-\y) -- ({\y*tan(\tt)},0);}
+
+	%imagem
+	\node[below] (I) at (0,-\y) {\tiny Imagem};
+
+	%raios refletidos
+	\foreach \tt in {-40,-30,...,40}{
+	\draw[->] ({\y*tan(\tt)},0) -- ({(\y+1)*tan(\tt)},1);}
+
+	%texto
+	\node[text width=1.5cm,text depth=1cm] (t1) at (0.75*\x,-0.75*\y) {\tiny Prolongamento dos raios de luz};
+
+\end{tikzpicture}

@@ -1,0 +1,67 @@
+﻿\begin{tikzpicture}[use optics,scale=0.75,transform shape]
+
+\tkzInit[xmin=-2.5,xmax=4,ymin=-1.5,ymax=1.5]
+\tkzClip
+
+\coordinate (K) at (-1,0);
+
+\node[concave mirror,draw,object height=2cm,anchor=mirror center,spherical mirror angle=60,draw mirror focus={circle,fill},draw mirror center={circle,fill}] (M) at (K) {};
+
+\coordinate (X) at (-0.5,0);
+\coordinate (Z) at (-0.5,1);
+\coordinate (Y) at (-0.7,0);
+\coordinate (W) at (-0.7,-1);
+\coordinate (C) at (-1,0);
+\coordinate (V) at (M.0);
+\coordinate (o) at ($(M.20)+(2,0)$);
+\coordinate (P) at (M.20);
+
+\tkzDrawCircle[color=red,opacity=0](C,V)
+
+%definindo foco
+\tkzDefMidPoint(C,V)
+\tkzGetPoint{F}
+
+%interceptando o ponto O
+\tkzInterLL(X,Z)(o,P)
+\tkzGetPoint{O}
+
+\tkzInterLC(O,F)(C,V)
+\tkzGetPoints{P1}{P2}
+
+\tkzDefLine[parallel=through P2](C,V)
+\tkzGetPoint{D}
+
+%interceptando a imagem
+\tkzInterLL(P2,D)(P,F)
+\tkzGetPoint{I}
+
+%definindo imagem
+\tkzDefPointBy[projection=onto C--V](I)
+\tkzGetPoint{DI}
+
+\tkzDrawPoints(V)
+\tkzDrawPoints(I)
+%\tkzDrawPoints(DI)
+%\tkzDrawPoints(P)
+%\tkzDrawPoints(P2)
+
+\tkzLabelPoints[font=\tiny](V)
+\tkzLabelPoints[font=\tiny,below](C)
+\tkzLabelPoints[font=\tiny,below](F)
+\tkzLabelPoints[font=\tiny,above](O)
+\tkzLabelPoints[font=\tiny,below](I)
+%\tkzLabelPoints[font=\tiny,below](P2)
+%\tkzLabelPoints[font=\tiny,below](P)
+%\tkzLabelPoints[font=\tiny,below](DI)
+
+%raios de luz
+\draw[dashed] (2,0) -- (M.180);
+\draw[->-] (O) -- (P2);
+\draw[->-] (O) -- (P);
+\draw[->-] (P2) -- (I);
+\draw[->-] (P) -- (I);
+\draw[->,line width=1.5pt,color=red] (X) -- (O);
+\draw[->,line width=1.5pt,color=red] (DI) -- (I);
+
+\end{tikzpicture}

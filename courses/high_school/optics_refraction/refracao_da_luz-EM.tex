@@ -452,17 +452,17 @@
 		\tkzGetPoint{c1}
 		\tkzInterLL(n1,c1)(x1,O)
 		\tkzGetPoint{i1}
-		\tkzDrawSegment(i1,n1)
+		\tkzDrawSegment[color=yellow](i1,n1)
 		\tkzDefPointWith[colinear = at n1 ](A,O)
 		\tkzGetPoint{i2}
 		
-		\tkzDrawSegment(n1,i2)
-		\tkzMarkRightAngle(n1,c1,O)
-		\tkzMarkRightAngle(i1,n1,i2)
+		\tkzDrawSegment[color=yellow](n1,i2)
+		\tkzMarkRightAngle[color=yellow](n1,c1,O)
+		\tkzMarkRightAngle[color=yellow](i1,n1,i2)
 		
 		%segunda frente de onda
 		\tkzDefLine[parallel=through i2](n1,i1) \tkzGetPoint{px}
-		\tkzDrawSegment[dotted](i2,px)
+		\tkzDrawSegment[dotted, color=yellow](i2,px)
 		\draw (n1.center) to[dim arrow={label=$\lambda_1$}] (i2.center);
 		\tkzMarkAngle[arrows=<->](i2,i1,n1)\tkzLabelAngle[right,font=\small](i2,i1,n1){$\theta_1$}
 		

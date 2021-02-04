@@ -1,0 +1,1208 @@
+% Aula de óptica geométrica para o curso de Física II do ensino médio
+%
+\documentclass[brazil,aspectratio=169]{beamer}
+%
+%carregando preâmbulo
+\input{../../contrib/preamble}
+
+%Título
+
+\title[Óptica geométrica-RFR]{Refração da luz}
+
+% The main document
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Sumário}
+  \tableofcontents
+\end{frame}
+
+\section{A lei de Snell}
+
+\subsection{}
+
+\begin{frame}{O que é refração}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			O fenômeno de refração consiste na mudança da direção do feixe de luz em virtude da mudança da sua velocidade de propagação ao passar de um meio para outro.
+			\begin{corollary}
+				O fato da luz se refletir e se refratar, obedencendo às mesmas leis observada nas reflexão e refração de uma onda, são evidências de que a luz é uma onda e possui comportamento ondulatório.
+			\end{corollary}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}
+				\includegraphics[scale=0.39]{figura-1.jpg}
+				\caption*{\footnotesize Refração da luz na água.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Analogia com ondas na corda}
+	\begin{figure}
+		\begin{subfigure}[b]{0.45\textwidth}
+			\Centering
+			%\input{tikz/reflexao-refracao-corda.pgf}
+			\begin{tikzpicture}[scale=0.3,transform shape,samples=100,font=\Large]
+
+			%parametros
+			\def\lambdax{8}
+			\def\lambday{4}
+			\def\a{2}
+			\def\k{4*pi/\lambdax}
+			\def\kb{4*pi/\lambday}
+			\def\om{0.5*pi}
+			\def\xm{1}
+
+			%setup styles
+			\tikzstyle{s1}=[circle, radius=0.25, ball color=gray];
+
+			%definindo funcao
+			\pgfmathdeclarefunction{f}{2}{\pgfmathparse{\a+\xm*cos(deg(\kb*#1-\om*#2))}}
+			\pgfmathdeclarefunction{ff}{2}{\pgfmathparse{\a+\xm*cos(deg(\k*#1-\om*#2))}}
+
+			%curva
+			\draw[line width=1.5pt,domain=0:\lambdax,variable=\x,color=gray] plot (\x,{ff(\x,1)});
+			\draw[line width=4.5pt,domain=\lambdax:2*\lambdax,variable=\x,color=gray] plot (\x,{f(\x,1)});
+			\draw[line width=1.5pt,domain=\lambdax:0,variable=\x,color=gray,dashed] plot (\x,{ff(\x,3)});
+
+			%linha de referencia
+			\draw[dashed] (0,\a) -- (4*\lambday,\a);
+
+			%comprimento de onda
+			\draw[<->,color=gray] (0,3.5*\xm) -- (0.5*\lambdax,3.5*\xm) node [above,midway] {$\lambda_1$};
+			\draw[<->,color=gray] (\lambdax,3.5*\xm) -- (\lambdax+0.5*\lambday,3.5*\xm) node [above,midway] {$\lambda_2$};
+
+			%texto
+			\node[text width=1cm,align=center] (t1) at (0.5*\lambdax,-0.5) {$\text{Onda incidente}$};
+			\draw[->]	(t1) -- (0.4*\lambdax,\xm);
+
+			\node[text width=2.75cm,align=center] (t2) at (1.45*\lambdax,-0.5) {$\text{Onda refratada}$};
+			\draw[->]	(t2) -- (1.45*\lambdax,\xm);
+
+			\node[text width=2.5cm,align=center] (t3) at (0.05*\lambdax,-0.5) {$\text{Onda refletida}$};
+			\draw[->]	(t3) -- (0.1*\lambdax,\xm);
+
+			%velocidades
+			\draw[->,color=gray] (0.5*\lambdax+0.5,3.5*\xm) --++ (1,0) node[above,midway] {$\vec{v}_1$};	
+			\draw[<-,color=gray] (0.5*\lambdax+0.5,+\a-\xm-0.7) --++ (1,0) node[above,midway] {$-\vec{v}_1$};	
+			\draw[->,color=gray] (\lambdax+0.5*\lambday+2,3.5*\xm) --++ (1,0) node[above,midway] {$\vec{v}_2$};	
+
+		\end{tikzpicture}
+		\caption*{\footnotesize Reflexão e refração da onda numa corda.}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.45\textwidth}
+			\Centering
+			\begin{tikzpicture}[scale=0.5, transform shape,media/.style={font={\footnotesize\sffamily}},
+			wave/.style={decorate,decoration={snake,post length=1.4mm,amplitude=1mm, segment length=2mm},thick},
+			interface/.style={
+				postaction={draw,decorate,decoration={border,angle=-45,
+						amplitude=0.3cm,segment length=2mm}}},]
+			
+			% Round rectangle
+			\fill[gray!10,rounded corners] (-4,-3) rectangle (4,0);
+			
+			% Interface
+			\draw[blue,line width=.5pt,interface](-4,0)--(4,0);
+			
+			% Vertical dashed line
+			\draw[dashed,gray](0,-3)--(0,3);
+			
+			% Incidence
+			\draw[->,wave] (135:3.2cm)--(135:0cm)node[above, at start]{Onda incidente};
+			\path (0,0)++(113:1cm) node{$\phi$};
+			\draw[<->] (0,0.75) arc(90:135:.75cm);
+			
+			% Transmission
+			\draw[->,wave] (-30:0cm)--(-50:3.2cm)node[below]{Onda transmitida};
+			
+			% Reflection
+			\draw[->,wave] (45:0cm)--(45:3.2cm)node[above]{Onda refletida};
+			\path (0,0)++(67.5:1.25cm) node{$\phi$};
+			\draw[<->] (45:1cm) arc(45:90:1cm);
+			
+			% Media names
+			\path[media] (-3,.6)  node {$n_{1}$} (-3,-.6) node {$n_{2}>n_{1}$};
+			
+			% Interface pointer
+			\draw[-latex,thick](2.75,0.5)node[right]{$\mathsf{Interface}$} to[out=180,in=90] (2.5,0);
+			\end{tikzpicture}
+%			\input{tikz/polarizacao-reflexao.pgf}
+			\caption*{\footnotesize Reflexão e refração dos raios de luz.}
+		\end{subfigure}
+	\end{figure}
+	\begin{corollary}
+		A luz como qualquer onda apresenta certos fenômenos ondulatórios, como reflexão, refração, difração e interferência.
+	\end{corollary}
+\end{frame}
+
+\begin{frame}{As leis da refração}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\begin{itemize}
+				\item[\ding{51}] Os ângulos de incidência $\theta_i$ e refração $\theta_r$ encontram-se no mesmo plano, chamado plano de incidência;
+				\item[\ding{51}] Os ângulos de incidência e refração não são iguais entre si;
+				\item[\ding{51}] O ângulo de refração será menor que o ângulo de incidência se a velocidade da luz no meio 2 for menor do que no meio 1.
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}
+				\centering
+				%\input{tikz/refracao-luz.pgf}
+				\begin{tikzpicture}[scale=0.6, transform shape,
+				media/.style={font={\footnotesize\sffamily}},
+				wave/.style={decorate,decoration={snake,post length=1.4mm,amplitude=1mm, segment length=2mm},thick},
+				interface/.style={postaction={draw,decorate,decoration={border,angle=-45,amplitude=0.15cm,segment length=2mm}}}]
+				
+				tkzInit[xmin=-4,xmax=4,ymin=-3,ymax=3]
+				tkzClip
+				
+				% Round rectangle
+				\fill[gray!10,rounded corners] (-4,-3) rectangle (4,0);
+				
+				%definindo pontos
+				\tkzDefPoints{-3/3/A,0/0/O,2/-3/B,3/3/C,-2/3/E}
+				\tkzDefPoints{0/3/n1,0/-3/n2}
+				
+				%desenhando raios de luz
+				\draw[dashed] (O) -- (E);
+				
+				\draw[put arrow={at=0.5},line width=1pt,color=red] (A) -- (O) node [left,midway,color=black] {Raio incidente};
+				\draw[put arrow={at=0.5},line width=1pt,color=red] (O) -- (C) node [right,midway,color=black] {Raio refletido};
+				\draw[put arrow={at=0.5},line width=1pt,color=red] (O) -- (B) node [right,midway,color=black] {Raio refratado};
+				
+				\tkzDrawPoint[size=0.5cm](E)
+				
+				%definindo angulos
+				\tkzMarkAngle[arrows=<->](n1,O,A)
+				\tkzMarkAngle[arrows=<->](n2,O,B)
+				\tkzMarkAngle[arrows=<->](C,O,n1)
+				
+				\tkzLabelAngle[above](n1,O,A){$\theta_1$}
+				\tkzLabelAngle[above](C,O,n1){$\theta_1$}
+				\tkzLabelAngle[below](n2,O,B){$\theta_2$}
+				
+				% Interface
+				\draw[blue,line width=.5pt,interface](-4,0)--(4,0);
+				
+				% Vertical dashed line
+				\draw[dashed,gray](0,-3)--(0,3);
+				
+				% Media names
+				\path[media] (-3,.6)  node {(1)} (-3,-.6) node {(2)};
+				
+				% Interface pointer
+				\draw[-latex,thick](2.75,0.5)node[right]{$\mathsf{Interface}$} to[out=180,in=90] (2.5,0);
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Reflexão e refração dos raios de luz.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Variação do comprimento de onda com a refração}
+	\begin{figure}
+		\Centering
+		\begin{subfigure}[b]{0.5\textwidth}
+			\Centering
+			\begin{tikzpicture}[scale=0.8,transform shape, font=\footnotesize]
+	
+			\tkzInit[xmin=-3,xmax=3,ymin=-3,ymax=3]
+			%	\tkzGrid[step=1cm,color=gray!30]
+			\tkzClip
+	
+			% Round rectangle
+			\fill[gray!10,rounded corners,opacity=0.6] (-4,-3) rectangle (4,0);
+	
+			\tkzDefPoints{-3/0/x1,3/0/x2,0/0/O,0/3/n1,0/-3/n2}
+			\tkzDefPoints{-3.5/3/A,1.5/-3/B}
+			\tkzDefPoints{-1/0/p1,1/0/pr1}
+	
+			\tkzLabelPoints[below left,font=\scriptsize](O)
+		
+			\draw[dashed] (n1) -- (n2);
+			\draw (x1) -- (x2);
+	
+			% Media names
+			\path (2.5,.3)  node {$n_1$} (2.5,-.3) node {$n_2>n_1$};
+	
+			%desenhando raios de luz
+			\draw[put arrow={at=0.5},line width=1pt,color=red] (A) -- (O);
+			\draw[put arrow={at=0.5},line width=1pt,color=red] (O) -- (B);
+	
+			\tkzDefPointWith[linear,K=0.85](A,O)\tkzGetPoint{t1}
+	
+			\tkzDefLine[orthogonal=through t1](A,O) \tkzGetPoint{m1}
+	
+			\tkzInterLL(x1,x2)(t1,m1)\tkzGetPoint{p1}
+	
+			\tkzDefPointBy[rotation=center t1 angle 180](O)\tkzGetPoint{t2}
+			\tkzDefPointBy[rotation=center t2 angle 180](t1)\tkzGetPoint{t3}
+			\tkzDefPointBy[rotation=center t3 angle 180](t2)\tkzGetPoint{t4}
+			\tkzDefPointBy[rotation=center t4 angle 180](t3)\tkzGetPoint{t5}
+			\tkzDefPointBy[rotation=center t5 angle 180](t4)\tkzGetPoint{t6}
+	
+			\tkzDefLine[parallel=through p1](A,O) \tkzGetPoint{m1}
+			\tkzDefLine[orthogonal=through t2](p1,m1) \tkzGetPoint{m2}
+			\tkzInterLL(p1,m1)(t2,m2)\tkzGetPoint{p2}
+	
+			\tkzDefPointBy[rotation=center p2 angle 180](p1)\tkzGetPoint{p3}
+			\tkzDefPointBy[rotation=center p3 angle 180](p2)\tkzGetPoint{p4}
+			\tkzDefPointBy[rotation=center p4 angle 180](p3)\tkzGetPoint{p5}
+	
+			\tkzDefPointBy[rotation=center t1 angle 180](p1)\tkzGetPoint{k1}
+			\tkzDefPointBy[rotation=center t2 angle 180](p2)\tkzGetPoint{k2}
+			\tkzDefPointBy[rotation=center t3 angle 180](p3)\tkzGetPoint{k3}
+			\tkzDefPointBy[rotation=center t4 angle 180](p4)\tkzGetPoint{k4}
+			\tkzDefPointBy[rotation=center t5 angle 180](p5)\tkzGetPoint{k5}
+	
+			\tkzDrawSegment[color=yellow](p1,k1)
+			\tkzMarkRightAngle[size=0.1](O,t1,k1)
+			\tkzDrawSegment(p2,k2)
+			\tkzMarkRightAngle[size=0.1](t1,t2,k2)
+			\tkzDrawSegment(p3,k3)
+			\tkzMarkRightAngle[size=0.1](t2,t3,k3)
+			\tkzDrawSegment(p4,k4)
+			\tkzMarkRightAngle[size=0.1](t3,t4,k4)
+			\tkzDrawSegment(p5,k5)
+			\tkzMarkRightAngle[size=0.1](t4,t5,k5)
+	
+			%definindo frentes de onda refratada
+	
+			\tkzDefLine[parallel=through p1](O,B) \tkzGetPoint{m3}
+			\tkzDefLine[orthogonal=through O](p1,m3) \tkzGetPoint{m4}
+			\tkzInterLL(O,m4)(p1,m3)\tkzGetPoint{P2}
+	
+			\tkzDefPointBy[rotation=center P2 angle 180](p1)\tkzGetPoint{P3}
+			\tkzDefPointBy[rotation=center P3 angle 180](P2)\tkzGetPoint{P4}
+			\tkzDefPointBy[rotation=center P4 angle 180](P3)\tkzGetPoint{P5}
+			\tkzDefPointBy[rotation=center P5 angle 180](P4)\tkzGetPoint{P6}
+			\tkzDefPointBy[rotation=center P6 angle 180](P5)\tkzGetPoint{P7}
+			\tkzDefPointBy[rotation=center P7 angle 180](P6)\tkzGetPoint{P8}
+			\tkzDefPointBy[rotation=center P8 angle 180](P7)\tkzGetPoint{P9}
+	
+			\tkzDefLine[orthogonal=through P3](O,B) \tkzGetPoint{m5}
+			\tkzInterLL(O,B)(P3,m5)\tkzGetPoint{T1}
+	
+			\tkzDefPointBy[rotation=center T1 angle 180](O)\tkzGetPoint{T2}
+			\tkzDefPointBy[rotation=center T2 angle 180](T1)\tkzGetPoint{T3}
+			\tkzDefPointBy[rotation=center T3 angle 180](T2)\tkzGetPoint{T4}
+			\tkzDefPointBy[rotation=center T4 angle 180](T3)\tkzGetPoint{T5}
+			\tkzDefPointBy[rotation=center T5 angle 180](T4)\tkzGetPoint{T6}
+			\tkzDefPointBy[rotation=center T6 angle 180](T5)\tkzGetPoint{T7}
+			\tkzDefPointBy[rotation=center T7 angle 180](T6)\tkzGetPoint{T8}
+	
+			\tkzDefPointBy[rotation=center T1 angle 180](P3)\tkzGetPoint{K1}
+			\tkzDefPointBy[rotation=center T2 angle 180](P4)\tkzGetPoint{K2}
+			\tkzDefPointBy[rotation=center T3 angle 180](P5)\tkzGetPoint{K3}
+			\tkzDefPointBy[rotation=center T4 angle 180](P6)\tkzGetPoint{K4}
+			\tkzDefPointBy[rotation=center T5 angle 180](P7)\tkzGetPoint{K5}
+			\tkzDefPointBy[rotation=center T6 angle 180](P8)\tkzGetPoint{K6}
+			\tkzDefPointBy[rotation=center T7 angle 180](P9)\tkzGetPoint{K7}
+	
+			\tkzDrawSegment[color=green](P3,K1)
+			\tkzMarkRightAngle[size=0.1](T2,T1,K1)
+			\tkzDrawSegment(P4,K2)
+			\tkzMarkRightAngle[size=0.1](T3,T2,K2)
+			\tkzDrawSegment(P5,K3)
+			\tkzMarkRightAngle[size=0.1](T4,T3,K3)
+			\tkzDrawSegment(P6,K4)
+			\tkzMarkRightAngle[size=0.1](T5,T4,K4)
+			\tkzDrawSegment(P7,K5)
+			\tkzMarkRightAngle[size=0.1](T6,T5,K5)
+			\tkzDrawSegment(P8,K6)
+			\tkzMarkRightAngle[size=0.1](T7,T6,K6)
+			\tkzDrawSegment(P9,K7)
+			\tkzMarkRightAngle[size=0.1](T8,T7,K7)
+			
+			\draw (P3.center) to[short dim arrow'={label=$\lambda_2$, label near middle}] (P4.center);
+	
+			\draw (k3.center) to[short dim arrow'={label=$\lambda_1$, label near middle}] (k4.center);
+
+		\end{tikzpicture}
+		%				\input{tikz/refracao-luz-frentes-onda.pgf}
+		\caption*{\footnotesize $\lambda$ diminui quando a luz é refratada.}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.45\textwidth}
+		\Centering
+		\begin{tikzpicture}[scale=0.5,transform shape,
+			media/.style={font={\footnotesize\sffamily}},
+			interface/.style={postaction={draw,decorate,decoration={border,angle=-45,amplitude=0.15cm,segment length=2mm}}}]
+
+			tkzInit[xmin=-4, xmax=4, ymin=-3, ymax=3]
+			tkzGrid
+			tkzClip
+			% Round rectangle
+			\fill[gray!10,rounded corners] (-4,-3) rectangle (4,0);
+
+			%	\draw[step=1cm,color=gray!30] (-4,-3) grid (4,3);
+
+			%definindo pontos
+			\tkzDefPoints{-3/3/A,0/0/O,1.5/-3/B}
+			\tkzDefPoints{0/3/n1,0/-3/n2,0/4/n1b}
+			\tkzDefPoints{-4/0/x1}
+				%triangulo 1
+			\tkzDefLine[orthogonal=through n1](A,O)
+			\tkzGetPoint{P1}
+			\tkzInterLL(A,O)(n1,P1)
+			\tkzGetPoint{c1}
+			\tkzInterLL(n1,c1)(x1,O)
+			\tkzGetPoint{i1}
+			\tkzDrawSegment[color=yellow](i1,n1)
+			\tkzDefPointWith[colinear = at n1 ](A,O)
+			\tkzGetPoint{i2}
+
+			\tkzDrawSegment[color=yellow](n1,i2)
+			\tkzMarkRightAngle(n1,c1,O)
+			\tkzMarkRightAngle[color=yellow](i1,n1,i2)
+
+			%segunda frente de onda
+			\tkzDefLine[parallel=through i2](n1,i1) \tkzGetPoint{px}
+			\tkzDrawSegment[dotted,color=yellow](i2,px)
+			\draw (n1.center) to[dim arrow={label=$\lambda_1$}] (i2.center);
+			\tkzMarkAngle[arrows=<->](i2,i1,n1)\tkzLabelAngle[right,font=\small](i2,i1,n1){$\theta_1$}
+
+			%triangulo 2
+			\tkzDefLine[orthogonal=through i2](O,B)
+			\tkzGetPoint{P2}
+			\tkzInterLL(O,B)(i2,P2)
+			\tkzGetPoint{c2}
+			\tkzDefLine[orthogonal=through i1](i2,c2) \tkzGetPoint{i3}
+			\tkzInterLL(i2,c2)(i1,i3)\tkzGetPoint{i4}
+
+			\tkzDrawSegment[color=green](i2,i4)
+			\tkzDrawSegment[color=green](i1,i4)
+
+			\tkzMarkRightAngle[color=green](i2,c2,O)
+			\tkzMarkRightAngle[color=green](i1,i4,i2)
+
+			\tkzDrawPoint(i1)\tkzLabelPoint[above left](i1){A} \tkzDrawPoint(n1)\tkzLabelPoint[above](n1){B}
+			\tkzDrawPoint(i2)\tkzLabelPoint[below right](i2){C} \tkzDrawPoint(i4)\tkzLabelPoint[below](i4){D}
+
+			%segunda frente de onda
+			\tkzDefLine[parallel=through i1](i4,i2) \tkzGetPoint{px'}
+			\tkzDrawSegment[dotted,color=green](i1,px')
+			\draw (i1.center) to[dim arrow'={label=$\lambda_2$}] (i4.center);
+
+			%desenhando raios de luz
+			\draw[put arrow={at=0.5},line width=1pt,color=red] (A) -- (O);
+			\draw[put arrow={at=0.5},line width=1pt,color=red] (O) -- (B);
+
+			%definindo angulos
+			\tkzMarkAngle[arrows=<->](n1,O,A)
+			\tkzMarkAngle[arrows=<->](i1,i2,i4)\tkzLabelAngle[pos = 1.1, above left, font=\small](i4,i2,i4){$\theta_2$}
+			%	\tkzMarkAngle[arrows=<->](n2,O,B)
+
+			\tkzLabelAngle[above,font=\small](n1,O,A){$\theta_1$}
+			\tkzLabelAngle[below,pos=0.6,font=\small](n2,O,B){$\theta_2$}
+
+			% Interface
+			\draw[blue,line width=.5pt,interface](-4,0)--(4,0);
+
+			% Vertical dashed line
+			\draw[dashed,gray](0,-3)--(0,3);
+
+			% Media names
+			\path[media] (3.75,.6)  node {(1)} (3.75,-.6) node {(2)};
+
+			\end{tikzpicture}
+			\caption*{\footnotesize Frentes de onda na interface.}
+		\end{subfigure}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Aplicando a trigonometria para definir a relação entre $\theta$ e $\lambda$}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			Na figura ao lado vemos que o triângulo ABC é retângulo, onde o ângulo do vértice BÂC é igual ao ângulo de incidência.	Usando a lei dos senos encontramos
+			\begin{equation*}
+				\overline{BC}=\lambda_1=\overline{AC}sen(\theta_1).
+			\end{equation*}
+			Da mesma maneira, o triângulo ADC também é retângulo, onde
+			\begin{equation*}
+				\overline{AD}=\lambda_2=\overline{AC}sen(\theta_2).
+			\end{equation*}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+	\begin{figure}
+		\Centering
+		\begin{tikzpicture}[scale=0.5,transform shape,
+		media/.style={font={\footnotesize\sffamily}},
+		interface/.style={postaction={draw,decorate,decoration={border,angle=-45,amplitude=0.15cm,segment length=2mm}}}]
+		
+		tkzInit[xmin=-4, xmax=4, ymin=-3, ymax=3]
+		tkzGrid
+		tkzClip
+		% Round rectangle
+		\fill[gray!10,rounded corners] (-4,-3) rectangle (4,0);
+		
+		%definindo pontos
+		\tkzDefPoints{-3/3/A,0/0/O,1.5/-3/B}
+		\tkzDefPoints{0/3/n1,0/-3/n2,0/4/n1b}
+		\tkzDefPoints{-4/0/x1}
+		%triangulo 1
+		\tkzDefLine[orthogonal=through n1](A,O)
+		\tkzGetPoint{P1}
+		\tkzInterLL(A,O)(n1,P1)
+		\tkzGetPoint{c1}
+		\tkzInterLL(n1,c1)(x1,O)
+		\tkzGetPoint{i1}
+		\tkzDrawSegment(i1,n1)
+		\tkzDefPointWith[colinear = at n1 ](A,O)
+		\tkzGetPoint{i2}
+		
+		\tkzDrawSegment(n1,i2)
+		\tkzMarkRightAngle(n1,c1,O)
+		\tkzMarkRightAngle(i1,n1,i2)
+		
+		%segunda frente de onda
+		\tkzDefLine[parallel=through i2](n1,i1) \tkzGetPoint{px}
+		\tkzDrawSegment[dotted](i2,px)
+		\draw (n1.center) to[dim arrow={label=$\lambda_1$}] (i2.center);
+		\tkzMarkAngle[arrows=<->](i2,i1,n1)\tkzLabelAngle[right,font=\small](i2,i1,n1){$\theta_1$}
+		
+		%triangulo 2
+		\tkzDefLine[orthogonal=through i2](O,B)
+		\tkzGetPoint{P2}
+		\tkzInterLL(O,B)(i2,P2)
+		\tkzGetPoint{c2}
+		\tkzDefLine[orthogonal=through i1](i2,c2) \tkzGetPoint{i3}
+		\tkzInterLL(i2,c2)(i1,i3)\tkzGetPoint{i4}
+		
+		\tkzDrawSegment[color=green](i2,i4)
+		\tkzDrawSegment[color=green](i1,i4)
+		
+		\tkzMarkRightAngle[color=green](i2,c2,O)
+		\tkzMarkRightAngle[color=green](i1,i4,i2)
+		
+		\tkzDrawPoint(i1)\tkzLabelPoint[above left](i1){A} \tkzDrawPoint(n1)\tkzLabelPoint[above](n1){B}
+		\tkzDrawPoint(i2)\tkzLabelPoint[below right](i2){C} \tkzDrawPoint(i4)\tkzLabelPoint[below](i4){D}
+		
+		%segunda frente de onda
+		\tkzDefLine[parallel=through i1](i4,i2) \tkzGetPoint{px'}
+		\tkzDrawSegment[dotted,color=green](i1,px')
+		\draw (i1.center) to[dim arrow'={label=$\lambda_2$}] (i4.center);
+		
+		%desenhando raios de luz
+		\draw[put arrow={at=0.5},line width=1pt,color=red] (A) -- (O);
+		\draw[put arrow={at=0.5},line width=1pt,color=red] (O) -- (B);
+		
+		%definindo angulos
+		\tkzMarkAngle[arrows=<->](n1,O,A)
+		\tkzMarkAngle[arrows=<->](i1,i2,i4)\tkzLabelAngle[pos = 1.1, above left, font=\small](i4,i2,i4){$\theta_2$}
+		%	\tkzMarkAngle[arrows=<->](n2,O,B)
+		
+		\tkzLabelAngle[above,font=\small](n1,O,A){$\theta_1$}
+		\tkzLabelAngle[below,pos=0.6,font=\small](n2,O,B){$\theta_2$}
+		
+		% Interface
+		\draw[blue,line width=.5pt,interface](-4,0)--(4,0);
+		
+		% Vertical dashed line
+		\draw[dashed,gray](0,-3)--(0,3);
+		
+		% Media names
+		\path[media] (3.75,.6)  node {(1)} (3.75,-.6) node {(2)};
+		
+		\end{tikzpicture}
+		\caption*{\footnotesize Frentes de onda na interface.}
+		\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Lei de Snell}
+	\begin{multicols}{2}
+		Temos assim
+		\begin{align*}
+			\lambda_1 & = sen(\theta_1),\\
+			\lambda_2 & = sen(\theta_2).
+		\end{align*}
+		Dividindo os dois lados da equação temos
+		\begin{equation*}
+			\frac{\lambda_1}{\lambda_2} = \frac{sen(\theta_1)}{sen(\theta_2)}.
+		\end{equation*}
+		Sabemos que na onda a relação entre comprimento de onda e velocidade é dado por $v=\lambda f$, onde f é a frequência que não se altera quando a onda atravessa de um meio ao outro, portanto
+		\begin{equation*}
+			\frac{v_1}{v_2} = \frac{sen(\theta_1)}{sen(\theta_2)}.
+		\end{equation*}
+		Se o meio 1 for o vácuo ou ar temos $v_1=c$, ou seja,
+		\begin{equation*}
+			\boxed{\frac{c}{v_2} = \frac{\lambda_1}{\lambda_2} = \frac{sen(\theta_{ar})}{sen(\theta_2)}.}
+		\end{equation*}
+	\end{multicols}
+\end{frame}
+
+\begin{frame}{Índice de refração}
+	\begin{columns}
+		\begin{column}[t]{0.5\textwidth}
+			No caso da luz atravessando do ar para um meio mais refrigente temos a relação
+			\begin{equation*}
+				\frac{c}{v} = \frac{sen(\theta_{ar})}{sen(\theta)}.
+			\end{equation*}
+			Se definirmos $n=c/v$ como a fração da velocidade da luz que diminui ao atravessar o meio temos
+			\begin{equation*}
+				n = \frac{sen(\theta_{ar})}{sen(\theta_2)}.
+			\end{equation*}
+			Para uma onda que atravessa dois meios
+		\end{column}
+		\begin{column}[t]{0.5\textwidth}
+			com índices de refração diferentes temos
+			\begin{small}
+				\begin{NodesList}[margin=1cm]
+					\begin{align*}
+						\frac{v_1}{v_2} & = 	\frac{sen(\theta_1)}{sen(\theta_2)},\AddNode\\
+						\frac{\left(\frac{\alert{c}}{v_2}\right)}{\left(\frac{\alert{c}}{v_1}\right)} & = 	\frac{sen(\theta_1)}{sen(\theta_2)},\AddNode
+					\end{align*}
+					\LinkNodes{$\times \alert{\frac{c}{c}}$}
+				\end{NodesList}
+			\end{small}
+			\begin{block}{Lei de Snell}
+				\begin{equation*}
+					\frac{n_2}{n_1} =\frac{\lambda_1}{\lambda_2} = \frac{sen(\theta_1)}{sen(\theta_2)},\quad (n>1).
+				\end{equation*}
+			\end{block}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Reflexão total}
+	\begin{columns}
+		\begin{column}{0.45\textwidth}
+			Aplicando a Lei de Snell temos
+			\begin{small}
+				\begin{align*}
+					n_2sen(L) & = n_1\overbracket{sen(90^o)}^{\alert{1}},\\
+					sen(L) & = \frac{n_1}{n_2}.
+				\end{align*}
+			\end{small}
+			\begin{block}{Ângulo de reflexão total da luz}
+				\begin{equation*}
+					L=sen^{-1}\left(\frac{n_1}{n_2}\right),\quad (n_2>n_1).
+				\end{equation*}
+			\end{block}
+		\end{column}
+		\begin{column}{0.55\textwidth}
+			\begin{figure}
+				\begin{tikzpicture}[scale=0.8,transform shape]
+
+					\tkzInit[xmin=0,xmax=8,ymin=-3,ymax=3]
+					%	\tkzGrid[step=1cm,color=gray!30]
+					\tkzClip
+
+					%definindo parametros
+					\def\h{2}
+
+					% Round rectangle
+					\fill[gray!20,rounded corners,opacity=0.6] (0,-3) rectangle (8,0);
+
+					\tkzDefPoints{0/0/x1,8/0/x2}
+					\tkzDefPoints{7/-3/O}
+
+					\tkzDrawPoints(O)\tkzLabelPoints[above right](O)
+
+					\foreach \x in {4,5,6}{
+					\pgfmathsetmacro{\dx}{(7-\x)*sqrt(34)*0.2*\h/sqrt((7-\x)*(7-\x)+9)}
+					\pgfmathsetmacro{\yl}{sqrt(\h*\h-\dx*\dx)}
+					\pgfmathsetmacro{\xl}{\x-\dx}
+					\tkzDefPoints{\x/0/xp,\xl,\yl,pi}
+					\tkzDefPoint(\xl,\yl){pi}
+					\tkzDefPoints{\x/1/pa,\x/-1/pb}
+					\tkzDefPointWith[linear,K=0.8](O,xp) \tkzGetPoint{g}
+					\tkzDefPointBy[reflection=over pa--pb](g) \tkzGetPoint{s}
+					\tkzMarkAngle[size=0.7,arc=lll](pb,xp,g)
+					\draw[dashed] (pa) -- (pb);
+					\draw[put arrow={at=0.5},line width=1pt,color=red] (O) -- (xp);
+					\draw[put arrow={at=0.5},line width=1pt,color=red,opacity=0.25] (xp) -- (s);
+					\draw[put arrow={at=0.5},line width=1pt,color=red] (xp) -- (pi);}
+
+					\pgfmathsetmacro{\dx}{(7-2)*sqrt(34)*0.2*\h/sqrt((7-2)*(7-2)+9)}
+					\pgfmathsetmacro{\yl}{sqrt(\h*\h-\dx*\dx)}
+					\pgfmathsetmacro{\xl}{2-\dx}
+					\tkzDefPoints{2/0/2,\xl,\yl,pi}
+					\tkzDefPoint(\xl,\yl){pi}
+					\tkzDefPoints{2/1/pa,2/-1/pb}
+					\tkzDefPointWith[linear,K=0.8](O,2) \tkzGetPoint{g}
+					\tkzMarkAngle[size=0.5,arc=lll](pa,2,pi)\tkzLabelAngle[pos=0.75](pa,2,pi){$90^o$}
+					\tkzMarkAngle[size=0.5,arc=lll](pb,2,g)\tkzLabelAngle[pos=0.75](pb,2,g){$L$}
+					\draw[dashed] (pa) -- (pb);
+					\draw[put arrow={at=0.5},line width=1pt,color=red] (O) -- (2);
+					\draw[put arrow={at=0.5},line width=1pt,color=red] (2) -- (pi);
+
+					\pgfmathsetmacro{\dx}{(7-7)*sqrt(34)*0.2*\h/sqrt((7-7)*(7-7)+9)}
+					\pgfmathsetmacro{\yl}{sqrt(\h*\h-\dx*\dx)}
+					\pgfmathsetmacro{\xl}{7-\dx}
+					\tkzDefPoints{7/0/7,\xl,\yl,pi}
+					\tkzDefPoint(\xl,\yl){pi}
+					\tkzDefPoints{7/1/pa,7/-1/pb}
+					\draw[dashed] (pa) -- (pb);
+					\draw[put arrow={at=0.5},line width=1pt,color=red] (O) -- (7);
+					\draw[put arrow={at=0.5},line width=1pt,color=red] (7) -- (pi);
+					\draw[put arrow={at=0.5},line width=1pt,color=red] (pi) -- (O);
+
+					\draw (x1) -- (x2);
+
+					% Media names
+					\path[font=\tiny] (7.75,.6)  node {(1)} (7.75,-.6) node {(2)};
+
+					%	\tkzDrawLine[color=red](A,B)
+
+				\end{tikzpicture}
+%				\input{tikz/reflexao-total.pgf}
+				\caption*{\footnotesize Reflexão total da luz.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\section{Dispersão da luz}
+
+\subsection{}
+
+\begin{frame}{Relação entre o índice de refração e a cor da luz}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\begin{itemize}
+				\item[\ding{51}] Cada cor no espectro de luz visível é caracterizada por uma frequência em um comprimento de onda específico;
+				\item[\ding{51}] A luz branca é a combinação de várias cores com comprimentos de onda diferentes;
+				\item[\ding{51}] Cada cor terá velocidades diferentes após a refração, o que faz com que elas também tenham ângulos de refração diferentes.
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}
+				\begin{tikzpicture}[scale=0.8,transform shape]
+
+					\tkzInit[xmin=-3,xmax=3,ymin=-3,ymax=3]
+					%\tkzGrid[step=1cm,color=gray!30]
+					\tkzClip
+
+					% Round rectangle
+					\fill[gray!10,rounded corners,opacity=0.6] (-4,-3) rectangle (4,0);
+
+					\tkzDefPoints{-3/0/x1,3/0/x2,0/0/O,0/3/n1,0/-3/n2}
+					\tkzDefPoints{-3/3/A}
+					\tkzDefPoints{0.5/-3/b1,1.0/-3/b2,1.5/-3/b3}
+
+					\draw[dashed] (n1) -- (n2);
+					\draw (x1) -- (x2);
+
+					%desenhando raios de luz
+					\draw[put arrow={at=0.5},line width=1pt,color=black] (A) -- (O);
+					\tkzMarkAngle[arc=lll,size=0.5,color=black](n1,O,A)\tkzLabelAngle[pos=1](n1,O,A){$\theta$}
+					\draw[put arrow={at=0.5},line width=1pt,color=blue] (O) -- (b1);
+					\tkzMarkAngle[arc=lll,size=1.1,color=blue](n2,O,b1)
+					\draw[put arrow={at=0.5},line width=1pt,color=green] (O) -- (b2);
+					\tkzMarkAngle[arc=lll,size=1.5,color=green](n2,O,b2)
+					\draw[put arrow={at=0.5},line width=1pt,color=red] (O) -- (b3);
+					\tkzMarkAngle[arc=lll,size=2.0,color=red](n2,O,b3)
+
+					% Media names
+					\path[font=\tiny] (2.75,.25)  node {Ar} (2.75,-.25) node {Vidro};
+
+\end{tikzpicture}
+%				\input{tikz/dispersao-luz.pgf}
+				\caption*{\footnotesize Dispersão dos raios de luz.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\section{Lentes esféricas (em construção)}
+
+\subsection{}
+
+\begin{frame}{Tipos de lentes esféricas}
+	Uma lente é constituída por duas faces curvas, geralmente esféricas.
+	\begin{figure}
+		\begin{subfigure}[b]{0.3\textwidth}
+			\centering
+			\begin{tikzpicture}[scale=0.25,transform shape,font=\Large]
+			
+			\tkzInit[xmin=-2,xmax=2,ymin=-3.5,ymax=3.5]
+			\tkzGrid[color=gray!20]
+			\tkzClip
+			
+			\tkzDefPoints{-2/0/O1,2/0/O2,-2/0/O1',2/0/O2'}
+			
+			%montando lente
+			
+			\tkzInterCC(O1,O2')(O2,O1')\tkzGetPoints{A}{B}
+			
+			\tkzClipCircle(O2,B)
+			\tkzFillCircle[color=gray!50,opacity=0.5,draw=black](O1,A)
+			\tkzClipCircle(O1,B)
+			\tkzFillCircle[color=gray!50,opacity=0.5,draw=black](O2,A)
+			
+			\tkzDefPointsBy[rotation= center O1 angle 45](O2,O1){P1}
+			\draw[->,line width=0.5pt] (O1) -- (P1) node [above left,midway] {R};
+			
+			\tkzDefPointsBy[rotation= center O2 angle 45](O1,O2){P2}
+			\draw[->,line width=0.5pt] (O2) -- (P2) node [above left,midway] {R};
+			
+			\end{tikzpicture}
+			\caption*{\scriptsize Biconvexa.}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.3\textwidth}
+			\centering
+			\begin{tikzpicture}[scale=0.25,transform shape,font=\Large]
+
+			\tkzInit[xmin=-2,xmax=2,ymin=-3.5,ymax=3.5]
+			\tkzGrid[color=gray!20]
+			\tkzClip
+
+			%lado esquerdo
+
+			\tkzDefPoints{-2/0/O1,2/0/O2,-2/0/O1',2/0/O2'}
+
+			%lado direito
+
+			%montando lente
+
+			\tkzInterCC(O1,O2')(O2,O1')\tkzGetPoints{A}{B}
+
+			\tkzClipCircle(O2,B)
+			\tkzFillCircle[color=gray!50,opacity=0.5,draw=black](O1,A)
+
+			\tkzDefPointsBy[translation=from O2 to O1](A,B){C,D}
+			\tkzDrawPolygon[fill=white,color=white](A,B,D,C)
+
+			\tkzDefPointsBy[rotation= center O1 angle 45](O2,O1){P1}
+			\draw[->,line width=0.5pt] (O1) -- (P1) node [above left,midway] {R};
+
+			\tkzDrawSegment(A,B)
+
+		\end{tikzpicture}
+		\caption*{\scriptsize Plano-convexa.}
+	\end{subfigure}
+		\begin{subfigure}[b]{0.3\textwidth}
+			\centering
+			\begin{tikzpicture}[scale=0.25,transform shape,font=\Large]
+
+				\tkzInit[xmin=-2,xmax=6,ymin=-3.5,ymax=3.5]
+				\tkzGrid[color=gray!20]
+				\tkzClip
+
+				%lado esquerdo
+
+				\tkzDefPoints{-2/0/O1,2/0/O2,-2/0/O1',5/0/O2'}
+
+				\tkzLabelPoints(O1)
+
+				%lado direito
+
+				\tkzDrawCircle[R,color=gray](O2,4cm)
+
+				\tkzLabelPoints(O2)
+
+				%montando lente
+
+				\tkzFillCircle[color=gray!50,opacity=0.5,draw=black](O2,O1')
+				\tkzFillCircle[color=white,opacity=100,draw=white](O1,O2')
+
+				\tkzDefPointsBy[rotation= center O1 angle 20](O2',O1){P1}
+				\draw[->,line width=0.5pt] (O1) -- (P1) node [above left,midway] {$R_1$};
+
+				\tkzDefPointsBy[rotation= center O2 angle 145](O1',O2){P2}
+				\draw[->,line width=0.5pt] (O2) -- (P2) node [above right,midway] {$R_2$};
+
+			\end{tikzpicture}
+			\caption*{\scriptsize Côncavo-convexa.}
+		\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	\begin{tikzpicture}[scale=0.2,transform shape,font=\Large]
+	
+	\tkzInit[xmin=-6,xmax=6,ymin=-3.5,ymax=3.5]
+	\tkzGrid[color=gray!20]
+	\tkzClip
+	
+	%lado esquerdo
+	
+	\tkzDefPoints{-6.5/0/O1,6.5/0/O2,0.5/0/O1',-0.5/0/O2',0.5/0/O3}
+	
+	\tkzDrawCircle[R](O1,6cm)
+	
+	\tkzLabelPoints(O1)
+	
+	%lado direito
+	
+	\tkzDrawCircle[R,color=gray](O2,6cm)
+	
+	\tkzLabelPoints(O2,O2')
+	
+	%montando lente
+	
+	%	\tkzTangent[from with R=O1](O2,4cm)\tkzGetPoints{A}{B}
+	
+	\tkzDefPointsBy[rotation=center O1 angle 90](O1,O2'){A,B}
+	\tkzDefPointsBy[rotation=center O1 angle -90](O1,O2'){A1,B1}
+	
+	\tkzTangent[from with R=B](O2,6cm)\tkzGetPoints{C}{D}
+	\tkzTangent[from with R=B1](O2,6cm)\tkzGetPoints{C1}{D1}
+	
+	\tkzDefPointWith[linear,K=0.6](O1,B)\tkzGetPoint{A2}
+	\tkzDefPointWith[linear,K=-0.6](O1,B)\tkzGetPoint{B2}
+	\tkzDefPointWith[linear,K=0.6](O2,D)\tkzGetPoint{D2}
+	\tkzDefPointWith[linear,K=-0.6](O2,D)\tkzGetPoint{C2}
+	
+	%	\tkzDrawPolygon(A2,D2,C2,B2)
+	\tkzFillPolygon[gray!20](A2,D2,C2,B2)
+	
+	\tkzFillCircle[color=white,opacity=100,draw=white](O2,O1')
+	\tkzFillCircle[color=white,opacity=100,draw=white](O1,O2')
+	
+	\tkzDefPointsBy[rotation= center O1 angle 20](O2',O1){P1}
+	\draw[->,line width=0.5pt] (O1) -- (P1) node [above left,midway] {$R$};
+	
+	\tkzDefPointsBy[rotation= center O2 angle -20](O3,O2){P}
+	\draw[->,line width=0.5pt] (O2) -- (P) node [above right,midway] {$R$};
+	
+	%	\tkzLabelPoints(A,C,D,C1,D1,B1,B,A1,A2,B2,C2,D2)
+	
+	\end{tikzpicture}
+	\caption*{\scriptsize Bicôncava.}
+\end{subfigure}
+		\begin{subfigure}[b]{0.3\textwidth}
+			\centering
+			\begin{tikzpicture}[scale=0.2,transform shape,font=\Large]
+			
+			\tkzInit[xmin=-6,xmax=0,ymin=-3.5,ymax=3.5]
+			\tkzGrid[color=gray!20]
+			\tkzClip
+			
+			%lado esquerdo
+			
+			\tkzDefPoints{-6.5/0/O1,6.5/0/O2,0.5/0/O1',-0.5/0/O2',0.5/0/O3}
+			
+			\tkzLabelPoints(O1)
+			
+			%lado direito
+			
+			\tkzLabelPoints(O2,O2')
+			
+			%montando lente
+			
+			\tkzDefPointsBy[rotation=center O1 angle 90](O1,O2'){A,B}
+			\tkzDefPointsBy[rotation=center O1 angle -90](O1,O2'){A1,B1}
+			
+			\tkzTangent[from with R=B](O2,6cm)\tkzGetPoints{C}{D}
+			\tkzTangent[from with R=B1](O2,6cm)\tkzGetPoints{C1}{D1}
+			
+			\tkzDefPointWith[linear,K=0.6](O1,B)\tkzGetPoint{A2}
+			\tkzDefPointWith[linear,K=-0.6](O1,B)\tkzGetPoint{B2}
+			\tkzDefPointWith[linear,K=0.6](O2,D)\tkzGetPoint{D2}
+			\tkzDefPointWith[linear,K=-0.6](O2,D)\tkzGetPoint{C2}
+			
+			\tkzDefPointWith[linear,K=0.5](A2,D2)\tkzGetPoint{o1}
+			\tkzDefPointWith[linear,K=0.5](B2,C2)\tkzGetPoint{o2}
+			
+			\tkzFillPolygon[gray!20](A2,o1,o2,B2)
+			
+			\tkzFillCircle[color=white,opacity=100,draw=white](O1,O2')
+			
+			\tkzDefPointsBy[rotation= center O1 angle 20](O2',O1){P1}
+			\draw[->,line width=0.5pt] (O1) -- (P1) node [above left,midway] {$R$};
+			
+			\end{tikzpicture}
+			\caption*{\scriptsize Plano-côncava.}
+\end{subfigure}
+		\begin{subfigure}[b]{0.3\textwidth}
+			\centering
+			\caption*{\scriptsize Convexo-côncava.}
+\end{subfigure}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Focos de uma lente}
+content...
+\end{frame}
+
+\begin{frame}{Distância focal}
+content...
+\end{frame}
+
+\begin{frame}{Formação de imagens nas lentes}
+content...
+\end{frame}
+
+\section{Aplicações}
+
+\subsection{}
+
+\begin{frame}{Fibra óptica}
+	\begin{figure}
+		\begin{subfigure}[b]{0.55\textwidth}
+			\Centering
+			\includegraphics[scale=0.2]{fibra-optica.jpg}
+			\caption*{\footnotesize Fibra óptica.}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.4\textwidth}
+			\Centering
+			\begin{tikzpicture}[scale=0.5,transform shape]
+
+				\tkzInit[xmin=0,xmax=13,ymin=-1,ymax=5]
+				%\tkzGrid[step=1cm]
+				\tkzClip
+
+				\tkzDefPoints{0/-0.5/A,0/0.5/B,8/-0.5/C,8/0.5/D}
+				\tkzDefPoints{8/2/O,12}
+				\tkzDefPoint(2,0.5){P}
+
+				%montando tubo
+				\tkzDefPointBy[rotation=center O angle 40](C)\tkzGetPoint{E}
+				\tkzDefPointBy[rotation=center O angle 40](D)\tkzGetPoint{F}
+
+				\tkzDefLine[orthogonal=through F](F,E)\tkzGetPoint{m4}
+				\tkzDefPointWith[linear,K=1.5](F,m4)\tkzGetPoint{G}
+
+				\tkzDefLine[parallel=through E](F,G)\tkzGetPoint{H}
+
+				\tkzDefPointWith[linear,K=2.5](G,H)\tkzGetPoint{O'}
+				\tkzDefPointBy[rotation=center O' angle -40](G)\tkzGetPoint{I}
+				\tkzDefPointBy[rotation=center O' angle -40](H)\tkzGetPoint{J}
+
+				\tkzDefLine[orthogonal=through I](I,J)\tkzGetPoint{m7}
+				\tkzDefLine[orthogonal=through J](I,J)\tkzGetPoint{m8}
+
+				\tkzDrawArc[line width=1.5pt,color=black](O,C)(E)
+				\tkzDrawArc[line width=1.5pt,color=black](O,D)(F)
+				\tkzDrawSegment[line width=1.5pt](A,C)
+				\tkzDrawSegment[line width=1.5pt](B,D)
+				\tkzDrawSegment[line width=1.5pt](F,G)
+				\tkzDrawSegment[line width=1.5pt](E,H)
+				\tkzDrawArc[line width=1.5pt,color=black](O',I)(G)
+				\tkzDrawArc[line width=1.5pt,color=black](O',J)(H)
+				\tkzDrawSegment[line width=1.5pt](I,m7)
+				\tkzDrawSegment[line width=1.5pt](J,m8)
+
+				%definindo raios refletidos
+				\tkzDefLine[orthogonal=through P](B,D)\tkzGetPoint{m1}
+				\tkzDefPointBy[reflection= over m1--P](A)\tkzGetPoint{Pr}
+
+				\tkzDefLine[orthogonal=through Pr](A,C)\tkzGetPoint{m2}
+				\tkzDefPointBy[reflection= over m2--Pr](P)\tkzGetPoint{P2r}
+
+				\tkzDefLine[orthogonal=through P2r](B,D)\tkzGetPoint{m3}
+				\tkzDefPointBy[reflection= over m3--P2r](Pr)\tkzGetPoint{P3r}
+
+				\tkzDefLine[orthogonal=through P2r](B,D)\tkzGetPoint{m5}
+				\tkzDefPointBy[reflection= over m5--P3r](P2r)\tkzGetPoint{P4r}
+
+				\tkzInterLL(F,G)(P3r,P4r)\tkzGetPoint{P5r}
+				\tkzDefLine[orthogonal=through P5r](P5r,G)\tkzGetPoint{m6}
+				\tkzDefPointBy[reflection= over m6--P5r](P3r)\tkzGetPoint{P6r}
+
+				\tkzInterLL(I,m7)(P6r,P4r)\tkzGetPoint{P7r}
+				\tkzDefLine[orthogonal=through P7r](I,m7)\tkzGetPoint{m9}
+				\tkzDefPointBy[reflection= over m9--P7r](P4r)\tkzGetPoint{P8r}
+
+				\draw[put arrow={at=0.5},line width=1pt,color=red] (A) -- (P);
+				\draw[put arrow={at=0.5},line width=1pt,color=red] (P) -- (Pr);
+				\draw[put arrow={at=0.5},line width=1pt,color=red] (Pr) -- (P2r);
+				\draw[put arrow={at=0.5},line width=1pt,color=red] (P2r) -- (P3r);
+				\draw[put arrow={at=0.5},line width=1pt,color=red] (P3r) -- (P5r);
+				\draw[put arrow={at=0.5},line width=1pt,color=red] (P5r) -- (P7r);
+				\draw[put arrow={at=0.5},line width=1pt,color=red] (P7r) -- (P8r);
+
+				\tkzDrawSegment[dashed,line width=1.5pt](A,B)
+				\tkzDrawSegment[dashed,line width=1.5pt](m7,m8)
+
+			\end{tikzpicture}
+			\caption*{\footnotesize Funcionamento de uma fibra óptica.}
+		\end{subfigure}
+	\end{figure}
+	\begin{corollary}
+		Na fibra óptica os raios de luz permanecem no seu interior, não importando o quanto ela se dobre sobre si mesma.
+	\end{corollary}
+\end{frame}
+
+\section{Apêndice}
+
+\subsection{}
+
+\begin{frame}{Transformar um número em notação científica}
+	\begin{corollary}
+		\begin{enumerate}[leftmargin=1.75cm]
+			\item[Passo 1:] Escrever o número incluindo a vírgula.
+			\item[Passo 2:] Andar com a vírgula até que reste somente um número diferente de zero no lado esquerdo.
+			\item[Passo 3:] Colocar no expoente da potência de 10 o número de casas decimais que tivemos que "andar" com a vírgula. Se ao andar com a vírgula o valor do número diminuiu, o expoente ficará positivo, se aumentou o expoente ficará negativo.
+		\end{enumerate}
+	\end{corollary}
+	\begin{exampleblock}{Exemplo}
+		\begin{equation*}
+			6\; 590\; 000\; 000\; 000\; 000,0 = \SI{6,59e15}{}		
+		\end{equation*}
+	\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Conversão de unidades em uma dimensão}
+	\begin{figure}
+		\begin{tikzpicture}[scale=0.65,transform shape,font=\Large]
+		
+		\tkzInit[xmin=-2,xmax=17,ymin=-6,ymax=3]
+		%\tkzGrid[color=gray!20]
+		\tkzClip
+		
+		\tikzset{compass style/.append style={->}}
+		
+		\foreach \x in {1,2,...,6}{
+			\tkzDefPoint(\x*3-3,0){\x}
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+			\node at (\x*3-3,2) {$\times 10^{1}$};
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+			\node at (\x*3-3,-2) {$\times 10^{-1}$};}
+		
+		\tkzDefPoints{-1.5/0/p1,1.5/0/p2,4.5/0/p3,7.5/-0.2/p4,10.5/0/p5,13.5/0/p6,16.5/0/p7}
+		
+		\tkzText(p1){m\_}
+		\tkzText(p2){c\_}
+		\tkzText(p3){d\_}
+		\tkzText(p4){\_}
+		\tkzText(p5){da\_}
+		\tkzText(p6){h\_}
+		\tkzText(p7){k\_}
+		
+		%exemplos
+		
+		\tkzText(3,-3.5){$1\;\text{mm}=1\times 10^{(-1)\times\alert{2}}\;\text{dm}\rightarrow 1\times 10^{-2}\;\text{dm}$}
+		\tkzText(3.1,-4.5){$2,5\;\text{kg}=2,5\times 10^{(1)\times\alert{6}}\;\text{mg}\rightarrow2,5\times 10^{6}\;\text{mg}$}
+		\tkzText(2.7,-5.5){$10\;\text{ms}=10\times 10^{(-1)\times\alert{3}}\;\text{s}\rightarrow 10\times 10^{-3}\;\text{s}$}
+		
+		\end{tikzpicture}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Conversão de unidades em duas dimensões}
+	\begin{figure}
+		\begin{tikzpicture}[scale=0.65,transform shape,font=\Large]
+	
+		\tkzInit[xmin=-2,xmax=17,ymin=-6,ymax=3]
+		%\tkzGrid[color=gray!20]
+		\tkzClip
+	
+		\tikzset{compass style/.append style={->}}
+	
+		\foreach \x in {1,2,...,6}{
+			\tkzDefPoint(\x*3-3,0){\x}
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+			\node at (\x*3-3,2) {$\times 10^{2}$};
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+			\node at (\x*3-3,-2) {$\times 10^{-2}$};}
+	
+		\tkzDefPoints{-1.5/0/p1,1.5/0/p2,4.5/0/p3,7.5/0/p4,10.5/0/p5,13.5/0/p6,16.5/0/p7}
+	
+		\tkzText(p1){$\text{m}\_^2$}
+		\tkzText(p2){$\text{c}\_^2$}
+		\tkzText(p3){$\text{d}\_^2$}
+		\tkzText(p4){$\_^2$}
+		\tkzText(p5){$\text{da}\_^2$}
+		\tkzText(p6){$\text{h}\_^2$}
+		\tkzText(p7){$\text{k}\_^2$}
+	
+		%exemplos
+	
+		\tkzText(3.3,-3.5){$1\;\text{mm}^2=1\times 10^{(-2)\times\alert{2}}\;\text{dm}^2\rightarrow 1\times 10^{-4}\;\text{dm}^2$}
+		\tkzText(3.6,-4.5){$2,5\;\text{m}^2=2,5\times 10^{(2)\times\alert{3}}\;\text{mm}^2\rightarrow2,5\times 10^{6}\;\text{mm}^2$}
+		\tkzText(3,-5.5){$10\;\text{ms}^2=10\times 10^{(-2)\times\alert{3}}\;\text{s}^2\rightarrow 10\times 10^{-6}\;\text{s}^2$}
+	
+		\end{tikzpicture}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Conversão de unidades em três dimensões}
+	\begin{figure}
+		\begin{tikzpicture}[scale=0.65,transform shape,font=\Large]
+	
+		\tkzInit[xmin=-2,xmax=17,ymin=-6,ymax=3]
+		%\tkzGrid[color=gray!20]
+		\tkzClip
+	
+		\tikzset{compass style/.append style={->}}
+	
+		\foreach \x in {1,2,...,6}{
+			\tkzDefPoint(\x*3-3,0){\x}
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+			\node at (\x*3-3,2) {$\times 10^{3}$};
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+			\node at (\x*3-3,-2) {$\times 10^{-3}$};}
+	
+		\tkzDefPoints{-1.5/0/p1,1.5/0/p2,4.5/0/p3,7.5/0/p4,10.5/0/p5,13.5/0/p6,16.5/0/p7}
+	
+		\tkzText(p1){$\text{m}\_^3$}
+		\tkzText(p2){$\text{c}\_^3$}
+		\tkzText(p3){$\text{d}\_^3$}
+		\tkzText(p4){$\_^3$}
+		\tkzText(p5){$\text{da}\_^3$}
+		\tkzText(p6){$\text{h}\_^3$}
+		\tkzText(p7){$\text{k}\_^3$}
+	
+		%exemplos
+	
+		\tkzText(3.3,-3.5){$1\;\text{mm}^3=1\times 10^{(-3)\times\alert{2}}\;\text{dm}^3\rightarrow 1\times 10^{-6}\;\text{dm}^3$}
+		\tkzText(3.6,-4.5){$2,5\;\text{m}^3=2,5\times 10^{(3)\times\alert{3}}\;\text{mm}^3\rightarrow2,5\times 10^{9}\;\text{mm}^3$}
+		\tkzText(3.5,-5.5){$2,5\;\text{km}^3=2,5\times 10^{(3)\times\alert{6}}\;\text{mm}^3\rightarrow2,5\times 10^{18}\;\text{mm}^3$}
+
+		\end{tikzpicture}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Alfabeto grego}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{table}
+				\begin{tabular}[c]{ccc}
+					Alfa & $A$ & $\alpha$\\
+					Beta & $B$ & $\beta$\\
+					Gama & $\Gamma$ & $\gamma$\\
+					Delta & $\Delta$ & $\delta$\\
+					Epsílon & $E$ & $\epsilon$,$\varepsilon$\\
+					Zeta & $Z$ & $\zeta$\\
+					Eta & $H$ & $\eta$\\
+					Teta & $\Theta$ & $\theta$\\
+					Iota & $I$ & $\iota$\\
+					Capa & $K$ & $\kappa$\\
+					Lambda & $\Lambda$ & $\lambda$\\
+					Mi & $M$ & $\mu$
+				\end{tabular}
+			\end{table}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{table}
+				\begin{tabular}[c]{ccc}
+					Ni & $N$ & $\nu$\\
+					Csi & $\Xi$ & $\xi$\\
+					ômicron & $O$ & $o$\\
+					Pi & $\Pi$ & $\pi$\\
+					Rô & $P$ & $\rho$\\
+					Sigma & $\Sigma$ & $\sigma$\\
+					Tau & $T$ & $\tau$\\
+					Ípsilon & $\Upsilon$ & $\upsilon$\\
+					Fi & $\Phi$ & $\phi$,$\varphi$\\
+					Qui & $X$ & $\chi$\\
+					Psi & $\Psi$ & $\psi$\\
+					Ômega & $\Omega$ & $\omega$
+				\end{tabular}
+			\end{table}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Referências e observações\footnote{Este material está sujeito a modificações. Recomenda-se acompanhamento permanente.}}
+	\bibliographystyle{jurabib}
+	\begin{thebibliography}{9}
+		\bibitem{alvarenga}A. Máximo, B. Alvarenga, C. Guimarães, Física. Contexto e aplicações, v.2, 2.ed., São Paulo, Scipione (2016)
+	\end{thebibliography}
+\end{frame}
+
+\vspace*{0.25cm}
+\begin{center}
+	Esta apresentação está disponível para download no endereço\\
+	\href{https://flavianowilliams.github.io/education}{\textcolor{blue}{https://flavianowilliams.github.io/education}}
+\end{center}
+	
+\end{document}

@@ -1,0 +1,50 @@
+﻿\begin{tikzpicture}[scale=0.75,transform shape]
+
+	\tkzInit[xmin=-6,xmax=6,ymin=-3.5,ymax=3.5]
+	\tkzGrid[color=gray!20]
+	\tkzClip
+
+	%lado esquerdo
+
+	\tkzDefPoints{-6.5/0/O1,6.5/0/O2,0.5/0/O1',-0.5/0/O2',0.5/0/O3}
+
+	\tkzDrawCircle[R](O1,6cm)
+
+	\tkzLabelPoints(O1)
+
+	%lado direito
+
+	\tkzDrawCircle[R,color=gray](O2,6cm)
+
+	\tkzLabelPoints(O2,O2')
+
+	%montando lente
+
+%	\tkzTangent[from with R=O1](O2,4cm)\tkzGetPoints{A}{B}
+
+	\tkzDefPointsBy[rotation=center O1 angle 90](O1,O2'){A,B}
+	\tkzDefPointsBy[rotation=center O1 angle -90](O1,O2'){A1,B1}
+
+	\tkzTangent[from with R=B](O2,6cm)\tkzGetPoints{C}{D}
+	\tkzTangent[from with R=B1](O2,6cm)\tkzGetPoints{C1}{D1}
+
+	\tkzDefPointWith[linear,K=0.6](O1,B)\tkzGetPoint{A2}
+	\tkzDefPointWith[linear,K=-0.6](O1,B)\tkzGetPoint{B2}
+	\tkzDefPointWith[linear,K=0.6](O2,D)\tkzGetPoint{D2}
+	\tkzDefPointWith[linear,K=-0.6](O2,D)\tkzGetPoint{C2}
+
+%	\tkzDrawPolygon(A2,D2,C2,B2)
+	\tkzFillPolygon[gray!20](A2,D2,C2,B2)
+
+	\tkzFillCircle[color=white,opacity=100,draw=white](O2,O1')
+	\tkzFillCircle[color=white,opacity=100,draw=white](O1,O2')
+
+	\tkzDefPointsBy[rotation= center O1 angle 20](O2',O1){P1}
+	\draw[->,line width=0.5pt] (O1) -- (P1) node [above left,midway] {$R$};
+
+	\tkzDefPointsBy[rotation= center O2 angle -20](O3,O2){P}
+	\draw[->,line width=0.5pt] (O2) -- (P) node [above right,midway] {$R$};
+
+%	\tkzLabelPoints(A,C,D,C1,D1,B1,B,A1,A2,B2,C2,D2)
+
+\end{tikzpicture}

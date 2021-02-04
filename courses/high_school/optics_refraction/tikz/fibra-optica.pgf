@@ -1,0 +1,58 @@
+﻿\begin{tikzpicture}[scale=1,transform shape]
+
+	\tkzInit[xmin=0,xmax=13,ymin=-1,ymax=5]
+%	\tkzGrid[step=1cm]
+	\tkzClip
+
+	\tkzDefPoints{0/-1/A,0/1/B,8/-1/C,8/1/D}
+	\tkzDefPoints{8/2/O}
+	\tkzDefPoint(2,1){P}
+
+	%montando tubo
+	\tkzDefPointBy[rotation=center O angle 60](C)\tkzGetPoint{E}
+	\tkzDefPointBy[rotation=center O angle 60](D)\tkzGetPoint{F}
+
+	\tkzDefLine[orthogonal=through F](F,E)\tkzGetPoint{m4}
+	\tkzDefPointWith[linear,K=1.5](F,m4)\tkzGetPoint{G}
+
+	\tkzDefLine[parallel=through E](F,G)\tkzGetPoint{H}
+
+%	\tkzDrawPolygon[color=red,line width=1.5pt](C,A,B,D)
+	
+	\tkzDrawArc[line width=1.5pt](O,C)(E)
+	\tkzDrawArc[line width=1.5pt](O,D)(F)
+	\tkzDrawSegment[dashed,line width=1.5pt](A,B)
+	\tkzDrawSegment[line width=1.5pt](A,C)
+	\tkzDrawSegment[line width=1.5pt](B,D)
+	\tkzDrawSegment[line width=1.5pt](F,G)
+	\tkzDrawSegment[line width=1.5pt](E,H)
+	\tkzDrawSegment[dashed,line width=1.5pt](H,G)
+
+	%definindo raios refletidos
+	\tkzDefLine[orthogonal=through P](B,D)\tkzGetPoint{m1}
+	\tkzDefPointBy[reflection= over m1--P](A)\tkzGetPoint{Pr}
+
+	\tkzDefLine[orthogonal=through Pr](A,C)\tkzGetPoint{m2}
+	\tkzDefPointBy[reflection= over m2--Pr](P)\tkzGetPoint{P2r}
+
+	\tkzDefLine[orthogonal=through P2r](B,D)\tkzGetPoint{m3}
+	\tkzDefPointBy[reflection= over m3--P2r](Pr)\tkzGetPoint{P3r}
+
+	\tkzDefLine[orthogonal=through P2r](B,D)\tkzGetPoint{m5}
+	\tkzDefPointBy[reflection= over m5--P3r](P2r)\tkzGetPoint{P4r}
+
+	\tkzInterLL(F,G)(P3r,P4r)\tkzGetPoint{P5r}
+	\tkzDefLine[orthogonal=through P5r](F,G)\tkzGetPoint{m6}
+	\tkzDefPointBy[reflection= over m6--P5r](P3r)\tkzGetPoint{P6r}
+
+	\draw[put arrow={at=0.5},line width=1pt,color=red] (A) -- (P);
+	\draw[put arrow={at=0.5},line width=1pt,color=red] (P) -- (Pr);
+	\draw[put arrow={at=0.5},line width=1pt,color=red] (Pr) -- (P2r);
+	\draw[put arrow={at=0.5},line width=1pt,color=red] (P2r) -- (P3r);
+	\draw[put arrow={at=0.5},line width=1pt,color=red] (P3r) -- (P5r);
+	\draw[put arrow={at=0.5},line width=1pt,color=red] (P5r) -- (P6r);
+
+%	\tkzDrawPoints(A,B,C,D,P,Pr,m2,P2r,m4,G,H,P5r,P6r)\tkzLabelPoints(A,B,C,D,P2r,m3,P3r,m4,E,F,G,P4r,P5r,H,m6)
+%	\tkzDrawPoints(A,B,C,D,E,F,G,H)
+
+\end{tikzpicture}

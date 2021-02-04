@@ -1,0 +1,111 @@
+﻿\begin{tikzpicture}[scale=0.8,transform shape]
+
+	\tkzInit[xmin=-3,xmax=3,ymin=-3,ymax=3]
+%	\tkzGrid[step=1cm,color=gray!30]
+	\tkzClip
+
+    % Round rectangle
+    \fill[gray!10,rounded corners,opacity=0.6] (-4,-3) rectangle (4,0);
+
+	\tkzDefPoints{-3/0/x1,3/0/x2,0/0/O,0/3/n1,0/-3/n2}
+	\tkzDefPoints{-3.5/3/A,1.5/-3/B}
+	\tkzDefPoints{-1/0/p1,1/0/pr1}
+
+	\tkzLabelPoints[below left,font=\small](O)
+
+	\draw[dashed] (n1) -- (n2);
+	\draw (x1) -- (x2);
+
+    % Media names
+    \path[font=\tiny] (2.75,.6)  node {(1)} (2.75,-.6) node {(2)};
+
+					%desenhando raios de luz
+					\draw[put arrow={at=0.5},line width=1pt,color=red] (A) -- (O);
+					\draw[put arrow={at=0.5},line width=1pt,color=red] (O) -- (B);
+
+	\tkzDefPointWith[linear,K=0.85](A,O)\tkzGetPoint{t1}
+
+	\tkzDefLine[orthogonal=through t1](A,O) \tkzGetPoint{m1}
+
+	\tkzInterLL(x1,x2)(t1,m1)\tkzGetPoint{p1}
+
+	\tkzDefPointBy[rotation=center t1 angle 180](O)\tkzGetPoint{t2}
+	\tkzDefPointBy[rotation=center t2 angle 180](t1)\tkzGetPoint{t3}
+	\tkzDefPointBy[rotation=center t3 angle 180](t2)\tkzGetPoint{t4}
+	\tkzDefPointBy[rotation=center t4 angle 180](t3)\tkzGetPoint{t5}
+	\tkzDefPointBy[rotation=center t5 angle 180](t4)\tkzGetPoint{t6}
+
+	\tkzDefLine[parallel=through p1](A,O) \tkzGetPoint{m1}
+	\tkzDefLine[orthogonal=through t2](p1,m1) \tkzGetPoint{m2}
+	\tkzInterLL(p1,m1)(t2,m2)\tkzGetPoint{p2}
+
+	\tkzDefPointBy[rotation=center p2 angle 180](p1)\tkzGetPoint{p3}
+	\tkzDefPointBy[rotation=center p3 angle 180](p2)\tkzGetPoint{p4}
+	\tkzDefPointBy[rotation=center p4 angle 180](p3)\tkzGetPoint{p5}
+
+	\tkzDefPointBy[rotation=center t1 angle 180](p1)\tkzGetPoint{k1}
+	\tkzDefPointBy[rotation=center t2 angle 180](p2)\tkzGetPoint{k2}
+	\tkzDefPointBy[rotation=center t3 angle 180](p3)\tkzGetPoint{k3}
+	\tkzDefPointBy[rotation=center t4 angle 180](p4)\tkzGetPoint{k4}
+	\tkzDefPointBy[rotation=center t5 angle 180](p5)\tkzGetPoint{k5}
+
+	\tkzDrawSegment(p1,k1)
+	\tkzMarkRightAngle[size=0.1](O,t1,k1)
+	\tkzDrawSegment(p2,k2)
+	\tkzMarkRightAngle[size=0.1](t1,t2,k2)
+	\tkzDrawSegment(p3,k3)
+	\tkzMarkRightAngle[size=0.1](t2,t3,k3)
+	\tkzDrawSegment(p4,k4)
+	\tkzMarkRightAngle[size=0.1](t3,t4,k4)
+	\tkzDrawSegment(p5,k5)
+	\tkzMarkRightAngle[size=0.1](t4,t5,k5)
+	
+	%definindo frentes de onda refratada
+
+	\tkzDefLine[parallel=through p1](O,B) \tkzGetPoint{m3}
+	\tkzDefLine[orthogonal=through O](p1,m3) \tkzGetPoint{m4}
+	\tkzInterLL(O,m4)(p1,m3)\tkzGetPoint{P2}
+
+	\tkzDefPointBy[rotation=center P2 angle 180](p1)\tkzGetPoint{P3}
+	\tkzDefPointBy[rotation=center P3 angle 180](P2)\tkzGetPoint{P4}
+	\tkzDefPointBy[rotation=center P4 angle 180](P3)\tkzGetPoint{P5}
+	\tkzDefPointBy[rotation=center P5 angle 180](P4)\tkzGetPoint{P6}
+	\tkzDefPointBy[rotation=center P6 angle 180](P5)\tkzGetPoint{P7}
+	\tkzDefPointBy[rotation=center P7 angle 180](P6)\tkzGetPoint{P8}
+	\tkzDefPointBy[rotation=center P8 angle 180](P7)\tkzGetPoint{P9}
+
+	\tkzDefLine[orthogonal=through P3](O,B) \tkzGetPoint{m5}
+	\tkzInterLL(O,B)(P3,m5)\tkzGetPoint{T1}
+
+	\tkzDefPointBy[rotation=center T1 angle 180](O)\tkzGetPoint{T2}
+	\tkzDefPointBy[rotation=center T2 angle 180](T1)\tkzGetPoint{T3}
+	\tkzDefPointBy[rotation=center T3 angle 180](T2)\tkzGetPoint{T4}
+	\tkzDefPointBy[rotation=center T4 angle 180](T3)\tkzGetPoint{T5}
+	\tkzDefPointBy[rotation=center T5 angle 180](T4)\tkzGetPoint{T6}
+	\tkzDefPointBy[rotation=center T6 angle 180](T5)\tkzGetPoint{T7}
+	\tkzDefPointBy[rotation=center T7 angle 180](T6)\tkzGetPoint{T8}
+
+	\tkzDefPointBy[rotation=center T1 angle 180](P3)\tkzGetPoint{K1}
+	\tkzDefPointBy[rotation=center T2 angle 180](P4)\tkzGetPoint{K2}
+	\tkzDefPointBy[rotation=center T3 angle 180](P5)\tkzGetPoint{K3}
+	\tkzDefPointBy[rotation=center T4 angle 180](P6)\tkzGetPoint{K4}
+	\tkzDefPointBy[rotation=center T5 angle 180](P7)\tkzGetPoint{K5}
+	\tkzDefPointBy[rotation=center T6 angle 180](P8)\tkzGetPoint{K6}
+	\tkzDefPointBy[rotation=center T7 angle 180](P9)\tkzGetPoint{K7}
+
+	\tkzDrawSegment(P3,K1)
+	\tkzMarkRightAngle[size=0.1](T2,T1,K1)
+	\tkzDrawSegment(P4,K2)
+	\tkzMarkRightAngle[size=0.1](T3,T2,K2)
+	\tkzDrawSegment(P5,K3)
+	\tkzMarkRightAngle[size=0.1](T4,T3,K3)
+	\tkzDrawSegment(P6,K4)
+	\tkzMarkRightAngle[size=0.1](T5,T4,K4)
+	\tkzDrawSegment(P7,K5)
+	\tkzMarkRightAngle[size=0.1](T6,T5,K5)
+	\tkzDrawSegment(P8,K6)
+	\tkzMarkRightAngle[size=0.1](T7,T6,K6)
+	\tkzDrawSegment(P9,K7)
+	\tkzMarkRightAngle[size=0.1](T8,T7,K7)
+
+\end{tikzpicture}

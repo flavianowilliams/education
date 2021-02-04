@@ -1,0 +1,30 @@
+﻿\begin{tikzpicture}[scale=0.8,transform shape]
+
+	\tkzInit[xmin=-3,xmax=3,ymin=-3,ymax=3]
+	\tkzGrid[step=1cm,color=gray!30]
+	\tkzClip
+
+    % Round rectangle
+    \fill[gray!10,rounded corners,opacity=0.6] (-4,-3) rectangle (4,0);
+
+	\tkzDefPoints{-3/0/x1,3/0/x2,0/0/O,0/3/n1,0/-3/n2}
+	\tkzDefPoints{-3/3/A}
+	\tkzDefPoints{0.5/-3/b1,1.0/-3/b2,1.5/-3/b3}
+	
+	\draw[dashed] (n1) -- (n2);
+	\draw (x1) -- (x2);
+
+		%desenhando raios de luz
+		\draw[put arrow={at=0.5},line width=1pt,color=black] (A) -- (O);
+		\tkzMarkAngle[arc=lll,size=0.5,color=black](n1,O,A)\tkzLabelAngle[font=\tiny,pos=1](n1,O,A){$\theta$}
+		\draw[put arrow={at=0.5},line width=1pt,color=blue] (O) -- (b1);
+		\tkzMarkAngle[arc=lll,size=0.5,color=blue](n2,O,b1)
+		\draw[put arrow={at=0.5},line width=1pt,color=green] (O) -- (b2);
+		\tkzMarkAngle[arc=lll,size=1.0,color=green](n2,O,b2)
+		\draw[put arrow={at=0.5},line width=1pt,color=red] (O) -- (b3);
+		\tkzMarkAngle[arc=lll,size=1.5,color=red](n2,O,b3)
+
+    % Media names
+    \path[font=\tiny] (2.75,.25)  node {Ar} (2.75,-.25) node {Vidro};
+
+\end{tikzpicture}

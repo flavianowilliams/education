@@ -1,0 +1,65 @@
+﻿\begin{tikzpicture}[scale=0.8,transform shape]
+
+	\tkzInit[xmin=0,xmax=8,ymin=-3,ymax=3]
+%	\tkzGrid[step=1cm,color=gray!30]
+	\tkzClip
+
+	%definindo parametros
+	\def\h{2}
+
+    % Round rectangle
+    \fill[gray!20,rounded corners,opacity=0.6] (0,-3) rectangle (8,0);
+
+	\tkzDefPoints{0/0/x1,8/0/x2}
+	\tkzDefPoints{7/-3/O}
+	
+	\tkzDrawPoints(O)\tkzLabelPoints[above right](O)
+
+	\foreach \x in {4,5,6}{
+		\pgfmathsetmacro{\dx}{(7-\x)*sqrt(34)*0.2*\h/sqrt((7-\x)*(7-\x)+9)}
+		\pgfmathsetmacro{\yl}{sqrt(\h*\h-\dx*\dx)}
+		\pgfmathsetmacro{\xl}{\x-\dx}
+		\tkzDefPoints{\x/0/xp,\xl,\yl,pi}
+		\tkzDefPoint(\xl,\yl){pi}
+		\tkzDefPoints{\x/1/pa,\x/-1/pb}
+		\tkzDefPointWith[linear,K=0.8](O,xp) \tkzGetPoint{g}
+		\tkzDefPointBy[reflection=over pa--pb](g) \tkzGetPoint{s}
+%		\tkzMarkAngle[size=0.1,arc=lll](pb,xp,g)
+		\tkzDrawPoints(pb,xp,g)
+		\draw[dashed] (pa) -- (pb);
+		\draw[put arrow={at=0.5},line width=1.0pt,color=red] (O) -- (xp);
+		\draw[put arrow={at=0.5},line width=1.0pt,color=red,opacity=0.25] (xp) -- (s);
+		\draw[put arrow={at=0.5},line width=1.0pt,color=red] (xp) -- (pi);}
+
+		\pgfmathsetmacro{\dx}{(7-2)*sqrt(34)*0.2*\h/sqrt((7-2)*(7-2)+9)}
+		\pgfmathsetmacro{\yl}{sqrt(\h*\h-\dx*\dx)}
+		\pgfmathsetmacro{\xl}{2-\dx}
+		\tkzDefPoints{2/0/2,\xl,\yl,pi}
+		\tkzDefPoint(\xl,\yl){pi}
+		\tkzDefPoints{2/1/pa,2/-1/pb}
+		\tkzDefPointWith[linear,K=0.8](O,2) \tkzGetPoint{g}
+		\tkzMarkAngle[size=0.25,arc=lll](pa,2,pi)\tkzLabelAngle[pos=0.5](pa,2,pi){$90^o$}
+%		\tkzMarkAngle[size=0.2,arc=lll](pb,2,g)\tkzLabelAngle[pos=0.75](pb,2,g){$L$}
+		\draw[dashed] (pa) -- (pb);
+		\draw[put arrow={at=0.5},line width=1.0pt,color=red] (O) -- (2);
+		\draw[put arrow={at=0.5},line width=1.0pt,color=red] (2) -- (pi);
+
+		\pgfmathsetmacro{\dx}{(7-7)*sqrt(34)*0.2*\h/sqrt((7-7)*(7-7)+9)}
+		\pgfmathsetmacro{\yl}{sqrt(\h*\h-\dx*\dx)}
+		\pgfmathsetmacro{\xl}{7-\dx}
+		\tkzDefPoints{7/0/7,\xl,\yl,pi}
+		\tkzDefPoint(\xl,\yl){pi}
+		\tkzDefPoints{7/1/pa,7/-1/pb}
+		\draw[dashed] (pa) -- (pb);
+		\draw[put arrow={at=0.5},line width=1.0pt,color=red] (O) -- (7);
+		\draw[put arrow={at=0.5},line width=1.0pt,color=red] (7) -- (pi);
+		\draw[put arrow={at=0.5},line width=1.0pt,color=red] (pi) -- (O);
+
+	\draw (x1) -- (x2);
+
+    % Media names
+    \path[font=\tiny] (7.75,.6)  node {(1)} (7.75,-.6) node {(2)};
+
+%	\tkzDrawLine[color=red](A,B)
+
+\end{tikzpicture}

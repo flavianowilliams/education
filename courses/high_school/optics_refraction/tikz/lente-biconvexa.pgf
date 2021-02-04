@@ -1,0 +1,38 @@
+﻿\begin{tikzpicture}[scale=1,transform shape]
+
+	\tkzInit[xmin=-6,xmax=6,ymin=-4,ymax=4]
+	\tkzGrid[color=gray!20]
+	\tkzClip
+
+	%lado esquerdo
+
+	\tkzDefPoints{-2/0/O1,2/0/O2,-2/0/O1',2/0/O2'}
+
+%	\tkzDrawCircle[R](O1,4cm)
+
+	\tkzLabelPoints(O1)
+
+	%lado direito
+
+%	\tkzDrawCircle[R,color=gray](O2,4cm)
+
+	\tkzLabelPoints(O2)
+
+	%montando lente
+
+	\tkzInterCC(O1,O2')(O2,O1')\tkzGetPoints{A}{B}
+
+	\tkzClipCircle(O2,B)
+	\tkzFillCircle[color=gray!50,opacity=0.5,draw=black](O1,A)
+	\tkzClipCircle(O1,B)
+	\tkzFillCircle[color=gray!50,opacity=0.5,draw=black](O2,A)
+
+%	\tkzLabelPoints(A,B)
+
+	\tkzDefPointsBy[rotation= center O1 angle 45](O2,O1){P1}
+	\draw[->,line width=1.0pt] (O1) -- (P1) node [above left,midway] {R};
+
+	\tkzDefPointsBy[rotation= center O2 angle 45](O1,O2){P2}
+	\draw[->,line width=1.0pt] (O2) -- (P2) node [above left,midway] {R};
+
+\end{tikzpicture}

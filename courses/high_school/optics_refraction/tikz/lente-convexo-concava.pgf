@@ -1,0 +1,27 @@
+﻿\begin{tikzpicture}[scale=1,transform shape]
+
+	\tkzInit[xmin=-6,xmax=5,ymin=-4,ymax=4]
+%	\tkzGrid[color=gray!20]
+	\tkzClip
+
+	%lado esquerdo
+
+	\tkzDefPoints{0/0/O1,6/0/O2,-5/0/O1',-1/0/O2'}
+
+	\tkzFillCircle[color=gray!50,opacity=0.5,draw=black](O1,O2)
+
+	\tkzFillCircle[color=white,opacity=1,draw=black](O2',O1')
+
+	\tkzDefPoints{7/-4/A,7/4/B}
+
+	\tkzDefSquare(A,B)\tkzGetPoints{C}{D}
+
+	\tkzFillPolygon[color=white, draw=white](A,B,C,D)
+
+	\tkzDefPointsBy[rotation= center O2' angle -45](O1'){P1}
+	\draw[->,line width=1.0pt] (O2') -- (P1) node [above right,midway] {$R_2$};
+
+	\tkzDefPointsBy[rotation= center O1 angle 200](O2){P2}
+	\draw[->,line width=1.0pt] (O1) -- (P2) node [above left,midway] {$R_1$};
+
+\end{tikzpicture}

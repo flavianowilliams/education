@@ -1,0 +1,51 @@
+﻿\begin{tikzpicture}[use optics, scale=1,transform shape]
+
+	\tkzInit[xmin=-6,xmax=6,ymin=-4,ymax=4]
+	\tkzGrid[color=gray!20]
+	\tkzClip
+
+	%desenhando eixo principal
+
+	\tkzDefPoints{-6/0/O,6/0/O'}
+
+	\draw[draw=black] (O) -- (O');
+
+	%lado esquerdo
+
+	\tkzDefPoints{-6/0/O1,0/0/O2,6/0/O1',0/0/O2'}
+
+%	\tkzDrawCircle[R](O1,7cm)
+%	\tkzDrawCircle[R](O1',7cm)
+
+%	\tkzLabelPoints(O1,O2)
+
+	%lado direito
+
+%	\tkzDrawCircle[R,color=gray](O2,4cm)
+
+	%montando lente
+
+	\tkzInterCC[R](O1,7cm)(O1',7cm)\tkzGetPoints{A}{B}
+
+%	\tkzLabelPoints(A,B)
+
+	%raio de luz
+	\tkzDefPoints{-5/0/X,-5/2/X',0/2/p1,2.5/0/F1,-2.5/0/F2}
+	\draw[->-,line width=1.0pt] (X') -- (p1);
+	\draw[->-,line width=1.0pt] (p1) -- (F1);
+
+	\tkzDrawPoints[size=0.5cm](F1,F2)
+	\tkzLabelPoints[below=0.25cm](F1,F2)
+
+	\tkzClipCircle[R](O1,7cm)
+	\tkzFillCircle[color=gray!50,opacity=0.5,draw=black](O1',A)
+
+	%centro da lente
+
+	\tkzDrawSegment(A,B)
+
+	%objeto
+
+	\draw[->,line width=3.5pt,color=red] (X) -- (X');
+
+\end{tikzpicture}

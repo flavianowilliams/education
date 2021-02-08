@@ -724,7 +724,7 @@
 			\begin{tikzpicture}[scale=0.25,transform shape,font=\Large]
 			
 			\tkzInit[xmin=-2,xmax=2,ymin=-3.5,ymax=3.5]
-			\tkzGrid[color=gray!20]
+			%\tkzGrid[color=gray!20]
 			\tkzClip
 			
 			\tkzDefPoints{-2/0/O1,2/0/O2,-2/0/O1',2/0/O2'}
@@ -734,9 +734,9 @@
 			\tkzInterCC(O1,O2')(O2,O1')\tkzGetPoints{A}{B}
 			
 			\tkzClipCircle(O2,B)
-			\tkzFillCircle[color=gray!50,opacity=0.5,draw=black](O1,A)
+			\tkzFillCircle[color=gray!50,opacity=0.5,draw=white](O1,A)
 			\tkzClipCircle(O1,B)
-			\tkzFillCircle[color=gray!50,opacity=0.5,draw=black](O2,A)
+			\tkzFillCircle[color=gray!50,opacity=0.5,draw=white](O2,A)
 			
 			\tkzDefPointsBy[rotation= center O1 angle 45](O2,O1){P1}
 			\draw[->,line width=0.5pt] (O1) -- (P1) node [above left,midway] {R};
@@ -752,7 +752,7 @@
 			\begin{tikzpicture}[scale=0.25,transform shape,font=\Large]
 
 			\tkzInit[xmin=-2,xmax=2,ymin=-3.5,ymax=3.5]
-			\tkzGrid[color=gray!20]
+			%\tkzGrid[color=gray!20]
 			\tkzClip
 
 			%lado esquerdo
@@ -765,16 +765,16 @@
 
 			\tkzInterCC(O1,O2')(O2,O1')\tkzGetPoints{A}{B}
 
+			\tkzDrawSegment[draw=white](A,B)
+
 			\tkzClipCircle(O2,B)
-			\tkzFillCircle[color=gray!50,opacity=0.5,draw=black](O1,A)
+			\tkzFillCircle[color=gray!50,opacity=0.5,draw=white](O1,A)
 
 			\tkzDefPointsBy[translation=from O2 to O1](A,B){C,D}
 			\tkzDrawPolygon[fill=white,color=white](A,B,D,C)
 
 			\tkzDefPointsBy[rotation= center O1 angle 45](O2,O1){P1}
 			\draw[->,line width=0.5pt] (O1) -- (P1) node [above left,midway] {R};
-
-			\tkzDrawSegment(A,B)
 
 		\end{tikzpicture}
 		\caption*{\scriptsize Plano-convexa.}
@@ -784,7 +784,7 @@
 			\begin{tikzpicture}[scale=0.25,transform shape,font=\Large]
 
 				\tkzInit[xmin=-2,xmax=6,ymin=-3.5,ymax=3.5]
-				\tkzGrid[color=gray!20]
+				%\tkzGrid[color=gray!20]
 				\tkzClip
 
 				%lado esquerdo
@@ -801,7 +801,7 @@
 
 				%montando lente
 
-				\tkzFillCircle[color=gray!50,opacity=0.5,draw=black](O2,O1')
+				\tkzFillCircle[color=gray!50,opacity=0.5,draw=white](O2,O1')
 				\tkzFillCircle[color=white,opacity=100,draw=white](O1,O2')
 
 				\tkzDefPointsBy[rotation= center O1 angle 20](O2',O1){P1}
@@ -818,7 +818,7 @@
 	\begin{tikzpicture}[scale=0.2,transform shape,font=\Large]
 	
 	\tkzInit[xmin=-6,xmax=6,ymin=-3.5,ymax=3.5]
-	\tkzGrid[color=gray!20]
+	%\tkzGrid[color=gray!20]
 	\tkzClip
 	
 	%lado esquerdo
@@ -872,7 +872,7 @@
 			\begin{tikzpicture}[scale=0.2,transform shape,font=\Large]
 			
 			\tkzInit[xmin=-6,xmax=0,ymin=-3.5,ymax=3.5]
-			\tkzGrid[color=gray!20]
+			%\tkzGrid[color=gray!20]
 			\tkzClip
 			
 			%lado esquerdo
@@ -913,21 +913,429 @@
 \end{subfigure}
 		\begin{subfigure}[b]{0.3\textwidth}
 			\centering
+			\begin{tikzpicture}[scale=0.17,transform shape]
+			
+			\tkzInit[xmin=-6,xmax=5,ymin=-4,ymax=4]
+			%	\tkzGrid[color=gray!20]
+			\tkzClip
+			
+			%lado esquerdo
+			
+			\tkzDefPoints{0/0/O1,6/0/O2,-5/0/O1',-1/0/O2'}
+			
+			\tkzFillCircle[color=gray!50,opacity=0.5,draw=white](O1,O2)
+			
+			\tkzFillCircle[color=white,opacity=1](O2',O1')
+			
+			\tkzDefPoints{7/-4/A,7/4/B}
+			
+			\tkzDefSquare(A,B)\tkzGetPoints{C}{D}
+			
+			\tkzFillPolygon[color=white, draw=white](A,B,C,D)
+			
+			\tkzDefPointsBy[rotation= center O2' angle -45](O1'){P1}
+			\draw[->,line width=0.5pt] (O2') -- (P1) node [above right,midway] {\large $R_2$};
+			
+			\tkzDefPointsBy[rotation= center O1 angle 200](O2){P2}
+			\draw[->,line width=0.5pt] (O1) -- (P2) node [above left,midway] {\large $R_1$};
+			
+			\end{tikzpicture}
 			\caption*{\scriptsize Convexo-côncava.}
 \end{subfigure}
 	\end{figure}
 \end{frame}
 
-\begin{frame}{Focos de uma lente}
-content...
+\begin{frame}{Lentes convergentes}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			Um raio paralelo ao incidir em uma lente biconvexa, se refrata aproximando o feixe da normal. Ao emergir torna-se a se refratar, afastando-se da normal. Como resultado temos um feixo convergindo para o foco da lente.
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.5]{imagens/lente-convergente.png}
+				\caption*{\footnotesize Lente convergente.}
+			\end{figure}
+		\end{column}
+	\end{columns}
 \end{frame}
 
-\begin{frame}{Distância focal}
-content...
+\begin{frame}{Lentes divergentes}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			No caso de uma lente bicôncava, se os raios paralelos incidir na lente, ela irá refratar e, assim como na lente biconvexa, se aproximar da normal. Refratando novamente de volta para o meio, os raios de luz irão se afastar da normal, e o resultado será um feixe de luz divergindo de um foco.
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.5]{imagens/lente-divergente.png}
+				\caption*{\footnotesize Lente divergente.}
+			\end{figure}
+		\end{column}
+	\end{columns}
 \end{frame}
 
-\begin{frame}{Formação de imagens nas lentes}
-content...
+\begin{frame}{Focos de uma lente convergente}
+	Um feixe de luz incidente paralelo ao eixo, irá atravessar a lente convergindo em um ponto chamado foco, e a distância entre o foco e a lente é chamado de distância focal. De maneira semelhante teremos se um feixe de luz sair de um foco da lente, ele irá atravessá-la emergindo paralelamente ao eixo.
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.45]{imagens/foco1-lente-convergente.png}
+				\caption*{\footnotesize Feixe de luz emergindo no foco F\textsubscript{1}.}
+			\end{figure}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.5]{imagens/foco2-lente-convergente.png}
+				\caption*{\footnotesize Feixe de luz emergindo paralelamente ao eixo.}
+			\end{figure}
+		\end{column}
+	\end{columns}	
+\end{frame}
+
+\begin{frame}{Focos de uma lente divergente}
+	Um feixe de luz incidente paralelo ao eixo, irá atravessar a lente divergindo da lente, e seus prolongamentos se encontram no foco da lente. De maneira semelhante teremos se um feixe de luz incidir na lente, de modo que os seus prolongamentos se encontram no foco, os raios de luz irão emergir paralelamente ao eixo.
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.4]{imagens/foco1-lente-divergente.png}
+				\caption*{\footnotesize Feixe paralelo com os seus prolongamentos convergindo no foco F\textsubscript{1} da lente.}
+			\end{figure}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.4]{imagens/foco2-lente-divergente.png}
+				\caption*{\footnotesize Feixe com os prolongamento convergindo no foco da lente.}
+			\end{figure}
+		\end{column}
+	\end{columns}	
+\end{frame}
+
+\begin{frame}{A relação entre a distância focal e o meio que envolve a lente}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{figure}
+				\centering
+				\begin{subfigure}{0.5\textwidth}
+					\includegraphics[scale=0.25]{imagens/foco-1.png}
+					\caption*{\footnotesize Índice de refração do meio menor que o vidro.}
+				\end{subfigure}
+				\begin{subfigure}{0.5\textwidth}
+					\includegraphics[scale=0.25]{imagens/foco-2.png}
+					\caption*{\footnotesize Índice de refração do meio maior que o ar.}
+				\end{subfigure}
+			\end{figure}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{figure}
+				\centering
+				\begin{subfigure}{0.5\textwidth}
+					\includegraphics[scale=0.25]{imagens/foco-3.png}
+					\caption*{\footnotesize Índice de refração do meio igual ao do vidro.}
+				\end{subfigure}
+				\begin{subfigure}{0.5\textwidth}
+					\includegraphics[scale=0.25]{imagens/foco-4.png}
+					\caption*{\footnotesize Índice de refração do meio maior que do vidro.}
+				\end{subfigure}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Raios principais e formação da imagem em um lente}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[use optics, scale=0.45,transform shape]
+				
+				\tkzInit[xmin=-6,xmax=6,ymin=-4,ymax=4]
+				%\tkzGrid[color=gray!20]
+				\tkzClip
+				
+				%desenhando eixo principal
+				
+				\tkzDefPoints{-6/0/O,6/0/O'}
+				
+				\draw[draw=black] (O) -- (O');
+				
+				%lado esquerdo
+				
+				\tkzDefPoints{-6/0/O1,0/0/O2,6/0/O1',0/0/O2'}
+				
+				%montando lente
+				
+				\tkzInterCC[R](O1,7cm)(O1',7cm)\tkzGetPoints{A}{B}
+				
+				%raio de luz
+				\tkzDefPoints{-5/0/X,-5/2/X',0/2/p1,2.5/0/F1,-2.5/0/F2}
+				\tkzDefPointWith[linear,K=1.5](p1,F1) \tkzGetPoint{K}
+				\draw[->-,line width=1.0pt] (X') -- (p1);
+				\draw[->-,line width=1.0pt] (p1) -- (K);
+				
+				\tkzDrawPoints[size=0.5cm](F1,F2)
+				\tkzLabelPoint[below=0.25cm](F1){$F_1$}
+				\tkzLabelPoint[below=0.25cm](F2){$F_2$}
+				
+				\tkzClipCircle[R](O1,7cm)
+				\tkzFillCircle[color=gray!50,opacity=0.5,draw=black](O1',A)
+				
+				%centro da lente
+				
+				\tkzDrawSegment(A,B)
+				
+				%objeto
+				
+				\draw[->,line width=3.5pt,color=red] (X) -- (X');
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Raio paralelo incidindo em uma lente convergente.}
+			\end{figure}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[use optics, scale=0.45,transform shape]
+				
+				\tkzInit[xmin=-6,xmax=6,ymin=-4,ymax=4]
+				%\tkzGrid[color=gray!20]
+				\tkzClip
+				
+				%lado esquerdo
+				
+				\tkzDefPoints{-7.5/0/O1,0/0/O2,7.5/0/O1',0/0/O2'}
+				
+				%montando lente
+				
+				\tkzDefPoints{-6/-4/A,-6/4/B,6/4/C,6/-4/D}
+				\tkzFillPolygon[color=gray!50,opacity=0.5,draw=white](A,B,C,D)
+				
+				%	\tkzLabelPoints(A,B)
+				
+				\tkzFillCircle[color=white,draw=white,R](O1,7cm)
+				\tkzFillCircle[color=white,draw=white,R](O1',7cm)
+				
+				%centro da lente
+				
+				\tkzDefPoints{0/-4/A1,0/4/A2}	
+				\tkzDrawSegment(A1,A2)
+				
+				%raio de luz e prolongamento
+				\tkzDefPoints{-5/0/X,-5/2/X',0/2/p1,2.5/0/F1,-2.5/0/F2}
+				\draw[dashed,line width=1.0pt] (p1) -- (F2);
+				
+				\tkzDefPointWith[linear,K=-0.75](p1,F2) \tkzGetPoint{K}
+				
+				\draw[->-,line width=1.0pt] (X') -- (p1);
+				\draw[->-,line width=1.0pt] (p1) -- (K);
+				
+				\tkzDrawPoints[size=0.5cm](F1,F2)
+				\tkzLabelPoint[below=0.25cm](F1){$F_2$}
+				\tkzLabelPoint[below=0.25cm](F2){$F_1$}
+				
+				%objeto
+				
+				\draw[->,line width=3.5pt,color=red] (X) -- (X');
+				
+				%desenhando eixo principal
+				
+				\tkzDefPoints{-6/0/O,6/0/O'}
+				
+				\draw[draw=black] (O) -- (O');
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Raio paralelo incidindo em uma lente divergente.}
+			\end{figure}		
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Raios principais e formação da imagem em um lente}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[use optics, scale=0.45,transform shape]
+				
+				\tkzInit[xmin=-6,xmax=6,ymin=-4,ymax=4]
+				%\tkzGrid[color=gray!20]
+				\tkzClip
+				
+				%desenhando eixo principal
+				
+				\tkzDefPoints{-6/0/O,6/0/O'}
+				
+				\draw[draw=black] (O) -- (O');
+				
+				%lado esquerdo
+				
+				\tkzDefPoints{-6/0/O1,0/0/O2,6/0/O1',0/0/O2'}
+				
+				\tkzInterCC[R](O1,7cm)(O1',7cm)\tkzGetPoints{A}{B}
+				
+				%raio de luz
+				\tkzDefPoints{-5/0/X,-5/2/X',0/-2/p1,2.5/0/F1,-2.5/0/F2}
+				\draw[->-,line width=1.0pt] (X') -- (p1);
+				\draw[->-,line width=1.0pt] (p1) --+ (4,0);
+				
+				\tkzDrawPoints[size=0.5cm](F1,F2)
+				\tkzLabelPoints[below=0.25cm](F1,F2)
+				
+				\tkzClipCircle[R](O1,7cm)
+				\tkzFillCircle[color=gray!50,opacity=0.5,draw=black](O1',A)
+				
+				%centro da lente
+				
+				\tkzDrawSegment(A,B)
+				
+				%objeto
+				
+				\draw[->,line width=3.5pt,color=red] (X) -- (X');
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Raio emergindo paralelamente ao eixo após atravessar uma lente convergente.}
+			\end{figure}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[use optics, scale=0.45,transform shape]
+				
+				\tkzInit[xmin=-6,xmax=6,ymin=-4,ymax=4]
+				%\tkzGrid[color=gray!20]
+				\tkzClip
+				
+				%lado esquerdo
+				
+				\tkzDefPoints{-7.5/0/O1,0/0/O2,7.5/0/O1',0/0/O2'}
+				
+				%montando lente
+				
+				\tkzDefPoints{-6/-4/A,-6/4/B,6/4/C,6/-4/D}
+				\tkzFillPolygon[color=gray!50,opacity=0.5,draw=white](A,B,C,D)
+				
+				%	\tkzLabelPoints(A,B)
+				
+				\tkzFillCircle[color=white,draw=white,R](O1,7cm)
+				\tkzFillCircle[color=white,draw=white,R](O1',7cm)
+				
+				%centro da lente
+				
+				\tkzDefPoints{0/-4/A1,0/4/A2}	
+				\tkzDrawSegment(A1,A2)
+				
+				%raio de luz e prolongamento
+				\tkzDefPoints{-5/0/X,-5/2/X',0/0.7/p1,2.5/0/F1,-2.5/0/F2}
+				\draw[dashed,line width=1.0pt] (p1) -- (F1);
+				
+				\tkzDefPointWith[linear,K=-0.75](p1,F2) \tkzGetPoint{K}
+				
+				\draw[->-,line width=1.0pt] (X') -- (p1);
+				\draw[->-,line width=1.0pt] (p1) --+ (4,0);
+				
+				\tkzDrawPoints[size=0.5cm](F1,F2)
+				\tkzLabelPoint[below=0.25cm](F1){$F_2$}
+				\tkzLabelPoint[below=0.25cm](F2){$F_1$}
+				
+				%objeto
+				
+				\draw[->,line width=3.5pt,color=red] (X) -- (X');
+				
+				%desenhando eixo principal
+				
+				\tkzDefPoints{-6/0/O,6/0/O'}
+				
+				\draw[draw=black] (O) -- (O');
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Raio emergindo paralelamente ao eixo após atravessar uma lente divergente.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{A equação das lentes}
+	Usando o raciocínio semelhante àquele utilizado em espelhos esféricos, é possível demonstrar que a equação das lentes obedece a mesma relação utilizada na equação dos espelhos.
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			Obedecendo a convenção de sinais e considerando que f será positiva se for convergente e negativa se for divergente, teremos
+			\begin{align*}
+				\frac{1}{f} & = \frac{1}{D_O}+\frac{1}{D_I},\\
+				\frac{A'B'}{AB} & = \frac{D_I}{D_O}.
+			\end{align*}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[use optics, scale=0.45,transform shape]
+				
+				\tkzInit[xmin=-6,xmax=6,ymin=-4,ymax=4]
+				%\tkzGrid[color=gray!20]
+				\tkzClip
+				
+				%desenhando eixo principal
+				
+				\tkzDefPoints{-6/0/O,6/0/O'}
+				
+				\draw[draw=black] (O) -- (O');
+				
+				%lado esquerdo
+				
+				\tkzDefPoints{-6/0/O1,0/0/O2,6/0/O1',0/0/O2'}
+				
+				%montando lente
+				
+				\tkzInterCC[R](O1,7cm)(O1',7cm)\tkzGetPoints{a1}{a2}
+				
+				%raio de luz
+				\tkzDefPoints{-5/0/A,-5/2/B,0/2/p1,0/-2/p2,2.5/0/F1,-2.5/0/F2}
+				\tkzDefPointWith[linear,K=2.25](p1,F1) \tkzGetPoint{K}
+				\draw[->-,line width=1.0pt] (B) -- (p1);
+				\draw[->-,line width=1.0pt] (p1) -- (K);
+				\draw[->-,line width=1.0pt] (B) -- (p2);
+				\draw[->-,line width=1.0pt] (p2) --+ (6,0);
+				
+				\tkzDrawPoints[size=0.5cm](F1,F2)
+				\tkzLabelPoint[below=0.25cm](F1){$F_1$}
+				\tkzLabelPoint[below=0.25cm](F2){$F_2$}
+				\tkzLabelPoint[above=0.25cm](B){$A$}
+				\tkzLabelPoint[below=0.25cm](A){$B$}
+				
+				%objeto
+				
+				\draw[->,line width=3.5pt,color=red] (A) -- (B);
+				
+				% distancias objeto e imagem
+				
+				\tkzDefPoints{-5/-4.25/p3,0/-4.25/p4,5/-4.25/p5}
+				\draw (p3.center) to[dim arrow={label=$D_O$}] (p4.center);
+				\draw (p4.center) to[dim arrow={label=$D_i$}] (p5.center);
+				
+				%imagem
+				
+				\tkzDefPoints{5/0/A',5/-2/B'}
+				\draw[->,line width=3.5pt,color=red] (A') -- (B');
+				
+				\tkzDrawPoints[size=0.5cm](A',B')
+				\tkzLabelPoint[below=0.25cm](B'){$A'$}
+				\tkzLabelPoint[above=0.25cm](A'){$B'$}
+				
+				\tkzClipCircle[R](O1,7cm)
+				\tkzFillCircle[color=gray!50,opacity=0.5,draw=black](O1',a1)
+				
+				%centro da lente
+				
+				\tkzDrawSegment(a1,a2)
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Objeto e imagem em uma lente convergente.}
+			\end{figure}
+		\end{column}
+	\end{columns}
 \end{frame}
 
 \section{Aplicações}
@@ -1193,16 +1601,18 @@ content...
 \end{frame}
 
 \begin{frame}{Referências e observações\footnote{Este material está sujeito a modificações. Recomenda-se acompanhamento permanente.}}
+
 	\bibliographystyle{jurabib}
 	\begin{thebibliography}{9}
 		\bibitem{alvarenga}A. Máximo, B. Alvarenga, C. Guimarães, Física. Contexto e aplicações, v.2, 2.ed., São Paulo, Scipione (2016)
 	\end{thebibliography}
-\end{frame}
 
 \vspace*{0.25cm}
 \begin{center}
 	Esta apresentação está disponível para download no endereço\\
 	\href{https://flavianowilliams.github.io/education}{\textcolor{blue}{https://flavianowilliams.github.io/education}}
 \end{center}
-	
+
+\end{frame}
+
 \end{document}

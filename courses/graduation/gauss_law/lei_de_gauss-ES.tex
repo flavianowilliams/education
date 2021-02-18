@@ -1,0 +1,668 @@
+% Aula de eletrostática para o curso de Física II da graduação
+%
+\documentclass[brazil,aspectratio=169]{beamer}
+%
+%carregando preâmbulo
+\input{../../contrib/preamble}
+
+%Título
+
+\title[Eletrostática-GAL]{Lei de Gauss}
+
+% The main document
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Sumário}
+  \tableofcontents
+\end{frame}
+
+\section{Fluxo elétrico}
+
+\subsection{}
+
+\begin{frame}{Definição de fluxo elétrico}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			Definimos fluxo do campo elétrico $\vec{E}$ que atravessa uma área $\Delta A$ como a somatória das linhas de campo elétrico que atravessam perpendicularmente essa área,
+			\begin{equation*}
+				\Delta \Phi_E = (Ecos\theta) \Delta A.
+			\end{equation*}
+			\begin{block}{Fluxo do campo Elétrico}
+				\begin{equation*}
+					\Delta\Phi_E = \vec{E}\cdot\widehat{n}\Delta A.
+				\end{equation*}
+			\end{block}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}
+				\begin{tikzpicture}[scale=0.75, transform shape, x={(-10:1cm)},y={(90:1cm)},z={(210:1cm)}]
+				
+				\filldraw[draw, opacity=0.05] (2,0,0) arc (0:360:2);
+				\draw[line width=1pt,dashed] (2,0,0) arc (0:360:2);
+				%	 \node[right] at (2,0,0) {$i$};
+				\draw[line width=1pt,->] (0,0,0) -- (0,0,1) node[below] {$\hat{n}$};
+				
+				%vetor B
+				\foreach \x in {-1,0,1,2}{
+					\foreach \y in {0}{
+						\draw[line width=1pt,color=gray] (0,-0.5+\x,-1+\x) -- (0,0+\x,0+\x);
+						\draw[line width=1pt,->,color=red] (0,0+\x+\y,0+\x) -- (0,0.5+\x+\y,1+\x) node[left,color=red] {$\vec{E}$};}}
+				
+				\draw[->] (2,2,0) node[right] {$\Delta A$} to [out=180, in=90] (1,1,0) ;
+				\draw [<->] (0,0.25,0.5) arc (180:200:0.5) node[left] {\footnotesize $\theta$};
+				\node at (-2.0,-1.5,1) {$\Delta \Phi_{E}=(Ecos\theta)\Delta A$};
+				\end{tikzpicture}
+				%\input{tikz/fluxo-magnetico.pgf}
+				\caption*{\footnotesize $\Delta\Phi_{E}$: E por area perpendicular a espira.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Fluxo e a orientação do campo elétrico em relação a área dA}
+	\begin{figure}
+		\centering
+		\begin{subfigure}[b]{0.3\textwidth}
+			\centering
+			\begin{tikzpicture}[scale=0.65, transform shape, x={(-10:1cm)},y={(90:1cm)},z={(210:1cm)}]
+			
+			\filldraw[draw, opacity=0.05] (2,0,0) arc (0:360:2);
+			\draw[line width=1pt,dashed] (2,0,0) arc (0:360:2);
+			%	 \node[right] at (2,0,0) {$i$};
+			\draw[line width=1pt,->] (0,0,0) -- (0,0,1) node[below] {$\hat{n}$};
+			
+			%vetor B
+			\foreach \x in {-1,0,1,2}{
+				\foreach \y in {0}{
+					\draw[line width=1pt,color=gray] (0,\x,-1+\x) -- (0,0+\x,0+\x);
+					\draw[line width=1pt,->,color=red] (0,0+\x+\y,0+\x) -- (0,\x+\y,1+\x) node[above,color=red] {$\vec{E}$};}}
+			
+			\draw[->] (2,2,0) node[right] {dA} to [out=180, in=90] (1,1,0) ;
+			
+			\end{tikzpicture}
+			%\input{tikz/fluxo-magnetico-0.pgf}
+			\caption*{\footnotesize Fluxo elétrico  máximo.}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.3\textwidth}
+			\centering
+			\begin{tikzpicture}[scale=0.65, transform shape, x={(-10:1cm)},y={(90:1cm)},z={(210:1cm)}]
+			
+			\filldraw[draw, opacity=0.05] (2,0,0) arc (0:360:2);
+			\draw[line width=1pt,dashed] (2,0,0) arc (0:360:2);
+			%	 \node[right] at (2,0,0) {$i$};
+			\draw[line width=1pt,->] (0,0,0) -- (0,0,0.75) node[below] {$\hat{n}$};
+			
+			%vetor B
+			\foreach \x in {-1,0,1,2}{
+				\foreach \y in {0}{
+					\draw[line width=1pt,color=red] (0,-1+\x,\x) -- (0,0+\x,0+\x);
+					\draw[line width=1pt,->,color=red] (0,0+\x+\y,0+\x) -- (0,1+\x+\y,\x) node[above,color=red] {$\vec{E}$};}}
+			
+			\draw[->] (2,2,0) node[right] {dA} to [out=180, in=90] (1.5,1.5,0) ;
+			\draw [<->] (0,0.25,0) arc (90:180:0.5) node[above,midway] {\footnotesize $90^o$};
+			\end{tikzpicture}
+			%\input{tikz/fluxo-magnetico-90.pgf}
+			\caption*{\footnotesize Fluxo elétrico zero.}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.3\textwidth}
+			\centering
+			\begin{tikzpicture}[scale=0.65, transform shape, x={(-10:1cm)},y={(90:1cm)},z={(210:1cm)}]
+			
+			\filldraw[draw, opacity=0.05] (2,0,0) arc (0:360:2);
+			\draw[line width=1pt,dashed] (2,0,0) arc (0:360:2);
+			%	 \node[right] at (2,0,0) {$i$};
+			\draw[line width=1pt,->] (0,0,0) -- (0,0,0.75) node[below] {$\hat{n}$};
+			
+			%vetor B
+			\foreach \x in {-1,0,1,2}{
+				\foreach \y in {0}{
+					\draw[line width=1pt,color=red] (0,0+\x+\y,0+\x) -- (0,\x+\y,1+\x);
+					\draw[line width=1pt,<-,color=red] (0,\x,-1+\x) -- (0,0+\x,0+\x) node[above,color=red,at start] {$\vec{E}$};}}
+			
+			\draw[->] (2,2,0) node[right] {dA} to [out=180, in=90] (1.5,1.5,0) ;
+			\draw [<->] (0,0,0) arc (210:30:0.25) node[above,midway] {\footnotesize $180^o$};
+			\end{tikzpicture}
+			%\input{tikz/fluxo-magnetico-90.pgf}
+			\caption*{\footnotesize Fluxo elétrico mínimo.}
+		\end{subfigure}
+	\end{figure}
+	\begin{corollary}
+		Se o sentido do campo elétrico é para fora da superfície, o fluxo é positivo. Se for para dentro, o fluxo é negativo e se o campo elétrico é paralelo, o fluxo é zero.
+	\end{corollary}
+\end{frame}
+
+\begin{frame}{Fluxo total em uma superfície fechada}
+	\begin{columns}
+		\begin{column}[c]{0.6\textwidth}
+			O fluxo total do campo elétrico que atravessa uma superfície fechada pode ser dado pela soma dos fluxos que atravessam cada parte dessa superfície,
+			\begin{equation*}
+				\Delta\Phi_E = \sum \vec{E}\cdot\widehat{n}\Delta A.
+			\end{equation*}
+			No limite $\Delta A\rightarrow dA$ a somatória se transforma em uma integral de superfície.
+			\begin{block}{Fluxo do campo Elétrico}
+				\begin{equation*}
+					\Phi_E = \oint \vec{E}\cdot\widehat{n}dA.
+				\end{equation*}
+			\end{block}
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}
+				\includegraphics[scale=0.25]{figuras/figura-1.png}
+				\caption*{\footnotesize Linhas de campo elétrico atravessando uma superfície hipotética e fechada.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\section{Lei de Gauss}
+
+\subsection{}
+
+\begin{frame}{Fluxo elétrico em uma superfície gaussiana}
+	\begin{columns}
+		\begin{column}[t]{0.6\textwidth}
+%	\begin{multicols*}{2}
+			De acordo com a Lei de Gauss, o fluxo total do campo elétrico que atravessa uma superfíce fechada é proporcional a quantidade de carga no interior dessa superfície,
+			\begin{equation*}
+				\Phi_E = \oint \vec{E}\cdot\widehat{n}dA\; \alpha\; q.
+			\end{equation*}
+			Escolhemos convenientemente a constante de
+			\end{column}
+			\begin{column}[t]{0.4\textwidth}
+				  proporcionalidade como $1/\varepsilon_0$, onde $\varepsilon_0 = \SI[per-mode=symbol]{8,8541878176e-12}{\square\coulomb\per\newton\per\square\meter}.$
+				\begin{block}{Lei de Gauss}
+					\begin{equation*}
+						\oint \vec{E}\cdot\widehat{n}dA=\frac{q}{\varepsilon_0}.
+					\end{equation*}
+				\end{block}
+			\end{column}
+		\end{columns}
+%	\end{multicols*}
+		\begin{corollary}
+			Definimos superfície gaussiana como uma superfície hipotética e fechada por onde é possível calcular o fluxo total do campo elétrico que atravessa essa superfície.
+		\end{corollary}
+\end{frame}
+
+\begin{frame}{Relação entre a Lei de Gauss e a Lei de Coulomb.}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			Considere uma superfície gaussiana na forma esférica que engloga uma carga puntiforme q, aplicando a Lei de Gauss temos
+			\begin{align*}
+				\varepsilon_0\oint \vec{E}\cdot\widehat{r}dA & = \varepsilon_0\oint EdA = q,
+			\end{align*}
+			O campo elétrico é igual em qualquer posição na superfície da esfera, assim podemos tratá-lo como constante ao longo da superfície,
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{equation*}
+				\varepsilon_0E\oint dA = q.
+			\end{equation*}
+			A área total da superfície esférica é dado por $4\pi r^2$, onde r é o raio da esfera, portanto
+			\begin{align*}
+				\varepsilon_0E(4\pi r^2) & = q,\\
+				\Aboxed{E(r) & = \frac{1}{4\pi\varepsilon_0}\frac{q}{r^2}.}
+			\end{align*}
+			Podemos concluir que $K=\frac{1}{4\pi\varepsilon_0}$.
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Condutor carregado}
+	\begin{columns}
+		\begin{column}[c]{0.7\textwidth}
+			No caso de um condutor eletrizado, as cargas em excesso estão livres para se moverem e irão se afastar mutuamente se concentrando na superfície, o que implica no interior que
+			\begin{equation*}
+				\Phi_{E}=\oint \vec{E}\cdot \widehat{n}dA = 0.
+			\end{equation*}
+			Na condição de equilíbrio eletrostático teremos $\vec{E}\parallel\widehat{n}$, e para satisfazer a equação acima devemos ter $E=0$.
+		\end{column}
+		\begin{column}[c]{0.3\textwidth}
+			\begin{figure}
+				\includegraphics[scale=0.25]{figuras/figura-2.png}
+				\caption*{\footnotesize Pedaço de metal.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+	\begin{corollary}
+		O campo elétrico de um condutor em equilíbrio eletrostático é zero no seu interior e na superfície é perpendicular a essa superfície.
+	\end{corollary}
+\end{frame}
+
+\section{Aplicações da Lei de Gauss}
+
+\subsection{}
+
+\begin{frame}{Simetria cilíndrica: Fio retilíneo}
+	\begin{columns}
+		\begin{column}[c]{0.6\textwidth}
+			Considere uma barra cilíndrica contendo uma distribuição de cargas $\lambda$. Devido a simetria cilíndrica da distribuição de cargas, é conveniente considerarmos também uma superfície gaussiana com um formato também cilíndrico, pois assim poderemos determinar com uma certa simplicidade o fluxo nas bases e no corpo. O fluxo do campo elétrico é calculado somando o fluxo das bases e da lateral,
+			\begin{equation*}
+				\Phi_E = \Phi_{\text{Base}}+\Phi_{\text{Topo}}+\Phi_{\text{Lateral}}.
+			\end{equation*}
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}
+				\includegraphics[scale=0.25]{figuras/figura-3.png}
+				\caption*{\footnotesize Superfície gaussiana envolvendo um fio retilíneo carregado eletricamente.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Simetria cilíndrica: Fio retilíneo (continuação)}
+	\begin{columns}
+		\begin{column}[t]{0.5\textwidth}
+			Mas, devido a simetria das cargas a componente axial resultante das contribuições do campo elétrico de cada carga elétrica elementar é zero, restando apenas a componente radial. Assim temos para cada contribuição da componente radial
+			\begin{align*}
+				\Phi_{\text{bases}} & = \int_{A_{Base}} Ecos(\SI{90}{\degree})dA,\\
+				\Phi_{\text{lateral}} & = \int_{A_{Lateral}} Ecos(\SI{0}{\degree})dA.
+			\end{align*}
+		\end{column}
+		\begin{column}[t]{0.5\textwidth}
+			Portanto, o fluxo nas bases será zero enquanto que na lateral será
+			\begin{equation*}
+				E\left(2\pi rh\right) = \frac{q}{\varepsilon_0}.
+			\end{equation*}
+			A carga q dentro da superfície gaussiana é dada por $q=\lambda h$, portanto
+			\begin{align*}
+				E\left(2\pi r\bcancel{h}\right) & = \frac{\lambda \bcancel{h}}{\varepsilon_0},\\
+				\Aboxed{E & = \frac{\lambda}{2\pi\varepsilon_0 r}.}
+			\end{align*}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Simetria plana: Placa homogênea}
+	\begin{columns}
+		\begin{column}[t]{0.7\textwidth}
+			Consideramos uma placa infinita, isolante, com uma densidade superficial de carga $\sigma$. Devido a distribuição uniforme de cargas é conveniente adotar uma simetria cilíndrica como mostra a figura ao lado. As componentes do campo elétrico permite que o fluxo da lateral seja zero enquanto que o fluxo nas bases serão máximos, portanto
+			\begin{align*}
+				\varepsilon_0\oint \vec{E}\cdot\widehat{n}dA & = q,\\
+				\varepsilon_0\left(E\bcancel{A}+E\bcancel{A}\right) & = \sigma \bcancel{A},\\
+				\Aboxed{E & = \frac{\sigma}{2\varepsilon_0}.}
+			\end{align*}
+		\end{column}
+		\begin{column}[t]{0.3\textwidth}
+			\begin{figure}
+				\includegraphics[scale=0.3]{figuras/figura-4.png}
+				\caption*{\footnotesize Vista lateral de uma pequena parte de uma placa de grande extensão com uma carga positiva.}
+			\end{figure}
+		\end{column}
+	\end{columns}	
+\end{frame}
+
+\begin{frame}{Simetria esférica: Casca esférica}
+	\begin{columns}
+		\begin{column}[t]{0.7\textwidth}
+			Considere uma casca esférica isolante de raio R carregada uniformemente com uma densidade superficial de carga $\sigma$. Para calcular o campo elétrico em um ponto a uma distância r do centro da casca, usamos uma superfície gaussiana também esférica mas de raio r. Aplicando a Lei de Gauss temos
+			\begin{equation*}
+				\varepsilon_0\oint \vec{E}\cdot\widehat{n}dA = q.
+			\end{equation*}
+			Sabendo que o campo elétrico em uma superfície é perpendicular a ela, podemos dizer que em cada elemento de área temos $\vec{E}\cdot\widehat{n}dA=EdA$.
+		\end{column}
+		\begin{column}[t]{0.3\textwidth}
+			\begin{figure}
+				\includegraphics[scale=0.25]{figuras/figura-5.png}
+				\caption*{\footnotesize Seção reta de uma casca esférica fina, uniformemente carregada, com uma carga q.}
+			\end{figure}
+		\end{column}
+	\end{columns}	
+\end{frame}
+
+\begin{frame}{Simetria esférica: Casca esférica (continuação)}
+	\begin{columns}
+		\begin{column}[t]{0.5\textwidth}
+			Substituindo na Lei de Gauss resulta em
+			\begin{equation*}
+				\varepsilon_0\oint EdA = q.
+			\end{equation*}
+			Podemos também supor que o campo elétrico em qualquer ponto da superfície é o mesmo considerando que a carga está igualmente distribuída, portanto
+			\begin{align*}
+				\varepsilon_0E\oint dA & = q,\\
+				\varepsilon_0EA & = q,
+			\end{align*}
+		\end{column}
+		\begin{column}[t]{0.5\textwidth}
+			onde a área superficial da superfície gaussiana é dada por $A=4\pi r^2$, substituindo
+			\begin{align*}
+				\varepsilon_0E(4\pi r^2) & = q,\\
+				\Aboxed{E & = \frac{1}{4\pi\varepsilon_0}\frac{q}{r^2}.}
+			\end{align*}
+			No caso $r<R$, temos que não haverá cargas no interior da superfície gaussiana, portanto o fluxo deverá ser zero, o que pode ser conseguido se $E=0$.
+		\end{column}
+	\end{columns}	
+\end{frame}
+
+\begin{frame}{Simetria esférica: Esfera maciça}
+	\begin{columns}
+		\begin{column}[t]{0.7\textwidth}
+			Considere uma esfera maciça isolante de raio R carregada uniformemente com uma densidade volumétrica de carga $\rho$. Podemos considerar que a uma distância r do centro da esfera teremos diversas cascas esféricas com uma fina espessura sobrepostas, de modo que a carga total $q'$ inserida na superfície gaussiana é a soma das cargas parciais de cada casca esférica, portanto %Para calcular o campo elétrico em um ponto a uma distância r do centro da esfera, usamos uma superfície gaussiana também esférica mas de raio r. Aplicando a Lei de Gauss temos
+			\begin{equation*}
+			\varepsilon_0\oint \vec{E}\cdot\widehat{n}dA = q',
+			\end{equation*}
+			onde $q'=V\rho$ e $V=\frac{4\pi r^3}{3}$ representa o volume de parte da esfera inserida na superfície gaussiana.
+		\end{column}
+		\begin{column}[t]{0.3\textwidth}
+			\begin{figure}
+				\includegraphics[scale=0.25]{figuras/figura-6.png}
+				\caption*{\footnotesize Superfície gaussiana, com r<R, envolvendo uma parcela q' da carga total q da esfera de raio R.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Simetria esférica: Esfera maciça (continuação)}
+	\begin{columns}
+		\begin{column}[t]{0.5\textwidth}
+			Substituímos na Lei de Gauss e sabendo que a área da gaussiana é igual a $4\pi r^2$,
+			\begin{align*}
+				\varepsilon_0E(\bcancel{4\pi} r^{\bcancel{2}}) & = \frac{\bcancel{4\pi}\rho r^{\bcancel{3}}}{3},\\
+			E & = \frac{\rho}{3\varepsilon_0}r.
+			\end{align*}
+			Porém, torna-se conveniente representar a solução em termos da carga total q, onde $q=\rho\frac{4\pi R^3}{3}$,
+		\end{column}
+		\begin{column}[t]{0.5\textwidth}
+			\begin{equation*}
+				\boxed{E = \frac{q}{4\pi\varepsilon_0 R^3}r,\quad (r<R).}
+			\end{equation*}
+			Se $r\ge R$ o campo elétrico é de uma esfera com distribuição uniforme de carga.
+			\begin{align*}
+				\Aboxed{E & = \frac{1}{4\pi\varepsilon_0}\frac{q}{r^2},\quad (r\ge R).}
+			\end{align*}
+			\alert{Fora da esfera, o campo elétrico torna-se igual a de uma carga puntiforme}.
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Simetria esférica: Esfera maciça (continuação)}
+	\begin{columns}
+		\begin{column}[c]{0.6\textwidth}
+			Podemos resumir a solução encontrada para a esfera maciça isolante na forma abaixo,
+			\begin{equation*}
+				\boxed{E(r) = 
+				\begin{cases}
+					\frac{q}{4\pi\varepsilon_0 R^3}r,\quad & (r<R),\\
+					\frac{1}{4\pi\varepsilon_0}\frac{q}{r^2},\quad & (r\ge R).
+				\end{cases}}
+			\end{equation*}
+			No caso da esfera condutora temos que a carga total q se concentra na superfície, ou seja,
+			\begin{equation*}
+				\boxed{E(r) = 
+				\begin{cases}
+					0,\quad & (r<R),\\
+					\frac{1}{4\pi\varepsilon_0}\frac{q}{r^2},\quad & (r\ge R).
+				\end{cases}}
+			\end{equation*}
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}
+				\begin{tikzpicture}[scale=0.35,transform shape,font=\Large]
+				
+				\begin{scope}[shift={(0,0)}]
+				
+				\tkzInit[xmin=0,xmax=8,ymin=0,ymax=150,ystep=40]
+				%				\tkzGrid[color=gray!20]
+				\tkzClip[space=1.5]
+				
+				\tkzDrawX[label=r,below,noticks]
+				\tkzDrawY[label=E,pos=1.01,above,noticks]
+				
+				\tkzFct[domain=2:8,color=red,line width=1.0pt]{500/x**2}
+				\tkzDefPointByFct(2)\tkzGetPoint{A}
+				\tkzDefPointByFct(4)\tkzGetPoint{B}
+				
+				\tkzFct[domain=0:2,color=red,line width=1.0pt]{60*x}
+				
+				\tkzPointShowCoord[ylabel=$\frac{1}{4\pi\varepsilon_0}\frac{q}{R^2}$,xlabel=$R$](A)
+				
+				\tkzDefPoints{6.5/100/t1,5/2/D,8/160/t2}
+				
+				\draw[->,line width=1.0pt] (t1) -- (B);
+				\tkzText[text centered,opacity=100,fill=gray!20,font=\huge](t1){$\frac{1}{4\pi\varepsilon_0}\frac{q}{r^2}$}
+				\tkzText[color=black](t2){(a)}
+				
+				\end{scope}
+				
+				\begin{scope}[shift={(0,-6)}]
+				
+				\tkzInit[xmin=0,xmax=8,ymin=0,ymax=150,ystep=40]
+				%				\tkzGrid[color=gray!20]
+				\tkzClip[space=1.5]
+				
+				\tkzDrawX[label=r,below,noticks]
+				\tkzDrawY[label=E,pos=1.01,above,noticks]
+				
+				\tkzFct[domain=2:8,color=red,line width=1.0pt]{500/x**2}
+				\tkzDefPointByFct(2)\tkzGetPoint{A}
+				\tkzDefPointByFct(4)\tkzGetPoint{B}
+				
+				\tkzFct[domain=0:2,color=red,line width=1.0pt]{0}
+				
+				\tkzPointShowCoord[ylabel=$\frac{1}{4\pi\varepsilon_0}\frac{q}{R^2}$,xlabel=$R$](A)
+				
+				\tkzDefPoints{8/160/t2}
+
+				\tkzText[color=black](t2){(b)}
+
+				\end{scope}
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Campo elétrico de uma esfera isolante (a) e condutora (b).}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\section{Apêndice}
+
+\subsection{}
+
+\begin{frame}{Transformar um número em notação científica}
+	\begin{corollary}
+		\begin{enumerate}[leftmargin=1.75cm]
+			\item[Passo 1:] Escrever o número incluindo a vírgula.
+			\item[Passo 2:] Andar com a vírgula até que reste somente um número diferente de zero no lado esquerdo.
+			\item[Passo 3:] Colocar no expoente da potência de 10 o número de casas decimais que tivemos que "andar" com a vírgula. Se ao andar com a vírgula o valor do número diminuiu, o expoente ficará positivo, se aumentou o expoente ficará negativo.
+		\end{enumerate}
+	\end{corollary}
+	\begin{exampleblock}{Exemplo}
+		\begin{equation*}
+			6\; 590\; 000\; 000\; 000\; 000,0 = \SI{6,59e15}{}		
+		\end{equation*}
+	\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Conversão de unidades em uma dimensão}
+	\begin{figure}
+		\begin{tikzpicture}[scale=0.65,transform shape,font=\Large]
+		
+		\tkzInit[xmin=-2,xmax=17,ymin=-6,ymax=3]
+		%\tkzGrid[color=gray!20]
+		\tkzClip
+		
+		\tikzset{compass style/.append style={->}}
+		
+		\foreach \x in {1,2,3}{
+			\tkzDefPoint(\x*3-3,0){\x}
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+			\node at (\x*3-3,2) {$\times 10^{3}$};
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+			\node at (\x*3-3,-2) {$\times 10^{-3}$};}
+		
+		\foreach \x in {4,5,6}{
+			\tkzDefPoint(\x*3-3,0){\x}
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+			\node at (\x*3-3,2) {$\times 10^{1}$};
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+			\node at (\x*3-3,-2) {$\times 10^{-1}$};}
+		
+		\tkzDefPoints{-1.5/0/p1,1.5/0/p2,4.5/0/p3,7.5/0/p4,10.5/0/p5,13.5/0/p6,16.5/0/p7}
+		
+		\tkzText(p1){$\si{\pico}\_^{}$}
+		\tkzText(p2){$\si{\nano}\_^{}$}
+		\tkzText(p3){$\si{\micro}\_^{}$}
+		\tkzText(p4){$\si{m}\_^{}$}
+		\tkzText(p5){$\si{\centi}\_^{}$}
+		\tkzText(p6){$\si{\deci}\_^{}$}
+		\tkzText(p7){$\_^{}$}
+		
+		%exemplos
+		
+		\tkzText(3,-3.5){$1\;\text{mm}=1\times 10^{(-1)\times\alert{2}}\;\text{dm}\rightarrow 1\times 10^{-2}\;\text{dm}$}
+		\tkzText(3.25,-4.5){$2,5\;\text{g}=2,5\times 10^{(1)\times\alert{3}}\;\text{mg}\rightarrow2,5\times 10^{3}\;\text{mg}$}
+		\tkzText(3.7,-5.5){$10\;\mu\text{C}=10\times 10^{\left[(-3)\times\alert{1}+(-1)\times\alert{3}\right]}\;\text{C}\rightarrow 10\times 10^{-6}\;\text{C}$}
+		
+		\end{tikzpicture}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Conversão de unidades em duas dimensões}
+	\begin{figure}
+		\begin{tikzpicture}[scale=0.65,transform shape,font=\Large]
+	
+		\tkzInit[xmin=-2,xmax=17,ymin=-6,ymax=3]
+		%\tkzGrid[color=gray!20]
+		\tkzClip
+	
+		\tikzset{compass style/.append style={->}}
+	
+		\foreach \x in {1,2,3}{
+			\tkzDefPoint(\x*3-3,0){\x}
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+			\node at (\x*3-3,2) {$\times 10^{6}$};
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+			\node at (\x*3-3,-2) {$\times 10^{-6}$};}
+		
+		\foreach \x in {4,5,6}{
+			\tkzDefPoint(\x*3-3,0){\x}
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+			\node at (\x*3-3,2) {$\times 10^{2}$};
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+			\node at (\x*3-3,-2) {$\times 10^{-2}$};}
+		
+		\tkzDefPoints{-1.5/0/p1,1.5/0/p2,4.5/0/p3,7.5/0/p4,10.5/0/p5,13.5/0/p6,16.5/0/p7}
+	
+		\tkzText(p1){$\si{\pico}\_^{2}$}
+		\tkzText(p2){$\si{\nano}\_^{2}$}
+		\tkzText(p3){$\si{\micro}\_^{2}$}
+		\tkzText(p4){$\si{m}\_^{2}$}
+		\tkzText(p5){$\si{\centi}\_^{2}$}
+		\tkzText(p6){$\si{\deci}\_^{2}$}
+		\tkzText(p7){$\_^{2}$}
+		
+		%exemplos
+	
+		\tkzText(3.3,-3.5){$1\;\text{mm}^2=1\times 10^{(-2)\times\alert{2}}\;\text{dm}^2\rightarrow 1\times 10^{-4}\;\text{dm}^2$}
+		\tkzText(3.6,-4.5){$2,5\;\text{m}^2=2,5\times 10^{(2)\times\alert{3}}\;\text{mm}^2\rightarrow2,5\times 10^{6}\;\text{mm}^2$}
+		\tkzText(4.1,-5.5){$10\;\mu\text{m}^2=10\times 10^{\left[(-6)\times\alert{1}+(-2)\times\alert{3}\right]}\;\text{m}^2\rightarrow 10\times 10^{-12}\;\text{m}^2$}
+	
+		\end{tikzpicture}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Conversão de unidades em três dimensões}
+	\begin{figure}
+		\begin{tikzpicture}[scale=0.65,transform shape,font=\Large]
+	
+		\tkzInit[xmin=-2,xmax=17,ymin=-6,ymax=3]
+		%\tkzGrid[color=gray!20]
+		\tkzClip
+	
+		\tikzset{compass style/.append style={->}}
+	
+		\foreach \x in {1,2,3}{
+			\tkzDefPoint(\x*3-3,0){\x}
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+			\node at (\x*3-3,2) {$\times 10^{9}$};
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+			\node at (\x*3-3,-2) {$\times 10^{-9}$};}
+		
+		\foreach \x in {4,5,6}{
+			\tkzDefPoint(\x*3-3,0){\x}
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+			\node at (\x*3-3,2) {$\times 10^{3}$};
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+			\node at (\x*3-3,-2) {$\times 10^{-3}$};}
+		
+		\tkzDefPoints{-1.5/0/p1,1.5/0/p2,4.5/0/p3,7.5/0/p4,10.5/0/p5,13.5/0/p6,16.5/0/p7}
+	
+		\tkzText(p1){$\si{\pico}\_^{3}$}
+		\tkzText(p2){$\si{\nano}\_^{3}$}
+		\tkzText(p3){$\si{\micro}\_^{3}$}
+		\tkzText(p4){$\si{m}\_^{3}$}
+		\tkzText(p5){$\si{\centi}\_^{3}$}
+		\tkzText(p6){$\si{\deci}\_^{3}$}
+		\tkzText(p7){$\_^{3}$}
+		
+		%exemplos
+	
+		\tkzText(3.3,-3.5){$1\;\text{mm}^3=1\times 10^{(-3)\times\alert{2}}\;\text{dm}^3\rightarrow 1\times 10^{-6}\;\text{dm}^3$}
+		\tkzText(3.6,-4.5){$2,5\;\text{m}^3=2,5\times 10^{(3)\times\alert{3}}\;\text{mm}^3\rightarrow2,5\times 10^{9}\;\text{mm}^3$}
+		\tkzText(4.1,-5.5){$10\;\mu\text{m}^3=10\times 10^{\left[(-9)\times\alert{1}+(-3)\times\alert{3}\right]}\;\text{m}^3\rightarrow 10\times 10^{-18}\;\text{m}^3$}
+
+		\end{tikzpicture}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Alfabeto grego}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{table}
+				\begin{tabular}[c]{ccc}
+					Alfa & $A$ & $\alpha$\\
+					Beta & $B$ & $\beta$\\
+					Gama & $\Gamma$ & $\gamma$\\
+					Delta & $\Delta$ & $\delta$\\
+					Epsílon & $E$ & $\epsilon$,$\varepsilon$\\
+					Zeta & $Z$ & $\zeta$\\
+					Eta & $H$ & $\eta$\\
+					Teta & $\Theta$ & $\theta$\\
+					Iota & $I$ & $\iota$\\
+					Capa & $K$ & $\kappa$\\
+					Lambda & $\Lambda$ & $\lambda$\\
+					Mi & $M$ & $\mu$
+				\end{tabular}
+			\end{table}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{table}
+				\begin{tabular}[c]{ccc}
+					Ni & $N$ & $\nu$\\
+					Csi & $\Xi$ & $\xi$\\
+					ômicron & $O$ & $o$\\
+					Pi & $\Pi$ & $\pi$\\
+					Rô & $P$ & $\rho$\\
+					Sigma & $\Sigma$ & $\sigma$\\
+					Tau & $T$ & $\tau$\\
+					Ípsilon & $\Upsilon$ & $\upsilon$\\
+					Fi & $\Phi$ & $\phi$,$\varphi$\\
+					Qui & $X$ & $\chi$\\
+					Psi & $\Psi$ & $\psi$\\
+					Ômega & $\Omega$ & $\omega$
+				\end{tabular}
+			\end{table}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Referências e observações\footnote{Este material está sujeito a modificações. Recomenda-se acompanhamento permanente.}}
+\bibliographystyle{jurabib}
+\begin{thebibliography}{9}
+		\bibitem{halliday}D. Halliday, R. Resnick, J. Walker, Fundamentos de física. Eletromagnetismo, v.3, 10. ed., Rio de Janeiro, LTC (2016)
+		\bibitem{randall}R. D. Knight, Física: Uma abordagem estratégica, v.3, 2nd ed., Porto Alegre, Bookman (2009)
+		\bibitem{moyses}H. M. Nussenzveig, Curso de física básica. Eletromagnetismo, v.1, 5. ed., São Paulo, Blucher (2014)
+\end{thebibliography}
+
+\vspace*{0.5cm}
+\begin{center}
+	Esta apresentação está disponível para download no endereço\\
+	\href{https://flavianowilliams.github.io/education}{\textcolor{blue}{https://flavianowilliams.github.io/education}}
+\end{center}
+	
+\end{frame}
+
+\end{document}

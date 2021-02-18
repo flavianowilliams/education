@@ -1,0 +1,77 @@
+\tdplotsetmaincoords{70}{110}
+\begin{tikzpicture}[scale=3, tdplot_main_coords,
+					axis/.style={->,blue,thick},
+					vectora/.style={-stealth,thick},
+					vectorb/.style={-stealth,red,thick}]
+
+	%standard tikz coordinate definition using x, y, z coords
+	\coordinate (O) at (0,0,0);
+	
+	%draw axes
+	\draw[axis] (0,0,0) -- (1,0,0) node[anchor=north east]{$x$};
+	\draw[axis] (0,0,0) -- (0,1,0) node[anchor=north west]{$y$};
+	\draw[axis] (0,0,0) -- (0,0,1) node[anchor=south]{$z$};
+	
+	%configurando estilo das cargas
+	\tikzstyle{s1}=[tdplot_screen_coords, circle, radius=0.005, ball color=gray];
+	\tikzstyle{s2}=[tdplot_screen_coords, right];
+
+	%draw charges
+	\tdplottransformmainscreen{0.3}{0.5}{1.}
+	\node [s1] (n1) at (\tdplotresx,\tdplotresy) {$q_{1}$};
+
+	\tdplottransformmainscreen{0.3}{-0.5}{0.1}
+	\node [s1] (n2) at (\tdplotresx,\tdplotresy) {$q_{2}$};
+
+	\tdplottransformmainscreen{0.6}{-0.4}{1.}
+	\node [s1] (n3) at (\tdplotresx,\tdplotresy) {$q_{3}$};
+
+	\tdplottransformmainscreen{0.9}{0.8}{0.1}
+	\node [s1] (n4) at (\tdplotresx,\tdplotresy) {$q_{4}$};
+
+	\tdplottransformmainscreen{1.3}{0.4}{0.1}
+	\node [s1] (n5) at (\tdplotresx,\tdplotresy) {$q_{5}$};
+
+	\tdplottransformmainscreen{0.9}{0.9}{0.7}
+	\node [s1] (ni) at (\tdplotresx,\tdplotresy) {$q_{i}$};
+
+	\tdplottransformmainscreen{1.0}{1.0}{1.5}
+	\node [s2] (t1) at (\tdplotresx,\tdplotresy) {\normalsize carga de prova};
+
+	%draw a vector from origin to charge
+	\draw[vectora] (O) -- (n1) node[above,midway] {$\vec{r}_{1}$};
+	
+	%draw a vector from origin to charge
+	\draw[vectora] (O) -- (n2) node[above,midway] {$\vec{r}_{2}$};
+	
+	%draw a vector from origin to charge
+	\draw[vectora] (O) -- (n3) node[above,midway] {$\vec{r}_{3}$};
+	
+	%draw a vector from origin to charge
+	\draw[vectora] (O) -- (n4) node[above,midway] {$\vec{r}_{4}$};
+	
+	%draw a vector from origin to charge
+	\draw[vectora] (O) -- (n5) node[right,midway] {$\vec{r}_{5}$};
+	
+	%draw a vector from origin to charge
+	\draw[vectora] (O) -- (ni) node[above,midway] {$\vec{r}_{i}$};
+	
+	%draw a vector from origin to charge
+	\draw[vectorb] (n1) -- (ni) node[right,midway] {$\vec{r}_{1i}$};
+	
+	%draw a vector from origin to charge
+	\draw[vectorb] (n2) -- (ni) node[above,midway] {$\vec{r}_{2i}$};
+	
+	%draw a vector from origin to charge
+	\draw[vectorb] (n3) -- (ni) node[above,midway] {$\vec{r}_{3i}$};
+	
+	%draw a vector from origin to charge
+	\draw[vectorb] (n4) -- (ni) node[right,midway] {$\vec{r}_{4i}$};
+	
+	%draw a vector from origin to charge
+	\draw[vectorb] (n5) -- (ni) node[above,midway] {$\vec{r}_{5i}$};
+	
+	%draw a vector from origin to charge
+	\draw[red,->,line width=1.5pt] (t1) -- (ni);
+	
+\end{tikzpicture}

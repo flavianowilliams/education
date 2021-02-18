@@ -1,0 +1,26 @@
+﻿\begin{tikzpicture}[scale=1,transform shape, font=\large]
+
+		\tkzInit[xmin=-5,xmax=5,ymin=-1,ymax=8.5]
+		%\tkzGrid[color=gray!20]
+		\tkzClip
+
+		\tkzDefPoints{0/0/O, 0/0.25/O', -3/0/A, 3/0/C,0/7/G,-1.5/-0.25/o',-1.75/-0.25/o1}
+		\tkzDefPointsBy[translation = from O to O'](A,C){F,H}
+
+		\draw[dashed,fill=blue!20,opacity=0.25] (C) arc (0:180:3cm and 1cm);
+		\draw[fill=blue!20,opacity=0.25,draw opacity=100] (C) arc (0:-180:3cm and 1cm);
+		\draw[fill=blue!20,opacity=0.25,draw opacity=100] (O') ellipse (3cm and 1cm);
+		\draw (O') ellipse (1.5cm and 0.4cm);
+		\draw (O') ellipse (1.75cm and 0.6cm);
+
+		\draw[->,line width=1.0pt] (O') -- (-1,0) node [above,midway] {r};
+		\draw[->,line width=1.0pt] (O') -- (H) node [above,pos=0.75] {R};
+		\draw[->,line width=1.0pt] (O') -- (G) node [left,pos=0.75] {z};
+		\draw[->,line width=1.0pt] (G) --++ (0,1.5) node [left,pos=0.75] {$d\vec{E}$};
+
+		\draw (o1) to [short dim arrow={label=$dr$}] (o');
+
+		\tkzDrawPoint[color=red,size=0.4cm,fill=red](G)
+		\tkzLabelPoint[right=0.1](G){P}
+
+\end{tikzpicture}

@@ -1,0 +1,31 @@
+﻿\begin{tikzpicture}[scale=1,transform shape,font=\large]
+
+	\tkzInit[xmin=-2,xmax=1.5,ymin=-3,ymax=9]
+	\tkzGrid[color=gray!20]
+	\tkzClip[space=0]
+
+	\tkzDefPoints{0/0/O,0.5/0/o,0/-2/q1,0/2/q2,0/6/P,-0.75/-2/q1',0/8/z}
+
+	\tkzDefPointsBy[translation = from q1 to q1'](q2,P){q2',P'}
+	\tkzDefPointsBy[translation = from O to o](P,q1,q2){P'',q1'',q2''}
+
+	\draw[->,line width=1.0pt] (O) -- (z) node [above] {z};
+	\tkzDrawSegment[dashed](q1,q2)
+
+	\draw (q1) to [dim arrow={label=$d$}] (q2);
+	\draw (o) to [dim arrow'={label'=$z$}] (P'');
+	\draw (q1') to [dim arrow={label=$r_{-}$}] (P');
+	\draw (q2) to [dim arrow={label=$r_{+}$}] (P);
+
+	\node[circle, radius=0.25, ball color=gray!20] at (q1) {$-$};
+	\node[circle, radius=0.25, ball color=gray!20] at (q2) {$+$};
+
+	\draw[->,line width=1.0pt,color=red] (P) --++ (0,1.5) node [right] {$\vec{E}_+$};
+	\draw[->,line width=1.0pt,color=red] (P) --++ (0,-1) node [right] {$\vec{E}_-$};
+%	\draw[->,line width=1.0pt,color=red] (q1'') -- (q2'') node [right,midway] {$\vec{p}$};
+
+	\tkzDrawPoints(O,P)
+	\tkzLabelPoints[right](P)
+	\tkzLabelPoints[below right](O)
+
+\end{tikzpicture}

@@ -1,0 +1,23 @@
+\begin{tikzpicture}[scale=0.6, transform shape]
+
+	\def\nax{0}
+	\def\nay{0}
+	\def\nbx{6}
+	\def\nby{2}
+	\def\nar{1/sqrt((\nax-\nbx)^2+(\nay-\nby)^2)}
+
+	\tikzstyle{s1}=[circle, radius=0.25, ball color=gray];
+
+	\draw [line width=1.0pt, ->] (\nax,\nay) -- ({(\nax-\nbx)*\nar},{(\nay-\nby)*\nar}) node [above] {$\vec{E}_+$};
+	\draw [line width=1.0pt, ->] (-0.16,-0.2) -- (-0.625,-0.78) node [below right] {$\vec{E}_-$};
+	\draw [line width=1.0pt, ->] (0.16,-0.2) -- (0.625,-0.78) node [right,midway] {$\vec{E}_-$};
+
+	\node [s1] (n1) at (\nax,\nay) {p};
+	\node [s1] (n3) at (\nbx,\nby) {+};
+	\node [s1] (n5) at (-4,-5) {-};
+	\node [s1] (n6) at (4,-5) {-};
+
+	\draw [dashed] (n1) -- (n3);
+	\draw [dashed] (n1) -- (n5);
+	\draw [dashed] (n1) -- (n6);
+\end{tikzpicture}

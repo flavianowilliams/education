@@ -1,0 +1,1275 @@
+% Aula de eletrostática para o curso de Física II da graduação
+%
+\documentclass[brazil,aspectratio=169]{beamer}
+%
+%carregando preâmbulo
+\input{../../contrib/preamble}
+
+%Título
+
+\title[Eletrostática-CEL]{Campo elétrico}
+
+% The main document
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Sumário}
+  \tableofcontents
+\end{frame}
+
+\section{Linhas de força}
+
+\subsection{}
+
+\begin{frame}{O conceito de campo elétrico}
+	\doubt Se a interação elestrostática ocorre a distância, como uma carga elétrica percebe a presença de outra?
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\begin{corollary}
+				\begin{itemize}
+					\item[\ding{51}] A presença de uma carga elétrica Q em uma região do espaço produz um campo de interação chamado de campo elétrico que funciona como intermédio entre as cargas elétricas.	
+					\item[\ding{51}] A existência desse campo é verificado através da força exercida em uma carga de prova quando colocada nesta região.
+				\end{itemize}
+			\end{corollary}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}
+				\begin{center}
+					\begin{tikzpicture}[scale=0.75, transform shape]
+					\useasboundingbox (-0.5,-2.5) rectangle (5.5,2.5);
+					\tikzset{>=stealth}
+					\tikzstyle{s1}=[circle, radius=0.25, ball color=gray!50];
+					%linhas de campo resultante%
+					\draw [black,->] (0,0) to [out=19, in=159] (5,0);
+					\draw [black,->] (0,0) to [out=-19, in=-159] (5,0);
+					\draw [black,->] (0,0) to [out=40, in=140] (5,0);
+					\draw [black,->] (0,0) to [out=-40, in=-140] (5,0);
+					\draw [black,->] (0,0) to [out=60, in=120] (5,0);
+					\draw [black,->] (0,0) to [out=-60, in=-120] (5,0);
+					\draw [black,->] (0,0) to [out=80, in=100] (5,0);
+					\draw [black,->] (0,0) to [out=-80, in=-100] (5,0);
+					\draw [black,->] (0,0) to [out=90, in=200] (1,1.5);
+					\draw [black,->] (0,0) to [out=-90, in=-200] (1,-1.5);
+					\draw [black,->] (0,0) to [out=110, in=-110] (0.05,1.25);
+					\draw [black,->] (0,0) to [out=-110, in=110] (0.05,-1.25);
+					\draw [black,<-] (5,0) to [out=90, in=-20] (4,1.5);
+					\draw [black,<-] (5,0) to [out=-90, in=20] (4,-1.5);
+					\draw [black,<-] (5,0) to [out=70, in=-70] (4.95,1.25);
+					\draw [black,<-] (5,0) to [out=-70, in=70] (4.95,-1.25);
+					%cargas%
+					\node [s1] (n1) at (0,0) {$+$};
+					\node [s1] (n2) at (5,0) {$-$};
+					\end{tikzpicture}
+					%\input{tikz/cargas-contrarias.pgf}
+					\caption*{\footnotesize Linhas de força entre duas cargas.}
+				\end{center}		
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{O que são linhas de força?}
+	\begin{block}{Carga de prova}
+		\justifying Partícula carregada cuja carga é pequena quanto possível para que seu campo não interfira nas demais cargas.
+	\end{block}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{figure}
+				\centering
+				\begin{subfigure}[c]{0.45\textwidth}
+					\centering
+					\begin{tikzpicture}[scale=0.45, transform shape]
+					\useasboundingbox (-3.5,-3.5) rectangle (3,3);
+					\tikzset{>=stealth}
+					\tikzstyle{s1}=[circle, radius=0.25, ball color=gray!50];
+					%linhas de campo de cargas individuais%
+					%carga +
+					\draw [black,<->] (-2.5,0) -- (2.5,0);
+					\draw [black,<->] (-2.5*cos{20},-2.5*sin{20})--(2.5*cos{20},2.5*sin{20});
+					\draw [black,<->] (-2.5*cos{40},-2.5*sin{40})--(2.5*cos{40},2.5*sin{40});
+					\draw [black,<->] (-2.5*cos{60},-2.5*sin{60})--(2.5*cos{60},2.5*sin{60});
+					\draw [black,<->] (-2.5*cos{80},-2.5*sin{80})--(2.5*cos{80},2.5*sin{80});
+					\draw [black,<->] (-2.5*cos{90},-2.5*sin{90})--(2.5*cos{90},2.5*sin{90});
+					\draw [black,<->] (-2.5*cos{110},-2.5*sin{110})--(2.5*cos{110},2.5*sin{110});
+					\draw [black,<->] (-2.5*cos{-20},-2.5*sin{-20})--(2.5*cos{-20},2.5*sin{-20});
+					\draw [black,<->] (-2.5*cos{-40},-2.5*sin{-40})--(2.5*cos{-40},2.5*sin{-40});
+					\draw [black,<->] (-2.5*cos{-60},-2.5*sin{-60})--(2.5*cos{-60},2.5*sin{-60});
+					\draw [black,<->] (-2.5*cos{-80},-2.5*sin{-80})--(2.5*cos{-80},2.5*sin{-80});
+					\draw [black,<->](-2.5*cos{-110},-2.5*sin{-110})--(2.5*cos{-110},2.5*sin{-110});
+					%cargas%
+					\node [s1] (n1) at (0,0) {$+$};
+					%texto
+					\node [text justified] (t1) at (2.5,3) {Carga pontual};
+					\draw [red,->,line width=1.5pt] (t1) -- (n1);
+					\end{tikzpicture}
+					%\input{tikz/carga-positiva.pgf}
+				\end{subfigure}
+				\begin{subfigure}[c]{0.45\textwidth}
+					\centering
+					\begin{tikzpicture}[scale=0.45, transform shape]
+					\useasboundingbox (-3.5,-3.5) rectangle (3,3);
+					\tikzset{>=stealth}
+					\tikzstyle{s1}=[circle, radius=0.25, ball color=gray!50];
+					%linhas de campo de cargas individuais%
+					%carga +
+					\draw [black,>-<] (-2.5,0) -- (2.5,0);
+					\draw [black,>-<] (-2.5*cos{20},-2.5*sin{20})--(2.5*cos{20},2.5*sin{20});
+					\draw [black,>-<] (-2.5*cos{40},-2.5*sin{40})--(2.5*cos{40},2.5*sin{40});
+					\draw [black,>-<] (-2.5*cos{60},-2.5*sin{60})--(2.5*cos{60},2.5*sin{60});
+					\draw [black,>-<] (-2.5*cos{80},-2.5*sin{80})--(2.5*cos{80},2.5*sin{80});
+					\draw [black,>-<] (-2.5*cos{90},-2.5*sin{90})--(2.5*cos{90},2.5*sin{90});
+					\draw [black,>-<] (-2.5*cos{110},-2.5*sin{110})--(2.5*cos{110},2.5*sin{110});
+					\draw [black,>-<] (-2.5*cos{-20},-2.5*sin{-20})--(2.5*cos{-20},2.5*sin{-20});
+					\draw [black,>-<] (-2.5*cos{-40},-2.5*sin{-40})--(2.5*cos{-40},2.5*sin{-40});
+					\draw [black,>-<] (-2.5*cos{-60},-2.5*sin{-60})--(2.5*cos{-60},2.5*sin{-60});
+					\draw [black,>-<] (-2.5*cos{-80},-2.5*sin{-80})--(2.5*cos{-80},2.5*sin{-80});
+					\draw [black,>-<](-2.5*cos{-110},-2.5*sin{-110})--(2.5*cos{-110},2.5*sin{-110});
+					%cargas%
+					\node [s1] (n1) at (0,0) {$-$};
+					%texto
+					\node [text width=3.6cm] (t1) at (-2,-3.5) {Linha de campo};
+					\node (vc1) at (-2.5*cos{60},-2.5*sin{60}) {};
+					\draw [red,->,line width=1.5pt] (t1) -- (vc1);
+					\end{tikzpicture}
+					%\input{tikz/carga-negativa.pgf}
+					\end{subfigure}
+				\caption*{\footnotesize Linhas de força de cargas pontuais.}
+			\end{figure}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{itemize}
+				\item[\ding{51}] Michael Faraday utilizou o artifício para mostrar como ocorre a intermediação entre as cargas elétricas.
+				\item[\ding{51}] As linhas de força de um carga positiva divergem para fora enquanto que na carga negativa convergem para dentro.
+			\end{itemize}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Campo elétrico à partir da Lei de Coulomb}
+	A força que uma partícula com carga Q atua na carga de prova q é dado pela lei de	Coulomb
+		\[\vec{F}_{Qq} = k \frac{Qq}{r^{2}_{Qq}} \hat{r}_{Qq}\]
+		\begin{figure}
+			\centering
+			\begin{tikzpicture}[scale=0.6, transform shape]
+			
+			%setup page
+			\useasboundingbox (-3.4,-3) rectangle (8.4,1);
+			
+			%setup styles
+			\tikzstyle{s1}=[circle, radius=0.25, ball color=gray!50];
+			\tikzstyle{s2}=[circle, radius=0.10, ball color=gray!50];
+			
+			%exemplo 1
+			\draw [line width=1.0pt, ->] (0.25,0) -- (1,0) node [pos=0.5,above] {$\vec{F}_{qQ}$};
+			\draw [line width=1.0pt, <-] (4,0) -- (4.75,0) node [pos=0.5,above] {$\vec{F}_{qQ}$};
+			\draw [line width=1.0pt, ->] (5,0) -- (5.75,0) node [pos=0.5,above right] {$\hat{r}_{Qq}$};
+			\node [s1] (n1) at (0,0) {$Q$};
+			\node [s2] (n2) at (5,0) {$q$};
+			\node  at (7.5,0) {$\left(Qq < 0\right)$};
+			\node  at (7.5,-2) {$\left( Qq > 0\right)$};
+			\draw [dashed] (n1) -- (n2);
+			
+			%exemplo 2
+			\draw [line width=1.0pt, <-] (-1,-2) -- (-0.25,-2) node [pos=0.5,below] {$\vec{F}_{Qq}$};
+			\draw [line width=1.0pt, ->] (5,-2) -- (6.0,-2) node [pos=0.5,below] {$\vec{F}_{qQ}$};
+			\draw [line width=1.0pt, ->] (5,-2) -- (5.75,-2) node [pos=0.5,above right] {$\hat{r}_{Qq}$};
+			\node [s1] (n1) at (0,-2) {$Q$};
+			\node [s2] (n2) at (5,-2) {$q$};
+			\draw [dashed] (n1) -- (n2);
+			
+			\end{tikzpicture}
+			%\input{tikz/forca-vetor.pgf}
+			\caption*{\footnotesize Sentido da força em relação ao sinal das cargas.}
+		\end{figure}
+\end{frame}
+
+\begin{frame}{Campo elétrico como grandeza vetorial}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+	\begin{figure}
+		\centering
+		\tdplotsetmaincoords{70}{110}
+		\begin{tikzpicture}
+		[scale=2.5, tdplot_main_coords,
+		axis/.style={->,blue,thick},
+		vectora/.style={tdplot_rotated_coords,stealth-stealth,thick},
+		vectorb/.style={-stealth,thick}]
+		
+		%standard tikz coordinate definition using x, y, z coords
+		\coordinate (O) at (0,0,0);
+		
+		%draw axes
+		\draw[axis] (0,0,0) -- (1,0,0) node[anchor=north east]{$x$};
+		\draw[axis] (0,0,0) -- (0,1,0) node[anchor=north west]{$y$};
+		\draw[axis] (0,0,0) -- (0,0,1) node[anchor=south]{$z$};
+		
+		
+		\foreach \x in {0,30,...,180}
+		\tdplotsetrotatedcoords{\x}{0}{0}
+		\draw[vectora] (-0.8,0,0) -- (0.8,0,0);
+		
+		\foreach \x in {0,30,...,180}
+		\tdplotsetrotatedcoords{0}{\x}{0}
+		\draw[vectora] (-0.8,0,0) -- (0.8,0,0);
+		
+		\foreach \x in {0,30,...,180}
+		\tdplotsetrotatedcoords{0}{0}{\x}
+		\draw[vectora] (-0.8,0,0) -- (0.8,0,0);
+		
+		%configurando estilo das cargas
+		\tikzstyle{s1}=[tdplot_screen_coords, circle, radius=0.001, ball color=gray!50];
+		%draw charges
+		\tdplottransformmainscreen{0.}{0.}{0.}
+		\node [s1] (n1) at (\tdplotresx,\tdplotresy) {Q};
+		
+		%draw a vector from origin to charge
+		
+		\tdplotsetcoord{P1}{1.0}{90}{45}
+		\tdplotsetcoord{P2}{1.4}{90}{45}
+		
+		\draw[vectorb] (n1) -- (P2);
+		\draw[vectorb,red] (P1) -- (P2) node[right,at end,pos=0.9] {$\vec{E}$};
+		
+		\tdplottransformmainscreen{0.71}{0.71}{0.0}
+		\node [s1] (n2) at (\tdplotresx,\tdplotresy) {\tiny q};
+		
+		\end{tikzpicture}
+		%\input{tikz/carga-3d.pgf}
+		\caption*{\footnotesize Linhas de força da carga Q no espaço.}
+	\end{figure}
+\end{column}
+	\begin{column}[c]{0.4\textwidth}
+	\begin{align*}
+		\vec{F}_{qQ} & = \left[k\frac{Q}{r^{2}_{qQ}}\hat{r}_{qQ}\right]q\\
+		\vec{F}_{qQ} & = \vec{E}\left(r_{qQ}\right)q
+	\end{align*}
+	\begin{block}{Campo elétrico de uma carga puntiforme}
+		\[\vec{E}\left(r_{qQ}\right) = k \frac{Q}{r^{2}_{qQ}} \hat{r}_{qQ}\]
+	\end{block}
+	\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Características do campo elétrico}
+	\begin{columns}
+		\begin{column}{0.55\textwidth}
+	\begin{corollary}
+			A direção e o sentido do vetor $\vec{E}$ são dados pela direção e pelo sentido da força que atua na carga de prova positiva, ou seja,
+		\begin{itemize}
+			\item[\ding{51}] Se q>0, o campo elétrico $\vec{E}$ e a força $\vec{F}$ tem o mesmo sentido;
+			\item[\ding{51}] Se q<0, o campo elétrico $\vec{E}$ e a força $\vec{F}$ tem sentidos opostos.
+		\end{itemize}
+	\end{corollary}
+		\end{column}
+		\begin{column}{0.45\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.4, transform shape,font=\Large]
+				
+				%setup page
+				\useasboundingbox (-1.4,-7) rectangle (8.4,0);
+				
+				%setup styles
+				\tikzstyle{s1}=[circle, radius=0.25, ball color=gray!50];
+				\tikzstyle{s2}=[circle, radius=0.10, ball color=gray!50];
+
+				%exemplo 1
+				\coordinate (c1) at (0,0);
+				\coordinate (c2) at (5,0);
+				
+				\draw [dashed] (c1) -- (c2);
+				\draw [line width=1.0pt, <-,color=red] (3.5,0) -- (4.75,0) node [pos=0.5,above left] {$\vec{F}$};
+				\draw [line width=1.0pt, ->,color=blue] (5.25,0) -- (6,0) node [pos=0.5,above right] {$\vec{E}$};
+				\node [s1] (n1) at (c1) {$+$};
+				\node [s2] (n2) at (c2) {$-$};
+				\node  at (8,0) {$\left(Qq < 0\right)$};
+				
+				%exemplo 2
+				\coordinate (c1) at (0,-2);
+				\coordinate (c2) at (5,-2);
+
+				\draw [dashed] (c1) -- (c2);
+				\draw [line width=1.0pt, <-,color=red] (3.5,-2) -- (4.25,-2) node [pos=0.5,below left] {$\vec{F}$};
+				\draw [line width=1.0pt, <-,color=blue] (4,-2) -- (4.75,-2) node [pos=0.5,above] {$\vec{E}$};
+				\node [s1] (n1) at (c1) {$-$};
+				\node [s2] (n2) at (c2) {$+$};
+				\node  at (8,-2) {$\left( Qq < 0\right)$};
+				
+				%exemplo 3
+				\coordinate (c1) at (0,-4);
+				\coordinate (c2) at (5,-4);
+
+				\draw [dashed] (c1) -- (c2);
+				\draw [line width=1.0pt, ->,color=red] (5.25,-4) -- (6.5,-4) node [pos=0.5,below right] {$\vec{F}$};
+				\draw [line width=1.0pt, ->,color=blue] (5.25,-4) -- (6,-4) node [pos=0.5,above] {$\vec{E}$};
+				\node [s1] (n1) at (c1) {$+$};
+				\node [s2] (n2) at (c2) {$+$};
+				\node  at (8,-4) {$\left( Qq > 0\right)$};
+				
+				%exemplo 4
+				\coordinate (c1) at (0,-6);
+				\coordinate (c2) at (5,-6);
+				
+				\draw [dashed] (c1) -- (c2);
+				\draw [line width=1.0pt, ->,color=red] (5.25,-6) -- (6.5,-6) node [pos=0.5,above right] {$\vec{F}$};
+				\draw [line width=1.0pt, <-,color=blue] (4,-6) -- (4.75,-6) node [pos=0.5,above left] {$\vec{E}$};
+				\node [s1] (n1) at (c1) {$-$};
+				\node [s2] (n2) at (c2) {$-$};
+				\node  at (8,-6) {$\left( Qq > 0\right)$};
+				
+				\end{tikzpicture}
+				%\input{tikz/forca-campo-eletrico-vetor.pgf}
+				\caption*{\footnotesize Sentido da força e campo elétrico em relação ao sinal das cargas.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+	\begin{corollary}
+		A unidade de medida do campo elétrico no SI é Newton/Coulomb.
+	\end{corollary}
+\end{frame}
+
+\section{Distribuição discreta de cargas}
+
+\subsection{}
+
+\begin{frame}{Distribuição discreta de cargas puntiformes}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			Sabendo que $\vec{E}=\frac{\vec{F}}{q}$, e que  $\vec{F}_q=\vec{F}_{q1}+\vec{F}_{q2}+\cdots$, podemos afirmar que para uma distribuição de cargas teremos
+			\begin{align*}
+				\frac{\vec{F}_{\text{\tiny p}}}{q_{\text{\tiny p}}}=\frac{\vec{F}_{p1}}{q_{\text{\tiny p}}}+\frac{\vec{F}_{p2}}{q_{\text{\tiny p}}}+\frac{\vec{F}_{p3}}{q_{\text{\tiny p}}}+\cdots
+			\end{align*}
+			O campo elétrico $\vec{E}$, existente no ponto p, é dado pela resultante dos campos $\vec{E}_{p1}$, $\vec{E}_{p2}$,..., produzidos separadamente pelas cargas $q_1$, $q_2$, ...,
+			\begin{align*}
+				\vec{E}_p = \vec{E}_{p1}+\vec{E}_{p2}+\vec{E}_{p3}+\cdots.
+			\end{align*}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.5, transform shape, font=\huge]
+				
+				\def\nax{0}
+				\def\nay{0}
+				\def\nbx{5}
+				\def\nby{1.5}
+				\def\nar{1.5/sqrt((\nax-\nbx)^2+(\nay-\nby)^2)}
+				
+				\tikzstyle{s1}=[circle, radius=0.25, ball color=gray!50];
+				
+				\draw [line width=1.0pt, ->] (\nax,\nay) -- ({(\nax-\nbx)*\nar},{(\nay-\nby)*\nar}) node [above left] {$\vec{E}_+$};
+				\draw [line width=1.0pt, ->] (-0.16,-0.2) -- (-0.94,-1.17) node [below right] {$\vec{E}_-$};
+				\draw [line width=1.0pt, ->] (0.16,-0.2) -- (0.94,-1.17) node [right] {$\vec{E}_-$};
+				
+				\node [s1] (n1) at (\nax,\nay) {$q_p$};
+				\node [s1] (n3) at (\nbx,\nby) {$q_+$};
+				\node [s1] (n5) at (-4,-5) {$q_-$};
+				\node [s1] (n6) at (4,-5) {$q_-$};
+				
+				\draw [dashed] (n1) -- (n3);
+				\draw [dashed] (n1) -- (n5);
+				\draw [dashed] (n1) -- (n6);
+				\end{tikzpicture}
+				%\input{tikz/cargas-distribuicao.pgf}
+				\caption*{\footnotesize Campos elétricos $\vec{E}$ no ponto p.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Campo de várias cargas pontuais}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tiny}
+					\tdplotsetmaincoords{70}{110}
+					\begin{tikzpicture}[scale=3, tdplot_main_coords,
+						axis/.style={->,blue,thick},
+						vectora/.style={-stealth,thick},
+						vectorb/.style={-stealth,red,thick}]
+		
+						%standard tikz coordinate definition using x, y, z coords
+						\coordinate (O) at (0,0,0);
+		
+						%draw axes
+						\draw[axis] (0,0,0) -- (1,0,0) node[anchor=north east]{$x$};
+						\draw[axis] (0,0,0) -- (0,1,0) node[anchor=north west]{$y$};
+						\draw[axis] (0,0,0) -- (0,0,1) node[anchor=south]{$z$};
+		
+						%configurando estilo das cargas
+						\tikzstyle{s1}=[tdplot_screen_coords, circle, radius=0.005, ball color=gray!50];
+						\tikzstyle{s2}=[tdplot_screen_coords, right];
+		
+						%draw charges
+						\tdplottransformmainscreen{0.3}{0.5}{1.}
+						\node [s1] (n1) at (\tdplotresx,\tdplotresy) {$q_{1}$};
+		
+						\tdplottransformmainscreen{0.3}{-0.5}{0.1}
+						\node [s1] (n2) at (\tdplotresx,\tdplotresy) {$q_{2}$};
+		
+						\tdplottransformmainscreen{0.6}{-0.4}{1.}
+						\node [s1] (n3) at (\tdplotresx,\tdplotresy) {$q_{3}$};
+		
+						\tdplottransformmainscreen{0.9}{0.8}{0.1}
+						\node [s1] (n4) at (\tdplotresx,\tdplotresy) {$q_{4}$};
+		
+						\tdplottransformmainscreen{1.3}{0.4}{0.1}
+						\node [s1] (n5) at (\tdplotresx,\tdplotresy) {$q_{5}$};
+		
+						\tdplottransformmainscreen{0.9}{0.9}{0.7}
+						\node [s1] (ni) at (\tdplotresx,\tdplotresy) {$Q_{i}$};
+		
+						\tdplottransformmainscreen{1.0}{1.0}{1.5}
+						\node [s2] (t1) at (\tdplotresx,\tdplotresy) {\normalsize carga de prova};
+		
+						%draw a vector from origin to charge
+						\draw[vectora] (O) -- (n1) node[above,midway] {$\vec{r}_{1}$};
+		
+						%draw a vector from origin to charge
+						\draw[vectora] (O) -- (n2) node[above,midway] {$\vec{r}_{2}$};
+		
+						%draw a vector from origin to charge
+						\draw[vectora] (O) -- (n3) node[above,midway] {$\vec{r}_{3}$};
+		
+						%draw a vector from origin to charge
+						\draw[vectora] (O) -- (n4) node[above,midway] {$\vec{r}_{4}$};
+		
+						%draw a vector from origin to charge
+						\draw[vectora] (O) -- (n5) node[right,midway] {$\vec{r}_{5}$};
+		
+						%draw a vector from origin to charge
+						\draw[vectora] (O) -- (ni) node[above,midway] {$\vec{r}_{i}$};
+		
+						%draw a vector from origin to charge
+						\draw[vectorb] (n1) -- (ni) node[right,midway] {$\vec{r}_{i1}$};
+		
+						%draw a vector from origin to charge
+						\draw[vectorb] (n2) -- (ni) node[above,midway] {$\vec{r}_{i2}$};
+		
+						%draw a vector from origin to charge
+						\draw[vectorb] (n3) -- (ni) node[above,midway] {$\vec{r}_{i3}$};
+		
+						%draw a vector from origin to charge
+						\draw[vectorb] (n4) -- (ni) node[right,midway] {$\vec{r}_{i4}$};
+		
+						%draw a vector from origin to charge
+						\draw[vectorb] (n5) -- (ni) node[above,midway] {$\vec{r}_{i5}$};
+		
+						%draw a vector from origin to charge
+						\draw[red,->,line width=1.5pt] (t1) -- (ni);
+		
+					\end{tikzpicture}
+				\end{tiny}
+				%\input{tikz/distribuicao-cargas.pgf}
+				\caption*{\footnotesize Distância relativa entre cargas $q_j$ e a carga $q_i$.}
+			\end{figure}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{eqnarray}
+				\vec{r}_{ij} & = & \vec{r}_{j} - \vec{r}_{i}\nonumber\\
+				\hat{r}_{ij} & = & \frac{\vec{r}_{j} - \vec{r}_{i}}{\left|\vec{r}_{j} - \vec{r}_{i}\right|}\nonumber
+			\end{eqnarray}
+			\begin{block}{Campo elétrico de uma distribuição puntiforme}
+				\[\vec{E}_{i} = k\sum_{j\neq i}\frac{Q_{i}}{r^{2}_{ij}}\hat{r}_{ij}\]
+			\end{block}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Linhas de força de duas cargas pontuais}
+\begin{figure}
+	\centering
+	\begin{subfigure}[b]{0.45\textwidth}
+		\centering
+		\begin{tikzpicture}[scale=0.6, transform shape]
+		\useasboundingbox (-0.5,-2.5) rectangle (5.5,2.5);
+		\tikzset{>=stealth}
+		\tikzstyle{s1}=[circle, radius=0.25, ball color=gray!50];
+		%linhas de campo resultante%
+		\draw [black,->] (0,0) to [out=19, in=159] (5,0);
+		\draw [black,->] (0,0) to [out=-19, in=-159] (5,0);
+		\draw [black,->] (0,0) to [out=40, in=140] (5,0);
+		\draw [black,->] (0,0) to [out=-40, in=-140] (5,0);
+		\draw [black,->] (0,0) to [out=60, in=120] (5,0);
+		\draw [black,->] (0,0) to [out=-60, in=-120] (5,0);
+		\draw [black,->] (0,0) to [out=80, in=100] (5,0);
+		\draw [black,->] (0,0) to [out=-80, in=-100] (5,0);
+		\draw [black,->] (0,0) to [out=90, in=200] (1,1.5);
+		\draw [black,->] (0,0) to [out=-90, in=-200] (1,-1.5);
+		\draw [black,->] (0,0) to [out=110, in=-110] (0.05,1.25);
+		\draw [black,->] (0,0) to [out=-110, in=110] (0.05,-1.25);
+		\draw [black,<-] (5,0) to [out=90, in=-20] (4,1.5);
+		\draw [black,<-] (5,0) to [out=-90, in=20] (4,-1.5);
+		\draw [black,<-] (5,0) to [out=70, in=-70] (4.95,1.25);
+		\draw [black,<-] (5,0) to [out=-70, in=70] (4.95,-1.25);
+		%cargas%
+		\node [s1] (n1) at (0,0) {$+$};
+		\node [s1] (n2) at (5,0) {$-$};
+		\end{tikzpicture}
+		%\input{tikz/cargas-contrarias.pgf}
+		\caption*{\footnotesize Cargas com sinais contrários}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.4\textwidth}
+		\centering
+		\begin{tikzpicture}[scale=0.6, transform shape]
+		\useasboundingbox (-0.5,-2.5) rectangle (5.5,2.5);
+		\tikzset{>=stealth}
+		\tikzstyle{s1}=[circle, radius=0.25, ball color=gray!50];
+		%linhas de campo resultante%
+		\draw [black,->] (0,0) to [out=0, in=270] (2.5,2.0);
+		\draw [black,->] (0,0) to [out=0, in=-270] (2.5,-2.0);
+		\draw [black,->] (0,0) to [out=10, in=260] (2.0,2.5);
+		\draw [black,->] (0,0) to [out=-10, in=-260] (2.0,-2.5);
+		\draw [black,->] (0,0) to [out=30, in=250] (1.3,1.5);
+		\draw [black,->] (0,0) to [out=-30, in=-250] (1.3,-1.5);
+		\draw [black,->] (0,0) to [out=50, in=240] (0.6,0.7);
+		\draw [black,->] (0,0) to [out=-50, in=-240] (0.6,-0.7);
+		%
+		\draw [black,->] (5,0) to [out=180, in=270] (2.5,2.0);
+		\draw [black,->] (5,0) to [out=-180, in=-270] (2.5,-2.0);
+		\draw [black,->] (5,0) to [out=170, in=280] (3.0,2.5);
+		\draw [black,->] (5,0) to [out=-170, in=-280] (3.0,-2.5);
+		\draw [black,->] (5,0) to [out=150, in=290] (3.7,1.5);
+		\draw [black,->] (5,0) to [out=-150, in=-290] (3.7,-1.5);
+		\draw [black,->] (5,0) to [out=130, in=300] (4.4,0.7);
+		\draw [black,->] (5,0) to [out=-130, in=-300] (4.4,-0.7);
+		%cargas%
+		\node [s1] (n1) at (0,0) {$+$};
+		\node [s1] (n2) at (5,0) {$+$};
+		\end{tikzpicture}
+		%\input{tikz/cargas-iguais.pgf}
+		\caption*{\footnotesize Cargas com sinais iguais}
+	\end{subfigure}
+\end{figure}
+	\begin{corollary}
+		As linhas de força nunca se cruzam, pois isso representaria a existência de dois valores possíveis para o campo elétrico no mesmo ponto!
+	\end{corollary}
+\end{frame}
+
+\section{Dipolo elétrico}
+
+\subsection{}
+
+\begin{frame}[t]{Campo elétrico de um dipolo elétrico}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{corollary}
+				\begin{itemize}
+					\item [\ding{51}] Um dipolo elétrico é constituído por duas cargas de mesma intensidade mas com sinais contrários separadas a uma certa distância uma da outra;
+					\item [\ding{51}] O vetor campo elétrico resultante num ponto qualquer é sempre tangente a linha de campo que passa por esse ponto.
+				\end{itemize}
+				
+			\end{corollary}
+		\end{column}
+	\begin{column}[c]{0.5\textwidth}
+	\begin{figure}
+		\centering
+		\begin{tikzpicture}[scale=0.7, transform shape]
+		\tikzstyle{s1}=[circle, radius=0.25, ball color=gray!50];
+		%linhas de campo resultante%
+		\draw [black] (0,0) to [out=20, in=160] (5,0);
+		\draw [black] (0,0) to [out=-20, in=-160] (5,0);
+		\draw [black] (0,0) to [out=38, in=142] (5,0);
+		\draw [black] (0,0) to [out=-38, in=-142] (5,0);
+		\draw [black] (0,0) to [out=56, in=124] (5,0);
+		\draw [black] (0,0) to [out=-56, in=-124] (5,0);
+		\draw [black] (0,0) to [out=75, in=105] (5,0);
+		\draw [black] (0,0) to [out=-75, in=-105] (5,0);
+		\draw [black] (0,0) to [out=90, in=200] (0.9,1.5);
+		\draw [black] (0,0) to [out=-90, in=-200] (0.9,-1.5);
+		\draw [black] (0,0) to [out=110, in=-110] (0.05,1.25);
+		\draw [black] (0,0) to [out=-110, in=110] (0.05,-1.25);
+		\draw [black] (5,0) to [out=90, in=-20] (4.1,1.5);
+		\draw [black] (5,0) to [out=-90, in=20] (4.1,-1.5);
+		\draw [black] (5,0) to [out=70, in=-70] (4.95,1.25);
+		\draw [black] (5,0) to [out=-70, in=70] (4.95,-1.25);
+		%linhas de campo de cargas individuais%
+		%carga +
+		\draw [dashed,<->,black] (-2.5,0) -- (2.5,0);
+		\draw [dashed,<->, black] (-2.5*cos{20},-2.5*sin{20})--(5*cos{20},5*sin{20});
+		\draw [dashed,<->,black] (-2.5*cos{40},-2.5*sin{40})--(2.5*cos{40},2.5*sin{40});
+		\draw [dashed,<->,black] (-2.5*cos{60},-2.5*sin{60})--(2.5*cos{60},2.5*sin{60});
+		\draw [dashed,<->,black] (-2.5*cos{80},-2.5*sin{80})--(2.5*cos{80},2.5*sin{80});
+		\draw [dashed,<->,black] (-2.5*cos{90},-2.5*sin{90})--(2.5*cos{90},2.5*sin{90});
+		\draw [dashed,<->,black] (-2.5*cos{110},-2.5*sin{110})--(2.5*cos{110},2.5*sin{110});
+		\draw [dashed,<->,black] (-2.5*cos{-20},-2.5*sin{-20})--(2.5*cos{-20},2.5*sin{-20});
+		\draw [dashed,<->,black] (-2.5*cos{-40},-2.5*sin{-40})--(2.5*cos{-40},2.5*sin{-40});
+		\draw [dashed,<->,black] (-2.5*cos{-60},-2.5*sin{-60})--(2.5*cos{-60},2.5*sin{-60});
+		\draw [dashed,<->,black] (-2.5*cos{-80},-2.5*sin{-80})--(2.5*cos{-80},2.5*sin{-80});
+		\draw [dashed,<->,black](-2.5*cos{-110},-2.5*sin{-110})--(2.5*cos{-110},2.5*sin{-110});
+		%carga -
+		\draw [dashed,>-<,black] (2.5,0) -- (7.5,0);
+		\draw [dashed,>-<,black] (5-2.5*cos{20},-2.5*sin{20})--(5+2.5*cos{20},2.5*sin{20});
+		\draw [dashed,>-<,black] (5-2.5*cos{40},-2.5*sin{40})--(5+2.5*cos{40},2.5*sin{40});
+		\draw [dashed,>-<,black] (5-2.5*cos{60},-2.5*sin{60})--(5+2.5*cos{60},2.5*sin{60});
+		\draw [dashed,>-<,black] (5-2.5*cos{80},-2.5*sin{80})--(5+2.5*cos{80},2.5*sin{80});
+		\draw [dashed,>-<,black] (5-2.5*cos{90},-2.5*sin{90})--(5+2.5*cos{90},2.5*sin{90});
+		\draw [dashed,>-<,black](5-2.5*cos{110},-2.5*sin{110})--(5+2.5*cos{110},2.5*sin{110});
+		\draw [dashed,>-<,black] (5-2.5*cos{-20},-2.5*sin{-20})--(5+2.5*cos{-20},2.5*sin{-20});
+		\draw [dashed,>-<,black] (5-2.5*cos{-40},-2.5*sin{-40})--(5+2.5*cos{-40},2.5*sin{-40});
+		\draw [dashed,>-<,black] (5-2.5*cos{-60},-2.5*sin{-60})--(5+2.5*cos{-60},2.5*sin{-60});
+		\draw [dashed,>-<,black] (5-2.5*cos{-80},-2.5*sin{-80})--(5+2.5*cos{-80},2.5*sin{-80});
+		\draw [dashed,>-<,black](5-2.5*cos{-110},-2.5*sin{-110})--(5+2.5*cos{-110},2.5*sin{-110});
+		%campo eletrico resultante
+		\draw [line width=0.75pt, ->, green] (2.5,0.91) -- (2.5+0.4*cos{20}+0.4*cos{-20},0.91+0.4*sin{20}+0.4*sin{-20});
+		\draw [line width=0.75pt, ->, green] (3.49,1.27) -- (3.49+0.4*cos{20}+0.54*cos{-40},1.27+0.4*sin{20}+0.45*sin{-40});
+		\draw [line width=0.75pt, ->, green] (4.13,1.5) -- (4.13+0.35*cos{20}+0.5*cos{-60},1.5+0.35*sin{20}+0.5*sin{-60});
+		\draw [line width=0.75pt, ->, green] (4.7,1.71) -- (4.7+0.2*cos{20}+0.7*cos{-80},1.71+0.2*sin{20}+0.7*sin{-80});
+		%vetores campo eletrico
+		\draw [line width=0.75pt, ->, red] (2.5,0.91) -- (2.5+0.4*cos{20},0.91+0.4*sin{20});
+		\draw [line width=0.75pt, ->, red] (2.5,0.91) -- (2.5+0.4*cos{-20},0.91+0.4*sin{-20});
+		\draw [line width=0.75pt, ->, red] (3.49,1.27) -- (3.49+0.4*cos{20},1.27+0.4*sin{20});
+		\draw [line width=0.75pt, ->, red] (3.49,1.27) -- (3.49+0.45*cos{-40},1.27+0.45*sin{-40});
+		\draw [line width=0.75pt, ->, red] (4.13,1.5) -- (4.13+0.35*cos{20},1.5+0.35*sin{20});
+		\draw [line width=0.75pt, ->, red] (4.13,1.5) -- (4.13+0.5*cos{-60},1.5+0.5*sin{-60});
+		\draw [line width=0.75pt, ->, red] (4.7,1.71) -- (4.7+0.2*cos{20},1.71+0.2*sin{20});
+		\draw [line width=0.75pt, ->, red] (4.7,1.71) -- (4.7+0.7*cos{-80},1.71+0.7*sin{-80});
+		%cargas%
+		\node [s1] (n1) at (0,0) {$+$};
+		\node [s1] (n2) at (5,0) {$-$};
+		\end{tikzpicture}
+		%\input{tikz/cargas-vetores.pgf}
+		\caption*{\footnotesize Vetor campo elétrico resultante de um dipolo elétrico.}
+	\end{figure}
+	\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Campo elétrico de um dipolo elétrico (continuação)}
+	\begin{columns}
+		\begin{column}[t]{0.5\textwidth}
+			Na figura ao lado, o campo elétrico resultante em um ponto P é dado por
+			\begin{align*}
+				E & = E_++E_-,\\
+				E & = K\frac{(+q)}{r^2_+}+K\frac{(-q)}{r^2_-},
+			\end{align*}
+			onde podemos perceber que
+			\begin{align*}
+				r_+ & = z-\frac{d}{2},\\
+				r_- & = z+\frac{d}{2}.
+			\end{align*}
+		\end{column}
+		\begin{column}[t]{0.5\textwidth}
+			\begin{figure}
+				\vspace*{-1cm}
+				\begin{tikzpicture}[scale=0.45,transform shape,font=\large]
+				
+				\tkzInit[xmin=-2,xmax=1.5,ymin=-3,ymax=9]
+				%\tkzGrid[color=gray!20]
+				\tkzClip[space=0]
+				
+				\tkzDefPoints{0/0/O,0.5/0/o,0/-2/q1,0/2/q2,0/6/P,-0.75/-2/q1',0/8/z}
+				
+				\tkzDefPointsBy[translation = from q1 to q1'](q2,P){q2',P'}
+				\tkzDefPointsBy[translation = from O to o](P,q1,q2){P'',q1'',q2''}
+				
+				\draw[->,line width=1.0pt] (O) -- (z) node [above] {z};
+				\tkzDrawSegment[dashed](q1,q2)
+				
+				\draw (q1) to [dim arrow={label=$d$}] (q2);
+				\draw (o) to [dim arrow'={label'=$z$}] (P'');
+				\draw (q1') to [dim arrow={label=$r_{-}$}] (P');
+				\draw (q2) to [dim arrow={label=$r_{+}$}] (P);
+				
+				\node[circle, radius=0.25, ball color=gray!20] at (q1) {$-$};
+				\node[circle, radius=0.25, ball color=gray!20] at (q2) {$+$};
+				
+				\draw[->,line width=1.0pt,color=red] (P) --++ (0,1.5) node [right] {$\vec{E}_+$};
+				\draw[->,line width=1.0pt,color=red] (P) --++ (0,-1) node [right] {$\vec{E}_-$};
+				%	\draw[->,line width=1.0pt,color=red] (q1'') -- (q2'') node [right,midway] {$\vec{p}$};
+				
+				\tkzDrawPoints(O,P)
+				\tkzLabelPoints[right](P)
+				\tkzLabelPoints[below right](O)
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Dipolo elétrico.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Campo elétrico de um dipolo elétrico (continuação)}
+	\begin{columns}
+		\begin{column}[t]{0.5\textwidth}
+			Temos assim
+			\begin{align*}
+				E & = Kq\left[\frac{1}{\left(z-\frac{d}{2}\right)^2}-\frac{1}{\left(z+\frac{d}{2}\right)^2}\right],\\
+				& = Kq\left[\frac{1}{\left[\alert{\frac{z^2}{z^2}}\left(z-\frac{d}{2}\right)\right]^2}-\frac{1}{\left[\alert{\frac{z^2}{z^2}}\left(z+\frac{d}{2}\right)\right]^2}\right],\\
+				& = \frac{kq}{z^2}\left[\frac{1}{\left(\frac{\bcancel{z}}{\bcancel{z}}-\frac{d}{2z}\right)^2}-\frac{1}{\left(\frac{\bcancel{z}}{\bcancel{z}}+\frac{d}{2z}\right)^2}\right],\\
+			\end{align*}
+		\end{column}
+		\begin{column}[t]{0.5\textwidth}
+			\begin{align*}
+				& = \frac{kq}{z^2}\left[\frac{1}{\left(1-\frac{d}{2z}\right)^2}-\frac{1}{\left(1+\frac{d}{2z}\right)^2}\right],\\
+				& = \frac{kq}{z^2}\frac{\left[\left(1+\frac{d}{2z}\right)^2-\left(1-\frac{d}{2z}\right)^2\right]}{\left[1-\left(\frac{d}{2z}\right)^2\right]^2},\\
+				& = \frac{kq}{z^2}\frac{\left[\bcancel{1}+\frac{d}{z}+\bcancel{\left(\frac{d}{2z}\right)^2}-\bcancel{1}+\frac{d}{z}-\bcancel{\left(\frac{d}{2z}\right)^2}\right]}{\left[1-\left(\frac{d}{2z}\right)^2\right]^2}.
+			\end{align*}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Campo elétrico de um dipolo elétrico (continuação)}
+	\begin{columns}
+		\begin{column}[t]{0.5\textwidth}
+			O campo elétrico resultante torna-se
+			\begin{NodesList}[margin=1.0cm]
+			\begin{align*}
+				E & = \frac{kq}{z^2}\frac{\frac{2d}{z}}{\left[1-\left(\frac{d}{2z}\right)^2\right]^2},\\
+				E & = \frac{2k}{z^3}\frac{qd}{\left[1-\left(\frac{d}{2z}\right)^2\right]^2},\AddNode\\
+				E & = \frac{2k}{z^3}\frac{p}{\left[1-\left(\frac{d}{2z}\right)^2\right]^2}.\AddNode
+			\end{align*}
+			\LinkNodes{\tiny $qd=p$}
+			\end{NodesList}
+		\end{column}
+		\begin{column}[t]{0.5\textwidth}
+			$\vec{p}$ é definido como momento dipolar elétrico, onde $\vec{p}=q\vec{d}$. Para distâncias relativamente grandes onde $z>>d$ podemos considerar $\frac{d}{2z}\approx 0$, ou seja,
+			\begin{equation*}
+				E = 2K\frac{p}{z^3}.
+			\end{equation*}
+			\begin{block}{Campo elétrico de um dipolo}
+				\begin{equation*}
+					\vec{E}(0,0,z) = 2K\frac{\vec{p}}{z^3}.
+				\end{equation*}
+			\end{block}
+		\end{column}
+	\end{columns}
+%		\begin{block}{m}
+%			\[\vec{p}=q\vec{d}\]
+%		\end{block}
+\end{frame}
+
+\begin{frame}{Torque em um dipolo elétrico}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			Usando a definição de torque, $\vec{\tau} = \vec{r}\times\vec{F}$, no esquema ao lado temos
+			\begin{align*}
+				\tau & = Fxsen\theta+F(d-x)sen\theta,\\
+				\tau & = Fdsen\theta.
+			\end{align*}
+			Sabemos que $p=qd$ e $E=\frac{F}{q}$, substituímos na equação acima,
+			\begin{align*}
+				\tau & = pEsen\theta,\\
+				\Aboxed{\vec{\tau} & = \vec{p}\times\vec{E}.}
+			\end{align*}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{figure}
+				\includegraphics[scale=0.6]{figuras/figura-3.png}
+				\caption*{\footnotesize Dipolo elétrico inserido em um campo $\vec{E}$ uniforme.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Energia potencial de um dipolo elétrico}
+	\begin{columns}
+		\begin{column}[t]{0.5\textwidth}
+			Sabemos que a força $\vec{F}$ é conservativa, portanto podemos encontrar a energia potencial através do trabalho realizado pelo torque. Supondo $\theta'=180-\theta$ e $\sin (180-\theta)=-\sin\theta$ temos
+			\begin{NodesList}[margin=1.0cm]
+				\begin{align*}
+					\Delta U & = -W,\\
+					\Delta U & = -\int_{\SI{90}{\degree}}^{\theta}\tau d\theta',\AddNode\\
+					\Delta U & = \int_{\SI{90}{\degree}}^{\theta}pEsen\theta' d\theta'.\AddNode
+				\end{align*}
+				{\tikzset{LabelStyle/.style = {left=-0.25cm,pos=-0.1}}
+				\LinkNodes{\tiny $\tau = -pEsen\theta'$}}
+			\end{NodesList}
+		\end{column}
+		\begin{column}[t]{0.5\textwidth}
+			Supondo $\vec{E}$ e $\vec{p}$ constantes resolvemos a integral, temos
+			\begin{align*}
+				\Delta U & = \left[-pEcos\theta'\right]_{\SI{90}{\degree}}^{\theta},\\
+				U(\theta) & = -pEcos\theta .
+			\end{align*}
+			Podemos generalizar para a forma vetorial e escrever
+			\begin{equation*}
+				\boxed{U = -\vec{p}\cdot\vec{E} .}
+			\end{equation*}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\section{Distribuição contínua de cargas}
+
+\subsection{}
+
+\begin{frame}{Campo elétrico de uma distribuição contínua de cargas}
+	Para um objeto extenso carregado eletricamente, cada pedaço $dv$ desse objeto possui uma quantidade de carga $dq$, que produz campo elétrico idêntico a uma partícula pontual,portanto cada pedaço irá produzir um campo $d\vec{E}$ no espaço.
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+		\begin{figure}
+			\centering
+			\begin{tiny}
+				\tdplotsetmaincoords{70}{110}
+				\begin{tikzpicture}[scale=2.9, tdplot_main_coords,
+				axis/.style={->,blue,thick},
+				vectora/.style={-stealth,thick},
+				vectorb/.style={-stealth,red,thick}]
+				
+				%standard tikz coordinate definition using x, y, z coords
+				\coordinate (O) at (0,0,0);
+				
+				%draw axes
+				\draw[axis] (0,0,0) -- (1,0,0) node[anchor=north east]{$x$};
+				\draw[axis] (0,0,0) -- (0,1,0) node[anchor=north west]{$y$};
+				\draw[axis] (0,0,0) -- (0,0,1) node[anchor=south]{$z$};
+				
+				%configurando estilo das cargas
+				\tikzstyle{s1}=[tdplot_screen_coords, circle, ball color=gray];
+				\tikzstyle{s2}=[tdplot_screen_coords];
+				
+				%draw charges
+				\tdplottransformmainscreen{1.0}{0.8}{0.2}
+				\filldraw[s2] (\tdplotresx,\tdplotresy) circle (0.5pt) node[above] (n1) {$P$};
+				
+				\tdplottransformmainscreen{0.7}{0.9}{0.8}
+				\node [s1] (n2) at (\tdplotresx,\tdplotresy) {$dq$};
+				
+				%draw a vector from origin to charge
+				\draw[vectora] (O) -- (n1) node[above,midway] {$\vec{r}_{P}$};
+				
+				%draw a vector from origin to charge
+				\draw[vectora] (O) -- (n2) node[above,midway] {$\vec{r}_{dq}$};
+				
+				%draw a vector from origin to charge
+				\draw[vectorb] (n2) -- (n1) node[right,midway] {$\vec{r}$};
+				
+				\begin{axis}[hide axis,ticks=none,scale=0.2]
+					\addplot3[shader=interp,opacity = 0.5,fill opacity=0.5,surf,colormap/blackwhite,variable = \u,variable y = \v,domain = 0:180,y domain = 0:360]
+					({0.1*cos(u)*sin(v)}, {0.1*sin(u)*sin(v)}, {0.05*cos(v)});
+				\end{axis}
+
+				\end{tikzpicture}
+				%\input{tikz/carga-objeto-3d.pgf}
+			\end{tiny}
+		\end{figure}
+	\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{equation*}
+				d\vec{E}=K\frac{\hat{r}}{r^2}dq
+			\end{equation*}
+			\begin{block}{Campo elétrico de uma distribuição contínua de cargas}
+				\[\vec{E} = k\int\frac{\hat{r}}{r^{2}}dq\]
+			\end{block}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Campo elétrico de um anel circular}
+	\begin{columns}
+		\begin{column}[c]{0.6\textwidth}
+			Considere um anel carregado eletricamente com uma densidade linear de carga $\lambda$. Temos que cada pedaço $ds$ do anel terá uma carga $dq$, onde
+			\begin{equation*}
+				dq=\lambda ds.
+			\end{equation*}
+			Portanto, o campo $d\vec{E}$ será dado por
+			\begin{equation*}
+				d\vec{E}=K\frac{\hat{r}}{r^2}\lambda ds.
+			\end{equation*}
+			ou na forma das componentes vetoriais,
+			\begin{equation*}
+				d\vec{E}=dE_x\hat{x}+dE_y\hat{y}+dE_z\hat{z}.
+			\end{equation*}
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}
+				\includegraphics[scale=0.28]{figuras/figura-1.png}
+				\caption*{\footnotesize Anel de carga positiva.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Campo elétrico de um anel circular (continuação)}
+	\begin{columns}
+		\begin{column}[c]{0.6\textwidth}
+			Porém, é possível perceber que as componentes $E_x$ e $E_y$ de cada elemento ds se cancelam mutuamente, restando apenas a componente na direção z. Pela figura, podemos dizer que
+			\begin{equation*}
+				dE_z=dEcos\theta.
+			\end{equation*}
+			Pela figura, também podemos perceber que
+			\begin{align*}
+				r^2 & = z^2+R^2,\\
+				cos\theta & = \frac{z}{r} = \frac{z}{\left(z^2+R^2\right)^{1/2}}.
+			\end{align*}
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}
+				\begin{tikzpicture}[scale=0.5,transform shape,font=\large]
+				
+				\tkzInit[xmin=-4,xmax=4,ymin=-1,ymax=5]
+				%\tkzGrid[color=gray!20]
+				\tkzClip[space=1]
+				
+				\tkzDefPoints{0/0/O,0/-1/A,0/5/B,-4/5/E1}
+				
+				\tkzDefPointBy[reflection= over A--B](E1)\tkzGetPoint{E2}
+				
+				\tkzDrawX[noticks,label=xy]
+				\tkzDrawY[noticks,label=z]
+				
+				\draw[->,line width=1.0pt,color=red] (O) -- (E1) node [above] {$d\vec{E}$};
+				\draw[->,line width=1.0pt,color=red] (O) -- (E2) node [above] {$d\vec{E}$};
+				\draw[->,line width=1.0pt,color=red] (O) -- (B) node [above right] {$d\vec{E}_z$};
+				
+				\tkzPointShowCoord(E1)
+				\tkzPointShowCoord(E2)
+				
+				\tkzMarkAngle(B,O,E1)
+				\tkzLabelAngle[pos=1.3](B,O,E1){$\theta$}
+				\tkzMarkAngle(E2,O,B)
+				\tkzLabelAngle[pos=1.3](E2,O,B){$\theta$}
+				
+				\end{tikzpicture}
+				%\includegraphics[scale=0.4]{figuras/figura-2.png}
+				\caption*{\footnotesize Componentes do campo elétrico.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Campo elétrico de um anel circular (continuação)}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			Sabendo que $dE=\frac{K\lambda ds}{r^2}$, substituímos na expressão anterior
+			\begin{NodesList}[margin=1.0cm]
+				\begin{align*}
+					dE_z & = K\frac{\lambda}{r^2}cos\theta ds,\AddNode\\
+					dE_z & = K\frac{\lambda}{z^2+R^2}cos\theta ds.\AddNode
+				\end{align*}
+				\LinkNodes{\tiny $r^2=z^2+R^2$}
+			\end{NodesList}
+			Integrando ao longo de todo o anel de comprimento $2\pi R$ temos
+			\begin{equation*}
+				E_z = \int^{2\pi R}_0 K\frac{\lambda}{z^2+R^2}cos\theta ds,
+			\end{equation*}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{align*}
+				E_z & = K\frac{\lambda}{z^2+R^2}cos\theta \int^{2\pi R}_0ds,\\
+				E_z & = K\frac{\lambda}{z^2+R^2}cos\theta 2\pi R.
+			\end{align*}
+			Substituímos o termo $cos\theta = \frac{z}{\left(z^2+R^2\right)^{1/2}}$,
+			\begin{align*}
+				E_z & = K\left[\frac{\lambda}{z^2+R^2}\right]\left[\frac{z}{\left(z^2+R^2\right)^{1/2}}\right]\left[ 2\pi R\right],\\
+				E_z & = K\frac{ \lambda 2\pi Rz}{\left(z^2+R^2\right)^{3/2}}.
+			\end{align*}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Campo elétrico de um anel circular (continuação)}
+	\begin{columns}
+		\begin{column}[t]{0.5\textwidth}
+			No entanto, é conveniente definir a solução em termos da carga total ao invés da densidade de carga. Sabemos que $dq=\lambda ds$, integrando ao longo de todo o anel temos
+			\begin{align*}
+				dq & = \lambda ds,\\
+				q & = \int_{0}^{2\pi R}\lambda ds,\\
+				\Aboxed{q & = \lambda 2\pi R.}
+			\end{align*}
+		\end{column}
+		\begin{column}[t]{0.5\textwidth}
+			Substituindo na expressão de $E_z$ temos o campo elétrico a uma distância z do centro de um anel circular,
+			\begin{equation*}
+				\boxed{E_z = K\frac{ qz}{\left(z^2+R^2\right)^{3/2}}.}
+			\end{equation*}
+			Se $z>>R$ teremos $z^2+R^2\approx z^2$, ou seja,
+			\begin{equation*}
+				\boxed{E_z = K\frac{q}{z^2}.}
+			\end{equation*}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Campo elétrico de um disco circular}
+	\begin{columns}
+		\begin{column}[c]{0.65\textwidth}
+			Considere um disco carregado eletricamente com uma densidade superficial de carga $\sigma$. Podemos considerar que o disco é formado por vários anéis de espessura $dr$ e raio $r$ contendo cargas $dq$, onde
+			\begin{align*}
+				dq & = \sigma dA,\\
+				dq & = \sigma 2\pi rdr.
+			\end{align*}
+			sendo $dA$ a área do anel. A carga total do disco é obtida integrando $dq$ de cada anel, ou seja,
+			\begin{equation*}
+				q = \int dq = \int_{0}^{R}\sigma dA = \sigma \pi R^2.
+			\end{equation*}			
+		\end{column}
+		\begin{column}[c]{0.35\textwidth}
+			\begin{figure}
+				\vspace*{-1cm}
+				\begin{figure}
+					\begin{tikzpicture}[scale=0.5,transform shape,font=\large]
+					
+					\tkzInit[xmin=-5,xmax=5,ymin=-1,ymax=8.5]
+					%\tkzGrid[color=gray!20]
+					\tkzClip
+					
+					\tkzDefPoints{0/0/O, 0/0.25/O', -3/0/A, 3/0/C,0/7/G,-1.5/-0.25/o',-1.75/-0.25/o1}
+					\tkzDefPointsBy[translation = from O to O'](A,C){F,H}
+					
+					\draw[dashed,fill=blue!20,opacity=0.25] (C) arc (0:180:3cm and 1cm);
+					\draw[fill=blue!20,opacity=0.25,draw opacity=100] (C) arc (0:-180:3cm and 1cm);
+					\draw[fill=blue!20,opacity=0.25,draw opacity=100] (O') ellipse (3cm and 1cm);
+					\draw (O') ellipse (1.5cm and 0.4cm);
+					\draw (O') ellipse (1.75cm and 0.6cm);
+					
+					\draw[->,line width=1.0pt] (O') -- (-1,0) node [above,midway] {r};
+					\draw[->,line width=1.0pt] (O') -- (H) node [above,pos=0.75] {R};
+					\draw[->,line width=1.0pt] (O') -- (G) node [left,pos=0.75] {z};
+					\draw[->,line width=1.0pt] (G) --++ (0,1.5) node [left,pos=0.75] {$d\vec{E}$};
+					
+					\draw (o1) to [short dim arrow={label=$dr$}] (o');
+					
+					\tkzDrawPoint[color=red,size=0.4cm,fill=red](G)
+					\tkzLabelPoint[right=0.1](G){P}
+					
+					\end{tikzpicture}
+					\caption*{\footnotesize Disco circular com distribuição uniforme de carga.}
+				\end{figure}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Campo elétrico de um disco circular (continuação)}
+\begin{columns}
+	\begin{column}[t]{0.5\textwidth}
+		Através do campo elétrico $dE_z$ produzido pelo anel temos
+		\begin{align*}
+			dE_z & = K\frac{z}{\left(z^2+r^2\right)^{3/2}}dq,\\
+			dE_z & = \left[K\frac{z}{\left(z^2+r^2\right)^{3/2}}\right]\left[2\pi\sigma rdr\right].
+		\end{align*}
+		Integrando temos
+		\begin{equation*}
+			E_z = k\pi\sigma z\int_{0}^{R}\left(z^2+r^2\right)^{-3/2}(2r)dr
+		\end{equation*}
+	\end{column}
+	\begin{column}[t]{0.5\textwidth}
+		Para resolver a integral fazemos a substituição $X=z^2+r^2$ e $dX=2rdr$,
+		\begin{align*}
+			E_z & = k\pi\sigma z\int X^{-3/2}dX,\\
+			E_z & = k\overbracket{\pi\sigma}^{\alert{q/R^2}} z\left[\frac{\left(z^2+r^2\right)^{-1/2}}{-1/2}\right]^{R}_{0}.
+		\end{align*}
+		Chegamos assim na solução final,
+		\begin{equation*}
+			\boxed{E_z = 2k\frac{q}{R^2}\left(1-\frac{z}{\sqrt{z^2+R^2}}\right).}
+		\end{equation*}
+	\end{column}
+\end{columns}
+\end{frame}
+
+\section{Apêndice}
+
+\subsection{}
+
+\begin{frame}{Transformar um número em notação científica}
+	\begin{corollary}
+		\begin{enumerate}[leftmargin=1.75cm]
+			\item[Passo 1:] Escrever o número incluindo a vírgula.
+			\item[Passo 2:] Andar com a vírgula até que reste somente um número diferente de zero no lado esquerdo.
+			\item[Passo 3:] Colocar no expoente da potência de 10 o número de casas decimais que tivemos que "andar" com a vírgula. Se ao andar com a vírgula o valor do número diminuiu, o expoente ficará positivo, se aumentou o expoente ficará negativo.
+		\end{enumerate}
+	\end{corollary}
+	\begin{exampleblock}{Exemplo}
+		\begin{equation*}
+			6\; 590\; 000\; 000\; 000\; 000,0 = \SI{6,59e15}{}		
+		\end{equation*}
+	\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Conversão de unidades em uma dimensão}
+	\begin{figure}
+		\begin{tikzpicture}[scale=0.65,transform shape,font=\Large]
+		
+		\tkzInit[xmin=-2,xmax=17,ymin=-6,ymax=3]
+		%\tkzGrid[color=gray!20]
+		\tkzClip
+		
+		\tikzset{compass style/.append style={->}}
+		
+		\foreach \x in {1,2,3}{
+			\tkzDefPoint(\x*3-3,0){\x}
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+			\node at (\x*3-3,2) {$\times 10^{3}$};
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+			\node at (\x*3-3,-2) {$\times 10^{-3}$};}
+		
+		\foreach \x in {4,5,6}{
+			\tkzDefPoint(\x*3-3,0){\x}
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+			\node at (\x*3-3,2) {$\times 10^{1}$};
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+			\node at (\x*3-3,-2) {$\times 10^{-1}$};}
+		
+		\tkzDefPoints{-1.5/0/p1,1.5/0/p2,4.5/0/p3,7.5/0/p4,10.5/0/p5,13.5/0/p6,16.5/0/p7}
+		
+		\tkzText(p1){$\si{\pico}\_^{}$}
+		\tkzText(p2){$\si{\nano}\_^{}$}
+		\tkzText(p3){$\si{\micro}\_^{}$}
+		\tkzText(p4){$\si{m}\_^{}$}
+		\tkzText(p5){$\si{\centi}\_^{}$}
+		\tkzText(p6){$\si{\deci}\_^{}$}
+		\tkzText(p7){$\_^{}$}
+		
+		%exemplos
+		
+		\tkzText(3,-3.5){$1\;\text{mm}=1\times 10^{(-1)\times\alert{2}}\;\text{dm}\rightarrow 1\times 10^{-2}\;\text{dm}$}
+		\tkzText(3.25,-4.5){$2,5\;\text{g}=2,5\times 10^{(1)\times\alert{3}}\;\text{mg}\rightarrow2,5\times 10^{3}\;\text{mg}$}
+		\tkzText(3.7,-5.5){$10\;\mu\text{C}=10\times 10^{\left[(-3)\times\alert{1}+(-1)\times\alert{3}\right]}\;\text{C}\rightarrow 10\times 10^{-6}\;\text{C}$}
+		
+		\end{tikzpicture}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Conversão de unidades em duas dimensões}
+	\begin{figure}
+		\begin{tikzpicture}[scale=0.65,transform shape,font=\Large]
+	
+		\tkzInit[xmin=-2,xmax=17,ymin=-6,ymax=3]
+		%\tkzGrid[color=gray!20]
+		\tkzClip
+	
+		\tikzset{compass style/.append style={->}}
+	
+		\foreach \x in {1,2,3}{
+			\tkzDefPoint(\x*3-3,0){\x}
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+			\node at (\x*3-3,2) {$\times 10^{6}$};
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+			\node at (\x*3-3,-2) {$\times 10^{-6}$};}
+		
+		\foreach \x in {4,5,6}{
+			\tkzDefPoint(\x*3-3,0){\x}
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+			\node at (\x*3-3,2) {$\times 10^{2}$};
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+			\node at (\x*3-3,-2) {$\times 10^{-2}$};}
+		
+		\tkzDefPoints{-1.5/0/p1,1.5/0/p2,4.5/0/p3,7.5/0/p4,10.5/0/p5,13.5/0/p6,16.5/0/p7}
+	
+		\tkzText(p1){$\si{\pico}\_^{2}$}
+		\tkzText(p2){$\si{\nano}\_^{2}$}
+		\tkzText(p3){$\si{\micro}\_^{2}$}
+		\tkzText(p4){$\si{m}\_^{2}$}
+		\tkzText(p5){$\si{\centi}\_^{2}$}
+		\tkzText(p6){$\si{\deci}\_^{2}$}
+		\tkzText(p7){$\_^{2}$}
+		
+		%exemplos
+	
+		\tkzText(3.3,-3.5){$1\;\text{mm}^2=1\times 10^{(-2)\times\alert{2}}\;\text{dm}^2\rightarrow 1\times 10^{-4}\;\text{dm}^2$}
+		\tkzText(3.6,-4.5){$2,5\;\text{m}^2=2,5\times 10^{(2)\times\alert{3}}\;\text{mm}^2\rightarrow2,5\times 10^{6}\;\text{mm}^2$}
+		\tkzText(4.1,-5.5){$10\;\mu\text{m}^2=10\times 10^{\left[(-6)\times\alert{1}+(-2)\times\alert{3}\right]}\;\text{m}^2\rightarrow 10\times 10^{-12}\;\text{m}^2$}
+	
+		\end{tikzpicture}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Conversão de unidades em três dimensões}
+	\begin{figure}
+		\begin{tikzpicture}[scale=0.65,transform shape,font=\Large]
+	
+		\tkzInit[xmin=-2,xmax=17,ymin=-6,ymax=3]
+		%\tkzGrid[color=gray!20]
+		\tkzClip
+	
+		\tikzset{compass style/.append style={->}}
+	
+		\foreach \x in {1,2,3}{
+			\tkzDefPoint(\x*3-3,0){\x}
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+			\node at (\x*3-3,2) {$\times 10^{9}$};
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+			\node at (\x*3-3,-2) {$\times 10^{-9}$};}
+		
+		\foreach \x in {4,5,6}{
+			\tkzDefPoint(\x*3-3,0){\x}
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+			\node at (\x*3-3,2) {$\times 10^{3}$};
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+			\node at (\x*3-3,-2) {$\times 10^{-3}$};}
+		
+		\tkzDefPoints{-1.5/0/p1,1.5/0/p2,4.5/0/p3,7.5/0/p4,10.5/0/p5,13.5/0/p6,16.5/0/p7}
+	
+		\tkzText(p1){$\si{\pico}\_^{3}$}
+		\tkzText(p2){$\si{\nano}\_^{3}$}
+		\tkzText(p3){$\si{\micro}\_^{3}$}
+		\tkzText(p4){$\si{m}\_^{3}$}
+		\tkzText(p5){$\si{\centi}\_^{3}$}
+		\tkzText(p6){$\si{\deci}\_^{3}$}
+		\tkzText(p7){$\_^{3}$}
+		
+		%exemplos
+	
+		\tkzText(3.3,-3.5){$1\;\text{mm}^3=1\times 10^{(-3)\times\alert{2}}\;\text{dm}^3\rightarrow 1\times 10^{-6}\;\text{dm}^3$}
+		\tkzText(3.6,-4.5){$2,5\;\text{m}^3=2,5\times 10^{(3)\times\alert{3}}\;\text{mm}^3\rightarrow2,5\times 10^{9}\;\text{mm}^3$}
+		\tkzText(4.1,-5.5){$10\;\mu\text{m}^3=10\times 10^{\left[(-9)\times\alert{1}+(-3)\times\alert{3}\right]}\;\text{m}^3\rightarrow 10\times 10^{-18}\;\text{m}^3$}
+
+		\end{tikzpicture}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Alfabeto grego}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{table}
+				\begin{tabular}[c]{ccc}
+					Alfa & $A$ & $\alpha$\\
+					Beta & $B$ & $\beta$\\
+					Gama & $\Gamma$ & $\gamma$\\
+					Delta & $\Delta$ & $\delta$\\
+					Epsílon & $E$ & $\epsilon$,$\varepsilon$\\
+					Zeta & $Z$ & $\zeta$\\
+					Eta & $H$ & $\eta$\\
+					Teta & $\Theta$ & $\theta$\\
+					Iota & $I$ & $\iota$\\
+					Capa & $K$ & $\kappa$\\
+					Lambda & $\Lambda$ & $\lambda$\\
+					Mi & $M$ & $\mu$
+				\end{tabular}
+			\end{table}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{table}
+				\begin{tabular}[c]{ccc}
+					Ni & $N$ & $\nu$\\
+					Csi & $\Xi$ & $\xi$\\
+					ômicron & $O$ & $o$\\
+					Pi & $\Pi$ & $\pi$\\
+					Rô & $P$ & $\rho$\\
+					Sigma & $\Sigma$ & $\sigma$\\
+					Tau & $T$ & $\tau$\\
+					Ípsilon & $\Upsilon$ & $\upsilon$\\
+					Fi & $\Phi$ & $\phi$,$\varphi$\\
+					Qui & $X$ & $\chi$\\
+					Psi & $\Psi$ & $\psi$\\
+					Ômega & $\Omega$ & $\omega$
+				\end{tabular}
+			\end{table}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Referências e observações\footnote{Este material está sujeito a modificações. Recomenda-se acompanhamento permanente.}}
+\bibliographystyle{jurabib}
+\begin{thebibliography}{9}
+		\bibitem{halliday}D. Halliday, R. Resnick, J. Walker, Fundamentos de física. Eletromagnetismo, v.3, 10. ed., Rio de Janeiro, LTC (2016)
+		\bibitem{randall}R. D. Knight, Física: Uma abordagem estratégica, v.3, 2nd ed., Porto Alegre, Bookman (2009)
+		\bibitem{moyses}H. M. Nussenzveig, Curso de física básica. Eletromagnetismo, v.1, 5. ed., São Paulo, Blucher (2014)
+\end{thebibliography}
+
+\vspace*{0.5cm}
+\begin{center}
+	Esta apresentação está disponível para download no endereço\\
+	\href{https://flavianowilliams.github.io/education}{\textcolor{blue}{https://flavianowilliams.github.io/education}}
+\end{center}
+	
+\end{frame}
+
+\end{document}

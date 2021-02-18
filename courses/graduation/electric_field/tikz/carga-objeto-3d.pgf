@@ -1,0 +1,40 @@
+﻿\tdplotsetmaincoords{70}{110}
+\begin{tikzpicture}[scale=3, tdplot_main_coords,
+					axis/.style={->,blue,thick},
+					vectora/.style={-stealth,thick},
+					vectorb/.style={-stealth,red,thick}]
+
+	%standard tikz coordinate definition using x, y, z coords
+	\coordinate (O) at (0,0,0);
+	
+	%draw axes
+	\draw[axis] (0,0,0) -- (1,0,0) node[anchor=north east]{$x$};
+	\draw[axis] (0,0,0) -- (0,1,0) node[anchor=north west]{$y$};
+	\draw[axis] (0,0,0) -- (0,0,1) node[anchor=south]{$z$};
+	
+	%configurando estilo das cargas
+	\tikzstyle{s1}=[tdplot_screen_coords, circle, ball color=gray];
+	\tikzstyle{s2}=[tdplot_screen_coords];
+
+	\begin{axis}[hide axis,ticks=none,scale=0.2]
+	\addplot3[shader=interp,opacity = 0.7,fill opacity=0.7,surf,colormap/blackwhite,variable = \u,variable y = \v,domain = 0:180,y domain = 0:360]
+    ({0.1*cos(u)*sin(v)}, {0.1*sin(u)*sin(v)}, {0.05*cos(v)});
+    \end{axis}
+	
+	%draw charges
+	\tdplottransformmainscreen{1.0}{0.8}{0.2}
+	\filldraw[s2] (\tdplotresx,\tdplotresy) circle (0.5pt) node[above] (n1) {$P$};
+
+	\tdplottransformmainscreen{0.7}{0.9}{0.8}
+	\node [s1] (n2) at (\tdplotresx,\tdplotresy) {$dq$};
+
+	%draw a vector from origin to charge
+	\draw[vectora] (O) -- (n1) node[above,midway] {$\vec{r}_{P}$};
+	
+	%draw a vector from origin to charge
+	\draw[vectora] (O) -- (n2) node[above,midway] {$\vec{r}_{dq}$};
+	
+	%draw a vector from origin to charge
+	\draw[vectorb] (n2) -- (n1) node[right,midway] {$\vec{r}$};
+	
+\end{tikzpicture}

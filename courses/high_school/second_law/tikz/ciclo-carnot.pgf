@@ -1,4 +1,4 @@
-﻿\begin{tikzpicture}[scale=0.6, auto, transform shape, samples=50]
+﻿\begin{tikzpicture}[scale=2, auto, transform shape, samples=50]
 
 	%valores iniciais
 	\def\shift{1}

@@ -1,0 +1,38 @@
+﻿\begin{tikzpicture}[scale=1.3, transform shape,font=\Large]
+	\tikzstyle{s1}=[circle, radius=0.5, ball color=gray!50];
+
+	\coordinate (c1) at (0,0);
+	\coordinate (c2) at (5,0);
+	\coordinate (c3) at (6,4);
+	\coordinate (c4) at (-3,4);
+	\coordinate (c5) at (-4,-5);
+	\coordinate (c6) at (4,-5);
+
+	%distancias
+	\draw [dashed] (c1) -- (c2);
+	\draw [dashed] (c1) -- (c3);
+	\draw [dashed] (c1) -- (c4);
+	\draw [dashed] (c1) -- (c5);
+	\draw [dashed] (c1) -- (c6);
+
+	%vetores
+	\draw [line width=1.5pt, ->,color=red] (0.25,0) -- (1.5,0) node [above] {\large $\vec{F}_{i1}$};
+	\draw [line width=1.5pt, <-,color=red] (4,0) -- (4.75,0) node [above, at start] {\large $\vec{F}_{1i}$};
+	\draw [line width=1.5pt, ->,color=red] (0.2,0.13) -- (0.83,0.55) node [above] {\large $\vec{F}_{i2}$};
+	\draw [line width=1.5pt, <-,color=red] (5.17,3.45) -- (5.79,3.86) node [above, at start] {\large $\vec{F}_{2i}$};
+	\draw [line width=1.5pt, ->,color=red] (-0.15,0.2) -- (-0.6,0.8) node [above] {\large $\vec{F}_{i3}$};
+	\draw [line width=1.5pt, <-,color=red] (-2.4,3.2) -- (-2.85,3.8) node [above right, at start] {\large $\vec{F}_{3i}$};
+	\draw [line width=1.5pt, ->,color=red] (-0.16,-0.2) -- (-0.625,-0.78) node [above left] {\large $\vec{F}_{i4}$};
+	\draw [line width=1.5pt, ->,color=red] (-3.84,-4.80) -- (-3.32,-4.15) node [above left] {\large $\vec{F}_{4i}$};
+	\draw [line width=1.5pt, ->,color=red] (0.16,-0.2) -- (0.625,-0.78) node [above right] {\large $\vec{F}_{i5}$};
+	\draw [line width=1.5pt, ->,color=red] (3.84,-4.80) -- (3.32,-4.15) node [above right] {\large $\vec{F}_{5i}$};
+
+	%cargas
+	\node [s1] (n1) at (c1) {$q_i$};
+	\node [s1] (n2) at (c2) {$q_1$};
+	\node [s1] (n3) at (c3) {$q_2$};
+	\node [s1] (n4) at (c4) {$q_3$};
+	\node [s1] (n5) at (c5) {$q_4$};
+	\node [s1] (n6) at (c6) {$q_5$};
+
+\end{tikzpicture}

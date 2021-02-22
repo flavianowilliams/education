@@ -1,0 +1,28 @@
+﻿\begin{tikzpicture}[scale=1,transform shape,font=\Large]
+
+			\tkzInit[xmin=0,xmax=8,ymin=0,ymax=10]
+			\tkzGrid[color=gray!20]
+%			\tkzClip[space=1.5]
+
+		\tkzDefPoints{1/9/i,7/1/f,1/4/c1,5.4/6/c2}
+
+		\tkzDrawPoints(i,f)
+		\tkzLabelPoints[above](i)
+		\tkzLabelPoints(f)
+
+		\draw (i) .. controls (c1) and (c2) .. (f);
+
+		\tkzDefPoints{5/4/q}
+
+		\draw[->,color=red,line width=1.5pt] (q) --++ (0,-2) node [below] {$\vec{F}$};
+		\draw[->,color=red,line width=1.5pt] (q) --++ (0.6,-0.6) node [above right] {$\vec{ds}$};
+
+		\draw node [draw, circle,font=\normalsize,opacity=100,fill=white] at (q) {q};
+
+		\tkzDefPoints{6/8/t1,2/6/p2}
+
+		\draw[->] (t1) -- (p2);
+
+		\tkzText[fill=white](t1){Trajetoria};
+
+\end{tikzpicture}	

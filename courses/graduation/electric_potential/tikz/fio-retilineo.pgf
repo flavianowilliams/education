@@ -1,0 +1,7 @@
+﻿\begin{tikzpicture}[scale=1.5,transform shape,font=\Large]
+	\draw[line width=4pt] (0,-3) -- (0,3) node [midway] (l1) {};
+	\foreach \x in {-3,-2.5,...,3}
+	\node[left] at(0,\x) {$+$};
+	\filldraw (2,0) circle (1.5pt) node (n1) at (2,0) {};
+	\draw[dotted] (l1) -- (n1) node [midway,above] {$d$};
+\end{tikzpicture}

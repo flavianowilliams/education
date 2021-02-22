@@ -1,0 +1,31 @@
+﻿\begin{tikzpicture}[scale=1, transform shape,font=\large]
+
+\pgfmathsetmacro{\cubex}{8}
+\pgfmathsetmacro{\cubey}{4}
+\pgfmathsetmacro{\cubez}{9}
+
+\foreach \h in {0,1,2}{
+\draw[blue,fill=gray!30] (0,0+\h,\cubez) -- ++(\cubex,0,0) -- ++(0,0,-\cubez) -- ++(-\cubex,0,0) -- cycle;}
+
+\coordinate (p1) at (0,0,\cubez);
+\coordinate (p2) at (0,0+1,\cubez);
+\coordinate (p3) at (0,0+2,\cubez);
+\coordinate (p4) at (\cubex,\cubey,\cubez);
+\coordinate (p5) at (\cubex-2,\cubey,\cubez+2);
+\coordinate (p6) at (\cubex,0+2,\cubez);
+\coordinate (p7) at (\cubex,0+1,\cubez);
+\coordinate (p8) at (\cubex-2,0+1,\cubez);
+\coordinate (p9) at (\cubex-2,0+2,\cubez);
+\coordinate (p10) at (\cubex,0,\cubez);
+
+\tkzDrawPoints[size=0.3cm](p1,p2,p3,p4,p5,p6,p7,p8,p9)
+%\tkzLabelPoints(p1,p2,p3,p4,p5,p6,p7,p8,p9)
+
+\draw[<-,line width=1.0pt,color=red] (p10) arc (-90:90:0.25cm and 0.5cm) node [right,midway] {IV};
+\draw[->,line width=1.0pt,color=red] (p2) arc (270:90:0.25cm and 0.5cm) node [left,midway] {II};
+\draw[<-,line width=1.0pt,color=red] (p7) arc (-90:90:0.25cm and 0.5cm);
+\draw[->,line width=1.0pt,color=red] (p8) arc (270:90:0.25cm and 0.5cm);
+\draw[->,line width=1.0pt,color=red] (p7) -- (p8) node [above,midway] {IV};
+\draw[->,line width=1.0pt,color=red] (p4) -- (p5) node [above left,midway] {III};
+
+\end{tikzpicture}

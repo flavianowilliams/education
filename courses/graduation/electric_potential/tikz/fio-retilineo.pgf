@@ -1,7 +1,13 @@
-﻿\begin{tikzpicture}[scale=1.5,transform shape,font=\Large]
-	\draw[line width=4pt] (0,-3) -- (0,3) node [midway] (l1) {};
-	\foreach \x in {-3,-2.5,...,3}
-	\node[left] at(0,\x) {$+$};
-	\filldraw (2,0) circle (1.5pt) node (n1) at (2,0) {};
-	\draw[dotted] (l1) -- (n1) node [midway,above] {$d$};
-\end{tikzpicture}
+﻿				\begin{tikzpicture}[scale=2.7,transform shape,font=\Large]
+					\draw[line width=4pt,color=gray!50] (0,-3) -- (0,3) node [midway] (l1) {};
+					\coordinate (p1) at (2,-3);
+					\coordinate (p2) at (0,-3);
+					\coordinate (O) at (0,0);
+					\foreach \x in {-3,-2.75,...,3}
+					\node[left] at(0,\x) {\tiny $+$};
+					\filldraw (p1) circle (1.5pt) node[right] (n1) at (2,-3) {P};
+					\draw[dotted] (p1) -- (p2) node [midway,above] {$d$};
+					\draw[dotted] (O) -- (p1) node [midway,above right] {$r$};
+					\draw ($(O)+(0,0.2)$) to [short dim arrow'={label'=$dz$}] ($(O)+(0,-0.2)$);
+					\draw[line width=3pt,color=red] (0,-0.2) --++ (0,0.4);
+				\end{tikzpicture}

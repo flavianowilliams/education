@@ -1,0 +1,1018 @@
+% Aula de eletrodinamica para o curso de ísica II da graduação
+%
+\documentclass[brazil,aspectratio=169]{beamer}
+%
+%carregando preâmbulo
+\input{../../contrib/preamble}
+
+%Título
+
+\title[Eletricidade-ELD]{Eletrodinâmica}
+
+% The main document
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Sumário}
+  \tableofcontents
+\end{frame}
+
+\section{Corrente elétrica}
+
+\subsection{}
+
+\begin{frame}{Movimento de cargas em um condutor}
+	\begin{columns}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.3]{figuras/figura-1.png}
+			\end{figure}
+		\end{column}
+		\begin{column}{0.6\textwidth}
+			\begin{itemize}
+				\item Em um condutor existe grande número de elétrons que estão fracamente ligados ao núcleo de cada átomo;
+				\item Na presença de um campo elétrico, os elétrons livres, sob a ação da força elétrica, entram em movimento ordenado, formando a corrente elétrica;
+				\item A corrente de elétrons sempre flui da região de menor potencial para a região de maior potencial elétrico.
+			\end{itemize}
+		\end{column}
+	\end{columns}	
+\end{frame}
+
+\begin{frame}{Corrente real e convencional}
+	\begin{figure}[c]
+		\Centering
+		\begin{subfigure}[c]{0.7\textwidth}
+			\includegraphics[scale=0.45]{figuras/figura-2.png}
+		\end{subfigure}
+		\begin{subfigure}[c]{0.5\textwidth}
+			\includegraphics[scale=0.45]{figuras/figura-3.png}
+		\end{subfigure}
+	\end{figure}
+	\begin{corollary}
+		Para estudar a corrente em um circuito elétrico usamos a corrente convencional.
+	\end{corollary}
+\end{frame}
+
+\begin{frame}{Definição de corrente elétrica}
+	\begin{columns}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.45]{figuras/figura-4.png}
+			\end{figure}
+		\end{column}
+		\begin{column}{0.6\textwidth}
+			\begin{block}{Intensidade da corrente}
+				Quando uma quantidade de carga infinitesimal $dq$ atravessa a seção de um condutor, durante um intervalo de tempo $dt$, a intensidade da corrente i nessa seção é a taxa de variação da carga $q$ no instante $t$,
+				\begin{align*}
+					i & = \frac{dq}{dt}.
+				\end{align*}
+			\end{block}
+		\end{column}
+	\end{columns}
+	\begin{corollary}
+		\justifying No SI a unidade de medida da corrente é C/s ou Ampère (A).
+	\end{corollary}
+\end{frame}
+
+\begin{frame}{Conservação da carga elétrica}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			No regime estacionário, a quantidade de carga que atravessa a seção 0 é a mesma que atravessa as seções i e 2 juntas. Pela conservação da carga elétrica, a soma das correntes nos dois ramos deve ser igual a corrente inicial, ou seja,
+			\begin{equation*}
+				\boxed{i_0 = i_1+i_2.}
+			\end{equation*}
+			\begin{corollary}
+				As setas são usadas para indicar o sentido de movimento das cargas, já que i é um escalar.
+			\end{corollary}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.4]{figuras/corrente-divisao.png}
+				\caption*{\footnotesize Corrente inicial $i_0$ separada pelas correntes $i_1$ e $i_2$ após atravessar a ramificação no ponto a.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Densidade de corrente}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			Para descrever o fluxo de cargas usamos a densidade de corrente J, que tem a mesma direção e sentido da velocidade das cargas positivas. Portanto, a corrente que atravessa perpendicularmente o elemento de área dA é dado por
+			\begin{equation*}
+				\boxed{i = \int \vec{J}\cdot d\vec{A}.}
+			\end{equation*}
+			Se a corrente é uniforme e paralela a $\widehat{n}$ teremos
+			\begin{equation*}
+				i = \int JdA = J\int dA = JA.
+			\end{equation*}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{equation*}
+				\boxed{J = \frac{i}{A}.}
+			\end{equation*}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.7,transform shape,font=\Large]
+
+				\tkzInit[xmin=0,xmax=8,ymin=-2,ymax=2]
+				%\tkzGrid[color=gray!20]
+				\tkzClip
+
+				\tkzDefPoints{1/0/A,6/0/B,6/1/C,1/1/D}
+
+				\tkzDefPointsBy[rotation=center B angle 25](B,C){a,b}
+				\tkzDefPointsBy[rotation=center B angle -155](B,C){c,d}
+				\tkzDefPointsBy[rotation=center B angle 90](B,d){i,j}
+				\tkzDefPointsBy[rotation=center A angle 25](A,D){e,f}
+				\tkzDefPointsBy[rotation=center A angle -155](A,D){g,h}
+
+				\draw[rotate=30,fill=gray!30] (B)ellipse (0.5cm and 1cm);
+				\draw[rotate=-60,dashed] (h) arc (0:180:1cm and 0.5cm);
+				\draw[rotate=120] (h) arc (180:0:1cm and 0.5cm);
+
+				\draw (f) -- (b);
+				\draw (h) -- (d);
+
+				\draw[->,color=red,line width=1.5pt] (B) -- (j) node [above] {$\widehat{n}$};
+
+				\tkzMarkRightAngle(j,B,d)
+
+				\draw[dashed] (B) -- (d);
+
+				\tkzDefPoints{5.75/0.5/t1}
+
+				\tkzText[font=\small](t1){dA}
+
+				\tkzDefPoints{2.5/0.15/v1,2.5/-0.6/v2}
+
+				\draw[->] (v1) --++ (1.5,0) node [above,midway] {$\vec{J}$};
+				\draw[->] (v2) --++ (1.5,0) node [above,midway] {$\vec{v}$};
+
+				\end{tikzpicture}
+				\caption*{\footnotesize Cilindro de carga.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Visão microscópica da densidade de corrente}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			Na presença de um campo elétrico $\vec{E}$ no interior de um condutor, os elétrons se movem aleatoriamente, mas tendem a derivar com uma velocidade chamada velocidade de deriva $\vec{d}_d$. Podemos supor que cada portador de carga possui em média a mesma velocidade $\vec{d}_d$, podemos dizer que cada volume V de um fio terá n portadores de carga e a cada intervalo de tempo $\Delta t$, onde $\Delta q$ é dado por
+			\begin{equation*}
+				\Delta q = (V)ne = (LdA)ne.
+			\end{equation*}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.8,transform shape,font=\large]
+
+				\tkzInit[xmin=0,xmax=7,ymin=-2.5,ymax=2]
+				%\tkzGrid[color=gray!20]
+				\tkzClip[space=0.1]
+
+				\tkzDefPoints{1/0/A,6/0/B,6/1/C,1/1/D}
+
+				\tkzDefPointsBy[rotation=center B angle 0](B,C){a,b}
+				\tkzDefPointsBy[rotation=center B angle -180](B,C){c,d}
+				\tkzDefPointsBy[rotation=center B angle 90](B,d){i,j}
+				\tkzDefPointsBy[rotation=center A angle 0](A,D){e,f}
+				\tkzDefPointsBy[rotation=center A angle -180](A,D){g,h}
+
+				\draw[rotate=0,fill=gray!30] (B)ellipse (0.5cm and 1cm);
+				\draw[rotate=-90,dashed] (h) arc (0:180:1cm and 0.5cm);
+				\draw[rotate=90] (h) arc (180:0:1cm and 0.5cm);
+
+				\draw (f) -- (b);
+				\draw (h) -- (d);
+
+				\draw[->,color=red,line width=1.5pt] (B) -- (j) node [above] {$\widehat{n}$};
+
+				\tkzMarkRightAngle(j,B,d)
+	
+				\draw[dashed] (B) -- (d);
+
+				\tkzDefPoints{6/0.5/t1}
+
+				\tkzText[font=\small](t1){dA}
+
+				\tkzDefPoints{2.5/-1.75/v1,2.5/-2.5/v2}
+
+				\draw[->] (v1) --++ (1.5,0) node [above,midway,font=\normalsize] {$\vec{J}$};
+				\draw[->] (v2) --++ (1.5,0) node [above,midway,font=\normalsize] {$\vec{E}$};
+
+				\draw (f) to [dim arrow={label=$L\equiv v_d\Delta t$},color=brown] (b);
+
+				%configurando estilo das cargas
+				\tikzstyle{s1}=[tdplot_screen_coords, circle, radius=0.001, ball color=gray!50,font=\tiny];
+
+				\tkzDefPoints{2/0.5/q1,4/0.5/q2,2.5/0/q3,4.5/0/q4,2/-0.5/q5,4/-0.5/q6}
+
+				\draw[->] (q1) --++ (0.5,0) node [right,font=\small] {$\vec{v}_d$};
+				\node[s1] at (q1) {+};
+
+				\draw[->] (q2) --++ (0.5,0) node [right,font=\small] {$\vec{v}_d$};
+				\node[s1] at (q2) {+};
+
+				\draw[->] (q3) --++ (0.5,0) node [right,font=\small] {$\vec{v}_d$};
+				\node[s1] at (q3) {+};
+
+				\draw[->] (q4) --++ (0.5,0) node [right,font=\small] {$\vec{v}_d$};
+				\node[s1] at (q4) {+};
+
+				\draw[->] (q5) --++ (0.5,0) node [right,font=\small] {$\vec{v}_d$};
+				\node[s1] at (q5) {+};
+
+				\draw[->] (q6) --++ (0.5,0) node [right,font=\small] {$\vec{v}_d$};
+				\node[s1] at (q6) {+};
+
+				\end{tikzpicture}
+				\caption*{\footnotesize Portadores de carga positivos se movendo com velocidade $\vec{v}_d$ na direção do campo elétrico $\vec{E}$.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Visão microscópica da densidade de corrente (continuação)}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			Podemos perceber que $L=v_d\Delta t$. Considerando que a corrente é estacionária i não se altera com o tempo, ou seja, $i=\Delta q/\Delta t$. Portanto
+			\begin{align*}
+				i & = \frac{ndA\bcancel{L}e}{(\bcancel{L}/v_d)},\\
+				i & = (nev_d)dA.
+			\end{align*}
+			Sabendo que $i=JdA$, chegamos na expressão da densidade de carga em função de $\vec{v}_d$,
+		\begin{equation*}
+			\boxed{\vec{J} = (ne)\vec{v}_d.}
+		\end{equation*}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.8,transform shape,font=\large]
+
+				\tkzInit[xmin=0,xmax=7,ymin=-2.5,ymax=2]
+				%\tkzGrid[color=gray!20]
+				\tkzClip[space=0.1]
+
+				\tkzDefPoints{1/0/A,6/0/B,6/1/C,1/1/D}
+
+				\tkzDefPointsBy[rotation=center B angle 0](B,C){a,b}
+				\tkzDefPointsBy[rotation=center B angle -180](B,C){c,d}
+				\tkzDefPointsBy[rotation=center B angle 90](B,d){i,j}
+				\tkzDefPointsBy[rotation=center A angle 0](A,D){e,f}
+				\tkzDefPointsBy[rotation=center A angle -180](A,D){g,h}
+
+				\draw[rotate=0,fill=gray!30] (B)ellipse (0.5cm and 1cm);
+				\draw[rotate=-90,dashed] (h) arc (0:180:1cm and 0.5cm);
+				\draw[rotate=90] (h) arc (180:0:1cm and 0.5cm);
+
+				\draw (f) -- (b);
+				\draw (h) -- (d);
+
+				\draw[->,color=red,line width=1.5pt] (B) -- (j) node [above] {$\widehat{n}$};
+
+				\tkzMarkRightAngle(j,B,d)
+	
+				\draw[dashed] (B) -- (d);
+
+				\tkzDefPoints{6/0.5/t1}
+
+				\tkzText[font=\small](t1){A}
+
+				\tkzDefPoints{2.5/-1.75/v1,2.5/-2.5/v2}
+
+				\draw[->] (v1) --++ (1.5,0) node [above,midway,font=\normalsize] {$\vec{J}$};
+				\draw[->] (v2) --++ (1.5,0) node [above,midway,font=\normalsize] {$\vec{E}$};
+
+				\draw (f) to [dim arrow={label=$L\equiv v_d\Delta t$},color=brown] (b);
+
+				%configurando estilo das cargas
+				\tikzstyle{s1}=[tdplot_screen_coords, circle, radius=0.001, ball color=gray!50,font=\tiny];
+
+				\tkzDefPoints{2/0.5/q1,4/0.5/q2,2.5/0/q3,4.5/0/q4,2/-0.5/q5,4/-0.5/q6}
+
+				\draw[->] (q1) --++ (0.5,0) node [right,font=\small] {$\vec{v}_d$};
+				\node[s1] at (q1) {+};
+
+				\draw[->] (q2) --++ (0.5,0) node [right,font=\small] {$\vec{v}_d$};
+				\node[s1] at (q2) {+};
+
+				\draw[->] (q3) --++ (0.5,0) node [right,font=\small] {$\vec{v}_d$};
+				\node[s1] at (q3) {+};
+
+				\draw[->] (q4) --++ (0.5,0) node [right,font=\small] {$\vec{v}_d$};
+				\node[s1] at (q4) {+};
+
+				\draw[->] (q5) --++ (0.5,0) node [right,font=\small] {$\vec{v}_d$};
+				\node[s1] at (q5) {+};
+
+				\draw[->] (q6) --++ (0.5,0) node [right,font=\small] {$\vec{v}_d$};
+				\node[s1] at (q6) {+};
+
+				\end{tikzpicture}
+				\caption*{\footnotesize Portadores de carga positivos se movendo com velocidade $\vec{v}_d$ na direção do campo elétrico $\vec{E}$.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\section{Resistência elétrica}
+
+\subsection{}
+
+\begin{frame}{Visão microscópica da resistividade de um material}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			Os elétrons em um condutor se comportam como as moléculas de um gás livre (gás de elétrons!), se movendo aleatoriamente em todas as direções e colidindo com os átomos da rede cristalina, mudando o movimento em cada colisão. Quando submetido a um campo elétrico $\vec{E}$, os elétrons se movem ligeiramente para o lado, com a velocidade de deriva muito menor que a velocidade efetiva dos elétrons (semelhante a um enxame de abelhas se deslocando de um lado a outro).
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.35]{figuras/resistividade.png}
+				\caption*{\footnotesize Movimento de um elétron em um condutor na presença de um campo elétrico $\vec{E}$.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Visão microscópica da resistividade de um material (continuação)}
+	\begin{multicols}{2}
+		Se um elétron de massa m é submetido a um campo elétrico $\vec{E}$ ele sofre uma aceleração a dado por
+		\begin{equation*}
+			a = \frac{F}{m} = \frac{eE}{m}.
+		\end{equation*}
+		Supondo que o intervalo de tempo médio $\tau$ entre colisões o elétron adquire uma velocidade de deriva dado por $v_d = a\tau$. Portanto
+		\begin{align*}
+			v_d & = a\tau,\\
+			v_d & = \frac{eE\tau}{m}.
+		\end{align*}
+		Sabendo que $J=nev_d$ temos $\frac{J}{ne}=\frac{eE\tau}{m}$, ou seja,
+		\begin{equation*}
+			\boxed{E = \rho J,}
+		\end{equation*}
+		onde $\rho=\frac{m}{e^2n\tau}$. $\rho$ é definido como resistividade do material.
+	\end{multicols}
+\end{frame}
+
+\begin{frame}{Resistor ôhmico}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			Para um grande número de condutores (como os metais), o valor da resistência permanece constante, não dependendo da diferença de potencial aplicada ao condutor.
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{align*}
+				\frac{(\Delta V)_1}{i_1} & =\frac{(\Delta V)_2}{i_2}=\cdots,\\
+				\Aboxed{\frac{V}{i} & =R=\text{constante}.}
+			\end{align*}
+		\end{column}
+	\end{columns}
+	\begin{figure}
+		\centering
+		\includegraphics[scale=0.4]{figuras/lei-ohm.png}
+		\caption*{\footnotesize Aumentanto a tensão a corrente aumenta proporcionalmente}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Resistência a partir da resistividade}
+	\begin{multicols}{2}
+		Considere um pedaço L de um fio retilíneo que possui uma resistividade $\rho$ e seção reta A, Se o fio for ôhmico a resistência é dado por $R=V/i$. Sabemos que a relação entre o campo elétrico $\vec{E}$ e a ddp entre os terminais do fio é dado por $V=EL$. Sabemos também que a corrente estacionária no fio é dado por $i=JA$. Substituindo
+		\begin{equation*}
+			R = \frac{V}{i} = \frac{EL}{JA}.
+		\end{equation*}
+		Mas $E=\rho J$, portanto
+		\begin{equation*}
+			\boxed{R = \rho\frac{L}{A}.}
+		\end{equation*}
+	\end{multicols}
+	\begin{corollary}
+		A resistência é uma propriedade de um dispositivo e a resistividade de um material.
+	\end{corollary}
+\end{frame}
+
+\begin{frame}{Lei de Ohm}
+	\begin{columns}
+		\begin{column}[c]{0.7\textwidth}
+			\begin{enumerate}
+				\item[\ding{51}] A corrente que atravessa um circuito é sempre diretamente proporcional  à diferença de potencial aplicada ao dispositivo;
+				\item[\ding{51}] Um dispositivo obedece à lei de Ohm se a resistência não depende da diferença de potencial nem do campo elétrico aplicado;
+				\item[\ding{51}] Na prática a resistividade do material aumenta linearmente com a temperatura segundo a relação
+				\begin{equation*}
+					\rho = \rho_0\alpha (T-T_0).
+				\end{equation*}
+			\end{enumerate}
+		\end{column}
+		\begin{column}[c]{0.3\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.4]{figuras/lei-ohm-grafico.png}
+				\caption*{\footnotesize Gráfico tensão versus corrente de um resistor ôhmico.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Resistores ligados em série}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			A mesma corrente i passa pelos resistores $R_1$, $R_2$ e $R_3$, portanto
+			\begin{align*}
+				V_{AB} & =R_1i,\\
+				V_{BC} & =R_2i,\\
+				V_{CD} & =R_3i.
+			\end{align*}
+			A diferença de potencial entre os terminais A e D é dado por
+			\begin{align*}
+				V_{AD}=V_{AB}+V_{BC}+V_{CD}.
+			\end{align*}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}
+			\centering
+			\begin{circuitikz}[scale=0.6, transform shape]
+				
+				%	\useasboundingbox (-2.5,-1) rectangle (6.5,5);
+				
+				\def\lx{8}
+				\def\ly{4}
+				
+				%	\draw[help lines, red!50] (0,0) grid (\lx,\ly);
+				
+				\draw (0,0) to (0,\ly);
+				\draw (0,\ly) to [battery1] (\lx,\ly);
+				\draw (\lx,4) to (\lx,0);
+				
+				\draw (0,0) to (1,0);
+				\draw (0,0) to [R=$R_1$, *-*] (3,0);
+				\draw (3,0) to [R=$R_2$, *-*] (5,0);
+				\draw (5,0) to [R=$R_3$, *-*] (8,0);
+				\draw (7,0) to (8,0);
+				
+				\draw[line width=1pt, color=red,<-] (1,4.25) -- (1.5,4.25) node[above,midway] {$i(t)$};
+				
+				\node at (0,0)[below] {A};
+				\node at (3,0)[below] {B};
+				\node at (5,0)[below] {C};
+				\node at (8,0)[below] {D};
+				
+			\end{circuitikz}
+				\caption*{\footnotesize Resistores $R_1$, $R_2$ e $R_3$ ligados em série.}
+				%\input{tikz/circuito-serie-2.pgf}
+			\end{figure}
+		\end{column}
+	\end{columns}	
+\end{frame}
+
+\begin{frame}{Resistência equivalente em ligações em série}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			Substituindo $V_{AB}$, $V_{BC}$ e $V_{CD}$ temos
+			\begin{align*}
+				V_{AD} & = V_{AB}+V_{BC}+V_{CD},\\
+				V_{AD} & = R_1i+R_2i+R_3i,\\
+				V_{AD} & = \underbracket{(R_1+R_2+R_3)}_{\alert{R_{eq}}}i.
+			\end{align*}
+			\begin{block}{Resistência equivalente}
+				\begin{equation*}
+					R_{eq}=R_1+R_2+\cdots+R_N.
+				\end{equation*}
+			\end{block}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}
+			\vspace*{-0.25cm}
+		\begin{subfigure}{0.5\textwidth}
+			\centering
+			\begin{circuitikz}[scale=0.4, transform shape]
+				
+				%	\useasboundingbox (-2.5,-1) rectangle (6.5,5);
+				
+				\def\lx{8}
+				\def\ly{4}
+				
+				%	\draw[help lines, red!50] (0,0) grid (\lx,\ly);
+				
+				\draw (0,0) to (0,\ly);
+				\draw (0,\ly) to [battery1] (\lx,\ly);
+				\draw (\lx,4) to (\lx,0);
+				
+				\draw (0,0) to (1,0);
+				\draw (0,0) to [R=$R_1$, *-*] (3,0);
+				\draw (3,0) to [R=$R_2$, *-*] (5,0);
+				\draw (5,0) to [R=$R_3$, *-*] (8,0);
+				\draw (7,0) to (8,0);
+				
+				\draw[line width=1pt, color=red,<-] (1,4.25) -- (1.5,4.25) node[above,midway] {$i(t)$};
+				
+				\node at (0,0)[below] {A};
+				\node at (3,0)[below] {B};
+				\node at (5,0)[below] {C};
+				\node at (8,0)[below] {D};
+				
+			\end{circuitikz}
+%				\input{tikz/circuito-serie.pgf}
+		\end{subfigure}
+		\begin{subfigure}{0.5\textwidth}
+			\centering
+			\begin{circuitikz}[scale=0.4, transform shape]
+				
+				%	\useasboundingbox (-2.5,-1) rectangle (6.5,5);
+				
+				\def\lx{8}
+				\def\ly{4}
+				
+				%	\draw[help lines, red!50] (0,0) grid (\lx,\ly);
+				
+				\draw (0,0) to (0,\ly);
+				\draw (0,\ly) to [battery1] (\lx,\ly);
+				\draw (\lx,4) to (\lx,0);
+				
+				\draw[color=red] (0,0) to [R=$R_{eq}$, *-*] (8,0);
+				
+				\draw[line width=1pt, color=red,<-] (1,4.25) -- (1.5,4.25) node[above,midway] {$i(t)$};
+				
+				\node at (0,0)[below] {A};
+				\node at (8,0)[below] {D};
+				
+			\end{circuitikz}
+%				\input{tikz/circuito-serie-req.pgf}
+		\end{subfigure}
+			\caption*{\footnotesize Resistores $R_1$, $R_2$ e $R_3$ ligados em série (Acima). Resistência equivalente $R_{eq}$ do conjunto (abaixo).}
+			\end{figure}
+		\end{column}
+	\end{columns}	
+\end{frame}
+
+\begin{frame}{Resistores ligados em paralelo}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			A corrente i que atravessa o fio condutor é dividida nos terminais A e B, o que resulta
+			\begin{align*}
+				i = i_1+i_2+i_3.
+			\end{align*}
+			Sabendo que $i=\frac{V}{R}$ temos
+			\begin{align*}
+				\frac{V_{AB}}{R_{eq}}=\frac{V_{R_1}}{R_1}+\frac{V_{R_2}}{R_2}+\frac{V_{R_3}}{R_3}.
+			\end{align*}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}
+			\vspace*{-0.25cm}
+			\centering
+			\begin{circuitikz}[scale=0.6, transform shape]
+				
+				%	\useasboundingbox (-2.5,-1) rectangle (6.5,5);
+				
+				\def\lx{4}
+				\def\ly{3}
+				
+				%	\draw[help lines, red!50] (0,0) grid (\lx,\ly);
+				
+				\draw (0,\ly) to (0,-4);
+				\draw (0,\ly) to [battery1] (\lx,\ly);
+				\draw (\lx,\ly) to (\lx,-4);
+				
+				\draw (0,0) to [R=$R_1$, *-*] (\lx,0);
+				\draw (0,-2) to [R=$R_2$, *-*] (\lx,-2);
+				\draw (0,-4) to [R=$R_3$, *-*] (\lx,-4);
+				
+				\draw[line width=1pt, color=red,->] (-0.5,1.5) -- (-0.5,0) node[left,midway] {$i$};
+				\draw[line width=1pt, color=red,->] (0.25,0.5) -- (1.25,0.5) node[above,midway] {$i_1$};
+				\draw[line width=1pt, color=red,->] (0.25,-1.5) -- (1.25,-1.5) node[above,midway] {$i_2$};
+				\draw[line width=1pt, color=red,->] (0.25,-3.5) -- (1.25,-3.5) node[above,midway] {$i_3$};
+				
+				\node at (0,-4)[below] {A};
+				\node at (\lx,-4)[below] {B};
+				
+			\end{circuitikz}
+			\caption*{\footnotesize Resistores $R_1$, $R_2$ e $R_3$ ligados em paralelo.}
+%				\input{tikz/circuito-paralelo.pgf}
+			\end{figure}
+		\end{column}
+	\end{columns}	
+\end{frame}
+
+\begin{frame}{Resistores ligados em paralelo (continuação)}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			Mas a tensão entre os terminais A e B da bateria é a mesma nos terminais dos resistores $R_1$, $R_2$ e $R_3$, ou seja, 					\begin{align*}
+				V_{AD}=V_{R_1}=V_{R_2}=V_{R_3}=V,
+			\end{align*}
+			portanto
+			\begin{align*}
+				\frac{V_{AB}}{R_{eq}} & =\frac{V}{R_{eq}}=\frac{V}{R_1}+\frac{V}{R_2}+\frac{V}{R_3},\\
+				\frac{\bcancel{V}}{R_{eq}} & =\bcancel{V}\left(\frac{1}{R_1}+\frac{1}{R_2}+\frac{1}{R_3}\right),
+			\end{align*}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{align*}
+			\frac{1}{R_{eq}} & =\frac{1}{R_1}+\frac{1}{R_2}+\frac{1}{R_3},\\
+				\Aboxed{R_{eq} & =\frac{R_2R_2R_3}{R_1R_3+R_2R_3+R_1R_2}.}
+			\end{align*}
+			\begin{block}{Resistência equivalente de ligação em paralelo}
+				\begin{align*}
+					\frac{1}{R_{eq}} =\frac{1}{R_1}+\frac{1}{R_2}+\cdots +\frac{1}{R_N}.
+				\end{align*}
+			\end{block}
+		\end{column}
+	\end{columns}	
+\end{frame}
+
+\begin{frame}{Associação mista de resistores}
+	\begin{figure}
+		\centering
+		\begin{circuitikz}[scale=0.5, transform shape]
+			
+			%	\useasboundingbox (-2.5,-1) rectangle (6.5,5);
+			
+			\def\lx{8}
+			\def\ly{4}
+			\def\d{12}
+			
+			%	\draw[help lines, red!50] (0,0) grid (\lx,\ly);
+			
+			\draw (0,0) to (0,\ly);
+			\draw (0,\ly) to [battery1] (\lx,\ly);
+			\draw (\lx,4) to (\lx,0);
+			
+			\draw (0,0) to (1,0);
+			\draw (0,0) to [R=$R_1$, *-*] (3,0);
+			\draw (3,0) to [R=$R_2$, *-*] (5,0);
+			\draw (5,0) to [R=$R_4$, *-*] (8,0);
+			\draw (5,0) to (5.5,1.5);
+			\draw (5.5,1.5) to [R=$R_3$, *-*] (7.5,1.5);
+			\draw (7.5,1.5) to (8,0);
+			\draw (5,0) to (5.5,-1.5);
+			\draw (5.5,-1.5) to [R=$R_5$, *-*] (7.5,-1.5);
+			\draw (7.5,-1.5) to (8,0);
+			\draw (7,0) to (8,0);
+			
+			\draw[line width=1pt, color=red,<-] (1,4.25) -- (1.5,4.25) node[above,midway] {$i(t)$};
+			
+			\node at (0,0)[below] {A};
+			\node at (3,0)[below] {B};
+			\node at (5,0)[below] {C};
+			\node at (8,0)[below] {D};
+			
+			\draw[->,line width=3pt] (\lx+1.5,0.5*\ly) -- (\lx+2.5,0.5*\ly);
+			
+			\def\lxx{\lx+\d}
+			
+			%	\draw[help lines, red!50] (0+\d,0) grid (\lxx,\ly);
+			
+			\draw (0+\d,0) to (0+\d,\ly);
+			\draw (0+\d,\ly) to [battery1] (\lxx,\ly);
+			\draw (\lxx,4) to (\lxx,0);
+			
+			\draw (0+\d,0) to (1+\d,0);
+			\draw (0+\d,0) to [R=$R_1$, *-*] (3+\d,0);
+			\draw (3+\d,0) to [R=$R_2$, *-*] (5+\d,0);
+			\draw (5+\d,0)[color=red] to [R=$\frac{R_3R_4R_5}{R_3+R_4+R_5}$, *-*] (8+\d,0);
+			
+			\draw (0+\d,-1.5)[color=green] to [R=$R_{eq}$, *-*] (8+\d,-1.5);
+			
+			\draw[line width=1pt, color=red,<-] (1+\d,4.25) -- (1.5+\d,4.25) node[above,midway] {$i(t)$};
+			
+			\node at (0+\d,0)[below] {A};
+			\node at (3+\d,0)[below] {B};
+			\node at (5+\d,0)[below] {C};
+			\node at (8+\d,0)[below] {D};
+			
+			\node at (0+\d,-1.5)[below,color=green] {A};
+			\node at (8+\d,-1.5)[below,color=green] {D};
+			
+		\end{circuitikz}
+		\caption*{\footnotesize Resistência equivalente $R_{eq}$ de uma associação mista de resistores.}
+%		\input{tikz/circuito-misto.pgf}
+	\end{figure}
+	\begin{block}{Circuito misto}
+		Associação mista de ligações de resistores em série e paralelo.
+	\end{block}
+\end{frame}
+
+\section{Circuitos}
+
+\subsection{}
+
+\begin{frame}{Potência em circuitos elétricos}
+%	\begin{multicols}{2}
+		Para deslocar uma quantidade de carga $dq$ de um terminal a outro de um circuito é necessário realizar um trabalho $dW$ dado por
+		\begin{align*}
+			dW = Vdq.
+		\end{align*}
+		Pela definição de corrente podemos dizer que $dq=idt$, portanto
+		\begin{align*}
+			dW = Vidt.
+		\end{align*}
+		Pela definição de potência P, sabemos que $dW=Pdt$, portanto podemos dizer que a taxa de transferência de energia necessária para deslocar uma quantidade de cada por segundo de um terminal a outro é dado por
+		\begin{align*}
+			\boxed{P = Vi.}
+		\end{align*}
+%	\end{multicols}
+\end{frame}
+
+\begin{frame}{Efeito Joule}
+%	\begin{multicols}{2}
+		No caso de um resistor ôhmico temos $V=Ri$, substituindo temos a taxa de energia elétrica dissipada a cada segundo em um resistor,
+		\begin{align*}
+			P & = (Ri)i = Ri^2,\\
+			P & = V\left(\frac{V}{R}\right) = \frac{V^2}{R}.
+		\end{align*}
+		\begin{block}{Efeito Joule}
+			Capacidade de um resistor em realizar trabalho convertendo energia elétrica em energia térmica.
+		\end{block}
+%	\end{multicols}
+\end{frame}
+
+\begin{frame}{Força eletromotriz}
+	Para que ocorra uma corrente elétrica ao longo do circuito é necessário um dispositivo, como uma bateria ou gerador, que realize um trabalho $\tau$ afim de deslocar uma quantidade de carga $\Delta q$ de um ponto a outro desse circuito. Portanto, o trabalho $\alert{\varepsilon}$ necessário para deslocar cada elemento de carga do terminal positivo para o terminal negativo de uma bateria ou gerador é chamado força eletromotriz da bateria.
+	\begin{block}{Força eletromotriz (f.e.m.)}
+		\begin{equation*}
+			\varepsilon = \frac{dW}{dq}.
+		\end{equation*}
+	\end{block}
+	\begin{corollary}
+		A unidade de medida de f.e.m. no SI é $\text{J/C}\equiv \text{Volts}$.
+	\end{corollary}
+\end{frame}
+
+\begin{frame}{Analogia como o sistema mecânico}
+	\begin{figure}
+		\begin{subfigure}[b]{0.55\textwidth}
+			\Centering
+			\includegraphics[scale=0.5]{figuras/figura-1a.png}
+			\caption*{Representação da f.e.m. de uma bateria.}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.4\textwidth}
+			\Centering
+			\includegraphics[scale=0.25]{figuras/figura-1b.png}
+			\caption*{Analogia com o sistema mecânico.}
+		\end{subfigure}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Potência fornecida por uma bateria}
+	\begin{multicols}{2}
+		Vimos que o trabalho realizado por uma bateria para deslocar uma quantidade de carga $dq$ é dado por $dW = \varepsilon dq$. Pela definição de corrente tempos $dq=idt$. Substituindo encontramos
+		\begin{equation*}
+			dW = \varepsilon idt.
+		\end{equation*}
+		Pela definição de potência, $P=\frac{dW}{dt}$, encontramos
+		\begin{align*}
+			dW & = \varepsilon idt,\\
+			\Aboxed{P & = \varepsilon i.}
+		\end{align*}
+		sendo i a corrente que atravessa os terminais da bateria e $\varepsilon$ a f.e.m. da bateria.
+	\end{multicols}
+	\begin{block}{Potência elétrica de uma bateria}
+		\begin{equation*}
+			P = \varepsilon\cdot i.
+		\end{equation*}	
+	\end{block}
+\end{frame}
+
+\begin{frame}{A equação do circuito}
+	\begin{columns}
+		\begin{column}{0.7\textwidth}
+   			\footnotesize
+			Podemos resumir num circuito ao lado que a cada segundo
+			\begin{itemize}
+				\item Na bateria, a energia química se transforma em energia elétrica;
+				\item No resistor, a energia elétrica se transforma em energia térmica;
+				\item No motor, a energia elétrica se transforma em energia mecânica.
+			\end{itemize}
+			Por conservação da energia, a potência necessária para girar o motor e aquecer o resistor deve ser igual a potência fornecida pela bateria.
+			\begin{align*}
+				\underbracket{\varepsilon i}_{(Bateria)} & = \underbracket{\varepsilon'i+r'i^2}_{(Motor)}+\underbracket{Ri^2}_{(Resistor)},\\
+				\Aboxed{\varepsilon\prime+r\prime i+Ri-\varepsilon & = 0.}
+			\end{align*}
+		\end{column}
+		\begin{column}{0.3\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.35]{figuras/circuito.png}
+				\caption*{\footnotesize Circuito fechado.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+	\begin{block}{Lei de Kirchhoff}
+		A soma dos potenciais em um circuito fechado deve ser zero.
+	\end{block}
+\end{frame}
+
+\section{Apêndice}
+
+\subsection{}
+
+\begin{frame}{Transformar um número em notação científica}
+	\begin{corollary}
+		\begin{enumerate}[leftmargin=1.75cm]
+			\item[Passo 1:] Escrever o número incluindo a vírgula.
+			\item[Passo 2:] Andar com a vírgula até que reste somente um número diferente de zero no lado esquerdo.
+			\item[Passo 3:] Colocar no expoente da potência de 10 o número de casas decimais que tivemos que "andar" com a vírgula. Se ao andar com a vírgula o valor do número diminuiu, o expoente ficará positivo, se aumentou o expoente ficará negativo.
+		\end{enumerate}
+	\end{corollary}
+	\begin{exampleblock}{Exemplo}
+		\begin{equation*}
+			6\; 590\; 000\; 000\; 000\; 000,0 = \SI{6,59e15}{}		
+		\end{equation*}
+	\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Conversão de unidades em uma dimensão}
+	\begin{figure}
+		\begin{tikzpicture}[scale=0.65,transform shape,font=\Large]
+		
+		\tkzInit[xmin=-2,xmax=17,ymin=-6,ymax=3]
+		%\tkzGrid[color=gray!20]
+		\tkzClip
+		
+		\tikzset{compass style/.append style={->}}
+		
+		\foreach \x in {1,2,3}{
+			\tkzDefPoint(\x*3-3,0){\x}
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+			\node at (\x*3-3,2) {$\times 10^{3}$};
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+			\node at (\x*3-3,-2) {$\times 10^{-3}$};}
+		
+		\foreach \x in {4,5,6}{
+			\tkzDefPoint(\x*3-3,0){\x}
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+			\node at (\x*3-3,2) {$\times 10^{1}$};
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+			\node at (\x*3-3,-2) {$\times 10^{-1}$};}
+		
+		\tkzDefPoints{-1.5/0/p1,1.5/0/p2,4.5/0/p3,7.5/0/p4,10.5/0/p5,13.5/0/p6,16.5/0/p7}
+		
+		\tkzText(p1){$\si{\pico}\_^{}$}
+		\tkzText(p2){$\si{\nano}\_^{}$}
+		\tkzText(p3){$\si{\micro}\_^{}$}
+		\tkzText(p4){$\si{m}\_^{}$}
+		\tkzText(p5){$\si{\centi}\_^{}$}
+		\tkzText(p6){$\si{\deci}\_^{}$}
+		\tkzText(p7){$\_^{}$}
+		
+		%exemplos
+		
+		\tkzText(3,-3.5){$1\;\text{mm}=1\times 10^{(-1)\times\alert{2}}\;\text{dm}\rightarrow 1\times 10^{-2}\;\text{dm}$}
+		\tkzText(3.25,-4.5){$2,5\;\text{g}=2,5\times 10^{(1)\times\alert{3}}\;\text{mg}\rightarrow2,5\times 10^{3}\;\text{mg}$}
+		\tkzText(3.7,-5.5){$10\;\mu\text{C}=10\times 10^{\left[(-3)\times\alert{1}+(-1)\times\alert{3}\right]}\;\text{C}\rightarrow 10\times 10^{-6}\;\text{C}$}
+		
+		\end{tikzpicture}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Conversão de unidades em duas dimensões}
+	\begin{figure}
+		\begin{tikzpicture}[scale=0.65,transform shape,font=\Large]
+	
+		\tkzInit[xmin=-2,xmax=17,ymin=-6,ymax=3]
+		%\tkzGrid[color=gray!20]
+		\tkzClip
+	
+		\tikzset{compass style/.append style={->}}
+	
+		\foreach \x in {1,2,3}{
+			\tkzDefPoint(\x*3-3,0){\x}
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+			\node at (\x*3-3,2) {$\times 10^{6}$};
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+			\node at (\x*3-3,-2) {$\times 10^{-6}$};}
+		
+		\foreach \x in {4,5,6}{
+			\tkzDefPoint(\x*3-3,0){\x}
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+			\node at (\x*3-3,2) {$\times 10^{2}$};
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+			\node at (\x*3-3,-2) {$\times 10^{-2}$};}
+		
+		\tkzDefPoints{-1.5/0/p1,1.5/0/p2,4.5/0/p3,7.5/0/p4,10.5/0/p5,13.5/0/p6,16.5/0/p7}
+	
+		\tkzText(p1){$\si{\pico}\_^{2}$}
+		\tkzText(p2){$\si{\nano}\_^{2}$}
+		\tkzText(p3){$\si{\micro}\_^{2}$}
+		\tkzText(p4){$\si{m}\_^{2}$}
+		\tkzText(p5){$\si{\centi}\_^{2}$}
+		\tkzText(p6){$\si{\deci}\_^{2}$}
+		\tkzText(p7){$\_^{2}$}
+		
+		%exemplos
+	
+		\tkzText(3.3,-3.5){$1\;\text{mm}^2=1\times 10^{(-2)\times\alert{2}}\;\text{dm}^2\rightarrow 1\times 10^{-4}\;\text{dm}^2$}
+		\tkzText(3.6,-4.5){$2,5\;\text{m}^2=2,5\times 10^{(2)\times\alert{3}}\;\text{mm}^2\rightarrow2,5\times 10^{6}\;\text{mm}^2$}
+		\tkzText(4.1,-5.5){$10\;\mu\text{m}^2=10\times 10^{\left[(-6)\times\alert{1}+(-2)\times\alert{3}\right]}\;\text{m}^2\rightarrow 10\times 10^{-12}\;\text{m}^2$}
+	
+		\end{tikzpicture}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Conversão de unidades em três dimensões}
+	\begin{figure}
+		\begin{tikzpicture}[scale=0.65,transform shape,font=\Large]
+	
+		\tkzInit[xmin=-2,xmax=17,ymin=-6,ymax=3]
+		%\tkzGrid[color=gray!20]
+		\tkzClip
+	
+		\tikzset{compass style/.append style={->}}
+	
+		\foreach \x in {1,2,3}{
+			\tkzDefPoint(\x*3-3,0){\x}
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+			\node at (\x*3-3,2) {$\times 10^{9}$};
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+			\node at (\x*3-3,-2) {$\times 10^{-9}$};}
+		
+		\foreach \x in {4,5,6}{
+			\tkzDefPoint(\x*3-3,0){\x}
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+			\node at (\x*3-3,2) {$\times 10^{3}$};
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+			\node at (\x*3-3,-2) {$\times 10^{-3}$};}
+		
+		\tkzDefPoints{-1.5/0/p1,1.5/0/p2,4.5/0/p3,7.5/0/p4,10.5/0/p5,13.5/0/p6,16.5/0/p7}
+	
+		\tkzText(p1){$\si{\pico}\_^{3}$}
+		\tkzText(p2){$\si{\nano}\_^{3}$}
+		\tkzText(p3){$\si{\micro}\_^{3}$}
+		\tkzText(p4){$\si{m}\_^{3}$}
+		\tkzText(p5){$\si{\centi}\_^{3}$}
+		\tkzText(p6){$\si{\deci}\_^{3}$}
+		\tkzText(p7){$\_^{3}$}
+		
+		%exemplos
+	
+		\tkzText(3.3,-3.5){$1\;\text{mm}^3=1\times 10^{(-3)\times\alert{2}}\;\text{dm}^3\rightarrow 1\times 10^{-6}\;\text{dm}^3$}
+		\tkzText(3.6,-4.5){$2,5\;\text{m}^3=2,5\times 10^{(3)\times\alert{3}}\;\text{mm}^3\rightarrow2,5\times 10^{9}\;\text{mm}^3$}
+		\tkzText(4.1,-5.5){$10\;\mu\text{m}^3=10\times 10^{\left[(-9)\times\alert{1}+(-3)\times\alert{3}\right]}\;\text{m}^3\rightarrow 10\times 10^{-18}\;\text{m}^3$}
+
+		\end{tikzpicture}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Alfabeto grego}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{table}
+				\begin{tabular}[c]{ccc}
+					Alfa & $A$ & $\alpha$\\
+					Beta & $B$ & $\beta$\\
+					Gama & $\Gamma$ & $\gamma$\\
+					Delta & $\Delta$ & $\delta$\\
+					Epsílon & $E$ & $\epsilon$,$\varepsilon$\\
+					Zeta & $Z$ & $\zeta$\\
+					Eta & $H$ & $\eta$\\
+					Teta & $\Theta$ & $\theta$\\
+					Iota & $I$ & $\iota$\\
+					Capa & $K$ & $\kappa$\\
+					Lambda & $\Lambda$ & $\lambda$\\
+					Mi & $M$ & $\mu$
+				\end{tabular}
+			\end{table}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{table}
+				\begin{tabular}[c]{ccc}
+					Ni & $N$ & $\nu$\\
+					Csi & $\Xi$ & $\xi$\\
+					ômicron & $O$ & $o$\\
+					Pi & $\Pi$ & $\pi$\\
+					Rô & $P$ & $\rho$\\
+					Sigma & $\Sigma$ & $\sigma$\\
+					Tau & $T$ & $\tau$\\
+					Ípsilon & $\Upsilon$ & $\upsilon$\\
+					Fi & $\Phi$ & $\phi$,$\varphi$\\
+					Qui & $X$ & $\chi$\\
+					Psi & $\Psi$ & $\psi$\\
+					Ômega & $\Omega$ & $\omega$
+				\end{tabular}
+			\end{table}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Referências e observações\footnote{Este material está sujeito a modificações. Recomenda-se acompanhamento permanente.}}
+\bibliographystyle{jurabib}
+\begin{thebibliography}{9}
+		\bibitem{halliday}D. Halliday, R. Resnick, J. Walker, Fundamentos de física. Eletromagnetismo, v.3, 10. ed., Rio de Janeiro, LTC (2016)
+		\bibitem{randall}R. D. Knight, Física: Uma abordagem estratégica, v.3, 2nd ed., Porto Alegre, Bookman (2009)
+		\bibitem{moyses}H. M. Nussenzveig, Curso de física básica. Eletromagnetismo, v.1, 5. ed., São Paulo, Blucher (2014)
+\end{thebibliography}
+
+\vspace*{0.5cm}
+\begin{center}
+	Esta apresentação está disponível para download no endereço\\
+	\href{https://flavianowilliams.github.io/education}{\textcolor{blue}{https://flavianowilliams.github.io/education}}
+\end{center}
+	
+\end{frame}
+\end{document}

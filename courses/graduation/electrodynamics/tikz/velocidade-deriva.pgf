@@ -1,0 +1,64 @@
+﻿\begin{tikzpicture}[scale=1.5,transform shape,font=\large]
+
+		\tkzInit[xmin=0,xmax=7,ymin=-3,ymax=2]
+		\tkzGrid[color=gray!20]
+		\tkzClip
+
+		\tkzDefPoints{1/0/A,6/0/B,6/1/C,1/1/D}
+
+		\tkzDefPointsBy[rotation=center B angle 25](B,C){a,b}
+		\tkzDefPointsBy[rotation=center B angle -155](B,C){c,d}
+		\tkzDefPointsBy[rotation=center B angle 90](B,d){i,j}
+		\tkzDefPointsBy[rotation=center A angle 25](A,D){e,f}
+		\tkzDefPointsBy[rotation=center A angle -155](A,D){g,h}
+
+		\draw[rotate=30,fill=gray!30] (B)ellipse (0.5cm and 1cm);
+		\draw[rotate=-60,dashed] (h) arc (0:180:1cm and 0.5cm);
+		\draw[rotate=120] (h) arc (180:0:1cm and 0.5cm);
+
+		\draw (f) -- (b);
+		\draw (h) -- (d);
+
+		\draw[->,color=red,line width=1.5pt] (B) -- (j) node [above] {$\widehat{n}$};
+
+		\tkzMarkRightAngle(j,B,d)
+
+		\draw[dashed] (B) -- (d);
+
+		\tkzDefPoints{5.75/0.5/t1}
+
+		\tkzText[font=\small](t1){dA}
+
+		\tkzDefPoints{2.5/-2/v1,2.5/-2.75/v2}
+
+		\draw[->] (v1) --++ (1.5,0) node [above,midway] {$\vec{J}$};
+		\draw[->] (v2) --++ (1.5,0) node [above,midway] {$\vec{E}$};
+
+		\draw (f) to [dim arrow={label=$L\equiv vdt$},color=brown] (b);
+
+%		\tkzDrawPoints(f,b)
+
+	%configurando estilo das cargas
+	\tikzstyle{s1}=[tdplot_screen_coords, circle, radius=0.001, ball color=gray,font=\tiny];
+
+		\tkzDefPoints{2/0.5/q1,4/0.5/q2,2.5/0/q3,4.5/0/q4,2/-0.5/q5,4/-0.5/q6}
+
+	\draw[->] (q1) --++ (0.5,0) node [right,font=\small] {$\vec{v}_d$};
+	\node[s1] at (q1) {+};
+
+	\draw[->] (q2) --++ (0.5,0) node [right,font=\small] {$\vec{v}_d$};
+	\node[s1] at (q2) {+};
+
+	\draw[->] (q3) --++ (0.5,0) node [right,font=\small] {$\vec{v}_d$};
+	\node[s1] at (q3) {+};
+
+	\draw[->] (q4) --++ (0.5,0) node [right,font=\small] {$\vec{v}_d$};
+	\node[s1] at (q4) {+};
+
+	\draw[->] (q5) --++ (0.5,0) node [right,font=\small] {$\vec{v}_d$};
+	\node[s1] at (q5) {+};
+
+	\draw[->] (q6) --++ (0.5,0) node [right,font=\small] {$\vec{v}_d$};
+	\node[s1] at (q6) {+};
+
+\end{tikzpicture}

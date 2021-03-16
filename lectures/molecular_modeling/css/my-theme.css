@@ -67,7 +67,7 @@ div.my-footer {
     position: absolute;
     bottom: 0;
     left: 0;
-    height: 30px;
+    height: 25px;
     width: 100%;
 }
 
@@ -86,7 +86,7 @@ div.my-header {
     position: absolute;
     top: 0;
     left: 0;
-    height: 50px;
+    height: 40px;
     width: 100%;
 }
 
@@ -215,7 +215,6 @@ thead, tfoot, tr:nth-child(even) { background: none; }
 
 /* Add image and change bg color */
 .title-slide {
-/*  background-image: url(img/logo_MA_color.png);*/
   background-image: url(img/logo.jpg);
   background-position: 50% 15%;
   background-size: 500px;
@@ -262,7 +261,7 @@ thead, tfoot, tr:nth-child(even) { background: none; }
 .remark-slide-number {
   position: absolute;
   font-size: 10pt;
-  bottom: 6px;
+  bottom: 3px;
   margin-right: 10px;
   color: #D3D3D3; /* lightgrey */
   opacity: 0.7; /* default: 0.5 */

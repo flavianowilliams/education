@@ -4,15 +4,6 @@ Author: Flaviano Williams Fernandes
 Updated: xx/xx/xxxx
 */
 
-.wrapper { 
-  overflow: hidden; 
-} 
-.sliding-background { 
-  background: url("css/img/logo.jpg") repeat-x; 
-  height: 960px; 
-  width: 6000px; 
-} 
-
 .pull-left {
   text-align: left;
   float: left;
@@ -67,7 +58,7 @@ div.my-footer {
     position: absolute;
     bottom: 0;
     left: 0;
-    height: 25px;
+    height: 15px;
     width: 100%;
 }
 

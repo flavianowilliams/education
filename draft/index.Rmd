@@ -1,0 +1,59 @@
+---
+title: "Modelo"
+subtitle: "Curso de Física"
+author: "Flaviano Williams Fernandes"
+institute: "Instituto Federal do Paraná - Irati"
+date: "16 de março de 2021 (atualizado em `r format(Sys.Date(), format='%d/%m/%Y')`)"
+encoding: "UTF-8"
+output:
+  xaringan::moon_reader:
+    css: [css/default.css, css/my-theme.css, css/my-fonts.css]
+    chakra: libs/remark-latest.min.js
+    lib_dir: libs
+    nature:
+      ratio: "16:9"
+      slideNumberFormat: "%current% de %total%,"
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      countdown: 60000
+---
+layout: true
+background-image: url('css/img/logo-transparente.jpg')
+background-size: contain
+
+<div class="my-footer"><span>Flaviano Williams Fernandes</span></div>
+
+```{r setup, include=FALSE}
+  options(htmltools.dir.version = FALSE)
+  library("ggplot2")
+  library("gganimate")
+  library("latex2exp")
+#  knitr::opts_chunk$set(fig.path = 'img')
+```
+
+```{r, include=FALSE, eval=FALSE, echo=FALSE}
+  xaringan::inf_mr()
+```
+
+---
+class: middle
+
+<div class="my-header"><span>Sumário</span></div>
+
+1. Motivação
+
+2. Cenário atual no campus Irati e pretensões futuras
+
+3. A simulação computacional
+
+4. Ambiente computacional no campus Irati
+
+5. Apêndice A (Campo de força)
+
+6. Apêndice B (Resultados com glifosato)
+
+---
+class: middle
+
+<div class="my-header"><span>Motivação</span></div>

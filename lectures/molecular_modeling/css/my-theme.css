@@ -4,6 +4,15 @@ Author: Flaviano Williams Fernandes
 Updated: xx/xx/xxxx
 */
 
+.wrapper { 
+  overflow: hidden; 
+} 
+.sliding-background { 
+  background: url("css/img/logo.jpg") repeat-x; 
+  height: 960px; 
+  width: 6000px; 
+} 
+
 .pull-left {
   text-align: left;
   float: left;
@@ -386,3 +395,4 @@ ru-blockquote {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
 }
+

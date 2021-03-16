@@ -54,6 +54,10 @@ class: middle
 
 ---
 class: left, middle
+background-image: url('css/img/logo-transparente.jpg')
+background-size: cover
+opacity: 0.3
+background-repeat: no repeat
 
 <div class="my-header"><span>Motivação</span></div>
 

@@ -1,0 +1,484 @@
+% Aula de eletrodinamica para o curso de ísica II da graduação
+%
+\documentclass[brazil,aspectratio=169]{beamer}
+%
+%carregando preâmbulo
+\input{../../../../extras/preamble}
+
+%Título
+
+\title[Eletricidade]{Campo magnético}
+
+% The main document
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Sumário}
+  \tableofcontents
+\end{frame}
+
+\section{Magnetismo e campo magnético}
+
+\subsection{}
+
+\begin{frame}{História do magnetismo}
+	As primeira observações de fenômenos magnéticos surgiram na região da Magnésia (Ásia menor), onde existia um tipo de âmbar constituída por óxido de ferro que era capaz de atrair pequenos pedaços de ferro.
+	\begin{figure}
+		\centering
+		\begin{subfigure}[b]{0.45\textwidth}
+			\centering
+			\includegraphics[scale=0.3]{figuras/figura-1.png}
+			\caption*{\footnotesize Foto de um ámbar.}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.45\textwidth}
+			\centering
+			\includegraphics[scale=0.5]{figuras/magnesia.png}
+			\caption*{\footnotesize Localização da Magnésia na Grécia.}
+		\end{subfigure}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Linhas de indução e campo magnético}
+	De maneira semelhante ao campo elétrico, podemos também representar o campo magnético por meio de linhas de força chamadas \alert{linhas de indução}.
+	\begin{figure}
+		\begin{subfigure}[b]{0.45\textwidth}
+			\centering
+			\includegraphics[scale=0.26]{figuras/figura-3a.png}
+			\caption*{\footnotesize\centering Linhas de indução em um íman.}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.45\textwidth}
+			\centering
+			\includegraphics[scale=0.32]{figuras/figura-3b.png}
+			\caption*{\footnotesize \centering Regiões de baixa e elevada concentração de linhas de indução de campo magnético.}
+		\end{subfigure}
+	\end{figure}
+\end{frame}
+
+\section{Força magnética e corrente elétrica}
+
+\subsection{}
+
+\begin{frame}{A relação entre eletricidade e magnetismo}
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+			\begin{corollary}
+				Quando duas cargas elétricas estão em movimento, manifestam-se entre elas, além da força eletrostática, uma outra força, denominada força magnética.
+			\end{corollary}
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.45]{figuras/figura-13.png}
+				\caption*{\footnotesize\centering Força magnética entre dois fios \cite{forcamanetica}.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+	\begin{corollary}
+		A força magnética que atua entre duas cargas possui direção perpendicular ao movimento delas.
+	\end{corollary}
+\end{frame}
+
+\begin{frame}{A força de Lorentz}
+	\begin{columns}
+		\begin{column}{0.7\textwidth}
+			Hendrik Lorentz verificou que o módulo da força magnética $F_B$ depende da carga elétrica q e da velocidade da carga elétrica, de modo que
+			\begin{align*}
+				F_B & \alpha q,\\
+				F_B & \alpha v,\\
+				F_B & \alpha sen(\theta),
+			\end{align*}
+			Juntando essas características em uma equação teremos
+			\begin{equation*}
+				F_B \alpha qvsen(\theta).
+			\end{equation*}
+		\end{column}
+		\begin{column}{0.3\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.35]{figuras/forca-lorentz.png}
+				\caption*{\footnotesize Orientações da força magnética, deslocamento das cargas e campo magnético.}
+			\end{figure}
+		\end{column}
+	\end{columns}	
+\end{frame}
+
+\begin{frame}{Representação vetorial da força de Lorentz}
+	\begin{columns}
+		\begin{column}{0.7\textwidth}
+			A relação anterior escrita na forma de uma equação matemática nos fornece
+			\begin{equation*}
+				F_B = qvBsen(\theta),
+			\end{equation*}
+			ou expressa na forma vetorial teremos
+			\begin{equation*}
+				\boxed{\vec{F}_B = q\vec{v}\times\vec{B}.}
+			\end{equation*}
+			B é a constante de proporcionalidade definida como a intensidade do campo magnético $\vec{B}$.
+		\end{column}
+		\begin{column}{0.3\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.35]{figuras/forca-lorentz.png}
+				\caption*{\footnotesize  Orientações da força magnética, deslocamento das cargas e campo magnético.}
+			\end{figure}
+		\end{column}
+	\end{columns}	
+\end{frame}
+
+\begin{frame}{Trabalho realizado pela força de Lorentz}
+	\begin{multicols}{2}
+%	\begin{columns}
+%		\begin{column}{0.7\textwidth}
+			Caso a partícula esteja imersa em um campo elétrico (além do campo magnético), a expressão geral da força de Lorentz é a soma vetorial da força elétrica devido a ação do campo elétrico somado a força magnética atuando na \alert{partícula em movimento} devido ao campo magnético,
+			\begin{equation*}
+				\vec{F} = q\left[\vec{E}+\vec{v}\times\vec{B}\right].
+			\end{equation*}
+			Cada trabalho infinitesimal realizado por uma força é dado por $dW=\vec{F}\cdot d\vec{r}$, teremos assim
+			\begin{align*}
+				dW & = q\left[\vec{E}+\vec{v}\times\vec{B}\right]\cdot d\vec{r},\\
+				dW & = q\vec{E}\cdot d\vec{r}+\underbracket{(\vec{v}\times\vec{B})\cdot d\vec{r}}_{\tiny (\vec{v}\times\vec{B})\perp d\vec{r}=0},\\
+				dW & = q\vec{E}\cdot d\vec{r}.
+			\end{align*}
+			\alert{Logo podemos concluir que a força magnética não realiza trabalho sobre a carga em movimento.}
+	\end{multicols}
+\end{frame}
+
+\begin{frame}{Orientação da força magnética e a regra da mão direita}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			Características da força magnética (força de Lorentz):
+			\begin{itemize}
+				\item Módulo: $F_B=qvBsen(\theta)$,
+				\item Direção: $\vec{F}_B$ é perpendicular a $\vec{v}$ e $\vec{B}$,
+				\item Sentido: Dado pela regra da mão direita.
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.24]{figuras/figura-8.png}
+				\caption*{\footnotesize\centering Regra da mão direita.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+	\begin{corollary}
+		Se a carga q for \alert{negativa}, o \alert{sentido da força magnética} será \alert{contrário} àquele observado pela carga positiva.
+	\end{corollary}
+\end{frame}
+
+\begin{frame}{Força magnética sobre uma corrente}
+	\begin{columns}
+		\begin{column}[c]{0.7\textwidth}
+			Considere um trecho infinitesimal dL de um fio condutor de seção reta A percorrido por uma corrente elétrica i. A força de Lorentz $\vec{f}_B$ atuando em cada portador de carga em movimento é dado por
+			\begin{equation*}
+				\vec{f}_B=ne\vec{v}\times\vec{B}.
+			\end{equation*}
+			Como já foi demonstrado, a densidade de corrente nesse fio é dado por $\vec{J}=ne\vec{v}$. Podemos definir a força por unidade de volume do fio como
+ 		   	\begin{equation*}
+				\vec{f}_B=\vec{J}\times\vec{B}.
+			\end{equation*}
+		\end{column}
+		\begin{column}[c]{0.3\textwidth}
+			\begin{figure}
+				\includegraphics[scale=0.3]{figuras/figura-9.png}
+				\caption*{\footnotesize Força magnética $\vec{f}_B$ atuando em cada portador de carga em movimento no interior do fio condutor.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Força magnética sobre uma corrente}
+	\begin{columns}
+		\begin{column}[c]{0.7\textwidth}
+			A força total $d\vec{F}_m$ exercida sobre os elétrons contidos no volume AdL referente ao trecho dL do fio é dado por pela soma da força $\vec{f}_m$ atuando em cada elétron, ou seja,
+			\begin{align*}
+				d\vec{F}_B & = (AdL)\vec{f}_B,\\
+				d\vec{F}_B & = (AdL)\vec{J}\times\vec{B}.
+			\end{align*}
+			Mas sabemos que $i=JA$, portanto chegamos a
+			\begin{equation*}
+				\boxed{d\vec{F}_B = i\vec{dL}\times\vec{B}.}
+			\end{equation*}
+		\end{column}
+		\begin{column}[c]{0.3\textwidth}
+			\begin{figure}
+				\includegraphics[scale=0.3]{figuras/figura-9.png}
+				\caption*{\footnotesize Força magnética $\vec{f}_B$ atuando em cada portador de carga em movimento no interior do fio condutor.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\section{Motor elétrico}
+
+\subsection{}
+
+\begin{frame}{Torque em uma expira percorrida por corrente}
+	\begin{columns}
+		\begin{column}[c]{0.7\textwidth}
+			Quando uma corrente percorre uma espira retangular como mostra a figura ao lado, podemos observar que
+			\begin{enumerate}
+				\item [\ding{51}] Uma força magnética perpendicular ao eixo da espira irá atuar nos trechos paralelos ao seu eixo;
+				\item [\ding{51}] Uma força magnética paralela ao eixo da espira irá atuar nos trechos perpendiculares ao seu eixo;
+				\item [\ding{51}] Cada força perpendicular ao eixo da espira irá produzir um torque capaz de girar a espira ao redor do seu eixo.
+			\end{enumerate}
+		\end{column}
+		\begin{column}[c]{0.3\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.3]{figuras/campo-magnetico-espira.png}
+				\caption*{\footnotesize Espira retangular fechada imersa em um campo magnético.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Torque em uma expira percorrida por corrente}
+%	\begin{multicols}{2}
+	\begin{columns}
+		\begin{column}[c]{0.7\textwidth}
+			Pela definição de torque temos $\tau=rFsen\theta$, onde $\theta$ é o ângulo entre o raio de giro e a força responsável pelo torque. Observando a figura podemos perceber que $r=\frac{b}{2}$ e $\theta$ é o ângulo entre o vetor normal da espira $\vec{n}$ e $\vec{B}$. Portanto, os torques atuando na espira são dados por
+			\begin{align*}
+				\tau_1 & = \overbracket{\left(\frac{b}{2}\right)}^{\tiny \alert{r}}\overbracket{iaB}^{\alert{F_1}}sen(\theta),\\
+				\tau_2 & = \left(\frac{b}{2}\right)iaBsen(\theta),\\
+				\Aboxed{\tau & = \tau_1+\tau_2=iabBsen\theta.}
+			\end{align*}
+		\end{column}
+		\begin{column}[c]{0.3\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.3]{figuras/torque-espira-2.png}
+				\caption*{\footnotesize Rotação da espira devido ao torque das forças $F_1$ e $F_2$.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+%	\end{multicols}
+\end{frame}
+
+\begin{frame}{Torque em uma expira percorrida por corrente}
+\begin{columns}
+	\begin{column}[c]{0.7\textwidth}
+		Caso a espira única seja constituída por uma bobina de N espiras, o torque total é a soma dos torques individuais de cada espira,
+		\begin{align*}
+		\tau & = N(iabBsen\theta),\\
+		\Aboxed{\tau & =(NiA)Bsen\theta.}
+		\end{align*}
+		A é a área da espira (\alert{sendo de qualquer formato}). O termo entre parêntesis é chamado de momento magnético dipolar e está diretamente relacionado com as propriedades da bobina (número de espiras, corrente e área).
+	\end{column}
+	\begin{column}[c]{0.3\textwidth}
+		\begin{figure}
+			\centering
+			\includegraphics[scale=0.3]{figuras/torque-espira.png}
+			\caption*{\footnotesize Corrente elétrica percorrendo uma espira em um campo magnético.}
+		\end{figure}
+	\end{column}
+\end{columns}
+\end{frame}
+
+\section{Apêndice}
+
+\subsection{}
+
+\begin{frame}{Transformar um número em notação científica}
+	\begin{corollary}
+		\begin{enumerate}[leftmargin=1.75cm]
+			\item[Passo 1:] Escrever o número incluindo a vírgula.
+			\item[Passo 2:] Andar com a vírgula até que reste somente um número diferente de zero no lado esquerdo.
+			\item[Passo 3:] Colocar no expoente da potência de 10 o número de casas decimais que tivemos que "andar" com a vírgula. Se ao andar com a vírgula o valor do número diminuiu, o expoente ficará positivo, se aumentou o expoente ficará negativo.
+		\end{enumerate}
+	\end{corollary}
+	\begin{exampleblock}{Exemplo}
+		\begin{equation*}
+			6\; 590\; 000\; 000\; 000\; 000,0 = \SI{6,59e15}{}		
+		\end{equation*}
+	\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Conversão de unidades em uma dimensão}
+	\begin{figure}
+		\begin{tikzpicture}[scale=0.65,transform shape,font=\Large]
+		
+		\tkzInit[xmin=-2,xmax=17,ymin=-6,ymax=3]
+		%\tkzGrid[color=gray!20]
+		\tkzClip
+		
+		\tikzset{compass style/.append style={->}}
+		
+		\foreach \x in {1,2,3}{
+			\tkzDefPoint(\x*3-3,0){\x}
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+			\node at (\x*3-3,2) {$\times 10^{3}$};
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+			\node at (\x*3-3,-2) {$\times 10^{-3}$};}
+		
+		\foreach \x in {4,5,6}{
+			\tkzDefPoint(\x*3-3,0){\x}
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+			\node at (\x*3-3,2) {$\times 10^{1}$};
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+			\node at (\x*3-3,-2) {$\times 10^{-1}$};}
+		
+		\tkzDefPoints{-1.5/0/p1,1.5/0/p2,4.5/0/p3,7.5/0/p4,10.5/0/p5,13.5/0/p6,16.5/0/p7}
+		
+		\tkzText(p1){$\si{\pico}\_^{}$}
+		\tkzText(p2){$\si{\nano}\_^{}$}
+		\tkzText(p3){$\si{\micro}\_^{}$}
+		\tkzText(p4){$\si{m}\_^{}$}
+		\tkzText(p5){$\si{\centi}\_^{}$}
+		\tkzText(p6){$\si{\deci}\_^{}$}
+		\tkzText(p7){$\_^{}$}
+		
+		%exemplos
+		
+		\tkzText(3,-3.5){$1\;\text{mm}=1\times 10^{(-1)\times\alert{2}}\;\text{dm}\rightarrow 1\times 10^{-2}\;\text{dm}$}
+		\tkzText(3.25,-4.5){$2,5\;\text{g}=2,5\times 10^{(1)\times\alert{3}}\;\text{mg}\rightarrow2,5\times 10^{3}\;\text{mg}$}
+		\tkzText(3.7,-5.5){$10\;\mu\text{C}=10\times 10^{\left[(-3)\times\alert{1}+(-1)\times\alert{3}\right]}\;\text{C}\rightarrow 10\times 10^{-6}\;\text{C}$}
+		
+		\end{tikzpicture}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Conversão de unidades em duas dimensões}
+	\begin{figure}
+		\begin{tikzpicture}[scale=0.65,transform shape,font=\Large]
+	
+		\tkzInit[xmin=-2,xmax=17,ymin=-6,ymax=3]
+		%\tkzGrid[color=gray!20]
+		\tkzClip
+	
+		\tikzset{compass style/.append style={->}}
+	
+		\foreach \x in {1,2,3}{
+			\tkzDefPoint(\x*3-3,0){\x}
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+			\node at (\x*3-3,2) {$\times 10^{6}$};
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+			\node at (\x*3-3,-2) {$\times 10^{-6}$};}
+		
+		\foreach \x in {4,5,6}{
+			\tkzDefPoint(\x*3-3,0){\x}
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+			\node at (\x*3-3,2) {$\times 10^{2}$};
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+			\node at (\x*3-3,-2) {$\times 10^{-2}$};}
+		
+		\tkzDefPoints{-1.5/0/p1,1.5/0/p2,4.5/0/p3,7.5/0/p4,10.5/0/p5,13.5/0/p6,16.5/0/p7}
+	
+		\tkzText(p1){$\si{\pico}\_^{2}$}
+		\tkzText(p2){$\si{\nano}\_^{2}$}
+		\tkzText(p3){$\si{\micro}\_^{2}$}
+		\tkzText(p4){$\si{m}\_^{2}$}
+		\tkzText(p5){$\si{\centi}\_^{2}$}
+		\tkzText(p6){$\si{\deci}\_^{2}$}
+		\tkzText(p7){$\_^{2}$}
+		
+		%exemplos
+	
+		\tkzText(3.3,-3.5){$1\;\text{mm}^2=1\times 10^{(-2)\times\alert{2}}\;\text{dm}^2\rightarrow 1\times 10^{-4}\;\text{dm}^2$}
+		\tkzText(3.6,-4.5){$2,5\;\text{m}^2=2,5\times 10^{(2)\times\alert{3}}\;\text{mm}^2\rightarrow2,5\times 10^{6}\;\text{mm}^2$}
+		\tkzText(4.1,-5.5){$10\;\mu\text{m}^2=10\times 10^{\left[(-6)\times\alert{1}+(-2)\times\alert{3}\right]}\;\text{m}^2\rightarrow 10\times 10^{-12}\;\text{m}^2$}
+	
+		\end{tikzpicture}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Conversão de unidades em três dimensões}
+	\begin{figure}
+		\begin{tikzpicture}[scale=0.65,transform shape,font=\Large]
+	
+		\tkzInit[xmin=-2,xmax=17,ymin=-6,ymax=3]
+		%\tkzGrid[color=gray!20]
+		\tkzClip
+	
+		\tikzset{compass style/.append style={->}}
+	
+		\foreach \x in {1,2,3}{
+			\tkzDefPoint(\x*3-3,0){\x}
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+			\node at (\x*3-3,2) {$\times 10^{9}$};
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+			\node at (\x*3-3,-2) {$\times 10^{-9}$};}
+		
+		\foreach \x in {4,5,6}{
+			\tkzDefPoint(\x*3-3,0){\x}
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+			\node at (\x*3-3,2) {$\times 10^{3}$};
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+			\node at (\x*3-3,-2) {$\times 10^{-3}$};}
+		
+		\tkzDefPoints{-1.5/0/p1,1.5/0/p2,4.5/0/p3,7.5/0/p4,10.5/0/p5,13.5/0/p6,16.5/0/p7}
+	
+		\tkzText(p1){$\si{\pico}\_^{3}$}
+		\tkzText(p2){$\si{\nano}\_^{3}$}
+		\tkzText(p3){$\si{\micro}\_^{3}$}
+		\tkzText(p4){$\si{m}\_^{3}$}
+		\tkzText(p5){$\si{\centi}\_^{3}$}
+		\tkzText(p6){$\si{\deci}\_^{3}$}
+		\tkzText(p7){$\_^{3}$}
+		
+		%exemplos
+	
+		\tkzText(3.3,-3.5){$1\;\text{mm}^3=1\times 10^{(-3)\times\alert{2}}\;\text{dm}^3\rightarrow 1\times 10^{-6}\;\text{dm}^3$}
+		\tkzText(3.6,-4.5){$2,5\;\text{m}^3=2,5\times 10^{(3)\times\alert{3}}\;\text{mm}^3\rightarrow2,5\times 10^{9}\;\text{mm}^3$}
+		\tkzText(4.1,-5.5){$10\;\mu\text{m}^3=10\times 10^{\left[(-9)\times\alert{1}+(-3)\times\alert{3}\right]}\;\text{m}^3\rightarrow 10\times 10^{-18}\;\text{m}^3$}
+
+		\end{tikzpicture}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Alfabeto grego}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{table}
+				\begin{tabular}[c]{ccc}
+					Alfa & $A$ & $\alpha$\\
+					Beta & $B$ & $\beta$\\
+					Gama & $\Gamma$ & $\gamma$\\
+					Delta & $\Delta$ & $\delta$\\
+					Epsílon & $E$ & $\epsilon$,$\varepsilon$\\
+					Zeta & $Z$ & $\zeta$\\
+					Eta & $H$ & $\eta$\\
+					Teta & $\Theta$ & $\theta$\\
+					Iota & $I$ & $\iota$\\
+					Capa & $K$ & $\kappa$\\
+					Lambda & $\Lambda$ & $\lambda$\\
+					Mi & $M$ & $\mu$
+				\end{tabular}
+			\end{table}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{table}
+				\begin{tabular}[c]{ccc}
+					Ni & $N$ & $\nu$\\
+					Csi & $\Xi$ & $\xi$\\
+					ômicron & $O$ & $o$\\
+					Pi & $\Pi$ & $\pi$\\
+					Rô & $P$ & $\rho$\\
+					Sigma & $\Sigma$ & $\sigma$\\
+					Tau & $T$ & $\tau$\\
+					Ípsilon & $\Upsilon$ & $\upsilon$\\
+					Fi & $\Phi$ & $\phi$,$\varphi$\\
+					Qui & $X$ & $\chi$\\
+					Psi & $\Psi$ & $\psi$\\
+					Ômega & $\Omega$ & $\omega$
+				\end{tabular}
+			\end{table}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Referências e observações\footnote{Este material está sujeito a modificações. Recomenda-se acompanhamento permanente.}}
+	\bibliographystyle{jurabib}
+	\begin{thebibliography}{9}
+		\bibitem{halliday}D. Halliday, R. Resnick, J. Walker, Fundamentos de física. Eletromagnetismo, v.3, 10. ed., Rio de Janeiro, LTC (2016)
+		\bibitem{randall}R. D. Knight, Física: Uma abordagem estratégica, v.3, 2nd ed., Porto Alegre, Bookman (2009)
+		\bibitem{moyses}H. M. Nussenzveig, Curso de física básica. Eletromagnetismo, v.1, 5. ed., São Paulo, Blucher (2014)
+		\bibitem{forcamanetica}\text{https://pt.m.wikipedia.org/wiki/}
+	\end{thebibliography}
+\end{frame}
+
+\end{document}

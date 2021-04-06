@@ -1,0 +1,442 @@
+% Aula de eletromagnetismo para o curso de Física II da graduação
+%
+\documentclass[brazil,aspectratio=169]{beamer}
+%
+%carregando preâmbulo
+\input{../../contrib/preamble}
+
+%Título
+
+\title[Eletromagnetismo-IEL]{Indução eletromagnética}
+
+% The main document
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Sumário}
+  \tableofcontents
+\end{frame}
+
+\section{Lei de Faraday-Lenz}
+
+\subsection{}
+
+\begin{frame}{Resultado experimental}
+	A figura mostra uma espira de material condutor ligada a um amperímetro. Como não existe bateria, não deveria haver corrente. Entretanto, quando aproximamos da espira um íman, o amperímetro indica a passagem de corrente no fio.
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\begin{enumerate}
+				\item [\ding{51}] A corrente é observada somente se existe movimento relativo entre a espira e o íman;
+				\item [\ding{51}] Quanto mais rápido o movimento, maior a corrente.
+				\item[\ding{51}] O sentido da corrente depende se aproximamos ou afastamos o íman da espira e também do sentido das linhas de campo magnético do íman que atravessa a espira.
+			\end{enumerate}
+		\end{column}
+	\begin{column}{0.4\textwidth}
+		\begin{figure}
+			\centering
+			\includegraphics[scale=0.15]{figuras/experimento.jpg}
+			\caption*{\footnotesize Amperímetro revelando a existência de corrente na espira quando o íman está em movimento em relação a espira.}
+		\end{figure}
+	\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Definição de fluxo magnético}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			Considere uma pequena área $dA$, o fluxo das linhas de campo magnético que atravessam essa área é dado por
+			\begin{equation*}
+				d\Phi_B = B\cos\theta dA.
+			\end{equation*}
+			Somando todas as contribuições do fluxo $d\Phi$ de cada parte $dA$ que pertence a área $A$ inserida no interior de uma espira temos o fluxo magnético total $\Phi$ de $\vec{B}$ que atravessa a espira,
+			\begin{equation*}
+				\boxed{\Phi_B = \int\vec{B}\cdot\widehat{n} dA.}
+			\end{equation*}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}
+%				\input{tikz/fluxo-magnetico.pgf}
+				\centering
+				\begin{tikzpicture}[scale=0.75, transform shape, x={(-10:1cm)},y={(90:1cm)},z={(210:1cm)}]
+				
+				\filldraw[draw, opacity=0.05] (2,0,0) arc (0:360:2);
+				\draw[line width=1pt,dashed] (2,0,0) arc (0:360:2);
+				%	 \node[right] at (2,0,0) {$i$};
+				\draw[line width=1pt,->] (0,0,0) -- (0,0,1) node[below] {$\hat{n}$};
+				
+				%vetor B
+				\foreach \x in {-1,0,1,2}{
+					\foreach \y in {0}{
+						\draw[line width=1pt,color=gray] (0,-0.5+\x,-1+\x) -- (0,0+\x,0+\x);
+						\draw[line width=1pt,->] (0,0+\x+\y,0+\x) -- (0,0.5+\x+\y,1+\x) node[above] {$\vec{B}$};}}
+				
+				\draw[->] (2,2,0) node[right] {$dA$} to [out=180, in=90] (1,1,0) ;
+				\draw [<->] (0,0.25,0.5) arc (180:200:0.5) node[left] {\footnotesize $\theta$};
+				\node at (-1.75,-1.5,1) {$d\Phi_{B}=B\cos\theta dA$};
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Fluxo magnético do campo $\vec{B}$ que atravessa a área $dA$. $\theta$ é o ângulo entre $\vec{B}$ e o versor normal $\widehat{n}$ da superfície.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Lei de Faraday}
+	\small
+	\begin{multicols}{2}
+		Baseado na observação experimental, podemos concluir que se houver uma variação do fluxo (\alert{que pode ser definido por uma derivada temporal}) do campo magnético que atravessa uma espira fechada, essa variação irá produzir uma f.e.m. induzida $\varepsilon$ ao longo da espira, ou seja,
+		\begin{equation*}
+			\varepsilon = \frac{d\Phi}{dt},
+		\end{equation*}
+		No caso de uma bobina contendo N espiras, podemos somar a variação do fluxo em cada espira, o que resulta na expressão
+		\begin{equation*}
+			\boxed{\varepsilon = N\frac{d\Phi}{dt}.}
+		\end{equation*}
+		No SI a unidade de medida de fluxo magnético é Tesla-metro quadrado ou Weber (Wb).
+	\end{multicols}
+	\begin{corollary}
+		O módulo da força eletromotriz induzida em uma espira condutora é igual à taxa de variação temporal do fluxo magnético que atravessa a espira.
+	\end{corollary}
+\end{frame}
+
+\begin{frame}{Maneiras de como variar o fluxo magnético no tempo}
+	Pela definição de fluxo magnético, podemos perceber que o fluxo pode variar de três maneiras distintas, variando no tempo o campo magnético $\vec{B}$, a área da espira ou o ângulo entre $\vec{B}$ e o versor normal da espira.
+\begin{figure}
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\centering
+		\includegraphics[scale=0.3]{figuras/figura-1a}
+		\caption*{\footnotesize Variação de A no tempo.}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\centering
+		\includegraphics[scale=0.25]{figuras/figura-1b}
+		\caption*{\footnotesize Variação de $\theta$ no tempo.}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\centering
+		\includegraphics[scale=0.2]{figuras/figura-2a}
+		\caption*{\footnotesize Variação de B no tempo.}
+	\end{subfigure}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Sentido da corrente induzida em relação a variação do fluxo}
+\begin{columns}
+	\begin{column}{0.7\textwidth}
+		No caso do íman, aproximando a parte norte na espira, se a corrente tiver sentido oposto ao previsto, pela lei de Ampère criaria um campo magnético induzido no mesmo sentido do campo do íman. Isso atrairia o íman para dentro da espira aumentando a sua energia cinética, e ao mesmo tempo produziria calor por efeito Joule, o que violaria a \alert{lei da conservação da energia}.
+	\end{column}
+	\begin{column}{0.3\textwidth}
+		\begin{figure}
+			\centering
+			\includegraphics[scale=0.14]{figuras/lei-lenz.jpg}
+			\caption*{\footnotesize Resumo da lei de Lenz.}
+		\end{figure}
+	\end{column}
+\end{columns}
+	\begin{corollary}
+		A conservação da energia exige que a energia cinética dissipada pela corrente por efeito Joule se obtenha a custa de uma redução da energia cinética do íman.
+	\end{corollary}
+\end{frame}
+
+\begin{frame}{Lei de Lenz e o significado físico do sentido da corrente}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{block}{Lei de Lenz}
+				A corrente induzida em um circuito aparece sempre com um sentido tal que o campo magnético que ela cria tende a contrariar a variação do fluxo magnético que a originou.
+			\end{block}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{figure}
+				\centering
+				\begin{subfigure}[b]{0.45\textwidth}
+					\centering
+					\includegraphics[scale=0.2]{figuras/figura-2a}
+					\caption*{\footnotesize $\frac{d\Phi}{dt}>0$ no tempo.}
+				\end{subfigure}
+				\begin{subfigure}[b]{0.45\textwidth}
+					\centering
+					\includegraphics[scale=0.2]{figuras/figura-2b}
+					\caption*{\footnotesize $\frac{d\Phi}{dt}<0$ no tempo.}
+				\end{subfigure}
+			\end{figure}
+		\end{column}
+	\end{columns}
+	\begin{block}{Lei de Faraday-Lenz}
+		\begin{equation*}
+			\frac{d\Phi}{dt} = \alert{-}\varepsilon
+		\end{equation*}
+	\end{block}
+\end{frame}
+
+\begin{frame}{Campo elétrico induzido}
+	\begin{columns}
+		\begin{column}[c]{0.6\textwidth}
+			Pela definição de força eletromotriz sabemos que $\varepsilon=\oint \vec{E}\cdot d\vec{s}$. Substituindo na definição da Lei de Faraday-Lenz, $\varepsilon = -\frac{d\Phi}{dt}$, temos
+			\begin{align*}
+				\oint \vec{E}\cdot d\vec{s} = - \frac{d\Phi}{dt}.
+			\end{align*}
+			\alert{A equação acima nos diz que um campo magnético variável induz um campo elétrico circular}.
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\vspace*{-0.3cm}
+				\begin{tikzpicture}[scale=0.4,transform shape,font=\Large]
+				
+				\tkzInit[xmin=-6,xmax=6,ymin=-4,ymax=5]
+				%	\tkzGrid
+				\tkzClip[space=0.1]
+				
+				\tkzDefPoints{0/0/O,-3/0/A,3/0/B}
+				
+				\tkzDrawCircle[fill=gray!50](O,B)
+				
+				\foreach \x in {-4,-3,...,4}{
+					\foreach \y in {-4,-3,...,4}{
+						\node[color=blue] at (\x,\y) {\Large x};}}
+				
+				\tkzDefPoints{3.5/0/e1,2/0/e2}
+				
+				\tkzDrawArc[arrows=->,color=red,line width=1pt,rotate](O,e1)(180)
+				\tkzDrawArc[arrows=->,color=red,line width=1pt,rotate](O,e1)(-180)
+				
+				\foreach \z in {2.5,2,1.5}{
+					\tkzDefPoint(\z,0){e}
+					\tkzDrawArc[arrows=->,color=red,line width=1pt,rotate](O,e)(180)
+					\tkzDrawArc[arrows=->,color=red,line width=1pt,rotate](O,e)(-180)}
+				
+				\tkzDefPoints{4/4/t1,3.5/-3.5/t2,-4/-3.75/t3}
+				\tkzDefPoints{2.5/0/e2}
+				
+				\tkzDefPointsBy[rotation=center O angle 30](O,e2){p1,p2}
+				\tkzDefPointsBy[rotation=center O angle 45](O,e1){p3,p4}
+				\tkzDefPointsBy[rotation=center O angle 225](O,B){p5,p6}
+				
+				\draw[->,line width=0.5pt] (t1) -- (p2);
+				\draw[->,line width=0.5pt] (t1) -- (p4);
+				
+				\tkzText[text centered,text width=4cm,opacity=100,fill=gray!20](t1){linhas de campo elétrico}
+				\tkzText[color=blue](t2){$\vec{B}$}
+				
+				\draw[->,line width=0.5pt] (t3) -- (p6);
+
+				\tkzText[text centered,text width=4cm,opacity=100,fill=gray!20](t3){Espira circular}
+
+				\end{tikzpicture}
+				\caption*{\footnotesize Linhas de campo elétrico circular.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+	\begin{corollary}
+		Um campo magnético variável produz um campo elétrico circular.
+	\end{corollary}
+\end{frame}
+
+\section{Indutância}
+
+\subsection{}
+
+\begin{frame}{Fluxo magnético no interior de um solenóide}
+	\begin{columns}
+		\begin{column}[c]{0.7\textwidth}
+			Considere um solenóide infinito de área $A$, o fluxo magnético que atravessa cada espira do solenóide é dado por
+			\begin{align*}
+				\Phi_B = BA.
+			\end{align*}
+			Pela lei de Ampere, determinamos o campo magnético $\vec{B}$ induzido no interior de um solenóide de densidade n de espiras, dado por	$B = \mu_0 i n$. Substituindo temos
+			\begin{align*}
+				\Aboxed{\Phi_B = \mu_0 i nA.}
+			\end{align*}
+		\end{column}
+		\begin{column}[c]{0.3\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.3]{figuras/indutancia.png}
+				\caption*{\footnotesize Fluxo do campo magnético $\Phi_B$ no interior de um solenóide.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Indutância}
+%	\begin{multicols}{2}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			Considere agora um segmento do solenóide que possui um comprimento $l$. O número de espiras desse segmento vale $N=nl$. O fluxo total do campo magnético no seu interior é a soma do fluxo que atravessa cada espira, ou seja,
+			\begin{align*}
+				N\Phi_B & = (nl)\Phi_B,\\
+				N\Phi_B & = (nl)(\mu_0 inA),
+			\end{align*}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{align*}
+				N\Phi_B & = (\mu_0 n^2 lA)i.
+			\end{align*}
+			O termo entre parênteses depende somente da geometria do solenóide, recebendo o nome de indutância L, onde a indutância por comprimento vale
+			\begin{align*}
+				\Aboxed{\frac{L}{l} = \mu_0n^2A.}
+			\end{align*}
+		\end{column}		
+%	\end{multicols}
+	\end{columns}
+	\begin{corollary}
+		A permeabilidade magnética pode ser representada em unidades de H/m.
+	\end{corollary}
+\end{frame}
+
+\begin{frame}{Autoindução}
+	\begin{columns}
+		\begin{column}[c]{0.55\textwidth}
+			Como foi mostrado, o fluxo que atravessa um segmento de um solenóide vale $N\Phi_B = Li$. Pela lei de Faraday-Lenz temos que a f.e.m. induzida ao longo do solenóide é dado por
+			\begin{align*}
+				\varepsilon_L & =-\frac{d(N\Phi_B)}{dt}=-\frac{d(Li)}{dt},\\
+				\Aboxed{\varepsilon_L & =-L\frac{di}{dt}.}
+			\end{align*}
+		\end{column}
+		\begin{column}[c]{0.45\textwidth}
+			\begin{figure}
+				\centering
+					\begin{circuitikz}[scale=0.55, transform shape,font=\Large]
+					
+					\tkzInit[xmin=-1,xmax=9,ymin=-1,ymax=5]
+					%\tkzGrid[color=gray!50]
+					\tkzClip[space=0.1]
+					
+					\tkzDefPoints{0/0/A,0/4/B,8/4/C,8/0/D}
+					
+					\draw (B) to [battery1,l_=$\varepsilon$] (A);
+					\draw (B) to [vR,l=$R$] (C);
+					\draw (C) to [L,l=$L$] (D);
+					\draw (D) to (A);
+					
+					\tkzDefPoints{8.25/3.5/t1,1/4.25/t2,1/-0.25/t3}
+					
+					\draw[line width=1pt, color=red,<-] (t3) --++ (0.75,0) node[below,midway] {$i(t)$};
+					\draw[line width=1pt, color=red,->] (t2) --++ (0.75,0) node[above,midway] {$i(t)$};
+					\draw[line width=1pt, color=red,->] (t1) --++ (0,-0.75) node[right,midway] {$\frac{di}{dt}$};
+					
+				\end{circuitikz}
+				\caption*{\footnotesize Circuito RL contendo resistência variável.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+	\begin{corollary}
+		Uma f.e.m. irá aparecer no indutor se houver uma variação da corrente nele.
+	\end{corollary}
+\end{frame}
+
+\begin{frame}{Conservação da energia em um circuito contendo um indutor}
+	\begin{columns}
+		\begin{column}[c]{0.7\textwidth}
+			Considere um circuito contendo um gerador de corrente alternada e um indutor com indutância $L$. Sabemos que o gerador terá uma potência elétrica dado por $\frac{dW}{dt}=\varepsilon i$, onde $\varepsilon$ é a f.e.m. associada ao gerador. Por conservação de energia, poderemos dizer que neste caso a energia fornecida a cada intervalo de tempo será convertida em energia magnética no indutor, onde pela lei de Faraday-Lenz teremos
+			\begin{align*}
+				\varepsilon i = -\varepsilon_Li = i\frac{d\Phi_B}{dt},
+			\end{align*}
+			onde $\varepsilon_L$ é a f.e.m. induzida no solenóide.
+		\end{column}
+		\begin{column}[c]{0.3\textwidth}
+			\begin{figure}
+				\centering
+				\begin{circuitikz}[scale=0.55, transform shape,font=\Large]
+				
+				\tkzInit[xmin=-1,xmax=9,ymin=-1,ymax=5]
+				%\tkzGrid[color=gray!50]
+				\tkzClip[space=0.1]
+				
+				\tkzDefPoints{0/0/A,0/4/B,4/4/C,4/0/D}
+				
+				\draw (B) to [battery1,l_=$\varepsilon$] (A);
+				\draw (C) to [L,l=$L$] (D);
+				\draw (D) to (A);
+				\draw (B) to (C);
+				
+				\tkzDefPoints{8.25/3.5/t1,1/4.25/t2,1/-0.25/t3}
+				
+				\draw[line width=1pt, color=red,<-] (t3) --++ (0.75,0) node[below,midway] {$i(t)$};
+				\draw[line width=1pt, color=red,->] (t2) --++ (0.75,0) node[above,midway] {$i(t)$};
+				\draw[line width=1pt, color=red,->] (t1) --++ (0,-0.75) node[right,midway] {$\frac{di}{dt}$};
+				
+			\end{circuitikz}
+			\caption*{\footnotesize Circuito contendo indutor L.}
+		\end{figure}
+	\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Energia armazenada em um campo magnético}
+	\begin{columns}
+		\begin{column}[t]{0.5\textwidth}
+			Integrando $\frac{dW}{dt}=\varepsilon i$ teremos
+			\begin{align*}
+			\Delta U & = \int\limits_{0}^{t} i\frac{d\Phi_B}{dt}dt,\\
+				\Delta U & = \int\limits_{0}^{t} Li\frac{di}{dt}dt.
+			\end{align*}
+		\end{column}
+		\begin{column}[t]{0.5\textwidth}
+			Sabendo que $di=\frac{di}{dt}dt$ e considerando que a energia magnética no indutor em t=0 é zero, teremos
+			\begin{align*}
+				U(I) & = L\int\limits_{0}^{I}idi,\\
+				\Aboxed{U(I) & = \frac{1}{2}LI^2.}
+			\end{align*}
+		\end{column}
+	\end{columns}
+	\begin{corollary}
+		A energia armazenada em um indutor dependerá da corrente I e da sua indutância.
+	\end{corollary}
+\end{frame}
+
+\begin{frame}{Densidade de energia de um campo magnético}
+%	\begin{multicols*}{2}
+\begin{columns}
+	\begin{column}[t]{0.5\textwidth}
+		No solenóide temos $L=\mu_0ln^2A$. Substituindo na expressão anterior teremos
+		\begin{align*}
+			U & = \frac{1}{2}(\mu_0n^2li^2A),\\
+			U & = \frac{1}{2\mu_0}(\mu_0ni)^2Al
+		\end{align*}
+		O termo entre parêntesis corresponde ao campo $B$ no interior do solenóide e
+	\end{column}
+	\begin{column}[t]{0.5\textwidth}
+		 $V=Al$ o seu volume. Portanto
+		\begin{align*}
+		U = \frac{1}{2\mu_0}B^2V
+		\end{align*}
+		Dividindo pelo volume temos a densidade de energia magnética no indutor,
+		\begin{align*}
+			\Aboxed{\frac{U}{V} = u=\frac{1}{2\mu_0}B^2.}
+		\end{align*}
+	\end{column}
+\end{columns}
+%	\end{multicols*}
+	\begin{corollary}
+		A densidade de energia magnética aumenta com o quadrado do campo magnético.
+	\end{corollary}
+\end{frame}
+
+\section{Apêndice}
+
+\subsection{}
+
+\begin{frame}{Referências e observações\footnote{Este material está sujeito a modificações. Recomenda-se acompanhamento permanente.}}
+	\bibliographystyle{jurabib}
+	\begin{thebibliography}{9}
+		\bibitem{halliday}D. Halliday, R. Resnick, J. Walker, Fundamentos de física. Eletromagnetismo, v.3, 10. ed., Rio de Janeiro, LTC (2016)
+		\bibitem{randall}R. D. Knight, Física: Uma abordagem estratégica, v.3, 2nd ed., Porto Alegre, Bookman (2009)
+		\bibitem{moyses}H. M. Nussenzveig, Curso de física básica. Eletromagnetismo, v.1, 5. ed., São Paulo, Blucher (2014)
+		\bibitem{forcamanetica}\text{https://pt.m.wikipedia.org/wiki/}
+	\end{thebibliography}
+
+\vspace*{0.25cm}
+\begin{center}
+	Esta apresentação está disponível para download no endereço\\
+	\href{https://flavianowilliams.github.io/education}{\textcolor{blue}{https://flavianowilliams.github.io/education}}
+\end{center}
+	
+\end{frame}
+
+\end{document}

@@ -1,0 +1,20 @@
+﻿		\begin{circuitikz}[scale=1.5, transform shape]
+
+			\tkzInit[xmin=0,xmax=8,ymin=0,ymax=4]
+			\tkzGrid[color=gray!50]
+			\tkzClip[space=1.5]
+			
+			\tkzDefPoints{0/0/A,0/4/B,8/4/C,8/0/D}
+
+			\draw (B) to [battery1,l_=$\varepsilon$] (A);
+			\draw (B) to [vR,l=$R$] (C);
+			\draw (C) to [L,l=$L$] (D);
+			\draw (D) to (A);
+			
+			\tkzDefPoints{8.25/3.5/t1,1/4.25/t2,1/-0.25/t3}
+
+			\draw[line width=1pt, color=red,<-] (t3) --++ (0.75,0) node[below,midway] {$i(t)$};
+			\draw[line width=1pt, color=red,->] (t2) --++ (0.75,0) node[above,midway] {$i(t)$};
+			\draw[line width=1pt, color=red,->] (t1) --++ (0,-0.75) node[right,midway] {$\frac{di}{dt}$};
+			
+		\end{circuitikz}

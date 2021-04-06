@@ -1,0 +1,37 @@
+﻿\begin{tikzpicture}[scale=1,transform shape,font=\Large]
+
+	\tkzInit[xmin=-4,xmax=6,ymin=-4,ymax=5]
+%	\tkzGrid
+	\tkzClip[space=0.1]
+
+	\tkzDefPoints{0/0/O,-3/0/A,3/0/B}
+
+	\tkzDrawCircle[fill=gray!50](O,B)
+
+	\foreach \x in {-4,-3,...,4}{
+	\foreach \y in {-4,-3,...,4}{
+	\node at (\x,\y) {\Large x};}}
+
+	\tkzDefPoints{3.5/0/e1,2/0/e2}
+
+	\tkzDrawArc[arrows=->,color=red,line width=1pt,rotate](O,e1)(180)
+	\tkzDrawArc[arrows=->,color=red,line width=1pt,rotate](O,e1)(-180)
+
+	\foreach \z in {2.5,2,1.5}{
+	\tkzDefPoint(\z,0){e}
+	\tkzDrawArc[arrows=->,color=red,line width=1pt,rotate](O,e)(180)
+	\tkzDrawArc[arrows=->,color=red,line width=1pt,rotate](O,e)(-180)}
+
+	\tkzDefPoints{4/4/t1,3.5/-3.5/t2}
+	\tkzDefPoints{2.5/0/e2}
+
+	\tkzDefPointsBy[rotation=center O angle 30](O,e2){p1,p2}
+	\tkzDefPointsBy[rotation=center O angle 45](O,e1){p3,p4}
+
+	\draw[->,line width=1pt] (t1) -- (p2);
+	\draw[->,line width=1pt] (t1) -- (p4);
+
+	\tkzText[text centered,text width=4cm,opacity=100,fill=gray!20](t1){linhas de campo elétrico}
+	\tkzText(t2){$\vec{B}$}
+
+\end{tikzpicture}

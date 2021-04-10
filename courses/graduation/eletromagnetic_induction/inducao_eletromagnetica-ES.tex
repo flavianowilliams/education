@@ -335,7 +335,7 @@
 		\begin{column}[c]{0.7\textwidth}
 			Considere um circuito contendo um gerador de corrente alternada e um indutor com indutância $L$. Sabemos que o gerador terá uma potência elétrica dado por $\frac{dW}{dt}=\varepsilon i$, onde $\varepsilon$ é a f.e.m. associada ao gerador. Por conservação de energia, poderemos dizer que neste caso a energia fornecida a cada intervalo de tempo será convertida em energia magnética no indutor, onde pela lei de Faraday-Lenz teremos
 			\begin{align*}
-				\varepsilon i = -\varepsilon_Li = i\frac{d\Phi_B}{dt},
+				\varepsilon i = \varepsilon_Li = -i\frac{d\Phi_B}{dt},
 			\end{align*}
 			onde $\varepsilon_L$ é a f.e.m. induzida no solenóide.
 		\end{column}
@@ -373,7 +373,7 @@
 		\begin{column}[t]{0.5\textwidth}
 			Integrando $\frac{dW}{dt}=\varepsilon i$ teremos
 			\begin{align*}
-			\Delta U & = \int\limits_{0}^{t} i\frac{d\Phi_B}{dt}dt,\\
+			W = \alert{-}\Delta U & = \alert{-}\int\limits_{0}^{t} \left(-i\frac{d\Phi_B}{dt}\right) dt,\\
 				\Delta U & = \int\limits_{0}^{t} Li\frac{di}{dt}dt.
 			\end{align*}
 		\end{column}

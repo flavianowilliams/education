@@ -1,0 +1,30 @@
+﻿\begin{tikzpicture}[scale=1,transform shape, font=\Large]
+
+	\tkzInit[xmin=0,xmax=12,ymin=-2,ymax=3]
+	%\tkzGrid[color=gray!50]
+	\tkzClip[space=0.5]
+
+	\tkzFct[domain=0:7.85,color=red,line width=1pt]{2*cos(x)}
+	\tkzFct[domain=7.85:12,color=red,dashed,line width=1pt]{1*cos(3*x-21.98)}
+
+	\tkzDefPoints{0/0/O,12/0/O',7.85/-2/A,7.85/2/B,12/-2/C,12/2/D}
+	\tkzDefPoints{3/2.5/t1,10/2.5/t2}
+	\tkzDefPoints{8/1.75/t3,8.25/1.75/t4,8.5/1.75/t5,8/-1.75/t6,8.25/-1.75/t7,8.5/-1.75/t8}
+
+	\tkzDrawPolygon[fill=gray!50,opacity=0.5](A,B,D,C)
+
+	\draw[dotted] (O) -- (O');
+
+	\tkzText[color=black](t1){Ar}
+	\tkzText[color=black](t2){Vidro}
+	\tkzText[color=black](t3){-}
+	\tkzText[color=black](t4){-}
+	\tkzText[color=black](t5){-}
+	\tkzText[color=black](t6){\small +}
+	\tkzText[color=black](t7){\small +}
+	\tkzText[color=black](t8){\small +}
+
+	\draw[->,color=blue,line width=1.5pt] (7.85,0) --++ (0,-2) node [left] {$\vec{E}$};
+	\draw[->,color=blue,line width=1.5pt] (7.85,0) --++ (0,1) node [left] {$\vec{E}_e$};
+
+\end{tikzpicture}

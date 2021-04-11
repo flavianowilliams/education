@@ -1,0 +1,1071 @@
+% Aula de ondas eletromagnéticas para o curso de Física II da graduação
+%
+\documentclass[brazil,aspectratio=169]{beamer}
+%
+%carregando preâmbulo
+\input{../../contrib/preamble}
+
+%Título
+
+\title[Eletromagnetismo-OEM]{Ondas eletromagnéticas}
+
+% The main document
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Sumário}
+  \tableofcontents
+\end{frame}
+
+\section{Transporte de energia}
+
+\subsection{}
+
+\begin{frame}{Energia transportada em um onda eletromagnética}
+	\begin{multicols}{2}
+		O vetor de Poyting $S$ é definido como a energia transportada pela onda por tempo e área,
+		\begin{align*}
+			S = \left(\frac{\text{energia/tempo}}{\text{área}}\right).
+		\end{align*}
+		Porém, energia/área = potência, assim
+		\begin{align*}
+			S =\left(\frac{\text{potência}}{\text{área}}\right).
+		\end{align*}
+		A partir do vetor de Poyting podemos encontrar a intensidade de uma onda eletromagnética. Da energia elétrica em um capacitor e em um indutor encontramos as expressões que definem a densidade de energia elétrica $u_E$ e magnética $u_B$ em função dos campos elétrico $E$ e magnético $B$,
+		\begin{align*}
+			u_E & = \frac{1}{2}\varepsilon_0E^2,\\
+			u_B & = \frac{1}{2\mu_0}B^2.
+		\end{align*}
+	\end{multicols}
+\end{frame}
+
+\begin{frame}{Densidade de energia transportada por uma onda eletromagnética}
+	\begin{multicols}{2}
+		Portanto, a energia total $u$ transportada por área pode ser definido como
+		\begin{align*}
+			u & = u_E + u_B,\\
+			u(x,t) & = \frac{1}{2}\varepsilon_0E(x,t)^2 + \frac{1}{2\mu_0}B(x,t)^2,
+		\end{align*}
+		onde, pelas equações de Maxwell descobrimos que para uma onda se propagando na direção x teremos
+		\begin{align*}
+			E(x,t) & = E_m\cos(kx-\omega t),\\
+			B(x,t) & = B_m\cos(kx-\omega t).
+		\end{align*}
+		Substituindo na expressão da energia resulta em
+		\begin{align*}
+			u(x,t) & = \frac{1}{2}\varepsilon_0[E_m\cos(kx-\omega t)]^2 +\\ 
+			& + \frac{1}{2\mu_0}[B_m\cos(kx-\omega t)]^2.
+		\end{align*}
+	\end{multicols}
+\end{frame}
+
+\begin{frame}{Densidade de energia transportada por uma onda eletromagnética (continuação)}
+	\begin{multicols}{2}
+		Simplificando a expressão anterior obteremos
+		\begin{align*}
+			u = \frac{1}{2}\left(\varepsilon_0E_m^2+\frac{1}{\mu_0}B_m^2\right)\cos^2(kx-\omega t).
+		\end{align*}
+		Contudo, sabemos a partir das equações de Maxwell que $B_m=\frac{E_m}{c}$, substituindo
+		\begin{align*}
+			u = \frac{E_m^2}{2}\left(\varepsilon_0+\frac{1}{\mu_0c^2}\right)\cos^2(kx-\omega t).
+		\end{align*}
+		Pelas equações de Maxwell também sabemos que $\varepsilon_0=\frac{1}{\mu_0c^2}$, substituímos encontramos
+		\begin{align*}
+			u & = \frac{E_m^2}{2}\left(\alert{\frac{1}{\mu_0c^2}}+\frac{1}{\mu_0c^2}\right)\cos^2(kx-\omega t),\\
+			u & = \frac{E_m^2}{\bcancel{2}}\left(\frac{\bcancel{2}}{\mu_0c^2}\right)\cos^2(kx-\omega t),\\
+			\Aboxed{u(x,t) & = \frac{E_m^2}{\mu_0c^2}\cos^2(kx-\omega t).}
+		\end{align*}
+	\end{multicols}
+\end{frame}
+
+\begin{frame}{Vetor de Poyting}
+	\begin{columns}
+		\begin{column}[t]{0.5\textwidth}
+			Podemos perceber que
+			\begin{align*}
+				\left(\frac{\text{energia}}{\text{área}\times\text{ tempo}}\right)=\left(\frac{\text{energia}}{\text{volume}}\times \text{velocidade}\right).
+			\end{align*}
+			Portanto, no caso de uma onda monocromática se propagando no vácuo, podemos dizer que
+			\begin{align*}
+				S = u\times c,
+			\end{align*}
+			ou seja, o vetor de Poyting é justamente a densidade de energia multiplicado pela
+		\end{column}
+		\begin{column}[t]{0.5\textwidth}
+			velocidade da luz. Substituindo $u(x,t)$ teremos
+		 	\begin{align*}
+				S & = \frac{E_m^2}{\mu_0c}\cos^2(kx-\omega t),
+			 \end{align*}
+			 Sabendo que $E(x,t)=E_m\cos(kx-\omega t)$, representamos S na forma compacta
+			\begin{align*}
+				\Aboxed{S(x,t) & = \frac{1}{c\mu_0}E(x,t)^2.}
+			\end{align*}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Valor médio do vetor de Poyting}
+	\begin{columns}
+		\begin{column}[t]{0.65\textwidth}
+			Entretando, do ponto de vista prático é mais conveniente obter informações a respeito do valor médio de uma grandeza ao invés de seu valor instantâneo. Dessa maneira definimos a intensidade $I$ como
+			\begin{align*}
+				I = \left<S(x,t)\right>=\left<\frac{1}{c\mu_0}E(x,t)^2\right>.
+			\end{align*}
+			Sabendo que $\left<\cos^2\theta\right>=\frac{1}{2}$ teremos
+			\begin{align*}
+				\Aboxed{I = \frac{1}{2c\mu_0}E^2_m.}
+			\end{align*}
+		\end{column}
+		\begin{column}[t]{0.35\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.43,transform shape,font=\Large]
+				
+				\tkzInit[xmin=0,xmax=10,ymin=-1,ymax=2]
+				%\tkzGrid[color=gray!50]
+				\tkzClip[space=1.5]
+
+				\begin{scope}[shift={(0,0)}]
+				
+				\tkzDrawX[label=$\theta$]
+				\tkzDrawY[label=$\cos^2\theta$]
+				
+				\tkzFct[domain=0:10,color=red,line width=1pt,fill=green]{2*cos(x)**2}
+				\tkzFct[domain=0:10,dashed,line width=1pt]{1}
+				\tkzFct[domain=0:10,line width=1pt]{0}
+				
+				\tkzDrawAreafg[between=a and c,color=blue!40,domain = 0:10]
+				\tkzDrawAreafg[between=b and c,color=green!30,domain = 0:10]
+				
+				\node[color=black,left] (y1) at (0,1) {$\frac{1}{2}$};
+				
+				\end{scope}				
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Valor médio de $\cos^2\theta$ vezes $\theta$ (área verde). Área de $\cos^2\theta$ (área azul).}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Relação entre intensidade e potência}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			Pela definição de intensidade temos
+			\begin{align*}
+				\text{Intensidade} = \left(\frac{\text{energia}}{\text{área}\times\text{tempo}}\right).
+			\end{align*}
+			Porém, sabemos que potência = energia por tempo, o que nos fornece
+			\begin{align*}
+				\Aboxed{\text{Intensidade} = \left(\frac{\text{potência}}{\text{área}}\right).}
+			\end{align*}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{figure}
+			\centering
+%				\input{tikz/ondas-radio.pgf}
+			\begin{tikzpicture}[scale=0.4, transform shape]
+				
+				%transmissor
+				
+				\coordinate (a) at (1,2);
+				
+				\draw (0.5,0) -- (1,2);
+				\draw (1.5,0) -- (1,2);
+				\draw (0.5,0) -- (1.5,0);
+				
+				\node at (1,-0.25) {Transmissor};
+				
+				\filldraw (a) circle (0.1cm) node[above] {};
+				
+				\foreach \x in {1,2,...,5}
+				\draw[dashed,color=red] (a) circle (\x);
+				
+				\draw[<->] ($(a)+(-30:2)$) --++ (-30:1) node[above,sloped,midway] {$\lambda$};
+				
+				%carga oscilando
+				\draw[<->,color=red] ($(a)-(0,0.5)$) --++ (0,1) node[right,midway] {e};
+				
+				%receptor
+				
+				\def\tx{5}
+				\def\ty{-3}
+				
+				\node at (1+\tx,1.5+\ty) [cylinder,cylinder uses custom fill, cylinder body fill=black,cylinder end fill=black, minimum height=3cm, minimum width=0.01 cm, rotate=90] {};
+				\node at (0+\tx,0.5+\ty) {Receptor};
+				
+				\foreach \x  in {2.5,2.75,3}{
+					\draw[line width=1pt] (0+\tx,\x+\ty) --++ (2,0);
+					\draw[line width=1pt] (0+\tx,\x+\ty) --++ (2,0);}
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Intensidade da onda de rádio (esféricas) diminuindo com o quadrado da distância.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\section{Polarização da luz}
+
+\subsection{}
+
+\begin{frame}[fragile]{Polarização da Luz}
+	\begin{columns}[c]
+		\begin{column}[c]{0.6\textwidth}
+			Diferentemente de ondas transmitidas por uma antena de rádio ou TV, as ondas emitidas pelo sol tem a direção do campo elétrico mudando aleatoriamente ao longo do tempo. Uma maneira de filtrar a luz do sol é a utilização de um filtro polarizador, que permite passar somente as ondas cuja direção do campo elétrico é paralelo a direção de orientação dos átomos que compõem o material. Demais campos elétricos são absorvidos devido a polarização dos elétrons no material.
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}[c]
+%				\input{tikz/polarizing-microscope.pgf}
+				\begin{tikzpicture}[x={(0.866cm,-0.5cm)}, y={(0.866cm,0.5cm)}, z={(0cm,1cm)}, scale=0.6, transform shape,
+				%Option for nice arrows
+				>=stealth, %
+				inner sep=0pt, outer sep=2pt,%
+				axis/.style={thick,->},
+				wave/.style={thick,color=#1,smooth},
+				polaroid/.style={fill=black!60!white, opacity=0.3},
+				]
+				% Colors
+				\colorlet{darkgreen}{green!50!black}
+				\colorlet{lightgreen}{green!80!black}
+				\colorlet{darkred}{red!50!black}
+				\colorlet{lightred}{red!80!black}
+				
+				% Frame
+				\coordinate (O) at (0, 0, 0);
+				\draw[axis] (O) -- +(7, 0,   0) node [right] {x};
+				\draw[axis] (O) -- +(0, -2.5, 0) node [left] {z};
+				\draw[axis] (O) -- +(0,  0,   2) node [above] {y};
+				
+				\draw[thick,dashed] (-2,0,0) -- (O);
+				
+				% monochromatic incident light with electric field
+				\draw[wave=red, opacity=0.7, variable=\x, samples at={-2,-1.75,...,0}]
+				plot (\x, { -sin(1.0*\x r)*sin(2.0*\x r)}, { cos(1.0*\x r)*sin(2.0*\x r)})
+				plot (\x, {-sin(1.0*\x r)*sin(2.0*\x r)}, {cos(1.0*\x r)*sin(2.0*\x r)});
+				
+				\foreach \x in{-2,-1.75,...,0}{
+					\draw[color=red, opacity=0.7,->]
+					(\x,0,0) -- (\x, { -sin(1.0*\x r)*sin(2.0*\x r)}, { cos(1.0*\x r)*sin(2.0*\x r)})
+					(\x,0,0) -- (\x, {-sin(1.0*\x r)*sin(2.0*\x r)}, {cos(1.0*\x r)*sin(2.0*\x r)});
+				}
+				
+				\filldraw[polaroid] (0,-2,-1.5) -- (0,-2,1.5) -- (0,2,1.5) -- (0,2,-1.5) -- (0,-2,-1.5)
+				node[below, sloped, near end]{Polaroid};%
+				
+				%Direction of polarization
+				\draw[thick,<->] (0,1.5,0.25) -- (0,1.5,1.25);
+				
+				% Electric field vectors
+				\draw[wave=red, variable=\x,samples at={0,0.25,...,6}]
+				plot (\x,0,{sin(2*\x r)})node[anchor=north]{$\vec{E}$};
+				
+				%Polarized light between polaroid and thin section
+				\foreach \x in{0, 0.25,...,6}
+				\draw[color=red,->] (\x,0,0) -- (\x,0,{sin(2*\x r)});
+				
+				\draw (3,1,1) node [text width=3.5cm, text centered]{Luz polarizada};
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Onda polarizada.}
+			\end{figure}
+		\end{column}
+	\end{columns}	
+\end{frame}
+
+\begin{frame}{Polarização da Luz}
+	\begin{columns}[c]
+		\begin{column}[c]{0.6\textwidth}
+			Sabemos que a intensidade da onda depende do quadrado do campo elétrico $E$. Podemos decompor $E$ em suas componentes horizontal e vertical. Sabendo que somente a componente $\vec{E}_y$ é atravessado temos
+			\begin{align*}
+				I & = \frac{1}{2c\mu_0}E^2_y = \overbracket{\frac{1}{2c\mu_0}E^2_m}^{\tiny\alert{I_0}}\cos^2\theta,\\
+				\Aboxed{I & = I_0\cos^2\theta.}
+			\end{align*}
+			onde $I_0$ é a intensidade da onda incidente.
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}[c]
+			%				\input{tikz/polarizing-microscope2.pgf}
+				\begin{tikzpicture}[scale=1, transform shape,
+				%Option for nice arrows
+				>=stealth, %
+				inner sep=0pt, outer sep=2pt,%
+				axis/.style={thick,->},
+				polaroid/.style={fill=black!60!white, opacity=0.3},]
+				
+				\useasboundingbox (2.75,2.25) rectangle (-2.75,-2.25);
+				
+				% Colors
+				\colorlet{darkgreen}{green!50!black}
+				\colorlet{lightgreen}{green!80!black}
+				\colorlet{darkred}{red!50!black}
+				\colorlet{lightred}{red!80!black}
+				
+				% eixos
+				\draw[axis] (-2.5,0) -- (2.5,0) node [right] {x};
+				\draw[axis] (0,-2) -- (0,2) node [above] {y};
+				
+				\filldraw[polaroid] (-2,-1.5) -- (-2,1.5) -- (2,1.5) -- (2,-1.5) -- (-2,-1.5) node[below, near end]{Polaroid};%
+				
+				%Direction of polarization
+				\draw[thick,<->] (-1.5,0.25) -- (-1.5,1.25) node[above,midway,sloped] {\tiny Polarizacao};
+				
+				% Electric field vectors
+				\coordinate (c1) at (45:1.5);
+				\draw[line width=1pt,color=red,<->] ($-1*(c1)$) -- (c1) node[above] {$\vec{E}$};
+				\draw[line width=1pt,color=red,->] (0,0) -- (0:{1.5*cos{45}}) node[below] (c2) {$\vec{E_{x}}$};
+				\draw[line width=1pt,color=red,->] (0,0) -- (90:{1.5*sin{45}}) node[left] (c3) {$\vec{E_{y}}$};
+				\draw[dashed] (c1) -- (c2);
+				\draw[dashed] (c1) -- (c3);
+				
+				%angulo
+				\draw[<->] (0,0.5) arc (90:45:0.5) node[above right,midway] {\small $\theta$};
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Polarização da luz à partir do vetor campo elétrico $\vec{E}$.}
+			\end{figure}
+		\end{column}
+	\end{columns}	
+\end{frame}
+
+\begin{frame}{Polarização da luz incidente não polarizada}
+%	\begin{multicols}{2}
+	\begin{columns}[c]
+		\begin{column}[c]{0.5\textwidth}
+			Se onda for não polarizada, ou seja, teremos frentes de onda cuja direção do campo elétrico assume todos os valores entre $\theta=\SI{0}{\degree}$ a $\theta=\SI{360}{\degree}$. Sabendo que $E^2_m=E^2_{m,x}+E^2_{m,y}$ teremos
+			\begin{align*}
+				I & = \frac{1}{2c\mu_0}E^2_m,\\
+				I & = \frac{1}{2c\mu_0}E^2_{m,x}+\frac{1}{2c\mu_0}E^2_{m,y}.
+			\end{align*}
+			A soma das componentes em y e a mesma de z, portanto
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{align*}
+				I & = 2\left(\frac{1}{2c\mu_0}E^2_m\right).
+			\end{align*}
+			 Entretanto, as componentes na direção do eixo x não atravessam, pois $\theta=\SI{90}{\degree}$. Portanto, a intensidade será a metade da onda incidente,
+			\begin{align*}
+				\Aboxed{I & = \frac{1}{2}I_0.}
+			\end{align*}
+			onde $I_0$ é a intensidade da onda não polarizada.
+		\end{column}
+	\end{columns}	
+%	\end{multicols}
+\end{frame}
+
+\section{Fenômenos ópticos e a luz}
+
+\subsection{}
+
+\begin{frame}{Propagação da onda na matéria}
+	\begin{columns}
+		\begin{column}[c]{0.6\textwidth}
+			A onda eletromagnética ao atravessar um meio dielétrico, induz um movimento de elétrons do material, o qual faz surgir um campo elétrico com sentido contrário ao campo elétrico da onda. Como resultado, a onda transmitida no material terá um campo elétrico efetivo $\vec{E}_{\kappa}$, devido a diferença do campo $\vec{E}$ da onda no ar com o campo elétrico produzido pela polarização das cargas $\vec{E}_p$,
+			\begin{align*}
+				E_{\kappa} = E - E_p.
+			\end{align*}
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.45,transform shape, font=\Large]
+				
+				\tkzInit[xmin=0,xmax=12,ymin=-2,ymax=3]
+				%\tkzGrid[color=gray!50]
+				\tkzClip[space=0.5]
+				
+				\tkzFct[domain=0:7.85,color=red,line width=1pt]{2*cos(x)}
+				\tkzFct[domain=7.85:12,color=red,dashed,line width=1pt]{1*cos(3*x-21.98)}
+				
+				\tkzDefPoints{0/0/O,12/0/O',7.85/-2/A,7.85/2/B,12/-2/C,12/2/D}
+				\tkzDefPoints{3/2.5/t1,10/2.5/t2}
+				\tkzDefPoints{8/1.75/t3,8.25/1.75/t4,8.5/1.75/t5,8/-1.75/t6,8.25/-1.75/t7,8.5/-1.75/t8}
+				
+				\tkzDrawPolygon[fill=gray!50,opacity=0.5](A,B,D,C)
+				
+				\draw[dotted] (O) -- (O');
+				
+				\tkzText[color=black](t1){Ar}
+				\tkzText[color=black](t2){Vidro}
+				\tkzText[color=black](t3){-}
+				\tkzText[color=black](t4){-}
+				\tkzText[color=black](t5){-}
+				\tkzText[color=black](t6){\small +}
+				\tkzText[color=black](t7){\small +}
+				\tkzText[color=black](t8){\small +}
+				
+				\draw[->,color=blue,line width=1.5pt] (7.85,0) --++ (0,-2) node [left] {$\vec{E}$};
+				\draw[->,color=blue,line width=1.5pt] (7.85,0) --++ (0,1) node [left] {$\vec{E}_e$};
+				\draw[->,color=green,line width=1.5pt] (7.85,0) --++ (0,-1) node [left] {};
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Onda atravessando um meio material.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Desvio da direção de propagação da onda ao atravessar a matéria}
+	\begin{columns}
+		\begin{column}[c]{0.6\textwidth}
+			Considere um raio de luz incidindo em um material dielétrico com a inclinação de $\theta_1$ graus em relação ao eixo normal a superfície. Podemos decompor o vetor campo elétrico em suas componentes horizontal e vertical. Ao atravessar o meio refrigente, a componente vertical de $\vec{E}$ causa uma polarização da matéria, diminuindo assim a amplitude vertical do campo elétrico. Entretando, horizontalmente o campo elétrico não se altera, pois não há polarização nessa direção. Isso por sua vez altera a direção do campo elétrico $\vec{E}$, alterando assim a direção de propagação da onda.
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}
+				\centering
+				%\input{tikz/refracao-luz.pgf}
+				\begin{tikzpicture}[scale=0.65, transform shape,
+				media/.style={font={\footnotesize\sffamily}},
+				wave/.style={decorate,decoration={snake,post length=1.4mm,amplitude=1mm, segment length=2mm},thick},
+				interface/.style={postaction={draw,decorate,decoration={border,angle=-45,amplitude=0.15cm,segment length=2mm}}}]
+				
+				\tkzInit[xmin=-4,xmax=4,ymin=-3,ymax=4]
+				%\tkzGrid
+				\tkzClip
+				
+				% Round rectangle
+				\fill[gray!10,rounded corners] (-4,-3) rectangle (4,0);
+				
+				%definindo pontos
+				\tkzDefPoints{-3/3/A,0/0/O,2/-3/B,3/3/C,-2/3/E}
+				\tkzDefPoints{0/3/n1,0/-3/n2}
+				
+				%desenhando raios de luz
+				\draw[dashed] (O) -- (E);
+				
+				\draw[put arrow={at=0.5},line width=1pt,color=red] (A) -- (O) node [left,midway,color=black] {Raio incidente};
+				\draw[put arrow={at=0.5},line width=1pt,color=red] (O) -- (C) node [left,pos=0.75,color=black] {Raio refletido};
+				\draw[put arrow={at=0.5},line width=1pt,color=red] (O) -- (B) node [left,pos=0.75,color=black] {Raio refratado};
+				
+				%vetor campo eletrico
+				\tkzDefPoints{3/1/M,3/4/M',4/1/M''}
+				
+				\tkzDefPointWith[colinear= at M](O,C)\tkzGetPoint{p1}
+				\tkzDefPointWith[linear,K=0.3](M,p1)\tkzGetPoint{p2}
+				\tkzDefPointBy[projection=onto M--M'](p2)\tkzGetPoint{p3}
+				\tkzDefPointBy[projection=onto M--M''](p2)\tkzGetPoint{p4}
+				
+				\draw[->,color=green](M) -- (p2) node[above left=0.05] {$\vec{E}$};
+				\draw[->,color=green](M) -- (p3);
+				\draw[->,color=green](M) -- (p4);
+								
+				\tkzDefPoints{3/-2/M,3/-1/M',4/-2/M''}
+				
+				\tkzDefPointBy[projection=onto O--B](M) \tkzGetPoint{p1}
+				\tkzDefPointWith[linear,K=-0.8](M,p1)\tkzGetPoint{p2}
+				\tkzDefPointBy[projection=onto M--M'](p2)\tkzGetPoint{p3}
+				\tkzDefPointBy[projection=onto M--M''](p2)\tkzGetPoint{p4}
+				
+				\draw[->,color=green](M) -- (p2);
+				\draw[->,color=green](M) -- (p3);
+				\draw[->,color=green](M) -- (p4);
+								
+				\tkzDrawPoint[size=0.5cm](E)
+				
+				%definindo angulos
+				\tkzMarkAngle[arrows=<->](n1,O,A)
+				\tkzMarkAngle[arrows=<->](n2,O,B)
+				\tkzMarkAngle[arrows=<->](C,O,n1)
+				
+				\tkzLabelAngle[above](n1,O,A){$\theta_1$}
+				\tkzLabelAngle[above](C,O,n1){$\theta_1$}
+				\tkzLabelAngle[below](n2,O,B){$\theta_2$}
+				
+				% Interface
+				\draw[blue,line width=.5pt,interface](-4,0)--(4,0);
+				
+				% Vertical dashed line
+				\draw[dashed,gray](0,-3)--(0,3);
+				
+				% Media names
+				\path[media] (-3,.6)  node {(1)} (-3,-.6) node {(2)};
+				
+				% Interface pointer
+				\draw[-latex,thick](2.0,0.5)node[right]{$\mathsf{Interface}$} to[out=180,in=90] (1.75,0);
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Reflexão e refração dos raios de luz.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Redução da velocidade da onda ao atravessar a matéria}
+	\begin{columns}
+		\begin{column}[t]{0.5\textwidth}
+%	\begin{multicols}{2}
+			Considere uma onda atravessando um meio dielétrico neutro e na ausência de corrente elétrica, nesse caso as equações de Maxwell no vácuo ainda são válidas, com a pequena modificação, que o campo elétrico da onda deverá ser reduzido por uma quantidade $\kappa$, onde $\kappa$ é a constante dielétrica do meio, ou seja,
+			\begin{align*}
+				\vec{E}_{\kappa} = \frac{\vec{E}}{\kappa},\quad(\kappa>1).
+			\end{align*}
+			Assim, a partir da lei de Ampère-Maxwell
+		\end{column}
+		\begin{column}[t]{0.5\textwidth}
+			\begin{align*}
+				\frac{\partial (\kappa E_{\kappa})}{\partial t} & = -\frac{1}{\varepsilon_{0}\mu_{0}}\frac{\partial B}{\partial x},\\
+				\frac{\partial E_{\kappa}}{\partial t} & = -\frac{1}{\kappa\varepsilon_{0}\mu_{0}}\frac{\partial B}{\partial x}.
+			\end{align*}
+			Da lei de Faraday-Lenz temos a equação da luz no vácuo, onde a variação no tempo de $\vec{B}$ induz um campo $\vec{E}$ circular,
+			\begin{align*}
+				\frac{\partial E_{\kappa}}{\partial x} & = -\frac{\partial B}{\partial t}.
+			\end{align*}
+		\end{column}
+	\end{columns}
+%	\end{multicols}
+\end{frame}
+
+\begin{frame}{Redução da velocidade da onda ao atravessar a matéria (continuação)}
+%	\begin{multicols}{2}
+	\begin{columns}
+		\begin{column}[t]{0.5\textwidth}
+		Considerando que os campos elétrico e magnético admitem soluções do tipo $A(x,t) = A_{m}cos\left(kx-\omega t\right)$ teremos
+		\begin{align*}
+			\frac{\partial E_{\kappa}}{\partial x} & = \alert{-E_{\kappa m}k}sen\left(kx -\omega t\right),\\
+			\frac{\partial B}{\partial t} & = \alert{B_{m}\omega} sen\left(kx-\omega t\right),\\
+			\frac{\partial E_{\kappa}}{\partial t} & = \alert{E_{\kappa m}\omega} sen\left(kx-\omega t\right),\\
+			\frac{\partial B}{\partial x} & = \alert{-B_{m}k}sen\left(kx -\omega t\right)
+		\end{align*}
+		\end{column}
+		\begin{column}[t]{0.5\textwidth}
+		Substituindo nas equações anteriores teremos
+		\begin{align*}
+			\frac{E_{\kappa m}}{B_{m}} & = \frac{\omega}{k} = v,\\
+			\frac{E_{\kappa m}}{B_{m}} & = \frac{k}{\omega\kappa\varepsilon_{0}\mu_{0}} = \frac{1}{v\kappa\varepsilon_{0}\mu_{0}}.
+		\end{align*}
+			Sabendo que $c^2=\frac{1}{\varepsilon_0\mu_0}$ teremos
+			\begin{align*}
+				\Aboxed{v = \frac{c}{\sqrt{\kappa}}.}
+			\end{align*}
+		\end{column}
+	\end{columns}
+%	\end{multicols}
+\end{frame}
+
+\begin{frame}{Variação do comprimento de onda com a refração}
+	\begin{figure}
+		\Centering
+		\begin{subfigure}[b]{0.5\textwidth}
+			\Centering
+			\begin{tikzpicture}[scale=0.8,transform shape, font=\footnotesize]
+	
+			\tkzInit[xmin=-3,xmax=3,ymin=-3,ymax=3]
+			%	\tkzGrid[step=1cm,color=gray!30]
+			\tkzClip
+	
+			% Round rectangle
+			\fill[gray!10,rounded corners,opacity=0.6] (-4,-3) rectangle (4,0);
+	
+			\tkzDefPoints{-3/0/x1,3/0/x2,0/0/O,0/3/n1,0/-3/n2}
+			\tkzDefPoints{-3.5/3/A,1.5/-3/B}
+			\tkzDefPoints{-1/0/p1,1/0/pr1}
+	
+			\tkzLabelPoints[below left,font=\scriptsize](O)
+		
+			\draw[dashed] (n1) -- (n2);
+			\draw (x1) -- (x2);
+	
+			% Media names
+			\path (2.5,.3)  node {$n_1$} (2.5,-.3) node {$n_2>n_1$};
+	
+			%desenhando raios de luz
+			\draw[put arrow={at=0.5},line width=1pt,color=red] (A) -- (O);
+			\draw[put arrow={at=0.5},line width=1pt,color=red] (O) -- (B);
+	
+			\tkzDefPointWith[linear,K=0.85](A,O)\tkzGetPoint{t1}
+	
+			\tkzDefLine[orthogonal=through t1](A,O) \tkzGetPoint{m1}
+	
+			\tkzInterLL(x1,x2)(t1,m1)\tkzGetPoint{p1}
+	
+			\tkzDefPointBy[rotation=center t1 angle 180](O)\tkzGetPoint{t2}
+			\tkzDefPointBy[rotation=center t2 angle 180](t1)\tkzGetPoint{t3}
+			\tkzDefPointBy[rotation=center t3 angle 180](t2)\tkzGetPoint{t4}
+			\tkzDefPointBy[rotation=center t4 angle 180](t3)\tkzGetPoint{t5}
+			\tkzDefPointBy[rotation=center t5 angle 180](t4)\tkzGetPoint{t6}
+	
+			\tkzDefLine[parallel=through p1](A,O) \tkzGetPoint{m1}
+			\tkzDefLine[orthogonal=through t2](p1,m1) \tkzGetPoint{m2}
+			\tkzInterLL(p1,m1)(t2,m2)\tkzGetPoint{p2}
+	
+			\tkzDefPointBy[rotation=center p2 angle 180](p1)\tkzGetPoint{p3}
+			\tkzDefPointBy[rotation=center p3 angle 180](p2)\tkzGetPoint{p4}
+			\tkzDefPointBy[rotation=center p4 angle 180](p3)\tkzGetPoint{p5}
+	
+			\tkzDefPointBy[rotation=center t1 angle 180](p1)\tkzGetPoint{k1}
+			\tkzDefPointBy[rotation=center t2 angle 180](p2)\tkzGetPoint{k2}
+			\tkzDefPointBy[rotation=center t3 angle 180](p3)\tkzGetPoint{k3}
+			\tkzDefPointBy[rotation=center t4 angle 180](p4)\tkzGetPoint{k4}
+			\tkzDefPointBy[rotation=center t5 angle 180](p5)\tkzGetPoint{k5}
+	
+			\tkzDrawSegment[color=yellow](p1,k1)
+			\tkzMarkRightAngle[size=0.1](O,t1,k1)
+			\tkzDrawSegment(p2,k2)
+			\tkzMarkRightAngle[size=0.1](t1,t2,k2)
+			\tkzDrawSegment(p3,k3)
+			\tkzMarkRightAngle[size=0.1](t2,t3,k3)
+			\tkzDrawSegment(p4,k4)
+			\tkzMarkRightAngle[size=0.1](t3,t4,k4)
+			\tkzDrawSegment(p5,k5)
+			\tkzMarkRightAngle[size=0.1](t4,t5,k5)
+	
+			%definindo frentes de onda refratada
+	
+			\tkzDefLine[parallel=through p1](O,B) \tkzGetPoint{m3}
+			\tkzDefLine[orthogonal=through O](p1,m3) \tkzGetPoint{m4}
+			\tkzInterLL(O,m4)(p1,m3)\tkzGetPoint{P2}
+	
+			\tkzDefPointBy[rotation=center P2 angle 180](p1)\tkzGetPoint{P3}
+			\tkzDefPointBy[rotation=center P3 angle 180](P2)\tkzGetPoint{P4}
+			\tkzDefPointBy[rotation=center P4 angle 180](P3)\tkzGetPoint{P5}
+			\tkzDefPointBy[rotation=center P5 angle 180](P4)\tkzGetPoint{P6}
+			\tkzDefPointBy[rotation=center P6 angle 180](P5)\tkzGetPoint{P7}
+			\tkzDefPointBy[rotation=center P7 angle 180](P6)\tkzGetPoint{P8}
+			\tkzDefPointBy[rotation=center P8 angle 180](P7)\tkzGetPoint{P9}
+	
+			\tkzDefLine[orthogonal=through P3](O,B) \tkzGetPoint{m5}
+			\tkzInterLL(O,B)(P3,m5)\tkzGetPoint{T1}
+	
+			\tkzDefPointBy[rotation=center T1 angle 180](O)\tkzGetPoint{T2}
+			\tkzDefPointBy[rotation=center T2 angle 180](T1)\tkzGetPoint{T3}
+			\tkzDefPointBy[rotation=center T3 angle 180](T2)\tkzGetPoint{T4}
+			\tkzDefPointBy[rotation=center T4 angle 180](T3)\tkzGetPoint{T5}
+			\tkzDefPointBy[rotation=center T5 angle 180](T4)\tkzGetPoint{T6}
+			\tkzDefPointBy[rotation=center T6 angle 180](T5)\tkzGetPoint{T7}
+			\tkzDefPointBy[rotation=center T7 angle 180](T6)\tkzGetPoint{T8}
+	
+			\tkzDefPointBy[rotation=center T1 angle 180](P3)\tkzGetPoint{K1}
+			\tkzDefPointBy[rotation=center T2 angle 180](P4)\tkzGetPoint{K2}
+			\tkzDefPointBy[rotation=center T3 angle 180](P5)\tkzGetPoint{K3}
+			\tkzDefPointBy[rotation=center T4 angle 180](P6)\tkzGetPoint{K4}
+			\tkzDefPointBy[rotation=center T5 angle 180](P7)\tkzGetPoint{K5}
+			\tkzDefPointBy[rotation=center T6 angle 180](P8)\tkzGetPoint{K6}
+			\tkzDefPointBy[rotation=center T7 angle 180](P9)\tkzGetPoint{K7}
+	
+			\tkzDrawSegment[color=green](P3,K1)
+			\tkzMarkRightAngle[size=0.1](T2,T1,K1)
+			\tkzDrawSegment(P4,K2)
+			\tkzMarkRightAngle[size=0.1](T3,T2,K2)
+			\tkzDrawSegment(P5,K3)
+			\tkzMarkRightAngle[size=0.1](T4,T3,K3)
+			\tkzDrawSegment(P6,K4)
+			\tkzMarkRightAngle[size=0.1](T5,T4,K4)
+			\tkzDrawSegment(P7,K5)
+			\tkzMarkRightAngle[size=0.1](T6,T5,K5)
+			\tkzDrawSegment(P8,K6)
+			\tkzMarkRightAngle[size=0.1](T7,T6,K6)
+			\tkzDrawSegment(P9,K7)
+			\tkzMarkRightAngle[size=0.1](T8,T7,K7)
+			
+			\draw (P3.center) to[short dim arrow'={label=$\lambda_2$, label near middle}] (P4.center);
+	
+			\draw (k3.center) to[short dim arrow'={label=$\lambda_1$, label near middle}] (k4.center);
+
+		\end{tikzpicture}
+		%				\input{tikz/refracao-luz-frentes-onda.pgf}
+		\caption*{\footnotesize $\lambda$ diminui quando a luz é refratada.}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.45\textwidth}
+		\Centering
+		\begin{tikzpicture}[scale=0.5,transform shape,
+			media/.style={font={\footnotesize\sffamily}},
+			interface/.style={postaction={draw,decorate,decoration={border,angle=-45,amplitude=0.15cm,segment length=2mm}}}]
+
+			tkzInit[xmin=-4, xmax=4, ymin=-3, ymax=3]
+			tkzGrid
+			tkzClip
+			% Round rectangle
+			\fill[gray!10,rounded corners] (-4,-3) rectangle (4,0);
+
+			%	\draw[step=1cm,color=gray!30] (-4,-3) grid (4,3);
+
+			%definindo pontos
+			\tkzDefPoints{-3/3/A,0/0/O,1.5/-3/B}
+			\tkzDefPoints{0/3/n1,0/-3/n2,0/4/n1b}
+			\tkzDefPoints{-4/0/x1}
+				%triangulo 1
+			\tkzDefLine[orthogonal=through n1](A,O)
+			\tkzGetPoint{P1}
+			\tkzInterLL(A,O)(n1,P1)
+			\tkzGetPoint{c1}
+			\tkzInterLL(n1,c1)(x1,O)
+			\tkzGetPoint{i1}
+			\tkzDrawSegment[color=yellow](i1,n1)
+			\tkzDefPointWith[colinear = at n1 ](A,O)
+			\tkzGetPoint{i2}
+
+			\tkzDrawSegment[color=yellow](n1,i2)
+			\tkzMarkRightAngle(n1,c1,O)
+			\tkzMarkRightAngle[color=yellow](i1,n1,i2)
+
+			%segunda frente de onda
+			\tkzDefLine[parallel=through i2](n1,i1) \tkzGetPoint{px}
+			\tkzDrawSegment[dotted,color=yellow](i2,px)
+			\draw (n1.center) to[dim arrow={label=$\lambda_1$}] (i2.center);
+			\tkzMarkAngle[arrows=<->](i2,i1,n1)\tkzLabelAngle[right,font=\small](i2,i1,n1){$\theta_1$}
+
+			%triangulo 2
+			\tkzDefLine[orthogonal=through i2](O,B)
+			\tkzGetPoint{P2}
+			\tkzInterLL(O,B)(i2,P2)
+			\tkzGetPoint{c2}
+			\tkzDefLine[orthogonal=through i1](i2,c2) \tkzGetPoint{i3}
+			\tkzInterLL(i2,c2)(i1,i3)\tkzGetPoint{i4}
+
+			\tkzDrawSegment[color=green](i2,i4)
+			\tkzDrawSegment[color=green](i1,i4)
+
+			\tkzMarkRightAngle[color=green](i2,c2,O)
+			\tkzMarkRightAngle[color=green](i1,i4,i2)
+
+			\tkzDrawPoint(i1)\tkzLabelPoint[above left](i1){A} \tkzDrawPoint(n1)\tkzLabelPoint[above](n1){B}
+			\tkzDrawPoint(i2)\tkzLabelPoint[below right](i2){C} \tkzDrawPoint(i4)\tkzLabelPoint[below](i4){D}
+
+			%segunda frente de onda
+			\tkzDefLine[parallel=through i1](i4,i2) \tkzGetPoint{px'}
+			\tkzDrawSegment[dotted,color=green](i1,px')
+			\draw (i1.center) to[dim arrow'={label=$\lambda_2$}] (i4.center);
+
+			%desenhando raios de luz
+			\draw[put arrow={at=0.5},line width=1pt,color=red] (A) -- (O);
+			\draw[put arrow={at=0.5},line width=1pt,color=red] (O) -- (B);
+
+			%definindo angulos
+			\tkzMarkAngle[arrows=<->](n1,O,A)
+			\tkzMarkAngle[arrows=<->](i1,i2,i4)\tkzLabelAngle[pos = 1.1, above left, font=\small](i4,i2,i4){$\theta_2$}
+			%	\tkzMarkAngle[arrows=<->](n2,O,B)
+
+			\tkzLabelAngle[above,font=\small](n1,O,A){$\theta_1$}
+			\tkzLabelAngle[below,pos=0.6,font=\small](n2,O,B){$\theta_2$}
+
+			% Interface
+			\draw[blue,line width=.5pt,interface](-4,0)--(4,0);
+
+			% Vertical dashed line
+			\draw[dashed,gray](0,-3)--(0,3);
+
+			% Media names
+			\path[media] (3.75,.6)  node {(1)} (3.75,-.6) node {(2)};
+
+			\end{tikzpicture}
+			\caption*{\footnotesize Frentes de onda na interface.}
+		\end{subfigure}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Aplicando a trigonometria para definir a relação entre $\theta$ e $\lambda$}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			Na figura ao lado vemos que o triângulo ABC é retângulo, onde o ângulo do vértice BÂC é igual ao ângulo de incidência.	Usando a lei dos senos encontramos
+			\begin{equation*}
+				\overline{BC}=\lambda_1=\overline{AC}sen(\theta_1).
+			\end{equation*}
+			Da mesma maneira, o triângulo ADC também é retângulo, onde
+			\begin{equation*}
+				\overline{AD}=\lambda_2=\overline{AC}sen(\theta_2).
+			\end{equation*}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+	\begin{figure}
+		\Centering
+		\begin{tikzpicture}[scale=0.5,transform shape,
+		media/.style={font={\footnotesize\sffamily}},
+		interface/.style={postaction={draw,decorate,decoration={border,angle=-45,amplitude=0.15cm,segment length=2mm}}}]
+		
+		tkzInit[xmin=-4, xmax=4, ymin=-3, ymax=3]
+		tkzGrid
+		tkzClip
+		% Round rectangle
+		\fill[gray!10,rounded corners] (-4,-3) rectangle (4,0);
+		
+		%definindo pontos
+		\tkzDefPoints{-3/3/A,0/0/O,1.5/-3/B}
+		\tkzDefPoints{0/3/n1,0/-3/n2,0/4/n1b}
+		\tkzDefPoints{-4/0/x1}
+		%triangulo 1
+		\tkzDefLine[orthogonal=through n1](A,O)
+		\tkzGetPoint{P1}
+		\tkzInterLL(A,O)(n1,P1)
+		\tkzGetPoint{c1}
+		\tkzInterLL(n1,c1)(x1,O)
+		\tkzGetPoint{i1}
+		\tkzDrawSegment(i1,n1)
+		\tkzDefPointWith[colinear = at n1 ](A,O)
+		\tkzGetPoint{i2}
+		
+		\tkzDrawSegment(n1,i2)
+		\tkzMarkRightAngle(n1,c1,O)
+		\tkzMarkRightAngle(i1,n1,i2)
+		
+		%segunda frente de onda
+		\tkzDefLine[parallel=through i2](n1,i1) \tkzGetPoint{px}
+		\tkzDrawSegment[dotted](i2,px)
+		\draw (n1.center) to[dim arrow={label=$\lambda_1$}] (i2.center);
+		\tkzMarkAngle[arrows=<->](i2,i1,n1)\tkzLabelAngle[right,font=\small](i2,i1,n1){$\theta_1$}
+		
+		%triangulo 2
+		\tkzDefLine[orthogonal=through i2](O,B)
+		\tkzGetPoint{P2}
+		\tkzInterLL(O,B)(i2,P2)
+		\tkzGetPoint{c2}
+		\tkzDefLine[orthogonal=through i1](i2,c2) \tkzGetPoint{i3}
+		\tkzInterLL(i2,c2)(i1,i3)\tkzGetPoint{i4}
+		
+		\tkzDrawSegment[color=green](i2,i4)
+		\tkzDrawSegment[color=green](i1,i4)
+		
+		\tkzMarkRightAngle[color=green](i2,c2,O)
+		\tkzMarkRightAngle[color=green](i1,i4,i2)
+		
+		\tkzDrawPoint(i1)\tkzLabelPoint[above left](i1){A} \tkzDrawPoint(n1)\tkzLabelPoint[above](n1){B}
+		\tkzDrawPoint(i2)\tkzLabelPoint[below right](i2){C} \tkzDrawPoint(i4)\tkzLabelPoint[below](i4){D}
+		
+		%segunda frente de onda
+		\tkzDefLine[parallel=through i1](i4,i2) \tkzGetPoint{px'}
+		\tkzDrawSegment[dotted,color=green](i1,px')
+		\draw (i1.center) to[dim arrow'={label=$\lambda_2$}] (i4.center);
+		
+		%desenhando raios de luz
+		\draw[put arrow={at=0.5},line width=1pt,color=red] (A) -- (O);
+		\draw[put arrow={at=0.5},line width=1pt,color=red] (O) -- (B);
+		
+		%definindo angulos
+		\tkzMarkAngle[arrows=<->](n1,O,A)
+		\tkzMarkAngle[arrows=<->](i1,i2,i4)\tkzLabelAngle[pos = 1.1, above left, font=\small](i4,i2,i4){$\theta_2$}
+		%	\tkzMarkAngle[arrows=<->](n2,O,B)
+		
+		\tkzLabelAngle[above,font=\small](n1,O,A){$\theta_1$}
+		\tkzLabelAngle[below,pos=0.6,font=\small](n2,O,B){$\theta_2$}
+		
+		% Interface
+		\draw[blue,line width=.5pt,interface](-4,0)--(4,0);
+		
+		% Vertical dashed line
+		\draw[dashed,gray](0,-3)--(0,3);
+		
+		% Media names
+		\path[media] (3.75,.6)  node {(1)} (3.75,-.6) node {(2)};
+		
+		\end{tikzpicture}
+		\caption*{\footnotesize Frentes de onda na interface.}
+		\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Lei de Snell}
+	\begin{multicols}{2}
+		Temos assim
+		\begin{align*}
+			\lambda_1 & = \overline{AC}sen(\theta_1),\\
+			\lambda_2 & = \overline{AC}sen(\theta_2).
+		\end{align*}
+		Dividindo os dois lados da equação temos
+		\begin{equation*}
+			\frac{\lambda_1}{\lambda_2} = \frac{sen(\theta_1)}{sen(\theta_2)}.
+		\end{equation*}
+		Sabemos que na onda a relação entre comprimento de onda e velocidade é dado por $v=\lambda f$, onde f é a frequência que não se altera quando a onda atravessa de um meio ao outro, portanto
+		\begin{equation*}
+			\frac{v_1}{v_2} = \frac{sen(\theta_1)}{sen(\theta_2)}.
+		\end{equation*}
+		Se o meio 1 for o vácuo ou ar temos $v_1=c$, ou seja,
+		\begin{equation*}
+			\boxed{\frac{c}{v_2} = \frac{\lambda_1}{\lambda_2} = \frac{sen(\theta_{ar})}{sen(\theta_2)}.}
+		\end{equation*}
+	\end{multicols}
+\end{frame}
+
+\begin{frame}{Índice de refração}
+	\begin{columns}
+		\begin{column}[t]{0.5\textwidth}
+			No caso da luz atravessando do ar para um meio mais refrigente temos a relação
+			\begin{equation*}
+				\frac{c}{v} = \frac{sen(\theta_{ar})}{sen(\theta)}.
+			\end{equation*}
+			Se definirmos $n=\sqrt{\kappa}$ teremos $n=c/v$ como a fração da velocidade da luz que diminui ao atravessar o meio, assim
+			\begin{equation*}
+				n = \frac{sen(\theta_{ar})}{sen(\theta_2)}.
+			\end{equation*}
+			Para uma onda que atravessa dois meios
+		\end{column}
+		\begin{column}[t]{0.5\textwidth}
+			com índices de refração diferentes temos
+			\begin{small}
+				\begin{NodesList}[margin=1cm]
+					\begin{align*}
+						\frac{v_1}{v_2} & = 	\frac{sen(\theta_1)}{sen(\theta_2)},\AddNode\\
+						\frac{\left(\frac{\alert{c}}{v_2}\right)}{\left(\frac{\alert{c}}{v_1}\right)} & = 	\frac{sen(\theta_1)}{sen(\theta_2)},\AddNode
+					\end{align*}
+					\LinkNodes{$\times \alert{\frac{c}{c}}$}
+				\end{NodesList}
+			\end{small}
+			\begin{block}{Lei de Snell}
+				\begin{equation*}
+					\frac{n_2}{n_1} =\frac{\lambda_1}{\lambda_2} = \frac{sen(\theta_1)}{sen(\theta_2)},\quad (n>1).
+				\end{equation*}
+			\end{block}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Reflexão total}
+	\begin{columns}
+		\begin{column}{0.45\textwidth}
+			Aplicando a Lei de Snell temos
+			\begin{small}
+				\begin{align*}
+					n_2sen(L) & = n_1\overbracket{sen(90^o)}^{\alert{1}},\\
+					sen(L) & = \frac{n_1}{n_2}.
+				\end{align*}
+			\end{small}
+			\begin{block}{Ângulo de reflexão total da luz}
+				\begin{equation*}
+					L=sen^{-1}\left(\frac{n_1}{n_2}\right),\quad (n_2>n_1).
+				\end{equation*}
+			\end{block}
+		\end{column}
+		\begin{column}{0.55\textwidth}
+			\begin{figure}
+				\begin{tikzpicture}[scale=0.8,transform shape]
+
+					\tkzInit[xmin=0,xmax=8,ymin=-3,ymax=3]
+					%	\tkzGrid[step=1cm,color=gray!30]
+					\tkzClip
+
+					%definindo parametros
+					\def\h{2}
+
+					% Round rectangle
+					\fill[gray!20,rounded corners,opacity=0.6] (0,-3) rectangle (8,0);
+
+					\tkzDefPoints{0/0/x1,8/0/x2}
+					\tkzDefPoints{7/-3/O}
+
+					\tkzDrawPoints(O)\tkzLabelPoints[above right](O)
+
+					\foreach \x in {4,5,6}{
+					\pgfmathsetmacro{\dx}{(7-\x)*sqrt(34)*0.2*\h/sqrt((7-\x)*(7-\x)+9)}
+					\pgfmathsetmacro{\yl}{sqrt(\h*\h-\dx*\dx)}
+					\pgfmathsetmacro{\xl}{\x-\dx}
+					\tkzDefPoints{\x/0/xp,\xl,\yl,pi}
+					\tkzDefPoint(\xl,\yl){pi}
+					\tkzDefPoints{\x/1/pa,\x/-1/pb}
+					\tkzDefPointWith[linear,K=0.8](O,xp) \tkzGetPoint{g}
+					\tkzDefPointBy[reflection=over pa--pb](g) \tkzGetPoint{s}
+					\tkzMarkAngle[size=0.7,arc=lll](pb,xp,g)
+					\draw[dashed] (pa) -- (pb);
+					\draw[put arrow={at=0.5},line width=1pt,color=red] (O) -- (xp);
+					\draw[put arrow={at=0.5},line width=1pt,color=red,opacity=0.25] (xp) -- (s);
+					\draw[put arrow={at=0.5},line width=1pt,color=red] (xp) -- (pi);}
+
+					\pgfmathsetmacro{\dx}{(7-2)*sqrt(34)*0.2*\h/sqrt((7-2)*(7-2)+9)}
+					\pgfmathsetmacro{\yl}{sqrt(\h*\h-\dx*\dx)}
+					\pgfmathsetmacro{\xl}{2-\dx}
+					\tkzDefPoints{2/0/2,\xl,\yl,pi}
+					\tkzDefPoint(\xl,\yl){pi}
+					\tkzDefPoints{2/1/pa,2/-1/pb}
+					\tkzDefPointWith[linear,K=0.8](O,2) \tkzGetPoint{g}
+					\tkzMarkAngle[size=0.5,arc=lll](pa,2,pi)\tkzLabelAngle[pos=0.75](pa,2,pi){$90^o$}
+					\tkzMarkAngle[size=0.5,arc=lll](pb,2,g)\tkzLabelAngle[pos=0.75](pb,2,g){$L$}
+					\draw[dashed] (pa) -- (pb);
+					\draw[put arrow={at=0.5},line width=1pt,color=red] (O) -- (2);
+					\draw[put arrow={at=0.5},line width=1pt,color=red] (2) -- (pi);
+
+					\pgfmathsetmacro{\dx}{(7-7)*sqrt(34)*0.2*\h/sqrt((7-7)*(7-7)+9)}
+					\pgfmathsetmacro{\yl}{sqrt(\h*\h-\dx*\dx)}
+					\pgfmathsetmacro{\xl}{7-\dx}
+					\tkzDefPoints{7/0/7,\xl,\yl,pi}
+					\tkzDefPoint(\xl,\yl){pi}
+					\tkzDefPoints{7/1/pa,7/-1/pb}
+					\draw[dashed] (pa) -- (pb);
+					\draw[put arrow={at=0.5},line width=1pt,color=red] (O) -- (7);
+					\draw[put arrow={at=0.5},line width=1pt,color=red] (7) -- (pi);
+					\draw[put arrow={at=0.5},line width=1pt,color=red] (pi) -- (O);
+
+					\draw (x1) -- (x2);
+
+					% Media names
+					\path[font=\tiny] (7.75,.6)  node {(1)} (7.75,-.6) node {(2)};
+
+					%	\tkzDrawLine[color=red](A,B)
+
+				\end{tikzpicture}
+%				\input{tikz/reflexao-total.pgf}
+				\caption*{\footnotesize Reflexão total da luz.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Relação entre o índice de refração e a cor da luz}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\begin{itemize}
+				\item[\ding{51}] Cada cor no espectro de luz visível é caracterizada por uma frequência em um comprimento de onda específico;
+				\item[\ding{51}] A luz branca é a combinação de várias cores com comprimentos de onda diferentes;
+				\item[\ding{51}] Cada cor terá velocidades diferentes após a refração, o que faz com que elas também tenham ângulos de refração diferentes.
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}
+				\begin{tikzpicture}[scale=0.8,transform shape]
+
+					\tkzInit[xmin=-3,xmax=3,ymin=-3,ymax=3]
+					%\tkzGrid[step=1cm,color=gray!30]
+					\tkzClip
+
+					% Round rectangle
+					\fill[gray!10,rounded corners,opacity=0.6] (-4,-3) rectangle (4,0);
+
+					\tkzDefPoints{-3/0/x1,3/0/x2,0/0/O,0/3/n1,0/-3/n2}
+					\tkzDefPoints{-3/3/A}
+					\tkzDefPoints{0.5/-3/b1,1.0/-3/b2,1.5/-3/b3}
+
+					\draw[dashed] (n1) -- (n2);
+					\draw (x1) -- (x2);
+
+					%desenhando raios de luz
+					\draw[put arrow={at=0.5},line width=1pt,color=black] (A) -- (O);
+					\tkzMarkAngle[arc=lll,size=0.5,color=black](n1,O,A)\tkzLabelAngle[pos=1](n1,O,A){$\theta$}
+					\draw[put arrow={at=0.5},line width=1pt,color=blue] (O) -- (b1);
+					\tkzMarkAngle[arc=lll,size=1.1,color=blue](n2,O,b1)
+					\draw[put arrow={at=0.5},line width=1pt,color=green] (O) -- (b2);
+					\tkzMarkAngle[arc=lll,size=1.5,color=green](n2,O,b2)
+					\draw[put arrow={at=0.5},line width=1pt,color=red] (O) -- (b3);
+					\tkzMarkAngle[arc=lll,size=2.0,color=red](n2,O,b3)
+
+					% Media names
+					\path[font=\tiny] (2.75,.25)  node {Ar} (2.75,-.25) node {Vidro};
+
+\end{tikzpicture}
+%				\input{tikz/dispersao-luz.pgf}
+				\caption*{\footnotesize Dispersão dos raios de luz.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\section{Apêndice}
+
+\subsection{}
+
+\begin{frame}{Observações\footnote{Este material está sujeito a modificações. Recomenda-se acompanhamento permanente.}}
+	\begin{center}
+		Esta apresentação está disponível para download no endereço\\
+		\href{https://flavianowilliams.github.io/education}{\textcolor{blue}{https://flavianowilliams.github.io/education}}
+	\end{center}
+\end{frame}
+	
+\begin{frame}{Referências}
+	\bibliographystyle{jurabib}
+	\begin{thebibliography}{9}
+		\bibitem{halliday}D. Halliday, R. Resnick, J. Walker, Fundamentos de física. Eletromagnetismo, v.4, 10. ed., Rio de Janeiro, LTC (2016)
+		\bibitem{randall}R. D. Knight, Física: Uma abordagem estratégica, v.3, 2nd ed., Porto Alegre, Bookman (2009)
+		\bibitem{moyses}H. M. Nussenzveig, Curso de física básica. Eletromagnetismo, v.4, 5. ed., São Paulo, Blucher (2014)
+	\end{thebibliography}
+\end{frame}
+
+\end{document}

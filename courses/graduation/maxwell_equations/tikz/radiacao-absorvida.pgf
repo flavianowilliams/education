@@ -1,0 +1,40 @@
+\begin{tikzpicture}[scale=0.5, transform shape]
+
+%	\useasboundingbox (0,-2) rectangle (6,4.5);
+
+	%grafico 1
+
+	\coordinate (e) at (2,0);
+	\coordinate (ei) at (0,0);
+
+	\draw[->,line width=1pt] (e) --++ (1,0)  node[above,midway] {$\vec{c}$};
+
+	\draw[decoration={aspect=0.3, segment length=3mm, amplitude=3mm,snake=waves},decorate] (ei) -- (e);
+
+	%parede
+	\fill [pattern = north east lines] (4.2,1.5) rectangle (4,-1.5);
+	\draw (4,-1.5) -- (4,1.5);
+
+	%texto
+	\node at (3,-1) {(Anteparo)};
+	\node at (2,1.5) {Antes da colisao};
+
+	%grafico 2
+
+	\def\t{7}
+
+	\coordinate (e) at (2+\t,0);
+	\coordinate (ei) at (0+\t,0);
+
+	\draw[line width=1pt] (e) --++ (0,0)  node[above,midway] {$\vec{c}=0$};
+
+%	\draw[decoration={aspect=0.3, segment length=3mm, amplitude=3mm,snake=waves},decorate] ($(ei)+(1,0)$) -- ($(e)+(1,0)$);
+
+	%parede
+	\fill [pattern = north east lines] (4.2+\t,1.5) rectangle (4+\t,-1.5);
+	\draw (4+\t,-1.5) -- (4+\t,1.5);
+
+	%texto
+	\node at (2+\t,1.5) {Depois da colisao};
+
+\end{tikzpicture}

@@ -1,0 +1,48 @@
+﻿				\begin{tikzpicture}[scale=1.4,transform shape,font=\Large]
+				
+				\tkzInit[xmin=-6,xmax=6,ymin=-4,ymax=5]
+				%	\tkzGrid
+				\tkzClip[space=0.1]
+				
+				\tkzDefPoints{0/0/O,-3/0/A,4/0/B}
+				
+				\tkzDrawCircle[fill=gray!50](O,B)
+				
+				\foreach \x in {-4,-3,...,4}{
+					\foreach \y in {-4,-3,...,4}{
+						\node[color=blue] at (\x,\y) {\Large x};}}
+				
+				\tkzDefPoints{3/0/e1,2/0/e2}
+				
+				\tkzDrawArc[arrows=->,color=red,line width=1pt,rotate](O,e1)(180)
+				\tkzDrawArc[arrows=->,color=red,line width=1pt,rotate](O,e1)(-180)
+				
+%				\foreach \z in {2.5,2,1.5}{
+%					\tkzDefPoint(\z,0){e}
+%					\tkzDrawArc[arrows=->,color=red,line width=1pt,rotate](O,e)(180)
+%					\tkzDrawArc[arrows=->,color=red,line width=1pt,rotate](O,e)(-180)}
+				
+				\tkzDefPoints{4/4/t1,3.5/-3.5/t2,-4/-3.75/t3}
+				\tkzDefPoints{2.5/0/e2}
+				
+				\tkzDefPointsBy[rotation=center O angle 0](O,e1){p1,p2}
+				\tkzDefPointsBy[rotation=center O angle 45](O,e1){p3,p4}
+				\tkzDefPointsBy[rotation=center O angle 225](O,B){p5,p6}
+				\tkzDefPointsBy[rotation=center O angle 90](O,e1){p7,p8}
+				\tkzDefPointsBy[rotation=center O angle 180](O,e1){p9,p10}
+				\tkzDefPointsBy[rotation=center O angle 270](O,e1){p11,p12}
+				
+				\draw[->,line width=0.5pt,color=green] (p2) --++ (0,1) node [right] {$\vec{E}$};
+				\draw[->,line width=0.5pt,color=green] (p8) --++ (-1,0) node [above] {$\vec{E}$};
+				\draw[->,line width=0.5pt,color=green] (p10) --++ (0,-1) node [left] {$\vec{E}$};
+				\draw[->,line width=0.5pt,color=green] (p12) --++ (1,0) node [below] {$\vec{E}$};
+
+				\draw[->,line width=0.5pt] (t1) -- (p4);
+				
+				\tkzText[text centered,text width=4cm,opacity=100,fill=gray!20](t1){linhas de campo elétrico}
+				\tkzText[color=blue](t2){$\vec{B}$}
+				
+				\draw[->,line width=0.5pt] (t3) -- (p6);
+				\tkzText[text centered,text width=4cm,opacity=100,fill=gray!20](t3){Espira circular}
+
+				\end{tikzpicture}

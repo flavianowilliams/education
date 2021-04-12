@@ -1,0 +1,36 @@
+\begin{tikzpicture}[scale=1, transform shape,
+    %Option for nice arrows
+    >=stealth, %
+    inner sep=0pt, outer sep=2pt,%
+    axis/.style={thick,->},
+    polaroid/.style={fill=black!60!white, opacity=0.3},]
+
+	\useasboundingbox (2.75,2.25) rectangle (-2.75,-2.25);
+
+    % Colors
+    \colorlet{darkgreen}{green!50!black}
+    \colorlet{lightgreen}{green!80!black}
+    \colorlet{darkred}{red!50!black}
+    \colorlet{lightred}{red!80!black}
+
+    % eixos
+    \draw[axis] (-2.5,0) -- (2.5,0) node [right] {y};
+    \draw[axis] (0,-2) -- (0,2) node [above] {z};
+
+    \filldraw[polaroid] (-2,-1.5) -- (-2,1.5) -- (2,1.5) -- (2,-1.5) -- (-2,-1.5) node[below, near end]{Polaroid};%
+
+    %Direction of polarization
+    \draw[thick,<->] (-1.5,0.25) -- (-1.5,1.25) node[above,midway,sloped] {\tiny Polarizacao};
+
+    % Electric field vectors
+	\coordinate (c1) at (45:1.5);
+    \draw[line width=1pt,color=red,<->] ($-1*(c1)$) -- (c1) node[above] {$\vec{E}$};
+	\draw[line width=1pt,color=red,->] (0,0) -- (0:{1.5*cos{45}}) node[below] (c2) {$\vec{E_{x}}$};
+	\draw[line width=1pt,color=red,->] (0,0) -- (90:{1.5*sin{45}}) node[left] (c3) {$\vec{E_{y}}$};
+	\draw[dashed] (c1) -- (c2);
+	\draw[dashed] (c1) -- (c3);
+
+	%angulo
+	\draw[->] (0.5,0) arc (0:45:0.5) node[right,midway] {\small $\theta$};
+
+\end{tikzpicture}

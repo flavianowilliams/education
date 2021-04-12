@@ -1,0 +1,50 @@
+\begin{tikzpicture}[x={(0.866cm,-0.5cm)}, y={(0.866cm,0.5cm)}, z={(0cm,1cm)}, scale=0.75, transform shape,
+    %Option for nice arrows
+    >=stealth, %
+    inner sep=0pt, outer sep=2pt,%
+    axis/.style={thick,->},
+    wave/.style={thick,color=#1,smooth},
+    polaroid/.style={fill=black!60!white, opacity=0.3},
+]
+    % Colors
+    \colorlet{darkgreen}{green!50!black}
+    \colorlet{lightgreen}{green!80!black}
+    \colorlet{darkred}{red!50!black}
+    \colorlet{lightred}{red!80!black}
+
+    % Frame
+    \coordinate (O) at (0, 0, 0);
+    \draw[axis] (O) -- +(7, 0,   0) node [right] {x};
+    \draw[axis] (O) -- +(0, -2.5, 0) node [left] {z};
+    \draw[axis] (O) -- +(0,  0,   2) node [above] {y};
+
+    \draw[thick,dashed] (-2,0,0) -- (O);
+
+    % monochromatic incident light with electric field
+    \draw[wave=red, opacity=0.7, variable=\x, samples at={-2,-1.75,...,0}]
+        plot (\x, { -sin(1.0*\x r)*sin(2.0*\x r)}, { cos(1.0*\x r)*sin(2.0*\x r)})
+        plot (\x, {-sin(1.0*\x r)*sin(2.0*\x r)}, {cos(1.0*\x r)*sin(2.0*\x r)});
+
+    \foreach \x in{-2,-1.75,...,0}{
+        \draw[color=red, opacity=0.7,->]
+            (\x,0,0) -- (\x, { -sin(1.0*\x r)*sin(2.0*\x r)}, { cos(1.0*\x r)*sin(2.0*\x r)})
+            (\x,0,0) -- (\x, {-sin(1.0*\x r)*sin(2.0*\x r)}, {cos(1.0*\x r)*sin(2.0*\x r)});
+    }
+
+    \filldraw[polaroid] (0,-2,-1.5) -- (0,-2,1.5) -- (0,2,1.5) -- (0,2,-1.5) -- (0,-2,-1.5)
+        node[below, sloped, near end]{Polaroid};%
+
+    %Direction of polarization
+    \draw[thick,<->] (0,1.5,0.25) -- (0,1.5,1.25);
+
+    % Electric field vectors
+    \draw[wave=red, variable=\x,samples at={0,0.25,...,6}]
+        plot (\x,0,{sin(2*\x r)})node[anchor=north]{$\vec{E}$};
+
+    %Polarized light between polaroid and thin section
+    \foreach \x in{0, 0.25,...,6}
+        \draw[color=red,->] (\x,0,0) -- (\x,0,{sin(2*\x r)});
+
+    \draw (3,1,1) node [text width=3.5cm, text centered]{Luz polarizada};
+
+\end{tikzpicture}

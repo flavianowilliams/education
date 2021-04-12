@@ -1,0 +1,35 @@
+\begin{tikzpicture}[scale=1, transform shape]
+
+	\tikzstyle{wave}=[decorate,decoration={snake,post length=1.4mm,amplitude=1mm, segment length=2mm},thick]
+	\tikzstyle{antep}=[postaction={draw,decorate,decoration={border,angle=-45,amplitude=0.3cm,segment length=2mm}}]
+
+	\draw (0,0) -- (0,1.75);
+	\draw (0,2.0) -- (0,3);
+	\draw (0,3.25) -- (0,5);
+
+	\draw (-0.25,1.75) -- (0.25,1.75);
+	\draw (-0.25,2) -- (0.25,2);
+	\draw (-0.25,3) -- (0.25,3);
+	\draw (-0.25,3.25) -- (0.25,3.25);
+
+	%anteparo
+	\draw[antep] (5,0) -- (5,5);
+	
+	%ondas
+	\def\px{5}
+	\def\py{5}
+	\coordinate (p) at (\px,\py);
+	\draw[->,wave,color=red] (0,3.125)--(p)node {};
+    \draw[->,wave,color=red] (0,1.825)--(p)node {};
+
+	%eixo principal
+	\draw[dashed] (0,2.5) -- (5,2.5);
+	\draw[dashed] (0,2.5) -- (p);
+
+	%angulo
+	\draw[->] (2.5,2.5) arc (0:atan{((\py-2.5)/\px)}:2.5) node[right,midway] {$\theta$};
+
+	%distancia entre fendas
+	\draw[<->] (-0.5,1.825) -- (-0.5,3.125) node[left,midway] {d};
+
+\end{tikzpicture}

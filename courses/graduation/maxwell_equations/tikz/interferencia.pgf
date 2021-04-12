@@ -1,0 +1,23 @@
+\begin{tikzpicture}[scale=0.25]
+
+	%parametros
+	\def\i0{2}
+	\def\d{0.25}
+	\def\l{1}
+	\def\tx{20cm}
+
+%	\useasboundingbox (22.5,22.5) rectangle (0,0);
+
+    \node[anchor=south west,inner sep=0] at (0,0) {\includegraphics[width=0.5\textwidth]{/home/flaviano/Documentos/concurso/eletromagnetismo/figuras/interferencia.png}};
+
+	\filldraw[color=white,opacity=0.4] (24.25,24) rectangle (\tx,0);
+
+	%definindo funcao
+	\pgfmathdeclarefunction{fe}{1}{\pgfmathparse{4*\i0*(cos(deg(0.5*pi*(sin(deg(2*pi*\d*\x/(\l))))))^(2))}}
+
+	%intensidade
+	\begin{scope}[xscale=-1,xshift=-\tx]
+	    \draw [line width=1pt,color=red, domain=0:7.5*pi, variable=\x,samples=700] (0,0) -- plot ({fe(\x)},{\x});
+	\end{scope}
+
+\end{tikzpicture}

@@ -1,0 +1,28 @@
+\begin{tikzpicture}[scale=1]
+
+	%draw axes
+%	\tikzstyle{axis}=[->,blue,thick];
+%	\draw[axis] (0,0,0) -- (1,0,0) node[anchor=north east]{$x$};
+%	\draw[axis] (0,0,0) -- (0,1,0) node[anchor=north west]{$y$};
+%	\draw[axis] (0,0,0) -- (0,0,1) node[anchor=south]{$z$};
+	
+	\coordinate (a) at (0,0,0);
+
+	%carga eletrica
+	\fill[black] (a) circle (0.1cm);
+	\node[above] at (a) {q};
+
+	%superficie gaussiana
+	\tikzstyle{s1}=[tdplot_screen_coords, opacity=0.2];
+	\shadedraw[tdplot_screen_coords,ball color = white, opacity=0.25, dashed] (a) circle (2cm);
+
+	%campo eletrico
+%	\foreach \x in {0,45,...,360}{
+%	\draw[->] (0,0,0) -- ({2.5*sin(90)*cos(\x)},{2.5*sin(90)*sin(\x)},{2.5*cos(90)});}
+	\draw[->] (0,0,0) -- ({2.5*sin(90)*cos(45)},{2.5*sin(90)*sin(45)},{2.5*cos(90)}) node[right] {$\vec{E}$};
+
+	%texto
+	\node (t) at (0,2.75,0) {Superficie gaussiana};
+	\draw[->] (t) -- (0,2,0);
+
+\end{tikzpicture}

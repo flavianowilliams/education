@@ -1,0 +1,1158 @@
+% Aula de eletromagnetismo para o curso de Física II da graduação
+%
+\documentclass[brazil,aspectratio=169]{beamer}
+%
+%carregando preâmbulo
+\input{../../contrib/preamble}
+
+%Título
+
+\title[Eletromagnetismo-MAX]{Equações de Maxwell}
+
+% The main document
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Sumário}
+  \tableofcontents
+\end{frame}
+
+\section{As equações de Maxwell}
+
+\subsection{}
+
+\begin{frame}{Equações de Maxwell}
+		As principais equações do eletromagnetismo são
+		\begin{align*}
+			\oint\vec{E}\cdot d\vec{A} & = \frac{q}{\varepsilon_{0}}, & \quad\textrm{(Lei de Gauss)}\\
+			\oint\vec{B}\cdot d\vec{A} & = 0, & \quad\textrm{(Lei de Gauss do magnetismo)}\\
+			\oint\vec{E}\cdot d\vec{s} & = -\frac{d\Phi_{B}}{dt}, & \quad\textrm{(Lei de Faraday)}\\
+			\oint\vec{B}\cdot d\vec{s} & = \mu_0i, & \quad\textrm{(Lei de Ampère)}\
+		\end{align*}
+\end{frame}
+
+\begin{frame}{Lei de Gauss}
+	\begin{columns}[c]
+		\begin{column}[c]{0.5\textwidth}
+			\begin{figure}[c]
+				\centering
+%				\input{tikz/lei-gauss.pgf}
+				\begin{tikzpicture}[scale=0.75,transform shape]
+				
+				\coordinate (a) at (0,0,0);
+				
+				%campo eletrico
+				\foreach \x in {0,45,...,360}{
+				\draw[->] (0,0,0) -- ({2.5*sin(90)*cos(\x)},{2.5*sin(90)*sin(\x)},{2.5*cos(90)});}
+				\draw[->] (0,0,0) -- ({2.5*sin(90)*cos(45)},{2.5*sin(90)*sin(45)},{2.5*cos(90)}) node[right] {$\vec{E}$};
+
+				%carga eletrica
+				\fill[black] (a) circle (0.1cm);
+				\node[above right,opacity=1] at (a) {q};
+
+				%superficie gaussiana
+				\tikzstyle{s1}=[tdplot_screen_coords, opacity=0.2];
+				\shadedraw[tdplot_screen_coords,ball color = white, opacity=0.75, dashed] (a) circle (2cm);
+				
+				%texto
+				\node (t) at (1,2.75,0) {Superficie gaussiana};
+				\draw[->] (t) -- (0.5,2,0);
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Fluxo do campo elétrico $\vec{E}$ devido a carga q.}
+			\end{figure}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{block}{Lei de Gauss}
+				A variação do fluxo do campo magnético que atravessa uma espira fechada faz aparecer um campo elétrico induzido ao redor dessa espira,
+				\[\oint\vec{E}\cdot d\vec{A} = \frac{q}{\varepsilon_{0}}.\]
+			\end{block}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Lei de Faraday}
+	\begin{columns}[c]
+		\begin{column}[c]{0.5\textwidth}
+			\begin{figure}[c]
+%				\input{tikz/lei-faraday.pgf}
+				\centering
+				\begin{tikzpicture}[scale=0.75, transform shape, x={(-10:1cm)},y={(90:1cm)},z={(210:1cm)}]
+				
+				\filldraw[draw, opacity=0.2] (2,0,0) arc (0:360:2);
+				\draw[line width=1pt,color=red,<-] (2,0,0) arc (0:360:2);
+				\node[right] at (2,0,0) {$\vec{E}$};
+				\draw[line width=1pt,->] (0,0,0) -- (0,0,1) node[left] {$\frac{d\Phi_{\vec{B}}}{dt}$};
+				\draw[->] (2,2,0) node[right] {Area} to [out=180, in=90] (1,1,0) ;
+				\node at (-1.5,-1.5,1) {$\Phi_{B}=\int \vec{B}\cdot d\vec{A}$};
+				\node[text width=6cm] at (1.25,-2,1) {\small $\Phi_{B}$: B por area perpendicular a espira};
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Fluxo do campo magnético $\vec{B}$.}
+			\end{figure}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{block}{Lei de Faraday}
+				A variação do fluxo do campo magnético que atravessa uma espira fechada faz aparecer um campo elétrico induzido ao redor dessa espira,
+				\begin{align*}
+					\oint\vec{E}\cdot d\vec{s} = - \frac{d\Phi_{B}}{dt}.
+				\end{align*}
+			\end{block}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Simetria entre campo elétrico e magnético}
+	\begin{block}{Simetria dos fenômenos elétricos e magnéticos}
+		Maxwell, usando a idéia de simetria, sugeriu que assim como a variação de um \alert{campo magnético} no espaço pode induzir um \alert{campo elétrico}, a variação do \alert{campo elétrico} também pode induzir um \alert{campo magnético}.
+	\end{block}
+	\begin{columns}[c]
+		\begin{column}[c]{0.5\textwidth}
+			\begin{figure}[c]
+%				\input{tikz/lei-maxwell2.pgf}
+				\centering
+				\begin{tikzpicture}[scale=0.45,transform shape]
+				
+				\begin{scope}[scale=1, transform shape, x={(-10:1cm)},y={(90:1cm)},z={(210:1cm)}]
+				\filldraw[draw, opacity=0.2] (2,0,0) arc (0:360:2);
+				\draw[line width=1pt,color=red,->] (2,0,0) arc (0:360:2);
+				\node[right] at (2,0,0) {$\vec{B}$};
+				\draw[line width=1pt,->] (0,0,0) -- (0,0,1) node[left] {$\frac{d\Phi_{\vec{E}}}{dt}$};
+				\draw[->] (2,2,0) node[right] {Area} to [out=180, in=90] (1,1,0) ;
+				\end{scope}
+				
+				\begin{scope}[scale=0.5, xshift=5cm,yshift=-6cm]
+				\coordinate (p1) at (0,1.5);
+				\coordinate (p2) at (2,1.5);
+				
+				\draw[semithick] ($(p1)-(0.5,0)$) -- ($(p1)-(1,0)$);%fio de traz
+				\draw[dashed,color=gray] (0,0) arc (-90:90:0.5 and 1.5);% right half of the left ellipse
+				\draw[semithick] (0,0) arc (270:90:0.5 and 1.5);% left half of the left ellipse
+				\draw[semithick] ($(p1)+(0.25,0)$) ellipse (0.5 and 1.5) node {};% right ellipse
+				
+				\draw[semithick] (p2) -- ($(p2)+(1.5,0)$);% fio da frente
+				\draw[dashed,color=gray] (2,0) arc (-90:90:0.5 and 1.5);% right half of the left ellipse
+				\draw[semithick] (2,0) arc (270:90:0.5 and 1.5);% left half of the left ellipse
+				\draw[semithick] ($(p2)+(0.25,0)$) ellipse (0.5 and 1.5) node {};% right ellipse
+				
+				%campo magnetico induzido
+				\draw[semithick,->,line width=0.5pt,color=red] (1,0) arc (-90:90:0.5 and 1.5);% right half of the left ellipse
+				\draw[semithick,<-,line width=0.5pt,color=red] (1,0) arc (270:90:0.5 and 1.5);% left half of the left ellipse
+				\node[below=0.25cm] at (1,0) {$\vec{B}$};
+				
+				%corrente
+				\draw[color=red,line width=0.5pt,->] (3,1.75) -- (4.38,1.75) node[above,midway] {i};
+				\draw[color=red,line width=0.5pt,->] (-2,1.75) -- (-0.5,1.75) node[above,midway] {i};
+				\end{scope}
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Variação do fluxo elétrico $\frac{d\Phi_{E}}{dt}$.}
+			\end{figure}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{block}{Lei de Maxwell}
+				A variação do fluxo do campo elétrico que atravessa uma espira fechada faz aparecer um campo magnético induzido ao redor dessa espira.
+			\end{block}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Campo magnético induzido devido a variação do campo elétrico}
+	\begin{figure}
+		\begin{subfigure}{0.49\textwidth}
+			\centering
+			\begin{tikzpicture}[scale=0.5,transform shape,font=\Large]
+			
+			\tkzInit[xmin=-6,xmax=6,ymin=-4,ymax=5]
+			%	\tkzGrid
+			\tkzClip[space=0.1]
+			
+			\tkzDefPoints{0/0/O,-3/0/A,4/0/B}
+			
+			\tkzDrawCircle[fill=gray!50](O,B)
+			
+			\foreach \x in {-4,-3,...,4}{
+				\foreach \y in {-4,-3,...,4}{
+					\node[color=blue] at (\x,\y) {\Large x};}}
+			
+			\tkzDefPoints{3/0/e1,2/0/e2}
+			
+			\tkzDrawArc[arrows=->,color=red,line width=1pt,rotate](O,e1)(180)
+			\tkzDrawArc[arrows=->,color=red,line width=1pt,rotate](O,e1)(-180)
+			
+			\tkzDefPoints{4/4/t1,3.5/-3.5/t2,-4/-3.75/t3}
+			\tkzDefPoints{2.5/0/e2}
+			
+			\tkzDefPointsBy[rotation=center O angle 0](O,e1){p1,p2}
+			\tkzDefPointsBy[rotation=center O angle 45](O,e1){p3,p4}
+			\tkzDefPointsBy[rotation=center O angle 225](O,B){p5,p6}
+			\tkzDefPointsBy[rotation=center O angle 90](O,e1){p7,p8}
+			\tkzDefPointsBy[rotation=center O angle 180](O,e1){p9,p10}
+			\tkzDefPointsBy[rotation=center O angle 270](O,e1){p11,p12}
+			
+			\draw[->,line width=0.5pt,color=black] (p2) --++ (0,1) node [right] {$\vec{E}$};
+			\draw[->,line width=0.5pt,color=black] (p8) --++ (-1,0) node [above] {$\vec{E}$};
+			\draw[->,line width=0.5pt,color=black] (p10) --++ (0,-1) node [left] {$\vec{E}$};
+			\draw[->,line width=0.5pt,color=black] (p12) --++ (1,0) node [below] {$\vec{E}$};
+			
+			\draw[->,line width=0.5pt] (t1) -- (p4);
+			
+			\tkzText[text centered,text width=4cm,opacity=100,fill=gray!20](t1){linhas de campo elétrico}
+			\tkzText[color=blue](t2){$\vec{B}$}
+			
+			\draw[->,line width=0.5pt] (t3) -- (p6);
+			\tkzText[text centered,text width=4cm,opacity=100,fill=gray!20](t3){Espira circular}
+			
+			\end{tikzpicture}
+			\caption*{\footnotesize Linhas de campo elétrico $\vec{E}$ circular devido a variação do campo magnético $\vec{B}$.}
+		\end{subfigure}
+		\begin{subfigure}{0.49\textwidth}
+			\centering
+			\begin{tikzpicture}[scale=0.5,transform shape,font=\Large]
+			
+			\tkzInit[xmin=-6,xmax=6,ymin=-4,ymax=5]
+%				\tkzGrid
+			\tkzClip[space=0.1]
+			
+			\tkzDefPoints{0/0/O,-3/0/A,4/0/B}
+
+			\tkzDefPoints{-4/-4/a,4/-4/b,4/4/c,-4/4/d}
+			\tkzDrawPolygon[fill=gray!50](a,b,c,d)
+%			\tkzDrawCircle[fill=gray!50](O,B)
+			
+			\foreach \x in {-4,-3,...,4}{
+				\foreach \y in {-4,-3,...,4}{
+					\node[color=blue] at (\x,\y) {\Large x};}}
+			
+			\tkzDefPoints{3/0/e1,2/0/e2}
+			
+			\tkzDrawArc[arrows=<-,color=red,line width=1pt,rotate](O,e1)(180)
+			\tkzDrawArc[arrows=<-,color=red,line width=1pt,rotate](O,e1)(-180)
+			
+			\tkzDefPoints{4/4/t1,3.5/-3.5/t2,-4/-3.75/t3}
+			\tkzDefPoints{2.5/0/e2}
+			
+			\tkzDefPointsBy[rotation=center O angle 0](O,e1){p1,p2}
+			\tkzDefPointsBy[rotation=center O angle 45](O,e1){p3,p4}
+			\tkzDefPointsBy[rotation=center O angle 225](O,B){p5,p6}
+			\tkzDefPointsBy[rotation=center O angle 90](O,e1){p7,p8}
+			\tkzDefPointsBy[rotation=center O angle 180](O,e1){p9,p10}
+			\tkzDefPointsBy[rotation=center O angle 270](O,e1){p11,p12}
+			
+			\draw[->,line width=0.5pt,color=black] (p2) --++ (0,-1) node [right] {$\vec{B}$};
+			\draw[->,line width=0.5pt,color=black] (p8) --++ (1,0) node [above] {$\vec{B}$};
+			\draw[->,line width=0.5pt,color=black] (p10) --++ (0,1) node [left] {$\vec{B}$};
+			\draw[->,line width=0.5pt,color=black] (p12) --++ (-1,0) node [below] {$\vec{B}$};
+			
+			\draw[->,line width=0.5pt] (t1) -- (p4);
+			
+			\tkzText[text centered,text width=4cm,opacity=100,fill=gray!20](t1){linhas de campo magnético}
+			\tkzText[color=blue](t2){$\vec{E}$}
+			
+			\draw[->,line width=0.5pt] (t3) -- (p6);
+			\tkzText[text centered,text width=4cm,opacity=100,fill=gray!20](t3){Placa metálica}
+			
+			\end{tikzpicture}
+			\caption*{\footnotesize Linhas de campo magnético $\vec{B}$ circular devido a variação do campo elétrico $\vec{E}$.}
+		\end{subfigure}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Corrente de deslocamento}
+	\begin{columns}
+		\begin{column}[c]{0.6\textwidth}
+			Analisando a lei de Ampere, podemos perceber que o lado direito da equação obrigatoriamente deve possuir unidades de $\mu_0i$. Na verdade, em regiões onde não há corrente elétrica, a variação do fluxo deve ser multiplicado por uma constante, de modo a satisfazer a seguinte equação
+			\begin{align*}
+				\oint \vec{B}\cdot d\vec{s}=\mu_0i+\mu_0i_d.
+			\end{align*}
+			$i_d$ é chamado corrente de deslocamento e o campo magnético $\vec{B}$ induzido por ele é idêntico ao campo criado pela corrente real $i$.
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=1,transform shape]
+				
+				\coordinate (p1) at (0,1.5);
+				\coordinate (p2) at (1.5,1.5);
+				
+				\draw[semithick] ($(p1)-(0.5,0)$) -- ($(p1)-(1,0)$);%fio de traz
+				\draw[dashed,color=gray,fill=gray!50,opacity=1] (0,0) arc (-90:90:0.5 and 1.5);% right half of the left ellipse
+				\draw[semithick,fill=gray!50,opacity=1] (0,0) arc (270:90:0.5 and 1.5);% left half of the left ellipse
+				\draw[semithick,fill=gray!50,opacity=1] ($(p1)+(0.15,0)$) ellipse (0.5 and 1.5) node {};% right ellipse
+				
+				%campo eletrico
+				\foreach \x in {1,2,3,4}{
+					\draw[->,line width=1pt,color=blue] (0,0.5*\x) --++ (0.5,0);}
+				\draw[->,line width=1pt,color=blue] (0,2.5) --++ (0.5,0) node [above,midway] {\scriptsize $i_d$};
+				
+				%campo magnetico induzido
+				\draw[semithick,->,line width=1pt,color=red] (-1,0) arc (-90:90:0.5 and 1.5);% right half of the left ellipse
+				\draw[semithick,<-,line width=1pt,color=red] (-1,0) arc (270:90:0.5 and 1.5);
+				\node[below left] at (-1,0) {$\vec{B}$};
+
+				\draw[semithick,->,line width=1pt,color=red] (1,0) arc (-90:90:0.5 and 1.5);% right half of the left ellipse
+				\draw[semithick,<-,line width=1pt,color=red] (1,0) arc (270:90:0.5 and 1.5);% left half of the left ellipse
+				%	\draw[semithick,->,color=red] (1,1.5) ellipse (0.5 and 1.5);
+				\node[below left] at (1,0) {$\vec{B}$};
+
+				\draw[semithick,->,line width=1pt,color=red] (3,0) arc (-90:90:0.5 and 1.5);% right half of the left ellipse
+				\draw[semithick,<-,line width=1pt,color=red] (3,0) arc (270:90:0.5 and 1.5);
+				\node[below left] at (3,0) {$\vec{B}$};
+
+				\draw[dashed,color=gray,fill=gray!50,opacity=1] (1.5,0) arc (-90:90:0.5 and 1.5);% right half of the left ellipse
+				\draw[semithick,fill=gray!50,opacity=1] (1.5,0) arc (270:90:0.5 and 1.5);% left half of the left ellipse
+				\draw[semithick,fill=gray!50,opacity=1] ($(p2)+(0.15,0)$) ellipse (0.5 and 1.5) node {};% right ellipse
+				\draw[semithick] ($(p2)+(0.15,0)$) --++ (1.5,0);% fio da frente
+
+				%corrente
+				\draw[color=red,line width=1pt,->] ($(p2)+(0.25,0.25)$) --++ (0.5,0) node[above,midway] {i};
+				\draw[color=red,line width=1pt,->] (-1.25,1.75) -- (-0.75,1.75) node[above,midway] {i};
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Campo magnético circular $\vec{B}$ devido a corrente de deslocamento $i_d$.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Lei de Ampère-Maxwell}
+	\begin{columns}[c]
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}[c]
+%				\input{tikz/lei-maxwell2.pgf}
+				\begin{tikzpicture}[scale=0.75,transform shape]
+				
+				\begin{scope}[scale=1, transform shape, x={(-10:1cm)},y={(90:1cm)},z={(210:1cm)}]
+				\filldraw[draw, opacity=0.2] (2,0,0) arc (0:360:2);
+				\draw[line width=1pt,color=red,->] (2,0,0) arc (0:360:2);
+				\node[right] at (2,0,0) {$\vec{B}$};
+				\draw[line width=1pt,->] (0,0,0) -- (0,0,1) node[left] {$\frac{d\Phi_{\vec{E}}}{dt}$};
+				\draw[->] (2,2,0) node[right] {Area} to [out=180, in=90] (1,1,0) ;
+				\end{scope}
+				
+				\begin{scope}[scale=0.5, xshift=5cm,yshift=-6cm]
+				\coordinate (p1) at (0,1.5);
+				\coordinate (p2) at (2,1.5);
+				
+				\draw[semithick] ($(p1)-(0.5,0)$) -- ($(p1)-(1,0)$);%fio de traz
+				\draw[dashed,color=gray] (0,0) arc (-90:90:0.5 and 1.5);% right half of the left ellipse
+				\draw[semithick] (0,0) arc (270:90:0.5 and 1.5);% left half of the left ellipse
+				\draw[semithick] ($(p1)+(0.25,0)$) ellipse (0.5 and 1.5) node {};% right ellipse
+				
+				\draw[semithick] (p2) -- ($(p2)+(1.5,0)$);% fio da frente
+				\draw[dashed,color=gray] (2,0) arc (-90:90:0.5 and 1.5);% right half of the left ellipse
+				\draw[semithick] (2,0) arc (270:90:0.5 and 1.5);% left half of the left ellipse
+				\draw[semithick] ($(p2)+(0.25,0)$) ellipse (0.5 and 1.5) node {};% right ellipse
+				
+				%campo magnetico induzido
+				\draw[semithick,->,line width=0.5pt,color=red] (1,0) arc (-90:90:0.5 and 1.5);% right half of the left ellipse
+				\draw[semithick,<-,line width=0.5pt,color=red] (1,0) arc (270:90:0.5 and 1.5);% left half of the left ellipse
+				\node[below=0.25cm] at (1,0) {$\vec{B}$};
+				
+				%corrente
+				\draw[color=red,line width=0.5pt,->] (3,1.75) -- (4.38,1.75) node[above,midway] {i};
+				\draw[color=red,line width=0.5pt,->] (-2,1.75) -- (-0.5,1.75) node[above,midway] {i};
+				\end{scope}
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Variação do fluxo elétrico $\frac{d\Phi_{E}}{dt}$ induzindo um campo magnético circular $\vec{B}$.}
+			\end{figure}
+		\end{column}
+		\begin{column}[c]{0.6\textwidth}
+			Aplicando a idéia de simetria, podemos concluir que a seguinte relação deve acontecer
+			\begin{align*}
+				\oint \vec{B}\cdot d\vec{s}\;\alpha\; \frac{d\Phi_{E}}{dt}.
+			\end{align*}
+			No entanto, para estar de acordo com a lei de Ampere, o lado direito deve ter unidades de $\mu_0i$, chegando assim na lei de Maxwell,
+			\begin{align*}
+				\Aboxed{\oint\vec{B}\cdot d\vec{s} = \varepsilon_{0}\mu_{0}\frac{d\Phi_{E}}{dt}.}
+			\end{align*}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Equações de Maxwell}
+	As equações de Maxwell são formadas pela combinação das quatro equações do eletromagnetismo:
+	\begin{align*}
+		\oint\vec{E}\cdot d\vec{A} & = \frac{q}{\varepsilon_{0}}, & \quad\textrm{(Lei de Gauss)}\\
+		\oint\vec{B}\cdot d\vec{A} & = 0, & \quad\textrm{(Lei de Gauss do magnetismo)}\\
+		\oint\vec{E}\cdot d\vec{s} & = -\frac{d\Phi_{B}}{dt}, & \quad\textrm{(Lei de Faraday)}\\
+		\oint\vec{B}\cdot d\vec{s} & = \mu_0i+\alert{\mu_{0}\varepsilon_{0}\frac{d\Phi_{E}}{dt}}, & \quad\textrm{(Lei de Ampère-Maxwell)}\
+	\end{align*}
+\end{frame}
+
+\section{Ondas eletromagnéticas}
+
+\subsection{}
+
+\begin{frame}{Equações de Maxwell no vácuo}
+		\justify
+		No vácuo temos ausência de cargas elétricas, o que resulta q=0 e i=0,
+		\begin{align*}
+			\oint\vec{E}\cdot d\vec{A} & = 0,\\
+			\oint\vec{B}\cdot d\vec{A} & = 0,\\
+			\oint\vec{E}\cdot d\vec{s} & = -\frac{d\Phi_{B}}{dt},\\
+			\oint\vec{B}\cdot d\vec{s} & = \mu_{0}\varepsilon_{0}\frac{d\Phi_{E}}{dt}\
+		\end{align*}
+\end{frame}
+
+\begin{frame}{Lei de Faraday-Lenz na ausência de matéria}
+	\begin{columns}[c]
+		\begin{column}[c]{0.5\textwidth}
+			\begin{figure}[c]
+%				\input{tikz/campo-eletrico.pgf}
+				\centering
+				  \begin{tikzpicture}[scale=0.65, transform shape, x={(-10:1cm)},y={(90:1cm)},z={(210:1cm)}]
+				% Axes
+				\draw[blue,->] (-1,0,0) -- (4,0,0) node[above] {$x$};
+				\draw[blue,->] (0,0,0) -- (0,2,0) node[above] {$y$};
+				\draw[blue,->] (0,0,0) -- (0,0,2) node[left] {$z$};
+				%definindo funcao
+				\pgfmathdeclarefunction{fe}{1}{\pgfmathparse{1.5*cos(deg(pi*\x))}}
+				% Waves
+				\draw[dashed,thick] plot[domain=0:4.5,samples=200] (\x,0,{fe(\x)});
+				%
+				\begin{scope}
+				\foreach \x in {2}{
+					\path[clip, shade] (\x-0.15,0,0) -- (\x-0.15,{fe(\x)},0) -- (\x+0.15,{fe(\x)},0) -- (\x+0.15,0,0);}
+				\end{scope}
+				
+				\draw[<->] (1.875,1.75,0) -- (2.125,1.75,0) node[above,midway] {\tiny $dx$};
+				\draw[<->] (1,0,0) -- (1,1.5,0) node[left,midway] {\tiny $h$};
+				
+				%vetores
+				\draw[line width=1pt,color=red,->] (1.75,0,0) -- (1.75,1,0) node[left] {\tiny $\vec{E}_{x}$};
+				\draw[line width=1pt,color=red,->] (2.25,0,0) -- (2.25,1.5,0) node[right] {\tiny $\vec{E}_{x+dx}$};
+				\draw[line width=1pt,color=green,->] (2,0,0) -- (2,0,1.5) node[anchor=north east] {\tiny $\frac{d\vec{B}}{dt}$};
+				
+				%detalhe
+				\def\p{1.5}
+				\def\ty{3.5}
+				\def\tx{2}
+				
+				\begin{scope}
+				\foreach \x in {2}{
+					\path[clip, shade] ({\x-0.15*\p+\tx},\ty,0) -- ({\x-0.125*\p+\tx},{\p*fe(\x)+\ty},0)
+					-- ({\x+0.15*\p+\tx},{\p*fe(\x)+\ty},0) -- ({\x+0.15*\p+\tx},\ty,0);}
+				\end{scope}
+				
+				\foreach \x in {2}{
+					\draw[line width=1pt,color=red,<-] ({\x-0.125*\p+\tx},\ty,0) -- ({\x-0.125*\p+\tx},{\p*fe(\x)+\ty},0) node[left,midway] {};
+					\draw[line width=1pt,color=red,->] ({\x+0.15*\p+\tx},\ty,0) -- ({\x+0.15*\p+\tx},{\p*fe(\x)+\ty},0) node[right,midway] {};
+					\draw[line width=1pt,color=red,->] ({\x-0.125*\p+\tx},\ty,0) -- ({\x+0.125*\p+\tx},\ty,0) node[below,midway] {};
+					\draw[line width=1pt,color=red,<-] ({\x-0.125*\p+\tx},{\p*fe(\x)+\ty},0) -- ({\x+0.125*\p+\tx},{\p*fe(\x)+\ty},0) node[above,midway] {};
+					\draw[dotted] (\x+\tx,{\ty+0.5*\p*fe(\x)}) circle ({0.6*\p*fe(\x)});}
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Campo elétrico na direção do eixo y.}
+			\end{figure}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\justify
+			Supondo um campo magnético na direção z cuja amplitude varia no tempo. \linebreak
+			Pela Lei de Faraday
+			\begin{align*}
+			\frac{d\Phi_{B}}{dt} & = - \oint\vec{E}\cdot d\vec{s},\\
+			\frac{d\Phi_{B}}{dt} & = - \left[\overbracket{Edx}^{\alert{\vec{E}\cdot d\vec{l}=0}}+\overbracket{Edx}^{\alert{\vec{E}\cdot d\vec{l}=0}}-hE_{x}+\underbracket{hE_{x+dx}}_{\alert{h\left(E_{x}+dE\right)}}\right],\\
+			\frac{d\Phi_{B}}{dt} & = -hdE.
+			\end{align*}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Equação da onda à partir da lei de Faraday-Lenz}
+	\begin{multicols}{2}
+		\justify
+		O fluxo do campo magnético é dado por
+		\begin{align*}
+			\Phi_{B} & = (B)(\underbracket{hdx}_{\alert{cte}}),\\
+			\frac{d}{dt}\Phi_{B} & = hdx\frac{dB}{dt}
+		\end{align*}
+		Sabendo que $\frac{d\Phi_{B}}{dt} = -hdE$ temos
+		\begin{align*}
+			\alert{h}dE & = -\alert{h}dx\frac{dB}{dt},\\
+			dE & = -\left[\frac{dB}{dt}\right]dx.
+		\end{align*}
+		Usando a regra de diferencial
+		\[\boxed{\frac{\partial E}{\partial x}=\alert{-}\frac{\partial B}{\partial t}}\]
+		A única função para $E(x,t)$ e $B(x,t)$ que satisfaz a equação acima seria
+		\begin{align*}
+			E(x,t) & = E_{m}cos\left(kx\alert{-}\omega t\right),\\
+			B(x,t) & = B_{m}cos\left(kx\alert{-}\omega t\right)
+		\end{align*}		
+	\end{multicols}
+\end{frame}
+
+\begin{frame}{Lei de Ampère-Maxwell na ausência de matéria}
+	\begin{columns}[c]
+		\begin{column}[c]{0.5\textwidth}
+			\begin{figure}[c]
+%				\input{tikz/campo-magnetico.pgf}
+				\centering
+				  \begin{tikzpicture}[scale=0.65, transform shape, x={(-10:1cm)},y={(90:1cm)},z={(210:1cm)}]
+				% Axes
+				\draw[blue,->] (-1,0,0) -- (4,0,0) node[above] {$x$};
+				\draw[blue,->] (0,0,0) -- (0,2,0) node[above] {$y$};
+				\draw[blue,->] (0,0,0) -- (0,0,2) node[left] {$z$};
+				%definindo funcao
+				\pgfmathdeclarefunction{fe}{1}{\pgfmathparse{1.5*cos(deg(pi*\x))}}
+				% Waves
+				\draw[dashed,thick] plot[domain=0:4.5,samples=200] (\x,{fe(\x)},0);
+				%
+				\begin{scope}
+				\foreach \x in {2}{
+					\path[clip, shade] (\x-0.15,0,0) -- (\x-0.15,0,{fe(\x)}) -- (\x+0.15,0,{fe(\x)}) -- (\x+0.15,0,0);}
+				\end{scope}
+				
+				\draw[<->] (1.875,1.75,0) -- (2.125,1.75,0) node[above,midway] {\tiny $dx$};
+				\draw[<->] (1,0,0) -- (1,0,1.5) node[left,midway] {\tiny $h$};
+				
+				%vetores
+				\draw[line width=1pt,color=red,->] (1.75,0,0) -- (1.75,0,1) node[left] {\tiny $\vec{B}_{x}$};
+				\draw[line width=1pt,color=red,->] (2.25,0,0) -- (2.25,0,1.5) node[below] {\tiny $\vec{B}_{x+dx}$};
+				\draw[line width=1pt,color=green,->] (2,0,0) -- (2,1.5,0) node[anchor=north east] {\tiny $\frac{d\vec{E}}{dt}$};
+				
+				%detalhe
+				\def\p{1.5}
+				\def\ty{3.5}
+				\def\tx{2}
+				\begin{scope}
+				\foreach \x in {2}{
+					\path[clip, shade] ({\x-0.15*\p+\tx},\ty,0) -- ({\x-0.125*\p+\tx},{\p*fe(\x)+\ty},0)
+					-- ({\x+0.15*\p+\tx},{\p*fe(\x)+\ty},0) -- ({\x+0.15*\p+\tx},\ty,0);}
+				\end{scope}
+				
+				\foreach \x in {2}{
+					\draw[line width=1pt,color=red,<-] ({\x-0.125*\p+\tx},\ty,0) -- ({\x-0.125*\p+\tx},{\p*fe(\x)+\ty},0) node[left,midway] {};
+					\draw[line width=1pt,color=red,->] ({\x+0.15*\p+\tx},\ty,0) -- ({\x+0.15*\p+\tx},{\p*fe(\x)+\ty},0) node[right,midway] {};
+					\draw[line width=1pt,color=red,->] ({\x-0.125*\p+\tx},\ty,0) -- ({\x+0.125*\p+\tx},\ty,0) node[below,midway] {};
+					\draw[line width=1pt,color=red,<-] ({\x-0.125*\p+\tx},{\p*fe(\x)+\ty},0) -- ({\x+0.125*\p+\tx},{\p*fe(\x)+\ty},0) node[above,midway] {};
+					\draw[dotted] (\x+\tx,{\ty+0.5*\p*fe(\x)}) circle ({0.6*\p*fe(\x)});}
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Campo magnético na direção z.}
+			\end{figure}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			Sabemos que o campo elétrico varia no tempo ao longo da direção y. Pela Lei de Àmpere-Maxwell
+			\begin{align*}
+			\oint\vec{B}\cdot d\vec{s} & = \varepsilon_{0}\mu_{0}\frac{d\Phi_{E}}{dt},\\
+			\oint\vec{B}\cdot d\vec{s} & = \left[\overbracket{Bdx}^{\alert{\vec{B}\cdot d\vec{l}=0}}+\overbracket{Bdx}^{\alert{\vec{B}\cdot d\vec{l}=0}}-hB_{x}+\underbracket{hB_{x+dx}}_{\alert{h\left(B_{x}+dB\right)}}\right],\\
+			\frac{d\Phi_{E}}{dt} & = -\frac{1}{\varepsilon_{0}\mu_{0}}hdB.
+			\end{align*}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}[label=derivadas]{Equação da onda à partir da lei de Ampère-Maxwell}
+	\begin{columns}
+		\begin{column}[t]{0.5\textwidth}
+			O fluxo do campo elétrico é dado por
+			\begin{align*}
+				\Phi_{E} & = (E)(\underbracket{hdx}_{\alert{cte}}),\\
+				\frac{d\Phi_{E}}{dt} & = hdx\frac{dE}{dt}.
+			\end{align*}
+			Sabendo que $\frac{d\Phi_{E}}{dt} = -\frac{1}{\varepsilon_{0}\mu_{0}}hdB$ temos
+			\begin{align*}
+				\frac{1}{\varepsilon_{0}\mu_{0}}\bcancel{h}dB = -\bcancel{h}\left[\frac{dE}{dt}\right]dx,
+			\end{align*}
+		\end{column}
+		\begin{column}[t]{0.5\textwidth}
+			Usando a regra de diferencial
+			\begin{align*}
+				\Aboxed{\frac{\partial B}{\partial x}=\alert{-}\varepsilon_{0}\mu_{0}\frac{\partial E}{\partial t}.}
+			\end{align*}
+			\begin{corollary}
+				\begin{align*}
+					\frac{\partial E}{\partial t} & = -\frac{1}{\varepsilon_{0}\mu_{0}}\frac{\partial B}{\partial x}\\
+					\frac{\partial E}{\partial x} & = -\frac{\partial B}{\partial t}
+				\end{align*}
+			\end{corollary}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Amplitude dos campos elétrico e magnético}
+	\begin{columns}[c]
+		\begin{column}[c]{0.5\textwidth}
+			Supondo uma solução que satisfaz a equação anterior,\hyperlink{derivadas}{\beamerreturnbutton{Retornar ao slide anterior}}
+			\begin{align*}
+				E(x,t) & = E_{m}cos\left(kx-\omega t\right),\\
+				B(x,t) & = B_{m}cos\left(kx-\omega t\right)
+			\end{align*}	
+			Usando a equação $\frac{dE}{dx} = -\frac{dB}{dt}$ e derivando
+			\begin{align*}
+				\frac{dE}{dx} & = \alert{-E_{m}k}sen\left(kx\-\omega t\right)\\
+				\frac{dB}{dt} & = \alert{B_{m}\omega} sen\left(kx-\omega t\right)
+			\end{align*}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			O que resulta
+			\[B_{m}\omega = E_{m}k\]
+			mas $\frac{\omega}{k}=c$,
+			\[\boxed{B_{m}  = \frac{E_{m}}{c}}\]
+			\begin{corollary}
+				A intensidade do campo elétrico é muito maior que a do campo magnético.
+			\end{corollary}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Velocidade da onda eletromagnética}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			Usando a equação $\frac{\partial E}{\partial t} = -\frac{1}{\varepsilon_{0}\mu_{0}}\frac{\partial B}{\partial x}$ e derivando
+			\begin{align*}
+				\frac{\partial E}{\partial t} & = \alert{-E_{m}\omega}sen\left(kx-\omega t\right)\\
+				\frac{\partial B}{\partial x} & = \alert{B_{m}k} sen\left(kx-\omega t\right)
+			\end{align*}
+			O que resulta
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{align*}
+				E_{m}\omega & = \frac{1}{\varepsilon_{0}\mu_{0}}kB_{m},\\
+				\frac{E_{m}}{B_{m}} & = \frac{1}{\varepsilon_{0}\mu_{0}}\frac{k}{\omega}
+			\end{align*}
+			mas $\frac{E_{m}}{B_{m}}=c$ e numa onda $c=\frac{\omega}{k}$, teremos
+			\begin{equation*}
+				\boxed{c  = \frac{1}{\sqrt{\varepsilon_{0}\mu_{0}}}.}
+			\end{equation*}
+		\end{column}
+	\end{columns}
+	\begin{corollary}
+		\small Os campos elétrico e magnético propagam no vácuo a uma velocidade c.
+	\end{corollary}
+\end{frame}
+
+\begin{frame}{Onda eletromagnética}
+\begin{columns}[c]
+	\begin{column}[c]{0.5\textwidth}
+		\begin{figure}[c]
+			%				\input{tikz/onda-eletromagnetica.pgf}
+			\centering
+			  \begin{tikzpicture}[scale=0.7, transform shape, x={(-10:1cm)},y={(90:1cm)},z={(210:1cm)}]
+			% Axes
+			\draw (-1,0,0) node[above] {$x$} -- (5,0,0);
+			\draw (0,0,0) -- (0,2,0) node[above] {$y$};
+			\draw (0,0,0) -- (0,0,2) node[left] {$z$};
+			%definindo funcao
+			\pgfmathdeclarefunction{fe}{1}{\pgfmathparse{cos(deg(pi*\x))}}
+			% Propagation
+			\draw[->,ultra thick] (5,0,0) -- node[above] {$\vec{c}$} (6,0,0);
+			% Waves
+			\draw[color=red,thick] plot[domain=0:4.5,samples=200] (\x,{fe(\x)},0);
+			\draw[color=green,thick] plot[domain=0:4.5,samples=200] (\x,0,{fe(\x)});
+			% Arrows
+			\foreach \x in {0.1,0.3,...,4.4} {
+				\draw[->,help lines,color=red] (\x,0,0) -- (\x,{fe(\x)},0);
+				\draw[->,help lines,color=green] (\x,0,0) -- (\x,0,{fe(\x)});}
+			% Labels
+			\node[above right,color=red] at (0,1,0) {$\bm{\vec{E}}$};
+			\node[below,color=green] at (0,0,1) {$\bm{\vec{B}}$};
+			%area da curva
+			\fill [color=red,opacity=0.2, domain=0:4.5, variable=\x] (0, 0,0) -- plot ({\x}, {fe(\x)},0);
+			\fill [color=green,opacity=0.2, domain=0:4.5, variable=\x] (0, 0,0) -- plot ({\x},0, {fe(\x)});
+			\end{tikzpicture}
+			\caption*{\footnotesize Representação de uma onda eletromagnética.}
+		\end{figure}
+	\end{column}
+	\begin{column}[c]{0.5\textwidth}
+		\begin{block}{Função da onda eletromagnética}
+			\begin{align*}
+			\vec{E}(x,t) & = E_{m}cos\left(kx-\omega t\right)\hat{y}\\
+			\vec{B}(x,t) & = B_{m}cos\left(kx-\omega t\right)\hat{z}\\
+			\end{align*}				
+		\end{block}
+	\end{column}
+\end{columns}
+	\begin{corollary}
+		As equações de Maxwell nos fornece com solução duas ondas transversais que se propagam no espaço na mesma direção e com a mesma velocidade c.
+	\end{corollary}
+\end{frame}
+
+\begin{frame}{A luz como onda eletromagnética}
+	Maxwell percebeu que a velocidade c obtida à partir do eletromagnetismo é exatamente idêntica a velocidade da luz, já bem conhecida ná época através de diversas técnicas de medição.\\
+	\textit{\small "A velocidade das ondas transversais em nosso meio hipotético, calculada a partir dos experimentos electromagnéticos dos Srs. Kohrausch e Weber, concorda tão exactamente com a velocidade da luz, calculada pelos experimentos óticos do Sr. Fizeau, que é difícil evitar a inferência de que a luz consiste nas ondulações transversais do mesmo meio que é a causa dos fenômenos eléctricos e magnéticos."}
+	\begin{corollary}
+		A luz é uma onda eletromagnética capaz de se \alert{propagar no vácuo} com a velocidade de aproximadamente $3\times 10^8\;m/s$.% Isso é possível, pois podemos ter variações dos campos elétrico e magnético na ausência de matéria.
+	\end{corollary}
+\end{frame}
+
+\section{Aplicações}
+
+\subsection{}
+
+\begin{frame}{Espectro eletromagnético}
+	Identificamos uma onda eletromagnética à partir da sua assinatura energética (energia transportada por área e tempo), no qual depende da sua frequência.
+	\begin{figure}[c]
+		\begin{subfigure}[b]{0.45\textwidth}
+%			\input{tikz/onda-eletromagnetica2.pgf}
+			  \begin{tikzpicture}[scale=0.6, transform shape, x={(-10:1cm)},y={(90:1cm)},z={(210:1cm)}]
+			% Axes
+			\draw (-1,0,0) node[above] {$x$} -- (5,0,0);
+			\draw (0,0,0) -- (0,2,0) node[above] {$y$};
+			\draw (0,0,0) -- (0,0,2) node[left] {$z$};
+			%definindo funcao
+			\pgfmathdeclarefunction{fe}{1}{\pgfmathparse{cos(deg(pi*\x))}}
+			% Propagation
+			\draw[->,ultra thick] (5,0,0) -- node[above] {$\vec{c}$} (6,0,0);
+			% Waves
+			\draw[color=red,thick] plot[domain=0:4.5,samples=200] (\x,{fe(\x)},0);
+			\draw[color=green,thick] plot[domain=0:4.5,samples=200] (\x,0,{fe(\x)});
+			% Arrows
+			\foreach \x in {0.1,0.3,...,4.4} {
+				\draw[->,help lines,color=red] (\x,0,0) -- (\x,{fe(\x)},0);
+				\draw[->,help lines,color=green] (\x,0,0) -- (\x,0,{fe(\x)});}
+			% Labels
+			\node[above right,color=red] at (0,1,0) {$\bm{\vec{E}}$};
+			\node[below,color=green] at (0,0,1) {$\bm{\vec{B}}$};
+			%area da curva
+			\fill [color=red,opacity=0.2, domain=0:4.5, variable=\x] (0, 0,0) -- plot ({\x}, {fe(\x)},0);
+			\fill [color=green,opacity=0.2, domain=0:4.5, variable=\x] (0, 0,0) -- plot ({\x},0, {fe(\x)});
+			
+			%comprimento onda
+			\foreach \x in {2}
+			\draw[line width=1pt,<->] (\x,{fe(\x)+0.125},0) -- (\x+2,{fe(\x)+0.125},0) node[above,midway] {$\lambda$};
+			\end{tikzpicture}
+			\caption*{\footnotesize Onda eletromagnética}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.45\textwidth}
+			\includegraphics[scale=0.4]{figuras/espectro.jpg}
+			\caption*{\footnotesize Espectro eletromagnético}
+		\end{subfigure}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Polarização da Luz}
+	\begin{columns}[c]
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}[c]
+			%				\input{tikz/polarizing-microscope2.pgf}
+				\begin{tikzpicture}[scale=1, transform shape,
+				%Option for nice arrows
+				>=stealth, %
+				inner sep=0pt, outer sep=2pt,%
+				axis/.style={thick,->},
+				polaroid/.style={fill=black!60!white, opacity=0.3},]
+				
+				\useasboundingbox (2.75,2.25) rectangle (-2.75,-2.25);
+				
+				% Colors
+				\colorlet{darkgreen}{green!50!black}
+				\colorlet{lightgreen}{green!80!black}
+				\colorlet{darkred}{red!50!black}
+				\colorlet{lightred}{red!80!black}
+				
+				% eixos
+				\draw[axis] (-2.5,0) -- (2.5,0) node [right] {y};
+				\draw[axis] (0,-2) -- (0,2) node [above] {z};
+				
+				\filldraw[polaroid] (-2,-1.5) -- (-2,1.5) -- (2,1.5) -- (2,-1.5) -- (-2,-1.5) node[below, near end]{Polaroid};%
+				
+				%Direction of polarization
+				\draw[thick,<->] (-1.5,0.25) -- (-1.5,1.25) node[above,midway,sloped] {\tiny Polarizacao};
+				
+				% Electric field vectors
+				\coordinate (c1) at (45:1.5);
+				\draw[line width=1pt,color=red,<->] ($-1*(c1)$) -- (c1) node[above] {$\vec{E}$};
+				\draw[line width=1pt,color=red,->] (0,0) -- (0:{1.5*cos{45}}) node[below] (c2) {$\vec{E_{x}}$};
+				\draw[line width=1pt,color=red,->] (0,0) -- (90:{1.5*sin{45}}) node[left] (c3) {$\vec{E_{y}}$};
+				\draw[dashed] (c1) -- (c2);
+				\draw[dashed] (c1) -- (c3);
+				
+				%angulo
+				\draw[->] (0.5,0) arc (0:45:0.5) node[right,midway] {\small $\theta$};
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Polarização da luz à partir do vetor campo elétrico $\vec{E}$.}
+			\end{figure}
+		\end{column}
+		\begin{column}[c]{0.6\textwidth}
+			A componente polarizada na direção y é dado por
+			\[E_{y} = Ecos\left(\theta\right)\]
+			Sabendo que a intensidade da Luz é dado por $I\approx E^{2}_{m}$,
+			\[I_{\textrm{pol.}} = I_{\textrm{pol.}}cos\left(\theta\right)\]
+			mas $cos\left(\theta\right)\leq 1$, portanto
+			\begin{corollary}
+				Intensidade da onda polarizada é sempre menor ou igual a intensidade da onda não-polarizada.
+			\end{corollary}
+		\end{column}
+	\end{columns}	
+\end{frame}
+
+\begin{frame}[fragile]{Polarização da Luz}
+	\begin{columns}[c]
+		\begin{column}[c]{0.5\textwidth}
+			\begin{figure}[c]
+%				\input{tikz/polarizing-microscope.pgf}
+				\begin{tikzpicture}[x={(0.866cm,-0.5cm)}, y={(0.866cm,0.5cm)}, z={(0cm,1cm)}, scale=0.6, transform shape,
+				%Option for nice arrows
+				>=stealth, %
+				inner sep=0pt, outer sep=2pt,%
+				axis/.style={thick,->},
+				wave/.style={thick,color=#1,smooth},
+				polaroid/.style={fill=black!60!white, opacity=0.3},
+				]
+				% Colors
+				\colorlet{darkgreen}{green!50!black}
+				\colorlet{lightgreen}{green!80!black}
+				\colorlet{darkred}{red!50!black}
+				\colorlet{lightred}{red!80!black}
+				
+				% Frame
+				\coordinate (O) at (0, 0, 0);
+				\draw[axis] (O) -- +(7, 0,   0) node [right] {x};
+				\draw[axis] (O) -- +(0, -2.5, 0) node [left] {z};
+				\draw[axis] (O) -- +(0,  0,   2) node [above] {y};
+				
+				\draw[thick,dashed] (-2,0,0) -- (O);
+				
+				% monochromatic incident light with electric field
+				\draw[wave=red, opacity=0.7, variable=\x, samples at={-2,-1.75,...,0}]
+				plot (\x, { -sin(1.0*\x r)*sin(2.0*\x r)}, { cos(1.0*\x r)*sin(2.0*\x r)})
+				plot (\x, {-sin(1.0*\x r)*sin(2.0*\x r)}, {cos(1.0*\x r)*sin(2.0*\x r)});
+				
+				\foreach \x in{-2,-1.75,...,0}{
+					\draw[color=red, opacity=0.7,->]
+					(\x,0,0) -- (\x, { -sin(1.0*\x r)*sin(2.0*\x r)}, { cos(1.0*\x r)*sin(2.0*\x r)})
+					(\x,0,0) -- (\x, {-sin(1.0*\x r)*sin(2.0*\x r)}, {cos(1.0*\x r)*sin(2.0*\x r)});
+				}
+				
+				\filldraw[polaroid] (0,-2,-1.5) -- (0,-2,1.5) -- (0,2,1.5) -- (0,2,-1.5) -- (0,-2,-1.5)
+				node[below, sloped, near end]{Polaroid};%
+				
+				%Direction of polarization
+				\draw[thick,<->] (0,1.5,0.25) -- (0,1.5,1.25);
+				
+				% Electric field vectors
+				\draw[wave=red, variable=\x,samples at={0,0.25,...,6}]
+				plot (\x,0,{sin(2*\x r)})node[anchor=north]{$\vec{E}$};
+				
+				%Polarized light between polaroid and thin section
+				\foreach \x in{0, 0.25,...,6}
+				\draw[color=red,->] (\x,0,0) -- (\x,0,{sin(2*\x r)});
+				
+				\draw (3,1,1) node [text width=3.5cm, text centered]{Luz polarizada};
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Onda polarizada.}
+			\end{figure}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{figure}[c]
+				\includegraphics[scale=0.8]{figuras/polarizacao1.jpg}
+				\caption*{\footnotesize Duas lentes polarizadas.}
+			\end{figure}
+		\end{column}
+	\end{columns}	
+\end{frame}
+
+\begin{frame}{Polarização da Luz por reflexão}
+	\begin{figure}[c]
+		\begin{subfigure}[b]{0.49\textwidth}
+%				\input{tikz/polarizacao-reflexao.pgf}
+				\centering
+				\begin{tikzpicture}[scale=0.6, transform shape,
+				media/.style={font={\footnotesize\sffamily}},
+				wave/.style={decorate,decoration={snake,post length=1.4mm,amplitude=1mm, segment length=2mm},thick},
+				interface/.style={
+					% The border decoration is a path replacing decorator. 
+					% For the interface style we want to draw the original path.
+					% The postaction option is therefore used to ensure that the
+					% border decoration is drawn *after* the original path.
+					postaction={draw,decorate,decoration={border,angle=-45,
+							amplitude=0.3cm,segment length=2mm}}},]
+				% Round rectangle
+				\fill[gray!10,rounded corners] (-4,-3) rectangle (4,0);
+				% Interface
+				\draw[blue,line width=.5pt,interface](-4,0)--(4,0);
+				% Vertical dashed line
+				\draw[dashed,gray](0,-3)--(0,3);
+				% Incidence
+				\draw[->,wave] (135:3.2cm)--(135:0cm)node[above, at start]{Onda incidente};
+				\path (0,0)++(113:1cm) node{$\phi$};
+				\draw[<->] (0,0.75) arc(90:135:.75cm);
+				\foreach \x in {3,2.5,...,0.5}{
+					\draw[line width=1pt,<->,color=red] ($(135:\x)-(0.25*cos{45},0.25*sin{45})$) --++ (0.5*cos{45},0.5*sin{45});
+					\filldraw[line width=1pt,color=red] (135:\x) circle (1pt);}
+				% Transmission
+				\draw[->,wave] (-30:0cm)--(-30:3.2cm)node[below]{Onda transmitida};
+				\path (0,0)++(7.5:1.9cm)node{$90^{o}$};
+				\draw[<->] (-30:1.5cm) arc (-30:45:1.5cm);
+				\foreach \x in {3,2.5,...,0.5}
+				\draw[line width=1pt,<->,color=red] ($(-30:\x)-(0.25*cos{60},0.25*sin{60})$) --++ (0.5*cos{60},0.5*sin{60});
+				% Reflection
+				\draw[->,wave] (45:0cm)--(45:3.2cm)node[above]{Onda refletida};
+				\path (0,0)++(67.5:1.25cm) node{$\phi$};
+				\draw[<->] (45:1cm) arc(45:90:1cm);
+				\foreach \x in {3,2.5,...,0.5}
+				\filldraw[line width=1pt,color=red] (45:\x) circle (1pt);
+				% Media names
+				\path[media] (-3,.6)  node {$n_{1}$} (-3,-.6) node {$n_{2}>n_{1}$};
+				% Interface pointer
+				\draw[-latex,thick](2.75,0.5)node[right]{$\mathsf{Interface}$} to[out=180,in=90] (2.5,0);
+				\end{tikzpicture}
+				\caption*{\footnotesize Representação de uma onda refletida.}
+			\end{subfigure}
+			\begin{subfigure}[b]{0.49\textwidth}
+				\includegraphics[scale=0.3]{figuras/polarizacao-reflexao.jpg}
+				\caption*{\footnotesize Polarização da luz vista por uma lente polarizada.}
+		\end{subfigure}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Ondas de rádio}
+	Pelas equações de Maxwell, uma carga oscilando no espaço gera um pulso eletromagnético com frequência igual a frequência de oscilação.
+	\begin{figure}[c]
+		\begin{subfigure}[b]{0.49\textwidth}
+			\centering
+%				\input{tikz/ondas-radio.pgf}
+			\begin{tikzpicture}[scale=0.4, transform shape]
+				
+				%transmissor
+				
+				\coordinate (a) at (1,2);
+				
+				\draw (0.5,0) -- (1,2);
+				\draw (1.5,0) -- (1,2);
+				\draw (0.5,0) -- (1.5,0);
+				
+				\node at (1,-0.25) {Transmissor};
+				
+				\filldraw (a) circle (0.1cm) node[above] {};
+				
+				\foreach \x in {1,2,...,5}
+				\draw[dashed,color=red] (a) circle (\x);
+				
+				\draw[<->] ($(a)+(-30:2)$) --++ (-30:1) node[above,sloped,midway] {$\lambda$};
+				
+				%carga oscilando
+				\draw[<->,color=red] ($(a)-(0,0.5)$) --++ (0,1) node[right,midway] {e};
+				
+				%receptor
+				
+				\def\tx{5}
+				\def\ty{-3}
+				
+				\node at (1+\tx,1.5+\ty) [cylinder,cylinder uses custom fill, cylinder body fill=black,cylinder end fill=black, minimum height=3cm, minimum width=0.01 cm, rotate=90] {};
+				\node at (0+\tx,0.5+\ty) {Receptor};
+				
+				\foreach \x  in {2.5,2.75,3}{
+					\draw[line width=1pt] (0+\tx,\x+\ty) --++ (2,0);
+					\draw[line width=1pt] (0+\tx,\x+\ty) --++ (2,0);}
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Propação da onda a partir da fonte emissora.}
+			\end{subfigure}
+		\begin{subfigure}[b]{0.49\textwidth}
+			\centering
+			\tdplotsetmaincoords{-10}{210}
+			\begin{tikzpicture}[scale=0.5, transform shape, tdplot_main_coords, x={(-10:1cm)},y={(90:1cm)},z={(210:1cm)}]
+			
+			%configurando ondas esfericas
+			\tikzstyle{s1}=[tdplot_screen_coords, opacity=0.2];
+			
+			%transmissor
+			
+			\coordinate (a) at (1,2,0);
+			\coordinate (b) at ($(a)+(5,0,0)$);
+			\coordinate (c) at ($(a)+(0,0,5)$);
+			
+			\draw (0.5,0,0) -- (1,2,0);
+			\draw (1.5,0,0) -- (1,2,0);
+			\draw (0.5,0,0) -- (1.5,0,0);
+			
+			\draw (0.5,0,0) -- (0.5,0,-1);
+			\draw (0.5,0,-1) -- (1.5,0,0);
+			\draw (0.5,0,-1) -- (1,2,0);
+			
+			%tracejados
+			\draw[dashed] (a) -- (b);
+			\draw[dashed] (a) -- (c);
+			
+			% Axes
+			\draw[->] (a) --++ (0.5,0,0) node[above] {};
+			\draw[->] (a) --++ (0,0.5,0) node[above] {};
+			\draw[->] (a) --++ (0,0,0.5) node[left] {};
+			
+			\node at (1,-0.25,0) {Transmissor};
+			
+			\filldraw (a) circle (0.1cm) node[above] {};
+			
+			\shadedraw[tdplot_screen_coords,ball color = white, opacity=0.25, dashed] (a) circle (0.25cm);
+			\shadedraw[tdplot_screen_coords,ball color = white, opacity=0.25, dashed] (a) circle (1.25cm);
+			\shadedraw[tdplot_screen_coords,ball color = white, opacity=0.25, dashed] (a) circle (2.25cm);
+			
+			%carga oscilando
+			\draw[<->,color=red] ($(a)-(0,0.25,0)$) --++ (0,0.5,0) node[right] {e};
+			
+			%campo eletrico
+			\draw[->,line width=1pt,color=red] (2.25,1.5,0) --++ (0,1,0) node[right] {$\vec{E}$};
+			\draw[->,line width=1pt,color=red]  (2.5,2,0) arc (0:90:0.25cm) node[right,midway] {\tiny $90^{o}$};
+			
+			%receptor
+			
+			\def\tx{5}
+			\def\ty{-3}
+			
+			%receptor 1
+			\foreach \x  in {1,0.75,-0.75,-1}{
+				\draw[line width=1pt,color=blue] ($(b)-(\x,1,0)$) --++ (0,2,0);}
+			\draw[line width=1pt,color=blue] ($(b)-(1,0,0)$) --++ (2,0,0);
+			
+			\node at ($(b)-(0,1.5,0)$) [cylinder,cylinder uses custom fill, cylinder body fill=black,cylinder end fill=black, minimum height=3cm, minimum width=0.01 cm, rotate=90] {};
+			\node[text width=3.5cm,below] at ($(b)-(0,3,0)$) {Maxima recepcao};
+			
+			%receptor 2
+			\foreach \x  in {1,0.75,-0.75,-1}{
+				\draw[line width=1pt,color=blue] ($(c)-(\x,0,1)$) --++ (0,0,2);}
+			\draw[line width=1pt,color=blue] ($(c)-(1,0,0)$) --++ (2,0,0);
+			
+			\node at ($(c)-(0,1.5,0)$) [cylinder,cylinder uses custom fill, cylinder body fill=black,cylinder end fill=black, minimum height=3cm, minimum width=0.01 cm, rotate=90] {};
+			\node[text width=3cm,below] at ($(c)-(0,3,0)$) {Minima recepcao};
+			
+			%comprimento de onda
+			\tdplotsetcoord{p}{1.25}{0}{0}
+			\tdplotsetcoord{pp}{2.25}{0}{0}
+			\draw[<->] ($(p)+(a)$) -- ($(pp)+(a)$) node[above,midway,sloped] {$\lambda$};
+			
+			\end{tikzpicture}
+			\caption*{\footnotesize Recepção a partir da direção do campo $\vec{E}$.}
+		\end{subfigure}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Interferência}
+\begin{columns}[c]
+	\begin{column}[c]{0.5\textwidth}
+		\begin{figure}[c]
+			\centering
+			%				\input{tikz/interferencia2.pgf}
+			\begin{tikzpicture}[scale=0.8, transform shape]
+			
+			\tikzstyle{wave}=[decorate,decoration={snake,post length=1.4mm,amplitude=1mm, segment length=2mm},thick]
+			\tikzstyle{antep}=[postaction={draw,decorate,decoration={border,angle=-45,amplitude=0.3cm,segment length=2mm}}]
+			
+			\draw (0,0) -- (0,1.75);
+			\draw (0,2.0) -- (0,3);
+			\draw (0,3.25) -- (0,5);
+			
+			\draw (-0.25,1.75) -- (0.25,1.75);
+			\draw (-0.25,2) -- (0.25,2);
+			\draw (-0.25,3) -- (0.25,3);
+			\draw (-0.25,3.25) -- (0.25,3.25);
+			
+			%anteparo
+			\draw[antep] (5,0) -- (5,5);
+			
+			%ondas
+			\def\px{5}
+			\def\py{5}
+			\coordinate (p) at (\px,\py);
+			\draw[->,wave,color=red] (0,3.125)--(p)node {};
+			\draw[->,wave,color=red] (0,1.825)--(p)node {};
+			
+			%eixo principal
+			\draw[dashed] (0,2.5) -- (5,2.5);
+			\draw[dashed] (0,2.5) -- (p);
+			
+			%angulo
+			\draw[->] (2.5,2.5) arc (0:atan{((\py-2.5)/\px)}:2.5) node[right,midway] {$\theta$};
+			
+			%distancia entre fendas
+			\draw[<->] (-0.5,1.825) -- (-0.5,3.125) node[left,midway] {d};
+			
+			\end{tikzpicture}
+			\caption*{\footnotesize Interferência entre duas ondas de mesmo comprimento de onda e equidistantes a uma distância d.}
+		\end{figure}
+	\end{column}
+	\begin{column}[c]{0.5\textwidth}
+		\begin{block}{Frangas de interferência}
+			Intensidade máxima:
+			\[dsen\theta = m\lambda,\;m=0,1,2,\cdots\]
+			Intensidade mínima:
+			\[dsen\theta = \left(m+\frac{1}{2}\right)\lambda,\;m=0,1,2,\cdots\]
+		\end{block}
+	\end{column}
+\end{columns}	
+\end{frame}
+
+\begin{frame}{Franjas de interferência}
+	\begin{columns}[c]
+		\begin{column}[b]{0.5\textwidth}
+			\begin{figure}[c]
+				\Center	
+				\includegraphics[width=0.7\textwidth]{figuras/interferencia2.png}
+				\caption*{Interferência entre ondas na água}
+			\end{figure}
+		\end{column}
+		\begin{column}[b]{0.5\textwidth}
+			\begin{figure}[c]
+				\Center
+				\begin{tabular}{c}
+				\includegraphics[width=0.7\textwidth]{figuras/franjas-interferencia.jpg}\\
+				\includegraphics[width=0.74\textwidth]{figuras/franjas-interferencia2.png}			
+				\end{tabular}
+				\caption*{Franjas de interferência}
+			\end{figure}
+		\end{column}
+	\end{columns}	
+\end{frame}
+
+\begin{frame}{Aplicações de interferência da Luz}
+	\begin{columns}[c]
+		\begin{column}[b]{0.5\textwidth}
+			\begin{figure}[c]
+				\Center	
+				\includegraphics[width=1\textwidth]{figuras/butterfly-interferencia.jpg}
+				\caption*{Borboleta Morpho}
+			\end{figure}
+		\end{column}
+		\begin{column}[b]{0.5\textwidth}
+			\begin{figure}[c]
+				\Center
+				\includegraphics[width=1\textwidth]{figuras/butterfly-interferencia2.jpg}
+				\caption*{Vista inferior}
+			\end{figure}
+		\end{column}
+	\end{columns}	
+\end{frame}
+
+\section{Apêndice}
+
+\subsection{}
+
+\begin{frame}{Observações\footnote{Este material está sujeito a modificações. Recomenda-se acompanhamento permanente.}}
+	\begin{center}
+		Esta apresentação está disponível para download no endereço\\
+		\href{https://flavianowilliams.github.io/education}{\textcolor{blue}{https://flavianowilliams.github.io/education}}
+	\end{center}
+\end{frame}
+	
+\begin{frame}{Referências}
+	\bibliographystyle{jurabib}
+	\begin{thebibliography}{9}
+		\bibitem{halliday}D. Halliday, R. Resnick, J. Walker, Fundamentos de física. Eletromagnetismo, v.3, 10. ed., Rio de Janeiro, LTC (2016)
+		\bibitem{randall}R. D. Knight, Física: Uma abordagem estratégica, v.3, 2nd ed., Porto Alegre, Bookman (2009)
+		\bibitem{moyses}H. M. Nussenzveig, Curso de física básica. Eletromagnetismo, v.1, 5. ed., São Paulo, Blucher (2014)
+		\bibitem{forcamanetica}\text{https://pt.m.wikipedia.org/wiki/}
+		\bibitem{beamer}https://github.com/josephwright/beamer
+		\bibitem{tikz}Jacques Crémer, A very minimal introduction to TikZ*, Toulouse School of Economics (2011)
+	\end{thebibliography}
+	Figuras:
+	\begin{thebibliography}{9}
+		\bibitem{Halliday} D. Halliday, J. Walker, Fundamentos de Física, v4, Rio de Janeiro (2008)
+		\bibitem{cometa}http://www.prof2000.pt/users/angelof/af16/
+		\bibitem{polarizacao}http://www.infoescola.com/fisica/polarizacao-da-luz/
+	\end{thebibliography}	
+	Teoria:
+	\begin{thebibliography}{9}
+		\bibitem{moyses}H. Moysés Nussensveig, Curso de Física Básica, v.2, 2.ed., São Paulo, Blucher (2015)
+	\end{thebibliography}
+\end{frame}
+
+\end{document}

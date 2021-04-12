@@ -1,0 +1,71 @@
+\tdplotsetmaincoords{-10}{210}
+\begin{tikzpicture}[scale=0.5, transform shape, tdplot_main_coords, x={(-10:1cm)},y={(90:1cm)},z={(210:1cm)}]
+
+	%configurando ondas esfericas
+	\tikzstyle{s1}=[tdplot_screen_coords, opacity=0.2];
+
+	%transmissor
+
+	\coordinate (a) at (1,2,0);
+	\coordinate (b) at ($(a)+(5,0,0)$);
+	\coordinate (c) at ($(a)+(0,0,5)$);
+
+	\draw (0.5,0,0) -- (1,2,0);
+	\draw (1.5,0,0) -- (1,2,0);
+	\draw (0.5,0,0) -- (1.5,0,0);
+
+	\draw (0.5,0,0) -- (0.5,0,-1);
+	\draw (0.5,0,-1) -- (1.5,0,0);
+	\draw (0.5,0,-1) -- (1,2,0);
+
+	%tracejados
+	\draw[dashed] (a) -- (b);
+	\draw[dashed] (a) -- (c);
+
+    % Axes
+    \draw[->] (a) --++ (0.5,0,0) node[above] {};
+    \draw[->] (a) --++ (0,0.5,0) node[above] {};
+    \draw[->] (a) --++ (0,0,0.5) node[left] {};
+
+	\node at (1,-0.25,0) {Transmissor};
+
+	\filldraw (a) circle (0.1cm) node[above] {};
+
+	\shadedraw[tdplot_screen_coords,ball color = white, opacity=0.25, dashed] (a) circle (0.25cm);
+	\shadedraw[tdplot_screen_coords,ball color = white, opacity=0.25, dashed] (a) circle (1.25cm);
+	\shadedraw[tdplot_screen_coords,ball color = white, opacity=0.25, dashed] (a) circle (2.25cm);
+
+	%carga oscilando
+	\draw[<->,color=red] ($(a)-(0,0.25,0)$) --++ (0,0.5,0) node[right] {e};
+
+	%campo eletrico
+	\draw[->,line width=1pt,color=red] (2.25,1.5,0) --++ (0,1,0) node[right] {$\vec{E}$};
+	\draw[->,line width=1pt,color=red]  (2.5,2,0) arc (0:90:0.25cm) node[right,midway] {\tiny $90^{o}$};
+
+	%receptor
+	
+	\def\tx{5}
+	\def\ty{-3}
+
+	%receptor 1
+	\foreach \x  in {1,0.75,-0.75,-1}{
+ 	\draw[line width=1pt,color=blue] ($(b)-(\x,1,0)$) --++ (0,2,0);}
+	\draw[line width=1pt,color=blue] ($(b)-(1,0,0)$) --++ (2,0,0);
+
+	\node at ($(b)-(0,1.5,0)$) [cylinder,cylinder uses custom fill, cylinder body fill=black,cylinder end fill=black, minimum height=3cm, minimum width=0.01 cm, rotate=90] {};
+	\node[text width=3.5cm,below] at ($(b)-(0,3,0)$) {Maxima recepcao};
+
+	%receptor 2
+	\foreach \x  in {1,0.75,-0.75,-1}{
+ 	\draw[line width=1pt,color=blue] ($(c)-(\x,0,1)$) --++ (0,0,2);}
+	\draw[line width=1pt,color=blue] ($(c)-(1,0,0)$) --++ (2,0,0);
+
+	\node at ($(c)-(0,1.5,0)$) [cylinder,cylinder uses custom fill, cylinder body fill=black,cylinder end fill=black, minimum height=3cm, minimum width=0.01 cm, rotate=90] {};
+	\node[text width=3cm,below] at ($(c)-(0,3,0)$) {Minima recepcao};
+
+	%comprimento de onda
+	\tdplotsetcoord{p}{1.25}{0}{0}
+	\tdplotsetcoord{pp}{2.25}{0}{0}
+	\draw[<->] ($(p)+(a)$) -- ($(pp)+(a)$) node[above,midway,sloped] {$\lambda$};
+
+\end{tikzpicture}

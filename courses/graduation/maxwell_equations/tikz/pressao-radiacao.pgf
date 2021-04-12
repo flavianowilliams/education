@@ -1,0 +1,77 @@
+\begin{tikzpicture}[scale=0.5, transform shape]
+
+%	\useasboundingbox (0,-2) rectangle (6,4.5);
+
+	%grafico 1
+
+	\coordinate (e) at (2,0);
+	\coordinate (ei) at (0,0);
+
+	\draw[->,line width=1pt] (e) --++ (1,0)  node[above,midway] {$\vec{p}$};
+
+	\draw[decoration={aspect=0.3, segment length=3mm, amplitude=3mm,snake=waves},decorate] (ei) -- (e);
+
+	%parede
+	\fill [pattern = north east lines] (4.2,1.5) rectangle (4,-1.5);
+	\draw (4,-1.5) -- (4,1.5);
+
+	%texto
+	\node at (3,-1) {(Anteparo)};
+	\node at (2,1.5) {Antes da colisao};
+
+	%grafico 2
+
+	\def\t{7}
+
+	\coordinate (e) at (2+\t,0);
+	\coordinate (ei) at (0+\t,0);
+
+	\draw[<-,line width=1pt] (ei) --++ (1,0)  node[above,midway] {$-\vec{p}$};
+
+	\draw[decoration={aspect=0.3, segment length=3mm, amplitude=3mm,snake=waves},decorate] ($(ei)+(1,0)$) -- ($(e)+(1,0)$);
+
+	%parede
+	\fill [pattern = north east lines] (4.2+\t,1.5) rectangle (4+\t,-1.5);
+	\draw (4+\t,-1.5) -- (4+\t,1.5);
+
+	%texto
+	\node at (2+\t,1.5) {Depois da colisao};
+	\node at (0+\t,-1) {$\Delta p = p-\left(-p\right)$};
+
+	%grafico 3
+
+	\def\t{7}
+	\def\ty{5}
+
+	\coordinate (e) at (2,0+\ty);
+	\coordinate (ei) at (0,0+\ty);
+
+	\draw[->,line width=1pt] (e) --++ (1,0)  node[above,midway] {$\vec{p}$};
+
+	\draw[decoration={aspect=0.3, segment length=3mm, amplitude=3mm,snake=waves},decorate] (ei) -- (e);
+
+	%parede
+	\fill [pattern = north east lines] (4.2,1.5+\ty) rectangle (4,-1.5+\ty);
+	\draw (4,-1.5+\ty) -- (4,1.5+\ty);
+
+	%texto
+	\node at (2,1.5+\ty) {Antes da colisao};
+
+	%grafico 4
+
+	\coordinate (e) at (2+\t,0+\ty);
+	\coordinate (ei) at (0+\t,0+\ty);
+
+	\draw[line width=1pt] (e) --++ (0,0)  node[above,midway] {$\vec{p}=\vec{0}$};
+
+%	\draw[decoration={aspect=0.3, segment length=3mm, amplitude=3mm,snake=waves},decorate] ($(ei)+(1,0)$) -- ($(e)+(1,0)$);
+
+	%parede
+	\fill [pattern = north east lines] (4.2+\t,1.5+\ty) rectangle (4+\t,-1.5+\ty);
+	\draw (4+\t,-1.5+\ty) -- (4+\t,1.5+\ty);
+
+	%texto
+	\node at (2+\t,1.5+\ty) {Depois da colisao};
+	\node at (0+\t,-1+\ty) {$\Delta p = p-0$};
+
+\end{tikzpicture}

@@ -1,0 +1,11 @@
+\begin{tikzpicture}[scale=1, transform shape, x={(-10:1cm)},y={(90:1cm)},z={(210:1cm)}]
+
+	\filldraw[draw, opacity=0.2] (2,0,0) arc (0:360:2);
+	\draw[line width=1pt,color=red,->] (2,0,0) arc (0:360:2);
+	 \node[right] at (2,0,0) {$\vec{E}$};
+	\draw[line width=1pt,->] (0,0,0) -- (0,0,1) node[left] {$\frac{d\Phi_{\vec{B}}}{dt}$};
+	\draw[->] (2,2,0) node[right] {Area} to [out=180, in=90] (1,1,0) ;
+	\node at (-1.5,-1.5,1) {$\Phi_{B}=\int \vec{B}\cdot d\vec{A}$};
+	\node[text width=6cm] at (1.25,-2,1) {\small $\Phi_{B}$: B por area perpendicular a espira};
+
+\end{tikzpicture}

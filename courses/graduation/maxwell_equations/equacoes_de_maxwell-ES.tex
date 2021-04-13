@@ -541,7 +541,7 @@
 			Sabemos que o campo elétrico varia no tempo ao longo da direção y. Pela Lei de Àmpere-Maxwell
 			\begin{align*}
 			\oint\vec{B}\cdot d\vec{s} & = \varepsilon_{0}\mu_{0}\frac{d\Phi_{E}}{dt},\\
-			\oint\vec{B}\cdot d\vec{s} & = \left[\overbracket{Bdx}^{\alert{\vec{B}\cdot d\vec{l}=0}}+\overbracket{Bdx}^{\alert{\vec{B}\cdot d\vec{l}=0}}-hB_{x}+\underbracket{hB_{x+dx}}_{\alert{h\left(B_{x}+dB\right)}}\right],\\
+			\oint\vec{B}\cdot d\vec{s} & = \left[\overbracket{Bdx}^{\alert{\vec{B}\cdot d\vec{l}=0}}+\overbracket{Bdx}^{\alert{\vec{B}\cdot d\vec{l}=0}}+hB_{x}-\underbracket{hB_{x+dx}}_{\alert{h\left(B_{x}+dB\right)}}\right],\\
 			\frac{d\Phi_{E}}{dt} & = -\frac{1}{\varepsilon_{0}\mu_{0}}hdB.
 			\end{align*}
 		\end{column}
@@ -586,7 +586,7 @@
 			\end{align*}	
 			Usando a equação $\frac{\partial E}{\partial x} = -\frac{\partial B}{\partial t}$ e derivando
 			\begin{align*}
-				\frac{\partial E}{\partial x} & = \alert{-E_{m}k}sen\left(kx\-\omega t\right)\\
+				\frac{\partial E}{\partial x} & = \alert{-E_{m}k}sen\left(kx-\omega t\right)\\
 				\frac{\partial B}{\partial t} & = \alert{B_{m}\omega} sen\left(kx-\omega t\right)
 			\end{align*}
 		\end{column}
@@ -607,8 +607,8 @@
 		\begin{column}[c]{0.5\textwidth}
 			Usando a equação $\frac{\partial E}{\partial t} = -\frac{1}{\varepsilon_{0}\mu_{0}}\frac{\partial B}{\partial x}$ e derivando
 			\begin{align*}
-				\frac{\partial E}{\partial t} & = \alert{-E_{m}\omega}sen\left(kx-\omega t\right)\\
-				\frac{\partial B}{\partial x} & = \alert{B_{m}k} sen\left(kx-\omega t\right)
+				\frac{\partial E}{\partial t} & = \alert{E_{m}\omega}sen\left(kx-\omega t\right)\\
+				\frac{\partial B}{\partial x} & = -\alert{B_{m}k} sen\left(kx-\omega t\right)
 			\end{align*}
 			O que resulta
 		\end{column}

@@ -721,7 +721,7 @@
 			\caption*{\footnotesize Onda eletromagnética}
 		\end{subfigure}
 		\begin{subfigure}[b]{0.45\textwidth}
-			\includegraphics[scale=0.4]{figuras/espectro.jpg}
+			\includegraphics[scale=0.35]{figuras/espectro.png}
 			\caption*{\footnotesize Espectro eletromagnético}
 		\end{subfigure}
 	\end{figure}
@@ -748,8 +748,8 @@
 				\colorlet{lightred}{red!80!black}
 				
 				% eixos
-				\draw[axis] (-2.5,0) -- (2.5,0) node [right] {y};
-				\draw[axis] (0,-2) -- (0,2) node [above] {z};
+				\draw[axis] (-2.5,0) -- (2.5,0) node [right] {z};
+				\draw[axis] (0,-2) -- (0,2) node [above] {y};
 				
 				\filldraw[polaroid] (-2,-1.5) -- (-2,1.5) -- (2,1.5) -- (2,-1.5) -- (-2,-1.5) node[below, near end]{Polaroid};%
 				
@@ -759,7 +759,7 @@
 				% Electric field vectors
 				\coordinate (c1) at (45:1.5);
 				\draw[line width=1pt,color=red,<->] ($-1*(c1)$) -- (c1) node[above] {$\vec{E}$};
-				\draw[line width=1pt,color=red,->] (0,0) -- (0:{1.5*cos{45}}) node[below] (c2) {$\vec{E_{x}}$};
+				\draw[line width=1pt,color=red,->] (0,0) -- (0:{1.5*cos{45}}) node[below] (c2) {$\vec{E_{z}}$};
 				\draw[line width=1pt,color=red,->] (0,0) -- (90:{1.5*sin{45}}) node[left] (c3) {$\vec{E_{y}}$};
 				\draw[dashed] (c1) -- (c2);
 				\draw[dashed] (c1) -- (c3);
@@ -775,8 +775,8 @@
 			A componente polarizada na direção y é dado por
 			\[E_{y} = Ecos\left(\theta\right)\]
 			Sabendo que a intensidade da Luz é dado por $I\approx E^{2}_{m}$,
-			\[I_{\textrm{pol.}} = I_{\textrm{pol.}}cos\left(\theta\right)\]
-			mas $cos\left(\theta\right)\leq 1$, portanto
+			\[I_{\textrm{pol.}} = I_{\textrm{pol.}}cos^2\left(\theta\right)\]
+			mas $cos^2\left(\theta\right)\leq 1$, portanto
 			\begin{corollary}
 				Intensidade da onda polarizada é sempre menor ou igual a intensidade da onda não-polarizada.
 			\end{corollary}
@@ -785,8 +785,8 @@
 \end{frame}
 
 \begin{frame}[fragile]{Polarização da Luz}
-	\begin{columns}[c]
-		\begin{column}[c]{0.5\textwidth}
+	\begin{columns}
+		\begin{column}[b]{0.5\textwidth}
 			\begin{figure}[c]
 %				\input{tikz/polarizing-microscope.pgf}
 				\begin{tikzpicture}[x={(0.866cm,-0.5cm)}, y={(0.866cm,0.5cm)}, z={(0cm,1cm)}, scale=0.6, transform shape,
@@ -842,10 +842,10 @@
 				\caption*{\footnotesize Onda polarizada.}
 			\end{figure}
 		\end{column}
-		\begin{column}[c]{0.5\textwidth}
+		\begin{column}[b]{0.5\textwidth}
 			\begin{figure}[c]
-				\includegraphics[scale=0.8]{figuras/polarizacao1.jpg}
-				\caption*{\footnotesize Duas lentes polarizadas.}
+				\includegraphics[scale=0.17]{figuras/polarizacao1.jpg}
+				\caption*{\footnotesize Lente polarizada.}
 			\end{figure}
 		\end{column}
 	\end{columns}	

@@ -1,0 +1,900 @@
+% Aula de Termodinâmica para o curso de Física II do ensino médio
+%
+\documentclass[brazil,aspectratio=169]{beamer}
+%
+%carregando preâmbulo
+\input{../../contrib/preamble}
+
+%Título
+
+\title[Termodinâmica-SLT]{Segunda Lei da Termodinâmica}
+
+% The main document
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Sumário}
+  \tableofcontents
+\end{frame}
+
+\section{Processos cíclicos}
+
+\subsection{}
+
+\begin{frame}{Processos reversíveis}
+	\begin{columns}[c]
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}[c]
+				\includegraphics[scale=0.5]{figuras/processo-reversivel.png}
+				\caption*{\footnotesize Expansão reversível devido a remoção gradual de grãos de areia.}
+			\end{figure}
+		\end{column}
+		\begin{column}[c]{0.6\textwidth}
+		Processo reversível é realizado lentamente e sem atrito onde o sistema tem a possibilidade de retornar para o seu estado original.
+	Condições:
+	\begin{itemize}
+		\item O processo se realiza muito lentamente;
+		\item O atrito é desprezível.
+	\end{itemize}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Diagrama pressão versus volume em processos cíclicos}
+	Definimos como processo cíclico quando o gás retorna para o seu estado inicial.
+	\begin{columns}
+		\begin{column}{0.7\textwidth}
+			A energia interna U(T) de um gás é uma função da temperatura, onde $U(T)=\frac{N}{2}k_BT$. Se os estados i e f estão em equilíbrio térmico, podemos determinar U(T) sabendo a temperatura nesses estados, assim os valores \alert{não irão mudar independente do processo termodinâmico} que esse gás poderá sofrer.
+		\begin{corollary}
+			Durante uma transformação cíclica, a variação da energia interna do gás será zero (\alert{$\Delta U=0$}).
+		\end{corollary}
+		\end{column}
+		\begin{column}{0.3\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.6, auto, transform shape, samples=50]
+				
+				%eixos
+				\draw[line width=1.0pt,->] (0,0) -- (5,0) node[right] {V};
+				\draw[line width=1.0pt,->] (0,0) -- (0,5) node[above] {P};
+				
+				%curva
+				\pgfmathdeclarefunction{ff}{1}{\pgfmathparse{5-4/#1}}
+				\pgfmathdeclarefunction{ff2}{1}{\pgfmathparse{4/(5-#1)}}
+				
+				%area
+				\fill[shade] plot [domain=4:1] (\x,{ff2(\x)}) -- plot [domain=1:4] (\x,{ff(\x)});
+				
+				%curva
+				\draw[line width=1.5pt,domain=1:4,variable=\x,color=red,->] plot (\x,{ff(\x)});
+				\draw[line width=1.5pt,domain=4:1,variable=\x,color=red,->] plot (\x,{ff2(\x)});
+				
+				%estados termodinamicos
+				\node (e1) at (1,{ff(1)}) {};
+				\node (e2) at (4,{ff(4)}) {};
+				
+				\filldraw (e1) circle (1.5pt) node[above left] {i};
+				\filldraw (e2) circle (1.5pt) node[above] {f};
+				
+				%coordenadas
+				\node[below] (vf) at (1,0) {$V_{i}$};
+				\draw[dashed] (1,0) -- (e1);
+				\node[below] (vi) at (4,0) {$V_{f}$};
+				\draw[dashed] (4,0) -- (e2);
+				
+				\node[left] (pi) at (0,1) {$p_{i}$};
+				\draw[dashed] (0,1) -- (e1);
+				\node[left] (pf) at (0,4) {$p_{f}$};
+				\draw[dashed] (0,4) -- (e2);
+				
+				%texto
+				\node  at ($0.5*(e2)+0.5*(e1)$) {$\Delta U=0$};
+				
+				\end{tikzpicture}
+				%\input{tikz/processo-ciclico.pgf}
+				\caption*{\footnotesize Exemplo de processo cíclico.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Trabalho realizado pelo gás em processos cíclicos}
+	\begin{columns}
+		\begin{column}{0.7\textwidth}
+			Podemos definir o trabalho total realizado pelo gás num processo cíclico subtraindo os trabalhos individuais nos processos de i para f e o retorno (f para i),
+			\begin{equation*}
+				W = W_{(i\rightarrow f)}-W_{(f\rightarrow i)}.
+			\end{equation*}
+		\begin{corollary}
+			Durante uma transformação cíclica, o trabalho realizado pelo gás, ao percorrer o ciclo, é fornecido pela \alert{área entre as curvas}.
+		\end{corollary}
+		\end{column}
+		\begin{column}{0.3\textwidth}
+			\begin{figure}
+				\centering
+				%\input{tikz/processo-ciclico-2.pgf}
+				\begin{tikzpicture}[scale=0.6, auto, transform shape, samples=50]
+				
+				%eixos
+				\draw[line width=1.0pt,->] (0,0) -- (5,0) node[right] {V};
+				\draw[line width=1.0pt,->] (0,0) -- (0,5) node[above] {P};
+				
+				%curva
+				\pgfmathdeclarefunction{ff}{1}{\pgfmathparse{5-4/#1}}
+				\pgfmathdeclarefunction{ff2}{1}{\pgfmathparse{4/(5-#1)}}
+				
+				%area
+				\fill[shade] plot [domain=4:1] (\x,{ff2(\x)}) -- plot [domain=1:4] (\x,{ff(\x)});
+				
+				%curva
+				\draw[line width=1.5pt,domain=1:4,variable=\x,color=red,->] plot (\x,{ff(\x)});
+				\draw[line width=1.5pt,domain=4:1,variable=\x,color=red,->] plot (\x,{ff2(\x)});
+				
+				%estados termodinamicos
+				\node (e1) at (1,{ff(1)}) {};
+				\node (e2) at (4,{ff(4)}) {};
+				
+				\filldraw (e1) circle (1.5pt) node[above left] {i};
+				\filldraw (e2) circle (1.5pt) node[above] {f};
+				
+				%coordenadas
+				\node[below] (vf) at (1,0) {$V_{i}$};
+				\draw[dashed] (1,0) -- (e1);
+				\node[below] (vi) at (4,0) {$V_{f}$};
+				\draw[dashed] (4,0) -- (e2);
+				
+				\node[left] (pi) at (0,1) {$p_{i}$};
+				\draw[dashed] (0,1) -- (e1);
+				\node[left] (pf) at (0,4) {$p_{f}$};
+				\draw[dashed] (0,4) -- (e2);
+				
+				%texto
+				\node  at ($0.5*(e2)+0.5*(e1)$) {$W$};
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Representação de trabalho em um processo cíclico.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Trabalho e sentido do processo cíclico}
+	\begin{corollary}
+		\begin{itemize}
+			\item O trabalho será positivo se o processo for no sentido horário.
+			\item O trabalho será negativo se o processo for no sentido anti-horário.
+		\end{itemize}
+	\end{corollary}
+	\begin{figure}
+		\centering
+		\begin{subfigure}[b]{0.45\textwidth}
+			\centering
+			%\input{tikz/processo-ciclico-3a.pgf}
+			\begin{tikzpicture}[scale=0.5, auto, transform shape, samples=50]
+			
+			%eixos
+			\draw[line width=1.0pt,->] (0,0) -- (5,0) node[right] {V};
+			\draw[line width=1.0pt,->] (0,0) -- (0,5) node[above] {P};
+			
+			%curva
+			\pgfmathdeclarefunction{ff}{1}{\pgfmathparse{5-4/#1}}
+			\pgfmathdeclarefunction{ff2}{1}{\pgfmathparse{4/(5-#1)}}
+			
+			%area
+			\fill[shade] plot [domain=4:1] (\x,{ff2(\x)}) -- plot [domain=1:4] (\x,{ff(\x)});
+			
+			%curva
+			\draw[line width=1.5pt,domain=1:4,variable=\x,color=red,->] plot (\x,{ff(\x)});
+			\draw[line width=1.5pt,domain=4:1,variable=\x,color=red,->] plot (\x,{ff2(\x)});
+			
+			%estados termodinamicos
+			\node (e1) at (1,{ff(1)}) {};
+			\node (e2) at (4,{ff(4)}) {};
+			
+			\filldraw (e1) circle (1.5pt) node[above left] {i};
+			\filldraw (e2) circle (1.5pt) node[above] {f};
+			
+			%coordenadas
+			\node[below] (vf) at (1,0) {$V_{i}$};
+			\draw[dashed] (1,0) -- (e1);
+			\node[below] (vi) at (4,0) {$V_{f}$};
+			\draw[dashed] (4,0) -- (e2);
+			
+			\node[left] (pi) at (0,1) {$p_{i}$};
+			\draw[dashed] (0,1) -- (e1);
+			\node[left] (pf) at (0,4) {$p_{f}$};
+			\draw[dashed] (0,4) -- (e2);
+			
+			%texto
+			\node  at ($0.5*(e2)+0.5*(e1)$) {$W>0$};
+			
+			\end{tikzpicture}
+			\caption*{\footnotesize Sentido horário}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.45\textwidth}
+			\centering
+			%\input{tikz/processo-ciclico-3b.pgf}
+			\begin{tikzpicture}[scale=0.5, auto, transform shape, samples=50]
+			
+			%eixos
+			\draw[line width=1.0pt,->] (0,0) -- (5,0) node[right] {V};
+			\draw[line width=1.0pt,->] (0,0) -- (0,5) node[above] {P};
+			
+			%curva
+			\pgfmathdeclarefunction{ff}{1}{\pgfmathparse{5-4/#1}}
+			\pgfmathdeclarefunction{ff2}{1}{\pgfmathparse{4/(5-#1)}}
+			
+			%area
+			\fill[shade] plot [domain=4:1] (\x,{ff2(\x)}) -- plot [domain=1:4] (\x,{ff(\x)});
+			
+			%curva
+			\draw[line width=1.5pt,domain=4:1,variable=\x,color=red,->] plot (\x,{ff(\x)});
+			\draw[line width=1.5pt,domain=1:4,variable=\x,color=red,->] plot (\x,{ff2(\x)});
+			
+			%estados termodinamicos
+			\node (e1) at (1,{ff(1)}) {};
+			\node (e2) at (4,{ff(4)}) {};
+			
+			\filldraw (e1) circle (1.5pt) node[above left] {i};
+			\filldraw (e2) circle (1.5pt) node[above] {f};
+			
+			%coordenadas
+			\node[below] (vf) at (1,0) {$V_{i}$};
+			\draw[dashed] (1,0) -- (e1);
+			\node[below] (vi) at (4,0) {$V_{f}$};
+			\draw[dashed] (4,0) -- (e2);
+			
+			\node[left] (pi) at (0,1) {$p_{i}$};
+			\draw[dashed] (0,1) -- (e1);
+			\node[left] (pf) at (0,4) {$p_{f}$};
+			\draw[dashed] (0,4) -- (e2);
+			
+			%texto
+			\node  at ($0.5*(e2)+0.5*(e1)$) {$W<0$};
+			
+			\end{tikzpicture}
+			\caption*{\footnotesize Sentido anti-horário}
+		\end{subfigure}
+	\end{figure}
+\end{frame}
+
+\section{Máquinas térmicas}
+
+\subsection{}
+
+\begin{frame}{Aplicação da termodinâmica no estudo de máquinas térmicas}
+	\begin{block}{Máquinas térmicas}
+		\justifying{Máquina física no qual trabalha em um processo termodinâmico repetido de maneira cíclica.}
+	\end{block}
+	\begin{corollary}
+		\justify
+		\begin{itemize}
+			\item Para o funcionamento de uma máquina térmica é necessário que a mesma esteja conectada a uma fonte mais quente a temperatura $\alert{T_{1}}$ e uma fonte mais fria a temperatura $\alert{T_{2}}$;
+			\item O trabalho realizado por uma máquina térmica é dado por
+			\[W = Q_{1}-Q_{2}\]
+		\end{itemize}
+	\end{corollary}
+\end{frame}
+
+\begin{frame}{Enunciado de Kelvin}
+	\begin{columns}[c]
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}[c]
+				%\input{tikz/enunciado-kelvin.pgf}
+				\begin{tikzpicture}[scale=0.45, transform shape]
+				
+				\useasboundingbox (5,9) rectangle (-2,-1);
+				
+				%parametros
+				\def\p{8}
+				
+				%estilos
+				\tikzstyle{blocka} = [draw, shape=rectangle,rounded corners=0.5 em,align=left,minimum width=2.5cm,minimum height=1.5cm];
+				\tikzstyle{blockb} = [draw, shape=rectangle,rounded corners=0.5 em,align=left,minimum width=2.5cm,minimum height=1.5cm];
+				\tikzstyle{blockc} = [draw, shape=rectangle,rounded corners=0.5 em,align=left,minimum width=2.5cm,minimum height=1.5cm];
+				\tikzstyle{entitya} = [top color=white, bottom color=red!50, draw=red!50!black!100, drop shadow];
+				\tikzstyle{entityb} = [top color=white, bottom color=gray!30, draw=gray!50!black!100, drop shadow];
+				\tikzstyle{entityc} = [top color=white, bottom color=blue!30, draw=blue!50!black!100, drop shadow];
+				
+				\draw[line width=1pt] (0,0.75) rectangle (-1,{0.5*\p+0.75});
+				\draw[line width=1pt] (1,{0.5*\p+0.75}) rectangle (-1,{\p-0.75});
+				\draw[line width=1pt] (2.25,{0.5*\p-0.5}) rectangle (1.25,{0.5*\p+0.5});
+				\draw[line width=1pt] (1,{0.5*\p+0.75}) arc (180:270:0.25);
+				\draw[line width=1pt] (-0,{0.5*\p+0.75}) arc (180:270:1.25);
+				
+				%box
+				\node[line width=1pt,blocka,entitya] (t1) at (0,\p) {$T_{1}$};
+				\node[line width=1pt,opacity=0.85,blockb,entityb] (m) at (0,{0.5*\p}) {$\textrm{Motor} \atop \textrm{termico}$};
+				\node[line width=1pt,blocka,entityc] (t2) at (0,0) {$T_{2}$};
+				
+				%textos
+				\node (na) at (0,{0.5*\p+2.5}) {$Q_{1}$};
+				\node (nb) at (-0.5,0) {$Q_{2}$};
+				\node (nc) at (3,{0.5*\p}) {$W$};
+				
+				\draw[line width=1pt,color=red,->] (0,{0.5*\p+3.5}) -- (na);
+				\draw[line width=1pt,color=red,->] (-0.5,1) -- (nb);
+				\draw[line width=1pt,color=red,->] (2,{0.5*\p}) -- (nc);
+				
+				%texto
+				\node at (1.5,2) {$Q_{2}<Q_{1}$};
+				\node [text width=3.5cm] (t1) at (3,{0.5*\p+2}) {Trabalho necessário para remover calor da fonte fria};
+				\draw [red,->,line width=1.5pt] (t1) -- (nc);
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Máquina térmica conectada nas fontes quente $T_1$ e fria $T_2$.}
+			\end{figure}
+		\end{column}
+		\begin{column}[c]{0.6\textwidth}
+%			\begin{block}{Enunciado de Kelvin}
+				\textit{"É impossível uma máquina realizar um processo cujo único efeito seja remover calor de um reservatório térmico e produzir uma quantidade equivalente de trabalho"}.\linebreak
+				Um aparelho que pudesse transformar todo o calor que recebe em trabalho, poderia realizar um \alert{moto perpétuo} infinito. Um aparelho com essa proeza é conhecido como motor miraculoso.
+%			\end{block}
+			\begin{block}{Trabalho produzido pelo motor térmico.}
+				\[W = Q_{1}-Q_{2}\]		
+			\end{block}
+		\end{column}
+	\end{columns}	
+\end{frame}
+
+\begin{frame}{Enunciado de Clausius}
+	\begin{columns}[c]
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}[c]
+				%\input{tikz/enunciado-clausius.pgf}
+				\begin{tikzpicture}[scale=0.45, transform shape]
+				
+				\useasboundingbox (5,9) rectangle (-2,-1);
+				
+				%parametros
+				\def\p{8}
+				
+				%estilos
+				\tikzstyle{blocka} = [draw, shape=rectangle,rounded corners=0.5 em,align=left,minimum width=2.5cm,minimum height=1.5cm];
+				\tikzstyle{blockb} = [draw, shape=rectangle,rounded corners=0.5 em,align=left,minimum width=2.5cm,minimum height=1.5cm];
+				\tikzstyle{blockc} = [draw, shape=rectangle,rounded corners=0.5 em,align=left,minimum width=2.5cm,minimum height=1.5cm];
+				\tikzstyle{entitya} = [top color=white, bottom color=red!50, draw=red!50!black!100, drop shadow];
+				\tikzstyle{entityb} = [top color=white, bottom color=gray!30, draw=gray!50!black!100, drop shadow];
+				\tikzstyle{entityc} = [top color=white, bottom color=blue!30, draw=blue!50!black!100, drop shadow];
+				
+				\draw[line width=1pt] (0,0.75) rectangle (-1,{0.5*\p+0.75});
+				\draw[line width=1pt] (1,{0.5*\p+0.75}) rectangle (-1,{\p-0.75});
+				\draw[line width=1pt] (2.25,{0.5*\p-0.5}) rectangle (1.25,{0.5*\p+0.5});
+				\draw[line width=1pt] (1,{0.5*\p+0.75}) arc (180:270:0.25);
+				\draw[line width=1pt] (-0,{0.5*\p+0.75}) arc (180:270:1.25);
+				
+				%box
+				\node[line width=1pt,blocka,entitya] (t1) at (0,\p) {$T_{1}$};
+				\node[line width=1pt,opacity=0.85,blockb,entityb] (m) at (0,{0.5*\p}) {$\textrm{Refrigerador}$};
+				\node[line width=1pt,blocka,entityc] (t2) at (0,0) {$T_{2}$};
+				
+				%textos
+				\node (na) at (0,{0.5*\p+2.5}) {$Q_{1}$};
+				\node (nb) at (-0.5,0) {$Q_{2}$};
+				\node (nc) at (3,{0.5*\p}) {$W$};
+				
+				\draw[line width=1pt,color=red,->] (na) -- (0,{0.5*\p+3.5});
+				\draw[line width=1pt,color=red,->] (nb) -- (-0.5,1);
+				\draw[line width=1pt,color=red,->] (nc) -- (2,{0.5*\p});
+				
+				%texto
+				\node at (1.5,2) {$Q_{2}<Q_{1}$};
+				\node [text width=3.5cm] (t1) at (3,{0.5*\p+2}) {Trabalho produzido pelo motor termico};
+				\draw [red,->,line width=1.5pt] (t1) -- (nc);
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Refrigerador conectado nas fontes quente $T_1$ e fria $T_2$.}
+			\end{figure}
+		\end{column}
+		\begin{column}[c]{0.6\textwidth}
+				\textit{"É impossível um refrigerador realizar um processo cujo único efeito seja transferir calor de um corpo mais frio para um corpo mais quente"}\linebreak
+				Um aparelho que violasse a condição acima seria considerado um refrigerador miraculoso, pois permitiria um resfriamento contínuo sem que fosse necessário fornecer trabalho para esse fim.
+			\begin{corollary}
+				O refrigerador corresponde ao motor térmico funcionando em sentido inverso.
+			\end{corollary}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}<0>{Equivalência entre os enunciados de Clausius e Kelvin}
+	\begin{columns}
+		\begin{column}[c]{0.6\textwidth}
+			content...
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.45, transform shape]
+				
+				\useasboundingbox (9,9) rectangle (-2,-1);
+				
+				%parametros
+				\def\p{8}
+				
+				%estilos
+				\tikzstyle{blocka} = [draw, shape=rectangle,rounded corners=0.5 em,align=left,minimum width=2.5cm,minimum height=1.5cm];
+				\tikzstyle{blockb} = [draw, shape=rectangle,rounded corners=0.5 em,align=left,minimum width=2.5cm,minimum height=1.5cm];
+				\tikzstyle{blockc} = [draw, shape=rectangle,rounded corners=0.5 em,align=left,minimum width=2.5cm,minimum height=1.5cm];
+				\tikzstyle{entitya} = [top color=white, bottom color=red!50, draw=red!50!black!100, drop shadow];
+				\tikzstyle{entityb} = [top color=white, bottom color=gray!30, draw=gray!50!black!100, drop shadow];
+				\tikzstyle{entityc} = [top color=white, bottom color=blue!30, draw=blue!50!black!100, drop shadow];
+				
+				\draw[line width=1pt] (0,0.75) rectangle (-1,{0.5*\p+0.75});
+				\draw[line width=1pt] (1,{0.5*\p+0.75}) rectangle (-1,{\p-0.75});
+				\draw[line width=1pt] (2.25,{0.5*\p-0.5}) rectangle (1.25,{0.5*\p+0.5});
+				\draw[line width=1pt] (1,{0.5*\p+0.75}) arc (180:270:0.25);
+				\draw[line width=1pt] (-0,{0.5*\p+0.75}) arc (180:270:1.25);
+				
+				%box
+				\node[line width=1pt,blocka,entitya] (t1) at (0,\p) {$T_{1}$};
+				\node[line width=1pt,opacity=0.85,blockb,entityb] (m) at (0,{0.5*\p}) {\Large $\textrm{Motor} \atop \textrm{térmico}$};
+				\node[line width=1pt,blocka,entityc] (t2) at (0,0) {$T_{2}$};
+				
+				%textos
+				\node (na) at (0,{0.5*\p+2.5}) {$Q_{1}$};
+				\node (nb) at (-0.5,0) {$Q_{2}$};
+				\node (nc) at (3,{0.5*\p}) {$W$};
+				
+				\draw[line width=1pt,color=red,->] (0,{0.5*\p+3.5}) -- (na);
+				\draw[line width=1pt,color=red,->] (-0.5,1) -- (nb);
+				\draw[line width=1pt,color=red,->] (2,{0.5*\p}) -- (nc);
+				
+				%texto
+				%				\node at (1.5,2) {$Q_{2}<Q_{1}$};
+				%				\node [text width=3.5cm] (t1) at (3,{0.5*\p+2}) {Trabalho necessário para remover calor da fonte fria};
+				%				\draw [red,->,line width=1.5pt] (t1) -- (nc);
+				
+				\begin{scope}[shift={(6,0)}]
+				
+				%parametros
+				\def\p{8}
+				
+				%estilos
+				\tikzstyle{blocka} = [draw, shape=rectangle,rounded corners=0.5 em,align=left,minimum width=2.5cm,minimum height=1.5cm];
+				\tikzstyle{blockb} = [draw, shape=rectangle,rounded corners=0.5 em,align=left,minimum width=2.5cm,minimum height=1.5cm];
+				\tikzstyle{blockc} = [draw, shape=rectangle,rounded corners=0.5 em,align=left,minimum width=2.5cm,minimum height=1.5cm];
+				\tikzstyle{entitya} = [top color=white, bottom color=red!50, draw=red!50!black!100, drop shadow];
+				\tikzstyle{entityb} = [top color=white, bottom color=gray!30, draw=gray!50!black!100, drop shadow];
+				\tikzstyle{entityc} = [top color=white, bottom color=blue!30, draw=blue!50!black!100, drop shadow];
+				
+				\draw[line width=1pt] (1,0.75) rectangle (0,{0.5*\p+0.75});
+				\draw[line width=1pt] (1,{0.5*\p+0.75}) rectangle (-1,{\p-0.75});
+				\draw[line width=1pt] (-1.25,{0.5*\p-0.5}) rectangle (-2.25,{0.5*\p+0.5});
+				\draw[line width=1pt] (-1,{0.5*\p+0.75}) arc (0:-90:0.25);
+				\draw[line width=1pt] (-0,{0.5*\p+0.75}) arc (0:-90:1.25);
+				
+				%box
+				\node[line width=1pt,blocka,entitya] (t1) at (0,\p) {$T_{1}$};
+				\node[line width=1pt,opacity=0.85,blockb,entityb] (m) at (0,{0.5*\p}) {$\textrm{Refrigerador}$};
+				\node[line width=1pt,blocka,entityc] (t2) at (0,0) {$T_{2}$};
+				
+				%textos
+				\node (na) at (0,{0.5*\p+2.5}) {$Q_{1}$};
+				\node (nb) at (-0.5,0) {$Q_{2}$};
+				%				\node (nc) at (-2,{0.5*\p}) {$W$};
+				
+				\draw[line width=1pt,color=red,->] (na) -- (0,{0.5*\p+3.5});
+				\draw[line width=1pt,color=red,->] (nb) -- (-0.5,1);
+				\draw[line width=1pt,color=red,->] (nc) -- (-2,{0.5*\p});
+				
+				\end{scope}
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize .}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Rendimento de uma máquina térmica}
+	\begin{columns}
+		\begin{column}[t]{0.5\textwidth}
+			Pela Primeira Lei da Termodinâmica
+			\begin{align*}
+				\Delta U = Q-W
+			\end{align*}
+			Durante o processo isotérmico a temperatura é constante, portanto
+			\begin{align*}
+				\underbracket{\Delta U}_ {\alert{0}} & = \Delta Q-W\\
+				W & = \Delta Q\\
+				\Aboxed{W & = Q_{1}-Q_{2}}
+			\end{align*}
+		\end{column}
+		\begin{column}[t]{0.5\textwidth}
+			Definindo o rendimento como
+			\begin{align*}
+				\eta & = \frac{\overbracket{\textrm{Trabalho fornecido}}^{\alert{Q_{1}-Q_{2}}}}{\textrm{Calor consumido}}\\
+				\eta & = \frac{Q_{1}-Q_{2}}{Q_{1}}
+			\end{align*}
+			\begin{block}{Rendimento de uma máquina térmica}
+				\begin{align*}
+					\eta = 1-\frac{Q_{2}}{Q_{1}},\;(\eta < 1)
+				\end{align*}
+			\end{block}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Ciclo de Carnot}
+	\begin{columns}
+		\begin{column}[c]{0.55\textwidth}
+			O ciclo de Carnot é uma máquina ideal que funciona em um processo cíclico, onde absorve uma quantidade de calor $Q_1$ da fonte quente a temperatura $T_1$, e converte parte desse calor em trabalho $W$, e o restante $Q_2$ é devolvido para a fonte fria a temperatura $T_2$.
+			\begin{corollary}
+				Em uma máquina ideal, todos os processos são reversíveis e sem perdas de energia devido a atritos ou turbulências.
+			\end{corollary}
+		\end{column}
+		\begin{column}[c]{0.45\textwidth}
+			\begin{figure}[c]
+				\includegraphics[scale=0.3]{figuras/carnot.png}
+				\caption*{\footnotesize As quatro etapas do ciclo de Carnot.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Ciclo de Carnot}
+	\begin{itemize}
+		\item[\ding{51}] Para se ter o máximo rendimento é necessário que o processo seja reversível e sem atrito ou turbulências (\alert{o atrito aumenta a anergia dissipada para a fonte fria na forma de calor});
+		\item[\ding{51}] Nenhuma máquina térmica possui rendimento maior que a máquina de Carnot que opera nas mesmas temperaturas;
+		\item[\ding{51}] A compressão e expansão do gás ocorre durante os processos adiabáticos onde $Q=0$;
+		\item[\ding{51}] A transferência de Calor devem ocorrer nos processos isotérmicos onde a temperatura é constante e $\Delta U=0$.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Quantidade de calor recebido e cedido em um ciclo de Carnot}
+	\begin{columns}
+		\begin{column}[t]{0.5\textwidth}
+%	\begin{multicols}{2}
+			Para calcular o rendimento da máquina de Carnot, primeiramente calculamos o calor recebido $Q_1$ e o calor cedido $Q_2$. Em um processo isotérmico temos que $Q=W$, ou seja, a quantidade de calor $Q$ é igual ao trabalho realizado pelo gás, portanto
+			\begin{align*}
+				Q = W = \int\limits_{V_i}^{V_f}PdV.
+			\end{align*}
+			Mas pelo gás ideal temos $PV=nRT$,
+		\end{column}
+		\begin{column}[t]{0.5\textwidth}
+			 ou seja,
+			\begin{align*}
+				P = \frac{nRT}{V}.
+			\end{align*}
+			Substituindo na expressão acima encontramos
+			\begin{align*}
+				Q & = \int_{V_i}^{V_f}\frac{nRT}{V}dV,\\
+				Q & = nRT\ln\left(\frac{V_f}{V_i}\right).
+			\end{align*}
+		\end{column}
+	\end{columns}
+%	\end{multicols}
+\end{frame}
+
+\begin{frame}{Rendimento de uma máquina de Carnot}
+%	\begin{multicols}{2}
+	\begin{columns}
+		\begin{column}[t]{0.5\textwidth}
+			No caso das isotermas $T_1$ e $T_2$, referentes aos processos isotérmicos $a\rightarrow b$ e $c\rightarrow d$ da máquina de Carnot teremos
+			\begin{align*}
+				Q_1 & = nRT_1\ln\left(\frac{V_b}{V_a}\right),\\
+				Q_2 & = nRT_2\ln\left(\frac{V_d}{V_c}\right).
+			\end{align*}
+			$V_a$, $V_b$, $V_c$ e $V_d$ representam os volumes iniciais e finais de cada das quatro etapas do ciclo de Carnot. Dividindo ambas as equações encontramos
+		\end{column}
+		\begin{column}[t]{0.5\textwidth}
+			\begin{align*}
+				\frac{Q_1}{Q_2} = \frac{T_1\ln\left(V_b/V_a\right)}{T_2\ln\left(V_d/V_c\right)},
+			\end{align*}
+			e usando a propriedados dos logaritmos, onde
+			\begin{align*}
+				\ln\left(V_d/V_c\right)=-\ln\left(V_c/V_d\right),
+			\end{align*}
+			teremos
+			\begin{align*}
+				\frac{Q_1}{Q_2} =- \frac{T_1\ln\left(V_b/V_a\right)}{T_2\ln\left(V_c/V_d\right)},
+			\end{align*}
+		\end{column}
+	\end{columns}
+%	\end{multicols}
+\end{frame}
+
+\begin{frame}{Rendimento de uma máquina de Carnot (continuação)}
+%	\begin{multicols}{2}
+	\begin{columns}
+		\begin{column}[t]{0.5\textwidth}
+		Por outro lado, nos processos adiabáticos $b\rightarrow c$ e $d\rightarrow d$ encontramos
+		\begin{align*}
+			V_b^{\gamma-1}T_1 & = V_c^{\gamma-1}T_2,\\
+			V_a^{\gamma-1}T_1 & = V_d^{\gamma-1}T_2.
+		\end{align*}
+		Reorganizando os termos teremos
+		\begin{align*}
+			\frac{V_b^{\gamma-1}}{V_a^{\gamma-1}} = \frac{V_c^{\gamma-1}}{V_d^{\gamma-1}} = \frac{T_2}{T_1}.
+		\end{align*}
+		Para que a equação acima seja satisfeita, obrigatoriamente deveremos ter
+		\end{column}
+		\begin{column}[t]{0.5\textwidth}
+		$V_b/V_a=V_c/V_d$. Isso implica que
+		\begin{align*}
+			\frac{Q_1}{Q_2} & =- \frac{T_1\bcancel{\ln\left(V_b/V_a\right)}}{T_2\bcancel{\ln\left(V_c/V_d\right)}},\\
+			\Aboxed{\frac{Q_1}{Q_2} & = -\frac{T_1}{T_2}.}
+		\end{align*}
+		Substituindo em $\eta$ e considerando o valor absoluto de $Q_1$ e $Q_2$ teremos
+		\begin{align*}
+			\Aboxed{\eta = \left(1-\frac{Q_2}{Q_1}\right) = \left(1-\frac{T_2}{T_1}\right).}
+		\end{align*}
+		\end{column}
+	\end{columns}
+%	\end{multicols}
+\end{frame}
+
+\section{Entropia}
+
+\subsection{}
+
+\begin{frame}{Teorema de Clausis}
+	\begin{columns}[c]
+		\begin{column}[c]{0.3\textwidth}
+			\begin{figure}[c]
+				\includegraphics[scale=0.4]{figuras/carnot-ciclos.png}
+				\caption*{\footnotesize Infinitos ciclos de Carnot formando o caminho C.}
+			\end{figure}
+		\end{column}
+		\begin{column}[c]{0.7\textwidth}
+			Sabendo que no ciclo de Carnot reversível vale a relação
+			\begin{align*}
+				\frac{Q_{1}}{T_{1}} & = -\frac{Q_{2}}{T_{2}}\\
+				\frac{Q_{1}}{T_{1}}+\frac{Q_{2}}{T_{2}} & = 0.
+			\end{align*}
+			Se o processo envolver diversos ciclos de Carnot teremos
+			\begin{align*}
+				\frac{Q_{1}}{T_{1}}+\frac{Q_{2}}{T_{2}}+\cdots+\frac{Q_{N}}{T_{N}}=\sum\limits^N_{i=1}\frac{Q}{T}=0.
+			\end{align*}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Teorema de Clausis (continuação)}
+	\begin{columns}[c]
+		\begin{column}[c]{0.3\textwidth}
+			\begin{figure}[c]
+				\includegraphics[scale=0.4]{figuras/carnot-ciclos.png}
+				\caption*{\footnotesize Infinitos ciclos de Carnot formando o caminho C.}
+			\end{figure}
+		\end{column}
+		\begin{column}[c]{0.7\textwidth}
+			No limite contendo infinitos ciclos de modo que $Q\rightarrow dQ$, a somatória se transforma em uma integral, onde
+				\begin{align*}
+					\oint_{C}\frac{dQ}{T} =0,\quad\textrm{(Reversível)}.
+				\end{align*}
+			No entanto, cada ciclo de Carnot é constituído do termo referente ao calor que entra na máquina (positivo)	 e calor que sai (negativo). No caso de processos irreversíveis, a somatória se reduz a um valor negativo, portanto
+			\begin{align*}
+				\oint_{C}\frac{dQ}{T} & <0,\quad\textrm{(Irreversível)}.
+			\end{align*}
+		\end{column}
+	\end{columns}	
+\end{frame}
+
+\begin{frame}[fragile]{Entropia}
+	\begin{columns}[c]
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}[c]
+				\begin{tikzpicture}[scale=0.75, auto, transform shape, samples=50]
+				
+				%	\useasboundingbox (-6,-6) rectangle (6,6);
+				
+				%eixos
+				\draw[line width=1.0pt,->] (0,0) -- (5,0) node[right] {V};
+				\draw[line width=1.0pt,->] (0,0) -- (0,5) node[above] {P};
+				
+				%curva
+				\pgfmathdeclarefunction{ff}{1}{\pgfmathparse{5-4/#1}}
+				\pgfmathdeclarefunction{ff2}{1}{\pgfmathparse{4/(5-#1)}}
+				
+				%curva
+				\draw[line width=1.5pt,domain=1:4,variable=\x,color=red,->] plot (\x,{ff(\x)});
+				\draw[line width=1.5pt,domain=1:4,variable=\x,color=red,->] plot (\x,{ff2(\x)});
+				
+				%estados termodinamicos
+				\node (e1) at (1,{ff(1)}) {};
+				\node (e2) at (4,{ff(4)}) {};
+				
+				\filldraw (e1) circle (1.5pt) node[left] {i};
+				\filldraw (e2) circle (1.5pt) node[right] {f};
+				
+				%coordenadas
+				\node[below] (vf) at (1,0) {$V_{i}$};
+				\draw[dashed] (1,0) -- (e1);
+				\node[below] (vi) at (4,0) {$V_{f}$};
+				\draw[dashed] (4,0) -- (e2);
+				
+				%texto
+				\node[above left] at (2,{ff(2)}) {1};
+				\node[below right] at (3,{ff2(3)}) {2};
+				
+				\node [text width=5cm,text centered] at (3,4.8) {A integral independe do caminho termodinamico};
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Dois caminhos diferente, 1 e 2.}
+%				\input{tikz/entropia.pgf}
+			\end{figure}
+		\end{column}
+		\begin{column}[c]{0.6\textwidth}
+		Pelo teorema de Clausius
+		\[\oint_{C}\frac{dQ}{T} = \int^{f}_{i}\left[\frac{dQ}{T}\right]_{1}+\underbracket{\int^{i}_{f}\left[\frac{dQ}{T}\right]_{2}}_{\alert{-\int^{f}_{i}\left[\frac{dQ}{T}\right]_{2}}}=0\]
+		o que resulta
+		\[\int^{f}_{i}\left[\frac{dQ}{T}\right]_{1}=\int^{f}_{i}\left[\frac{dQ}{T}\right]_{2}\]
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Entropia como função de estado}
+	Em processos reversíveis, o teorema de Clausius sugere uma nova variável de estado que independe do caminho. Essa variável é chamada de entropia S, onde
+	\begin{align*}
+		\Aboxed{\int^{f}_{i}\frac{dQ}{T} & = S_{f}-S_{i}\quad\textrm{(Reversível)}.}
+	\end{align*}
+	Assim como a energia interna U, a entropia também pode ser uma função de estado das variáveis termodinâmicas pressão, volume e temperatura, onde
+	\begin{align*}
+		S & \equiv S(P,V),\\
+		S & \equiv S(V,T),\\
+		S & \equiv S(P,T).
+	\end{align*}
+\end{frame}
+
+\begin{frame}[fragile]{Entropia em processos irreversíveis}
+	\begin{columns}[c]
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}[c]
+%				\input{tikz/entropia-irreversivel.pgf}
+				\begin{tikzpicture}[scale=0.75, auto, transform shape, samples=50]
+				
+				%	\useasboundingbox (-6,-6) rectangle (6,6);
+				
+				%eixos
+				\draw[line width=1.0pt,->] (0,0) -- (5,0) node[right] {V};
+				\draw[line width=1.0pt,->] (0,0) -- (0,5) node[above] {P};
+				
+				%curva
+				\pgfmathdeclarefunction{ff}{1}{\pgfmathparse{5-4/#1}}
+				\pgfmathdeclarefunction{ff2}{1}{\pgfmathparse{4/(5-#1)}}
+				
+				%curva
+				\draw[line width=1.5pt,domain=1:4,variable=\x,color=red,->] plot (\x,{ff(\x)});
+				\draw[line width=1.5pt,dashed,domain=1:4,variable=\x,color=red,->] plot (\x,{ff2(\x)});
+				
+				%estados termodinamicos
+				\node (e1) at (1,{ff(1)}) {};
+				\node (e2) at (4,{ff(4)}) {};
+				
+				\filldraw (e1) circle (1.5pt) node[left] {i};
+				\filldraw (e2) circle (1.5pt) node[right] {f};
+				
+				%coordenadas
+				\node[below] (vf) at (1,0) {$V_{i}$};
+				\draw[dashed] (1,0) -- (e1);
+				\node[below] (vi) at (4,0) {$V_{f}$};
+				\draw[dashed] (4,0) -- (e2);
+				
+				%texto
+				\node[above left] at (2,{ff(2)}) {I};
+				\node[below right] at (3,{ff2(3)}) {R};
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Processos reversível (R) e irreversível (I) saindo do estado i e chegando ao f.}
+			\end{figure}
+		\end{column}
+		\begin{column}[c]{0.6\textwidth}
+			Pelo teorema de Clausius
+			\begin{align*}
+				\int^{f}_{i}\left[\frac{dQ}{T}\right]_{I}+\underbracket{\int^{i}_{f}\left[\frac{dQ_R}{T}\right]_{R}}_{\alert{-\left(S_{f}-S_{i}\right)}}<0
+			\end{align*}
+			\begin{block}{Variação da entropia no processo irreversível}
+				\begin{align*}
+					\int^{f}_{i}\frac{dQ}{T} < S_{f}-S_{i}\quad\textrm{(Irreversível)}
+				\end{align*}
+			\end{block}		
+		\end{column}
+	\end{columns}		
+\end{frame}
+
+\begin{frame}{Aplicação da Termodinâmica no estudo da variação da entropia do universo}
+	O universo pode se tratado termicamente como um sistema adiabático, de modo que $Q=0$,
+	\[\int^{f}_{i}\frac{dQ}{T}=0.\]
+	Isso fornece
+	\begin{align*}
+		S_{f}-S_{i} & = 0\quad\textrm{(Reversível)},\\
+		S_{f}-S_{i} & > 0\quad\textrm{(Irreversível)}.
+	\end{align*}
+	\begin{corollary}
+		No universo a entropia nunca pode diminuir! Ela aumenta para processos irreversíveis e torna-se constante para processos reversíveis.
+	\end{corollary}
+\end{frame}
+
+\section{Casos particulares}
+
+\subsection{}
+
+\begin{frame}{Transformações adiabática e isotérmica reversíveis}
+	Em uma transformação adiabática temos que $dQ_R=0$. Sabendo que $\Delta S=\frac{dQ}{T}$, isso implica que
+	\begin{align*}
+		\Aboxed{\Delta S=S_f-S_i=0,\quad\textrm{(Transformação adiabática reversível)}.}
+	\end{align*}
+	Em uma transformação isotérmica, temos que $T=cte$. Como exemplo, no caso de uma transição de fase, sabemos que $Q=mL$, onde $L$ é o calor latente. Substituindo
+	\begin{align*}
+		\Delta S & = \int^{f}_{i}\frac{dQ}{T}=\frac{1}{T}\int^{f}_{i}dQ,\\
+  	    \Aboxed{\Delta S & = \frac{mL}{T}\quad\textrm{(Transição de fase)}.}
+	\end{align*}
+\end{frame}
+
+\begin{frame}{Transferência de calor}
+	Na transferência de calor para um objeto de massa $m$ devido a variação de temperatura $dT$ teremos $dQ=mcdT$, substituindo na expressão da entropia
+	\begin{align*}
+		\Delta S & = \int^{f}_{i}\frac{dQ}{T},\\
+        \Delta S & = \int^{f}_{i}\frac{mcdT}{T},\\
+		\Delta S & = \int^{f}_{i}\frac{mcdT}{T},\\
+		\Aboxed{\Delta S & = mc\ln\left(\frac{T_f}{T_i}\right).}
+	\end{align*}
+\end{frame}
+
+\begin{frame}{Entropia e máquinas térmicas}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			No ciclo de Carnot temos que a variação da entropia $\Delta S$ nos processos adiabáticos é zero, pois Q=0. Sabendo que nos processos isotérmicos temos $\Delta S=\frac{Q}{T}$ e que $\Delta S_{\text{Total}}\ge 0$. Se $\Delta S_{\text{sistema}}=0$ temos
+			\begin{align*}
+				\Delta S_{\text{sistema}} = \Delta S_1 + \Delta S_2 = 0,
+			\end{align*}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{align*}
+				\frac{Q_1}{T_1}\alert{-}\frac{Q_2}{T_2} = 0,\\
+				\frac{Q_1}{T_1} = \frac{Q_2}{T_2}.
+			\end{align*}
+			Sabemos que $T_1\ne 0$ e $T_2\ne 0$, portanto a única maneira de termos $Q_2=0$ é se $Q_1=0$ (\alert{uma máquina que não existe!}).
+		\end{column}
+	%	\end{multicols}
+	\end{columns}
+	\begin{corollary}
+		A segunda lei da termodinâmica impede que todo calor $Q_1$ recebido pela máquina térmica seja inteiramente convertido na forma de trabalho.
+	\end{corollary}
+\end{frame}
+
+\begin{frame}{Condução de calor}
+	Considere dois objetos 1 e 2 a temperaturas diferentes, a variação total da entropia do sistema é a variação da entropia de cada objeto quando um recebe uma quantidade de calor $Q_1$ e o outro cede uma quantidade de calor $Q_2$, ou seja,
+	\begin{columns}
+		\begin{column}[c]{0.6\textwidth}
+			\begin{align*}
+				dS & = dS_1+dS_2,\\
+				dS & = -\frac{dQ_R}{T_1}+\frac{dQ_R}{T_2}\\
+				dS & = dQ_R\left(\frac{1}{T_2}-\frac{1}{T_1}\right)>0,
+			\end{align*}
+			ou seja, $T_1$ deve ser maior que $T_2$.
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.5]{figuras/conducao-calor.png}
+				\caption*{\footnotesize Contato térmico entre 1 e 2.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\section{Apêndice}
+
+\subsection{}
+
+\begin{frame}{Observações\footnote{Este material está sujeito a modificações. Recomenda-se acompanhamento permanente.}}
+	\begin{center}
+		Esta apresentação está disponível para download no endereço\\
+		\href{https://flavianowilliams.github.io/education}{\textcolor{blue}{https://flavianowilliams.github.io/education}}
+	\end{center}
+\end{frame}
+%
+\begin{frame}{Referências}
+	\bibliographystyle{jurabib}
+	\begin{thebibliography}{9}
+		\bibitem{halliday}D. Halliday, R. Resnick, J. Walker, Fundamentos de física. Mecânica, v.2, 10. ed., Rio de Janeiro, LTC (2016)
+	\end{thebibliography}
+\end{frame}
+
+\end{document}

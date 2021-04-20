@@ -1,0 +1,46 @@
+﻿		\begin{tikzpicture}[scale=1,transform shape,font=\Large]
+			
+			\begin{scope}[shift={(0,0)}]
+
+				\tkzInit[xmin=0,xmax=8,ymin=0,ymax=4]
+				\tkzGrid[color=gray!20]
+				\tkzClip[space=1.5]
+			
+				\tkzAxeX[right,label=t (s)]
+				\tkzAxeY[above,label=x (m)]
+			
+				\tkzFct[domain=0:8]{0.1*x**2}
+				\tkzDefPointByFct(4)\tkzGetPoint{A}
+				
+				\foreach \x in {2,3,4,5}{
+				\tkzDrawTangentLine[color=red](\x)
+				\tkzDefPointByFct(\x)\tkzGetPoint{\x}
+				\draw[dashed] (\x) --++ (1,0);}
+
+				\tkzDefPoints{6.5/0.75/t1,5/2/D,5/-2.5/t2}
+			
+				\draw[->,line width=1.0pt] (t1) -- (A);
+				\tkzText[text centered,opacity=100,fill=gray!20](t1){$v(t)=\frac{dx}{dt}$}
+
+			\end{scope}
+
+				\begin{scope}[shift={(0,-6)}]
+
+				\tkzInit[xmin=0,xmax=8,ymin=0,ymax=4]
+				\tkzGrid[color=gray!20]
+				\tkzClip[space=1.5]
+			
+				\tkzAxeX[right,label=t (s)]
+				\tkzAxeY[above,label=v (m/s)]
+			
+				\tkzFct[domain=0:8,color=red]{0.2*x}
+				\tkzDefPointByFct(4)\tkzGetPoint{A}
+				
+				\tkzDefPoints{2/3/t1,5/2/D,5/-2.5/t2}
+			
+				\draw[->,line width=1.0pt,color=red] (t1) -- (A);
+				\tkzText[text centered,opacity=100,fill=gray!20](t1){$v(t)$}
+
+				\end{scope}
+
+		\end{tikzpicture}

@@ -1,0 +1,39 @@
+﻿		\begin{tikzpicture}[scale=1,transform shape,font=\Large]
+			
+				\tkzInit[xmin=0,xmax=8,ymin=-4,ymax=4]
+				\tkzGrid[color=gray!20]
+				\tkzClip[space=1.5]
+			
+				\tkzAxeX[right,label=t (s)]
+				\tkzAxeY[above,label=x (m)]
+			
+				\tkzFct[domain=0:8]{0.01*(x-2)**3+(x-2)-2}
+				\tkzDefPointByFct(1)\tkzGetPoint{A}
+				\tkzDefPointByFct(7)\tkzGetPoint{B}
+				\tkzDefPointByFct(3)\tkzGetPoint{C}
+
+				\tkzDefPoints{4/3/t1,5/2/D,5/-2.5/t2}
+			
+				\tkzDrawLine[add= 0.1 and 0.1,color=red](A,B)
+			
+				\draw[->,line width=1.0pt] (t1) -- (D);
+				\tkzText[text centered,opacity=100,fill=gray!20](t1){$v_{\text{med}}=\frac{\Delta x}{\Delta t}$}
+
+				\draw[->,line width=1.0pt] (t2) -- (C);
+				\tkzText[text centered,opacity=100,fill=gray!20](t2){$x(t)$}
+
+				\tkzDrawPoints[size=0.3cm](A,B)
+
+				\tkzDefPoints{1/0/p1,7/0/p2}
+
+				\tkzDefPointsBy[rotation=center A angle -90](A,p1){p3,p4}
+	
+				\tkzInterLL(A,p4)(B,p2)\tkzGetPoint{p5}
+
+				\draw[dashed] (A) -- (p5);
+				\draw[dashed] (B) -- (p5);
+
+				\draw (A) to [dim arrow'={label'=$\Delta t$}] (p5);
+				\draw (B) to [dim arrow={label=$\Delta x$}] (p5);
+
+		\end{tikzpicture}

@@ -1,0 +1,981 @@
+% Aula de Termodinâmica para o curso de Física II do ensino médio
+%
+\documentclass[brazil,aspectratio=169]{beamer}
+%
+%carregando preâmbulo
+\input{../../contrib/preamble}
+
+%Título
+
+\title[Termodinâmica-PLT]{Primeira Lei da Termodinâmica}
+
+% The main document
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Sumário}
+  \tableofcontents
+\end{frame}
+
+\section{Lei de Zero da TD}
+
+\subsection{}
+
+\begin{frame}{Sistema termodinâmico}
+	\begin{enumerate}
+		\item[\ding{51}] Torna-se inviável um tratamento mecânico para um sistema contendo N partículas devido ao elevado grau de liberdade (3N graus de liberdade);
+		\item[\ding{51}] Para resolver o sistema é necessário um tratamento  a nível macroscópico através das variáveis pressão, temperatura e volume \alert{(variáveis termodinâmicas)}. O estado do sistema onde as variáveis termodinâmica são conhecidas é chamado \alert{estado termodinâmico};
+		\item[\ding{51}] È necessário um descrição estatística para resolver o sistema termodinâmico, onde aplica-se o conceito de limite termodinâmico \alert{(um grande número de elementos, porém N/V é finito)}.
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}{Temperatura}
+	A temperatura é uma medida da média da energia térmica das partículas de uma substância. Uma vez que se trata de um valor médio, não depende do número de partículas do sistema. Nesse sentido, também não depende das dimensões do sistema.
+	\begin{corollary}
+		A temperatura é considerada uma grandeza intensiva, pois é praticamente a mesma em cada ponto do sistema.
+	\end{corollary}
+\end{frame}
+
+\begin{frame}{Equilíbrio termodinâmico}
+	\begin{enumerate}
+		\item[\ding{51}] Um sistema está em equilíbrio termodinâmico quando suas variáveis de estado se mantém inalteradas ao longo do tempo e uniformes através de todo o sistema;
+		\item[\ding{51}] no equilíbrio termodinâmico não são observadas mudanças macroscópicas nas variáveis de estado dos sistemas;
+		\item[\ding{51}] Equilíbrio térmico é o caso particular do equilíbrio termodinâmico onde a variável a ser analisada é a temperatura.
+	\end{enumerate}
+	\begin{corollary}
+		O estado termodinâmico do sistema é definido somente quando o equilíbrio termodinâmico é atingido.
+	\end{corollary}
+\end{frame}
+
+\begin{frame}{Lei zero da temperatura}
+%	\begin{block}{Lei zero da temperatura}
+		Dois sistemas que estiverem em equilíbrio térmico com um terceiro estarão em equilíbrio térmico entre si.
+%	\end{block}
+	\begin{figure}
+		\centering
+		\begin{tikzpicture}[scale=0.55, transform shape]
+
+	%estilos
+	\tikzstyle{block} = [draw, shape=rectangle,rounded corners=0.5 em,align=left,minimum width=1.5cm,minimum height=1.5cm];
+\tikzstyle{entitya} = [top color=white, bottom color=blue!30, draw=blue!50!black!100, drop shadow];
+\tikzstyle{entityb} = [top color=white, bottom color=blue!30, draw=blue!50!black!100, drop shadow];
+\tikzstyle{entityc} = [top color=white, bottom color=blue!30, draw=blue!50!black!100, drop shadow];
+
+	%conjunto 1
+	\node [block,entitya] at (0,0) {A};
+	\node [block,entityb] at (2,0) {B};
+	\node (ca) [block,entityc] at (1,-1.5) {C};
+
+	%texto
+	\node[below=35pt] at (1,-1.5) {${T_{A}=T_{B} \atop T_{B}=T_{C}}$};
+
+	%conjunto 2
+	\def\t{8}
+	\node[block,entitya] at (0+\t,0) {A};
+	\node[block,entityb] at (1.5+\t,0) {B};
+	\node[block,entityc] at (0.75+\t,-1.75) {C};
+
+	%texto
+	\node[below=35pt] at (0.75+\t,-1.5) {${T_{A}=T_{B} \atop T_{B}=T_{C}}$};
+
+\end{tikzpicture}
+		%\input{tikz/lei-zero.pgf}	
+	\end{figure}
+	\begin{corollary}
+		A lei zero é utilizada no princípio de funcionamento de um termômetro.
+	\end{corollary}
+\end{frame}
+
+\begin{frame}{Escalas termométricas}
+	\begin{itemize}
+		\item Assim como usamos uma régua para medir distâncias, para medir temperaturas é necessário graduar o termômetro.
+		\item O termômetro mais utilizado é constituído por um tubo fino preenchido por mercúrio, que possui elevado coeficiente de dilatação.
+	\end{itemize}
+	\begin{block}{Principais escalas de temperatura}
+		\begin{itemize}
+			\item Celsius ou Centígrada: Baseia-se nos pontos de fusão e ebulição da água pura;
+			\item Fahrenheit: Os pontos de fusão e ebulição da água pura estão marcados em $32\;^oF$ e $212\;^oF$;
+			\item Kelvin: Baseia-se no zero absoluto (estado de mínima energia possível);
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Relação entre as escalas termométricas}
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+			\begin{align*}
+				\frac{K-273}{373-273} & = \frac{C-0}{100-0} = \frac{F-32}{212-32},\\
+				\frac{K-273}{100} & = \frac{C}{100} = \frac{F-32}{180},\\
+				\Aboxed{\frac{K-273}{5} & = \frac{C}{5} = \frac{F-32}{9}.}
+			\end{align*}
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.7,transform shape]
+				
+				%translacao
+				\def\t{3}
+				
+				\pgfmathsetmacro{\tt}{2*\t+2}
+				
+				\tkzInit[xmin=-2.5,xmax=\tt,ymin=-1,ymax=4.5]
+				%\tkzGrid
+				\tkzClip
+				
+				%temperaturas
+				\node[below] (kf) at (0,0) {273};
+				\node[above] (ke) at (0,4) {373};
+				\draw[line width=1pt] (kf) -- (ke);
+				\node[below=5pt] at (kf) {$Kelvin (K)$};
+				\foreach \x in {0,4,...,100}
+				\draw[color=red] (-0.1,0.04*\x) -- (0.1,0.04*\x);
+				
+				\node[below] (cf) at (0+\t,0) {0};
+				\node[above] (ce) at (0+\t,4) {100};
+				\draw[line width=1pt] (cf) -- (ce);
+				\node[below=5pt] at (cf) {$Celsius (^{o}C)$};
+				\foreach \x in {0,4,...,100}
+				\draw[color=red] (-0.1+\t,0.04*\x) -- (0.1+\t,0.04*\x);
+				
+				\node[below] (ff) at (0+2*\t,0) {32};
+				\node[above] (fe) at (0+2*\t,4) {212};
+				\draw[line width=1pt] (ff) -- (fe);
+				\node[below=5pt] at (ff) {$Farenheit (^{o}F)$};
+				\foreach \x in {0,4,...,180}
+				\draw[color=red] (-0.1+2*\t,0.022*\x) -- (0.1+2*\t,0.022*\x);
+				
+				%formula
+				\node[left]  at (0,2) {K};
+				\node[left]  at (0+\t,2) {C};
+				\node[left]  at (0+2*\t,2) {F};
+				
+				%intervalos temperatura
+
+				\draw (0,2) to[dim arrow={label=$(K-273)$},font=\footnotesize] (0,0);
+				\draw (0+\t,2) to[dim arrow={label=$(C-0)$},font=\footnotesize] (0+\t,0);
+				\draw (0+2*\t,2) to[dim arrow={label=$(F-32)$},font=\footnotesize] (0+2*\t,0);
+				
+				\draw (0,4) to[dim arrow'={label'=$(373-273)$},font=\footnotesize] (0,0);
+				\draw (0+\t,4) to[dim arrow'={label'=$(100-0)$},font=\footnotesize] (0+\t,0);
+				\draw (0+2*\t,4) to[dim arrow'={label'=$(212-32)$},font=\footnotesize] (0+2*\t,0);
+				
+				\end{tikzpicture}
+				%\includegraphics[scale=0.5]{figuras/figura-12.png}
+				\caption*{\footnotesize Comparação entre as escalas termométricas.}
+			\end{figure}
+		\end{column}
+	\end{columns}	
+\end{frame}
+
+\begin{frame}[fragile]{Por que um sólido dilata?}
+	\begin{small}
+		\begin{itemize}
+			\item Os átomos que constituem o sólido distribuem-se ordenadamente, dando origem a uma estrutura denominada rede cristalina do sólido.
+			\item A força entre os átomos são como molas que comprimem e esticam.
+			\item Quando a temperatura aumenta, há um aumento na agitação dos átomos, que ao vibrarem se afastam mais uns dos outros. Com isso, a distância média entre os átomos torna-se maior.
+		\end{itemize}
+	\end{small}
+	\begin{figure}
+		\centering
+		\begin{subfigure}[t]{0.4\textwidth}
+			\centering
+			\begin{tikzpicture}[scale=0.34,transform shape,font=\huge]
+
+			\def\d{2}
+
+			\pgfmathsetmacro{\dmx}{6.25*\d}
+
+			\tkzInit[xmin=-2,xmax=\dmx,ymin=-1.5,ymax=4.75]
+			%\tkzGrid
+			\tkzClip
+
+			\foreach \x in {0,1,...,5}{
+			\foreach \y in {0,1}{
+			\foreach \z in {0,1}{
+			\coordinate (X) at (\x*\d,\y*\d,\z*\d);
+			\coordinate (Y) at ((\x*\d,\y*\d+\d,\z*\d);
+			\coordinate (Z) at ((\x*\d,\y*\d,\z*\d+\d);
+			\coordinate (K) at ((\x*\d+\d,\y*\d,\z*\d);
+			\draw[decoration={aspect=0.1, segment length=0.75mm, amplitude=0.25mm,coil},decorate] (X) -- (Y); 
+			\draw[decoration={aspect=0.1, segment length=0.75mm, amplitude=0.25mm,coil},decorate] (X) -- (Z); 
+			\draw[decoration={aspect=0.1, segment length=0.75mm, amplitude=0.25mm,coil},decorate] (X) -- (K); 
+			\tkzDrawPoint[size=0.75cm,fill=blue](X)}}}
+
+			\draw[<->,line width=0.75pt,color=red] (5*\d,\d+0.5,0) -- (6*\d,\d+0.5,0) node[above,midway] {\SI{1}{\angstrom}};
+
+			\end{tikzpicture}
+			%\includegraphics[scale=0.25]{figuras/figura-1.png}
+			\caption*{\footnotesize Baixa temperatura.}
+		\end{subfigure}
+		\begin{subfigure}[t]{0.4\textwidth}
+			\centering
+			\begin{tikzpicture}[scale=0.34,transform shape,font=\huge]
+	
+			\def\d{2.75}
+	
+			\pgfmathsetmacro{\dmx}{6.25*\d}
+	
+			\tkzInit[xmin=-2,xmax=\dmx,ymin=-1.5,ymax=4.75]
+			%\tkzGrid
+			\tkzClip
+	
+			\foreach \x in {0,1,...,5}{
+			\foreach \y in {0,1}{
+			\foreach \z in {0,1}{
+				\coordinate (X) at (\x*\d,\y*\d,\z*\d);
+				\coordinate (Y) at ((\x*\d,\y*\d+\d,\z*\d);
+				\coordinate (Z) at ((\x*\d,\y*\d,\z*\d+\d);
+				\coordinate (K) at ((\x*\d+\d,\y*\d,\z*\d);
+				\draw[decoration={aspect=0.1, segment length=0.75mm, amplitude=0.25mm,coil},decorate] (X) -- (Y); 
+				\draw[decoration={aspect=0.1, segment length=0.75mm, amplitude=0.25mm,coil},decorate] (X) -- (Z); 
+				\draw[decoration={aspect=0.1, segment length=0.75mm, amplitude=0.25mm,coil},decorate] (X) -- (K); 
+				\tkzDrawPoint[size=1.25cm,fill=red](X)}}}
+	
+			\draw[<->,line width=0.75pt,color=red] (5*\d,\d+0.5,0) -- (6*\d,\d+0.5,0) node[above,midway] {\SI{1,4}{\angstrom}};
+	
+			\end{tikzpicture}
+			%\includegraphics[scale=0.25]{figuras/figura-1.png}
+			\caption*{\footnotesize Alta temperatura.}
+		\end{subfigure}
+	\end{figure}
+	\end{frame}
+
+\begin{frame}{Dilatação linear}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\justifying
+			Se a variação da temperatura não for muito alta, podemos supor que a dilatação de uma barra ($\Delta L$) é proporcional a variação da temperatura e ao comprimento da barra ($L_0$),
+			\begin{align*}
+				\Delta L & \alpha \Delta T,\\
+				\Delta L & \alpha L_0.
+			\end{align*}
+			Portanto, podemos dizer que
+			\begin{align*}
+				\Delta L & \alpha L_0\Delta T,\\
+				\Aboxed{\Delta L & = \alpha L_0\Delta T,}
+			\end{align*}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.5,transform shape]
+				
+				\tkzInit[xmin=-1,xmax=10,ymin=-1,ymax=7]
+				%\tkzGrid[color=gray!20]
+				\tkzClip
+				
+				%barra menor
+				
+				\tkzDefPoints{0/0/A,7/0/B,7/1/C,0/1/D,0.5/0.5/A',7.5/0.5/B',7.5/1.5/C',0.5/1.5/D'}
+				
+				\tkzDrawPoints(A,B,C,D)
+				\tkzDrawPoints(A',B',C',D')
+				%	\tkzLabelPoints(A,B,C,D,A',B',C',D')
+				
+				\tkzDrawPolygon(A,B,C,D)
+				\tkzDrawPolygon(D,D',C',C)
+				\tkzDrawPolygon(B,C,C',B')
+				
+				\tkzDrawSegment[dashed](A,A')
+				\tkzDrawSegment[dashed](A',B')
+				\tkzDrawSegment[dashed](A',D')
+				
+				%barra maior
+				
+				\tkzDefPoints{0/4/A1,7/4/B1,7/5/C1,0/5/D1,0.5/4.5/A1',7.5/4.5/B1',7.5/5.5/C1',0.5/5.5/D1'}
+				
+				\tkzDrawPolygon(D1,D1',C1',C1)
+				\tkzDrawPolygon(A1,D1,C1,B1)
+				\tkzDrawPolygon(B1,B1',C1',C1)
+				\tkzDrawSegment[dashed](A1,A1')
+				\tkzDrawSegment[dashed](D1',A1')
+				\tkzDrawSegment[dashed](A1',B1')
+				
+				\tkzDefPoints{8/4/B2,8/5/C2,8.5/4.5/B2',8.5/5.5/C2'}
+				
+				\tkzDrawPolygon[red,fill=red,opacity=0.5](B1,B2,B2',B1')
+				\tkzDrawPolygon[red,fill=red,opacity=0.5](C1,C1',C2',C2)
+				\tkzDrawPolygon[red,fill=red,opacity=0.5](B1,B2,C2,C1)
+				\tkzDrawPolygon[red,fill=red,opacity=0.5](B2,B2',C2',C2)
+				
+				\tkzDrawSegment[dotted](C',B1')
+				\tkzDrawSegment[dotted](C,B1)
+				\tkzDrawSegment[dotted](D,A1)
+				\tkzDrawSegment[dotted](D',A1')
+				
+				%	\tkzLabelPoints(A1,B1,C1,D1,B1',C1',A1',B1',D1')
+				
+				\draw (B1) to[short dim arrow'={label=$\Delta L$, label near middle}] (B2);
+				\draw (A) to[dim arrow'={label'=$L_0$}] (B);
+				\draw (D1') to[dim arrow={label=$L$}] (C2');
+				
+				\end{tikzpicture}
+				%\includegraphics[scale=0.4]{figuras/figura-2.png}
+				\caption*{\footnotesize Dilatação de uma barra.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Coeficiente de dilatação linear}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\justifying
+			Sabendo que $L=L_0+\Delta L$, temos
+			\begin{align*}
+				L & = L_0+\Delta L,\\
+				L & = L_0+\alpha L_0\Delta T,\\
+				L & = L_0(1+\alpha\Delta T),
+			\end{align*}
+			onde $\alpha$ é a constante de proporcionalidade chamada coeficiente de dilatação linear.
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{table}
+				\centering
+				\caption*{Coeficiente de dilatação linear.}
+				\begin{tabular}{cc}
+					\hline
+					Substância & $\alpha\;(^{\circ}C^{-1})$\\
+					\hline
+					\hline
+					Alumínio & \SI{23e-6}{}\\
+					Cobre & \SI{17e-6}{}\\
+					Vidro refratário & \SI{3,2e-6}{}\\
+					Diamante & \SI{0,9e-6}{}\\
+					\hline
+				\end{tabular}
+				%\includegraphics[scale=0.3]{figuras/figura-3.png}
+			\end{table}
+		\end{column}
+	\end{columns}
+	\begin{corollary}
+		A unidade de medida do coeficiente de dilatação linear é $\frac{1}{^oC}=^oC^{-1}$ ou $\frac{1}{K}=K^{-1}$.
+	\end{corollary}
+\end{frame}
+
+\begin{frame}{Dilatação superficial}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\justifying
+			Assim como no caso da barra, se a variação da temperatura não for muito alta, podemos supor que a dilatação de uma placa ($\Delta A$) é proporcional a variação da temperatura e a área da placa ($A_0$),
+			\begin{align*}
+				\Delta A & \alpha \Delta T,\\
+				\Delta A & \alpha A_0.
+			\end{align*}
+			Portanto, podemos dizer que
+			\begin{align*}
+				\Aboxed{\Delta A & = \beta A_0\Delta T,}
+			\end{align*}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.29,transform shape,font=\huge]
+				
+				\tkzInit[xmin=-1,xmax=9,ymin=-5.5,ymax=12]
+				%\tkzGrid[color=gray!20]
+				\tkzClip
+				
+				%barra menor
+				
+				\tkzDefPoints{0/-4/A,5/-4/B,5/1/C,0/1/D,0.5/-3.5/A',5.5/-3.5/B',5.5/1.5/C',0.5/1.5/D'}
+				
+				\tkzDefPointWith[linear,K=0.5](A,C)\tkzGetPoint{P2}
+				
+				\tkzDrawPolygon(A,B,C,D)
+				\tkzDrawPolygon(D,D',C',C)
+				\tkzDrawPolygon(B,C,C',B')
+				
+				\tkzDrawSegment[dashed](A,A')
+				\tkzDrawSegment[dashed](A',B')
+				\tkzDrawSegment[dashed](A',D')
+				
+				%textos
+				
+				\tkzText(P2){$A_0=x_0\times y_0$}
+				
+				%barra maior
+				
+				\tkzDefPoints{0/4/A1,7/4/B1,7/11/C1,0/11/D1,0.5/4.5/A1',7.5/4.5/B1',7.5/11.5/C1',0.5/11.5/D1'}
+				
+				\tkzDefPointWith[linear,K=0.5](A1,C1)\tkzGetPoint{P1}
+				
+				\tkzDrawPolygon(D1,D1',C1',C1)
+				\tkzDrawPolygon(A1,D1,C1,B1)
+				\tkzDrawPolygon(B1,B1',C1',C1)
+				\tkzDrawSegment[dashed](A1,A1')
+				\tkzDrawSegment[dashed](D1',A1')
+				\tkzDrawSegment[dashed](A1',B1')
+				
+				\draw (A1) to[dim arrow'={label'=$x$, label near middle}] (B1);
+				\draw (B1') to[dim arrow'={label'=$y$, label near middle}] (C1');
+				\draw (A) to[dim arrow'={label'=$x_0$}] (B);
+				\draw (B') to[dim arrow'={label'=$y_0$}] (C');
+				
+				%textos
+				
+				\tkzText(P1){$A=x\times y$}
+				
+				\end{tikzpicture}
+				%\includegraphics[scale=0.35]{figuras/figura-4.png}
+				\caption*{\footnotesize Dilatação de uma placa.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Relação entre coeficiente dilatação linear e superficial}
+%	\begin{multicols}{2}
+	\begin{columns}
+		\begin{column}[t]{0.5\textwidth}
+			Sabemos que $A=xy$, onde $\frac{\Delta A}{A_0} = \frac{\Delta (xy)}{(x_0y_0)}.$ Aplicando a regra da diferencial $\Delta (xy)=x\Delta y+y\Delta x$ teremos
+			\begin{align*}
+				\frac{\Delta A}{A_0} = x\frac{\Delta y}{x_0y_0}+y\frac{\Delta x}{x_0y_0}.
+			\end{align*}
+			Porém, da dilatação linear temos $\Delta l=\alpha l_0\Delta T$, portanto podemos dizer que
+			\begin{align*}
+				\Delta x & = \alpha x_0\Delta T,\\
+				\Delta y & = \alpha y_0\Delta T.
+			\end{align*}
+		\end{column}
+		\begin{column}[t]{0.5\textwidth}
+			Substituindo
+			\begin{align*}
+				\frac{\Delta A}{A_0}  & = x\frac{\alpha \bcancel{y_0}\Delta T}{x_0\bcancel{y_0}}+y\frac{\alpha \bcancel{x_0}\Delta T}{\bcancel{x_0}y_0},\\
+				\frac{\Delta A}{A_0}  & = \frac{\alpha x\Delta T}{x_0}+\frac{\alpha y\Delta T}{y_0}
+			\end{align*}
+			onde $\frac{x}{x_0}=\frac{y}{y_0}=1+\alpha\Delta T$, portanto
+			\begin{align*}
+				\frac{\Delta A}{A_0} = (1+\alpha\Delta T)\alpha\Delta T+(1+\alpha\Delta T)\alpha\Delta T.
+			\end{align*}
+		\end{column}
+	\end{columns}
+%	\end{multicols}
+\end{frame}
+
+\begin{frame}{Relações entre coeficientes dilatação linear, superficial e volumétrica}
+	\begin{columns}
+		\begin{column}[t]{0.5\textwidth}
+			Expandindo os termos entre parêntesis,
+			\begin{align*}
+				\frac{\Delta A}{A_0} & = \alpha\Delta T+\alpha^2\Delta T^2+\alpha\Delta T+\alpha^2\Delta T^2,\\
+				\frac{\Delta A}{A_0} & = 2\alpha\Delta T+2\alpha^2\Delta T^2.
+			\end{align*}
+			Considerando que $\Delta T\ll 1$, ou seja, uma variação suficientemente pequena da temperatura, podemos dizer que
+			\begin{align*}
+				\frac{\Delta A}{A_0} & \approx 2\alpha\Delta T.
+			\end{align*}
+		\end{column}
+		\begin{column}[t]{0.5\textwidth}
+			Sabendo que $\Delta A = \beta A_0\Delta T$ temos
+			\begin{align*}
+				\beta = 2\alpha.
+			\end{align*}		
+			A mesma análise podemos fazer para a dilatação volumétrica, onde encontraremos $\gamma = 3\alpha$. $\beta$ e $\gamma$ são chamados \alert{coeficientes de dilatação superficial e volumétrica}, respectivamente. Resumindo
+			\begin{align*}
+				\Aboxed{\gamma = \frac{3}{2}\beta = 3\alpha.}
+			\end{align*}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\section{Primeira lei da TD}
+
+\subsection{}
+
+\begin{frame}{O que é calor?}
+	\begin{columns}
+		\begin{column}[c]{0.6\textwidth}
+			Calor é a \alert{energia transferida} de um objeto para outro em virtude, unicamente, de uma diferença de temperatura entre eles (essa energia é chamada de energia interna ou térmica).
+			\begin{corollary}
+				A transferência de calor ocorre entre a vizinhança e o sistema a ser analisado do ponto de vista da termodinâmica.
+			\end{corollary}			
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}[c]
+				\centering
+				\includegraphics[scale=0.3]{figuras/calor.png}
+				\caption*{\footnotesize Transferência de calor.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Caloria como unidade de medida de energia interna}
+	\begin{columns}[t]
+		\begin{column}{0.6\textwidth}
+			\begin{block}{Equivalência entre caloria e Joules}
+				Calor é energia em trânsito, portanto possui unidade de energia. A unidade mais utilizada em nutrição é a \alert{caloria}, e seu valor surge da experiência do equivalente mecânico proposto por Thompson em
+		\begin{align*}
+			\SI{1}{cal} = \SI{4,2}{J}.
+		\end{align*}	
+	\end{block}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}[c]
+				\includegraphics[scale=0.5]{figuras/figura-2.jpeg}
+				\caption*{\footnotesize Experiência do equivalente mecânico}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Transferência de calor}
+	A transferência de calor entre dois ou mais objetos pode ocorrer de três maneiras distintas:
+	\begin{itemize}
+		\item Condução: Ocorre praticamente em sólidos.
+		\item Convecção: Ocorre em líquidos e gases.
+		\item Radiação: Ocorre em qualquer material, inclusive no vácuo.
+	\end{itemize}
+	\begin{corollary}
+		Radiação é o único processo de transferência de calor que ocorre no vácuo.
+	\end{corollary}	
+\end{frame}
+
+\begin{frame}{Quantidade de calor}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			Foi percebido que a quantidade de calor cedido ou absorvido pelo sistema é proporcional a variação de temperatura,
+			\begin{align*}
+				Q = C\Delta T,
+			\end{align*}
+			onde $C$ é chamado capacidade térmica. Porém, C depende da massa e das propriedades intrínsecas do material, assim
+			\begin{align*}
+				\Aboxed{Q = mc\Delta T.}
+			\end{align*}
+			$c$ é chamado calor específico do material.
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\vspace*{-0.5cm}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.43,transform shape,font=\Large]
+				
+				\def\m{50}
+				\def\ca{1}
+				\def\cb{2.5}
+				\def\cg{0.5}
+				\def\Lf{40}
+				\def\Lv{70}
+				\def\Lg{70}
+				
+				\pgfmathsetmacro{\qg}{\m*\Lf};
+				\pgfmathsetmacro{\qi}{\m*\Lf};
+				\pgfmathsetmacro{\qf}{\qi+100*\m*\ca};
+				\pgfmathsetmacro{\qx}{\qf+\m*\Lv};
+				\pgfmathsetmacro{\qz}{\qx+3000};
+				
+				\tkzInit[xmin=-1000,xmax=14000,xstep=1000,ymin=-45,ymax=150,ystep=20]
+				%\tkzGrid[color=gray!50]
+				\tkzClip[space=1]
+				
+				%		\tkzAxeX
+				\tkzDrawX[right,label={Q},noticks]
+				\tkzAxeY[above,label={T ($^\circ C$)}]
+				
+				\tkzFct[domain=0:500,color=red,line width=1.5pt]{(\x)/(\m*\cg)-20}
+				\tkzFct[domain=500:\qi,color=red,line width=1.5pt]{0}
+				\tkzFct[domain=\qi:\qf,color=red,line width=1.5pt]{(\x-\qi)/(\m*\ca)}
+				\tkzFct[domain=\qf:\qx,color=red,line width=1.5pt]{100}
+				\tkzFct[->,domain=\qx:\qz,color=red,line width=1.5pt]{100+(\x-\qx)/(\m*\cb)}
+				
+				\tkzDefPointByFct[ref=A,with=c](\qf)
+				\tkzPointShowCoord(A)
+				
+				\tkzDefPointByFct[ref=B,with=c](4000)
+				\tkzDefPointByFct[ref=C,with=a](250)
+				\tkzDefPointByFct[ref=D,with=e](12000)
+				
+				\tkzDefPoints{1200/0/t1,8700/100/t2,2000/60/t3,3000/-40/t4,13000/80/t5}
+				
+				\tkzText[below](t1){\large Fusão}
+				\tkzText[below](t2){\large Vaporização}
+				
+				\tkzText[above,color=blue](t1){$Q=mL_F$}
+				
+				\draw[->,line width=1pt] (t3) -- (B);
+				\tkzText[above,color=blue](t2){$Q=mL_V$}
+				\tkzText[text centered,opacity=100,fill=gray!20](t3){\textcolor{blue}{$Q=mc_l\Delta T$}}
+				
+				\draw[->,line width=1pt] (t4) -- (C);
+				\tkzText[text centered,opacity=100,fill=gray!20](t4){\textcolor{blue}{$Q=mc_s\Delta T$}}
+				
+				\draw[->,line width=1pt] (t5) -- (D);
+				\tkzText[text centered,opacity=100,fill=gray!20](t5){\textcolor{blue}{$Q=mc_g\Delta T$}}
+				
+				\end{tikzpicture}
+				\vspace*{-0.5cm}
+				%\includegraphics[scale=0.4]{figuras/curva-aquecimento.png}
+				  \caption*{\footnotesize Curva de aquecimento da água.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Pressão}
+	\begin{columns}[c]
+		\begin{column}[c]{0.6\textwidth}
+			Pelo conceito de pressão, sabemos que
+			\[\textrm{Pressão}=\frac{\textrm{Força}}{\textrm{Área}}\]
+%			\begin{block}{Pressão}
+				Associado com a transferência de momento das partículas em relação a direção normal das paredes do recipiente.
+				\begin{align*}
+					\Aboxed{\textrm{Pressão}=\sum\limits^{\text{\tiny Moléculas}}\frac{\left(\vec{P}_{2}-\vec{P}_{1}\right)\cdot\hat{n}}{A}.}
+				\end{align*}
+%			\end{block}
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}
+				\begin{tikzpicture}[scale=0.65,transform shape]
+				
+				\useasboundingbox(-2,-1) rectangle (1.25,6);
+				
+				\tkzInit[xmin=-1,xmax=2.5,ymin=-0.5,ymax=6]
+				%\tkzGrid
+				\tkzClip
+
+				%setup styles
+				\tikzstyle{s1}=[circle, radius=0.25, ball color=gray];
+				
+				%parede
+				\fill [pattern = north west lines] (1.,0) rectangle (1.25,5);
+				\draw (1,0) -- (1,5);
+				
+				%paticulas
+				\node[s1] (n1) at (0,1) {};
+				\def\a{1}
+				\coordinate (p1) at ($(n1)+(1,\a)$);
+				
+				%particula 1
+				\draw[line width=1pt, ->] (n1) -- (${1-0.5}*(n1)+0.5*(p1)$);
+				\draw[dashed] (n1) -- (p1);
+				\draw[dashed,->] (p1) -- ($(n1)+(0,{2*\a})$);
+				
+				%particula 2
+				\node[s1] (n1) at (0,2) {};
+				\def\a{-0.75}
+				\coordinate (p1) at ($(n1)+(1,\a)$);
+				
+				\draw[line width=1pt, ->] (n1) -- (${1-0.5}*(n1)+0.5*(p1)$);
+				\draw[dashed] (n1) -- (p1);
+				\draw[dashed,->] (p1) -- ($(n1)+(0,{2*\a})$);
+				
+				%particula 3
+				\node[s1] (n1) at (0,3) {};
+				\def\a{1.25}
+				\coordinate (p1) at ($(n1)+(1,\a)$);
+				
+				\draw[line width=1pt, ->] (n1) -- (${1-0.5}*(n1)+0.5*(p1)$);
+				\draw[dashed] (n1) -- (p1) node[left,midway] {$\vec{v}_{1}$};
+				\draw[dashed,->] (p1) -- ($(n1)+(0,{2*\a})$) node[left,midway] {$\vec{v}_{2}$};
+				
+				%normal
+				\draw[line width=1pt, ->,color=red] (p1) -- ($(p1)-(-1,0)$) node[right] {$\vec{F}$};
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Moléculas colidindo com as paredes do recipiente.}
+			\end{figure}
+			%\input{tikz/pressao.pgf}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Trabalho}
+	\begin{columns}[c]
+		\begin{column}[c]{0.65\textwidth}
+			Considere um cilindro de área A, sabemos pela definição de pressão que a força $\vec{F}$ que o gás aplica sobre o pistão é dado por $F=pA$, onde $p$ é a pressão sobre a área A. Se o gás expandir o pistão por um deslocamento $dx$, temos pela definição de trabalho
+			\begin{align*}
+				dW & = \vec{F}\cdot d\vec{x},\\
+				dW & = F dx,\\
+				dW & = pA dx.
+			\end{align*}
+		\end{column}
+		\begin{column}[c]{0.35\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.4]{figuras/expansao.png}
+				\caption*{\footnotesize Trabalho infinitesimal $dW$ realizado pelo sistem durante uma expansão $dx$ \cite{halliday}.}
+			\end{figure}
+		\end{column}
+	\end{columns}	
+\end{frame}
+
+\begin{frame}{Trabalho (continuação)}
+	\begin{columns}[c]
+		\begin{column}[c]{0.65\textwidth}
+			Mas sabemos que o volume deslocado pelo gás é dado por $dV=Adx$, portanto
+			\begin{align*}
+				dW & = pdV.
+			\end{align*}
+			Se cada etapa da expansão dx for realizada no equilíbrio termodinâmico, a pressão p pode ser determinada em cada volume V do sistema, portanto
+			\begin{align*}
+				\Aboxed{W = \int\limits_{V_i}^{V_f}p(V)dV.}
+			\end{align*}
+		\end{column}
+		\begin{column}[c]{0.35\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.4]{figuras/expansao.png}
+				\caption*{\footnotesize Trabalho infinitesimal $dW$ realizado pelo sistem durante uma expansão $dx$ \cite{halliday}.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Trabalho em um gráfico pressão versus volume}
+%	\begin{columns}
+%		\begin{column}{0.7\textwidth}
+				Podemos calcular o trabalho associado a um gás num gráfico pressão x volume sabendo a área abaixo da curva.
+%		\end{column}
+%		\begin{column}{0.3\textwidth}
+			\begin{figure}
+				\begin{subfigure}{0.3\textwidth}
+				\centering
+				\begin{tikzpicture}[scale=0.4, auto, transform shape, samples=50]
+				
+				\tkzInit[xmin=-0.5,xmax=5.5,ymin=-0.5,ymax=5.5]
+				%\tkzGrid
+				\tkzClip
+				
+				%curva
+				\pgfmathdeclarefunction{ff}{1}{\pgfmathparse{5-4/#1}}
+				\pgfmathdeclarefunction{ff2}{1}{\pgfmathparse{0}}
+				
+				%area
+				\fill[shade] plot [domain=4:1] (\x,{ff2(\x)}) -- plot [domain=1:4] (\x,{ff(\x)});
+				
+				%curva
+				\draw[line width=1.5pt,domain=1:4,variable=\x,color=red,->] plot (\x,{ff(\x)});
+				
+				%estados termodinamicos
+				\node (e1) at (1,{ff(1)}) {};
+				\node (e2) at (4,{ff(4)}) {};
+				
+				\filldraw (e1) circle (1.5pt) node[above left] {i};
+				\filldraw (e2) circle (1.5pt) node[above] {f};
+				
+				%coordenadas
+				\node[below] (vf) at (1,0) {$V_{i}$};
+				\draw[dashed] (1,0) -- (e1);
+				\node[below] (vi) at (4,0) {$V_{f}$};
+				\draw[dashed] (4,0) -- (e2);
+				
+				\node[left] (pi) at (0,1) {$p_{i}$};
+				\draw[dashed] (0,1) -- (e1);
+				\node[left] (pf) at (0,4) {$p_{f}$};
+				\draw[dashed] (0,4) -- (e2);
+				
+				%eixos
+				\draw[line width=1.0pt,->] (0,0) -- (5,0) node[right] {V};
+				\draw[line width=1.0pt,->] (0,0) -- (0,5) node[above] {P};
+
+				%texto
+				\node[font=\Huge,color=blue]  at (2.5,2) {\huge $W$};
+				
+				\end{tikzpicture}
+				%\includegraphics[scale=0.35]{figuras/figura-6.png}
+				\end{subfigure}
+				\begin{subfigure}{0.3\textwidth}
+				\centering
+				\begin{tikzpicture}[scale=0.4, auto, transform shape, samples=50]
+				
+				\tkzInit[xmin=-0.5,xmax=5.5,ymin=-0.5,ymax=5.5]
+				%\tkzGrid
+				\tkzClip
+				
+				%curva
+				\pgfmathdeclarefunction{ff}{1}{\pgfmathparse{4/(5-#1)}}
+%				\pgfmathdeclarefunction{ff}{1}{\pgfmathparse{5-4/#1}}
+				\pgfmathdeclarefunction{ff2}{1}{\pgfmathparse{0}}
+				
+				%area
+				\fill[shade] plot [domain=4:1] (\x,{ff2(\x)}) -- plot [domain=1:4] (\x,{ff(\x)});
+				
+				%curva
+				\draw[line width=1.5pt,domain=1:4,variable=\x,color=red,->] plot (\x,{ff(\x)});
+				
+				%estados termodinamicos
+				\node (e1) at (1,{ff(1)}) {};
+				\node (e2) at (4,{ff(4)}) {};
+				
+				\filldraw (e1) circle (1.5pt) node[above left] {i};
+				\filldraw (e2) circle (1.5pt) node[above] {f};
+				
+				%coordenadas
+				\node[below] (vf) at (1,0) {$V_{i}$};
+				\draw[dashed] (1,0) -- (e1);
+				\node[below] (vi) at (4,0) {$V_{f}$};
+				\draw[dashed] (4,0) -- (e2);
+				
+				\node[left] (pi) at (0,1) {$p_{i}$};
+				\draw[dashed] (0,1) -- (e1);
+				\node[left] (pf) at (0,4) {$p_{f}$};
+				\draw[dashed] (0,4) -- (e2);
+				
+				%eixos
+				\draw[line width=1.0pt,->] (0,0) -- (5,0) node[right] {V};
+				\draw[line width=1.0pt,->] (0,0) -- (0,5) node[above] {P};
+
+				%texto
+				\node[font=\Huge,color=blue]  at (2.5,0.75) {\huge $W$};
+				
+				\end{tikzpicture}
+				%\includegraphics[scale=0.35]{figuras/figura-6.png}
+				\end{subfigure}
+				\begin{subfigure}{0.3\textwidth}
+				\centering
+				\begin{tikzpicture}[scale=0.4, auto, transform shape, samples=50]
+				
+				\tkzInit[xmin=-0.5,xmax=5.5,ymin=-0.5,ymax=5.5]
+				%\tkzGrid
+				\tkzClip
+				
+				%curva
+				\pgfmathdeclarefunction{ff}{1}{\pgfmathparse{1}}
+				\pgfmathdeclarefunction{ff2}{1}{\pgfmathparse{0}}
+				\pgfmathdeclarefunction{ff3}{1}{\pgfmathparse{4}}
+				
+				%area
+				\fill[shade] plot [domain=4:1] (\x,{ff2(\x)}) -- plot [domain=1:4] (\x,{ff(\x)});
+				
+				%estados termodinamicos
+				\node (e1) at (1,{ff(1)}) {};
+				\node (e2) at (4,{ff3(4)}) {};
+				\node (e2a) at (4,{ff(4)}) {};
+				
+				\filldraw (e1) circle (1.5pt) node[above left] {i};
+				\filldraw (e2) circle (1.5pt) node[above] {f};
+				
+				%coordenadas
+				\node[below] (vf) at (1,0) {$V_{i}$};
+				\draw[dashed] (1,0) -- (e1);
+				\node[below] (vi) at (4,0) {$V_{f}$};
+				\draw[dashed] (4,0) -- (e2);
+				
+				\node[left] (pi) at (0,1) {$p_{i}$};
+				\draw[dashed] (0,1) -- (e1);
+				\node[left] (pf) at (0,4) {$p_{f}$};
+				\draw[dashed] (0,4) -- (e2);
+				
+				%curva
+				\draw[line width=1.5pt,domain=1:4,variable=\x,color=red,->] plot (\x,{ff(\x)});
+				\draw[line width=1.5pt,color=red,->] (e2a) -- (e2);
+				
+				%eixos
+				\draw[line width=1.0pt,->] (0,0) -- (5,0) node[right] {V};
+				\draw[line width=1.0pt,->] (0,0) -- (0,5) node[above] {P};
+
+				%texto
+				\node[font=\Huge,color=blue]  at (2.5,0.5) {\Large $W$};
+				
+				\end{tikzpicture}
+				%\includegraphics[scale=0.35]{figuras/figura-6.png}
+				\end{subfigure}
+				\caption*{\footnotesize Trabalho realizado do estado i até f por três caminhos diferentes.}
+				\vspace*{-0.5cm}
+			\end{figure}
+%		\end{column}
+%	\end{columns}
+	\begin{corollary}
+		Um sistema pode ser levado de um estado a outro por vários caminhos diferentes, onde o trabalho e o calor podem assumir valores diferentes para cada caso.
+	\end{corollary}
+\end{frame}
+
+\begin{frame}{Convenção de sinais de calor e trabalho na termodinâmica}
+	\begin{block}{Convenção de sinais do calor}
+		\begin{itemize}
+			\item Se o sistema recebe calor da vizinhança então Q é positivo.
+			\item Se o sistema cede calor para a vizinhança então Q é negativo.
+		\end{itemize}	
+	\end{block}
+	\begin{block}{Convenção de sinais do trabalho}
+		\begin{itemize}
+			\item Se o trabalho está sendo realizado sobre o sistema então $\tau$ é negativo.
+			\item Se o sistema realiza trabalho sobre a vizinhança então $\tau$ é positivo.
+		\end{itemize}	
+	\end{block}
+\end{frame}
+
+\begin{frame}{Primeira lei da termodinâmica}
+	Quando um sistema vai de um estado i para o estado f e troca energia com a vizinhança, a sua energia interna aumenta ou diminui e a sua variação é dado por
+	\begin{equation*}
+		\Delta U = U_f-U_i=Q.
+	\end{equation*}
+	Se ele ao mesmo tempo realizar um trabalho infinitesimal $dW$, ou trabalho for feito sobre ele, a quantidade de energia interna que ele recebe ou cede é dado por
+	\begin{equation*}
+		\boxed{dU = dQ-dW.}
+	\end{equation*}
+	\begin{corollary}
+		A energia interna de um sistema tende a aumentar, se acrescentarmos energia na forma de calor Q, e a diminuir se removermos energia na forma de trabalho W.
+	\end{corollary}
+\end{frame}
+
+\begin{frame}{Processos termodinâmicos especiais}
+	\begin{enumerate}
+		\item[\ding{51}] Processos adiabáticos: Aquele que acontece tão depressa ou em um sistema tão bem isolado que não há troca de calor entre o sistema e a vizinhança, portanto $dQ=0$. Substituindo na primeira lei teremos
+		\begin{align*}
+			dU = -dW.
+		\end{align*}
+		\item[\ding{51}] Processos isocóricos: Se o volume de um sistema é mantido constante, ele não realiza trabalho, portanto $dW=0$. Substituindo na primeira lei teremos
+		\begin{align*}
+			dU = dQ.
+		\end{align*}
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}{Processos termodinâmicos especiais (continuação)}
+	\begin{enumerate}
+		\item[\ding{51}] Processos isotérmicos: A energia interna é uma grandeza que depende da temperatura, se a temperatura é mantida constante, a energia do sistema não muda, portanto $dU=0$. Substituindo na primeira lei teremos
+		\begin{align*}
+			dQ = dW.
+		\end{align*}
+		\item[\ding{51}] Expansão livre: São processos nos quais não há troca de calor com a vizinhança, onde $dQ=0$. Ao mesmo tempo nenhum trabalho é realizado sobre ele ($dW=0$).  Substituindo na primeira lei teremos
+		\begin{align*}
+			dU = 0.
+		\end{align*}
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}{Resumo dos casos especiais envolvendo a primeira lei da Termodinâmica}
+		\begin{table}
+		\centering
+		\caption*{\footnotesize A primeira Lei da Termodinâmica: Quatro casos especiais.}
+%		\vspace*{-0.5cm}
+		\begin{tabular}[c]{lll}
+			\hline
+			Processo & Restrição & Consequência \\
+			\hline
+			Adiabático & $dQ=0$ & $dU = -dW$ \\
+			Isovolumétrico & $dW=0$ & $dU = Q$ \\
+			Isotérmico & $dU=0$ & $dQ = dW$ \\
+			Isobárico & $P=cte$ & $dU = dQ-PdV$ \\
+			Expansão livre & $dQ=dW=0$ & $dU = 0$ \\
+			\hline					
+		\end{tabular}
+	\end{table}	
+\end{frame}
+
+\section{Apêndice}
+
+\subsection{}
+
+\begin{frame}{Observações\footnote{Este material está sujeito a modificações. Recomenda-se acompanhamento permanente.}}
+	\begin{center}
+		Esta apresentação está disponível para download no endereço\\
+		\href{https://flavianowilliams.github.io/education}{\textcolor{blue}{https://flavianowilliams.github.io/education}}
+	\end{center}
+\end{frame}
+%
+\begin{frame}{Referências e observações\footnote{Este material está sujeito a modificações. Recomenda-se acompanhamento permanente.}}
+	\bibliographystyle{jurabib}
+	\begin{thebibliography}{9}
+		\bibitem{halliday}D. Halliday, R. Resnick, J. Walker, Fundamentos de física. Mecânica, v.2, 10. ed., Rio de Janeiro, LTC (2016)
+	\end{thebibliography}
+\end{frame}
+
+\end{document}

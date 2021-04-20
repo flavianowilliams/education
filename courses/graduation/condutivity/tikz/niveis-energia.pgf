@@ -1,0 +1,52 @@
+﻿\begin{tikzpicture}[scale=1,transform shape, font=\Large]
+
+	\tkzInit[xmin=-4,xmax=4,ymin=0,ymax=9]
+	\tkzGrid[color=gray!50]
+	\tkzClip
+
+	\foreach \x in {1,2,...,8}{
+	\coordinate (\x) at (2,1*\x);
+	\draw (\x) --++ (-4,0);}
+	
+	\tkzText[right](1){1\textit{s}}
+	\tkzText[right](2){2\textit{s}}
+	\tkzText[right](3){2\textit{p}}
+	\tkzText[right](4){3\textit{s}}
+	\tkzText[right](5){3\textit{p}}
+	\tkzText[right](6){3\textit{d}}
+	\tkzText[right](7){4\textit{s}}
+	\tkzText[right](8){4\textit{p}}
+
+	\foreach \y in {1,2}{
+	\coordinate (\y) at (-1.5*0.4+\y*0.4,1+0.25);
+	\tkzDrawPoints[size=0.5cm](\y)}
+
+	\foreach \y in {1,2}{
+	\coordinate (\y) at (-1.5*0.4+\y*0.4,2+0.25);
+	\tkzDrawPoints[size=0.5cm](\y)}
+
+	\foreach \y in {1,2,3,4,5,6}{
+	\coordinate (\y) at ((-3.5*0.4+\y*0.4,3+0.25);
+	\tkzDrawPoints[size=0.5cm](\y)}
+
+	\foreach \y in {1,2}{
+	\coordinate (\y) at (-1.5*0.4+\y*0.4,4+0.25);
+	\tkzDrawPoints[size=0.5cm](\y)}
+
+	\foreach \y in {1,2,3,4,5,6}{
+	\coordinate (\y) at (-3.5*0.4+\y*0.4,5+0.25);
+	\tkzDrawPoints[size=0.5cm](\y)}
+
+	\foreach \y in {1,2,3,4,5,6,7,8,9,10}{
+	\coordinate (\y) at (-5.5*0.4+\y*0.4,6+0.25);
+	\tkzDrawPoints[size=0.5cm](\y)}
+
+	\foreach \y in {1}{
+	\coordinate (\y) at (0,7+0.25);
+	\tkzDrawPoints[size=0.5cm](\y)}
+
+	\tkzDefPoints{-2.5/2.5/p1}
+
+	\draw[->,line width=1pt] (p1) --++ (0,4) node [above, sloped,midway] {Energia};
+
+\end{tikzpicture}

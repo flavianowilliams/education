@@ -1,0 +1,29 @@
+﻿\begin{tikzpicture}[scale=1,transform shape, font=\Large]
+
+	\tkzInit[xmin=0,xmax=15,ymin=0,ymax=10]
+	\tkzGrid[color=gray!50]
+	\tkzClip[space=1.25]
+
+	\tkzDrawX[noticks,label=$v(m/s)$]
+	\tkzDrawY[noticks,above,label=$n(v)$]
+
+	\def\T{1.5}
+
+	\tkzFct[domain=0:15,color=red,line width=1pt]{0.75*(1/\T)**1.5*x**2*exp(-0.05*x**2/\T)}
+
+	\def\T{0.4}
+
+	\tkzFct[domain=0:15,color=blue,line width=1pt]{0.75*(1/\T)**1.5*x**2*exp(-0.05*x**2/\T)}
+
+		\tkzDefPointByFct[with=b](4)\tkzGetPoint{p1}
+		\tkzDefPointByFct[with=a](8)\tkzGetPoint{p2}
+	
+    	\tkzDefPoints{7/8/t1,11/4/t2}
+
+		\draw[->] (t1) -- (p1);
+	\tkzText[text centered,opacity=100,color=black,fill=gray!20](t1){T = 80 K}
+
+		\draw[->] (t2) -- (p2);
+	\tkzText[text centered,opacity=100,color=black,fill=gray!20](t2){T = 300 K}
+
+\end{tikzpicture}

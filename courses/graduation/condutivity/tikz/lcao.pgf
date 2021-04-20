@@ -1,0 +1,30 @@
+﻿\begin{tikzpicture}[scale=1,transform shape, font=\Large]
+
+	\tkzInit[xmin=-4,xmax=5,ymin=-3,ymax=3]
+%	\tkzGrid[color=gray!50]
+	\tkzClip
+
+	\tkzDefPoints{-2/0/A,3/0/B,-0.5/2/C,1.5/-2/D,1.5/2/c,-0.5/-2/d}
+
+	\draw (A) --++ (-1,0);
+	\draw (B) --++ (1,0);
+	\draw (C) --++ (2,0);
+	\draw (D) --++ (-2,0);
+
+	\draw[dashed] (A) -- (C);
+	\draw[dashed] (A) -- (d);
+	\draw[dashed] (B) -- (D);
+	\draw[dashed] (B) -- (c);
+
+	\tkzDefPoints{-2.5/0.25/p1,3.5/0.25/p2,0/-1.75/p3,1/-1.75/p4}
+
+	\tkzDrawPoints[size=0.75cm](p1,p2,p3,p4)
+
+	\tkzDefPoints{-3/0/t1,4/0/t2,0.5/-2/t3,0.5/2/t4}
+
+	\tkzText[left](t1){1\textit{s}}
+	\tkzText[right](t2){1\textit{s}}
+	\tkzText[below](t3){$\sigma$}
+	\tkzText[below](t4){$\sigma^*$}
+
+\end{tikzpicture}

@@ -1,0 +1,446 @@
+% Aula de Termodinâmica para o curso de Física II do ensino médio
+%
+\documentclass[brazil,aspectratio=169]{beamer}
+%
+%carregando preâmbulo
+\input{../../contrib/preamble}
+
+%Título
+
+\title[Termodinâmica-KTG]{Teoria cinética dos gases}
+
+% The main document
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Sumário}
+  \tableofcontents
+\end{frame}
+
+\section{Modelo cinético}
+
+\subsection{}
+
+\begin{frame}{O gás ideal}
+	\begin{enumerate}
+		\item [\ding{51}] O gás é constituído de moléculas de massa e volume desprezíveis em relação à distância de separação das mesmas;
+		\item[\ding{51}] O número de moléculas no gás é muito grande e elas estão distribuídas uniformemente em um elemento de volume $\Delta V$;
+		\item[\ding{51}] O movimento das moléculas obedece às leis de Newton e tem movimento desordenado devido às colisões;
+		\item[\ding{51}] O volume ocupado por cada molécula deve ser muito menor que o volume do recipiente, no qual elas são mantidas;
+		\item[\ding{51}] As colisões entre as moléculas são elásticas, com duração e alcance desprezíveis;
+		\item[\ding{51}] As direções e os sentidos das velocidades das moléculas estão distribuídas uniformemente.
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}{Pressão de um gás ideal}
+	\begin{columns}
+		\begin{column}[c]{0.7\textwidth}
+			Cada partícula poderá colidir com as paredes de um recipiente que a contém. Considerando que cada colisão levará um intervalo de tempo $\Delta t$, onde a partícula sofre uma variação do momento $\Delta p$. Considerando que a força $\vec{F}$ atuando nas paredes e em cada molécula constante durante a colisão, poderemos dizer que
+			\begin{align*}
+				F = \frac{\Delta p}{\Delta t}=-\frac{2mv_x}{\Delta t}.
+			\end{align*}
+			Se a colisão acontece em um cubo de aresta L teremos
+			\begin{align*}
+				\Delta t = \frac{2L}{v_x}.
+			\end{align*}
+		\end{column}
+		\begin{column}[c]{0.3\textwidth}
+			\begin{figure}
+				\begin{tikzpicture}[scale=0.65,transform shape]
+				
+				\tkzInit[xmin=-2,xmax=2.5,ymin=-0.5,ymax=6]
+				%\tkzGrid
+				\tkzClip
+				
+				%setup styles
+				\tikzstyle{s1}=[circle, radius=0.25, ball color=gray];
+				
+				%definindo cubo de aresta L
+				\tkzDefPoints{1/0.5/t1,1/2.5/t2}
+
+				\tkzDefSquare(t1,t2)\tkzGetPoints{t3}{t4}
+				\tkzDrawPolygon[dashed,color=blue](t1,t2,t3,t4)
+				
+				\draw (t4.north west) to[dim arrow={label=$L$}] (t3.north west);
+				
+				%parede
+				\fill [pattern = north west lines] (1.,0) rectangle (1.25,5);
+				\draw (1,0) -- (1,5);
+				
+				%paticulas
+				\node[s1] (n1) at (0,1) {};
+				\def\a{1}
+				\coordinate (p1) at ($(n1)+(1,\a)$);
+				
+				%particula 1
+				\draw[line width=1pt, ->] (n1) -- (${1-0.5}*(n1)+0.5*(p1)$);
+				\draw[dashed] (n1) -- (p1);
+				\draw[dashed,->] (p1) -- ($(n1)+(0,{2*\a})$);
+				
+				%particula 2
+				\node[s1] (n1) at (0,2) {};
+				\def\a{-0.75}
+				\coordinate (p1) at ($(n1)+(1,\a)$);
+				
+				\draw[line width=1pt, ->] (n1) -- (${1-0.5}*(n1)+0.5*(p1)$);
+				\draw[dashed] (n1) -- (p1);
+				\draw[dashed,->] (p1) -- ($(n1)+(0,{2*\a})$);
+				
+				%particula 3
+				\node[s1] (n1) at (0,3) {};
+				\def\a{1.25}
+				\coordinate (p1) at ($(n1)+(1,\a)$);
+				
+				\draw[line width=1pt, ->] (n1) -- (${1-0.5}*(n1)+0.5*(p1)$);
+				\draw[dashed] (n1) -- (p1) node[left=0.1,midway] {$\vec{p}_{i}$};
+				\draw[dashed,->] (p1) -- ($(n1)+(0,{2*\a})$) node[left,midway] {$\vec{p}_{f}$};
+				
+				%normal
+				\draw[line width=1pt, ->,color=red] (p1) -- ($(p1)-(+1,0)$) node[left] {$\vec{F}$};
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Moléculas colidindo com as paredes do recipiente.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Pressão de um gás ideal}
+	\begin{columns}
+		\begin{column}[t]{0.5\textwidth}
+			Da definição de pressão temos que $p=\left|\frac{F}{A}\right|$, onde $A$ é a área do parede compreendido pelo cubo. Portanto
+			\begin{align*}
+				P & = \frac{1}{A}\frac{2mv_x}{\Delta t},\\
+				P & = \frac{\bcancel{2}}{L^2}\left(\frac{mv^2_x}{\bcancel{2}L}\right).
+			\end{align*}
+			Para o caso de N partículas teremos
+			\begin{align*}
+				P & = \alert{N}m\sum\limits_{i=1}^{N}\frac{v^2_x}{\alert{N}L^3}.
+			\end{align*}
+		\end{column}
+		\begin{column}[t]{0.5\textwidth}
+			Podemos identificar o termo entre parêntesis como o valor médio de $v^2_x$,% e $L^3$ como o volume do cubo, portanto
+			\begin{align*}
+				P & = \frac{Nm}{L^3}\left<v^2_x\right>.
+			\end{align*}
+			Considerando que $v^2_x\approx v^2_y\approx v^2_z\approx \frac{1}{3}v^2$, e que $L^3$ é o volume do cubo, teremos
+			\begin{align*}
+				\Aboxed{p=\frac{1}{3}\rho \left<v^2\right>.}
+			\end{align*}
+			onde $\rho$ é a densidade do gás.
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Temperatura de um gás ideal}
+%	\begin{multicols}{2}
+	\begin{columns}
+		\begin{column}[t]{0.5\textwidth}
+			Da equação do gás ideal temos que $pV=nRT$. Substituindo a expressão da pressão obtida anteriormente teremos
+			\begin{align*}
+				Nk_BT & = V\left(\frac{1}{3}\rho \left<v^2\right>\right).\\
+%			\end{align*}
+%			Sabemos que $\rho=\frac{Nm}{V}$, substituindo
+%			\begin{align*}
+				Nk_BT & = \bcancel{V}\left(\frac{1}{3}\frac{Nm}{\bcancel{V}} \left<v^2\right>\right),
+%				3Nk_BT & = Nm\left<v^2\right>.
+			\end{align*}
+		\end{column}
+		\begin{column}[t]{0.5\textwidth}
+			\vspace*{-0.25cm}
+			\begin{equation*}
+				3Nk_BT = Nm\left<v^2\right>.
+			\end{equation*}
+			Dividindo por 2 poderemos identificar o termo do lado direito como a energia cinética média, onde $\left<K\right> = \frac{m\left<v^2\right>}{2}.$ Assim
+			\begin{equation*}
+				\boxed{\left<K\right> = \frac{3}{2}NRT.}
+			\end{equation*}
+		\end{column}
+	\end{columns}
+	\begin{corollary}
+		Em uma dada temperatura T, as moléculas de qualquer gás ideal, independentemente da massa de cada uma delas, têm a mesma energia cinética média.
+	\end{corollary}
+%	\end{multicols}
+\end{frame}
+
+\section{Princípio da equipartição da energia}
+
+\subsection{}
+
+\begin{frame}{Princípio da equipartição da energia}
+	Se a energia associada a qualquer grau de liberdade é uma função quadrática da variável que especifica, o grau de liberdade, o valor médio da energia correspondente a este grau de liberdade é igual a
+	\begin{equation*}
+		\boxed{\text{f graus de liberdade e N moléculas}.}
+	\end{equation*}
+	A fórmula para calcular a energia interna $U$ é dado por
+	\begin{equation*}
+		\boxed{U(T) = \frac{f}{2}Nk_BT=\frac{f}{2}nRT.}
+	\end{equation*}
+\end{frame}
+
+\begin{frame}{Energia interna de um gás diatômico}
+	Uma molécula diatômica pode apresentar os seguintes graus de liberdade:
+	\begin{columns}
+		\begin{column}[c]{0.6\textwidth}
+			\begin{enumerate}
+				\item [\ding{51}] Translação:
+				\begin{equation*}
+					K_{\text{trans}}=\frac{1}{2}mv_x^2+\frac{1}{2}mv_y^2+\frac{1}{2}mv_z^2=\frac{3}{2}Nk_BT.
+				\end{equation*}
+				\item [\ding{51}] Rotação: 
+				\begin{equation*}
+					K_{\text{rot}}=\frac{1}{2}I_x\omega_x^2+\frac{1}{2}I_y\omega_y^2=\frac{\bcancel{2}}{\bcancel{2}}Nk_BT.
+				\end{equation*}
+				\item [\ding{51}] Vibração: $K_{\text{vib}}=\frac{k}{2}r^2=\frac{1}{2}Nk_BT$.
+			\end{enumerate}
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.25]{figuras/graus-liberdade.png}
+				\caption*{\footnotesize Graus de liberdade da molécula diatômica \cite{halliday}.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Calor específico a volume constante}
+	\begin{columns}
+		\begin{column}[c]{0.7\textwidth}
+			É sabido experimentalmente que a temperatura de um objeto de massa m aumenta com a quantidade de calor que ele absorve ($dQ=ncdT$). Se a transformação acontece a volume constante implica que não há trabalho envolvido, e todo o calor é convertido em energia do gás ($dU=dQ_V$).
+			\begin{equation*}
+				dQ_V = dU = nc_VdT,
+			\end{equation*}
+			onde $c_V$ é calor específico a volume constante. Sabemos que $dU=\frac{f}{2}nRdT$,
+			\begin{equation*}
+				\boxed{c_V = \frac{f}{2}R,}
+			\end{equation*}
+		\end{column}
+		\begin{column}[c]{0.3\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.3]{figuras/capacidade-termica.png}
+				\caption*{\footnotesize Aumento da energia cinética das moléculas devido ao acréscimo $dK=dQ$ \cite{halliday}.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Calor específico a pressão constante}
+	\begin{columns}
+		\begin{column}[t]{0.5\textwidth}
+%	\begin{multicols}{2}
+			Considere um processo termodinâmico que o ocorre a pressão constante, onde o gás recebe uma quantidade de calor $dQ_p=nc_pdT$. Pela primeira lei da termodinâmica, sabemos que
+			\begin{NodesList}[margin=1.25cm]
+				\begin{align*}
+					dU & = dQ_P-dW,\AddNode\\
+					dU & = nc_PdT-PdV,\AddNode
+				\end{align*}
+				\LinkNodes{\tiny $dQ_p=nc_PdT$}
+			\end{NodesList}
+			Mas vimos anteriormente que $dU=nc_VdT$. No entanto, pela equação do gás ideal temos $PV=nRT$, onde
+		\end{column}
+		\begin{column}[t]{0.5\textwidth}
+			\vspace*{-0.75cm}
+			\begin{align*}
+				d(PV) & = nRdT,\\
+				PdV+Vdp & = nRdT,\\
+				PdV & = nRdT-Vdp.
+			\end{align*}
+			Substituindo $PdV$ e $dU$ teremos
+			\begin{align*}
+				nc_VdT & = nc_PdT-(nRdT-VdP)
+			\end{align*}
+			No entanto, como o processo ocorre a pressão constante $dP=0$, portanto
+			\begin{equation*}
+				\boxed{c_V=c_P-R.}
+			\end{equation*}
+		\end{column}
+	\end{columns}
+%	\end{multicols}
+\end{frame}
+
+\begin{frame}{Calor específico versus temperatura}
+	\begin{columns}
+		\begin{column}[c]{0.6\textwidth}
+			Como mostrado anteriormente, o calor específico aumenta com os graus de liberdade da molécula. Sabendo os graus de liberdade muda com o estado da matéria que ela se encontra.
+			\begin{footnotesize}
+				\begin{table}
+					\centering
+					\caption*{\footnotesize Graus de liberdade.}
+					\vspace*{-0.25cm}
+					\renewcommand{\arraystretch}{1.5}
+					\begin{tabular}[c]{cccccc}
+						\hline
+						Molécula & Transl. & Rot. & Total & C\textsubscript{V} & C\textsubscript{P} =  C\textsubscript{V}+R\\[2.5pt]
+						\hline
+						He & 3 & 3 & 0 & $\frac{3}{2}R$ & $\frac{5}{2}R$\\[2.5pt]
+						O2 & 3 & 2 & 5 & $\frac{5}{2}R$ & $\frac{7}{2}R$\\[2.5pt]
+						CH4 & 3 & 3 & 6 & $3R$ & $4R$\\[2.5pt]
+						\hline					
+					\end{tabular}
+					\renewcommand{\arraystretch}{1}
+				\end{table}				
+			\end{footnotesize}
+				%\includegraphics[scale=0.19]{figuras/figura-8.png}
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.4,transform shape, font=\Large]
+				
+				\tkzInit[xmin=0,xmax=12,ymin=0,ymax=9]
+				%\tkzGrid[color=gray!50]
+				\tkzClip[space=1]
+				
+				\tkzDrawX[noticks,label=T(K)]
+				\tkzDrawY[noticks,above,label=$c_V/R$]
+				
+				\tkzDefPoints{12/0/p1/,12/3/p2,12/6/p3,0/0/p4/,0/3/p5,0/6/p6,12/9/p7,0/9/p8}
+				
+				\draw[dashed] (p2) -- (p5);
+				\draw[dashed] (p3) -- (p6);
+				\draw[dashed] (p7) -- (p8);
+				
+				\draw[<->] (p1) -- (p2) node [sloped,above,midway] {Translação};
+				\draw[<->] (p2) -- (p3) node [sloped,above,midway] {Rotação};
+				\draw[<->] (p3) -- (p7) node [sloped,above,midway] {Vibração};
+				
+				\tkzDefPoints{0/3/t1,0/6/t2,0/9/t3}
+				
+				\tkzText[left,color=black,font=\huge](t1){$\frac{3}{2}$}
+				\tkzText[left,color=black,font=\huge](t2){$\frac{5}{2}$}
+				\tkzText[left,color=black,font=\huge](t3){$\frac{9}{2}$}
+				
+				\tkzFct[domain=-3:6,color=red,line width=1pt]{3+3/(1+exp(-2*x+6))}
+				\tkzFct[domain=6:15,color=red,line width=1pt]{5.85+3/(1+exp(-1.25*x+10.5))}
+
+				\end{tikzpicture}
+				\caption*{\footnotesize Calor específico c\textsubscript{V} em função da temperatura e os graus de liberdade.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Calor específico de sólidos cristalinos}
+	\begin{columns}
+		\begin{column}[c]{0.7\textwidth}
+			De acordo com o modelo da matéria, os átomos em uma rede cristalina estão conectados por vibrações harmônicas nas três direções. Dessa maneira, podemos imaginar que aproximadamente cada átomo possui três graus de liberdade associados ao movimento de translação, mais três graus de liberdade associados aos movimentos de vibração, portanto $f=3+3=6$. Assim
+			\begin{align*}
+				c_V & = \frac{6}{2}R,\\
+				\Aboxed{c_V & = 3R \approx \SI{24,9}{\joule\per\mol\per\kelvin}.}
+			\end{align*}
+		\end{column}
+		\begin{column}[c]{0.3\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.275]{figuras/calor-especifico-solido.png}
+				\caption*{\footnotesize Calores específicos de alguns sólidos cristalinos \cite{halliday}.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\section{Distribuição de Maxwell-Boltzmann}
+
+\subsection{}
+
+\begin{frame}{Distribuição de Velocidades de Maxwell-Boltzmann}
+	\begin{columns}
+		\begin{column}[c]{0.6\textwidth}
+%	\begin{multicols}{2}
+			A distribuição de velocidades é uma função que expressa a fração de moléculas, cujas velocidades estão entre v+dV. Maxwell e Boltzmann definiram essa distribuição como
+			\begin{equation*}
+				\boxed{n(v) = 4\pi N\left(\frac{m}{2\pi k_BT}\right)^{3/2}v^2e^{-mv^2/k_BT}.}
+			\end{equation*}
+			A distribuição de Maxwell-Boltzmann obedece a seguinte condição abaixo,
+			\begin{equation*}
+				\int_{-\infty}^{\infty}n(v)dv = 1.
+			\end{equation*}		
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.3,transform shape, font=\huge]
+				
+				\tkzInit[xmin=0,xmax=15,ymin=0,ymax=10]
+				%\tkzGrid[color=gray!50]
+				\tkzClip[space=1.6]
+				
+				\tkzDrawX[noticks,label=$v(m/s)$]
+				\tkzDrawY[noticks,above,label=$n(v)$]
+				
+				\def\T{1.5}
+				
+				\tkzFct[domain=0:15,color=red,line width=1pt]{0.75*(1/\T)**1.5*x**2*exp(-0.05*x**2/\T)}
+				
+				\def\T{0.4}
+				
+				\tkzFct[domain=0:15,color=blue,line width=1pt]{0.75*(1/\T)**1.5*x**2*exp(-0.05*x**2/\T)}
+				
+				\tkzDefPointByFct[with=b](4)\tkzGetPoint{p1}
+				\tkzDefPointByFct[with=a](8)\tkzGetPoint{p2}
+				
+				\tkzDefPoints{7/8/t1,11/4/t2}
+				
+				\draw[->] (t1) -- (p1);
+				\tkzText[text centered,opacity=100,color=black,fill=gray!20](t1){T = 80 K}
+				
+				\draw[->] (t2) -- (p2);
+				\tkzText[text centered,opacity=100,color=black,fill=gray!20](t2){T = 300 K}
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Distribuição de velocidades para duas temperaturas diferentes.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+%	\end{multicols}
+\end{frame}
+
+\begin{frame}{Valor quadrático médio da velocidade}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			Em mecânica estatística usamos a expressão abaixo para calcular o valor médio de uma grandeza que possui valores contínuos,
+			\begin{equation*}
+				\left<A\right> = \frac{\int_{-\infty}^{\infty}n(A)vdv}{\int_{-\infty}^{\infty}n(A)dA}.
+			\end{equation*}
+			Considerando v\textsuperscript{2} como o valor a ser determinado, usamos a distribuição de Maxwell-Boltzmann para representar $n(v)$. Portanto
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\vspace*{-0.25cm}
+			\begin{equation*}
+				\left<v^2\right> = \int_{-\infty}^{\infty}4\pi N\left(\frac{m}{2\pi k_BT}\right)v^4e^{-mv^2/k_BT}dv,
+			\end{equation*}
+			onde usamos a condição $\int_{-\infty}^{\infty}n(v)dv = 1$. A integral acima possui resultado analítico, cujo valor é
+			\begin{align*}
+				\left<v^2\right> & = 3\frac{2k_BT}{2m},\\
+				\frac{m}{2}\left<v^2\right> & = \frac{3}{2}k_BT,
+			\end{align*}
+			que resulta na energia interna do gás.
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\section{Apêndice}
+
+\subsection{}
+
+\begin{frame}{Observações\footnote{Este material está sujeito a modificações. Recomenda-se acompanhamento permanente.}}
+	\begin{center}
+		Esta apresentação está disponível para download no endereço\\
+		\href{https://flavianowilliams.github.io/education}{\textcolor{blue}{https://flavianowilliams.github.io/education}}
+	\end{center}
+\end{frame}
+%
+\begin{frame}{Referências}
+	\bibliographystyle{jurabib}
+	\begin{thebibliography}{9}
+		\bibitem{halliday}D. Halliday, R. Resnick, J. Walker, Fundamentos de física. Mecânica, v.2, 10. ed., Rio de Janeiro, LTC (2016)
+	\end{thebibliography}
+\end{frame}
+
+\end{document}

@@ -1,0 +1,28 @@
+﻿\begin{tikzpicture}[scale=1,transform shape, font=\Large]
+
+		\tkzInit[xmin=0,xmax=15,ymin=0,ymax=9]
+		\tkzGrid[color=gray!50]
+		\tkzClip[space=1]
+
+		\tkzDrawX[noticks,label=T(K)]
+		\tkzDrawY[noticks,above,label=$c_V/R$]
+
+		\tkzFct[domain=-3:6]{3+3/(1+exp(-2*x+6))}
+		\tkzFct[domain=6:15]{6+3/(1+exp(-1.25*x+14))}
+
+		\tkzDefPoints{15/0/p1/,15/3/p2,15/6/p3,0/0/p4/,0/3/p5,0/6/p6,15/9/p7}
+
+		\draw[dashed] (p2) -- (p5);
+		\draw[dashed] (p3) -- (p6);
+
+		\draw[<->] (p1) -- (p2) node [sloped,above,midway] {Translacao};
+		\draw[<->] (p2) -- (p3) node [sloped,above,midway] {Rotacao};
+		\draw[<->] (p3) -- (p7) node [sloped,above,midway] {Vibracao};
+
+		\tkzDefPoints{0/3/t1,0/6/t2,0/9/t3}
+
+		\tkzText[left](t1){$\frac{3}{2}$}
+		\tkzText[left](t2){$\frac{5}{2}$}
+		\tkzText[left](t3){$\frac{9}{2}$}
+
+\end{tikzpicture}

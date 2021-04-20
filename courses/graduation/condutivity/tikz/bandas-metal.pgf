@@ -1,0 +1,27 @@
+﻿				\begin{tikzpicture}[scale=1.5,transform shape, font=\Large]
+				
+				\tkzInit[xmin=0,xmax=2,ymin=-3,ymax=3]
+				\tkzGrid[color=gray!50]
+				\tkzClip
+
+				\tkzDefPoints{0/-0.15/A,0/0.15/B}
+				
+				\foreach \x in {1,2,...,40}{
+					\draw[color=red,line width=1pt] ($(B)+\x*(0,0.05)$) --++ (2,0);}
+				
+				\foreach \x in {1,2,...,17}{
+					\draw[color=blue,line width=1pt] ($(A)+\x*(0,-0.05)$) --++ (2,0);}
+				
+				\foreach \x in {25,26,...,35}{
+					\draw[color=blue,line width=1pt] ($(A)+\x*(0,-0.05)$) --++ (2,0);}
+				
+				\foreach \x in {43,44,...,49}{
+					\draw[color=blue,line width=1pt] ($(A)+\x*(0,-0.05)$) --++ (2,0);}
+				
+				\foreach \x in {0,2,4}{
+				\coordinate (\x) at ($(0.5,0.3)+\x*(0.25,0)$,0);
+				\tkzDrawPoints[size=0.75cm,fill=blue](\x)
+				\coordinate (\x) at ($(0.5,-0.3)+\x*(0.25,0)$,0);
+				\tkzDrawPoints[size=0.75cm,fill=red](\x)}
+
+				\end{tikzpicture}

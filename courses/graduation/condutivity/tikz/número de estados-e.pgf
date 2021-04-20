@@ -1,0 +1,52 @@
+﻿\begin{tikzpicture}[scale=1,transform shape, font=\Large]
+
+	\tkzInit[xmin=0,xmax=10,ymin=0,ymax=4]
+	\tkzGrid[color=gray!50]
+%	\tkzClip[space=1.2]
+
+	\begin{scope}[shift={(0,0)}]
+
+	\tkzDrawX[label=E (eV)]
+	\tkzDrawY[above,label=$N_o (E)$]
+
+	\tkzDefPoints{0/0/O}
+
+	\tkzFct[domain=0:4,color=red]{1.25*sqrt(x)}
+
+	\pgfmathsetmacro{\px}{1.25*sqrt(4)}
+
+	\tkzDefPoints{10/0/p1,4/0/p4,9.5/3.5/t}
+
+	\draw[color=red,line width=1pt] (p4) -- (4,\px);
+	\draw[color=red,line width=1pt] (p4) -- (p1);
+
+	\tkzText[color=black](t){(a)}
+
+	\end{scope}
+
+	\begin{scope}[shift={(0,-7)}]
+
+	\tkzInit[xmin=0,xmax=10,ymin=0,ymax=4]
+	\tkzGrid[color=gray!50]
+%	\tkzClip[space=1.2]
+
+	\tkzDrawX[label=E (eV)]
+	\tkzDrawY[above,label=$N_o (E)$]
+
+	\tkzDefPoints{0/0/O}
+
+	\tkzFct[domain=0:4,color=blue,dashed]{1.25*sqrt(x)}
+	\tkzFct[domain=0:10,color=red]{1.25*sqrt(x)/(exp(x-4)/1+1)}
+
+	\pgfmathsetmacro{\px}{1.25*sqrt(4)}
+
+	\tkzDefPoints{10/0/p1,4/0/p4,9.5/3.5/t}
+
+%	\draw[color=red,line width=1pt] (p4) -- (4,\px);
+%	\draw[color=red,line width=1pt] (p4) -- (p1);
+
+	\tkzText[color=black](t){(b)}
+
+	\end{scope}
+
+\end{tikzpicture}

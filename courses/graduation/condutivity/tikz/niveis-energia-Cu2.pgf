@@ -1,0 +1,44 @@
+﻿				\begin{tikzpicture}[scale=1,transform shape, font=\Large]
+				
+				\tkzInit[xmin=-4,xmax=5,ymin=-3,ymax=3]
+				\tkzGrid[color=gray!50]
+				\tkzClip
+				
+				\tkzDefPoints{-3/2/A,-1/2/a,-3/-2/B,-1/-2/b,3/0/C,4/0/c}
+				\tkzDefPoints{0/0/D,2/0/d,0/-1.5/E,2/-1.5/e,0/1.5/F,2/1.5/f}
+				
+				\draw[color=black,line width=1pt] (a) -- (A) node [left] {$\sigma^*$};
+
+				\draw[color=black,line width=1pt] (b) -- (B) node [left] {$\sigma$};
+
+				\draw[color=black,line width=1pt] (C) -- (c) node [right] {4\textit{s}};
+
+				\draw[color=blue,line width=1pt] (E) -- (e) node [below,midway] {$\sigma$};
+				\draw[color=blue,line width=1pt] (D) -- (d) node [below,midway] {$\sigma$};
+				\draw[color=red,line width=1pt] (F) -- (f) node [below,midway] {$\sigma^*$};
+
+				%conectores
+
+				\draw[dashed] (a) -- (D);
+				\draw[dashed] (a) -- (E);
+				\draw[dashed] (a) -- (F);
+				\draw[dashed] (b) -- (D);
+				\draw[dashed] (b) -- (E);
+				\draw[dashed] (b) -- (F);
+				\draw[dashed] (C) -- (d);
+				\draw[dashed] (C) -- (e);
+				\draw[dashed] (C) -- (f);
+				
+				%eletrons
+
+				\coordinate (p1) at ($(B)+(0.75,0.25)$);
+				\coordinate (p2) at ($(B)+(1.25,0.25)$);
+				\coordinate (p3) at ($(C)+(0.5,0.25)$);
+				\coordinate (p4) at ($(D)+(1,0.25)$);
+				\coordinate (p5) at ($(E)+(0.75,0.25)$);
+				\coordinate (p6) at ($(E)+(1.25,0.25)$);
+
+				\tkzDrawPoints[size=0.75cm](p1,p2,p3)
+				\tkzDrawPoints[size=0.75cm,fill=blue](p4,p5,p6)
+
+				\end{tikzpicture}

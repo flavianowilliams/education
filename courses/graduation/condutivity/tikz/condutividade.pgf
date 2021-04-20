@@ -1,0 +1,36 @@
+﻿\begin{tikzpicture}[scale=1,transform shape, font=\Large]
+
+	\tkzInit[xmin=0,xmax=10,ymin=0,ymax=4]
+	\tkzGrid[color=gray!50]
+	\tkzClip[space=1.2]
+
+	\tkzDrawX[label=E (eV)]
+	\tkzDrawY[above,label=P (E)]
+
+	\tkzDefPoints{0/0/O}
+
+	\pgfmathsetmacro{\T}{0.1};
+	\tkzFct[domain=0:12,color=red]{4/(exp((x-4)/\T)+1)}
+
+	\pgfmathsetmacro{\T}{0.4};
+	\tkzFct[domain=0:12,color=blue]{4/(exp((x-4)/\T)+1)}
+
+	\tkzLegend[draw,font=\small,line=true](8,3){solid/1pt/blue/1000 K,solid/1pt/red/500 K,solid/1pt/black/0 K}
+
+	\tkzDefPoints{0/4/p1,0/0/p2,0/2/p3,4/0/p4,4/2/p5}
+
+	\tkzLabelPoint[left,font=\Large](p1){1}
+	\tkzLabelPoint[left,font=\Large](p2){0}
+	\tkzLabelPoint[left,font=\Large](p3){0,5}
+	\tkzLabelPoint[below,font=\Large](p4){E\textsubscript{F}}
+
+	\draw[dotted] (p5) -- (p3);
+	\draw[dotted] (p5) -- (p4);
+
+	\tkzDefPoints{4/4/k1,10/0/k2}
+
+	\draw (p1) -- (k1);
+	\draw (k1) -- (p4);
+	\draw (p4) -- (k2);
+
+\end{tikzpicture}

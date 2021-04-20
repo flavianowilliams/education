@@ -1,0 +1,871 @@
+% Aula de física quântica para o curso de Física II da graduação
+%
+\documentclass[brazil,aspectratio=169]{beamer}
+%
+%carregando preâmbulo
+\input{../../contrib/preamble}
+
+%Título
+
+\title[Física moderna-CDT]{Condutividade}
+
+% The main document
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Sumário}
+  \tableofcontents
+\end{frame}
+
+\section{Rede cristalina}
+
+\subsection{}
+
+\begin{frame}{Sólidos cristalinos}
+	\begin{columns}
+		\begin{column}[c]{0.6\textwidth}
+			A estrutura cristalina de um sólido é a designação dada ao conjunto de propriedades que resultam da forma como estão espacialmente ordenados os átomos ou moléculas que o constituem. A rede cristalina é representada por uma estrutura única chamada célula unitária, e a replicação dessa célula unitária forma a rede cristalina. A figura ao lado mostra a rede cristalina do NaCl, onde temos Na na origem e Cl em $a\frac{\widehat{x}}{2}$.
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.5]{figuras/NaCl.png}
+				\caption*{\footnotesize Rede cristalina do NaCl.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Mar de elétrons}
+	\begin{columns}
+		\begin{column}[c]{0.6\textwidth}
+			Os sólidos cristalinos possuem normalmente poucos elétrons na sua camada de valência, além de estarem pouco atraídos pelo núcleo, o que facilita que esses elétrons da última camada escapem com certa facilidade, tornando elétrons livres que transitam entre os átomos do reticulado. Os átomos que perdem os elétrons se tornam cátions, mas eles podem logo receber elétrons e voltar a se tornar átomos neutros. Esse efeito gera uma mobilidade de cargas no material, o que justifica a sua condutividade elétrica.
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.25]{figuras/mar-de-eletrons.jpeg}
+				\caption*{\footnotesize Mar de elétrons livres \cite{mardeletrons}.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Distribuição eletrônica de um átomo}
+	\begin{columns}
+		\begin{column}[c]{0.6\textwidth}
+			De acordo com a mecânica quântica, em um átomo, os elétrons são distribuídos em níveis e subníveis de energia chamados orbitais atômicos. Cada orbital pode ocupar no máximo dois elétrons (incluindo as contribuições de spin). A ocupação procede-se preenchendo cada nível com dois elétrons, começando do menos energético e subindo de acordo com a energia,
+			\begin{equation*}
+				Cu^{29}=1s^22s^22p^63s^23p^63d^{10}4s^1.
+			\end{equation*}
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.5,transform shape, font=\Large]
+				
+				\tkzInit[xmin=-4,xmax=4,ymin=0,ymax=9]
+				%\tkzGrid[color=gray!50]
+				\tkzClip
+				
+				\foreach \x in {1,2,...,8}{
+					\coordinate (\x) at (2,1*\x);
+					\draw (\x) --++ (-4,0);}
+				
+				\tkzText[right](1){1\textit{s}}
+				\tkzText[right](2){2\textit{s}}
+				\tkzText[right](3){2\textit{p}}
+				\tkzText[right](4){3\textit{s}}
+				\tkzText[right](5){3\textit{p}}
+				\tkzText[right](6){3\textit{d}}
+				\tkzText[right](7){4\textit{s}}
+				\tkzText[right](8){4\textit{p}}
+				
+				\foreach \y in {1,2}{
+					\coordinate (\y) at (-1.5*0.4+\y*0.4,1+0.25);
+					\tkzDrawPoints[size=0.5cm](\y)}
+				
+				\foreach \y in {1,2}{
+					\coordinate (\y) at (-1.5*0.4+\y*0.4,2+0.25);
+					\tkzDrawPoints[size=0.5cm](\y)}
+				
+				\foreach \y in {1,2,3,4,5,6}{
+					\coordinate (\y) at ((-3.5*0.4+\y*0.4,3+0.25);
+					\tkzDrawPoints[size=0.5cm](\y)}
+				
+				\foreach \y in {1,2}{
+					\coordinate (\y) at (-1.5*0.4+\y*0.4,4+0.25);
+					\tkzDrawPoints[size=0.5cm](\y)}
+				
+				\foreach \y in {1,2,3,4,5,6}{
+					\coordinate (\y) at (-3.5*0.4+\y*0.4,5+0.25);
+					\tkzDrawPoints[size=0.5cm](\y)}
+				
+				\foreach \y in {1,2,3,4,5,6,7,8,9,10}{
+					\coordinate (\y) at (-5.5*0.4+\y*0.4,6+0.25);
+					\tkzDrawPoints[size=0.5cm](\y)}
+				
+				\foreach \y in {1}{
+					\coordinate (\y) at (0,7+0.25);
+					\tkzDrawPoints[size=0.5cm](\y)}
+				
+				\tkzDefPoints{-2.5/2.5/p1}
+				
+				\draw[->,line width=1pt] (p1) --++ (0,4) node [above, sloped,midway] {Energia};
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Distribuição nos níveis de energia de 29 elétrons de um átomo de cobre.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Combinação linear de orbitais atômicos (LCAO)}
+	\begin{columns}
+		\begin{column}[c]{0.6\textwidth}
+			As ligações químicas são realizadas através dos elétrons localizados mais afastados do núcleo, no nível mais energético representado pela camada de valência. Dois átomos ao se aproximarem para formar a molécula, os seus orbitais podem se combinar, onde os orbitais moleculares são construídos a partir  da combinação linear entre os orbitais atômicos. De acordo com a teoria LCAO, a combinação de dois orbitais s reproduz um orbital menos energético chamado \alert{ligante} e outro mais energético chamado \alert{anti-ligante}.
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.6,transform shape, font=\Large]
+				
+				\tkzInit[xmin=-5,xmax=5,ymin=-3,ymax=3]
+					%\tkzGrid[color=gray!50]
+				\tkzClip
+				
+				\draw[->,line width=1.5pt] (-4,-2) --++(0,4) node [above,midway,sloped] {Energia};
+
+				\tkzDefPoints{-2/0/A,3/0/B,-3/0/a,4/0/b,-0.5/2/C,1.5/-2/D,1.5/2/c,-0.5/-2/d}
+				
+				\draw[color=black,line width=1pt] (A) -- (a) node [left] {4\textit{s}};
+				\draw[color=black,line width=1pt] (B) -- (b) node [right] {4\textit{s}};
+				\draw[color=red,line width=1pt] (C) --++ (2,0) node [below,midway] {$\sigma^*$};
+				\draw[color=blue,line width=1pt] (D) --++ (-2,0) node [below,midway] {$\sigma$};
+				
+				\draw[dashed] (A) -- (C);
+				\draw[dashed] (A) -- (d);
+				\draw[dashed] (B) -- (D);
+				\draw[dashed] (B) -- (c);
+				
+				\tkzDefPoints{-2.5/0.25/p1,3.5/0.25/p2,0/-1.75/p3,1/-1.75/p4}
+				
+				\tkzDrawPoints[size=0.75cm](p1,p2,p3,p4)
+				
+				\tkzDefPoints{-3/0/t1,4/0/t2,0.5/-2/t3,0.5/2/t4}
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Estados ligante ($\sigma$) e anti-ligante $(\sigma^*)$ do cluster $Cu_2$ formados a partir da combinação dos orbitais 4\textit{s}.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Níveis de energia do Cu\textsubscript{3}}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			Os orbitais $\sigma$ e $\sigma^*$ do cluster $Cu_2$, podem ser combinados com os orbital $4s$ de outro átomo de Cu, formando quatro orbitais (dois $\sigma$ e dois $\sigma^*$), onde teremos dois orbitais ocupados e os demais desocupados. Podemos repetir essa operação para mais um átomo de Cu resultando em dois níveis ocupados e os demais desocupados. À medida que as combinações são realizadas em sequência, a distância entre os níveis de energia diminui.
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.6,transform shape, font=\Large]
+				
+				\tkzInit[xmin=-5,xmax=5,ymin=-3,ymax=3]
+				%\tkzGrid[color=gray!50]
+				\tkzClip
+				
+				\draw[->,line width=1.5pt] (-4,-2) --++(0,4) node [above,midway,sloped] {Energia};
+
+				\tkzDefPoints{-3/2/A,-1/2/a,-3/-2/B,-1/-2/b,3/0/C,4/0/c}
+				\tkzDefPoints{0/0/D,2/0/d,0/-2.5/E,2/-2.5/e,0/2.5/F,2/2.5/f}
+				
+				\draw[color=black,line width=1pt] (a) -- (A) node [left] {$\sigma^*$};
+				
+				\draw[color=black,line width=1pt] (b) -- (B) node [left] {$\sigma$};
+				
+				\draw[color=black,line width=1pt] (C) -- (c) node [right] {4\textit{s}};
+				
+				\draw[color=blue,line width=1pt] (E) -- (e);% node [below,midway] {$\sigma$};
+				\draw[color=blue,line width=1pt] (D) -- (d);% node [below,midway] {$\sigma$};
+				\draw[color=red,line width=1pt] (F) -- (f);% node [below,midway] {$\sigma^*$};
+				
+				%conectores
+				
+				\draw[dashed] (a) -- (D);
+				\draw[dashed] (a) -- (E);
+				\draw[dashed] (a) -- (F);
+				\draw[dashed] (b) -- (D);
+				\draw[dashed] (b) -- (E);
+				\draw[dashed] (b) -- (F);
+				\draw[dashed] (C) -- (d);
+				\draw[dashed] (C) -- (e);
+				\draw[dashed] (C) -- (f);
+				
+				%eletrons
+				
+				\coordinate (p1) at ($(B)+(0.75,0.25)$);
+				\coordinate (p2) at ($(B)+(1.25,0.25)$);
+				\coordinate (p3) at ($(C)+(0.5,0.25)$);
+				\coordinate (p4) at ($(D)+(1,0.25)$);
+				\coordinate (p5) at ($(E)+(0.75,0.25)$);
+				\coordinate (p6) at ($(E)+(1.25,0.25)$);
+				
+				\tkzDrawPoints[size=0.75cm](p1,p2,p3)
+				\tkzDrawPoints[size=0.75cm,fill=blue](p4,p5,p6)
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Estados ligante ($\sigma$) e anti-ligante $(\sigma^*)$ do cluster $Cu_3$ formados a partir da combinação dos orbitais 1\textit{s}, $\sigma$ e $\sigma^*$.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Níveis de energia de um sólido cristalino}
+	\begin{columns}
+		\begin{column}[c]{0.65\textwidth}
+	\begin{figure}
+		\centering
+		\begin{tikzpicture}[scale=0.5,transform shape, font=\Large]
+		
+		\tkzInit[xmin=-2,xmax=15,ymin=-4,ymax=4]
+		%\tkzGrid[color=gray!50]
+		\tkzClip
+		
+		\def\y{-0.5}
+		
+		\tkzDefPoints{-1/0/O,15/0/O'}
+		
+		\draw[->,line width=1.5pt] (-1,-3) --++(0,6) node [above,midway,sloped] {Energia};
+		
+		\draw[dashed] (O) -- (O');
+		
+		\begin{scope}[shift={(0,\y)}]
+		
+		\tkzDefPoints{0/0/A}
+		
+		\draw[color=black,line width=1pt] (A) --++ (2,0) node [below,midway] {4\textsubscript{s}};
+		
+		%eletrons
+		
+		\coordinate (p1) at ($(A)+(1.0,0.25)$);
+		\coordinate (p2) at ($(A)+(1.25,0.25)$);
+		
+		\tkzDrawPoints[size=0.75cm](p1)
+		
+		\tkzDefPoint(1,-3.5){t}
+		
+		\tkzText[above](t){Cu\textsubscript{1}}
+		
+		\end{scope}				
+		
+		\begin{scope}[shift={(3,\y)}]
+		
+		\tkzDefPoints{0/-1/A,0/1/B}
+		
+		\draw[color=blue,line width=1pt] (A) --++ (2,0) node [below,midway] {$\sigma$};
+		\draw[color=red,line width=1pt] (B) --++ (2,0) node [below,midway] {$\sigma^*$};
+		
+		%eletrons
+		
+		\coordinate (p1) at ($(A)+(0.75,0.25)$);
+		\coordinate (p2) at ($(A)+(1.25,0.25)$);
+		
+		\tkzDrawPoints[size=0.75cm,fill=blue](p1,p2)
+		
+		\tkzDefPoint(1,-3.5){t}
+		
+		\tkzText[above](t){Cu\textsubscript{2}}
+		
+		\end{scope}				
+		
+		\begin{scope}[shift={(6,\y)}]
+		
+		\tkzDefPoints{0/0/A,0/0/B}
+		
+		\foreach \x in {1}{
+			\coordinate (p1) at ($(A)+\x*(0,-1.25)$);
+			\coordinate (p2) at ($(B)+\x*(0,1.25)$);
+			\coordinate (p1a) at ($(p1)+(0.75,0.25)$);
+			\coordinate (p2a) at ($(p1)+(1.25,0.25)$);
+			\draw[color=blue,line width=1pt] (p1) --++ (2,0);
+			\draw[color=red,line width=1pt] (p2) --++ (2,0);
+			\tkzDrawPoints[size=0.75cm,fill=blue](p1a,p2a)}
+		
+		\coordinate (p1) at (0,0);
+		\coordinate (p1a) at (1,0.25);
+		\draw[color=blue,line width=1pt] (p1) --++ (2,0);
+		\tkzDrawPoints[size=0.75cm,fill=blue](p1a)
+		
+		\tkzDefPoint(1,-3.5){t}
+		
+		\tkzText[above](t){Cu\textsubscript{4}}
+		
+		\end{scope}				
+		
+		\begin{scope}[shift={(9,\y)}]
+		
+		\tkzDefPoints{0/-0.75/A,0/0.75/B}
+		
+		\foreach \x in {1,2}{
+			\coordinate (p1) at ($(A)+\x*(0,-0.75)$);
+			\coordinate (p2) at ($(B)+\x*(0,0.75)$);
+			\coordinate (p1a) at ($(p1)+(0.75,0.25)$);
+			\coordinate (p2a) at ($(p1)+(1.25,0.25)$);
+			\draw[color=blue,line width=1pt] (p1) --++ (2,0);
+			\draw[color=red,line width=1pt] (p2) --++ (2,0);
+			\tkzDrawPoints[size=0.75cm,fill=blue](p1a,p2a)}
+		
+		\tkzDefPoint(1,-3.5){t}
+		\tkzDefPoint(3,-3.5){t2}
+		
+		\tkzText[above](t){Cu\textsubscript{4}}
+		\tkzText[above](t2){$\cdots$}
+		
+		\end{scope}				
+		
+		\begin{scope}[shift={(13,0)}]
+		
+		\tkzDefPoints{0/-0.5/A,0/0.5/B}
+		
+		\foreach \x in {1,2,...,20}{
+			\draw[color=red,line width=1pt] ($(B)+\x*(0,0.1)$) --++ (2,0);}
+		
+		\foreach \x in {1,2,...,10}{
+			\draw[color=blue,line width=1pt] ($(A)+\x*(0,-0.1)$) --++ (2,0);}
+		
+		\foreach \x in {15,16,...,20}{
+			\draw[color=blue,line width=1pt] ($(A)+\x*(0,-0.1)$) --++ (2,0);}
+		
+		\foreach \x in {25,26,...,27}{
+			\draw[color=blue,line width=1pt] ($(A)+\x*(0,-0.1)$) --++ (2,0);}
+		
+		\tkzDefPoints{1/-4/t,0/-2/t2,0/1.5/t3}
+		
+		\tkzText[above](t){Cu\textsubscript{N}}
+		\tkzText[above,rotate=90](t2){\small Valência}
+		\tkzText[above,rotate=90](t3){\small Conducao}
+		
+		\end{scope}				
+		
+		\end{tikzpicture}
+		\caption*{\footnotesize Bandas de valência e condução obtidas pelo método LCAO.}
+	\end{figure}
+		\end{column}
+		\begin{column}[c]{0.35\textwidth}
+			Repetindo o procedimento anterior N vezes teremos diversos níveis muito próximos formando o que chamamos bandas de energia. A combinação dos níveis ocupados forma a banda de valência (BV), enquanto que a combinação dos níveis desocupados formam a banda de condução (BC).
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\section{Categorias de acordo com a condutividade}
+
+\subsection{}
+
+\begin{frame}{Propriedades elétricas de um sólido cristalino}
+	Podemos classificar os sólidos cristalinos, do ponto de vista elétrico, de acordo com três propriedades básicas:
+	\begin{enumerate}
+		\item [\ding{51}] Resistividade ($\rho$):\textit{A resistividade mede a capacidade resistiva do material em conduzir eletricidade.}
+		\item[\ding{51}] Coeficiente de temperatura de resistividade ($\alpha$): \textit{Mede a taxa de variação da resistividade do material em relação ao aumento da temperatura.}
+		\item[\ding{51}] Concentração de portadores de carga (n): \textit{É definida como o número de portadores de carga por unidade de volume.}
+	\end{enumerate}
+	A partir dessas três propriedade podemos dividir os materiais em três categorias: \alert{isolantes, metais e semimetais}.
+\end{frame}
+
+\begin{frame}{Isolante}
+	Devido ao impossibilidade de movimento dos elétrons na BV, dizemos que uma substância é isolante se a aplicação de uma ddp não produz uma corrente elétrica.
+	\begin{columns}
+		\begin{column}[c]{0.35\textwidth}
+			Nos materiais, a diferença de energia entre as bandas de valência e condução é chamado \alert{gap} de energia, e o nível de energia mais alto da banda de valência é chamado nível de Fermi, onde a energia desse nível recebe o nome de energia de Fermi.
+		\end{column}
+		\begin{column}[c]{0.65\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.5,transform shape, font=\Large]
+				
+				\tkzInit[xmin=-2,xmax=15,ymin=-4,ymax=4]
+				%\tkzGrid[color=gray!50]
+				\tkzClip
+				
+				\def\y{-0.5}
+				
+				\tkzDefPoints{-1/0/O,15/0/O'}
+				
+				\draw[->,line width=1.5pt] (-1,-3) --++(0,6) node [above,midway,sloped] {Energia};
+				
+				\draw[dashed] (O) -- (O');
+				
+				\begin{scope}[shift={(0,\y)}]
+				
+				\tkzDefPoints{0/0/A}
+				
+				\draw[color=black,line width=1pt] (A) --++ (2,0) node [below,midway] {4\textsubscript{s}};
+				
+				%eletrons
+				
+				\coordinate (p1) at ($(A)+(1.0,0.25)$);
+				\coordinate (p2) at ($(A)+(1.25,0.25)$);
+				
+				\tkzDrawPoints[size=0.75cm](p1)
+				
+				\tkzDefPoint(1,-3.5){t}
+				
+				\tkzText[above](t){Cu\textsubscript{1}}
+				
+				\end{scope}				
+				
+				\begin{scope}[shift={(3,\y)}]
+				
+				\tkzDefPoints{0/-1/A,0/1/B}
+				
+				\draw[color=blue,line width=1pt] (A) --++ (2,0) node [below,midway] {$\sigma$};
+				\draw[color=red,line width=1pt] (B) --++ (2,0) node [below,midway] {$\sigma^*$};
+				
+				%eletrons
+				
+				\coordinate (p1) at ($(A)+(0.75,0.25)$);
+				\coordinate (p2) at ($(A)+(1.25,0.25)$);
+				
+				\tkzDrawPoints[size=0.75cm,fill=blue](p1,p2)
+				
+				\tkzDefPoint(1,-3.5){t}
+				
+				\tkzText[above](t){Cu\textsubscript{2}}
+				
+				\end{scope}				
+				
+				\begin{scope}[shift={(6,\y)}]
+				
+				\tkzDefPoints{0/0/A,0/0/B}
+				
+				\foreach \x in {1}{
+					\coordinate (p1) at ($(A)+\x*(0,-1.25)$);
+					\coordinate (p2) at ($(B)+\x*(0,1.25)$);
+					\coordinate (p1a) at ($(p1)+(0.75,0.25)$);
+					\coordinate (p2a) at ($(p1)+(1.25,0.25)$);
+					\draw[color=blue,line width=1pt] (p1) --++ (2,0);
+					\draw[color=red,line width=1pt] (p2) --++ (2,0);
+					\tkzDrawPoints[size=0.75cm,fill=blue](p1a,p2a)}
+				
+				\coordinate (p1) at (0,0);
+				\coordinate (p1a) at (1,0.25);
+				\draw[color=blue,line width=1pt] (p1) --++ (2,0);
+				\tkzDrawPoints[size=0.75cm,fill=blue](p1a)
+				
+				\tkzDefPoint(1,-3.5){t}
+				
+				\tkzText[above](t){Cu\textsubscript{4}}
+				
+				\end{scope}				
+				
+				\begin{scope}[shift={(9,\y)}]
+				
+				\tkzDefPoints{0/-0.75/A,0/0.75/B}
+				
+				\foreach \x in {1,2}{
+					\coordinate (p1) at ($(A)+\x*(0,-0.75)$);
+					\coordinate (p2) at ($(B)+\x*(0,0.75)$);
+					\coordinate (p1a) at ($(p1)+(0.75,0.25)$);
+					\coordinate (p2a) at ($(p1)+(1.25,0.25)$);
+					\draw[color=blue,line width=1pt] (p1) --++ (2,0);
+					\draw[color=red,line width=1pt] (p2) --++ (2,0);
+					\tkzDrawPoints[size=0.75cm,fill=blue](p1a,p2a)}
+				
+				\tkzDefPoint(1,-3.5){t}
+				\tkzDefPoint(3,-3.5){t2}
+				
+				\tkzText[above](t){Cu\textsubscript{4}}
+				\tkzText[above](t2){$\cdots$}
+				
+				\end{scope}				
+				
+				\begin{scope}[shift={(13,0)}]
+				
+				\tkzDefPoints{0/-0.5/A,0/0.5/B}
+				
+				\foreach \x in {1,2,...,40}{
+					\draw[color=red,line width=1pt] ($(B)+\x*(0,0.05)$) --++ (2,0);}
+				
+				\foreach \x in {1,2,...,17}{
+					\draw[color=blue,line width=1pt] ($(A)+\x*(0,-0.05)$) --++ (2,0);}
+				
+				\foreach \x in {25,26,...,35}{
+					\draw[color=blue,line width=1pt] ($(A)+\x*(0,-0.05)$) --++ (2,0);}
+				
+				\foreach \x in {43,44,...,49}{
+					\draw[color=blue,line width=1pt] ($(A)+\x*(0,-0.05)$) --++ (2,0);}
+				
+				\tkzDefPoints{1/-4/t,0/-2/t2,0/1.5/t3}
+				
+				\tkzText[above](t){Cu\textsubscript{N}}
+				\tkzText[above,rotate=90](t2){\small Valência}
+				\tkzText[above,rotate=90](t3){\small Conducao}
+				
+				\end{scope}				
+				
+				\tkzDefPoints{-1/-0.5/i1,15/-0.5/i2,15/0.5/i3,-1/0.5/i4}
+				
+				\tkzFillPolygon[color=gray!50,opacity=0.5](i1,i2,i3,i4)
+				
+				\draw[<->,line width=0.5pt] (14,-0.5) -- (14,0.5) node [above,midway,sloped] {\small GAP};
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize GAP de energia entre as BV e BC em um isolante.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Metais}
+	\begin{columns}
+		\begin{column}[c]{0.7\textwidth}
+			Nos metais, o nível de Fermi está perto da banda de condução, assim aplicando uma ddp permite que elétrons da banda de valência migrem para a níveis desocupados de energia. O movimento desses elétrons permite o surgimento da corrente elétrica. No entanto, com o aumento da temperatura, a agitação dos íons no material aumenta fazendo que o GAP aumente com o aumento da temperatura, que por sua vez impossibilida a transição dos elétrons para a BC.
+		\end{column}
+		\begin{column}[c]{0.3\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.7,transform shape, font=\Large]
+				
+				\tkzInit[xmin=0,xmax=2,ymin=-3,ymax=3]
+				%\tkzGrid[color=gray!50]
+				\tkzClip
+				
+				\tkzDefPoints{0/-0/A,0/0/B}
+				
+				\foreach \x in {1,2,...,40}{
+					\draw[color=red,line width=1pt] ($(B)+\x*(0,0.05)$) --++ (2,0);}
+				
+				\foreach \x in {1,2,...,17}{
+					\draw[color=blue,line width=1pt] ($(A)+\x*(0,-0.05)$) --++ (2,0);}
+				
+				\foreach \x in {25,26,...,35}{
+					\draw[color=blue,line width=1pt] ($(A)+\x*(0,-0.05)$) --++ (2,0);}
+				
+				\foreach \x in {43,44,...,49}{
+					\draw[color=blue,line width=1pt] ($(A)+\x*(0,-0.05)$) --++ (2,0);}
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Bandas de energia em um metal com $GAP\approx 0$.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Semicondutores}
+	\begin{columns}
+		\begin{column}[c]{0.7\textwidth}
+			Em um semicondutor o GAP é tão pequeno que os elétrons ao adquirirem uma certa energia cinética devido ao aumento da temperatura para valores diferentes de zero Kelvin, possui energia suficiente para saltar para níveis acima da BC. Como consequência, os espaços antes ocupados tornam-se desocupados quanticamente. Do ponto de vista prático, podemos dizer que tais espaços foram preenchidos por cargas positivas chamadas buracos.
+			\begin{corollary}
+				O número de buracos na BV é igual ao número de portadores de cargas negativas na BC.
+			\end{corollary}
+		\end{column}
+		\begin{column}[c]{0.3\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.7,transform shape, font=\Large]
+				
+				\tkzInit[xmin=0,xmax=2,ymin=-3,ymax=3]
+				%\tkzGrid[color=gray!50]
+				\tkzClip
+				
+				\tkzDefPoints{0/-0.15/A,0/0.15/B}
+				
+				\foreach \x in {1,2,...,40}{
+					\draw[color=red,line width=1pt] ($(B)+\x*(0,0.05)$) --++ (2,0);}
+				
+				\foreach \x in {1,2,...,17}{
+					\draw[color=blue,line width=1pt] ($(A)+\x*(0,-0.05)$) --++ (2,0);}
+				
+				\foreach \x in {25,26,...,35}{
+					\draw[color=blue,line width=1pt] ($(A)+\x*(0,-0.05)$) --++ (2,0);}
+				
+				\foreach \x in {43,44,...,49}{
+					\draw[color=blue,line width=1pt] ($(A)+\x*(0,-0.05)$) --++ (2,0);}
+				
+				\foreach \x in {0,2,4}{
+					\coordinate (\x) at ($(0.5,0.3)+\x*(0.3,0)$,0);
+					\tkzDrawPoints[size=0.5cm,fill=blue](\x)
+					\coordinate (\x) at ($(0.5,-0.3)+\x*(0.3,0)$,0);
+					\tkzDrawPoints[size=0.5cm,fill=red](\x)}
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Bandas de energia em um semicondutor onde alguns elétrons atravessam para a BC.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Portadores de carga}
+	Para determinar o número de elétrons livres em uma amostra, consideremos que cada átomo com um elétron na camada de valência poderá contribuir com apenas um elétron, o átomo divalente contribui com dois e assim sucessivamente. Assim, o número de elétrons de condução é dado por
+	\begin{equation*}
+		\left(
+		\begin{array}{c}
+			\text{número de elétrons}\\\text{de condução da amostra}
+		\end{array}\right)
+		=
+		\left(
+		\begin{array}{c}
+			\text{número de átomos}\\\text{da amostra}
+		\end{array}\right)
+		\left(
+		\begin{array}{c}
+			\text{número de elétrons}\\\text{de valência por átomo}
+		\end{array}\right).
+	\end{equation*}
+	A partir do número de avogadro N\textsubscript{A} e a massa molar do átomo que compõe o material podemos determinar o número de átomos da amostra como mostrado abaixo,
+	\begin{equation*}
+		\boxed{\left(
+		\begin{array}{c}
+			\text{número de átomos}\\\text{da amostra}
+		\end{array}\right)
+		=
+		\frac{\left(\text{massa específica}\right)\left(\text{volume da amostra}\right)}{\left(\text{massa molar}\right)/N_A}.}
+	\end{equation*}
+\end{frame}
+
+\begin{frame}{Probabilidade de ocupação}
+	\begin{columns}
+		\begin{column}[c]{0.6\textwidth}
+			Pela distribuição de Linus Pauling, cada elétron deve obrigatoriamente ocupar um estado quântico. Para determinar uma estatística que define probabilidade da distribuição dos elétrons por nível de energia obedecendo a regra de Pauling em função da temperatura T, os físicos Fermi e Dirac propuseram a seguinte equação
+			\begin{equation*}
+				\boxed{P(E) = \frac{1}{e^{(E-E_F)/k_BT}+1},\;(T\neq 0).}
+			\end{equation*}
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.45,transform shape, font=\Large]
+				
+				\tkzInit[xmin=0,xmax=10,ymin=0,ymax=4]
+				%\tkzGrid[color=gray!50]
+				\tkzClip[space=1.2]
+				
+				\tkzDrawX[label=E (eV)]
+				\tkzDrawY[above,label=P (E)]
+				
+				\tkzDefPoints{0/0/O}
+				
+				\pgfmathsetmacro{\T}{0.1};
+				\tkzFct[domain=0:12,color=red]{4/(exp((x-4)/\T)+1)}
+				
+				\pgfmathsetmacro{\T}{0.4};
+				\tkzFct[domain=0:12,color=blue]{4/(exp((x-4)/\T)+1)}
+				
+				\tkzLegend[draw,font=\small,line=true](8,3){solid/1pt/blue/1000 K,solid/1pt/red/500 K,solid/1pt/black/0 K}
+				
+				\tkzDefPoints{0/4/p1,0/0/p2,0/2/p3,4/0/p4,4/2/p5}
+				
+				\tkzLabelPoint[left,font=\Large](p1){1}
+				\tkzLabelPoint[left,font=\Large](p2){0}
+				\tkzLabelPoint[left,font=\Large](p3){0,5}
+				\tkzLabelPoint[below,font=\Large](p4){E\textsubscript{F}}
+				
+				\draw[dotted] (p5) -- (p3);
+				\draw[dotted] (p5) -- (p4);
+				
+				\tkzDefPoints{4/4/k1,10/0/k2}
+				
+				\draw (p1) -- (k1);
+				\draw (k1) -- (p4);
+				\draw (p4) -- (k2);
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Distribuição de Fermi-Dirac a três temperaturas diferentes.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+	\vspace*{0.25cm}
+	$E_F$ é a energia de Fermi e $k_B$ a constante de Boltzmann. Neste caso, a problabilidade de encontrar o elétron no nível de Fermi é igual a 0,5 se $T \neq 0 K$.
+\end{frame}
+
+\begin{frame}{Quantidade de estados na banda de valência}
+	\begin{multicols}{2}
+		Para determinar o número de estados eletrônicos por volume do sólido, ou seja densidade de estados N(E), multiplicamos a densidade de estados eletrônicos por energia E pela probabilidade de estados, definido pela distribuição de Fermi-Dirac,
+		\begin{equation*}
+			N_o(E) = N(E)P(E).
+		\end{equation*}
+		Já é conhecido da literatura que o número de estados N(E) é dado por
+		\begin{equation*}
+			N(E) = \frac{8\pi\sqrt{2}m^{3/2}}{h^3}E^{1/2},
+		\end{equation*}
+		onde m é a massa do elétron e h a constante de Planck. Substituindo temos
+		\begin{align*}
+			N_o(E) & = \frac{8\pi\sqrt{2}m^{3/2}}{h^3}\frac{E^{1/2}}{e^{(E-E_F)/k_BT}+1}.
+		\end{align*}
+	\end{multicols}
+\end{frame}
+
+\begin{frame}{Número de estados na banda de valência}
+	\begin{columns}
+		\begin{column}[c]{0.6\textwidth}
+			Para determinar o número de estados eletrônicos por volume do sólido, ou seja densidade de estados N(E), multiplicamos a densidade de estados eletrônicos por energia E pela probabilidade de estados, definido pela distribuição de Fermi-Dirac,
+			\begin{equation*}
+				N_o(E) = N(E)P(E).
+			\end{equation*}
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.45,transform shape, font=\Large]
+				
+				\tkzInit[xmin=0,xmax=10,ymin=0,ymax=4]
+				%\tkzGrid[color=gray!50]
+				\tkzClip[space=1.2]
+				
+				\tkzDrawX[label=E (eV)]
+				\tkzDrawY[above,label=N (E)]
+				
+				\tkzDefPoints{0/0/O}
+				
+				\pgfmathsetmacro{\T}{0.1};
+				\tkzFct[domain=0:12,color=red,line width=1pt]{1.25*sqrt(x)}
+				
+				\tkzDefPoints{0/4/p1,0/0/p2,0/2/p3,4/0/p4,4/2/p5,4/4/p6}
+				
+				%	\tkzLabelPoint[left,font=\Large](p1){1}
+				%	\tkzLabelPoint[left,font=\Large](p2){0}
+				%	\tkzLabelPoint[left,font=\Large](p3){0,5}
+				%	\tkzLabelPoint[below,font=\Large](p4){E\textsubscript{F}}
+				
+				%	\draw[dashed] (p6) -- (p4);
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Função densidade de estados.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+	\begin{corollary}
+		A densidade de estados na banda de valência aumenta com a energia da banda.
+	\end{corollary}
+\end{frame}
+
+\begin{frame}{Número de estados na banda de valência}
+	\begin{columns}
+		\begin{column}[c]{0.6\textwidth}
+			Já é conhecido da literatura que o número de estados N(E) é dado por
+			\begin{equation*}
+				N(E) = \frac{8\pi\sqrt{2}m^{3/2}}{h^3}E^{1/2},
+			\end{equation*}
+			onde m é a massa do elétron e h a constante de Planck. Substituindo temos
+			\begin{align*}
+				\Aboxed{N_o(E) & = \left(\frac{8\pi\sqrt{2}m^{3/2}}{h^3}\right)\frac{E^{1/2}}{e^{(E-E_F)/k_BT}+1}.}
+			\end{align*}
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.37,transform shape, font=\Large]
+				
+				\tkzInit[xmin=0,xmax=10,ymin=0,ymax=4]
+				%\tkzGrid[color=gray!50]
+				%	\tkzClip[space=1.2]
+				
+				\begin{scope}[shift={(0,0)}]
+				
+				\tkzDrawX[label=E (eV)]
+				\tkzDrawY[above,label=$N_o (E)$]
+				
+				\tkzDefPoints{0/0/O}
+				
+				\tkzFct[domain=0:4,color=red,line width=1pt]{1.25*sqrt(x)}
+				
+				\pgfmathsetmacro{\px}{1.25*sqrt(4)}
+				
+				\tkzDefPoints{10/0/p1,4/0/p4,9.5/3.5/t}
+				
+				\draw[color=red,line width=1pt] (p4) -- (4,\px);
+				\draw[color=red,line width=1pt] (p4) -- (p1);
+				
+				\tkzText[color=black](t){(a)}
+				
+				\end{scope}
+				
+				\begin{scope}[shift={(0,-6)}]
+				
+				\tkzInit[xmin=0,xmax=10,ymin=0,ymax=4]
+				%\tkzGrid[color=gray!50]
+				%	\tkzClip[space=1.2]
+				
+				\tkzDrawX[label=E (eV)]
+				\tkzDrawY[above,label=$N_o (E)$]
+				
+				\tkzDefPoints{0/0/O}
+				
+				\tkzFct[domain=0:10,color=red,line width=1pt]{1.25*sqrt(x)/(exp(x-4)/1+1)}
+				
+				\pgfmathsetmacro{\px}{1.25*sqrt(4)}
+				
+				\tkzFct[domain=0:4,color=blue,dashed,line width=1pt]{1.25*sqrt(x)}
+
+				\tkzDefPoints{10/0/p1,4/0/p4,10/0/p2,9.5/3.5/t}
+				
+				\draw[dashed,color=blue,line width=1pt] (4,\px)--(p4);
+				\draw[dashed,color=blue,line width=1pt] (p4)--(p2);
+				
+				\tkzText[color=black,below=0.2](p4){E\textsubscript{F}}
+				
+				\tkzText[color=black](t){(b)}
+				
+				\end{scope}
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Densidade de estados ocupados. (a) $T=0K$. (b)$T\neq 0K$.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Cálculo da energia de Fermi}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+%	\begin{multicols}{2}
+			O número total de elétrons por unidade de volume n é obtido integrando todos os estados ocupados até o nível de Fermi, ou seja,
+			\begin{equation*}
+				n = \int\limits_{0}^{E_F}N_o(E)dE.
+			\end{equation*}
+			Substituindo $N_o(E)$ dado anteriormente e considerando o estado fundamental (T=0 K) teremos
+		\end{column}
+		\begin{column}[c]{0.55\textwidth}
+			\begin{align*}
+				n & = \left(\frac{8\pi\sqrt{2}m^{3/2}}{h^3}\right)\int\limits_{0}^{E_F}E^{1/2}dE,\\
+				n & = \left(\frac{8\sqrt{2}\pi m^{3/2}}{h^3}\right)\left(\frac{2E_F^{3/2}}{3}\right).
+			\end{align*}
+			Isolando $E_F$ teremos
+			\begin{equation*}
+				\boxed{E_F = \left(\frac{3}{16\sqrt{2}\pi}\right)^{2/3}\frac{h^2}{m}n^{2/3}.}
+			\end{equation*}
+		\end{column}
+	\end{columns}
+%	\end{multicols}
+\end{frame}
+
+\begin{frame}{Junção P-N}
+content...
+\end{frame}
+
+\section{Apêndice}
+
+\subsection{}
+
+\begin{frame}{Observações\footnote{Este material está sujeito a modificações. Recomenda-se acompanhamento permanente.}}
+	\begin{center}
+		Esta apresentação está disponível para download no endereço\\
+		\href{https://flavianowilliams.github.io/education}{\textcolor{blue}{https://flavianowilliams.github.io/education}}
+	\end{center}
+\end{frame}
+%
+\begin{frame}{Referências}
+	\bibliographystyle{jurabib}
+	\begin{thebibliography}{9}
+		\bibitem{halliday}D. Halliday, R. Resnick, J. Walker, Fundamentos de física. Eletromagnetismo, v.4, 10. ed., Rio de Janeiro, LTC (2016)
+		\bibitem{randall}R. D. Knight, Física: Uma abordagem estratégica, v.3, 2nd ed., Porto Alegre, Bookman (2009)
+		\bibitem{moyses}H. M. Nussenzveig, Curso de física básica. Eletromagnetismo, v.4, 5. ed., São Paulo, Blucher (2014)
+		\bibitem{mardeletrons}\text{https://blog.biologiatotal.com.br/ligacoes-quimicas-tipos-conceito-e-definicao/}
+	\end{thebibliography}
+\end{frame}
+
+\end{document}

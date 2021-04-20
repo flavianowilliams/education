@@ -1,0 +1,55 @@
+﻿				\begin{tikzpicture}[scale=1.3,transform shape,font=\Large]
+				
+				\begin{scope}[shift={(0,0)}]
+				
+				\tkzInit[xmin=0,xmax=12,ymin=-2,ymax=4]
+				%\tkzGrid[color=gray!20]
+				\tkzClip[space=1.5]
+				
+				\tkzDrawX[label=t,below,noticks]
+				\tkzDrawY[label=F(t),pos=1.01,above,noticks]
+				
+				\tkzFct[domain=1:7,color=red,line width=1.0pt]{4*exp(-(x-4)**2)}
+
+				\node[below,color=black] (n1) at (1,0) {$t_i$};
+				\node[below,color=black] (n2) at (7,0) {$t_f$};
+
+				\tkzDrawArea[color=blue!50,domain=1:7]
+
+				\draw[<->,line width=1pt] (1,-0.75) -- (7,-0.75) node [above,midway,color=black] {$\Delta t$};
+				
+				\tkzDefPoints{9/3.5/t1,8/160/t2}
+				
+				\tkzText[text centered,opacity=100,fill=gray!20,text width=6.5cm,font=\normalsize](t1){O impulso é igual a área sob a curva.}
+				\tkzText[color=black](t2){(a)}
+				
+				\end{scope}
+				
+				\begin{scope}[shift={(0,-8)}]
+				
+				\tkzInit[xmin=0,xmax=12,ymin=-2,ymax=4]
+				%\tkzGrid[color=gray!20]
+				\tkzClip[space=1.5]
+				
+				\tkzDrawX[label=x,below,noticks]
+				\tkzDrawY[label=F(x),pos=1.01,above,noticks]
+				
+				\tkzFct[domain=1:7,color=blue,line width=1.0pt]{2}
+				\tkzDefPointByFct(1)\tkzGetPoint{A}
+				\tkzDefPointByFct(7)\tkzGetPoint{B}
+				
+				\tkzDrawArea[color=green!50,domain=1:7]
+
+				\tkzDefPoints{9/3.5/t1,8/160/t2}
+				
+				\draw[dashed,line width=0.5pt] (A) -- (1,0) node [below,color=black] {$t_i$};
+				\draw[dashed,line width=0.5pt] (B) -- (7,0) node [below,color=black] {$t_f$};
+
+				\draw[<->,line width=1pt] (1,-0.75) -- (7,-0.75) node [above,midway,color=black] {$\Delta t$};
+				
+				\tkzText[text centered,opacity=100,fill=gray!20,text width=5cm,font=\normalsize](t1){A força média produz a mesma área sob a curva.}
+				\tkzText[color=black](t2){(b)}
+				
+				\end{scope}
+				
+				\end{tikzpicture}

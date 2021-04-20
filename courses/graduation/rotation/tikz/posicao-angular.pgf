@@ -1,0 +1,40 @@
+﻿				\begin{tikzpicture}[scale=1.5,transform shape,font=\Large]
+				
+				\tikzset{compass style/.append style={<->}}
+				
+				\tkzInit[xmin=-1,xmax=4,ymin=-1,ymax=4]
+				%\tkzGrid[color=gray!20]
+				\tkzClip[space=1.7]
+				
+				\tkzDrawX[right,label=x (m)]
+				\tkzDrawY[above,label=y (m)]
+				
+				\tkzDefPoints{0/0/O,4/0/A,0/4/B}
+				
+				\tkzDrawCircle[color=white,dashed](O,A) 
+				\tkzLabelCircle[above right](O,A)(40){$\Delta\theta$}
+				
+				\tkzDefPointsBy[rotation=center O angle 30](O,A){p1,p2}
+				
+				\tkzDefPointWith[linear, K=-1.1](p2,O)\tkzGetPoint{p3}
+				
+				\tkzDefPointsBy[rotation=center O angle 50](O,A){p4,p5}
+				
+				\tkzDefPointWith[linear, K=-1.1](p5,O)\tkzGetPoint{p6}
+				
+				%					\tkzDefPointsBy[rotation=center O angle -45](O,A){p7,p8}
+				
+				\draw[line width=0.5pt] (O) -- (p6)  node [sloped,midway,above] {\small Reta de referencia};
+				\draw[line width=0.5pt] (O) -- (p3);
+				
+%				\draw (O) to [dim arrow'={label'=$r$}] (A);
+
+				\tkzDrawArc[line width=1pt](O,p2)(p5)
+				
+				\tkzMarkAngle[arrows=->,size=1.0](A,O,p2)
+				\tkzLabelAngle[pos=1.0,right](A,O,p2){$\theta_1$}
+				
+				\tkzMarkAngle[arrows=->,size=2](A,O,p5)
+				\tkzLabelAngle[right,pos=2](A,O,p5){$\theta_2$}
+				
+				\end{tikzpicture}

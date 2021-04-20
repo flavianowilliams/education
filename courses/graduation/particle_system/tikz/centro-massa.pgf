@@ -1,0 +1,31 @@
+﻿\begin{tikzpicture}[scale=1.5,transform shape]
+
+	\tikzstyle{s1}=[ball color=gray!50];
+
+	\tkzInit[xmin=0,xmax=5,ymin=0,ymax=5]
+	\tkzGrid[color=gray!20]
+	\tkzClip[space=1]
+
+	\tkzDefPoints{0/0/m1,3/4/m2,5/0/m3,3/1.8/cm,3/0/xcm,0/1.8/ycm}
+	
+	\tkzDrawX[label=x,below]
+	\tkzDrawY[label=y,pos=1.01,above]
+
+	\draw[s1] (m1) circle [radius=0.1cm] node [above left=0.1cm] {$m_3$};
+	\draw[s1] (m2) circle [radius=0.2cm] node [above=0.2cm] {$m_1$};
+	\draw[s1] (m3) circle [radius=0.15cm] node [above=0.1cm] {$m_2$};
+
+	\draw[->,line width=1pt,color=brown] (m1) -- (m2) node [above left,midway] {$\vec{r}_1$};
+	\draw[->,line width=1pt,color=brown] (m1) -- (m3) node [above,pos=0.75] {$\vec{r}_2$};
+	\draw[->,line width=1pt,color=blue] (m1) -- (cm) node [above,midway] {$\vec{r}_{cm}$};
+	\draw[->,line width=1pt,color=blue] (m1) -- (xcm);
+	\draw[->,line width=1pt,color=blue] (m1) -- (ycm);
+
+	\tkzPointShowCoord(cm)
+
+	\tkzDrawPoints[size=0.25cm,color=red,fill=red](cm)
+	\tkzLabelPoint[above=0.1cm](cm){CM}
+	\tkzLabelPoint[below](xcm){$x_{cm}$}
+	\tkzLabelPoint[left](ycm){$y_{cm}$}
+
+\end{tikzpicture}

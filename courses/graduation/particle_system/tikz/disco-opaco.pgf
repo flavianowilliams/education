@@ -1,0 +1,30 @@
+﻿\begin{tikzpicture}[scale=1,transform shape,font=\Large]
+
+		\tkzInit[xmin=-4.5,xmax=4.5,ymin=-4.5,ymax=4.5]
+		%\tkzGrid[color=gray!20]
+		\tkzClip[space=1]
+
+		\tkzDefPoint(0,0){O}
+		\tkzDefPoint(4,0){A}
+		\tkzDefPoint(-2,0){B}
+		\tkzDefPoint(1.3,0){cm}
+	
+		\tkzDrawCircle[color=gray,fill=gray](O,A)
+
+		\tkzDefPointsBy[rotation=center O angle 45](O,A){p1,p2}
+
+		\draw[->,line width=1.0pt] (O) -- (p2) node [above left,midway] {$2R$};
+
+		\tkzDrawCircle[color=gray,fill=white](B,O)
+
+		\tkzDefPointsBy[rotation=center B angle 300](B,O){p1,p2}
+
+		\draw[->,line width=1.0pt] (B) -- (p2) node [above right,midway] {$R$};
+
+		\tkzDrawX[label=x,right,noticks]
+		\tkzDrawY[label=y,pos=1.01,above,noticks]
+
+		\tkzDrawPoints[size=0.5cm,color=red,fill=red](cm)
+		\tkzLabelPoint[above=0.1cm](cm){$x_{cm}$}
+
+\end{tikzpicture}

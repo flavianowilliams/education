@@ -1,0 +1,916 @@
+% Aula de mecânica para o curso de Física I da graduação
+%
+\documentclass[brazil,aspectratio=169]{beamer}
+%
+%carregando preâmbulo
+\input{../../../../extras/preamble}
+
+%Título
+
+\title[Mecânica]{Rotação}
+
+% The main document
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Sumário}
+  \tableofcontents
+\end{frame}
+
+\section{As variáveis de rotação}
+
+\subsection{}
+
+\begin{frame}{Introdução}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			Na mecânica podemos dizer que existem dois tipos de movimentos distintos:
+			\begin{enumerate}
+				\item [\ding{51}] Translação ou retilíneo: Os objetos se movem ao longo de linhas retas ou curvas;
+				\item [\ding{51}] Rotação: Os objetos giram em torno de um eixo.
+			\end{enumerate}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.21]{figuras/rotacao-translacao.jpg}
+				\caption*{\footnotesize Movimentos de rotação e translação da Terra.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+	\begin{corollary}
+		O movimento mais geral de um corpo rígido se compõe de uma translação e uma rotação.
+	\end{corollary}
+\end{frame}
+
+\begin{frame}{Posição angular}
+	\begin{columns}
+		\begin{column}[c]{0.6\textwidth}
+			A posição angular de uma reta é o ângulo que a reta faz com uma direção fixa, em relação a posição angular zero. Na figura ao lado, a posição angular $\theta$ é medida em relação ao eixo x. De acordo com a figura podemos ver que
+			\begin{align*}
+				\Aboxed{\theta = \frac{s}{r},}
+			\end{align*}
+			onde s é o comprimento de um arco de raio r.
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.49,transform shape,font=\Large]
+				
+				\tikzset{compass style/.append style={->}}
+				
+				\tkzInit[xmin=-1,xmax=4,ymin=-1,ymax=4]
+				%\tkzGrid[color=gray!20]
+				\tkzClip[space=1.7]
+				
+				\tkzDrawX[right,label=x (m)]
+				\tkzDrawY[above,label=y (m)]
+				
+				\tkzDefPoints{0/0/O,4/0/A,0/4/B}
+				
+				\tkzDrawCircle[color=white,dashed](O,A) 
+				\tkzLabelCircle[above right](O,A)(22.5){$s$}
+				
+				\tkzDefPointsBy[rotation=center O angle 45](O,A){p1,p2}
+				
+				\tkzDefPointWith[linear, K=-1.1](p2,O)\tkzGetPoint{p3}
+				
+				\draw[line width=0.5pt] (O) -- (p3)  node [sloped,midway,above] {\small Reta de referência};
+				
+				\draw (O) to [dim arrow'={label'=$r$}] (A);
+
+				\tkzDrawArc[rotate,line width=1pt](O,A)(45)
+				
+				\tkzMarkAngle[arrows=->,size=1.0](A,O,p2)
+				\tkzLabelAngle[pos=1.5](A,O,p2){$\theta$}
+				
+				\end{tikzpicture}
+				\vspace*{-0.75cm}
+				\caption*{\footnotesize Rotação em torno do eixo z.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+	\begin{corollary}
+		A unidade de medida da posição angular é o radiano (rad).
+	\end{corollary}
+\end{frame}
+
+\begin{frame}{Posição angular e sua relação com grandezas vetoriais}
+	A posição angular não pode ser considerada grandeza vetorial pois não obedece a propriedade vetorial de comutatividade, ou seja, $\vec{\theta}_1+\vec{\theta}_2\neq \vec{\theta}_2+\vec{\theta}_1$.
+	\begin{figure}
+		\begin{subfigure}[b]{0.45\textwidth}
+			\centering
+			\begin{tikzpicture}[scale=0.2,transform shape,font=\Large]
+			
+			\begin{scope}[shift={(0,0)}]				
+			
+			\tkzInit[xmin=0,xmax=4,ymin=0,ymax=4]
+			%\tkzGrid[color=gray!20]
+			\tkzClip[space=1]
+			
+			\tkzDefPoints{0/0/A,3/3/B,3/0/C,-4/-2/D}
+			
+			\tkzAxeX{x}
+			\tkzAxeY{y}
+			\tkzLabelPoint[above](B){B}
+			\tkzLabelPoints[below left](A)
+			
+			\tkzPointShowCoord(B)
+			\tkzPointShowCoord(D)
+			
+			\draw[->,line width=0.5pt,color=red] (A) -- (B) node [above,midway] {$\vec{a}$};
+
+			\tkzDrawPoints(A,B)
+			
+			\end{scope}		
+			
+			\tkzDefPoints{5/0/t1}
+			\tkzText(t1){+}
+			
+			\begin{scope}[shift={(10,0)}]				
+			
+			\tkzInit[xmin=-4,xmax=0,ymin=-4,ymax=0]
+			%\tkzGrid[color=gray!20]
+			\tkzClip[space=1]
+			
+			\tkzDefPoints{0/0/A,3/3/B,3/0/C,-4/-2/D}
+			
+			\tkzAxeX{x}
+			\tkzAxeY{y}
+			\tkzLabelPoint[above](B){B}
+			\tkzLabelPoints[below left](A)
+			
+			\tkzPointShowCoord(B)
+			\tkzPointShowCoord(D)
+			
+			\draw[->,line width=0.5pt,color=red] (A) -- (D) node [above,midway] {$\vec{b}$};
+			
+			\tkzDrawPoints(A,B)
+			
+			\end{scope}		
+			
+			\tkzDefPoints{11/0/t1}
+			\tkzText(t1){\Large =}
+			
+			\begin{scope}[shift={(16,0)}]				
+			
+			\tkzInit[xmin=-4,xmax=4,ymin=-4,ymax=4]
+			%\tkzGrid[color=gray!20]
+			\tkzClip[space=1]
+			
+			\tkzDefPoints{0/0/A,3/3/B,3/0/C,-4/-2/D,-1/1/E}
+			
+			\tkzAxeX{x}
+			\tkzAxeY{y}
+			\tkzLabelPoint[above](B){B}
+			\tkzLabelPoints[below left](A)
+			
+			\tkzPointShowCoord(B)
+			\tkzPointShowCoord(D)
+			
+			\draw[->,line width=0.5pt,color=red] (A) -- (B) node [above,midway] {$\vec{a}$};
+			\draw[->,line width=0.5pt,color=red] (A) -- (D) node [above,midway] {$\vec{b}$};
+			\draw[->,line width=0.5pt,color=blue] (A) -- (E) node [above,midway] {$\vec{a}+\vec{b}$};
+			
+			\draw[dashed] (B) -- (E);
+			\draw[dashed] (D) -- (E);
+			
+			\tkzDrawPoints(A,B)
+			
+			\end{scope}		
+			
+			\begin{scope}[shift={(6,-10)}]				
+			
+			\tkzInit[xmin=0,xmax=4,ymin=0,ymax=4]
+			%\tkzGrid[color=gray!20]
+			\tkzClip[space=1]
+			
+			\tkzDefPoints{0/0/A,3/3/B,3/0/C,-4/-2/D}
+			
+			\tkzAxeX{x}
+			\tkzAxeY{y}
+			\tkzLabelPoint[above](B){B}
+			\tkzLabelPoints[below left](A)
+			
+			\tkzPointShowCoord(B)
+			\tkzPointShowCoord(D)
+			
+			\draw[->,line width=0.5pt,color=red] (A) -- (B) node [above,midway] {$\vec{a}$};
+
+			\tkzDrawPoints(A,B)
+			
+			\end{scope}		
+			
+			\tkzDefPoints{5/0/t1}
+			\tkzText(t1){+}
+			
+			\begin{scope}[shift={(4,-10)}]				
+			
+			\tkzInit[xmin=-4,xmax=0,ymin=-4,ymax=0]
+			%\tkzGrid[color=gray!20]
+			\tkzClip[space=1]
+			
+			\tkzDefPoints{0/0/A,3/3/B,3/0/C,-4/-2/D}
+			
+			\tkzAxeX{x}
+			\tkzAxeY{y}
+			\tkzLabelPoint[above](B){B}
+			\tkzLabelPoints[below left](A)
+			
+			\tkzPointShowCoord(B)
+			\tkzPointShowCoord(D)
+			
+			\draw[->,line width=0.5pt,color=red] (A) -- (D) node [above,midway] {$\vec{b}$};
+			
+			\tkzDrawPoints(A,B)
+			
+			\end{scope}		
+			
+			\tkzDefPoints{11/0/t1}
+			\tkzText(t1){\Large =}
+			
+			\begin{scope}[shift={(16,-10)}]				
+			
+			\tkzInit[xmin=-4,xmax=4,ymin=-4,ymax=4]
+			%\tkzGrid[color=gray!20]
+			\tkzClip[space=1]
+			
+			\tkzDefPoints{0/0/A,3/3/B,3/0/C,-4/-2/D,-1/1/E}
+			
+			\tkzAxeX{x}
+			\tkzAxeY{y}
+			\tkzLabelPoint[above](B){B}
+			\tkzLabelPoints[below left](A)
+			
+			\tkzPointShowCoord(B)
+			\tkzPointShowCoord(D)
+			
+			\draw[->,line width=0.5pt,color=red] (A) -- (B) node [above,midway] {$\vec{a}$};
+			\draw[->,line width=0.5pt,color=red] (A) -- (D) node [above,midway] {$\vec{b}$};
+			\draw[->,line width=0.5pt,color=blue] (A) -- (E) node [above,midway] {$\vec{a}+\vec{b}$};
+
+			\draw[dashed] (B) -- (E);
+			\draw[dashed] (D) -- (E);
+			
+			\tkzDrawPoints(A,B)
+			
+			\end{scope}		
+			
+			\end{tikzpicture}
+			\caption*{\footnotesize Propriedade comutativa $\vec{a}+\vec{b}=\vec{b}+\vec{a}$.}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.5\textwidth}
+			\centering
+			\includegraphics[scale=0.4]{figuras/angulo-rotacao.png}
+			\caption*{\footnotesize Violação da propriedade comutativa em rotações.}
+		\end{subfigure}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Deslocamento angular}
+	\begin{columns}
+	\begin{column}[c]{0.6\textwidth}
+		Se o corpo gira em torno do eixo de rotação variando o seu ângulo de $\theta_1$ para $\theta_2$ nos instante $t_1$ e $t_2$ respectivamente, o corpo sofre um deslocamento angular $\Delta\theta$, dado por
+		\begin{equation*}
+		\boxed{\Delta\theta=\theta_2-\theta_1.}
+		\end{equation*}
+		\begin{corollary}
+			Por convenção adotamos que um deslocamento angular no sentido anti-horário é positivo, e um deslocamento no sentido horário é negativo.
+		\end{corollary}
+	\end{column}
+	\begin{column}[c]{0.4\textwidth}
+		\begin{figure}
+			\begin{tikzpicture}[scale=0.6,transform shape,font=\Large]
+			
+			\tikzset{compass style/.append style={<->}}
+			
+			\tkzInit[xmin=-1,xmax=4,ymin=-1,ymax=4]
+			%\tkzGrid[color=gray!20]
+			\tkzClip[space=1.7]
+			
+			\tkzDrawX[right,label=x (m)]
+			\tkzDrawY[above,label=y (m)]
+			
+			\tkzDefPoints{0/0/O,4/0/A,0/4/B}
+			
+			\tkzDrawCircle[color=white,dashed](O,A) 
+			\tkzLabelCircle[above right](O,A)(40){$\Delta\theta$}
+			
+			\tkzDefPointsBy[rotation=center O angle 30](O,A){p1,p2}
+			
+			\tkzDefPointWith[linear, K=-1.1](p2,O)\tkzGetPoint{p3}
+			
+			\tkzDefPointsBy[rotation=center O angle 50](O,A){p4,p5}
+			
+			\tkzDefPointWith[linear, K=-1.1](p5,O)\tkzGetPoint{p6}
+			
+			%					\tkzDefPointsBy[rotation=center O angle -45](O,A){p7,p8}
+			
+			\draw[line width=0.5pt] (O) -- (p6)  node [sloped,midway,above] {\small Reta de referência};
+			\draw[line width=0.5pt] (O) -- (p3);
+			
+			%				\draw (O) to [dim arrow'={label'=$r$}] (A);
+			
+			\tkzDrawArc[line width=1pt](O,p2)(p5)
+			
+			\tkzMarkAngle[arrows=->,size=1.0](A,O,p2)
+			\tkzLabelAngle[pos=1.0,right](A,O,p2){$\theta_1$}
+			
+			\tkzMarkAngle[arrows=->,size=2](A,O,p5)
+			\tkzLabelAngle[right,pos=2](A,O,p5){$\theta_2$}
+			
+			\end{tikzpicture}
+			\vspace*{-0.5cm}
+			\caption*{\footnotesize Deslocamento angular em torno do eixo de rotação z.}
+		\end{figure}
+	\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Velocidade angular}
+%	\begin{multicols}{2}
+	\begin{columns}
+		\begin{column}[c]{0.7\textwidth}
+%		Se um objeto sofre um deslocamento angular $\Delta\theta$ durante o intervalo de tempo $\Delta t$, definimos a velocidade angular média $\omega_{\text{médio}}$ como
+%		\begin{equation*}
+%			\omega_{\text{médio}}=\frac{\Delta \theta}{\Delta t}.
+%		\end{equation*}
+		Considerando que o deslocamento ocorre em um intervalo infitesimal ($\Delta t\rightarrow dt$), temos após aplicar a definição de derivada
+		\begin{equation*}
+			\boxed{\omega(t)={\lim\limits_{\Delta t\rightarrow 0}}\frac{\Delta \theta}{\Delta t}=\frac{d\theta(t)}{dt}.}
+		\end{equation*}
+		Se conhecemos a função que determina a posição angular, podemos calcular a velocidade angular por derivação.
+		\end{column}
+		\begin{column}[c]{0.3\textwidth}
+%			\vspace*{-0.5cm}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.42,transform shape,font=\large]
+				
+				\tkzInit[xmin=-2,xmax=5,ymin=-2,ymax=5]
+				%\tkzGrid[color=gray!20]
+				\tkzClip[space=0.4]
+				
+				\coordinate (O) at (0,0,0);
+				\coordinate (x) at (0,0,5);
+				\coordinate (y) at (5,0,0);
+				\coordinate (z) at (0,5,0);
+				
+				\draw[->,line width=0.5pt] (0,0,0) -- (y) node [right] {y};
+				\draw[->,line width=0.5pt] (0,0,0) -- (x) node [below left] {x};
+				\draw[->,line width=0.5pt] (0,0,0) -- (z) node [above] {z};
+				
+				%rotacao
+				
+				\coordinate (pxy) at (2.5,0,2.5);
+				\draw (O) -- (pxy) node [below right] {\small Reta de referência};
+				
+				\tkzMarkAngle[arrows=->,size=0.75](x,O,pxy)
+				\tkzLabelAngle[pos=1.1](x,O,pxy){$\theta$}
+				
+				%velocidade angular
+				
+				\draw[->,color=red,line width=0.5pt] (O)	--++ (0,2) node [right] {$\vec{\omega}$};
+				
+				%texto
+				\coordinate (t1) at (0,3,0);
+				\coordinate (t2) at (3,4,0);
+				
+				\draw[->,line width=0.5pt] (t2) -- (t1);
+				
+				\tkzText[text centered,opacity=100,fill=gray!20](t2){\small Eixo de rotação}
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Vetor velocidade angular.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+	\begin{corollary}
+		A unidade de medida da velocidade angular é radiano o por segundo (rad/s).
+	\end{corollary}
+%	\end{multicols}
+\end{frame}
+
+\begin{frame}{Aceleração angular}
+	\begin{columns}
+		\begin{column}[c]{0.7\textwidth}
+			Assim como no movimento linear, se a velocidade angular do objeto em rotação não for constante, esse objeto possui uma aceleração angular $\alpha$ dado por
+			\begin{equation*}
+				\boxed{\alpha(t)={\lim\limits_{\Delta t\rightarrow 0}}\frac{\Delta \omega}{\Delta t}=\frac{d\omega(t)}{dt}.}
+			\end{equation*}
+			Assim como na velocidade angular, se conhecemos a função que determina a velocidade angular podemos calcular a aceleração angular por derivação.
+		\end{column}
+		\begin{column}[c]{0.3\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.42,transform shape,font=\large]
+				
+				\tkzInit[xmin=-2,xmax=5,ymin=-2,ymax=5]
+				%\tkzGrid[color=gray!20]
+				\tkzClip[space=0.4]
+				
+				\coordinate (O) at (0,0,0);
+				\coordinate (x) at (0,0,5);
+				\coordinate (y) at (5,0,0);
+				\coordinate (z) at (0,5,0);
+				
+				\draw[->,line width=0.5pt] (0,0,0) -- (y) node [right] {y};
+				\draw[->,line width=0.5pt] (0,0,0) -- (x) node [below left] {x};
+				\draw[->,line width=0.5pt] (0,0,0) -- (z) node [above] {z};
+				
+				%rotacao
+				
+				\coordinate (pxy) at (2.5,0,2.5);
+				\draw (O) -- (pxy) node [below right] {\small Reta de referência};
+				
+				\tkzMarkAngle[arrows=->,size=0.75](x,O,pxy)
+				\tkzLabelAngle[pos=1.1](x,O,pxy){$\theta$}
+				
+				%velocidade angular
+				
+				\draw[->,color=red,line width=0.5pt] (O)	--++ (0,2) node [right] {$\vec{\alpha}$};
+				
+				%texto
+				\coordinate (t1) at (0,3,0);
+				\coordinate (t2) at (3,4,0);
+				
+				\draw[->,line width=0.5pt] (t2) -- (t1);
+				
+				\tkzText[text centered,opacity=100,fill=gray!20](t2){\small Eixo de rotação}
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Vetor aceleração angular.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+	\begin{corollary}
+		A unidade de medida da aceleração angular é o radiano por segundo ao quadrado.
+	\end{corollary}
+\end{frame}
+
+\begin{frame}{Correspondência entre os movimentos de translação e rotação}
+	Em rotações, no caso onde a aceleração angular $\alpha$ for constante, podemos escrever as funções horárias do movimento angular de maneira análoga ao movimento retilíneo.
+	\begin{table}
+		\centering
+		\caption*{\footnotesize Equações de movimento para aceleração linear constante e angular também constante.}
+		\begin{tabular}[c]{lclc}
+			\hline
+			Equação & Variável que falta & Equação & Variável que falta\\
+			\hline
+			$v=v_0+at$ & $\Delta x$ & $\omega=\omega_0+\alpha t$ & $\Delta \theta$\\
+			$\Delta x=v_0t+\frac{1}{2}at^2$ & $v$ & $\Delta \theta=\omega_0 t+\frac{1}{2}\alpha t^2$ & $\omega$\\
+			$v^2=v_0^2+2a\Delta x$ & $t$ & $\omega^2=\omega_0^2+2\alpha\Delta \theta$ & $t$\\
+			$\Delta x=\frac{1}{2}\left(v_0+v\right)t$ & $a$ & $\Delta \theta=\frac{1}{2}\left(\omega_0+\omega\right)t$ & $\alpha$\\
+			$\Delta x=vt-\frac{1}{2}at^2$ & $v_0$ & $\Delta \theta=\omega t-\frac{1}{2}\alpha t^2$ & $\omega_0$\\
+			\hline					
+		\end{tabular}
+	\end{table}				
+\end{frame}
+
+\section{Movimento circular}
+
+\subsection{}
+
+\begin{frame}{Relações entre as variáveis lineares e angulares}
+	\begin{columns}
+		\begin{column}[c]{0.6\textwidth}
+			Sabemos que uma partícula girando em torno de um eixo com raio $r$ realiza um arco s dado por $s=\theta r$. Se ela realiza um movimento circular, onde $r=cte$, derivando no tempo temos
+			\begin{align*}
+				\frac{ds}{dt} & = \frac{d(r\theta)}{dt},\\
+				\frac{ds}{dt} & = r\frac{d\theta}{dt}.
+			\end{align*}
+			Pela figura podemos ver que $\frac{ds}{dt}=v$, portanto
+			\begin{align*}
+				\Aboxed{v=\omega r.}
+			\end{align*}
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.5,transform shape,font=\Large]
+				
+				\tkzInit[xmin=-4,xmax=4,ymin=-4,ymax=4]
+				%\tkzGrid[color=gray!20]
+				\tkzClip[space=0.75]
+				
+				\tkzDrawX[noticks]
+				\tkzDrawY[noticks]
+				
+				\tkzDefPoints{0/0/O,4/0/A,0/4/B}
+				
+				\tkzDrawCircle[dashed](O,A)
+				
+				\tkzDefPointsBy[rotation=center O angle 45](O,A){p1,p2}
+				
+				\tkzDefPointWith[linear, K=0.4](p2,O)\tkzGetPoint{p3}
+				
+				\tkzDefPointsBy[rotation=center p2 angle -90](p2,O){p4,p5}
+				
+				\tkzDefPointWith[linear, K=0.4](p2,p5)\tkzGetPoint{p6}
+				
+				\draw[->,line width=1.0pt] (O) -- (p2) node [above left, midway] {$\vec{r}$};
+				\draw[->,color=red,line width=1.0pt] (p2) -- (p6) node [above left] {$\vec{v}$};
+				
+				\tkzMarkRightAngle[size=0.35](O,p2,p6)
+				
+				\tkzMarkAngle[size=0.7](A,O,p2)
+				\tkzLabelAngle(A,O,p2){$\theta$}
+				
+				\tkzDrawPoints[size=0.5cm](p2)
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Velocidade tangencial $\vec{v}$ no MCU.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Período de revolução}
+	\begin{columns}
+		\begin{column}[t]{0.5\textwidth}
+			Se $\omega =cte$, podemos dizer que o período de revolução $T$ (definido como o tempo gasto para a partícula percorrer uma volta completa) é dado pelo caminho percorrido pela partícula (que corresponde exatamente o comprimento s da circunferência de raio r). Portanto
+			\begin{align*}
+				T=\frac{2\pi r}{v},
+			\end{align*}
+			$v$ é conhecido como a velocidade tangencial realizado pela partícula.
+		\end{column}
+		\begin{column}[t]{0.5\textwidth}
+			 Sabendo que $v=\omega r$, temos
+			\begin{align*}
+				\Aboxed{T = \frac{2\pi \bcancel{r}}{\omega \bcancel{r}} = \frac{2\pi}{\omega}.}
+			\end{align*}
+			Definindo a frequência $\nu$ como o número de voltas por tempo, temos que
+			\begin{align*}
+				\nu & = \frac{1}{T},\\
+				\Aboxed{\nu & = \frac{\omega}{2\pi}.}
+			\end{align*} 
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Acelerações radial e tangencial}
+	\begin{columns}
+		\begin{column}[c]{0.6\textwidth}
+			Derivando a função $v=\omega r$ encontramos
+			\begin{align*}
+				\frac{dv}{dt} & = \frac{d\omega r}{dt},\\
+				\frac{dv}{dt} & = r\frac{d\omega}{dt},\\
+				\Aboxed{a_t & = \alpha r.}
+			\end{align*}
+			Sabendo que a aceleração radial $a_r$ corresponde a aceleração centrípeta $a_{cpt}$, temos portanto
+			\begin{align*}
+				\Aboxed{a_r = \frac{v^2}{r}=\omega^2 r.}
+			\end{align*}
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.5,transform shape,font=\Large]
+				
+				\tkzInit[xmin=-4,xmax=4,ymin=-4,ymax=4]
+				%\tkzGrid[color=gray!20]
+				\tkzClip[space=0.75]
+				
+				\tkzDrawX[noticks]
+				\tkzDrawY[noticks]
+				
+				\tkzDefPoints{0/0/O,4/0/A,0/4/B}
+				
+				\tkzDrawCircle[dashed](O,A)
+				
+				\tkzDefPointsBy[rotation=center O angle 45](O,A){p1,p2}
+				
+				\tkzDefPointWith[linear, K=0.4](p2,O)\tkzGetPoint{p3}
+				
+				\tkzDefPointsBy[rotation=center p2 angle -90](p2,O){p4,p5}
+				
+				\tkzDefPointWith[linear, K=0.4](p2,p5)\tkzGetPoint{p6}
+				
+				\tkzDefPointWith[linear, K=0.4](p2,O)\tkzGetPoint{p7}
+				
+				\draw[dotted,line width=0.5pt] (O) -- (p2);
+				\draw[->,color=red,line width=1.0pt] (p2) -- (p6) node [above left] {$\vec{a}_t$};
+				\draw[->,color=red,line width=1.0pt] (p2) -- (p3) node [above left] {$\vec{a}_r$};
+				
+				\tkzMarkRightAngle[size=0.35](O,p2,p6)
+				
+				\tkzMarkAngle[size=0.7](A,O,p2)
+				\tkzLabelAngle(A,O,p2){$\theta$}
+				
+				\tkzDrawPoints[size=0.5cm](p2)			
+				\end{tikzpicture}
+				\caption*{\footnotesize Acelerações radial $\vec{a}_r$ e tangencial $\vec{a}_t$.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\section{Torque, trabalho e energia cinética}
+
+\subsection{}
+
+\begin{frame}{Energia cinética de rotação}
+	\begin{columns}
+		\begin{column}[t]{0.5\textwidth}
+			Considere uma partículas girando em torno de um eixo, mantendo a sua distância r até o eixo constante ao longo do tempo. Sua energia cinética é dada por $K=\frac{1}{2}mv^2$, onde $\vec{v}$ é a sua velocidade tangencial. Sabendo que $v=\omega r$ temos
+			\begin{align*}
+				K & = \frac{1}{2}mv^2,\\
+				K & = \frac{1}{2}m(\omega r)^2,
+			\end{align*}
+			Definimos $I=mr^2$ como o momento de
+		\end{column}
+		\begin{column}[t]{0.5\textwidth}
+	 		inércia da partícula, onde para um conjunto de N partículas girando em torno de um eixo comum teremos
+			\begin{align*}
+				\Aboxed{I =\sum_{i}^{N}m_ir^2_i.}
+			\end{align*}
+			Podemos dizer que a energia cinética de rotação desse conjunto equivale a
+			\begin{align*}
+				\Aboxed{K =\frac{1}{2}I\omega^2.}
+			\end{align*}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Torque}
+	\begin{columns}
+		\begin{column}[c]{0.6\textwidth}
+			Considere uma força $\vec{F}$ no ponto P de um objeto à uma distância r do ponto onde esse objeto irá girar. Essa força será responsável por fazê-lo girar em torno do eixo de rotação nessas condições. No entanto podemos decompô-la em
+			\begin{enumerate}
+				\item [\ding{51}] $\vec{F}_r$ na direção do raio de giro;
+				\item [\ding{51}] $\vec{F}_t$ perpendicular ao raio de giro.
+			\end{enumerate}
+			Percebe-se que somente $\vec{F}_t$ irá contribuir para a rotação, onde
+			\begin{align*}
+				F_t = F\sin\phi.
+			\end{align*}
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.3]{figuras/torque.png}
+				\caption*{\footnotesize Rotação no ponto P devido a força $\vec{F}_t$.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Representação vetorial do torque}
+\begin{columns}
+	\begin{column}[c]{0.7\textwidth}
+		A capacidade de $\vec{F}$ de fazer o objeto girar não depende apenas de $\vec{F}_t$, mas também da distância entre o ponto de aplicação P e o ponto O. Para levar em conta os dois fatores definimos uma grandeza chamada torque $\tau$, onde
+		\begin{align*}
+%			\tau & = (r)(F_t),\\
+			\tau & = (r)(F\sin\phi).
+		\end{align*}
+		Porém, o torque é uma grandeza vetorial, pois a força aplicada em sentido contrário, ou se o ponto O estiver do lado oposto, o objeto poderá girar no sentido horário ou anti-horário. Portanto, é conveniente definir o torque na forma
+		\begin{align*}
+			\Aboxed{\vec{\tau} & = \vec{r}\times\vec{F}.}
+		\end{align*}
+	\end{column}
+	\begin{column}[c]{0.3\textwidth}
+		\begin{figure}
+			\centering
+%			\includegraphics[scale=0.25]{figuras/torque.png}
+			\begin{tikzpicture}[scale=0.55,transform shape,font=\large]
+			
+			\tkzInit[xmin=-2,xmax=5,ymin=-2,ymax=5]
+			%\tkzGrid[color=gray!20]
+			\tkzClip[space=0.4]
+			
+			\coordinate (O) at (0,0,0);
+			\coordinate (x) at (0,0,5);
+			\coordinate (y) at (5,0,0);
+			\coordinate (z) at (0,5,0);
+			
+			\draw[->,line width=0.5pt] (0,0,0) -- (y) node [right] {y};
+			\draw[->,line width=0.5pt] (0,0,0) -- (x) node [below left] {x};
+			\draw[->,line width=0.5pt] (0,0,0) -- (z) node [above] {z};
+			
+			\coordinate (pxy) at (2.5,0,3);
+
+			%particula
+			\tkzDrawPoint[size=0.75cm](pxy)
+
+			%rotacao
+
+			\tkzDefPointWith[linear, K=-0.5](pxy,O)\tkzGetPoint{p1}
+			\draw[->] (O) -- (pxy) node [above right,midway] {$\vec{r}$};
+			\draw[dotted] (pxy) -- (p1);
+			
+			%rotacao
+			
+			\coordinate (f) at (3,0,2);
+			\draw[->] (pxy) -- (f) node [right] {$\vec{F}$};
+			
+			\tkzMarkAngle[arrows=->,size=0.75](x,O,pxy)
+			\tkzLabelAngle[pos=1.1](x,O,pxy){$\theta$}
+%			\tkzMarkAngle[size=0.25](p1,pxy,f)
+			\tkzLabelAngle[pos=0.5](p1,pxy,f){$\phi$}
+			
+			%velocidade angular
+			
+			\draw[->,color=red,line width=0.5pt] (O)	--++ (0,2) node [right] {$\vec{\tau}=\vec{r}\times\vec{F}$};
+			
+			%texto
+			\coordinate (t1) at (0,3,0);
+			\coordinate (t2) at (3,4,0);
+			
+			\draw[->,line width=0.5pt] (t2) -- (t1);
+			
+			\tkzText[text centered,opacity=100,fill=gray!20](t2){\small Eixo de rotação}
+			
+			\end{tikzpicture}
+			\caption*{\footnotesize Representação do torque $\vec{\tau}$.}
+		\end{figure}
+	\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Trabalho em rotações}
+	\begin{columns}
+		\begin{column}[c]{0.6\textwidth}
+			A expressão do trabalho $dW$ realizado por uma força $\vec{F}$ ao longo do caminho infinitesimal $ds$ é dado por $dW=\vec{F}\cdot d\vec{s}$. No entanto, no caso do movimento de rotação, percebemos que somente a componente $\vec{F}_t$ realiza efetivamente algum trabalho sobre a partícula, portanto temos um percurso ao longo do caminho c
+			\begin{align*}
+				W & = \int\limits_cF_t\cos\theta ds,\\
+				W & = \int\limits_cF\sin\phi ds.
+			\end{align*}
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.3]{figuras/torque.png}
+				\caption*{\footnotesize Rotação no ponto P devido a força $\vec{F}_t$.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Trabalho e potência em rotações (continuação)}
+	\begin{columns}
+		\begin{column}[t]{0.5\textwidth}
+			Sabemos que o comprimento de um arco s é dado por $s=r\theta$. Considerando que o caminho infinitesimal $ds$ percorrido pela partícula, temos que $ds=rd\theta$. Fazendo uma substituição de variáveis
+			\begin{align*}
+				dW & = F\sin\phi rd\theta.
+			\end{align*}
+			Porém, pela definição de torque $\tau=rF\sin\phi$, portanto
+			\begin{align*}
+				dW & = \tau d\theta.
+			\end{align*}
+		\end{column}
+		\begin{column}[t]{0.5\textwidth}
+			Integrando ao longo do caminho c temos
+			\begin{align*}
+				\Aboxed{W & = \int\limits_{\theta_1}^{\theta_2}\tau d\theta.}
+			\end{align*}
+			A potência pode ser determinada através da expressão $P=\frac{dW}{dt}$. Considerando uma rotação onde $\tau=cte$ teremos
+			\begin{align*}
+				\Aboxed{P & = \frac{\tau d\theta}{dt}=\tau\omega.}
+			\end{align*}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\section{Segunda lei de Newton para rotações}
+
+\subsection{}
+
+\begin{frame}{Momento angular}
+	\begin{columns}
+		\begin{column}[t]{0.5\textwidth}
+%	\begin{multicols}{2}
+		No movimento linear, temos de acordo com a segunda lei de Newton $\vec{F}=\frac{d\vec{p}}{dt}$. Substituindo na definição do torque
+		\begin{align*}
+			\vec{\tau} & = \vec{r}\times\vec{F},\\
+			\vec{\tau} & = \vec{r}\times\frac{d\vec{p}}{dt}.
+		\end{align*}
+		No entanto, podemos perceber pela propriedade do produto vetorial
+		\begin{align*}
+			\frac{d(\vec{r}\times\vec{p})}{dt} & =\vec{r}\times\frac{d\vec{p}}{dt}+\frac{d\vec{r}}{dt}\times\vec{p},
+%			\vec{r}\times\frac{d\vec{p}}{dt}=\frac{d(\vec{r}\times\vec{p})}{dt}-\frac{d\vec{r}}{dt}\times\vec{p}.
+		\end{align*}
+		\end{column}
+		\begin{column}[t]{0.5\textwidth}
+			onde
+		\begin{align*}
+			%\frac{d(\vec{r}\times\vec{p})}{dt}=\vec{r}\times\frac{d\vec{p}}{dt}+\frac{d\vec{r}}{dt}\times\vec{p},\\
+			\vec{r}\times\frac{d\vec{p}}{dt} & =\frac{d(\vec{r}\times\vec{p})}{dt}-\frac{d\vec{r}}{dt}\times\vec{p}.
+		\end{align*}
+		Substituindo na expressão do torque
+		\begin{align*}
+			\vec{\tau} & = \frac{d(\vec{r}\times\vec{p})}{dt}-\overbracket{\frac{d\vec{r}}{dt}}^{\alert{v}}\times\vec{p},\\
+			\vec{\tau} & = \frac{d(\vec{r}\times\vec{p})}{dt}-\vec{v}\times m\vec{v}.
+		\end{align*}
+		onde sabemos que $\vec{v}=\frac{d\vec{r}}{dt}$ e $\vec{p}=m\vec{v}$.
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Momento angular (continuação)}
+	\begin{columns}
+		\begin{column}[t]{0.5\textwidth}
+			Porém, pela regra do produto vetorial, temos que $\vec{v}\times m\vec{v}=\vec{0}$, pois o produto de dois vetores com a mesma orientação é igual a zero no produto vetorial, portanto
+			\begin{align*}
+				\vec{\tau} & = \frac{d(\vec{r}\times\vec{p})}{dt}-\underbracket{\vec{v}\times m\vec{v}}_{\alert{0}},\\
+				\vec{\tau} & = \frac{d(\vec{r}\times\vec{p})}{dt},\\
+				\vec{\tau} & = \frac{d\vec{l}}{dt}.
+			\end{align*}
+		\end{column}
+		\begin{column}[t]{0.5\textwidth}
+			A equação acima nos fornece uma nova grandeza física associado a rotação chamado momento angular $\vec{l}$, onde
+			\begin{align*}
+				\vec{l} = \vec{r}\times\vec{p}.
+			\end{align*}
+			Considerando um movimento circular onde $r=cte$, o módulo de $\vec{l}$ é dado por $l=mrv$, porém $v=\omega r$, substituindo
+			\begin{align*}
+			 	l & = mr\overbracket{v}^{\alert{\omega r}} = mr^2\omega=I\omega,\\
+				\Aboxed{\vec{l} & = I\vec{\omega}.}
+			 \end{align*}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Momento angular total de um sistema de partículas}
+%	\begin{multicols}{2}
+	\begin{columns}
+		\begin{column}[c]{0.6\textwidth}
+			Considerando um sistema de partículas, o momento angular total $\vec{L}$ é a soma vetorial dos momentos angulares $\vec{l}$ de cada partícula do sistema,
+			\begin{align*}
+				\vec{L} = \vec{l}_1+\vec{l}_2+\dots + \vec{l}_n = \sum\limits_{i=1}^{N}\vec{l}_i.
+			\end{align*}
+			Derivando no tempo temos
+			\begin{align*}
+				\frac{d\vec{L}}{dt} & = \frac{d}{dt}\sum\limits_{i=1}^{N}\vec{l}_i=\sum\limits_{i=1}^{N}\frac{d\vec{l}_i}{dt}.
+			\end{align*}
+%		\end{multicols}
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.55]{figuras/sistema-particulas-girantes.jpeg}
+				\caption*{\footnotesize Sistema de duas partículas girando em torno do eixo z.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Conservação do momento angular}
+\begin{multicols}{2}
+	Aplicando a definição de torque teremos
+	\begin{align*}
+	\frac{d\vec{L}}{dt} & = \sum\limits_{i=1}^{N}\frac{d\vec{l}_i}{dt},\\
+	\frac{d\vec{L}}{dt} & = \sum\limits_{i=1}^{N}\vec{\tau}_i=\vec{\tau}_{\text{res}}.
+	\end{align*}
+	No caso especial onde o torque externo resultante atuando sobre as partículas for zero, o momento angular total $\vec{L}$ do sistema é conservado,
+	\begin{align*}
+	\Aboxed{\vec{L}=\text{constante}.}
+	\end{align*}
+\end{multicols}
+\begin{block}{Lei da conservação do momento angular}
+	Se a somatória dos torques externos atuando sobre um sistema de partículas é zero, o momento angular total desse sistema não pode variar.
+\end{block}
+\end{frame}
+
+\begin{frame}{Resumo}
+	\footnotesize
+%	\vspace*{-0.25cm}
+	\begin{table}
+		\centering
+		\caption*{\footnotesize Correspondência entre os movimentos de translação e rotação.}
+%		\vspace*{-0.5cm}
+		\begin{tabular}[c]{lclc}
+			\hline
+			\multicolumn{2}{c}{Translação} &  \multicolumn{2}{c}{Rotação} \\
+			\hline
+			Grandeza & Fórmula & Grandeza & Fórmula\\
+			\hline
+			Deslocamento & $\Delta x$ & Deslocamento angular & $\Delta \theta$\\
+			Velocidade & $\vec{v}=\frac{d\vec{r}}{dt}$ & Velocidade angular & $\omega=\frac{d\theta}{dt}$\\
+			Aceleração & $\vec{a}=\frac{d\vec{r}}{dt}$ & Aceleração angular & $\alpha=\frac{d\omega}{dt}$\\
+			Massa & m & Momento de inércia & $I=mr^2$\\
+			Momento linear & $\vec{p}=m\vec{v}$ & Momento angular & $\vec{l}=\vec{r}\times\vec{p}$\\
+			Força & $\vec{F}=m\vec{a}$ & Torque & $\vec{\tau}=\vec{r}\times\vec{F}$\\
+			Energia cinética & $K=\frac{1}{2}mv^2$ & Energia cinética & $K=\frac{1}{2}I\omega^2$\\
+			Trabalho & $W=\int\vec{F}\cdot d\vec{r}$ & Trabalho & $W=\int\tau d\theta$\\
+			Lei de conservação & $\vec{P}=\text{cte}$ se $\vec{F}_{\text{res}}=0$ & Lei de conservação & $\vec{L}=\text{cte}$ se $\vec{\tau}_{\text{res}}=0$\\
+			\hline					
+		\end{tabular}
+	\end{table}				
+\end{frame}
+
+\section{Apêndice}
+
+\subsection{}
+
+\begin{frame}{Referências e observações\footnote{Este material está sujeito a modificações. Recomenda-se acompanhamento permanente.}}
+	\bibliographystyle{jurabib}
+	\begin{thebibliography}{9}
+		\bibitem{halliday}D. Halliday, R. Resnick, J. Walker, Fundamentos de física. Mecânica, v.1, 10. ed., Rio de Janeiro, LTC (2016)
+	\end{thebibliography}
+\end{frame}
+
+\end{document}

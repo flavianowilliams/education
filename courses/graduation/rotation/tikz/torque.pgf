@@ -1,0 +1,48 @@
+﻿				\begin{tikzpicture}[scale=1.42,transform shape,font=\large]
+				
+				\tkzInit[xmin=-2,xmax=5,ymin=-2,ymax=5]
+				%\tkzGrid[color=gray!20]
+				\tkzClip[space=0.4]
+				
+				\coordinate (O) at (0,0,0);
+				\coordinate (x) at (0,0,5);
+				\coordinate (y) at (5,0,0);
+				\coordinate (z) at (0,5,0);
+				
+				\draw[->,line width=0.5pt] (0,0,0) -- (y) node [right] {y};
+				\draw[->,line width=0.5pt] (0,0,0) -- (x) node [below left] {x};
+				\draw[->,line width=0.5pt] (0,0,0) -- (z) node [above] {z};
+				
+				%rotacao
+				
+				\coordinate (pxy) at (2.5,0,3);
+				\tkzDefPointWith[linear, K=-0.5](pxy,O)\tkzGetPoint{p1}
+				\draw[->] (O) -- (pxy) node [above right,midway] {$\vec{r}$};
+				\draw[dashed] (pxy) -- (p1);
+				
+				%rotacao
+				
+				\coordinate (f) at (3,0,2);
+				\draw[->] (pxy) -- (f) node [right] {$\vec{F}$};
+
+				\tkzMarkAngle[arrows=->,size=0.75](x,O,pxy)
+				\tkzLabelAngle[pos=1.1](x,O,pxy){$\theta$}
+				\tkzMarkAngle[size=0.25](p1,pxy,f)
+				\tkzLabelAngle[pos=0.5](p1,pxy,f){$\phi$}
+				
+				%velocidade angular
+				
+				\draw[->,color=red,line width=0.5pt] (O)	--++ (0,2) node [right] {$\vec{\tau}=\vec{r}\times\vec{F}$};
+				
+				%texto
+				\coordinate (t1) at (0,3,0);
+				\coordinate (t2) at (3,4,0);
+				
+				\draw[->,line width=0.5pt] (t2) -- (t1);
+				
+				\tkzText[text centered,opacity=100,fill=gray!20](t2){\small Eixo de rotação}
+				
+				%particula
+				\tkzDrawPoint[size=0.75cm](pxy)
+
+				\end{tikzpicture}

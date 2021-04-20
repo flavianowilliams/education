@@ -1,0 +1,36 @@
+﻿\begin{tikzpicture}[scale=1,transform shape,font=\large]
+
+			\tikzstyle{s1}=[circle, radius=0.1, ball color=gray!50];
+
+			\tkzInit[xmin=-2,xmax=5,ymin=-2,ymax=5]
+			\tkzGrid[color=gray!20]
+			\tkzClip[space=1]
+
+			\coordinate (O) at (0,0,0);
+			\coordinate (A) at (5,0,0);
+			\coordinate (B) at (0,5,0);
+			\coordinate (C) at (0,0,5);
+
+			%eixos
+			\draw[->] (O) -- (A) node [right] {y};
+			\draw[->] (O) -- (B) node [above] {z};
+			\draw[->] (O) -- (C) node [below left] {x};
+
+			\coordinate (m1) at (3,2.5,3.5);
+			\coordinate (m2) at (3,0,3.5);
+			\coordinate (m3) at (0,0,3.5);
+			\coordinate (m4) at (-0.5,3.5,3.5);
+
+			%particulas
+			\draw[s1] (m1) circle [radius=0.2cm] node [above] {$m_1$};
+			\draw[s1] (m2) circle [radius=0.2cm] node [right=0.1cm] {$m_2$};
+			\draw[s1] (m3) circle [radius=0.2cm] node [right=0.1cm] {$m_3$};
+			\draw[s1] (m4) circle [radius=0.2cm] node [right=0.1cm] {$m_4$};
+
+	  		%vetor v
+			\draw[->, line width=1.0pt,color=brown] (O) -- (m1) node [above,midway] {$\vec{r}_1$};
+			\draw[->, line width=1.0pt,color=brown] (O) -- (m2) node [above,midway] {$\vec{r}_2$};
+			\draw[->, line width=1.0pt,color=brown] (O) -- (m3) node [above,midway] {$\vec{r}_3$};
+			\draw[->, line width=1.0pt,color=brown] (O) -- (m4) node [above,midway] {$\vec{r}_4$};
+
+\end{tikzpicture}

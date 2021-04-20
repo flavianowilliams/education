@@ -1,0 +1,875 @@
+% Aula de conservação de energia para o curso de Física I da graduação
+%
+\documentclass[brazil,aspectratio=169]{beamer}
+%
+%carregando preâmbulo
+\input{../../contrib/preamble}
+
+%Título
+
+\title[Mecânica-SPP]{Sistema de partículas}
+
+% The main document
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Sumário}
+  \tableofcontents
+\end{frame}
+
+\section{Sistema de partículas}
+
+\subsection{}
+
+\begin{frame}{Centro de massa}
+	\begin{columns}
+		\begin{column}[c]{0.6\textwidth}
+			O centro de massa de um sistema de partículas ou objeto rígido é o ponto que se move como se toda a massa do sistema estivesse concentrada nesse ponto e todas as forças externas estivessem aplicadas nesse ponto.
+			\begin{corollary}
+				Á partir do centro de massa podemos determinar com mais facilidade o movimento do sistema.
+			\end{corollary}
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.2]{figuras/figura-1.png}
+				\caption*{\footnotesize Representação do centro de massa de um bastão \cite{halliday}.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Sistema de duas partículas}
+	\begin{columns}
+		\begin{column}[c]{0.6\textwidth}
+			Considere um sitema binário (contendo duas partículas) ao longo do eixo x, podemos substituir o conjunto por outro equivalente onde toda a massa está concentrada no seu centro de massa,
+			\begin{align*}
+				(m_1+m_2)x_{cm}& = m_1x_1+m_2x_2,\\
+				\Aboxed{x_{cm} & = \frac{m_1x_1+m_2x_2}{m_1+m_2},}
+			\end{align*}
+			onde $x_{cm}$ é a localização da massa total do sistema.
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}
+				\centering
+%				\includegraphics[scale=0.3]{figuras/figura-2.png}
+				\begin{tikzpicture}[scale=0.25,transform shape,font=\huge]
+				
+				\tikzstyle{s1}=[circle, radius=0.1, ball color=gray!50];
+				\tikzstyle{s2}=[circle, radius=0.4, ball color=gray!50];
+				
+				\begin{scope}[shift={(0,0)}]
+				
+				\tkzInit[xmin=0,xmax=15,ymin=-2,ymax=4]
+				%\tkzGrid[color=gray!20]
+				\tkzClip[space=1.5]
+				
+				\tkzDrawX[label=x,below,noticks]
+				\tkzDrawY[label=y,pos=1.01,above,noticks]
+				
+				\tkzDefPoints{2/0/m1,12/0/m2,12/4/t2}
+				
+				\draw[s1] (m1) circle [radius=0.25cm] node [above] {$m_1$};
+				\draw[s1] (m2) circle [radius=0.75cm] node [above=0.5cm] {$m_2$};
+				
+				\draw[<->,line width=0.5pt] (0,-1) -- ($(m1)+(0,-1)$) node [above,midway] {$x_1$};
+				\draw[<->,line width=0.5pt] (0,-1.5) -- ($(m2)+(0,-1.5)$) node [above,midway] {$x_2$};
+				\tkzText[color=black](t2){(Sistema binario)}
+				
+				\end{scope}
+				
+				\begin{scope}[shift={(0,-8)}]
+				
+				\tkzInit[xmin=0,xmax=15,ymin=-2,ymax=4]
+				%\tkzGrid[color=gray!20]
+				\tkzClip[space=1.5]
+				
+				\tkzDrawX[label=x,below,noticks]
+				\tkzDrawY[label=y,pos=1.01,above,noticks]
+				
+				\tkzDefPoints{9.75/0/m1,12/4/t2}
+				
+				\draw[s1] (m1) circle [radius=1cm] node [above=0.5cm] {$m_1+m_2$};
+				
+				\draw[<->,line width=0.5pt] (0,-1.5) -- ($(m1)+(0,-1.5)$) node [above,midway] {$x_{cm}$};
+				\tkzText[color=black](t2){(Sistema equivalente)}
+				
+				\end{scope}
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Centro de massa das partículas de massa $m_1$ e $m_2$.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Sistema de várias partículas}
+%	\begin{multicols}{2}
+		Para um sistema contendo N partículas podemos generalizar a idéia anterior na forma
+		\begin{align*}
+			(m_1+m_2+m_3+\cdots +m_N)x_{cm} & = m_1x_1+m_2x_2+m_3x_3+\cdots+m_Nx_N,\\
+			x_{cm} & = \frac{m_1x_1+m_2x_2+m_3x_3+\cdots+m_Nx_N}{m_1+m_2+m_3+\cdots +m_N},\\
+			\Aboxed{x_{cm} & = \frac{1}{M} \sum_{i=1}^{N}m_ix_i,}
+		\end{align*}
+		onde $M=m_1+m_2+m_3+\cdots +m_N$, é a massa total do sistema.
+%	\end{multicols}
+\end{frame}
+
+\begin{frame}{Sistema de partículas em três dimensões}
+	\begin{columns}
+		\begin{column}[c]{0.6\textwidth}
+			No caso de um sistema de N partículas distribuídas no espaço, podemos determinar o centro de massa de cada coordenada separadamente,
+			\begin{align*}
+				x_{cm} & = \frac{1}{M} \sum_{i=1}^{N}m_ix_i,\\
+				y_{cm} & = \frac{1}{M} \sum_{i=1}^{N}m_iy_i,\\
+				z_{cm} & = \frac{1}{M} \sum_{i=1}^{N}m_iz_i.
+			\end{align*}
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}
+				\centering
+%				\includegraphics[scale=1]{imagefile}
+				\begin{tikzpicture}[scale=0.65,transform shape]
+				
+				\tikzstyle{s1}=[circle, radius=0.1, ball color=gray!50];
+				
+				\tkzInit[xmin=0,xmax=5,ymin=0,ymax=5]
+				\tkzGrid[color=gray!20]
+				\tkzClip[space=1]
+				
+				\tkzDefPoints{0/0/m1,3/4/m2,5/0/m3,3/1.8/cm,3/0/xcm,0/1.8/ycm}
+				
+				\tkzDrawX[label=x,below]
+				\tkzDrawY[label=y,pos=1.01,above]
+				
+				\draw[s1] (m1) circle [radius=0.1cm] node [above left=0.1cm] {$m_3$};
+				\draw[s1] (m2) circle [radius=0.2cm] node [above=0.05cm] {$m_1$};
+				\draw[s1] (m3) circle [radius=0.15cm] node [above=0.05cm] {$m_2$};
+				
+				\draw[->,line width=0.5pt,color=brown] (m1) -- (m2) node [above left,midway] {$\vec{r}_1$};
+				\draw[->,line width=0.5pt,color=brown] (m1) -- (m3) node [above,pos=0.75] {$\vec{r}_2$};
+				\draw[->,line width=0.5pt,color=blue] (m1) -- (cm) node [above,midway] {$\vec{r}_{cm}$};
+				\draw[->,line width=0.5pt,color=blue] (m1) -- (xcm);
+				\draw[->,line width=0.5pt,color=blue] (m1) -- (ycm);
+				
+				\tkzPointShowCoord(cm)
+				
+				\tkzDrawPoints[size=0.5cm,color=red,fill=red](cm)
+				\tkzLabelPoint[above=0.1cm](cm){CM}
+				\tkzLabelPoint[below](xcm){$x_{cm}$}
+				\tkzLabelPoint[left](ycm){$y_{cm}$}
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Vetor posição $\vec{r}_{cm}$ do centro de massa (CM) de um conjunto de três partículas.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Sistema de partículas em três dimensões (continuação)}
+	\begin{columns}
+		\begin{column}[c]{0.6\textwidth}
+			Usando a linguagem vetorial, podemos definir as coordenadas do centro de massa na forma abaixo
+		\begin{align*}
+		\vec{r}_{cm} = x_{cm}\widehat{i}+y_{cm}\widehat{j}+z_{cm}\widehat{k},
+		\end{align*}
+		ou de maneira equivalente
+		\begin{align*}
+			\Aboxed{\vec{r}_{cm}=\frac{1}{M} \sum_{i=1}^{N}m_i\vec{r}_i.}
+		\end{align*}
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}
+				\centering
+%				\includegraphics[scale=1]{imagefile}
+				\begin{tikzpicture}[scale=0.55,transform shape,font=\large]
+				
+				\tikzstyle{s1}=[circle, radius=0.1, ball color=gray!50];
+				
+				\tkzInit[xmin=-2,xmax=5,ymin=-2,ymax=5]
+				%\tkzGrid[color=gray!20]
+				\tkzClip[space=1]
+				
+				\coordinate (O) at (0,0,0);
+				\coordinate (A) at (5,0,0);
+				\coordinate (B) at (0,5,0);
+				\coordinate (C) at (0,0,5);
+				
+				%eixos
+				\draw[->] (O) -- (A) node [right] {y};
+				\draw[->] (O) -- (B) node [above] {z};
+				\draw[->] (O) -- (C) node [below left] {x};
+				
+				\coordinate (m1) at (3,2.5,3.5);
+				\coordinate (m2) at (3,0,3.5);
+				\coordinate (m3) at (0,0,3.5);
+				\coordinate (m4) at (-0.5,3.5,3.5);
+				\coordinate (m5) at (0,3.5,0);
+				\coordinate (m6) at (3.5,0,0);
+				
+				%particulas
+				\draw[s1] (m1) circle [radius=0.2cm] node [above] {$m_1$};
+				\draw[s1] (m2) circle [radius=0.2cm] node [right=0.1cm] {$m_2$};
+				\draw[s1] (m3) circle [radius=0.2cm] node [right=0.1cm] {$m_3$};
+				\draw[s1] (m4) circle [radius=0.2cm] node [right=0.1cm] {$m_4$};
+				\draw[s1] (m5) circle [radius=0.2cm] node [right=0.1cm] {$m_5$};
+				\draw[s1] (m6) circle [radius=0.2cm] node [above=0.1cm] {$m_6$};
+				
+				%vetor v
+				\draw[->, line width=1.0pt,color=brown] (O) -- (m1) node [above,midway] {$\vec{r}_1$};
+				\draw[->, line width=1.0pt,color=brown] (O) -- (m2) node [above,midway] {$\vec{r}_2$};
+				\draw[->, line width=1.0pt,color=brown] (O) -- (m3) node [above,midway] {$\vec{r}_3$};
+				\draw[->, line width=1.0pt,color=brown] (O) -- (m4) node [above,midway] {$\vec{r}_4$};
+				\draw[->, line width=1.0pt,color=brown] (O) -- (m5) node [right,midway] {$\vec{r}_5$};
+				\draw[->, line width=1.0pt,color=brown] (O) -- (m6) node [above,midway] {$\vec{r}_6$};
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Sistema de partículas.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Objetos maciços}
+	No caso de um objeto rígido com uma distribuição contínua de massa, a somatória se transforma em uma integral, resultando em
+	\begin{align*}
+		x_{cm} = \frac{1}{M}\int xdm,\quad y_{cm} = \frac{1}{M}\int ydm,\quad z_{cm} = \frac{1}{M}\int zdm.
+	\end{align*}
+	No caso de objetos homogêneos, onde a densidade $\rho$ é constante, temos $\rho=\frac{M}{V}$, onde V é o volume do objeto. Substituindo na equação acima temos
+	\begin{align*}
+		x_{cm} = \frac{1}{\bcancel{\rho} V}\int x\bcancel{\rho} dV,\quad y_{cm} = \frac{1}{\bcancel{\rho} V}\int y\bcancel{\rho} dV,\quad z_{cm} = \frac{1}{\bcancel{\rho} V}\int z\bcancel{\rho} dV,\\
+		\Aboxed{x_{cm} = \frac{1}{V}\int x(V)dV,\quad y_{cm} = \frac{1}{V}\int y(V)dV,\quad z_{cm} = \frac{1}{V}\int z(V)dV.}
+	\end{align*}
+\end{frame}
+
+\begin{frame}{Outras considerações importantes a respeito do centro de massa}
+	\begin{enumerate}
+		\item [\ding{51}] O centro de massa de um objeto não precisa estar necessariamente no interior desse objeto;
+		\item [\ding{51}] Em um objeto heterogêneo, o centro de massa possui a tendência de estar mais próximo da região que possui maior distribuição de massa;
+		\item[\ding{51}] Em objetos que possuem simetria, o centro de massa se torna mais simples, pois nesse caso ele se encontra no \alert{ponto, na linha ou plano de simetria}. Exemplo: Em uma esfera homogênea, o centro de massa se encontra no centro da esfera, em um cilindro homogêneo, o centro de massa se encontra no eixo do cilindro;
+		\item[\ding{51}] Em um objeto homogêneo, o centro de massa se encontra no centro geométrico desse objeto.
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}{Centro de massa de objetos opacos}
+	\begin{columns}
+		\begin{column}[c]{0.65\textwidth}
+			Como exemplo, considere um disco circular homogêneo contendo um orifício também circular como mostra a figura ao lado. Do ponto de vista matemático, podemos dizer que a distribuição de massa é equivalente a soma da massa de um círculo maciço com outro disco de massa negativa. Para calcular o centro de massa do conjunto, concentramos toda a massa em dois pontos de massa $m_1$ e $m_2$,
+			\begin{align*}
+				\vec{r}_{cm} = \frac{m_1\vec{r}_1+m_2\vec{r}_2}{(m_1+m_2)}.
+			\end{align*}
+		\end{column}
+		\begin{column}[c]{0.35\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.4,transform shape,font=\Large]
+				
+				\tkzInit[xmin=-4.5,xmax=4.5,ymin=-4.5,ymax=4.5]
+				%\tkzGrid[color=gray!20]
+				\tkzClip[space=1]
+				
+				\tkzDefPoint(0,0){O}
+				\tkzDefPoint(4,0){A}
+				\tkzDefPoint(-2,0){B}
+				\tkzDefPoint(1.3,0){cm}
+				
+				\tkzDrawCircle[color=gray,fill=gray!50](O,A)
+				
+				\tkzDefPointsBy[rotation=center O angle 45](O,A){p1,p2}
+				
+				\draw[->,line width=0.5pt] (O) -- (p2) node [above left,midway] {$2R$};
+				
+				\tkzDrawCircle[color=gray,fill=white](B,O)
+				
+				\tkzDefPointsBy[rotation=center B angle 300](B,O){p1,p2}
+				
+				\draw[->,line width=0.5pt] (B) -- (p2) node [above right,midway] {$R$};
+				
+				\tkzDrawX[label=x,right,noticks]
+				\tkzDrawY[label=y,pos=1.01,above,noticks]
+				
+				\tkzDrawPoints[size=0.5cm,color=red,fill=red](cm)
+				\tkzLabelPoint[below=0.1cm](cm){$x_{cm}$}
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Centro de massa de um disco circular vazado.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Centro de massa de objetos opacos (continuação)}
+	\begin{columns}
+		\begin{column}[c]{0.65\textwidth}
+			Porém, pela simetria do conjunto, percebe-se que o centro de massa encontra-se no eixo x que representa a linha de simetria do problema, portanto
+			\begin{align*}
+				x_{cm} = \frac{m_1x_1+m_2x_2}{(m_1+m_2)}.
+			\end{align*}
+			Como os discos são homogêneos, podemos dizer que $m=\rho\pi r^2$, onde $\rho$ é a densidade e $r$ o raio do disco,
+			\begin{align*}
+				x_{cm} = \frac{\alert{-}\rho\pi R^2(-R)+\rho\pi (2R)^2(0)}{\alert{-}\rho\pi R^2+\rho\pi (2R)^2} = \Aboxed{\frac{R}{3}.}
+			\end{align*}
+		\end{column}
+		\begin{column}[c]{0.35\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.4,transform shape,font=\Large]
+				
+				\tikzstyle{s1}=[circle, radius=0.1, ball color=gray!50];
+				
+				\tkzInit[xmin=-4.5,xmax=4.5,ymin=-4.5,ymax=4.5]
+				%\tkzGrid[color=gray!20]
+				\tkzClip[space=1]
+				
+				\tkzDefPoint(0,0){O}
+				\tkzDefPoint(4,0){A}
+				\tkzDefPoint(-2,0){B}
+				\tkzDefPoint(1.3,0){cm}
+				
+				\tkzDrawX[label=x,right,noticks]
+				\tkzDrawY[label=y,pos=1.01,above,noticks]
+				
+				\tkzDrawPoints[size=0.5cm,color=red,fill=red](cm)
+				
+				\draw[<->,line width=0.5pt] (0,-1) -- ($(B)+(0,-1)$) node [above,midway] {\normalsize $R$};
+				\draw[<->,line width=0.5pt] (0,-1) -- ($(cm)+(0,-1)$) node [above,midway] {\normalsize $x_{cm}$};
+				
+				\draw[s1] (B) circle [radius=0.20cm] node [above] {$m_1$};	
+				\draw[s1] (O) circle [radius=0.50cm] node [above right=0.4cm] {$m_2$};	
+				
+				\end{tikzpicture}
+			\caption*{\footnotesize Centro de massa de um disco circular vazado.}
+		\end{figure}
+	\end{column}
+\end{columns}
+\end{frame}
+
+\section{Colisões}
+
+\subsection{}
+
+\begin{frame}{Segunda Lei de Newton para um sistema de partículas}
+	\begin{multicols}{2}
+		Sabemos que
+		\begin{align*}
+			M\vec{r}_{CM} = m_1\vec{r}_1+m_1\vec{r}_2+\cdots+m_N\vec{r}_N,
+		\end{align*}
+		onde M é a massa total. Derivando duas vezes temos
+		\begin{align*}
+			M\vec{a}_{CM} = m_1\vec{a}_1+m_1\vec{a}_2+\cdots+m_N\vec{a}_N.
+		\end{align*}
+		Identificando os termos do lado direito com a segunda Lei de Newton temos
+		\begin{align*}
+			M\vec{a}_{CM} = \vec{F}_1+\vec{F}_2+\cdots+\vec{F}_N.
+		\end{align*}
+		Sabendo que a força resultante atuando no conjunto é soma vetorial das forças externas atuando em cada partícula e identificando o termo do lado esquerdo com a segunda Lei de Newton, podemos dizer que a força resultante é dado por
+		\begin{align*}
+			\vec{F}_{res} & = \vec{F}_1+\vec{F}_2+\cdots+\vec{F}_N,\\
+			\Aboxed{\vec{F}_{res} & = M\vec{a}_{CM}.}
+		\end{align*}
+	\end{multicols}
+\end{frame}
+
+\begin{frame}{Momento linear de um sistema de partícula}
+	\begin{multicols}{2}
+		Sabemos que
+		\begin{align*}
+			M\vec{r}_{CM} = m_1\vec{r}_1+m_1\vec{r}_2+\cdots+m_N\vec{r}_N,
+		\end{align*}
+		onde M é a massa total. Derivando temos
+		\begin{align*}
+			M\vec{v}_{CM} = m_1\vec{v}_1+m_1\vec{v}_2+\cdots+m_N\vec{v}_N,
+		\end{align*}
+		Podemos definir quantitativamente a quantidade de movimento de uma partícula de massa m e velocidade $\vec{v}$ como
+		\begin{align*}
+			\Aboxed{\vec{p} = m\vec{v}.}
+		\end{align*}
+		Temos assim
+		\begin{equation*}
+			M\vec{v}_{CM} = \vec{p}_1+\vec{p}_2+\cdots +\vec{v}_N.
+		\end{equation*}
+		Dessa maneira, a quantidade de movimento $\vec{P}$ do centro de massa pode ser definido como
+		\begin{align*}
+			\Aboxed{\vec{P} = M\vec{v}_{CM}.}
+		\end{align*}
+	\end{multicols}
+\end{frame}
+
+\begin{frame}{Colisão simples}
+	\begin{multicols}{2}
+		Derivando a equação anterior temos
+		\begin{align*}
+			\frac{d\vec{P}}{dt} & = M\frac{d\vec{v}_{CM}}{dt},\\
+			\frac{d\vec{P}}{dt} & = M\vec{a}_{CM}.
+		\end{align*}
+		Sabendo que $\vec{F}_{res} = M\vec{a}_{CM}$ temos
+		\begin{align*}
+			\Aboxed{\vec{F}_{res} = \frac{d\vec{P}}{dt}.}
+		\end{align*}
+		Aplicando a regra diferencial temos
+		\begin{align*}
+			d\vec{P} = \vec{F}_{res} dt.
+		\end{align*}
+		Integrando durante um intervalo de tempo $\Delta t$, onde $\Delta t=t_f-t_i$ temos
+		\begin{align*}
+			\vec{J} = \Delta\vec{P} = \int_{t_i}^{t_f}\vec{F}(t)dt,
+		\end{align*}
+		onde $\vec{J}$ é chamado impulso e é igual a variação do momento $\Delta \vec{P}$.
+	\end{multicols}
+\end{frame}
+
+\begin{frame}{Impulso à partir do gráfico Força versus Tempo}
+	\begin{columns}
+		\begin{column}[c]{0.6\textwidth}
+			Se $\vec{F}(t)$ é uma função contínua, o impulso sobre a partícula é igual a área abaixo da curva em um gráfico força versus tempo. Além do mais, à partir do teorema do valor médio, o impulso pode ser calculado sabendo o valor médio da força,
+			\begin{align*}
+				J = F_{\text{médio}}\Delta t,
+			\end{align*}
+				onde essa expressão é útil para determinar a força média causada pela colisão de N partículas idênticas em um alvo fixo, dado por
+				\begin{align*}
+					\Aboxed{F_{\text{médio}} = n\Delta p/\Delta t.}
+				\end{align*}
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.27,transform shape,font=\Large]
+				
+				\begin{scope}[shift={(0,0)}]
+				
+				\tkzInit[xmin=0,xmax=12,ymin=-2,ymax=4]
+				%\tkzGrid[color=gray!20]
+				\tkzClip[space=1.25]
+				
+				\tkzDrawX[label=t,right,noticks]
+				\tkzDrawY[label=F(t),pos=1.01,above,noticks]
+				
+				\tkzFct[domain=1:7,color=red,line width=1.0pt]{4*exp(-(x-4)**2)}
+				
+				\node[below,color=black] (n1) at (1,0) {$t_i$};
+				\node[below,color=black] (n2) at (7,0) {$t_f$};
+				
+				\tkzDrawArea[color=blue!50,domain=1:7]
+				
+				\draw[<->,line width=0.5pt] (1,-0.75) -- (7,-0.75) node [above,midway,color=black] {$\Delta t$};
+				
+				\tkzDefPoints{9/3.5/t1,8/160/t2}
+				
+				\tkzText[text centered,opacity=100,fill=gray!20,text width=7cm,font=\normalsize](t1){O impulso é igual a área sob a curva.}
+				\tkzText[color=black](t2){(a)}
+				
+				\end{scope}
+				
+				\begin{scope}[shift={(0,-8)}]
+				
+				\tkzInit[xmin=0,xmax=12,ymin=-2,ymax=4]
+				%\tkzGrid[color=gray!20]
+				\tkzClip[space=1.5]
+				
+				\tkzDrawX[label=t,right,noticks]
+				\tkzDrawY[label=F(t),pos=1.01,above,noticks]
+				
+				\tkzFct[domain=1:7,color=red,line width=1.0pt]{2}
+				\tkzDefPointByFct(1)\tkzGetPoint{A}
+				\tkzDefPointByFct(7)\tkzGetPoint{B}
+				
+				\tkzDrawArea[color=green!50,domain=1:7]
+				
+				\tkzDefPoints{9/3.5/t1,8/160/t2}
+				
+				\draw[dashed,line width=0.5pt] (A) -- (1,0) node [below,color=black] {$t_i$};
+				\draw[dashed,line width=0.5pt] (B) -- (7,0) node [below,color=black] {$t_f$};
+				\draw[dashed,line width=0.5pt] (1,2) -- (0,2) node [left,color=black] {$F_{\text{médio}}$};
+				
+				\draw[<->,line width=0.5pt] (1,-0.75) -- (7,-0.75) node [above,midway,color=black] {$\Delta t$};
+				
+				\tkzText[text centered,opacity=100,fill=gray!20,text width=5cm,font=\normalsize](t1){A força média produz a mesma área sob a curva.}
+				\tkzText[color=black](t2){(b)}
+				
+				\end{scope}
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Cálculo do módulo do impulso à partir do gráfico Força versus tempo.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\section{Conservação do momento linear}
+
+\subsection{}
+
+\begin{frame}{Conservação do momento linear}
+	\begin{multicols}{2}
+		Em um sistema isolado não há forças externas atuando sobre ele ($F_{res}=0$), portanto
+		\begin{align*}
+			\frac{d\vec{P}}{dt} = \vec{0},
+		\end{align*}
+		ou seja,
+		\begin{align*}
+			\Aboxed{\vec{P}=\text{constante}.}
+		\end{align*}
+		Em outras palavras, \alert{o momento linear total do sistema permanece invariante sob translação do seu centro de massa}.
+	\end{multicols}
+	\begin{block}{Lei da conservação do momento linear}
+		Se um sistema de partículas não está submetido a forças externas (como no caso de um sistema isolado), o momento linear total desse sistema não pode variar.
+	\end{block}
+\end{frame}
+
+\begin{frame}{Demais considerações a respeito da Lei da conservação do momento linear}
+	\begin{enumerate}
+		\item [\ding{51}] Se uma das componentes da força \textbf{externa} aplicada a um sistema isolado é nula, a componente do momento linear do sistema em questão em relação ao mesmo eixo não pode variar.
+		\item[\ding{51}] Se não houver forças externas atuando no sistema teremos
+		\begin{align*}
+			\vec{F}_{res} = M\vec{a}_{CM} = 0,
+		\end{align*}
+		ou seja, o momento linear do centro de massa permanece invariante sob translação no espaço,
+		\begin{align*}
+			\Aboxed{\vec{P}_{\text{CM}}=\text{constante}.}
+		\end{align*}
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}{Momento e energia cinética em colisões}
+	\begin{columns}
+		\begin{column}[c]{0.75\textwidth}
+			\begin{enumerate}
+				\item [\ding{51}] Em um sistema isolado na ausência de forças dissipativas a energia mecânica é conservada. Considerando que as interações ocorrem apenas por colisão, podemos dizer que a energia cinética é conservada. Esse tipo de colisão é chamado de \alert{elástica}.
+				\item[\ding{51}] Colisões onde parte da energia cinética é convertida em outras formas de energia, chama-se \alert{inelásticas} (colisões que ocorrem no cotidiano).
+				\item[\ding{51}] A perda máxima de energia cinética ocorre quando os corpos permanecem juntos após a colisão. Esse tipo de colisão é chamado \alert{perfeitamente inelástico}.
+			\end{enumerate}
+		\end{column}
+		\begin{column}[c]{0.25\textwidth}
+						\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.42,transform shape,font=\large]
+				
+				\tkzInit[xmin=-4,xmax=4,ymin=-4,ymax=4]
+				%\tkzGrid[color=gray!20]
+				\tkzClip
+				
+				\tkzDefPoints{2.5/2/a,-3/-3/b,1/3/c,3/-3/d,3/3.5/e,-3/3/f,2/-1.5/j}
+				\tkzDefPoints{0/0/l,1.25/1/g,-0.5/1.5/h,0/-1.5/i,-1.5/-0.5/k}
+				
+				%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+				%sistema isolado
+				\tkzDefPointWith[linear, K=.4](l,g)\tkzGetPoint{v1}
+				\draw[->,line width=0.5pt,red] (l) -- (v1);
+				\tkzDefPointWith[linear, K=.4](g,l)\tkzGetPoint{v1'}
+				\draw[->,line width=0.5pt,red] (g) -- (v1');
+				
+				\tkzDefPointWith[linear, K=.4](l,h)\tkzGetPoint{v2}
+				\draw[->,line width=0.5pt,red] (l) -- (v2);
+				\tkzDefPointWith[linear, K=.4](h,l)\tkzGetPoint{v2'}
+				\draw[->,line width=0.5pt,red] (h) -- (v2');
+				
+				\tkzDefPointWith[linear, K=.4](l,i)\tkzGetPoint{v3}
+				\draw[->,line width=0.5pt,red] (l) -- (v3);
+				\tkzDefPointWith[linear, K=.4](i,l)\tkzGetPoint{v3'}
+				\draw[->,line width=0.5pt,red] (i) -- (v3');
+				
+				\tkzDefPointWith[linear, K=.4](k,i)\tkzGetPoint{v3}
+				\draw[->,line width=0.5pt,red] (k) -- (v3);
+				\tkzDefPointWith[linear, K=.4](i,k)\tkzGetPoint{v3'}
+				\draw[->,line width=0.5pt,red] (i) -- (v3');
+				%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+				
+				\tkzDefPointWith[linear, K=.4](a,c)\tkzGetPoint{v4}
+				\draw[->,line width=0.75pt,red] (a) -- (v4);
+				\tkzDefPointWith[linear, K=.4](c,a)\tkzGetPoint{v4'}
+				\draw[->,line width=0.75pt,red] (c) -- (v4');
+				
+				\tkzDefPointWith[linear, K=.4](e,a)\tkzGetPoint{v5}
+				\draw[->,line width=0.75pt,red] (e) -- (v5);
+				\tkzDefPointWith[linear, K=.4](a,e)\tkzGetPoint{v5'}
+				\draw[->,line width=0.75pt,red] (a) -- (v5');
+				
+				\tkzDefPointWith[linear, K=.4](j,d)\tkzGetPoint{v6}
+				\draw[->,line width=0.75pt,red] (j) -- (v6);
+				\tkzDefPointWith[linear, K=.4](d,j)\tkzGetPoint{v6'}
+				\draw[->,line width=0.75pt,red] (d) -- (v6');
+				
+				\tkzDrawPoints[size=0.75cm](a,b,c,d,e,f,g,h,i,j,k,l)
+				%\tkzLabelPoints[font=\small](a,b,c,d,e,f,g,h,i,j,k,l)
+				
+				\tkzDefPoints{0/0/O,2/0/O'}
+				
+				\tkzDrawCircle[dashed](O,O')
+				
+				\tkzDefPointsBy[rotation=center O angle 250](O,O'){p1,p2}
+				
+				\tkzDefPoints{-1/-3.5/t1}
+				
+				\draw[->,line width=1.0pt] (t1) -- (p2);
+				\tkzText[text centered,opacity=100,fill=gray!20](t1){Sistema isolado}
+				\end{tikzpicture}
+				\caption*{\footnotesize Sistema isolado de partículas.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Colisões inelásticas em uma dimensão}
+	\begin{columns}
+		\begin{column}[c]{0.6\textwidth}
+			Sabemos que
+			\begin{align*}
+				\left(\frac{\text{momento total }\vec{P}_i}{\text{antes da colisão}}\right)=\left(\frac{\text{momento total }\vec{P}_f}{\text{antes da colisão}}\right).
+			\end{align*}
+			Considerando um sistema de duas partículas 1 e 2 temos
+			\begin{align*}
+				\vec{p}_{(1,i)}+\vec{p}_{(2,i)} & = \vec{p}_{(1,f)}+\vec{p}_{(2,f)},\\
+				\Aboxed{m_1\vec{v}_{1,i}+m_2\vec{v}_{2,i} & = m_1\vec{v}_{1,f}+m_2\vec{v}_{2,f}.}
+			\end{align*}
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.3]{figuras/colisao-inelastica.png}
+				\caption*{\footnotesize Representação de uma colisão inelástica entre dois objetos.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Energia cinética em um sistema de partículas}
+	\begin{columns}
+		\begin{column}[c]{0.7\textwidth}
+			A energia cinética $K$ de um sistema de N partículas vale
+			\begin{align*}
+				K = \frac{1}{2}m_1v^2_1+\frac{1}{2}m_2v^2_2+\cdots +\frac{1}{2}m_Nv^2_N.
+			\end{align*}
+			Porém, podemos determinar o movimento do conjunto como a combinação do movimento do centro de massa ($M\vec{v}_{\text{CM}}$) com o movimento de cada partícula em relação ao seu centro de massa ($m\vec{v}'$).
+			\begin{align*}
+				K & = \frac{1}{2}m_1\left|\vec{v}'_1+\vec{v}_{\text{CM}}\right|^2+\cdots +\frac{1}{2}m_1\left|\vec{v}'_N+\vec{v}_{\text{CM}}\right|^2.
+			\end{align*}
+			onde $M=m_1+m_2+\cdots +m_N$.
+		\end{column}
+		\begin{column}[c]{0.3\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.6,transform shape,font=\Large]
+				
+				\tikzstyle{s1}=[circle, radius=0.1, ball color=gray!50];
+				
+				\tkzInit[xmin=-1,xmax=2.5,ymin=-1,ymax=4]
+				%				\tkzGrid[color=gray!20]
+				\tkzClip[space=1.0]
+				
+				\tkzDefPoints{0/2/cm}
+				\tkzDefPoints{0/-1/m1,0/4/m2,2/-0/t1/,2/-0.75/t2}
+				
+				\draw[decoration={aspect=0.3, segment length=3mm, amplitude=1.0mm,coil},decorate] (m1) -- (m2); 
+				
+				\draw[s1] (m1) circle [radius=0.25cm] node [below] {$m_1$};
+				\draw[s1] (m2) circle [radius=0.50cm] node [above=0.2cm] {$m_2$};
+				
+				\draw[->,line width=1pt,color=blue] (m1) --++ (0,1) node [left] {$\vec{v}'_{1}$};
+				\draw[->,line width=1pt,color=blue] (m2) --++ (0,-1) node [left] {$\vec{v}'_{2}$};
+				\draw[->,line width=1pt,color=blue] ($(cm)+(0.2,0)$) --++ (0.85,0) node [right] {$\vec{v}_{\text{CM}}$};
+				
+%				\draw[->,line width=1pt,color=blue] ($(m1)+(0.2,0)$) --++ (0.85,0) node [right] {$\vec{v}_{\text{CM}}$};
+
+				\tkzDrawPoints[size=0.5cm,color=red,fill=red](cm)
+
+				\tkzText[text centered,opacity=100,fill=gray!20,text width=2.5cm,font=\normalsize](t1){$\vec{v}_1=\vec{v}'_1+\vec{v}_{CM}$}
+				\tkzText[text centered,opacity=100,fill=gray!20,text width=2.5cm,font=\normalsize](t2){$\vec{v}_2=\vec{v}'_2+\vec{v}_{CM}$}
+
+				\end{tikzpicture}
+				\caption*{\footnotesize Velocidades relativa $\vec{v}'_1$ e $\vec{v}'_2$ e do centro de massa $\vec{v}_{\text{CM}}$.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Colisões perfeitamente inelásticas unidimensionais}
+	\begin{columns}
+		\begin{column}[c]{0.6\textwidth}
+			Para que a energia cinética seja mínima após a colisão, o movimento das partículas em relação ao centro de massa deve ser zero \alert{(nota-se que não necessariamente o movimento do centro de massa deve ser zero!!!!)}. Para isso, elas devem se mover juntos com a mesma velocidade $\vec{V}$. Se considerarmos que uma das partículas possui velocidade zero antes da colisão, teremos
+			\begin{align*}
+				m_1\vec{v}_{(1,i)} & =(m_1+m_2)\vec{V},\\
+				\vec{V} & = \frac{m_1}{m_1+m_2}\vec{v}_{(1,i)}.
+			\end{align*}
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.33]{figuras/colisao-perfeitamente-inelastica.png}
+				\caption*{\footnotesize Representação de uma colisão perfeitamente inelástica entre dois objetos \cite{halliday}.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Colisões elásticas em uma dimensão}
+	Se durante a colisão a energia cinética total dos objetos envolvidos não é convertida em outra forma de energia, podemos dizer que
+	\begin{align*}
+		\left(\frac{\text{Energia cinética total }\vec{P}_i}{\text{antes da colisão}}\right)=\left(\frac{\text{Energia cinética total }\vec{P}_f}{\text{antes da colisão}}\right).
+	\end{align*}
+	Portanto, nas colisões elásticas a energia cinética dos objetos envolvidos na colisão pode variar, mas a energia cinética total permanece constante. Em suma, podemos dizer que
+	\begin{align*}
+		m_1\vec{v}_{(1,i)}+m_2\vec{v}_{(2,i)} & = m_1\vec{v}_{(1,f)}+m_2\vec{v}_{(2,f)},\\
+		\frac{1}{2}m_1v^2_{(1,i)}+\frac{1}{2}m_2v^2_{(2,i)} & = \frac{1}{2}m_1v^2_{(1,f)}+\frac{1}{2}m_2v^2_{(2,f)}.
+	\end{align*}
+\end{frame}
+
+\begin{frame}{Colisões elásticas em uma dimensão (alvo estacionário)}
+\begin{columns}
+	\begin{column}[c]{0.6\textwidth}
+		Considerando a partícula 2 como um alvo estacionário teremos $v_{2,i}$, portanto
+		\begin{align*}
+			m_1v_{1,i} & = m_1v_{1,f}+m_2v_{2,f},\\
+			\frac{1}{2}m_1v^2_{(1,i)} & = \frac{1}{2}m_1v^2_{(1,f)}+\frac{1}{2}m_1v^2_{(2,f)}.
+		\end{align*}
+		Substituindo $v_{1,i}$ da primeira equação teremos
+		\begin{align*}
+			v_{1,f} & = \frac{m_1-m_2}{m_1+m_2}v_{1,i},\\
+			v_{2,f} & = \frac{2m_1}{m_1+m_2}v_{1,i}.
+		\end{align*}
+	\end{column}
+	\begin{column}[c]{0.4\textwidth}
+		\begin{figure}
+			\centering
+			\includegraphics[scale=0.3]{figuras/colisao-inelastica.png}
+			\caption*{\footnotesize Representação de uma colisão inelástica entre dois objetos \cite{halliday}.}
+		\end{figure}
+	\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Colisões em duas dimensões}
+	\begin{columns}
+		\begin{column}[c]{0.6\textwidth}
+			Quando a colisão não é frontal, a Lei de conservação do momento linear ainda continua sendo válida, porém o momento linear é tratado no caso bidimensional. Através da equação
+			\begin{align*}
+				m_1\vec{v}_{(1,i)}+m_2\vec{v}_{(2,i)} = m_1\vec{v}_{(1,f)}+m_2\vec{v}_{(2,f)}
+			\end{align*}
+			e utilizando propriedades trigonométricas temos
+			\begin{align*}
+				m_1v_{(1,i)} & = m_1v_{(1,f)}\cos\theta_1+m_2v_{(2,f)}\cos\theta_2,\\
+				0 & = m_1v_{(1,f)}\sin\theta_1+m_2v_{(2,f)}\sin\theta_2.
+			\end{align*}
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}
+				\centering
+%				\includegraphics[scale=0.25]{figuras/colisao-bidimensional.png}
+				\begin{tikzpicture}[scale=0.31,transform shape,font=\Large]
+				
+				\tikzstyle{s1}=[circle, radius=0.1, ball color=gray!50];
+				
+				\begin{scope}[shift={(0,0)}]
+				
+				\tkzInit[xmin=-6,xmax=3,ymin=-3,ymax=3]
+				%\tkzGrid[color=gray!20]
+				\tkzClip[space=1]
+				
+				\tkzDefPoint(0,0){O}
+				\tkzDefPoint(3,0){x}
+				\tkzDefPoint(3,-0.35){x'}
+				\tkzDefPoint(4,0){A}
+				\tkzDefPoint(-5,-0.35){B}
+				\tkzDefPoint(1.3,0){cm}
+				
+				\tkzDefPoint(2,-3){B'}
+				\tkzDefPoint(-0.35,0){O'}
+				\tkzDefPoint(2,2){C'}
+				
+				\tkzDrawX[label=x,right,noticks]
+				\tkzDrawY[label=y,pos=1.01,above,noticks]
+				
+				\draw[dashed,line width=0.5pt] (B) -- ($(O)+(-0.35,-0.35)$);
+				\draw[dashed,line width=0.5pt] ($(O)+(-0.35,-0.35)$) -- (B');
+				\draw[dashed,line width=0.5pt] (O) -- (C');
+				
+				%vetores
+				\draw[->,line width=0.5pt,color=red] (B) --++ (1,0) node [below] {$\vec{v}_{1,i}$};
+				\draw[->,line width=0.5pt,color=red] (B') --++ (0.7,-0.7) node [right] {$\vec{v}_{1,f}$};
+				\draw[->,line width=0.5pt,color=red] (C') --++ (0.7,0.7) node [right] {$\vec{v}_{2,f}$};
+				
+				\draw[s1] (B) circle [radius=0.25cm] node [below=0.2cm] {$m_1$};	
+				\draw[s1] (O) circle [radius=0.25cm] node [above left=0.2cm] {$m_2$};	
+				
+				\draw[s1] (C') circle [radius=0.25cm];	
+				\draw[s1] (B') circle [radius=0.25cm];
+				
+				\tkzMarkAngle[<->,size=1](x,O,C')
+				\tkzLabelAngle[pos=1.5](x,O,C'){$\theta_1$}
+				
+				\tkzMarkAngle[size=1](B',O',x')
+				\tkzLabelAngle[below,pos=1.5](B',O,x){$\theta_2$}
+				
+				\end{scope}
+				
+				\begin{scope}[shift={(0,-8)}]
+				
+				\tkzInit[xmin=-6,xmax=3,ymin=-3,ymax=3]
+				%\tkzGrid[color=gray!20]
+				\tkzClip[space=1]
+				
+				\tkzDefPoint(0,0){O}
+				\tkzDefPoint(3,0){x}
+				\tkzDefPoint(4,0){A}
+				\tkzDefPoint(-5,0){B}
+				
+				\tkzDefPoint(3,-3){B'}
+				\tkzDefPoint(2,2){C'}
+				\tkzDefPoint(1.5,1.5){p1}
+				\tkzDefPoint(2.5,-2.5){p2}
+				
+				\tkzDrawX[label=x,right,noticks]
+				\tkzDrawY[label=y,pos=1.01,above,noticks]
+				
+				\draw[dashed,line width=0.5pt] ($(O)+(-0.0,-0.0)$) -- (B');
+				\draw[dashed,line width=0.5pt] (O) -- (C');
+				
+				%vetores
+				\draw[->,line width=0.5pt,color=red] (B) --++ (1,0) node [below] {$\vec{p}_{1,i}$};
+				\draw[->,line width=0.5pt,color=red] (O) --++ (2.5,-2.5) node [right] {$\vec{p}_{1,f}$};
+				\draw[->,line width=0.5pt,color=blue] (O) --++ (2.5,0) node [above right] {$\vec{p}_{x,(1,f)}$};
+				\draw[->,line width=0.5pt,color=blue] (O) --++ (0,-2.5) node [left] {$\vec{p}_{y,(1,f)}$};
+				\draw[->,line width=0.5pt,color=red] (O) --++ (1.5,1.5) node [right] {$\vec{p}_{2,f}$};
+				\draw[->,line width=0.5pt,color=blue] (O) --++ (1.5,0);
+				\draw[->,line width=0.5pt,color=blue] (O) --++ (0,1.5) node [left] {$\vec{p}_{y,(2,f)}$};
+				
+%				\tkzPointShowCoord(p1)
+%				\tkzPointShowCoord(p2)
+				
+				\tkzMarkAngle[<->,size=1](x,O,p1)
+				\tkzLabelAngle[pos=1.5](x,O,C'){$\theta_1$}
+				
+				\tkzMarkAngle[size=1](B',O,x)
+				\tkzLabelAngle[pos=1.5](B',O,x){$\theta_2$}
+				
+				\end{scope}
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Colisão lateral entre duas partículas.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\section{Apêndice}
+
+\subsection{}
+%
+\begin{frame}{Observações\footnote{Este material está sujeito a modificações. Recomenda-se acompanhamento permanente.}}
+	\begin{center}
+		Esta apresentação está disponível para download no endereço\\
+		\href{https://flavianowilliams.github.io/education}{\textcolor{blue}{https://flavianowilliams.github.io/education}}
+	\end{center}
+\end{frame}
+%
+\begin{frame}{Referências}
+	\bibliographystyle{jurabib}
+	\begin{thebibliography}{9}
+		\bibitem{halliday}D. Halliday, R. Resnick, J. Walker, Fundamentos de física. Mecânica, v.1, 10. ed., Rio de Janeiro, LTC (2016)
+	\end{thebibliography}
+\end{frame}
+
+\end{document}

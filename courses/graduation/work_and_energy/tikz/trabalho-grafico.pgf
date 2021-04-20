@@ -1,0 +1,78 @@
+﻿				\begin{tikzpicture}[scale=1,transform shape,font=\Large]
+				
+				\begin{scope}[shift={(0,0)}]
+				
+				\tkzInit[xmin=0,xmax=8,xstep=1,ymin=0,ymax=5]
+				\tkzGrid[color=gray!20,step=0.5]
+				\tkzClip[space=1]
+				
+				\tkzDrawX[label=x,below,noticks]
+				\tkzDrawY[label=F(x),pos=1.01,above,noticks]
+				
+				\tkzDefPoints{3.5/0/x1,4.5/0/x2}
+				\draw (x1) to [short dim arrow'={label'=$\Delta x$,label near middle}] (x2);
+
+				\tkzFct[domain=0:8,color=red,line width=1.0pt]{4*exp(-0.025*x**2)}
+
+				\foreach \x in {1,2,...,7}{
+				\tkzDefPoint(\x+0.5,5){y}
+				\tkzDefPoint(\x+0.5,0){z}
+				\tkzDefPoint(\x,0){p}
+				\tkzDefPoint(\x-0.5,0){h}
+				\tkzDefPointByFct(\x)\tkzGetPoint{x}
+				\tkzDefLine[orthogonal=through x](y,z)\tkzGetPoint{c}
+				\tkzInterLL(y,z)(x,c)\tkzGetPoint{k}
+				\tkzDefPointsBy[reflection=over x--p](x,k){l1,l2}
+%				\tkzDrawPoints(l2,h)
+				\tkzDrawPolygon[fill=green!50,opacity=0.7](h,l2,k,z)}
+
+				\foreach \x in {4}{
+				\tkzDefPoint(\x+0.5,5){y}
+				\tkzDefPoint(\x+0.5,0){z}
+				\tkzDefPoint(\x,0){p}
+				\tkzDefPoint(\x-0.5,0){h}
+				\tkzDefPointByFct(\x)\tkzGetPoint{x}
+				\tkzDefLine[orthogonal=through x](y,z)\tkzGetPoint{c}
+				\tkzInterLL(y,z)(x,c)\tkzGetPoint{k}
+				\tkzDefPointsBy[reflection=over x--p](x,k){l1,l2}}
+%				\tkzDrawPoints(l2,h)}
+
+				\draw (l2) to [color=black,dim arrow'={label'=$F$}] (h);
+
+				\tkzDefPointByFct(4)\tkzGetPoint{B}
+				
+				\tkzPointShowCoord[noydraw,noxdraw,xlabel=$x_i$](0.5,0)
+				\tkzPointShowCoord[noydraw,noxdraw,xlabel=$x_f$](7.5,0)
+				
+				\tkzDefPoints{6.5/4/t1,5/2/D,8/4/t2}
+				
+				\draw[->,line width=1.0pt] (t1) -- (B);
+				\tkzText[text centered,opacity=100,fill=gray!20](t1){$\Delta W$}
+				\tkzText[color=black](t2){(a)}
+				
+				\end{scope}
+				
+				\begin{scope}[shift={(0,-7)}]
+				
+				\tkzInit[xmin=0,xmax=8,xstep=1,ymin=0,ymax=5]
+				\tkzGrid[color=gray!20,step=0.5]
+				\tkzClip[space=1]
+				
+				\tkzDrawX[label=x,below,noticks]
+				\tkzDrawY[label=F(x),pos=1.01,above,noticks]
+				
+				\tkzFct[domain=0:8,color=red,line width=1.0pt]{4*exp(-0.025*x**2)}
+				\tkzDrawArea[domain=0.5:7.5,fill=green!50,opacity=0.7]
+
+				\tkzDefPointByFct(4)\tkzGetPoint{B}
+				
+				\tkzPointShowCoord[noydraw,noxdraw,xlabel=$x_i$](0.5,0)
+				\tkzPointShowCoord[noydraw,noxdraw,xlabel=$x_f$](7.5,0)
+				
+				\tkzDefPoints{4/1.5/t1,8/4/t2}
+				\tkzText[text centered,opacity=100,fill=gray!20](t1){$\Delta W$}
+				\tkzText[color=black](t2){(b)}
+
+				\end{scope}
+				
+				\end{tikzpicture}

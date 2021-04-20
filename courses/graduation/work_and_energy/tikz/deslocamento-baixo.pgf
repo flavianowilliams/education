@@ -1,0 +1,19 @@
+﻿\begin{tikzpicture}[scale=1,transform shape,font=\Large]
+			
+				\tkzInit[xmin=-3,xmax=3,ymin=0,ymax=5]
+				\tkzGrid[color=gray!20]
+				\tkzClip
+			
+				\tkzDefPoints{0/2.5/a0,-2/0/B,1.5/1.5/t1,1.5/3.5/t2}
+
+				\draw[->,line width=1.5pt] (a0) --++ (0,-2) node [left] {$\vec{F}_g$};
+				\draw[->,line width=1.5pt] (a0) --++ (0,2) node [left] {$\vec{F}$};
+
+				\draw[<-,line width=1.5pt] (B) --++ (0,5) node [left,midway] {$\Delta\vec{y}$};
+
+				\tkzText[text centered,opacity=100,fill=gray!20](t1){$W_{F_g}>0$}
+				\tkzText[text centered,opacity=100,fill=gray!20](t2){$W_{F}<0$}
+
+		\draw node [draw, circle,font=\normalsize,opacity=100,fill=white] at (a0) {m};
+
+\end{tikzpicture}

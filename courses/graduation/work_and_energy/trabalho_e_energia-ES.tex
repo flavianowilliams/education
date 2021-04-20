@@ -1,0 +1,513 @@
+% Aula de calculo vetorial para o curso de Física I da graduação
+%
+\documentclass[brazil,aspectratio=169]{beamer}
+%
+%carregando preâmbulo
+\input{../../contrib/preamble}
+
+%Título
+
+\title[Mecânica-WRK]{Trabalho e energia}
+
+% The main document
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Sumário}
+  \tableofcontents
+\end{frame}
+
+\section{Energia}
+
+\subsection{}
+
+\begin{frame}{O que é energia}
+	Todo fenômeno da natureza está associado a uma energia, onde à partir do trabalho podemos transferir um tipo de energia em outro tipo de energia.
+	\begin{figure}
+		\includegraphics[scale=1]{figuras/energia.jpg}
+		\caption*{\footnotesize Tipos de energia e suas relações com trabalho.}
+	\end{figure}
+	\begin{corollary}
+		No SI a unidade de medida de energia é Joule (J).
+	\end{corollary}
+\end{frame}
+
+\begin{frame}{Energia cinética}
+	\begin{enumerate}
+		\item [\ding{51}] A energia cinética é a energia associada ao estado de movimento de um objeto;
+		\item[\ding{51}] Quanto mais depressa o objeto se move, maior será a sua energia cinética.
+		\item[\ding{51}] Como será mostrado mais a frente, para um objeto de massa m cuja velocidade $\vec{v}$ é muito menor que a velocidade da luz, a energia cinética é dado por
+		\begin{equation*}
+			\boxed{K = \frac{1}{2}mv^2.}
+		\end{equation*}
+	\end{enumerate}
+	\begin{corollary}
+		\begin{equation*}
+			\SI{1}{\joule} = \SI{1}{kg\square\meter\per\square\second}
+		\end{equation*}
+	\end{corollary}
+\end{frame}
+
+\section{Trabalho}
+
+\subsection{}
+
+\begin{frame}{O que é trabalho}
+	\begin{enumerate}
+		\item[\ding{51}] Energia transferida para um objeto ou de um objeto por meio de uma força;
+		\item[\ding{51}] Capacidade de transformar algum tipo de energia em energia de movimento;
+		\item[\ding{51}] Para calcular o trabalho que uma força resultante realiza sobre um objeto quando este sofre um deslocamento usamos apenas a componente da força paralela ao deslocamento.
+	\end{enumerate}
+	\begin{figure}
+		\begin{subfigure}{0.475\textwidth}
+			\centering
+			\begin{tikzpicture}[scale=0.6,transform shape,font=\large]
+			
+			\tkzInit[xmin=0,xmax=10,ymin=0,ymax=2]
+%			\tkzGrid[color=gray!20]
+			\tkzClip[space=1.1]
+			
+			%chao
+			\fill [pattern = north west lines] (10,-0.25) rectangle (-1,0);
+			\draw (-1,0) -- (10,0);
+			
+			\tkzDefPoints{1/0/a1,3/0/b1,3/2/c1,1/2/d1}
+			\tkzDrawPolygon(a1,b1,c1,d1)
+			
+			\tkzDefPoints{7/0/a2,9/0/b2,9/2/c2,7/2/d2}
+			\tkzDrawPolygon[dashed](a2,b2,c2,d2)
+			
+			\tkzDefPoints{2/-1/c1,8/-1/c2,3/1/c3,9/1/c4}
+			
+			\draw[->,line width=1.5pt] (c1) -- (c2) node [above,midway] {$\Delta x$};
+			
+			\tkzDefPointsBy[rotation=center c3 angle 45](c3,c4){p1,p2}
+			\tkzDefPointWith[linear, K=0.25](c3,p2)\tkzGetPoint{p3}
+			\draw[->,line width=1.5pt,color=red] (c3) -- (p3) node [above right] {$\vec{F}$};
+			
+			\tkzDefPointWith[linear, K=0.3](c3,c4)\tkzGetPoint{p4}
+			\draw[->,line width=1.5pt,color=red] (c3) -- (p4) node [above right] {$\vec{v}$};
+			
+			\tkzDefPointsBy[projection=onto c3--c4](c3,p3){p5,p6}
+			
+			\draw[->,line width=1.5pt,color=blue] (c3) -- (p6) node [below] {$\vec{F}_x$};
+			
+			\tkzMarkAngle[size=0.5](p6,c3,p3)
+			\tkzLabelAngle[pos=0.75](p6,c3,p3){$\theta$}
+			
+			\end{tikzpicture}
+			\caption*{\footnotesize Trabalho positivo.}
+		\end{subfigure}
+				\begin{subfigure}{0.475\textwidth}
+			\centering
+			\begin{tikzpicture}[scale=0.6,transform shape,font=\large]
+		
+		\tkzInit[xmin=0,xmax=10,ymin=0,ymax=2]
+%		\tkzGrid[color=gray!20]
+		\tkzClip[space=1.1]
+		
+		%chao
+		\fill [pattern = north west lines] (10,-0.25) rectangle (-1,0);
+		\draw (-1,0) -- (10,0);
+		
+		\tkzDefPoints{1/0/a1,3/0/b1,3/2/c1,1/2/d1}
+		\tkzDrawPolygon(a1,b1,c1,d1)
+		
+		\tkzDefPoints{7/0/a2,9/0/b2,9/2/c2,7/2/d2}
+		\tkzDrawPolygon[dashed](a2,b2,c2,d2)
+		
+		\tkzDefPoints{2/-1/c1,8/-1/c2,3/1/c3,9/1/c4}
+		
+		\draw[->,line width=1.5pt] (c1) -- (c2) node [above,midway] {$\Delta x$};
+		
+		\tkzDefPointsBy[rotation=center c3 angle 135](c3,c4){p1,p2}
+		\tkzDefPointWith[linear, K=0.25](c3,p2)\tkzGetPoint{p3}
+		\draw[->,line width=1.5pt,color=red] (c3) -- (p3) node [above right] {$\vec{F}$};
+		
+		\tkzDefPointWith[linear, K=0.3](c3,c4)\tkzGetPoint{p4}
+		\draw[->,line width=1.5pt,color=red] (c3) -- (p4) node [above right] {$\vec{v}$};
+		
+		\tkzDefPointsBy[projection=onto c3--c4](c3,p3){p5,p6}
+		
+		\draw[->,line width=1.5pt,color=blue] (c3) -- (p6) node [below] {$\vec{F}_x$};
+		
+		\tkzMarkAngle[size=0.5](p3,c3,p6)
+		\tkzLabelAngle[pos=0.75](p6,c3,p3){$\theta$}
+		
+		\end{tikzpicture}
+		\caption*{\footnotesize Trabalho negativo.}
+	\end{subfigure}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Relação entre trabalho, força, deslocamento e energia cinética}
+	\small
+	\begin{columns}
+		\begin{column}[c]{0.55\textwidth}
+			Pela definição de trabalho podemos considerar que o trabalho $W$ realizado por uma força resultante $\vec{F}$ é igual a variação da energia cinética $\Delta K$, onde
+			\begin{align*}
+				W & = \Delta K,\\
+				W & = \frac{1}{2}mv^2_f-\frac{1}{2}mv^2_i.
+			\end{align*}
+			Se a força for constante, poderemos dizer que a aceleração também será constante.
+		\end{column}
+		\begin{column}[c]{0.45\textwidth}
+			Multiplicando ambos os lados da equação $v^2_f=v^2_i+2a\Delta x$ por $\frac{m}{2}$ teremos
+			\begin{align*}
+				\frac{m}{2}v^2_f & = \frac{m}{2}v^2_i+\frac{m}{\bcancel{2}}(\bcancel{2}a\Delta x),\\
+				\frac{m}{2}v^2_f-\frac{m}{2}v^2_i & = ma\Delta x.
+			\end{align*}
+			mas $\vec{F}=m\vec{a}$, portanto
+			\begin{equation*}
+				\boxed{W = \Delta K = \vec{F}\cdot \Delta \vec{x}.}
+			\end{equation*}
+		\end{column}
+	\end{columns}
+	\begin{corollary}
+		Trabalho é um grandeza escalar assim como a energia cinética.
+	\end{corollary}
+\end{frame}
+
+\begin{frame}{Trabalho à partir do gráfico força versus deslocamento}
+	\begin{columns}
+		\begin{column}[c]{0.65\textwidth}
+			O trabalho da força $\vec{F}$ em um deslocamento $\Delta x$ é a área do retângulo de base $\Delta x$ e altura $F$. podemos dizer que o trabalho total durante a trajetória de i a f é a soma dos trabalhos individuais $\Delta W$,
+			\begin{equation*}
+				\Delta W = \sum F\Delta x.
+			\end{equation*}
+			Se $\Delta x\rightarrow 0$ podemos aproximar a área abaixo da curva como se fosse a soma dos retângulos, portanto
+			\begin{equation*}
+				\boxed{W = \lim_{\Delta x\rightarrow 0}\Delta W = \int_{x_i}^{x_f}F(x)dx.}
+			\end{equation*}
+		\end{column}
+		\begin{column}[c]{0.35\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.35,transform shape,font=\Large]
+				
+				\begin{scope}[shift={(0,0)}]
+				
+				\tkzInit[xmin=0,xmax=8,xstep=1,ymin=0,ymax=5]
+%				\tkzGrid[color=gray!20,step=0.5]
+				\tkzClip[space=1.1]
+				
+				\tkzDrawX[label=x,below,noticks]
+				\tkzDrawY[label=F(x),pos=1.01,above,noticks]
+				
+				\tkzDefPoints{3.5/0/x1,4.5/0/x2}
+				\draw (x1) to [short dim arrow'={label'=$\Delta x$,label near middle}] (x2);
+				
+				\tkzFct[domain=0:8,color=red,line width=0.5pt]{4*exp(-0.025*x**2)}
+				
+				\foreach \x in {1,2,...,7}{
+					\tkzDefPoint(\x+0.5,5){y}
+					\tkzDefPoint(\x+0.5,0){z}
+					\tkzDefPoint(\x,0){p}
+					\tkzDefPoint(\x-0.5,0){h}
+					\tkzDefPointByFct(\x)\tkzGetPoint{x}
+					\tkzDefLine[orthogonal=through x](y,z)\tkzGetPoint{c}
+					\tkzInterLL(y,z)(x,c)\tkzGetPoint{k}
+					\tkzDefPointsBy[reflection=over x--p](x,k){l1,l2}
+					\tkzDrawPolygon[fill=green!50,opacity=0.7](h,l2,k,z)}
+				
+				\foreach \x in {4}{
+					\tkzDefPoint(\x+0.5,5){y}
+					\tkzDefPoint(\x+0.5,0){z}
+					\tkzDefPoint(\x,0){p}
+					\tkzDefPoint(\x-0.5,0){h}
+					\tkzDefPointByFct(\x)\tkzGetPoint{x}
+					\tkzDefLine[orthogonal=through x](y,z)\tkzGetPoint{c}
+					\tkzInterLL(y,z)(x,c)\tkzGetPoint{k}
+					\tkzDefPointsBy[reflection=over x--p](x,k){l1,l2}}
+				
+				\draw (l2) to [color=black,dim arrow'={label'=$F$}] (h);
+				
+				\tkzDefPointByFct(4)\tkzGetPoint{B}
+				
+				\tkzPointShowCoord[noydraw,noxdraw,xlabel=$x_i$](0.5,0)
+				\tkzPointShowCoord[noydraw,noxdraw,xlabel=$x_f$](7.5,0)
+				
+				\tkzDefPoints{6.5/4/t1,5/2/D,8/4/t2,4/2/E}
+				
+				\draw[->,line width=0.5pt] (t1) -- (E);
+				\tkzText[text centered,opacity=100,fill=gray!20](t1){\small $\Delta W$}
+				\tkzText[color=black](t2){(a)}
+				
+				\end{scope}
+				
+				\begin{scope}[shift={(0,-7)}]
+				
+				\tkzInit[xmin=0,xmax=8,xstep=1,ymin=0,ymax=5]
+%				\tkzGrid[color=gray!20,step=0.5]
+				\tkzClip[space=1.1]
+				
+				\tkzDrawX[label=x,below,noticks]
+				\tkzDrawY[label=F(x),pos=1.01,above,noticks]
+				
+				\tkzFct[domain=0:8,color=red,line width=1.0pt]{4*exp(-0.025*x**2)}
+				\tkzDrawArea[domain=0.5:7.5,fill=green!50,opacity=0.7]
+				
+				\tkzDefPointByFct(4)\tkzGetPoint{B}
+				
+				\tkzPointShowCoord[noydraw,noxdraw,xlabel=$x_i$](0.5,0)
+				\tkzPointShowCoord[noydraw,noxdraw,xlabel=$x_f$](7.5,0)
+				
+				\tkzDefPoints{4/1.5/t1,8/4/t2}
+				\tkzText[text centered,opacity=100,fill=gray!20](t1){$W$}
+				\tkzText[color=black](t2){(b)}
+				
+				\end{scope}
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Força em função da posição.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Trabalho realizado ao longo de um caminho}
+	\begin{columns}
+		\begin{column}[c]{0.6\textwidth}
+			Cada deslocamento $d\vec{r}$ que a partícula realiza, a componente da força $\vec{F}$ paralela ao deslocamento realiza trabalho $dW$, onde
+			\begin{equation*}
+				dW = \vec{F}\cdot d\vec{r}.
+			\end{equation*}
+			Para determinar o trabalho total realizado por $\vec{F}$ durante a trajetória da partícula ao longo do caminho c, somamos cada contribuição $dW$ na forma de integral,
+			\begin{equation*}
+				\boxed{W = \int_{c} \vec{F}\cdot d\vec{r}.}
+			\end{equation*}
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.45,transform shape,font=\Large]
+				
+				\tkzInit[xmin=0,xmax=8,ymin=0,ymax=10]
+%				\tkzGrid[color=gray!20]
+				\tkzClip
+				
+				\tkzDefPoints{1/9/i,7/1/f,1/4/c1,5.4/6/c2}
+				
+				\tkzDrawPoints(i,f)
+				\tkzLabelPoints[above](i)
+				\tkzLabelPoints(f)
+				
+				\draw (i) .. controls (c1) and (c2) .. (f);
+				
+				\tkzDefPoints{5/4/q,5.7/3.3/r,5/2/F}
+				
+				\tkzMarkAngle[size=0.6](F,q,r)
+				\tkzLabelAngle[size=0.75](F,q,r){$\theta$}
+
+				\draw[->,color=red,line width=1.5pt] (q) -- (F) node [below] {$\vec{F}$};
+				\draw[->,color=red,line width=1.5pt] (q) -- (r) node [above right] {$d\vec{r}$};
+				
+				\draw node [draw, circle,font=\normalsize,opacity=100,fill=white] at (q) {m};
+				
+				\tkzDefPoints{6/8/t1,2/6/p2}
+				
+				\draw[->] (t1) -- (p2);
+				
+				\tkzText[fill=white](t1){Trajetoria};
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Sentido do trabalho e deslocamento infinitesimal de uma partícula de massa m.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Trabalho e variação da energia cinética}
+%	\begin{multicols*}{2}
+	\begin{columns}
+		\begin{column}[t]{0.5\textwidth}
+		Substituindo $\vec{F}=m\frac{d\vec{v}}{dt}$ na expressão do trabalho temos
+		\begin{align*}
+			W & = \int_{c} \vec{F}\cdot d\vec{r},\\
+			W & = m\int_{c} \frac{d\vec{v}}{dt}\cdot d\vec{r}.
+		\end{align*}
+		No entanto, sabemos que $d\vec{r}=\frac{d\vec{v}}{dt}dt$. Substituindo temos
+		\begin{align*}
+			W & = \int_{c} \left(\frac{d\vec{v}}{dt}\right)\cdot\left(\frac{d\vec{r}}{dt}\right)dt.
+		\end{align*}
+	\end{column}
+	\begin{column}[t]{0.5\textwidth}
+		Mas podemos perceber também que $d\vec{v}=\frac{d\vec{v}}{dt}dt$.
+		\begin{equation*}
+			W = m\int_{c} \vec{v}\cdot d\vec{v}.
+		\end{equation*}
+		 Além disso, podemos dizer que $\vec{v}\cdot d\vec{v}\equiv vdv$, portanto
+		\begin{align*}
+			W & = m\int_{c} vdv,\\
+			\Aboxed{W & = \frac{1}{2}mv^2_f-\frac{1}{2}mv^2_i.}
+\end{align*}
+	\end{column}
+\end{columns}
+%	\end{multicols*}
+\end{frame}
+
+\begin{frame}{Trabalho realizado pela força gravitacional}
+	\begin{columns}
+		\begin{column}[c]{0.7\textwidth}
+			Considerando a orientação do eixo y como mostra a figura, o sentido da força gravitacional é dado por $\vec{F}=-mg\widehat{j}$. Portanto, o trabalho realizado pela gravidade pode ser representado por
+			\begin{equation*}
+				W = mg\Delta ycos\theta.
+			\end{equation*}
+			Durante a subida podemos dizer que $\theta=\SI{180}{\degree}$, e no caso da descida teremos $\theta=\SI{0}{\degree}$, portanto
+			\begin{align*}
+				W & = \Delta K = -mg\Delta ycos\theta<0, & \text{(subida)},\\
+				W & = \Delta K = +mg\Delta ycos\theta>0, & \text{(descida)}.
+			\end{align*}
+		\end{column}
+		\begin{column}[c]{0.3\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.4,transform shape,font=\Large]
+				
+				\tkzInit[xmin=-4,xmax=4,ymin=-1,ymax=8]
+%				\tkzGrid[color=gray!20]
+				\tkzClip[space=0.75]
+				
+				%chao
+				\fill [pattern = north west lines] (4,-0.25) rectangle (-4,0);
+				\draw (-4,0) -- (4,0);
+				
+				%normal
+				\draw[dashed] (0,0) -- (0,8) node [above] (n) {Trajetoria};
+				
+				\tkzDefPoints{0/0/a0,0/7/a,0/3.5/b,-1/6/c,1/6/d,-3/0/B,2/1/C}
+				
+				\draw[->,line width=1.0pt,color=green] (a0) --++ (0,-1.5) node [right] {$m\vec{g}$};
+				\draw[->,line width=1.0pt,color=blue] (a0) --++ (0,1) node [left] {$\vec{v}_0$};
+				\tkzDrawPoint[color=red,size=0.5cm,fill=red](a0)
+				
+				\draw[->,line width=1.0pt,color=green] (b) --++ (0,-1.5) node [right] {$m\vec{g}$};
+				\draw[->,line width=1.0pt,color=blue] (b) --++ (0,0.75) node [left] {$\vec{v}$};
+				\tkzDrawPoint[color=red,size=0.5cm,fill=red](b)
+				\tkzText[left=0.2](b){$(v<v_0)$}
+				
+				\draw[->,line width=1.0pt,color=green] (a) --++ (0,-1.5) node [right] {$m\vec{g}$};
+
+				\tkzDrawPoint[color=red,size=0.5cm,fill=red](a)
+				\tkzText[left=0.2](a){$(v=0)$}
+				
+				\draw[->,line width=1.0pt] (B) --++ (0,7) node [left,midway] {$\Delta\vec{y}$};
+				
+				\draw[->,line width=1.0pt] (C) --++ (0,-1);
+				\tkzText[,opacity=100,fill=white](C){Solo}
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Subida de um objeto de massa m com velocidade inicial $\vec{v}_0$ até a uma altura $\Delta y$.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Trabalho realizado para levantar ou abaixar um objeto}
+	Para levantar um objeto de massa m é necessário aplicar uma força $\vec{F}$ equivalente a força de gravidade $\vec{F}_g$. No caso o objeto sobe com velocidade constante, onde $\Delta K=0$. Sabendo que $W=\Delta K$ temos
+	\begin{align*}
+		\Delta K & = W_{F}+W_{F_g}=0,\\
+		W_{F} & = -W_{F_g}.
+	\end{align*}
+	\begin{figure}
+		\begin{subfigure}{0.45\textwidth}
+			\centering
+			\begin{tikzpicture}[scale=0.45,transform shape,font=\Large]
+			
+			\tkzInit[xmin=-3,xmax=3,ymin=0,ymax=5]
+%			\tkzGrid[color=gray!20]
+			\tkzClip
+					
+			\tkzDefPoints{0/2.5/a0,-2/0/B,1.5/1.5/t1,1.5/3.5/t2}
+				
+			\draw[->,line width=1.5pt] (a0) --++ (0,-2) node [left] {$\vec{F}_g$};
+			\draw[->,line width=1.5pt] (a0) --++ (0,2) node [left] {$\vec{F}$};
+					
+			\draw[->,line width=1.5pt] (B) --++ (0,5) node [left,midway] {$\Delta\vec{y}$};
+					
+			\tkzText[text centered,opacity=100,fill=gray!20](t1){$W_{F_g}<0$}
+			\tkzText[text centered,opacity=100,fill=gray!20](t2){$W_{F}>0$}
+					
+			\draw node [draw, circle,font=\normalsize,opacity=100,fill=white] at (a0) {m};
+					
+			\end{tikzpicture}
+			\caption*{\footnotesize Deslocamento para cima.}
+		\end{subfigure}
+		\begin{subfigure}{0.45\textwidth}
+			\centering
+			\begin{tikzpicture}[scale=0.45,transform shape,font=\Large]
+			
+			\tkzInit[xmin=-3,xmax=3,ymin=0,ymax=5]
+%			\tkzGrid[color=gray!20]
+			\tkzClip
+					
+			\tkzDefPoints{0/2.5/a0,-2/0/B,1.5/1.5/t1,1.5/3.5/t2}
+					
+			\draw[->,line width=1.5pt] (a0) --++ (0,-2) node [left] {$\vec{F}_g$};
+			\draw[->,line width=1.5pt] (a0) --++ (0,2) node [left] {$\vec{F}$};
+					
+			\draw[<-,line width=1.5pt] (B) --++ (0,5) node [left,midway] {$\Delta\vec{y}$};
+					
+			\tkzText[text centered,opacity=100,fill=gray!20](t1){$W_{F_g}>0$}
+			\tkzText[text centered,opacity=100,fill=gray!20](t2){$W_{F}<0$}
+					
+			\draw node [draw, circle,font=\normalsize,opacity=100,fill=white] at (a0) {m};
+					
+			\end{tikzpicture}
+			\caption*{\footnotesize Deslocamento para baixo.}
+		\end{subfigure}
+	\end{figure}
+\end{frame}
+
+\section{Potência}
+
+\subsection{}
+
+\begin{frame}{Potência média e potência instantânea}
+	\begin{columns}
+		\begin{column}[t]{0.5\textwidth}
+			Definimos como potência instantânea gerada por uma força F como a taxa de variação do trabalho realizado por essa força no instante de tempo t,
+			\begin{equation*}
+				P(t) = \frac{dW}{dt}.
+			\end{equation*}
+			Calculando $\frac{dW}{dt}$ teremos
+			\begin{equation*}
+				\frac{dW}{dt} = \frac{d}{dt}\left(\vec{F}\cdot d\vec{r}\right).
+			\end{equation*}
+			\end{column}
+		\begin{column}[t]{0.5\textwidth}
+			Para uma força $\vec{F}$ constante no tempo podemos dizer que
+			\begin{align*}
+				\frac{dW}{dt} & = \vec{F}\cdot\frac{dr}{dt},\\
+				\Aboxed{P(t) & = \vec{F}\cdot\vec{v}(t).}
+			\end{align*}
+			\begin{corollary}
+				No SI a unidade de medida de potência é J/s ou Watt (W).
+			\end{corollary}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\section{Apêndice}
+
+\subsection{}
+
+\begin{frame}{Observações\footnote{Este material está sujeito a modificações. Recomenda-se acompanhamento permanente.}}
+	\begin{center}
+		Esta apresentação está disponível para download no endereço\\
+		\href{https://flavianowilliams.github.io/education}{\textcolor{blue}{https://flavianowilliams.github.io/education}}
+	\end{center}
+\end{frame}
+%
+\begin{frame}{Referências}
+	\bibliographystyle{jurabib}
+	\begin{thebibliography}{9}
+		\bibitem{halliday}D. Halliday, R. Resnick, J. Walker, Fundamentos de física. Mecânica, v.1, 10. ed., Rio de Janeiro, LTC (2016)
+	\end{thebibliography}
+\end{frame}
+
+\end{document}

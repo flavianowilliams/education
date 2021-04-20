@@ -1,0 +1,758 @@
+% Aula de dinâmica para o curso de Física I da graduação
+%
+\documentclass[brazil,10.5pt,aspectratio=169]{beamer}
+%
+%carregando preâmbulo
+\input{../../contrib/preamble}
+
+%Título
+
+\title[Mecânica-3LN]{Força e movimento}
+
+% The main document
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Sumário}
+  \tableofcontents
+\end{frame}
+
+\section{Primeira Lei de Newton}
+
+\subsection{}
+
+\begin{frame}{Mecânica newtoniana}
+	\begin{enumerate}
+		\item [\ding{51}] A mecânica newtoniana consiste no estudo do movimento através as três Leis de Newton, que exprime a relação entre a força e a aceleração produzida por essa força;
+		\item[\ding{51}] A mecânica newtoniana pode ser aplicado no estudo dos mais diversos objetos;
+		\item[\ding{51}] A mecânica newtoniana não se aplica a todos os casos:
+		\begin{enumerate}
+			\item [\ding{55}] Para velocidades muito elevadas, se comparadas a velocidade da luz, a mecânica newtoniana é substituída pela teoria da relatividade restrita; 
+			\item [\ding{55}] Para objetos muito pequenos, de dimensões subatômicas, a mecânica newtoniana é substituída pela mecânica quântica. 
+		\end{enumerate}
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}{Conceitos de força e aceleração}
+	\begin{block}{Primeira Lei de Newton}
+		Se nenhuma força resultante atua sobre um corpo, a velocidade não pode mudar, ou seja, o corpo não pode sofrer aceleração.
+	\end{block}
+	\begin{columns}
+		\begin{column}[c]{0.6\textwidth}
+			Na figura ao lado, se $F_1=F_2$ e  $F_3=F_4$ temos que a força resultante será zero, portanto o objeto permanecerá com a mesma velocidade $\vec{v}$.
+			\begin{corollary}
+				Mesmo que um corpo esteja submetido a várias forças, se a resultante das forças for zero, o corpo não sofrerá aceleração.
+			\end{corollary}
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.35,transform shape,font=\Large]
+				
+				\tkzInit[xmin=-4,xmax=4,ymin=-4,ymax=4]
+				%\tkzGrid[color=gray!20]
+				
+				\tkzDefPoints{-2/-2/A,2/-2/B,-2/2/C,2/2/D}
+				
+				\tkzDrawPolygon(A,B,D,C)
+				
+				\tkzDefPoints{-2/0/a,2/0/b,0/-2/c,0/2/d}
+				
+				\draw[<-,line width=1.0pt,color=red] (a) --++ (-2,0) node [above,midway] {$\vec{F}_1$};
+				\draw[<-,line width=1.0pt,color=red] (b) --++ (2,0) node [above,midway] {$\vec{F}_2$};
+				\draw[<-,line width=1.0pt,color=red] (c) --++ (0,-2) node [left,midway] {$\vec{F}_3$};
+				\draw[<-,line width=1.0pt,color=red] (d) --++ (0,2) node [left,midway] {$\vec{F}_4$};
+				
+				\tkzDefPoints{-1/0/t1}
+				
+				\draw[->,line width=1.5pt,color=black] (t1) --++ (2,0) node [above,midway] {$\vec{v}$};
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Forças atuando em um objeto se movendo com velocidade constante.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Movimento relativo}
+	\begin{columns}
+		\begin{column}[c]{0.6\textwidth}
+			Podemos definir o vetor posição da partícula P como
+			\begin{equation*}
+				\vec{r}_{PA}=\vec{r}_{PB}+\vec{r}_{BA}.
+			\end{equation*}
+			Derivando temos a velocidade da partícula nos dois referenciais A e B ($\vec{v}_{PA}$ e $\vec{v}_{PB}$),
+			\begin{equation*}
+				\vec{v}_{PA}=\vec{v}_{PB}+\vec{v}_{BA}.
+			\end{equation*}
+			Derivando novamente temos a aceleração,
+			\begin{equation*}
+				\vec{a}_{PA}=\vec{a}_{PB}+\vec{a}_{BA}.
+			\end{equation*}
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.4,transform shape,font=\Large]
+				
+				\tkzInit[xmin=0,xmax=10,ymin=0,ymax=4]
+				%		\tkzGrid[color=gray!20]
+				\tkzClip[space=3]
+				
+				\tkzDrawX[right,label=x (m)]
+				\tkzDrawY[above,label=y (m)]
+				
+				\tkzDefPoints{0/0/O,5/5/P,3/1/O'}
+				
+				\draw[->,line width=1.0pt,color=red] (O) -- (P) node [above left,midway] {$\vec{r}_{PA}$};
+				\draw[->,line width=1.0pt,color=red] (O) -- (O') node [above,midway] {$\vec{r}_{BA}$};
+				
+				\tkzDefPoint(0,5.25){t1}
+				
+				\tkzText[above](t1){(Referencial A)}
+				
+				\begin{scope}[shift={(3,1)}]
+				
+				\tkzInit[xmin=0,xmax=6,ymin=0,ymax=4]
+				%		\tkzGrid[color=gray!20]
+				
+				\tkzDrawX[right,label=x' (m)]
+				\tkzDrawY[above,label=y' (m)]
+				
+				\tkzDefPoints{0/0/O,2/4/P}
+				
+				\draw[->,line width=1.0pt,color=red] (O) -- (P) node [right,midway] {$\vec{r}_{PB}$};;
+				
+				\tkzDrawPoint[size=0.5cm](P)
+				\tkzLabelPoint[above right](P){P}
+				
+				\tkzDefPoint(0,5.25){t1}
+				
+				\tkzText[above](t1){(Referencial B)}
+				
+				\end{scope}
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Vetores posição da partícula P nos referenciais A e B.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Referenciais inerciais}
+	\begin{block}{Referencial inercial}
+		Referencial no qual as Leis de Newton são válidas.
+	\end{block}
+	\begin{figure}
+		\begin{subfigure}[b]{0.45\textwidth}
+			\centering
+			\includegraphics[scale=0.16]{figuras/inercia-maior.jpg}
+			\caption*{\footnotesize Objeto com maior inércia.}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.45\textwidth}
+			\centering
+			\includegraphics[scale=0.075]{figuras/inercia-menor.jpg}
+			\caption*{\footnotesize Objeto com menor inércia.}
+		\end{subfigure}
+	\end{figure}
+	\begin{corollary}
+		A taxa de variação do estado de movimento de um objeto depende da massa desse objeto, definido como a inércia do movimento.
+	\end{corollary}
+\end{frame}
+
+\begin{frame}{Referenciais não inerciais}
+	\begin{figure}
+		\includegraphics[scale=0.5]{figuras/referenciais-nao-inerciais.JPG}
+		\caption*{\footnotesize O trem e a pessoa dentro dele são considerados referenciais não-inerciais para o observador exterior. Por isso a pessoa que está no vagão vê a bola inclinada, como se existisse uma força fictícia empurrando ela para trás, contradizendo as Leis de Newton do movimento.}
+	\end{figure}
+\end{frame}
+
+\section{Segunda Lei de Newton}
+
+\subsection{}
+
+\begin{frame}{Conceito da Segunda Lei de Newton}
+	\begin{block}{Segunda Lei de Newton}
+		A força resultante que age sobre um objeto é igual ao produto da massa do objeto pela aceleração. Em termos matemáticos, podemos escrever como
+		\begin{equation*}
+			\vec{F}_{\text{res}}=m\vec{a}.
+		\end{equation*}
+	\end{block}
+	\begin{columns}
+		\begin{column}[c]{0.45\textwidth}
+			\begin{corollary}
+				No SI a unidade de medida da força é Newton (N),
+				\begin{equation*}
+					\SI{1}{N}=\SI[per-mode=symbol]{1}{\kilogram\meter\per\square\second}
+				\end{equation*}
+			\end{corollary}
+		\end{column}
+		\begin{column}[c]{0.55\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.32]{figuras/segunda-lei-de-newton.jpg}
+				\caption*{\footnotesize Relação entre força, massa e aceleração.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Diagrama de corpo isolado}
+	\begin{columns}
+		\begin{column}[c]{0.6\textwidth}
+			Sabendo que a segunda lei de Newton é uma equação vetorial, é conveniente separá-la em três equações, uma para cada eixo do sistema de coordenadas xyz,
+			\begin{equation*}
+				\vec{F}_{\text{res},x}=ma_x,\quad \vec{F}_{\text{res},y}=ma_y,\quad \vec{F}_{\text{res},z}=ma_z,
+			\end{equation*}
+			A componente da aceleração em relação a um dado eixo é causada apenas pela soma das componentes das forças em relação a esse eixo e não por componentes de forças em relação a qualquer outro eixo.
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.38,transform shape,font=\Large]
+			
+				\tkzInit[xmin=-4,xmax=4,ymin=-11,ymax=0]
+				%\tkzGrid[color=gray!20]
+				\tkzClip[space=1]
+			
+				\tkzDefPoints{0/-4/O,-4/0/A,4/0/B,0/-6/C}
+				
+				%parede
+				\fill [pattern = north west lines] ($(B)+(0,0.25)$) rectangle (A);
+				\draw (A) -- (B);
+				
+				\tkzMarkAngle(O,A,B)
+				\tkzLabelAngle[pos=1.5](O,A,B){$\theta_1$}
+			
+				\tkzMarkAngle(A,B,O)
+				\tkzLabelAngle[pos=-1.5](A,B,O){$\theta_2$}
+			
+				\draw (O) -- (A) node [below left, midway] {1};
+				\draw (O) -- (B) node [below right, midway] {2};
+			
+				\tkzDefPoints{-1/-6/a,1/-6/b,-1/-8/c,1/-8/d,0/-7/e}
+			
+				\tkzDrawCircle[R,fill=gray](O,0.75cm)
+			
+				\tkzText(O){M}
+			
+				\begin{scope}[shift={(0,-8.5)},font=\normalsize]
+			
+					\tkzInit[xmin=-2,xmax=2,ymin=-2,ymax=2]
+			
+					\tkzDrawX[label=x,noticks]
+					\tkzDrawY[label=y,above,noticks]
+			
+					\tkzDefPoints{0/0/O',-2/2/A',2/2/B',0/-2/C',-2/0/D',2/0/E',0/2/F'}
+			
+					\tkzMarkAngle[size=0.8cm](A',O',D')
+					\tkzLabelAngle[pos=1.1](A',O',D'){$\theta_1$}
+			
+					\tkzMarkAngle[size=0.8cm](E',O',B')
+					\tkzLabelAngle[pos=1.1](E',O',B'){$\theta_2$}
+			
+					\draw[->,color=red] (O') -- (A') node [above, midway] {$\vec{T}_1$};
+					\draw[->,color=red] (O') -- (B') node [above, midway] {$\vec{T}_2$};
+					\draw[->,color=blue] (O') -- (E') node [below left] {$\vec{T}_{2x}$};
+					\draw[->,color=blue] (O') -- (D') node [below right] {$\vec{T}_{1x}$};
+					\draw[->,color=blue] (O') -- (F') node [above left] {$\vec{T}_{1y}$};
+					\draw[->,color=blue] (O') -- (F') node [above right] {$\vec{T}_{2y}$};
+					\draw[->,color=red] (O') -- (C') node [below] {$\vec{P}$};
+			
+					\tkzPointShowCoord(A')
+					\tkzPointShowCoord(B')
+			
+				\end{scope}
+			
+			\end{tikzpicture}
+			\caption*{\footnotesize Diagrama de corpo isolado da esfera M.}
+		\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\section{Terceira Lei de Newton}
+
+\subsection{}
+
+\begin{frame}{Ação e reação}
+	\begin{columns}
+		\begin{column}[c]{0.6\textwidth}
+			\begin{block}{Segunda Lei de Newton}
+				Quando dois corpos (1 e 2) interagem, as forças qua cada corpo exerce sobre o outro são iguais em módulo e têm sentidos opostos,
+				\begin{equation*}
+					\vec{F}_{12}=-\vec{F}_{21}.
+				\end{equation*}
+			\end{block}
+			\begin{corollary}
+				A somatória das forças no sistema é zero.
+			\end{corollary}
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}
+				\includegraphics[scale=0.4]{figuras/terceiralei.png}
+				\caption*{\footnotesize Sistema carregador+caixa e representação da terceira lei de Newton.}
+		\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\section{Algumas forças especiais}
+
+\subsection{}
+
+\begin{frame}{Força gravitacional}
+	\begin{columns}
+		\begin{column}[c]{0.7\textwidth}
+			Considere o objeto de massa m caindo em quedra livre. Nesse caso a única força atuando nele é a força da gravidade. Relacionando com a segunda lei de Newton ($\vec{F}=m\vec{a}$) temos
+			\begin{equation*}
+			\vec{F}=m\vec{g}.
+			\end{equation*}
+			Considerando que o deslocamento que o objeto realiza é insignificante ao tamanho da Terra, podemos dizer que $\vec{g}$ é praticamente constante.
+		\end{column}
+		\begin{column}[c]{0.3\textwidth}
+			\begin{figure}[c]
+				\begin{footnotesize}
+					\begin{table}
+						\centering
+						\caption*{\footnotesize Aceleração da gravidade em diferentes latitudes.}
+%						\vspace*{-0.5cm}
+						\begin{tabular}[c]{cc}
+							\hline
+							Latitude & $g(m/s^2)$\\
+							\hline
+							0 & 9,7803\\
+							30 & 9,7932\\
+							45 & 9,8017\\
+							60 & 9,8191\\
+							90 & 9,8322\\
+							\hline					
+						\end{tabular}
+					\end{table}				
+				\end{footnotesize}
+				%\includegraphics[scale=0.19]{figuras/figura-8.png}
+			\end{figure}
+		\end{column}
+	\end{columns}
+	\begin{corollary}
+		O peso P de um corpo é igual ao módulo da força gravitacional que age sobre o corpo, aplicando nele uma aceleração igual a g.
+	\end{corollary}
+\end{frame}
+
+\begin{frame}{Força Normal}
+	\begin{columns}
+		\begin{column}[c]{0.6\textwidth}
+			Considere um bloco de massa m pressionando uma mesa para baixo devido a força da gravidade $\vec{F}_g$. Pela terceira lei de Newton, a mesa irá empurrar o bloco para cima aplicando uma força $\vec{F}_N$ com a mesma intensidade.
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.25]{figuras/normal.jpg}
+				\caption*{\footnotesize Forças peso $\vec{P}$ e normal $\vec{N}$.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+	\begin{corollary}
+		\begin{enumerate}
+			\item [\ding{51}] Quando um corpo exerce uma força sobre uma superfície, a superfície (ainda que aparentemente rígida) se deforma e empurra o corpo com uma força normal que é perpendicular à superfície;
+			\item[\ding{51}] A força normal será sempre perpendicular a superfície de contanto.
+		\end{enumerate}
+		
+	\end{corollary}
+\end{frame}
+
+\begin{frame}{Tração}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			Quando uma corda é presa a um objeto e esticada, a corda aplica ao objeto uma força $\vec{T}$ orientada na direção da corda. Essa força é chamada força de tração.
+			\begin{enumerate}
+				\item [\ding{51}] A corda é frequentemente considerada sem massa;
+				\item [\ding{51}] As forças nas duas extremidades da corda são iguais em módulo.
+			\end{enumerate}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.7]{figuras/tracao.JPG}
+				\caption*{\footnotesize Tração atuando na corda e nos blocos A e B.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Força de atrito}
+	A experiência mostra que, quando um objeto não lubrificado pressiona uma superfície nas mesmas condições, a força de atrito possui três proprieades:
+	\begin{enumerate}
+		\item [\ding{51}] Se o objeto não se move, a força de atrito se iguala em módulo a força $vec{F}$;
+		\item [\ding{51}] A força de atrito possui valor máximo de $f_{max}=\mu_s N$, onde $\mu_s$ é o coeficiente de atrito estático e N o módulo da força normal;
+		\item [\ding{51}] Se o corpo começa a deslizar na superfície, o módulo da força de atrito diminui rapidamente para um valor dado por $f_k=\mu_k N$, onde onde $\mu_k$ é o coeficiente de atrito cinético, $\mu_k<\mu_s$.
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}{Relação entre força de atrito e a força atuando no objeto (continuação)}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{enumerate}
+				\item [\ding{51}] A força de atrito é zero se não há outras forças atuando no objeto;
+				\item [\ding{51}] A força de atrito é igual a força externa se o objeto está em repouso;
+				\item [\ding{51}] A força de atrito máxima é igual a $\mu_s N$.
+				\item [\ding{51}] Se o objeto está em movimento a força de atrito é igual a $\mu_k N$.
+			\end{enumerate}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.25]{figuras/atrito-resumido.pdf}
+				\caption*{\footnotesize Relação entre força de atrito e a tração na corda.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Força de arrasto}
+	\begin{columns}
+		\begin{column}[c]{0.7\textwidth}
+			Quando um objeto se movimenta na presença de um fluido como o ar, ele experimenta uma força de resistência ao seu movimento chamada força de arrasto dado por
+			\begin{equation*}
+				F_{arrasto}=bv^2,
+			\end{equation*}
+			onde b  é o coeficiente de arrasto que depende da densidade do ar e da área de contato do objeto. $F_{arrasto}$ aumenta com o quadrado da velocidade, portanto à medida que o objeto acelera $F_{arrasto}$ aumenta.
+		\end{column}
+		\begin{column}[c]{0.3\textwidth}
+					\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.4,transform shape,font=\Large]
+				
+				\tkzInit[xmin=-4,xmax=4,ymin=0,ymax=8]
+				%\tkzGrid[color=gray!20]
+				\tkzClip[space=1]
+				
+				%chao
+				\fill [pattern = north west lines] (4,-0.25) rectangle (-4,0);
+				\draw (-4,0) -- (4,0);
+				
+				%normal
+				\draw[dashed] (0,0) -- (0,8) node [above] (n) {Trajetoria};
+				
+				\tkzDefPoints{-1/5/a,1/5/b,-1/6/c,1/6/d,-3/6.5/B,3/1/C}
+				
+				\tkzDrawPolygon[opacity=100,fill=white](a,b,d,c)
+				\tkzDrawPoints(a,b,c,d)
+				
+				%vetores
+				\draw[->,line width=1pt] ($(a)+(1,0)$) --++ (0,-1) node [right] {$m\vec{g}$};
+				\draw[->,line width=1pt] ($(c)+(1,0)$) --++ (0,1) node [right] {$\vec{F}_{\text{arrasto}}$};
+				
+				\draw[->,line width=1pt] (B) --++ (0,-2) node [right] {$\vec{v}$};
+				
+				\draw[->,line width=1pt] (C) --++ (0,-1);
+				\tkzText[,opacity=100,fill=white](C){Solo}
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Força de arrasto atuando em um objeto em queda.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Força de arrasto (continuação)}
+\begin{columns}
+	\begin{column}[c]{0.7\textwidth}
+		A força de arrasto é contrária a força da gravidade, portanto à medida que $F_{arrasto}$ aumenta a aceleração diminui. Portanto, a velocidade atinge um limite chamado velocidade terminal $v_t$. Aplicando a segunda lei de Newton,
+		\begin{equation*}
+		bv^2-F_g = 0.
+		\end{equation*}
+		\begin{block}{Velocidade terminal}
+			\begin{equation*}
+				v_t=\sqrt{\frac{F_g}{b}}.
+			\end{equation*}
+		\end{block}
+	\end{column}
+	\begin{column}[c]{0.3\textwidth}
+		\begin{figure}
+			\centering
+			\begin{tikzpicture}[scale=0.4,transform shape,font=\Large]
+			
+			\tkzInit[xmin=-4,xmax=4,ymin=0,ymax=10]
+			%\tkzGrid[color=gray!20]
+			\tkzClip[space=1]
+			
+			%chao
+			\fill [pattern = north west lines] (4,-0.25) rectangle (-4,0);
+			\draw (-4,0) -- (4,0);
+			
+			%normal
+			\draw[dashed] (0,0) -- (0,10) node [above] (n) {Trajetoria};
+			
+			\tkzDefPoints{0/9/a,0/5.5/b,0/2/c,-3/6.5/B,3/1/C}
+			
+			\draw[->,line width=1pt] (a) --++ (0,-1) node [right] {$m\vec{g}$};
+			\draw[->,line width=1pt] (a) --++ (0,0.5) node [right] {$\vec{F}_{\text{arrasto}}$};
+			\tkzDrawPoint[color=red,size=0.5cm,fill=red](a)
+			\tkzText[left=0.2](a){$(v<v_t)$}
+			
+			\draw[->,line width=1pt] (b) --++ (0,-1) node [right] {$m\vec{g}$};
+			\draw[->,line width=1pt] (b) --++ (0,0.75) node [right] {$\vec{F}_{\text{arrasto}}$};
+			\tkzDrawPoint[color=red,size=0.5cm,fill=red](b)
+			\tkzText[left=0.2](b){$(v\approx v_t)$}
+			
+			\draw[->,line width=1pt] (c) --++ (0,-1) node [right] {$m\vec{g}$};
+			\draw[->,line width=1pt] (c) --++ (0,1) node [right] {$\vec{F}_{\text{arrasto}}$};
+			\tkzDrawPoint[color=red,size=0.5cm,fill=red](c)
+			\tkzText[left=0.2](c){$(v=v_t)$}
+
+			\draw[->,line width=1pt] (B) --++ (0,-2) node [right] {$\vec{v}$};
+			
+			\draw[->,line width=1pt] (C) --++ (0,-1);
+			\tkzText[,opacity=100,fill=white](C){Solo}
+			
+			\end{tikzpicture}
+			\caption*{\footnotesize Velocidade terminal.}
+		\end{figure}
+	\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Força centrípeta}
+	\begin{columns}
+		\begin{column}[c]{0.6\textwidth}
+			Vimos que um objeto que descreve uma trajetória circular de raio r está sujeito a uma aceleração apontada para o centro da circunferência chamada aceleração centrípeta, $a=v^2/r$. Pelas leis de Newton, a aceleração em um objeto é devido a uma força resultante, portanto podemos dizer que existe uma força sendo aplicada no caso do movimento circular. Essa força é chamada de força centrípeta,
+			\begin{equation*}
+				\boxed{F=m\frac{v^2}{r}.}
+			\end{equation*}
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.4,transform shape,font=\Large]
+				
+				\tkzInit[xmin=-4,xmax=4,ymin=-4,ymax=4]
+				%\tkzGrid[color=gray!20]
+				\tkzClip[space=1.7]
+				
+				\tkzDrawX[right,label=x (m)]
+				\tkzDrawY[above,label=y (m)]
+				
+				\tkzDefPoints{0/0/O,4/0/A,0/4/B}
+				
+				\tkzDrawCircle[dashed](O,A)
+				
+				\tkzDefPointsBy[rotation=center O angle 45](O,A){p1,p2}
+				
+				\tkzDefPointWith[linear, K=0.4](p2,O)\tkzGetPoint{p3}
+				
+				\tkzDefPointsBy[rotation=center p2 angle -90](p2,p3){p4,p5}
+				
+				\tkzDefPointWith[linear, K=0.75](p2,p5)\tkzGetPoint{p6}
+				
+				\tkzDefPointsBy[rotation=center O angle -45](O,A){p7,p8}
+				
+				\draw[dashed,line width=1.0pt] (O) -- (p2);
+				\draw[->,color=red,line width=1.0pt] (p2) -- (p3) node [above left] {$\vec{F}$};
+				\draw[->,color=red,line width=1.0pt] (p2) -- (p6) node [above] {$\vec{v}$};
+				\draw[->,color=black,line width=1.0pt] (O) -- (p8) node [above right,midway] {$r$};
+				
+				\tkzMarkAngle[arrows=->,size=1](A,O,p2)
+				\tkzLabelAngle[pos=1.4](A,O,p2){$\theta$}
+				
+				\tkzDrawPoints[size=0.5cm](p2)
+				
+				\tkzMarkRightAngle[size=0.3](p6,p2,p3)
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Força centrípeta e velocidade tangencial em um movimento circular.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\section{Apêndice}
+
+\subsection{}
+
+\begin{frame}{Transformar um número em notação científica}
+	\begin{corollary}
+		\begin{enumerate}[leftmargin=1.75cm]
+			\item[Passo 1:] Escrever o número incluindo a vírgula.
+			\item[Passo 2:] Andar com a vírgula até que reste somente um número diferente de zero no lado esquerdo.
+			\item[Passo 3:] Colocar no expoente da potência de 10 o número de casas decimais que tivemos que "andar" com a vírgula. Se ao andar com a vírgula o valor do número diminuiu, o expoente ficará positivo, se aumentou o expoente ficará negativo.
+		\end{enumerate}
+	\end{corollary}
+	\begin{exampleblock}{Exemplo}
+		\begin{equation*}
+			6\; 590\; 000\; 000\; 000\; 000,0 = \SI{6,59e15}{}		
+		\end{equation*}
+	\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Conversão de unidades em uma dimensão}
+	\begin{figure}
+		\begin{tikzpicture}[scale=0.65,transform shape,font=\Large]
+		
+		\tkzInit[xmin=-2,xmax=17,ymin=-6,ymax=3]
+		%\tkzGrid[color=gray!20]
+		\tkzClip
+		
+		\tikzset{compass style/.append style={->}}
+		
+		\foreach \x in {1,2,...,6}{
+			\tkzDefPoint(\x*3-3,0){\x}
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+			\node at (\x*3-3,2) {$\times 10^{1}$};
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+			\node at (\x*3-3,-2) {$\times 10^{-1}$};}
+		
+		\tkzDefPoints{-1.5/0/p1,1.5/0/p2,4.5/0/p3,7.5/-0.2/p4,10.5/0/p5,13.5/0/p6,16.5/0/p7}
+		
+		\tkzText(p1){m\_}
+		\tkzText(p2){c\_}
+		\tkzText(p3){d\_}
+		\tkzText(p4){\_}
+		\tkzText(p5){da\_}
+		\tkzText(p6){h\_}
+		\tkzText(p7){k\_}
+		
+		%exemplos
+		
+		\tkzText(3,-3.5){$1\;\text{mm}=1\times 10^{(-1)\times\alert{2}}\;\text{dm}\rightarrow 1\times 10^{-2}\;\text{dm}$}
+		\tkzText(3.1,-4.5){$2,5\;\text{kg}=2,5\times 10^{(1)\times\alert{6}}\;\text{mg}\rightarrow2,5\times 10^{6}\;\text{mg}$}
+		\tkzText(2.7,-5.5){$10\;\text{ms}=10\times 10^{(-1)\times\alert{3}}\;\text{s}\rightarrow 10\times 10^{-3}\;\text{s}$}
+		
+		\end{tikzpicture}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Conversão de unidades em duas dimensões}
+	\begin{figure}
+		\begin{tikzpicture}[scale=0.65,transform shape,font=\Large]
+	
+		\tkzInit[xmin=-2,xmax=17,ymin=-6,ymax=3]
+		%\tkzGrid[color=gray!20]
+		\tkzClip
+	
+		\tikzset{compass style/.append style={->}}
+	
+		\foreach \x in {1,2,...,6}{
+			\tkzDefPoint(\x*3-3,0){\x}
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+			\node at (\x*3-3,2) {$\times 10^{2}$};
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+			\node at (\x*3-3,-2) {$\times 10^{-2}$};}
+	
+		\tkzDefPoints{-1.5/0/p1,1.5/0/p2,4.5/0/p3,7.5/0/p4,10.5/0/p5,13.5/0/p6,16.5/0/p7}
+	
+		\tkzText(p1){$\text{m}\_^2$}
+		\tkzText(p2){$\text{c}\_^2$}
+		\tkzText(p3){$\text{d}\_^2$}
+		\tkzText(p4){$\_^2$}
+		\tkzText(p5){$\text{da}\_^2$}
+		\tkzText(p6){$\text{h}\_^2$}
+		\tkzText(p7){$\text{k}\_^2$}
+	
+		%exemplos
+	
+		\tkzText(3.3,-3.5){$1\;\text{mm}^2=1\times 10^{(-2)\times\alert{2}}\;\text{dm}^2\rightarrow 1\times 10^{-4}\;\text{dm}^2$}
+		\tkzText(3.6,-4.5){$2,5\;\text{m}^2=2,5\times 10^{(2)\times\alert{3}}\;\text{mm}^2\rightarrow2,5\times 10^{6}\;\text{mm}^2$}
+		\tkzText(3,-5.5){$10\;\text{ms}^2=10\times 10^{(-2)\times\alert{3}}\;\text{s}^2\rightarrow 10\times 10^{-6}\;\text{s}^2$}
+	
+		\end{tikzpicture}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Conversão de unidades em três dimensões}
+	\begin{figure}
+		\begin{tikzpicture}[scale=0.65,transform shape,font=\Large]
+	
+		\tkzInit[xmin=-2,xmax=17,ymin=-6,ymax=3]
+		%\tkzGrid[color=gray!20]
+		\tkzClip
+	
+		\tikzset{compass style/.append style={->}}
+	
+		\foreach \x in {1,2,...,6}{
+			\tkzDefPoint(\x*3-3,0){\x}
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+			\node at (\x*3-3,2) {$\times 10^{3}$};
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+			\node at (\x*3-3,-2) {$\times 10^{-3}$};}
+	
+		\tkzDefPoints{-1.5/0/p1,1.5/0/p2,4.5/0/p3,7.5/0/p4,10.5/0/p5,13.5/0/p6,16.5/0/p7}
+	
+		\tkzText(p1){$\text{m}\_^3$}
+		\tkzText(p2){$\text{c}\_^3$}
+		\tkzText(p3){$\text{d}\_^3$}
+		\tkzText(p4){$\_^3$}
+		\tkzText(p5){$\text{da}\_^3$}
+		\tkzText(p6){$\text{h}\_^3$}
+		\tkzText(p7){$\text{k}\_^3$}
+	
+		%exemplos
+	
+		\tkzText(3.3,-3.5){$1\;\text{mm}^3=1\times 10^{(-3)\times\alert{2}}\;\text{dm}^3\rightarrow 1\times 10^{-6}\;\text{dm}^3$}
+		\tkzText(3.6,-4.5){$2,5\;\text{m}^3=2,5\times 10^{(3)\times\alert{3}}\;\text{mm}^3\rightarrow2,5\times 10^{9}\;\text{mm}^3$}
+		\tkzText(3.5,-5.5){$2,5\;\text{km}^3=2,5\times 10^{(3)\times\alert{6}}\;\text{mm}^3\rightarrow2,5\times 10^{18}\;\text{mm}^3$}
+
+		\end{tikzpicture}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Alfabeto grego}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{table}
+				\begin{tabular}[c]{ccc}
+					Alfa & $A$ & $\alpha$\\
+					Beta & $B$ & $\beta$\\
+					Gama & $\Gamma$ & $\gamma$\\
+					Delta & $\Delta$ & $\delta$\\
+					Epsílon & $E$ & $\epsilon$,$\varepsilon$\\
+					Zeta & $Z$ & $\zeta$\\
+					Eta & $H$ & $\eta$\\
+					Teta & $\Theta$ & $\theta$\\
+					Iota & $I$ & $\iota$\\
+					Capa & $K$ & $\kappa$\\
+					Lambda & $\Lambda$ & $\lambda$\\
+					Mi & $M$ & $\mu$
+				\end{tabular}
+			\end{table}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{table}
+				\begin{tabular}[c]{ccc}
+					Ni & $N$ & $\nu$\\
+					Csi & $\Xi$ & $\xi$\\
+					ômicron & $O$ & $o$\\
+					Pi & $\Pi$ & $\pi$\\
+					Rô & $P$ & $\rho$\\
+					Sigma & $\Sigma$ & $\sigma$\\
+					Tau & $T$ & $\tau$\\
+					Ípsilon & $\Upsilon$ & $\upsilon$\\
+					Fi & $\Phi$ & $\phi$,$\varphi$\\
+					Qui & $X$ & $\chi$\\
+					Psi & $\Psi$ & $\psi$\\
+					Ômega & $\Omega$ & $\omega$
+				\end{tabular}
+			\end{table}
+		\end{column}
+	\end{columns}
+\end{frame}
+%
+\begin{frame}{Observações\footnote{Este material está sujeito a modificações. Recomenda-se acompanhamento permanente.}}
+	\begin{center}
+		Esta apresentação está disponível para download no endereço\\
+		\href{https://flavianowilliams.github.io/education}{\textcolor{blue}{https://flavianowilliams.github.io/education}}
+	\end{center}
+\end{frame}
+%
+\begin{frame}{Referências}
+	\bibliographystyle{jurabib}
+	\begin{thebibliography}{9}
+		\bibitem{halliday}D. Halliday, R. Resnick, J. Walker, Fundamentos de física. Mecânica, v.1, 10. ed., Rio de Janeiro, LTC (2016)
+	\end{thebibliography}
+\end{frame}
+%
+\end{document}

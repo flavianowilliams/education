@@ -1,0 +1,28 @@
+﻿\begin{tikzpicture}[scale=1,transform shape,font=\Large]
+			
+				\tkzInit[xmin=-4,xmax=4,ymin=0,ymax=8]
+				\tkzGrid[color=gray!20]
+				\tkzClip[space=1]
+			
+				%chao
+				\fill [pattern = north west lines] (4,-0.25) rectangle (-4,0);
+				\draw (-4,0) -- (4,0);
+
+				%normal
+				\draw[dashed] (0,0) -- (0,8) node [above] (n) {Trajetoria};
+
+				\tkzDefPoints{-1/5/a,1/5/b,-1/6/c,1/6/d,-3/6.5/B,2/1/C}
+
+				\tkzDrawPolygon[opacity=100,fill=white](a,b,d,c)
+				\tkzDrawPoints(a,b,c,d)
+
+				%vetores
+				\draw[->,line width=1.5pt] ($(a)+(1,0)$) --++ (0,-1) node [right] {$m\vec{g}$};
+				\draw[->,line width=1.5pt] ($(c)+(1,0)$) --++ (0,1) node [right] {$\vec{F}_{\text{arrasto}}$};
+
+				\draw[->,line width=1.5pt] (B) --++ (0,-2) node [right] {$\vec{v}$};
+
+				\draw[->,line width=1.5pt] (C) --++ (0,-1);
+				\tkzText[,opacity=100,fill=white](C){Solo}
+
+\end{tikzpicture}

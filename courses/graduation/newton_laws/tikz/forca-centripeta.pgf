@@ -1,0 +1,34 @@
+﻿				\begin{tikzpicture}[scale=1,transform shape,font=\Large]
+					
+					\tkzInit[xmin=-4,xmax=4,ymin=-4,ymax=4]
+					%\tkzGrid[color=gray!20]
+					\tkzClip[space=1.7]
+					
+					\tkzDrawX[right,label=x (m)]
+					\tkzDrawY[above,label=y (m)]
+					
+					\tkzDefPoints{0/0/O,4/0/A,0/4/B}
+					
+					\tkzDrawCircle[dashed](O,A)
+					
+					\tkzDefPointsBy[rotation=center O angle 45](O,A){p1,p2}
+					
+					\tkzDefPointWith[linear, K=0.4](p2,O)\tkzGetPoint{p3}
+					
+					\tkzDefPointsBy[rotation=center p2 angle -90](p2,p3){p4,p5}
+					
+					\tkzDefPointWith[linear, K=0.75](p2,p5)\tkzGetPoint{p6}
+
+					\tkzDefPointsBy[rotation=center O angle -45](O,A){p7,p8}
+
+					\draw[dashed,line width=1.0pt] (O) -- (p2);
+					\draw[->,color=red,line width=1.0pt] (p2) -- (p3) node [above left] {$\vec{F}$};
+					\draw[->,color=red,line width=1.0pt] (p2) -- (p6) node [above] {$\vec{v}$};
+					\draw[->,color=red,line width=1.0pt] (O) -- (p8) node [above right,midway] {$r$};
+					
+					\tkzMarkAngle[arrows=->,size=0.7](A,O,p2)
+					\tkzLabelAngle(A,O,p2){$\theta$}
+					
+					\tkzDrawPoints[size=0.5cm](p2)
+					
+				\end{tikzpicture}

@@ -1,0 +1,21 @@
+﻿\begin{tikzpicture}[scale=1,transform shape,font=\Large]
+			
+				\tkzInit[xmin=-4,xmax=4,ymin=-4,ymax=4]
+				\tkzGrid[color=gray!20]
+			
+				\tkzDefPoints{-2/-2/A,2/-2/B,-2/2/C,2/2/D}
+
+				\tkzDrawPolygon(A,B,D,C)
+
+				\tkzDefPoints{-2/0/a,2/0/b,0/-2/c,0/2/d}
+
+				\draw[<-,line width=1.5pt,color=red] (a) --++ (-2,0) node [above,midway] {$\vec{F}_1$};
+				\draw[<-,line width=1.5pt,color=red] (b) --++ (2,0) node [above,midway] {$\vec{F}_2$};
+				\draw[<-,line width=1.5pt,color=red] (c) --++ (0,-2) node [left,midway] {$\vec{F}_3$};
+				\draw[<-,line width=1.5pt,color=red] (d) --++ (0,2) node [left,midway] {$\vec{F}_4$};
+		
+				\tkzDefPoints{-1/0/t1}
+
+				\draw[->,line width=1.5pt,color=black] (t1) --++ (2,0) node [above,midway] {$\vec{v}$};
+
+\end{tikzpicture}

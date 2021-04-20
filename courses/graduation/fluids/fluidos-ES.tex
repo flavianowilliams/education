@@ -1,0 +1,1485 @@
+% Aula de mecânica dos fluidos para o curso de Física II do ensino médio
+%
+\documentclass[brazil,aspectratio=169]{beamer}
+%
+%carregando preâmbulo
+\input{../../contrib/preamble}
+
+%Título
+
+\title[Mecânica dos fluidos-FLD]{Fluidos}
+
+% The main document
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Sumário}
+  \tableofcontents
+\end{frame}
+
+\section{Introdução}
+
+\subsection{}
+
+\begin{frame}{O que é um fluido?}
+	\begin{block}{Fluido}
+		\justifying{Líquido incompressível que assume a forma do recipiente que o contém.}
+	\end{block}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\begin{itemize}
+				\item [\ding{51}] Os sólidos são objetos que possuem forma definida, portanto não são fluidos;
+				\item [\ding{51}] O Volume de um fluido não se altera independente da temperatura que se encontra e do recipiente que o contém.
+				\item [\ding{51}] Conceitos como densidade e pressão são usados ao invés de massa e força.
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}[c]
+				\includegraphics[scale=0.25]{figuras/fluido.jpg}
+				\caption*{\footnotesize Formato de um fluido em diversos recipientes.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Fluido versus corpo rígido}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{block}{Corpo rígido}
+				\begin{small}
+					\begin{itemize}
+						\item [\ding{51}] Formato rígido e imutável;
+						\item [\ding{51}] Corpos homogêneos ou heterogêneos (a densidade pode variar ao longo da estrutura);
+						\item [\ding{51}] Usamos conceitos de massa e força.
+					\end{itemize}
+				\end{small}
+			\end{block}
+			\begin{figure}[c]
+				\includegraphics[scale=0.18]{figuras/corpo-rigido.png}
+				\caption*{\footnotesize Exemplo de um corpo rígido.}
+			\end{figure}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{block}{Fluido}
+				\begin{small}
+					\begin{itemize}
+						\item [\ding{51}] Formato flexível e se adapta ao recipiente;
+						\item [\ding{51}] Corpos homogêneos (Densidade é a mesma ao longo do fluido);
+						\item [\ding{51}] Usamos conceitos de densidade (massa específica) e pressão.
+					\end{itemize}			
+				\end{small}
+			\end{block}
+			\begin{figure}[c]
+				\includegraphics[scale=0.1]{figuras/fluido-2.jpg}
+				\caption*{\footnotesize Exemplo de um fluido.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{O que é massa específica?}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+				Definimos massa específica ou densidade absoluta $\rho$ de um objeto como a taxa da quantidade infinitesimal de massa $dm$ por elemento $dV$ de seu volume,
+				\begin{align*}
+					\Aboxed{\rho = \frac{dm}{dV}=\lim\limits_{\Delta V\rightarrow 0}\frac{\Delta m}{\Delta V}.}
+				\end{align*}
+				Dessa maneira, podemos determinar o valor de cada elemento de massa $\Delta m$ que ocupa uma parte $\Delta V$ como
+				\begin{align*}
+					\Delta m = \rho \Delta V.
+				\end{align*}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+%				\includegraphics[scale=0.18]{figuras/densidade-iceberg.jpg}
+		\begin{figure}[c]
+			\centering
+			\begin{tiny}
+				\tdplotsetmaincoords{70}{110}
+				\begin{tikzpicture}[scale=2.9, tdplot_main_coords,
+				axis/.style={->,blue,thick},
+				vectora/.style={-stealth,thick},
+				vectorb/.style={-stealth,red,thick}]
+				
+				%standard tikz coordinate definition using x, y, z coords
+				\coordinate (O) at (0,0,0);
+				
+				%draw axes
+				\draw[axis] (0,0,0) -- (1,0,0) node[anchor=north east]{$x$};
+				\draw[axis] (0,0,0) -- (0,1,0) node[anchor=north west]{$y$};
+				\draw[axis] (0,0,0) -- (0,0,1) node[anchor=south]{$z$};
+				
+				%configurando estilo das cargas
+
+				\tikzstyle{s1}=[tdplot_screen_coords, rectangle, ball color=gray!50];
+				\tikzstyle{s2}=[tdplot_screen_coords];
+				
+				\tdplottransformmainscreen{0.7}{0.9}{0.8}
+				\node [s1] (n2) at (\tdplotresx,\tdplotresy) {$dm$};
+				
+				%draw a vector from origin to charge
+				\draw[vectora] (O) -- (n2) node[above,midway] {$\vec{r}$};
+				
+				\begin{axis}[hide axis,ticks=none,scale=0.2]
+					\addplot3[shader=interp,opacity = 0.5,fill opacity=0.5,surf,colormap/blackwhite,variable = \u,variable y = \v,domain = 0:180,y domain = 0:360]
+					({0.1*cos(u)*sin(v)}, {0.1*sin(u)*sin(v)}, {0.05*cos(v)});
+				\end{axis}
+				\end{tikzpicture}
+				\caption*{\footnotesize ...}
+				%\input{tikz/carga-objeto-3d.pgf}
+			\end{tiny}
+		\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Força atuando em cada elemento de um fluido}
+	\begin{columns}
+		\begin{column}[c]{0.7\textwidth}
+			Considere uma força $\Delta F$ atuando em um pequena área $\Delta A$ no fundo de um recipiente. Chamaremos de $\Delta F$ a força resultante atuando nessa área, onde podemos decompô-la em suas componentes tangencial $\Delta \vec{F}_t$ e perpendicular $\Delta \vec{F}_p$. No entanto, em um fluido em equilíbrio a força resultante deve ser zero, portanto obrigatoriamente deveremos ter $\Delta F_t=0$, restando apenas $\Delta \vec{F}_p$, que no caso deve ser equivalente ao peso da parte do fluido justamente acima, onde
+			\begin{align*}
+				\Delta F_p=\Delta F\cos\theta=\Delta P.
+			\end{align*}
+		\end{column}
+		\begin{column}[c]{0.3\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.35,transform shape,font=\Large]
+				
+				\tkzInit[xmin=-4,xmax=4,ymin=-1,ymax=10]
+				%	\tkzGrid[color=gray!20]
+				\tkzClip
+				
+				%definindo reservatorio	
+				
+				\tkzDefPoints{-4/2/A,4/2/B,4/9/C,-4/9/D,-4/10/E,4/10/F}
+				
+				\draw[decorate,decoration={segment length=7mm, amplitude=0.25mm,snake},line width=1.0pt,color=blue] (C) -- (D);
+				
+				\tkzFillPolygon[color=blue!20,opacity=0.5](A,B,C,D)
+				\tkzDrawPolygon(A,B,F,E)
+				
+				%definindo volume de água deslocada
+				
+				\tkzDefPoints{0/2.75/O,-1.5/3.5/a,1.5/3.5/b,-1.5/2.15/c,1.5/2.15/d,0/2.15/p,0/-1/p2,0/0/p5}
+
+				%empuxo e força
+				
+				\tkzDefPointsBy[rotation=center p angle 45](p,p2){p3,p4}
+				\tkzDefPointsBy[projection=onto p5--p](p,p4){p6,p7}
+				\tkzDefPointsBy[projection=onto p--d](p,p4){p8,p9}
+
+				\tkzMarkAngle(p7,p,p4)
+				\tkzLabelAngle[pos=1.5](p7,p,p4){\huge $\theta$}
+
+				\tkzDrawPolygon[fill=white](a,b,d,c)
+
+				\tkzText[text width=2.5cm,align=center](O){$\Delta V$}
+
+				\draw[->,line width=1pt,color=brown] (p) --(p4) node [right] {$\Delta\vec{F}$};
+				\draw[->,line width=1pt,color=brown] (p) --(p7) node [left] {$\Delta\vec{F}_p$};
+				\draw[->,line width=1pt,color=brown] (p) --(p9) node [right] {$\Delta\vec{F}_t$};
+
+				\draw (a) to[dim arrow={label=$\Delta A$}] (b);
+
+				\end{tikzpicture}
+				%\includegraphics[scale=0.25]{figuras/pressao.jpg}
+				\caption*{\footnotesize Força por unidade de área.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Pressão}
+\begin{columns}
+	\begin{column}[c]{0.7\textwidth}
+		 Sabendo que $\Delta\vec{P}=(\Delta m)\vec{g}$, temos para a força que atua em uma pequena área $\Delta A$ da parede do recipiente
+		\begin{NodesList}[margin=2cm]
+			\begin{align*}
+				\Delta F & = (\Delta m) g,\AddNode\\
+				\Delta F & = \rho g\Delta V,\AddNode\\
+				\Delta F & = p \Delta A.
+			\end{align*}
+			\LinkNodes{\tiny \alert{$\Delta m=\rho\Delta V$}}
+		\end{NodesList}
+		p é a pressão que representa a força por unidade de área perpendicular a superfície, ou seja,
+		\begin{align*}
+			\Aboxed{p = \frac{dF}{dA}=\lim\limits_{\Delta V\rightarrow 0}\frac{\Delta F}{\Delta A}.}
+		\end{align*}
+	\end{column}
+	\begin{column}[c]{0.3\textwidth}
+		\begin{figure}
+			\centering
+			\begin{tikzpicture}[scale=0.35,transform shape,font=\Large]
+			
+			\tkzInit[xmin=-4,xmax=4,ymin=-1,ymax=10]
+			%	\tkzGrid[color=gray!20]
+			\tkzClip
+			
+			%definindo reservatorio	
+			
+			\tkzDefPoints{-4/2/A,4/2/B,4/9/C,-4/9/D,-4/10/E,4/10/F}
+			
+			\draw[decorate,decoration={segment length=7mm, amplitude=0.25mm,snake},line width=1.0pt,color=blue] (C) -- (D);
+			
+			\tkzFillPolygon[color=blue!20,opacity=0.5](A,B,C,D)
+			\tkzDrawPolygon(A,B,F,E)
+			
+			%definindo volume de água deslocada
+			
+			\tkzDefPoints{0/2.75/O,-1.5/3.5/a,1.5/3.5/b,-1.5/2.15/c,1.5/2.15/d,0/2.15/p,0/-1/p2,0/0/p5}
+			
+			%empuxo e força
+			
+			\tkzDefPointsBy[rotation=center p angle 45](p,p2){p3,p4}
+			\tkzDefPointsBy[projection=onto p5--p](p,p4){p6,p7}
+			
+			\tkzDrawPolygon[fill=white](a,b,d,c)
+			
+			\tkzText[text width=2.5cm,align=center](O){$\Delta V$}
+			
+			\draw[->,line width=1pt,color=brown] (p) --(p7) node [left] {$\Delta\vec{P}$};
+			
+			\draw (a) to[dim arrow={label=$\Delta A$}] (b);
+			
+			\end{tikzpicture}
+			%\includegraphics[scale=0.25]{figuras/pressao.jpg}
+			\caption*{\footnotesize Força por unidade de área.}
+		\end{figure}
+	\end{column}
+\end{columns}
+\end{frame}
+
+\section{Hidrostática}
+
+\subsection{}
+
+\begin{frame}{Cálculo da pressão no interior de um fluido}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			Supondo um cilindro totalmente imerso e imóvel no interior de um fluido como mostra a figura ao lado, verificamos que
+			\begin{enumerate}
+				\item[\ding{51}] O peso do cilindro aplica uma força puxando-o para \alert{baixo};
+				\item[\ding{51}] O fluido pressiona as paredes do cilindro no intuito de espremê-lo de fora para dentro;
+				\item[\ding{51}] A somatória da pressão na base produz uma força que empurra o cilindro para \alert{cima};
+				\item[\ding{51}] A somatória da pressão no topo produz uma força que empurra o cilindro para \alert{baixo};
+			\end{enumerate}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}[c]
+				\begin{tikzpicture}[scale=0.5,transform shape,font=\large]
+				
+				\tkzInit[xmin=-4,xmax=4,ymin=-2,ymax=8]
+				%		\tkzGrid[color=gray!20]
+				
+				\tkzDefPoints{0/0/O, 0/6.5/O', -3/0/A, 3/0/C}
+				\tkzDefPointsBy[translation = from O to O'](A,C){F,H}
+				
+				\draw[dashed,fill=blue!0,opacity=0.25] (C) arc (0:180:3cm and 1cm);
+				\draw[fill=blue!20,opacity=0.25,draw opacity=100] (C) arc (0:-180:3cm and 1cm);
+				
+				\tkzDrawSegment(A,F)
+				\tkzDrawSegment(C,H)
+				
+				\tkzDefPoints{0/5/o1, -3/5/a1, 3/5/c1}
+				
+				\draw[dotted] (a1) -- (c1);
+				\draw[dashed,fill=blue!20,opacity=0.25,draw opacity=100] (c1) arc (0:180:3cm and 1cm);
+				\draw (O') ellipse (3cm and 1cm);
+				
+				\tkzDefPoints{0/1.5/o, 0/2.5/o', -1/1.5/a, 1/1.5/c}
+				\tkzDefPointsBy[translation = from o to o'](a,c){f,h}
+				
+				\tkzDefPointsBy[translation = from o to o1](a){d1}
+				\tkzDefPointsBy[translation = from o' to o1](h){h1}
+				
+				\draw[fill=gray!20,opacity=0.25] (c) arc (0:-180:1cm and 0.2cm);
+				\draw[fill=gray!20,dashed,opacity=0.25] (c) arc (0:180:1cm and 0.2cm);
+				\draw[fill=gray,draw opacity=0.25,opacity=0.25] (o') ellipse (1cm and 0.2cm);
+				
+				\tkzDrawSegment[draw opacity=0.25](a,f)
+				\tkzDrawSegment[draw opacity=0.25](c,h)
+				
+				\draw [<-,line width=1.0pt,color=red] (o') --++ (0,0.75) node [above] {$\vec{F}_1$};
+				
+				\tkzFillPolygon[fill=blue!20,opacity=0.25](A,C,c1,a1)
+				
+				\draw[fill=blue!0,opacity=0.25,draw opacity=100] (c1) arc (0:-180:3cm and 1cm);
+				
+				\draw (d1) to [dim arrow'={label=$h_2$},brown,line width=0.1pt] (a);
+				\draw (h1) to [dim arrow={label=$h_1$},brown,line width=0.1pt] (h);
+				\draw (h) to [dim arrow={label=$h_2-h_1$},brown,line width=0.1pt] (c);
+				
+				\draw [<-,line width=1.0pt,color=red] (o) --++ (0,-0.75) node [below] {$\vec{F}_2$};
+				
+				\tkzText[above right=0.25cm](o'){A}
+				
+				\end{tikzpicture}
+				%\includegraphics[scale=0.45]{figuras/pressao-cilindro.png}
+				\caption*{\footnotesize Forças atuando acima e abaixo do objeto submerso num fluido em repouso.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Variação da pressão com altitude e profundidade}
+\begin{multicols}{2}
+	Sabemos que a força atuando em cima e embaixo do cilindro é dado por $F = p A$, onde $A$ é a área do cilindro, portanto a força em cima e embaixo são
+	\begin{align*}
+	F_1 & = p_1A,\\
+	F_2 & = p_2A.
+	\end{align*}
+	Se o cilindro está em repouso, pela segunda Lei de Newton a força resultante deve ser zero, ou seja,
+	\begin{align*}
+	F_2 - F_1 = P = (\Delta m)g.
+	\end{align*}
+	Pela definição de densidade, $\Delta m = \rho \Delta V$, e sabendo que o volume do cilindro é a base A vezes a altura h temos
+	\begin{align*}
+	p_2\bcancel{A} & = p_1\bcancel{A} + \rho gh\bcancel{A},\\
+	\Aboxed{p_2 & = p_1 + \rho g h.}
+	\end{align*}
+\end{multicols}
+\end{frame}
+
+\begin{frame}{Variação da pressão com a profundidade}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\begin{block}{Lei de Stevin}
+				Se a superfície de um fluido, cuja densidade é $\rho$, está submetida a uma pressão $p_{atm}$, a pressão p, no interior desse líquido, a uma profundidade h, é dada por
+				\[p=p_{atm}+\rho gh\]
+			\end{block}
+			\begin{corollary}
+				A força da gravidade puxa o fluido para baixo causando uma pressão na base e nas paredes do recipiente.
+			\end{corollary}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.45,transform shape,font=\large]
+				
+				\tkzInit[xmin=-4,xmax=4,ymin=-2,ymax=8]
+				%		\tkzGrid[color=gray!20]
+				
+				\tkzDefPoints{0/0/O, 0/6.5/O', -3/0/A, 3/0/C}
+				\tkzDefPointsBy[translation = from O to O'](A,C){F,H}
+				
+				\draw[dashed,fill=blue!0,opacity=0.25] (C) arc (0:180:3cm and 1cm);
+				\draw[fill=blue!20,opacity=0.25,draw opacity=100] (C) arc (0:-180:3cm and 1cm);
+				
+				\tkzDrawSegment(A,F)
+				\tkzDrawSegment(C,H)
+				
+				\tkzDefPoints{0/5/o1, -3/5/a1, 3/5/c1}
+				
+				\draw[dashed,fill=blue!20,opacity=0.25,draw opacity=100] (c1) arc (0:180:3cm and 1cm);
+				\draw (O') ellipse (3cm and 1cm);
+				
+				\tkzDefPoints{0/2.5/o'}
+				\tkzDefPointsBy[translation = from o1 to o'](a1,c1){a',c'}
+				
+				\foreach \ox in {-3,-2,-1,0,1,2,3}{
+					\tkzDefPoints{\ox/2.5/\ox}
+					\tkzDrawPoints[fill=red,color=red,size=0.5cm](\ox)}
+				
+				\tkzFillPolygon[fill=blue!20,opacity=0.25](A,C,c1,a1)
+				
+				\draw[fill=blue!0,opacity=0.25,draw opacity=100] (c1) arc (0:-180:3cm and 1cm);
+				
+				\draw (c') to [dim arrow'={label'=$h$},brown] (c1);
+				
+				\tkzDrawLine[dotted, add=0.25cm and 0.25cm](a',c')
+				\tkzDrawLine[dotted, add=0.25cm and 0.25cm](a1,c1)
+				
+				\tkzText[left=0.25cm](a1){$p_{atm}$}
+				\tkzText[left=0.25cm](a'){$p$}
+				
+				\draw[<-,line width=2.5pt] (O') --++ (0,1.5) node [above] {Gravidade};
+
+				\end{tikzpicture}
+				%\includegraphics[scale=0.3]{figuras/lei-stevin.jpg}
+				\caption*{\footnotesize Pressão em função da profundidade h.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Experiência de Torricelli}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\justifying Coloca-se mercúrio cuja densidade é conhecida num tubo fino e vira-o de cabeça para baixo. O líquido irá descer e irá preencher o recipiente da parte de baixo. A parte de cima como estava fechada não entrou ar e com a descida do líquido criou-se um vácuo, portanto a pressão da parte de cima será zero. Pela Lei de Stevin temos que a pressão da parte de baixo é dado por
+			\begin{align*}
+				p_{atm} = \rho g h,
+			\end{align*}
+			onde h é a coluna de mercúrio (se for medido ao nível do mar h=760mm).
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}[c]
+				\includegraphics[scale=0.25]{figuras/experiencia-torricelli.jpg}
+				\caption*{\tiny Representação da experiência de Torricelli.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Vasos comunicantes}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\begin{corollary}
+				\justifying Pela Lei de Stevin a variação da pressão em um fluido homogêneo ($\rho = constante$) somente depende da profundidade do fluido e independe da posição do líquido ao longo da horizontal, portanto é esperado que a pressão seja a mesma para cada altura independente do recipiente que está contido o fluido.
+			\end{corollary}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}[c]
+				\includegraphics[scale=0.3]{figuras/vasos-comunicantes.jpg}
+				\caption*{\tiny Pressão do fluido em diferentes recipientes (O líquido atinge a mesma altura independente do recipiente).}
+			\end{figure}
+		\end{column}
+	\end{columns}	
+\end{frame}
+
+\begin{frame}{Variação da pressão na superfície do recipiente}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.28,transform shape,font=\huge]
+				
+				\tkzInit[xmin=-5,xmax=5,ymin=-2,ymax=9]
+				%		\tkzGrid[color=gray!20]
+				\tkzClip
+				
+				\tkzDefPoints{0/0/O, 0/6.5/O', -3/0/A, 3/0/C}
+				\tkzDefPointsBy[translation = from O to O'](A,C){F,H}
+				
+				\draw[dashed,fill=blue!0,opacity=0.25] (C) arc (0:180:3cm and 1cm);
+				\draw[fill=blue!20,opacity=0.25,draw opacity=100] (C) arc (0:-180:3cm and 1cm);
+				
+				\tkzDrawSegment(A,F)
+				\tkzDrawSegment(C,H)
+				
+				\tkzDefPoints{0/5/o1, -3/5/a1, 3/5/c1}
+				
+				\draw[dashed,fill=blue!20,opacity=0.25,draw opacity=100] (c1) arc (0:180:3cm and 1cm);
+				\draw (O') ellipse (3cm and 1cm);
+				
+				\tkzDefPoints{0/2.5/o'}
+				\tkzDefPointsBy[translation = from o1 to o'](a1,c1){a',c'}
+				
+				\tkzFillPolygon[fill=blue!20,opacity=0.25](A,C,c1,a1)
+				
+				\draw[fill=blue!0,opacity=0.25,draw opacity=100] (c1) arc (0:-180:3cm and 1cm);
+				
+				\draw (c') to [dim arrow'={label'=$h$},brown] (c1);
+				
+				\tkzDrawLine[dotted, add=0.2cm and 0.2cm](a',c')
+
+				\tkzText[left=0.01cm](a1){$p_0$}
+				\tkzText[left=0.01cm](a'){$p$}
+				
+				\end{tikzpicture}
+				%\includegraphics[scale=0.5]{figuras/pascal-stevin.jpg}
+			\end{figure}
+			Pela Lei de Stevin a pressão nos pontos 1 e 2 equivale a
+			\begin{align*}
+				p & = p_0+\rho g h.
+			\end{align*}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.28,transform shape,font=\huge]
+				
+				\tkzInit[xmin=-5,xmax=5,ymin=-2,ymax=9]
+				%		\tkzGrid[color=gray!20]
+				\tkzClip
+				
+				\tkzDefPoints{0/0/O, 0/6.5/O', -3/0/A, 3/0/C}
+				\tkzDefPointsBy[translation = from O to O'](A,C){F,H}
+				
+				\draw[dashed,fill=blue!0,opacity=0.25] (C) arc (0:180:3cm and 1cm);
+				\draw[fill=blue!20,opacity=0.25,draw opacity=100] (C) arc (0:-180:3cm and 1cm);
+				
+				\tkzDrawSegment(A,F)
+				\tkzDrawSegment(C,H)
+				
+				\tkzDefPoints{0/5/o1, -3/5/a1, 3/5/c1}
+				
+				\draw[fill=gray!80,opacity=0.5,draw opacity=100] (c1) arc (0:180:3cm and 1cm);
+				\draw (O') ellipse (3cm and 1cm);
+				
+				\tkzDefPoints{0/5.3/o2, -3/5.3/a2, 3/5.3/c2}
+				
+				\draw[fill=gray!80,opacity=0.5,draw opacity=100] (c2) arc (0:180:3cm and 1cm);
+				\draw[fill=gray!80,opacity=0.5,draw opacity=100] (c2) arc (0:-180:3cm and 1cm);
+				
+				\tkzDefPoints{0/2.5/o'}
+				\tkzDefPointsBy[translation = from o1 to o'](a1,c1){a',c'}
+				
+				\tkzFillPolygon[fill=blue!20,opacity=0.25](A,C,c1,a1)
+				
+				\draw[fill=gray!80,opacity=0.5,draw opacity=100] (c1) arc (0:-180:3cm and 1cm);
+				
+				\draw (c') to [dim arrow'={label'=$h$},brown] (c1);
+				
+				\tkzText[left=0.01cm](a1){$p'_0$}
+				\tkzText[left=0.01cm](a'){$p'$}
+				
+				\tkzDrawLine[dotted, add=0.2cm and 0.2cm](a',c')
+				
+				\draw[<-,line width=2.5pt] (o2) --++ (0,2.5) node [above] {$\vec{F}$};
+				
+				\end{tikzpicture}
+				%\includegraphics[scale=0.5]{figuras/pascal-stevin.jpg}
+			\end{figure}
+			Pela Lei de Stevin a pressão nos pontos 1 e 2 equivale a
+			\begin{align*}
+				p' & = p'_0+\rho g h.
+			\end{align*}
+		\end{column}
+	\end{columns}	
+\end{frame}
+
+\begin{frame}{Variação da pressão ao longo das paredes do recipiente}
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+			Caculando o quanto a pressão na posição 1 aumenta temos
+			\begin{align*}
+				\Delta p & = p'-p,\\
+				\Delta p & = (p'_0+\rho g h)-(p_0+\rho g h),\\
+				\Delta p & = p'_0+\cancel{\rho g h}-p_0-\cancel{\rho g h},\\
+				\Aboxed{\Delta p & = \Delta p_0.}
+			\end{align*}
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\begin{figure}[c]
+				\Centering
+				\begin{tikzpicture}[scale=0.35,transform shape,font=\Large]
+				
+				\tkzInit[xmin=-5,xmax=5,ymin=-2,ymax=8]
+				%		\tkzGrid[color=gray!20]
+				\tkzClip
+				
+				\tkzDefPoints{0/0/O, 0/6.5/O', -3/0/A, 3/0/C}
+				\tkzDefPointsBy[translation = from O to O'](A,C){F,H}
+				
+				\draw[dashed,fill=blue!0,opacity=0.25] (C) arc (0:180:3cm and 1cm);
+				\draw[fill=blue!20,opacity=0.25,draw opacity=100] (C) arc (0:-180:3cm and 1cm);
+				
+				\tkzDrawSegment(A,F)
+				\tkzDrawSegment(C,H)
+				
+				\foreach \x in {1,2,3,4}{
+					\draw[<-,line width=1.0pt] (-3,\x) --++ (0.75,0);
+					\draw[<-,line width=1.0pt] (3,\x) --++ (-0.75,0);}
+				\foreach \x in {1,2,3,4,5}{
+					\draw[<-,line width=1.0pt] (-3+\x,0) --++ (0,0.75);}
+				
+				\tkzDefPoints{0/5/o1, -3/5/a1, 3/5/c1}
+				
+				\draw[dashed,fill=gray!80,opacity=0.5,draw opacity=100] (c1) arc (0:180:3cm and 1cm);
+				\draw (O') ellipse (3cm and 1cm);
+				
+				\tkzDefPoints{0/5.3/o2, -3/5.3/a2, 3/5.3/c2}
+				
+				\draw[dashed,fill=gray!80,opacity=0.5,draw opacity=100] (c2) arc (0:180:3cm and 1cm);
+				\draw[fill=gray!80,opacity=0.5,draw opacity=100] (c2) arc (0:-180:3cm and 1cm);
+				
+				\tkzDefPoints{0/2.5/o'}
+				\tkzDefPointsBy[translation = from o1 to o'](a1,c1){a',c'}
+				
+				\tkzDefPoints{0/2/o, 0/3/o', -1/2/a, 1/2/c}
+				\tkzDefPointsBy[translation = from o to o'](a,c){f,h}
+				
+				\tkzDefPointsBy[translation = from o to o1](a){d1}
+				\tkzDefPointsBy[translation = from o' to o1](h){h1}
+				
+				\draw [<-,line width=1.0pt] (o') --++ (0,0.75);
+				\draw [<-,line width=1.0pt] (o) --++ (0,-0.75);
+				\draw [<-,line width=1.0pt] ($(a)+(0,0.5)$) --++ (-0.75,0);
+				\draw [<-,line width=1.0pt] ($(c)+(0,0.5)$) --++ (0.75,0);
+				
+				\draw[fill=gray!20,opacity=0.25] (c) arc (0:-180:1cm and 0.2cm);
+				\draw[fill=gray!20,dashed,opacity=0.25] (c) arc (0:180:1cm and 0.2cm);
+				\draw[fill=gray,draw opacity=0.25,opacity=0.25] (o') ellipse (1cm and 0.2cm);
+				
+				\tkzDrawSegment[draw opacity=0.25](a,f)
+				\tkzDrawSegment[draw opacity=0.25](c,h)
+				
+				\tkzFillPolygon[fill=blue!20,opacity=0.25](A,C,c1,a1)
+				
+				\draw[fill=gray!80,opacity=0.5,draw opacity=100] (c1) arc (0:-180:3cm and 1cm);
+				
+				\draw[<-,line width=2.5pt] (o2) --++ (0,1.5) node [above] {$\vec{F}$};
+				
+				\end{tikzpicture}
+				%\includegraphics[scale=0.4]{figuras/principio-pascal.jpg}
+			\end{figure}
+		\end{column}
+	\end{columns}
+	\begin{corollary}
+		\justifying O acréscimo de pressão, em um ponto de um líquido em equilíbrio, transmite-se integralmente a todos os pontos desse líquido.
+	\end{corollary}
+\end{frame}
+
+\begin{frame}{Máquinas hidráulicas}
+	\begin{columns}
+		\begin{column}{0.55\textwidth}
+			Pela definição de pressão podemos dizer que o aumento de pressão no pistão 1 é dado por
+			\begin{align*}
+				\Delta p_1 = \frac{F_1}{A_1}.
+			\end{align*}
+			Pelo princípio de Pascal esse aumento será o mesmo no pistao 2, pois  $\Delta p_1 = \Delta p_2$.
+			\begin{block}{Princípio de Pascal}
+				\begin{align*}
+					\frac{F_1}{A_1} = \frac{F_2}{A_2}.
+				\end{align*}
+			\end{block}
+		\end{column}
+		\begin{column}{0.45\textwidth}
+			\begin{corollary}
+				O volume deslocado em um pistão é o mesmo deslocado em outro pistão.
+			\end{corollary}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.45,transform shape,font=\large]
+				
+				\tkzInit[xmin=-1,xmax=11,ymin=-0.5,ymax=6.5]
+				%	\tkzGrid[color=gray!30]
+				
+				%definindo pontos
+				
+				\tkzDefPoints{0/0/A,2/0/B,0/5/C,2/5/D,2/1/E,2/1.5/F}
+				\tkzDefPoints{0/0/A,5/1.5/G,5/1/H,5/1.5/I,5/0/J,10/0/K,10/5/L,5/5/M}
+				
+				%	\tkzDrawPoints[size=0.5cm](A,B,C,D,E,F,G,H,I,J,K,L,M)
+				%	\tkzLabelPoints(A,B,C,D,E,F,G,H,I,J,K,L,M)
+				
+				%pistao menor
+				
+				\tkzDefPoints{0/4.75/c,2/4.75/d}
+				\tkzDefPoints{0/2.75/c1,2/2.75/d1,0/3/c2,2/3/d2}
+				
+				\tkzFillPolygon[fill=green!20](c2,d2,d,c)
+				
+				\tkzDrawPolygon[dashed,color=gray,fill=gray!20](C,D,d,c)
+				\tkzDrawPolygon[color=gray,fill=gray!20](c1,d1,d2,c2)
+				
+				%	\tkzDrawPoints[size=0.5cm](c,d,c1,d1,c2,d2)
+				
+				\draw (c1) to [dim arrow={label=$h_1$},brown,line width=0.1pt] (c);
+				\draw (c1) to [dim arrow={label=$A_1$},brown,line width=0.1pt] (d1);
+				
+				%pistao maior
+				
+				\tkzDefPoints{5/4.75/m,10/4.75/l}
+				\tkzDefPoints{5/3.95/m1,10/3.95/l1,5/3.7/m2,10/3.7/l2}
+				
+				\tkzFillPolygon[fill=green!20](m1,l1,l,m)
+				
+				\tkzDrawPolygon[color=gray,fill=gray!20](M,L,l,m)
+				\tkzDrawPolygon[dashed,color=gray,fill=gray!20](m1,l1,l2,m2)
+				
+				%	\tkzDrawPoints[size=0.5cm](m,l,m1,l1,m2,l2)
+				
+				\draw (m2) to [short dim arrow={label=$h_2$,label near middle},brown,line width=0.1pt] (m);
+				\draw (M) to [dim arrow={label=$A_2$},brown,line width=0.1pt] (L);
+				
+				%desenhando paredes
+				
+				\tkzDrawPolygon(A,B,E,H,J,K,L,M,G,F,D,C)
+				
+				%desenhando as forças
+				
+				\foreach \x in {1}{
+					\draw[<-,line width=0.7pt] (\x,5) --++ (0,0.75) node [above] {$\vec{F}_1$};}
+				
+				\foreach \x in {0.5,1,1.5,2,2.5}{
+					\draw[<-,line width=0.7pt] (0,\x) --++ (0.5,0);}
+				
+				\foreach \x in {0.5,1.5,2,2.5}{
+					\draw[<-,line width=0.7pt] (2,\x) --++ (-0.5,0);}
+				
+				\foreach \x in {1}{
+					\draw[<-,line width=0.7pt] (\x,0) --++ (0,0.5);}
+				
+				\foreach \x in {2.5}{
+					\draw[<-,line width=0.7pt] (\x+5,3.75) --++ (0,-0.75) node [below] {$\vec{F}_2$};}
+				
+				\foreach \x in {0.5,1,1.5,2,2.5,3}{
+					\draw[<-,line width=0.7pt] (5,\x) --++ (0.5,0);}
+				
+				\foreach \x in {0.5,1,1.5,2,2.5,3}{
+					\draw[<-,line width=0.7pt] (10,\x) --++ (-0.5,0);}
+				
+				\foreach \x in {1,1.5,2,2.5,3,3.5,4}{
+					\draw[<-,line width=0.7pt] (\x+5,0) --++ (0,0.5);}
+				
+				\end{tikzpicture}
+				%\includegraphics[scale=0.2]{figuras/prensa-hidraulica.jpg}
+				\caption*{\footnotesize Prensa hidráulica}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{O que é empuxo?}
+	\begin{columns}
+		\begin{column}{0.65\textwidth}
+			\begin{corollary}
+				\begin{itemize}
+					\item A somatória de todas as forças que o fluido atua nas paredes de um objeto imerso em um fluido é igual a força resultante que atua para cima no intuito de subir o objeto;
+					\item Se a força resultante $\vec{E}$ for de mesma intensidade da força peso $\vec{P}$ do volume do fluido deslocado, essa força é chamada de empuxo;
+					\item Se o empuxo for maior que a força peso o objeto flutua, e se for menor o objeto afunda.
+				\end{itemize}
+			\end{corollary}
+		\end{column}
+		\begin{column}{0.35\textwidth}
+			\begin{figure}[c]
+				\Centering
+				\begin{tikzpicture}[scale=0.4,transform shape,font=\Large]
+				
+				\tkzInit[xmin=-4,xmax=4,ymin=-1,ymax=10]
+				%	\tkzGrid[color=gray!20]
+				\tkzClip
+				
+				%definindo reservatorio	
+				
+				\tkzDefPoints{-4/0/A,4/0/B,-4/10/E,4/10/F}
+				
+				\tkzDefSquare(A,B)\tkzGetPoints{C}{D}
+				
+				\draw[decorate,decoration={segment length=7mm, amplitude=0.25mm,snake},line width=1.0pt,color=blue] (C) -- (D);
+				
+				\tkzFillPolygon[color=blue!20,opacity=0.5](A,B,C,D)
+				\tkzDrawPolygon(A,B,F,E)
+				
+				%definindo volume de água deslocada
+				
+				\tkzDefPoints{0/4/O,2/4/c,0/10/m,0/3.5/O1,3/3.5/c1}
+				
+				%empuxo e força
+
+				\draw[->,line width=3pt,color=brown] (O) --++(0,4) node [above] {$\vec{E}$};
+				\draw[->,line width=3pt,color=brown] (O) --++(0,-4) node [below] {$\vec{P}$};
+
+				\tkzDrawCircle[R,fill=white](O,2cm)
+				
+				\tkzInterLC(O,m)(O,c)\tkzGetPoints{G}{H}
+				
+				\foreach \x in {1,2,...,5}{
+					\tkzDefPointBy[rotation=center O angle 30*\x](H)\tkzGetPoint{X}
+					\tkzInterLC(O,X)(O1,c1)\tkzGetPoints{Z}{W}
+					\draw[<-,line width=1.5pt] (X) -- (Z);}
+				
+				\tkzDefPointBy[rotation=center O angle 0](H)\tkzGetPoint{x1}
+				\tkzInterLC(O,x1)(O1,c1)\tkzGetPoints{z1}{w1}
+				\draw[<-,line width=1.5pt] (x1) -- (w1);
+				
+				\foreach \x in {7,8,9,10,11}{
+					\tkzDefPointBy[rotation=center O angle 30*\x](H)\tkzGetPoint{X}
+					\tkzInterLC(O,X)(O1,c1)\tkzGetPoints{Z}{W}
+					\draw[<-,line width=1.5pt] (X) -- (W);}
+				
+				\tkzDefPointBy[rotation=center O angle 180](H)\tkzGetPoint{x2}
+				\draw[<-,line width=1.5pt] (x2) -- (z1);
+				
+				\tkzText[text width=2.5cm,align=center](O){Volume de água em repouso}
+				
+				\end{tikzpicture}
+				%\includegraphics[scale=0.7]{figuras/empuxo.png}
+				\caption*{\footnotesize Representação de empuxo como o peso da água deslocada.}
+			\end{figure}
+		\end{column}
+	\end{columns}		
+\end{frame}
+
+\begin{frame}{Relação entre a densidade do fluido, do objeto e o princípio de Arquimedes}
+	\begin{columns}[t]
+		\begin{column}{0.55\textwidth}
+		Pela definição de empuxo E podemos dizer que
+		\begin{align*}
+			E=m_{fluido}g,
+		\end{align*}
+		mas pela definição de densidade temos $m_{fluido}=\rho_{fluido}V$, portanto
+		\begin{align*}
+			E = \rho_{fluido}Vg
+		\end{align*}
+		O peso P do objeto mergulhado no fluido é dado por $P=m_{obj}g$, portanto se o empuxo for igual ao peso do objeto temos
+		\end{column}
+		\begin{column}{0.45\textwidth}
+		\begin{align*}
+			m_{obj}g & = \rho_{fluido}Vg,\\
+			\rho_{obj}\bcancel{Vg} & = \rho_{fluido}\bcancel{Vg}.
+		\end{align*}
+			\begin{corollary}
+				\begin{itemize}
+					\small
+					\item Se $\rho_{fluido}<\rho_{obj}$, o corpo afundará;
+					\item Se $\rho_{fluido}=\rho_{obj}$, o corpo ficará em equilíbrio;
+					\item Se $\rho_{fluido}>\rho_{obj}$, o corpo irá flutuar na superfície;
+				\end{itemize}
+			\end{corollary}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\section{Hidrodinâmica}
+
+\subsection{}
+
+\begin{frame}{Fluidos ideias em movimento}
+	Um fluido ideal em movimento satisfaz as seguintes condições:
+		\begin{enumerate}
+			\item[\ding{51}] Escoamento laminar: a velocidade do fluido em ponto qualquer não varia com o tempo;
+			\item[\ding{51}] Escoamento incompressível: a massa específica tem o mesmo valor em todos os pontos do fluido e em qualquer instante de tempo.
+			\item[\ding{51}] Escoamento não viscoso: o fluido é não viscoso, ou seja, não apresenta resistência ao escoamento.
+			\item[\ding{51}] Escoamento irrotacional: o movimento do fluido é apenas linear.
+		\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]{Equação da continuidade baseada na Lei da conservação da matéria}
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+			Supondo uma quantidade de fluido que percorre uma distância $S_1$ de área $A_1$ no intervalo de tempo $\Delta t$, o volume ocupado por esse fluido é
+			\begin{align*}
+				V = \Delta S_1 A_1. 
+			\end{align*}
+			Mas sabendo que $\Delta S_1 = v_1\Delta t$, onde $v_1$ é a velocidade das moléculas do fluido que percorre esse espaço, temos
+			\begin{align*}
+				V = v_1 A_1 \Delta t.
+			\end{align*}
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\begin{figure}[c]
+				\begin{tikzpicture}[scale=0.45,transform shape,font=\Large]
+				\def\XSTART{0}
+				\def\YSTART{3}
+				\def\YDIAONE{2.5}
+				\def\YDIATWO{2}
+				\def\YCURVE{2}
+				\def\XCURVE{2}
+				\def\XEND{15}
+				\def\XONESTART{2}
+				\def\XONEDELTA{2}
+				\def\DD{0.5}
+				
+				\def\YEND{\YSTART+\YCURVE+\YDIATWO}
+				\def\XCURVESTART{\XEND/2-\XSTART/2-\XCURVE/2}
+				\def\XCURVESTARTUP{\XEND/2-\XSTART/2-\XCURVE}
+				\def\XCURVEEND{\XEND/2-\XSTART/2 + \XCURVE/2}
+				\def\XONEEND{\XONESTART+\XONEDELTA}
+				\def\XTWOSTART{\XCURVEEND+\XONESTART}
+				\def\XTWODELTA{\XONEDELTA*\YDIAONE*\YDIAONE/\YDIATWO/\YDIATWO}
+				\def\XTWOEND{\XTWOSTART+\XTWODELTA}
+				\def\YTWOMIDDLE{\YSTART+\YCURVE+\YDIATWO/2}
+				\def\GROUND{\YSTART/4}
+				
+				\pgfmathsetmacro{\XMEDIO}{0.5*(\XSTART+\XEND)}
+				\pgfmathsetmacro{\YTOTAL}{\YSTART+\YCURVE+\YDIATWO+1}
+				\pgfmathsetmacro{\YONEMIDDLE}{\YSTART+\YDIAONE/2}
+				\pgfmathsetmacro{\XTOTAL}{\XEND+1}
+				
+				\tkzInit[xmin=\XSTART,xmax=\XTOTAL,ymin=\YEND,ymax=\YTOTAL]
+				%\tkzGrid[color=gray!20]
+				\tkzClip
+				
+				\tikzset{
+					partial ellipse/.style args={#1:#2:#3}{
+						insert path={+ (#1:#3) arc (#1:#2:#3)}
+					},
+					dimen/.style={<->,>=latex,thin,
+						every rectangle node/.style={fill=white,midway,font=\sffamily}},
+				}
+				
+				\draw (\XSTART,\YSTART) -- (\XCURVESTART,\YSTART)
+				to[out=0, in=180, looseness=0.75]
+				(\XCURVEEND,{\YSTART+\YCURVE}) -- (\XEND,{\YSTART+\YCURVE});
+				\draw (\XSTART,{\YSTART+\YDIAONE}) -- (\XCURVESTARTUP,{\YSTART+\YDIAONE})
+				to[out=0, in=180, looseness=0.75] (\XCURVEEND,\YEND) -- (\XEND,\YEND);
+				
+				\draw [style=->,line width=1.5pt](\XONEEND,\YONEMIDDLE) --++ (1,0) node [right] {$\vec{v}_1$};
+				
+				\draw [fill=gray] (\XONESTART,\YSTART) coordinate (BA) rectangle (\XONEEND,{\YSTART+\YDIAONE}) coordinate (BB);
+				\draw [fill=lightgray](\XONESTART,\YONEMIDDLE) node [below] {$A_1$} ellipse ({\YDIAONE/6} and {\YDIAONE/2});
+				\draw [fill=gray,dashed](\XONEEND,\YONEMIDDLE) ellipse ({\YDIAONE/6} and {\YDIAONE/2});
+				\draw (\XONEEND,\YONEMIDDLE) [partial ellipse=-90:90:{\YDIAONE/6} and {\YDIAONE/2}];
+				
+				\draw [style=->,line width=1.5pt](\XTWOEND,\YTWOMIDDLE) --++ (1,0) node [right] {$\vec{v}_2$};
+				
+				\draw [fill=gray] (\XTWOSTART,{\YSTART+\YCURVE}) coordinate (CA) rectangle (\XTWOEND,{\YSTART+\YCURVE+\YDIATWO}) coordinate (CB);
+				\draw [fill=lightgray] (\XTWOSTART,\YTWOMIDDLE) node [below] {$A_2$} ellipse ({\YDIATWO/6} and {\YDIATWO/2});
+				\draw [fill=gray,dashed](\XTWOEND,\YTWOMIDDLE) ellipse ({\YDIATWO/6} and {\YDIATWO/2});
+				\draw (\XTWOEND,{\YSTART+\YCURVE+\YDIATWO/2}) [partial ellipse=-90:90:{\YDIATWO/6} and {\YDIATWO/2}];
+				
+				\draw ($(BA)+(0,\YDIAONE)$) -- ++(0,\DD) coordinate (D1) -- +(0,5pt);
+				\draw (BB) -- ++(0,\DD) coordinate (D2) -- +(0,5pt);
+				\draw [dimen] (D1) -- (D2) node {$v_1\Delta t$};
+				
+				\draw ($(CA)+(0,\YDIATWO)$) -- ++(0,\DD) coordinate (D1) -- +(0,5pt);
+				\draw (CB) -- ++(0,\DD) coordinate (D2) -- +(0,5pt);
+				\draw [dimen] (D1) -- (D2) node {$v_2\Delta t$};
+				
+				\node[color=red,font=\huge] at (\XMEDIO,1.75) {$V=A_1v_1\Delta t=A_2v_2\Delta t$};
+				\end{tikzpicture}
+				%\includegraphics[scale=0.35]{figuras/equacao-continuidade.jpg}
+				\caption*{\footnotesize Fluxo que atravessa duas seções transversais.}		
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Equação da continuidade como Lei da conservação da matéria (continuação)}
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+			O mesmo raciocínio vale se ele atravessar a área $A_2$ no mesmo intervalo de tempo $\Delta t$,
+			\begin{align*}
+				V = v_2 A_2 \Delta t.
+			\end{align*}
+			Supondo um fluido incompressível a massa é conservada e o volume se mantém. Sabendo que $V=Z\Delta t$ temos
+			\begin{align*}
+				Z\bcancel{\Delta t} & = v_1A_1\bcancel{\Delta t} = v_2A_2\bcancel{\Delta t},\\
+				\Aboxed{Z & = v_1A_1 = v_2A_2.}
+			\end{align*}
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\begin{figure}[c]
+				\begin{tikzpicture}[scale=0.45,transform shape,font=\Large]
+				\def\XSTART{0}
+				\def\YSTART{3}
+				\def\YDIAONE{2.5}
+				\def\YDIATWO{2}
+				\def\YCURVE{2}
+				\def\XCURVE{2}
+				\def\XEND{15}
+				\def\XONESTART{2}
+				\def\XONEDELTA{2}
+				\def\DD{0.5}
+				
+				\def\YEND{\YSTART+\YCURVE+\YDIATWO}
+				\def\XCURVESTART{\XEND/2-\XSTART/2-\XCURVE/2}
+				\def\XCURVESTARTUP{\XEND/2-\XSTART/2-\XCURVE}
+				\def\XCURVEEND{\XEND/2-\XSTART/2 + \XCURVE/2}
+				\def\XONEEND{\XONESTART+\XONEDELTA}
+				\def\XTWOSTART{\XCURVEEND+\XONESTART}
+				\def\XTWODELTA{\XONEDELTA*\YDIAONE*\YDIAONE/\YDIATWO/\YDIATWO}
+				\def\XTWOEND{\XTWOSTART+\XTWODELTA}
+				\def\YTWOMIDDLE{\YSTART+\YCURVE+\YDIATWO/2}
+				\def\GROUND{\YSTART/4}
+				
+				\pgfmathsetmacro{\XMEDIO}{0.5*(\XSTART+\XEND)}
+				\pgfmathsetmacro{\YTOTAL}{\YSTART+\YCURVE+\YDIATWO+1}
+				\pgfmathsetmacro{\YONEMIDDLE}{\YSTART+\YDIAONE/2}
+				\pgfmathsetmacro{\XTOTAL}{\XEND+1}
+				
+				\tkzInit[xmin=\XSTART,xmax=\XTOTAL,ymin=\YEND,ymax=\YTOTAL]
+				%\tkzGrid[color=gray!20]
+				\tkzClip
+				
+				\tikzset{
+					partial ellipse/.style args={#1:#2:#3}{
+						insert path={+ (#1:#3) arc (#1:#2:#3)}
+					},
+					dimen/.style={<->,>=latex,thin,
+						every rectangle node/.style={fill=white,midway,font=\sffamily}},
+				}
+				
+				\draw (\XSTART,\YSTART) -- (\XCURVESTART,\YSTART)
+				to[out=0, in=180, looseness=0.75]
+				(\XCURVEEND,{\YSTART+\YCURVE}) -- (\XEND,{\YSTART+\YCURVE});
+				\draw (\XSTART,{\YSTART+\YDIAONE}) -- (\XCURVESTARTUP,{\YSTART+\YDIAONE})
+				to[out=0, in=180, looseness=0.75] (\XCURVEEND,\YEND) -- (\XEND,\YEND);
+				
+				\draw [style=->,line width=1.5pt](\XONEEND,\YONEMIDDLE) --++ (1,0) node [right] {$\vec{v}_1$};
+				
+				\draw [fill=gray] (\XONESTART,\YSTART) coordinate (BA) rectangle (\XONEEND,{\YSTART+\YDIAONE}) coordinate (BB);
+				\draw [fill=lightgray](\XONESTART,\YONEMIDDLE) node [below] {$A_1$} ellipse ({\YDIAONE/6} and {\YDIAONE/2});
+				\draw [fill=gray,dashed](\XONEEND,\YONEMIDDLE) ellipse ({\YDIAONE/6} and {\YDIAONE/2});
+				\draw (\XONEEND,\YONEMIDDLE) [partial ellipse=-90:90:{\YDIAONE/6} and {\YDIAONE/2}];
+				
+				\draw [style=->,line width=1.5pt](\XTWOEND,\YTWOMIDDLE) --++ (1,0) node [right] {$\vec{v}_2$};
+				
+				\draw [fill=gray] (\XTWOSTART,{\YSTART+\YCURVE}) coordinate (CA) rectangle (\XTWOEND,{\YSTART+\YCURVE+\YDIATWO}) coordinate (CB);
+				\draw [fill=lightgray] (\XTWOSTART,\YTWOMIDDLE) node [below] {$A_2$} ellipse ({\YDIATWO/6} and {\YDIATWO/2});
+				\draw [fill=gray,dashed](\XTWOEND,\YTWOMIDDLE) ellipse ({\YDIATWO/6} and {\YDIATWO/2});
+				\draw (\XTWOEND,{\YSTART+\YCURVE+\YDIATWO/2}) [partial ellipse=-90:90:{\YDIATWO/6} and {\YDIATWO/2}];
+				
+				\draw ($(BA)+(0,\YDIAONE)$) -- ++(0,\DD) coordinate (D1) -- +(0,5pt);
+				\draw (BB) -- ++(0,\DD) coordinate (D2) -- +(0,5pt);
+				\draw [dimen] (D1) -- (D2) node {$v_1\Delta t$};
+				
+				\draw ($(CA)+(0,\YDIATWO)$) -- ++(0,\DD) coordinate (D1) -- +(0,5pt);
+				\draw (CB) -- ++(0,\DD) coordinate (D2) -- +(0,5pt);
+				\draw [dimen] (D1) -- (D2) node {$v_2\Delta t$};
+				
+				\node[color=red,font=\huge] at (\XMEDIO,1.75) {$V=A_1v_1\Delta t=A_2v_2\Delta t$};
+				\end{tikzpicture}
+				%\includegraphics[scale=0.35]{figuras/equacao-continuidade.jpg}
+				\caption*{\footnotesize Fluido que atravessa um volume $V$ no tempo $\Delta t$.}		
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\section{Equação de Bernoulli}
+
+\subsection{}
+
+\begin{frame}[fragile]{Pressão, velocidade e altura de um fluido em duas regiões distintas (continuação)}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			Supondo um fluido de volume V e massa m que atravessa a região 1 no intervalo de tempo $\Delta t$. O trabalho necessário para deslocá-lo a uma distância $s_1$ é dado por 
+			\begin{align*}
+				\tau_1 & = \overbracket{F_1}^{\alert{p_1A_1}}\overbracket{v_1\Delta t}^{\alert{s_1}},\\
+				\tau_1 & = p_1\underbracket{A_1s_1}_{\alert{V}}.\\
+				\Aboxed{\tau_1 & = p_1V.}
+			\end{align*}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}[c]
+				\begin{tikzpicture}[scale=0.6,transform shape,font=\Large]
+				\def\XSTART{0}
+				\def\YSTART{3}
+				\def\YDIAONE{2.5}
+				\def\YDIATWO{2}
+				\def\YCURVE{2}
+				\def\XCURVE{2}
+				\def\XEND{15}
+				\def\XONESTART{2}
+				\def\XONEDELTA{2}
+				\def\DD{0.5}
+				
+				\def\YEND{\YSTART+\YCURVE+\YDIATWO}
+				\def\XCURVESTART{\XEND/2-\XSTART/2-\XCURVE/2}
+				\def\XCURVESTARTUP{\XEND/2-\XSTART/2-\XCURVE}
+				\def\XCURVEEND{\XEND/2-\XSTART/2 + \XCURVE/2}
+				\def\XONEEND{\XONESTART+\XONEDELTA}
+				\def\XTWOSTART{\XCURVEEND+\XONESTART}
+				\def\XTWODELTA{\XONEDELTA*\YDIAONE*\YDIAONE/\YDIATWO/\YDIATWO}
+				\def\XTWOEND{\XTWOSTART+\XTWODELTA}
+				\def\YTWOMIDDLE{\YSTART+\YCURVE+\YDIATWO/2}
+				\def\GROUND{\YSTART/4}
+				
+				\pgfmathsetmacro{\XMEDIO}{0.5*(\XSTART+\XEND)}
+				\pgfmathsetmacro{\YTOTAL}{\YSTART+\YCURVE+\YDIATWO+1}
+				\pgfmathsetmacro{\YONEMIDDLE}{\YSTART+\YDIAONE/2}
+				\pgfmathsetmacro{\XTOTAL}{0.5*\XEND}
+				
+				\tkzInit[xmin=\XSTART,xmax=\XTOTAL,ymin=\YEND,ymax=\YTOTAL]
+				%\tkzGrid[color=gray!20]
+				\tkzClip
+				
+				\tikzset{partial ellipse/.style args={#1:#2:#3}{insert path={+ (#1:#3) arc (#1:#2:#3)}},dimen/.style={<->,>=latex,thin,
+						every rectangle node/.style={fill=white,midway,font=\sffamily}},}
+				
+				\draw (\XSTART,\YSTART) -- (\XCURVESTART,\YSTART)
+				to[out=0, in=180, looseness=0.75]
+				(\XCURVEEND,{\YSTART+\YCURVE}) -- (\XEND,{\YSTART+\YCURVE});
+				\draw (\XSTART,{\YSTART+\YDIAONE}) -- (\XCURVESTARTUP,{\YSTART+\YDIAONE})
+				to[out=0, in=180, looseness=0.75] (\XCURVEEND,\YEND) -- (\XEND,\YEND);
+				
+				\draw [fill=gray] (\XONESTART,\YSTART) coordinate (BA)
+				rectangle (\XONEEND,{\YSTART+\YDIAONE}) coordinate (BB);
+				\draw [fill=lightgray](\XONESTART,\YONEMIDDLE) node [below] {$A_1$}
+				ellipse ({\YDIAONE/6} and {\YDIAONE/2});
+				\draw [fill=gray,dashed](\XONEEND,\YONEMIDDLE)
+				ellipse ({\YDIAONE/6} and {\YDIAONE/2});
+				\draw (\XONEEND,\YONEMIDDLE)
+				[partial ellipse=-90:90:{\YDIAONE/6} and {\YDIAONE/2}];
+				
+				\draw [fill=gray] (\XTWOSTART,{\YSTART+\YCURVE}) coordinate (CA)
+				rectangle (\XTWOEND,{\YSTART+\YCURVE+\YDIATWO}) coordinate (CB);
+				\draw [fill=lightgray] (\XTWOSTART,\YTWOMIDDLE) node [below] {$A_2$}
+				ellipse ({\YDIATWO/6} and {\YDIATWO/2});
+				
+				\draw [style=<-,line width=1.5pt](\XTWOEND+0.25,\YTWOMIDDLE) --++ (0.5,0) node [right] {$\vec{F}_2$};
+				
+				\draw [fill=gray,dashed](\XTWOEND,\YTWOMIDDLE)
+				ellipse ({\YDIATWO/6} and {\YDIATWO/2});
+				\draw (\XTWOEND,{\YSTART+\YCURVE+\YDIATWO/2})
+				[partial ellipse=-90:90:{\YDIATWO/6} and {\YDIATWO/2}];
+				
+				\draw [fill=gray] (0,0) rectangle  (\XEND,\GROUND);
+				
+				\draw ($(BA)+(0,\YDIAONE)$) -- ++(0,\DD) coordinate (D1) -- +(0,5pt);
+				\draw (BB) -- ++(0,\DD) coordinate (D2) -- +(0,5pt);
+				\draw [dimen] (D1) -- (D2) node {$v_1\Delta t$};
+				
+				\draw ($(BA)!0.5!(BB)$) -- ++(5pt,0) coordinate (E) -- +(5pt,0);
+				\draw [dimen] let \p{E}=(E) in (\x{E},\GROUND) -- (E) node {$h_1$};
+				
+				\draw [style=<-,line width=1.5pt](\XONESTART,\YONEMIDDLE) --++ (-1,0) node [left] {$\vec{F}_1$};
+				
+				\draw ($(CA)+(0,\YDIATWO)$) -- ++(0,\DD) coordinate (D1) -- +(0,5pt);
+				\draw (CB) -- ++(0,\DD) coordinate (D2) -- +(0,5pt);
+				\draw [dimen] (D1) -- (D2) node {$v_2\Delta t$};
+				
+				\draw ($(CA)!0.5!(CB)$) -- ++(5pt,0) coordinate (D) -- +(5pt,0);
+				\draw [dimen] let \p{D}=(D) in (\x{D},\GROUND) -- (D) node {$h_2$};
+				
+				\node[color=red] at ($(E)+(0,\YDIAONE+0.25)$) {$\Large p_1=\frac{F_1}{A_1}$};
+				\end{tikzpicture}
+				%\includegraphics[scale=0.7]{figuras/fluxo.png}
+				\caption*{\footnotesize Fluxo que atravessa a região 1.}		
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Pressão, velocidade e altura de um fluido em duas regiões distintas (continuação)}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			O fluido a direita empurra o restante no sentido contrário impedindo o seu deslocamento, isso produz um trabalho negativo, ou seja,
+			\begin{align*}
+				\tau_2 & = -\overbracket{F_2}^{\alert{p_2A_2}}\overbracket{v_2\Delta t}^{\alert{s_2}},\\
+				\tau_2 & = -p_2\underbracket{A_2s_2}_{\alert{V}}.\\
+				\Aboxed{\tau_2 & = -p_2V.}
+			\end{align*}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}[c]
+				\begin{tikzpicture}[scale=0.37,transform shape,font=\Large]
+				\def\XSTART{0}
+				\def\YSTART{3}
+				\def\YDIAONE{2.5}
+				\def\YDIATWO{2}
+				\def\YCURVE{2}
+				\def\XCURVE{2}
+				\def\XEND{15}
+				\def\XONESTART{2}
+				\def\XONEDELTA{2}
+				\def\DD{0.5}
+				
+				\def\YEND{\YSTART+\YCURVE+\YDIATWO}
+				\def\XCURVESTART{\XEND/2-\XSTART/2-\XCURVE/2}
+				\def\XCURVESTARTUP{\XEND/2-\XSTART/2-\XCURVE}
+				\def\XCURVEEND{\XEND/2-\XSTART/2 + \XCURVE/2}
+				\def\XONEEND{\XONESTART+\XONEDELTA}
+				\def\XTWOSTART{\XCURVEEND+\XONESTART}
+				\def\XTWODELTA{\XONEDELTA*\YDIAONE*\YDIAONE/\YDIATWO/\YDIATWO}
+				\def\XTWOEND{\XTWOSTART+\XTWODELTA}
+				\def\YTWOMIDDLE{\YSTART+\YCURVE+\YDIATWO/2}
+				\def\GROUND{\YSTART/4}
+				
+				\pgfmathsetmacro{\XMEDIO}{0.5*(\XSTART+\XEND)}
+				\pgfmathsetmacro{\YTOTAL}{\YSTART+\YCURVE+\YDIATWO+1}
+				\pgfmathsetmacro{\YONEMIDDLE}{\YSTART+\YDIAONE/2}
+				\pgfmathsetmacro{\XTOTAL}{\XEND}
+				
+				\tkzInit[xmin=\XSTART,xmax=\XTOTAL,ymin=\YEND,ymax=\YTOTAL]
+				%\tkzGrid[color=gray!20]
+				\tkzClip
+				
+				\tikzset{partial ellipse/.style args={#1:#2:#3}{insert path={+ (#1:#3) arc (#1:#2:#3)}},dimen/.style={<->,>=latex,thin,
+						every rectangle node/.style={fill=white,midway,font=\sffamily}},}
+				
+				\draw (\XSTART,\YSTART) -- (\XCURVESTART,\YSTART)
+				to[out=0, in=180, looseness=0.75]
+				(\XCURVEEND,{\YSTART+\YCURVE}) -- (\XEND,{\YSTART+\YCURVE});
+				\draw (\XSTART,{\YSTART+\YDIAONE}) -- (\XCURVESTARTUP,{\YSTART+\YDIAONE})
+				to[out=0, in=180, looseness=0.75] (\XCURVEEND,\YEND) -- (\XEND,\YEND);
+				
+				\draw [fill=gray] (\XONESTART,\YSTART) coordinate (BA)
+				rectangle (\XONEEND,{\YSTART+\YDIAONE}) coordinate (BB);
+				\draw [fill=lightgray](\XONESTART,\YONEMIDDLE) node [below] {$A_1$}
+				ellipse ({\YDIAONE/6} and {\YDIAONE/2});
+				\draw [fill=gray,dashed](\XONEEND,\YONEMIDDLE)
+				ellipse ({\YDIAONE/6} and {\YDIAONE/2});
+				\draw (\XONEEND,\YONEMIDDLE)
+				[partial ellipse=-90:90:{\YDIAONE/6} and {\YDIAONE/2}];
+				
+				\draw [fill=gray] (\XTWOSTART,{\YSTART+\YCURVE}) coordinate (CA)
+				rectangle (\XTWOEND,{\YSTART+\YCURVE+\YDIATWO}) coordinate (CB);
+				\draw [fill=lightgray] (\XTWOSTART,\YTWOMIDDLE) node [below] {$A_2$}
+				ellipse ({\YDIATWO/6} and {\YDIATWO/2});
+				
+				\draw [style=<-,line width=1.5pt](\XTWOEND+0.25,\YTWOMIDDLE) --++ (0.5,0) node [right] {$\vec{F}_2$};
+				
+				\draw [fill=gray,dashed](\XTWOEND,\YTWOMIDDLE)
+				ellipse ({\YDIATWO/6} and {\YDIATWO/2});
+				\draw (\XTWOEND,{\YSTART+\YCURVE+\YDIATWO/2})
+				[partial ellipse=-90:90:{\YDIATWO/6} and {\YDIATWO/2}];
+				
+				\draw [fill=gray] (0,0) rectangle  (\XEND,\GROUND);
+				
+				\draw ($(BA)+(0,\YDIAONE)$) -- ++(0,\DD) coordinate (D1) -- +(0,5pt);
+				\draw (BB) -- ++(0,\DD) coordinate (D2) -- +(0,5pt);
+				\draw [dimen] (D1) -- (D2) node {$v_1\Delta t$};
+				
+				\draw ($(BA)!0.5!(BB)$) -- ++(5pt,0) coordinate (E) -- +(5pt,0);
+				\draw [dimen] let \p{E}=(E) in (\x{E},\GROUND) -- (E) node {$h_1$};
+				
+				\draw [style=<-,line width=1.5pt](\XONESTART,\YONEMIDDLE) --++ (-1,0) node [left] {$\vec{F}_1$};
+				
+				\draw ($(CA)+(0,\YDIATWO)$) -- ++(0,\DD) coordinate (D1) -- +(0,5pt);
+				\draw (CB) -- ++(0,\DD) coordinate (D2) -- +(0,5pt);
+				\draw [dimen] (D1) -- (D2) node {$v_2\Delta t$};
+				
+				\draw ($(CA)!0.5!(CB)$) -- ++(5pt,0) coordinate (D) -- +(5pt,0);
+				\draw [dimen] let \p{D}=(D) in (\x{D},\GROUND) -- (D) node {$h_2$};
+				
+				\node[color=red] at (\XMEDIO,1.75) {$\Large V=A_1v_1dt=A_2v_2dt$};
+				\node[color=red] at ($(E)+(0,\YDIAONE+0.25)$) {$\Large p_1=\frac{F_1}{A_1}$};
+				\node[color=red] at (\XTWOEND,\YDIATWO+2) {$\Large p_2=\frac{F_2}{A_2}$};
+				\end{tikzpicture}
+				%\includegraphics[scale=0.4]{figuras/bernoulli.png}
+				\caption*{\footnotesize Fluxo que atravessa as regiões 1 e 2.}		
+			\end{figure}
+		\end{column}
+	\end{columns}
+	\begin{corollary}
+		A mesma quantidade de fluido irá atravessar as regiões 1 e 2 nos intervalos $\Delta t$.
+	\end{corollary}
+\end{frame}
+
+\begin{frame}[fragile]{Pressão, velocidade e altura de um fluido em duas regiões distintas (continuação)}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			A força da gravidade é conservativa, de modo que as energias potenciais do fluido nas regiões 1 e 2,
+			\begin{align*}
+				E_{p_1} & = mgh_1\\
+				E_{p_2} & = mgh_2.
+			\end{align*}
+			As energias cinéticas que estão associadas ao movimento nas regiões 1 e 2 são
+			\begin{align*}
+				E_{c_1} & = \frac{1}{2}mv^{2}_{1},\\
+				E_{c_2} & = \frac{1}{2}mv^{2}_{2}.
+			\end{align*}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}[c]
+				\begin{tikzpicture}[scale=0.37,transform shape,font=\Large]
+				\def\XSTART{0}
+				\def\YSTART{3}
+				\def\YDIAONE{2.5}
+				\def\YDIATWO{2}
+				\def\YCURVE{2}
+				\def\XCURVE{2}
+				\def\XEND{15}
+				\def\XONESTART{2}
+				\def\XONEDELTA{2}
+				\def\DD{0.5}
+				
+				\def\YEND{\YSTART+\YCURVE+\YDIATWO}
+				\def\XCURVESTART{\XEND/2-\XSTART/2-\XCURVE/2}
+				\def\XCURVESTARTUP{\XEND/2-\XSTART/2-\XCURVE}
+				\def\XCURVEEND{\XEND/2-\XSTART/2 + \XCURVE/2}
+				\def\XONEEND{\XONESTART+\XONEDELTA}
+				\def\XTWOSTART{\XCURVEEND+\XONESTART}
+				\def\XTWODELTA{\XONEDELTA*\YDIAONE*\YDIAONE/\YDIATWO/\YDIATWO}
+				\def\XTWOEND{\XTWOSTART+\XTWODELTA}
+				\def\YTWOMIDDLE{\YSTART+\YCURVE+\YDIATWO/2}
+				\def\GROUND{\YSTART/4}
+				
+				\pgfmathsetmacro{\XMEDIO}{0.5*(\XSTART+\XEND)}
+				\pgfmathsetmacro{\YTOTAL}{\YSTART+\YCURVE+\YDIATWO+1}
+				\pgfmathsetmacro{\YONEMIDDLE}{\YSTART+\YDIAONE/2}
+				\pgfmathsetmacro{\XTOTAL}{\XEND}
+				
+				\tkzInit[xmin=\XSTART,xmax=\XTOTAL,ymin=\YEND,ymax=\YTOTAL]
+				%\tkzGrid[color=gray!20]
+				\tkzClip
+				
+				\tikzset{partial ellipse/.style args={#1:#2:#3}{insert path={+ (#1:#3) arc (#1:#2:#3)}},dimen/.style={<->,>=latex,thin,
+						every rectangle node/.style={fill=white,midway,font=\sffamily}},}
+				
+				\draw (\XSTART,\YSTART) -- (\XCURVESTART,\YSTART)
+				to[out=0, in=180, looseness=0.75]
+				(\XCURVEEND,{\YSTART+\YCURVE}) -- (\XEND,{\YSTART+\YCURVE});
+				\draw (\XSTART,{\YSTART+\YDIAONE}) -- (\XCURVESTARTUP,{\YSTART+\YDIAONE})
+				to[out=0, in=180, looseness=0.75] (\XCURVEEND,\YEND) -- (\XEND,\YEND);
+				
+				\draw [fill=gray] (\XONESTART,\YSTART) coordinate (BA)
+				rectangle (\XONEEND,{\YSTART+\YDIAONE}) coordinate (BB);
+				\draw [fill=lightgray](\XONESTART,\YONEMIDDLE) node [below] {$A_1$}
+				ellipse ({\YDIAONE/6} and {\YDIAONE/2});
+				\draw [fill=gray,dashed](\XONEEND,\YONEMIDDLE)
+				ellipse ({\YDIAONE/6} and {\YDIAONE/2});
+				\draw (\XONEEND,\YONEMIDDLE)
+				[partial ellipse=-90:90:{\YDIAONE/6} and {\YDIAONE/2}];
+				
+				\draw [fill=gray] (\XTWOSTART,{\YSTART+\YCURVE}) coordinate (CA)
+				rectangle (\XTWOEND,{\YSTART+\YCURVE+\YDIATWO}) coordinate (CB);
+				\draw [fill=lightgray] (\XTWOSTART,\YTWOMIDDLE) node [below] {$A_2$}
+				ellipse ({\YDIATWO/6} and {\YDIATWO/2});
+				
+				\draw [style=<-,line width=1.5pt](\XTWOEND+0.25,\YTWOMIDDLE) --++ (0.5,0) node [right] {$\vec{F}_2$};
+				
+				\draw [fill=gray,dashed](\XTWOEND,\YTWOMIDDLE)
+				ellipse ({\YDIATWO/6} and {\YDIATWO/2});
+				\draw (\XTWOEND,{\YSTART+\YCURVE+\YDIATWO/2})
+				[partial ellipse=-90:90:{\YDIATWO/6} and {\YDIATWO/2}];
+				
+				\draw [fill=gray] (0,0) rectangle  (\XEND,\GROUND);
+				
+				\draw ($(BA)+(0,\YDIAONE)$) -- ++(0,\DD) coordinate (D1) -- +(0,5pt);
+				\draw (BB) -- ++(0,\DD) coordinate (D2) -- +(0,5pt);
+				\draw [dimen] (D1) -- (D2) node {$v_1\Delta t$};
+				
+				\draw ($(BA)!0.5!(BB)$) -- ++(5pt,0) coordinate (E) -- +(5pt,0);
+				\draw [dimen] let \p{E}=(E) in (\x{E},\GROUND) -- (E) node {$h_1$};
+				
+				\draw [style=<-,line width=1.5pt](\XONESTART,\YONEMIDDLE) --++ (-1,0) node [left] {$\vec{F}_1$};
+				
+				\draw ($(CA)+(0,\YDIATWO)$) -- ++(0,\DD) coordinate (D1) -- +(0,5pt);
+				\draw (CB) -- ++(0,\DD) coordinate (D2) -- +(0,5pt);
+				\draw [dimen] (D1) -- (D2) node {$v_2\Delta t$};
+				
+				\draw ($(CA)!0.5!(CB)$) -- ++(5pt,0) coordinate (D) -- +(5pt,0);
+				\draw [dimen] let \p{D}=(D) in (\x{D},\GROUND) -- (D) node {$h_2$};
+				
+				\node[color=red] at (\XMEDIO,1.75) {$\Large V=A_1v_1dt=A_2v_2dt$};
+				\node[color=red] at ($(E)+(0,\YDIAONE+0.25)$) {$\Large p_1=\frac{F_1}{A_1}$};
+				\node[color=red] at (\XTWOEND,\YDIATWO+2) {$\Large p_2=\frac{F_2}{A_2}$};
+				\end{tikzpicture}
+				%\includegraphics[scale=0.35]{figuras/bernoulli.png}
+				\caption*{\footnotesize Fluxo que atravessa as regiões 1 e 2.}		
+			\end{figure}
+		\end{column}
+	\end{columns}	
+\end{frame}
+
+\begin{frame}{Pressão, velocidade e altura de um fluido em duas regiões distintas (continuação)}
+%	\begin{multicols}{2}
+	\begin{columns}
+		\begin{column}[t]{0.5\textwidth}
+		\alert{Se não houver perdas de energia}, a energia mecânica do fluido permanece inalterada, de modo que o trabalho total realizado deve ser igual a variação das energias cinéticas e potenciais,
+		\begin{align*}
+			\tau_1+\tau_2 = \Delta E_m = \Delta E_c+\Delta E_p,
+		\end{align*}
+		mas
+		\begin{align*}
+			\Delta E_c & = \frac{1}{2}mv^2_2-\frac{1}{2}mv^2_1,\\
+			\Delta E_p & = mgh_2-mgh_1,
+		\end{align*}
+		\end{column}
+		\begin{column}[t]{0.5\textwidth}
+		portanto
+		\begin{align*}
+			\tau_1+\tau_2 & = \overbracket{\left(\frac{1}{2}mv^2_2-\frac{1}{2}mv^2_1\right)}^{\alert{\Delta E_c}}+\\
+			& +\overbracket{\left(mgh_2-mgh_1\right)}^{\alert{\Delta E_p}},\\
+			\tau_1+\tau_2 & = \frac{1}{2}mv^2_2+mgh_2-\frac{1}{2}mv^2_1-mgh_1,\\
+			\tau_1+\tau_2 & = \frac{1}{2}mv^2_2+mgh_2-\left(\frac{1}{2}mv^2_1+mgh_1\right).
+		\end{align*}
+%	\end{multicols}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Pressão, velocidade e altura de um fluido em duas regiões distintas (continuação)}
+	\begin{columns}
+		\begin{column}[t]{0.45\textwidth}
+			Separando os termos da região 1 da região 2 temos a equação
+			\begin{align*}
+				\tau_1 + \frac{1}{2}mv^2_1+mgh_1 & = \alert{-}\tau_2 + \frac{1}{2}mv^2_2+\\
+				& + mgh_2.
+			\end{align*}
+			Mas mostramos que
+			\begin{align*}
+				\tau_1 & = p_1V,\\
+				\tau_2 & = -p_2V.
+			\end{align*}
+		\end{column}
+		\begin{column}[t]{0.55\textwidth}
+			Substituindo na equação acima temos
+			\begin{align*}
+				\alert{p_1V} + \frac{1}{2}mv^2_1+mgh_1 & = -\left(\alert{-p_2V}\right) + \\
+				& + \frac{1}{2}mv^2_2 + mgh_2,
+			\end{align*}
+			mas sabemos que $V=\frac{m}{\rho},$
+			\begin{align*}
+				p_1\alert{\frac{\bcancel{m}}{\rho}} + \frac{1}{2}\bcancel{m}v^2_1+\bcancel{m}gh_1 & = p_2\alert{\frac{\bcancel{m}}{\rho}} + \frac{1}{2}\bcancel{m}v^2_2 + \bcancel{m}gh_2,\\
+				\frac{p_1}{\rho} + \frac{v^2_1}{2}+gh_1 & = \frac{p_2}{\rho} + \frac{v^2_2}{2} + gh_2.
+			\end{align*}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Pressão, velocidade e altura de um fluido em duas regiões distintas (continuação)}
+	\begin{block}{Equação de Bernoulli}
+		Para um fluido não viscoso com escoamento laminar a soma das parcelas hidrostáticas e hidrodinâmicas é a mesma em cada ponto do fluido, no qual vale a equação
+		\begin{align*}
+			\frac{p_1}{\rho} +gh_1 + \frac{v^2_1}{2} & = \frac{p_2}{\rho} +gh_2 + \frac{v^2_2}{2} = \cdots,\\
+			\frac{p}{\rho} +gh + \frac{v^2}{2} & = \text{constante}.
+		\end{align*}
+	\end{block}
+	\begin{corollary}
+		A equação de Bernoulli se baseia na lei de conservação da energia na mecânica.
+	\end{corollary}
+\end{frame}
+
+\begin{frame}{Analisando os termos da equação de Bernoulli}
+	Supondo a densidade constante ao longo de todo o fluido, podemos multiplicar todos os termos da equação por $\rho$ e obter a relação
+	\begin{align*}
+		\underbracket{\alert{\bcancel{\rho}}\frac{p}{\bcancel{\rho}} +\alert{\rho}gh}_{\text{Lei de Stevin}} + \alert{\rho}\frac{v^2}{2} = \text{constante}.
+	\end{align*}
+	\begin{corollary}
+		\begin{itemize}
+			\item Parcela hidrostática \alert{$\left(p +\rho gh\right)$}: Corresponde a pressão hidrostática no fluido;
+			\item Parcela fluidodinâmica \alert{$\left(\rho\frac{v^2}{2}\right)$}: Corresponde a pressão hidrodinâmica;
+			\item Se o fluido está em repouso $\frac{\rho v^2}{2}=0$ temos a Lei de Stevin.
+		\end{itemize}
+	\end{corollary}
+\end{frame}
+
+\section{Apêndice}
+
+\subsection{}
+
+\begin{frame}{Lei de Stevin para um fluido não homogêneo}
+	\begin{multicols}{2}
+		Sabemos que a diferença das forças atuando em cima e embaixo do cilindro é dado por $F = p A$, onde $A$ é a área do cilindro, portanto a força resultante será
+		\begin{align*}
+			\Delta F & = F_2-F_1,\\
+			\Delta F & = \rho g\Delta V=p\Delta A,
+		\end{align*}
+		onde para o cilindro de altura dz teremos $\Delta V=A\Delta z$. Substituindo
+		\begin{align*}
+			p\bcancel{A} = -\rho g\bcancel{A}dz,
+		\end{align*}
+		ou seja,
+		\begin{align*}
+			\frac{dp}{dz} = -\rho(z) g.
+		\end{align*}
+		Integrando teremos
+		\begin{align*}
+			\Aboxed{\Delta p = -\int\limits_{z_0}^{h}g\rho(z)dz.}
+		\end{align*}
+	\end{multicols}
+\end{frame}
+
+\begin{frame}{Variação da pressão com a altitude (em construção)}
+	\begin{multicols}{2}
+		No caso anterior, se $\rho = cte$ chegamos na Lei de Stevin como caso especial. Entretanto, se tivermos $\rho (z)=\frac{\rho_{atm}}{p_{atm}}p(z)$, teremos
+		\begin{align*}
+			\frac{dp}{dz} & = -g\left[\frac{\rho_{atm}}{p_{atm}}p(z)\right],\\
+			dp & = -\left[g\frac{\rho_{atm}}{p_{atm}}p(z)\right]dz,\\
+			\frac{dp}{p} & = -\left(g\frac{\rho_{atm}}{p_{atm}}\right)dz.
+		\end{align*}
+		Integrando teremos
+		\begin{align*}
+			\int\limits_{p_{atm}}^{p} \frac{dp}{p} & = -\int\limits_{0}^{z}g\frac{\rho_{atm}}{p_{atm}}dz,\\
+			\ln p(z)-\ln p_{atm} & = -\frac{\rho_{atm}}{p_{atm}}z,\\
+			\ln \left[\frac{p(z)}{p_{atm}}\right] & = -\frac{\rho_{atm}}{p_{atm}}z,\\
+			\Aboxed{p(z) & = p_{atm}e^{-\left(\frac{\rho_{atm}}{p_{atm}}\right)z}.}
+		\end{align*}
+	\end{multicols}
+\end{frame}
+%
+\begin{frame}{Observações\footnote{Este material está sujeito a modificações. Recomenda-se acompanhamento permanente.}}
+	\begin{center}
+		Esta apresentação está disponível para download no endereço\\
+		\href{https://flavianowilliams.github.io/education}{\textcolor{blue}{https://flavianowilliams.github.io/education}}
+	\end{center}
+\end{frame}
+%
+\begin{frame}{Referências e observações\footnote{Este material está sujeito a modificações. Recomenda-se acompanhamento permanente.}}
+	\bibliographystyle{jurabib}
+	\begin{thebibliography}{9}
+		\bibitem{alvarenga}A. Máximo, B. Alvarenga, C. Guimarães, Física. Contexto e aplicações, v.1, 2.ed., São Paulo, Scipione (2016)
+	\end{thebibliography}
+\end{frame}
+
+\end{document}

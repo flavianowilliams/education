@@ -1,0 +1,59 @@
+﻿\begin{tikzpicture}[scale=1,transform shape,font=\Large]
+
+		\tkzInit[xmin=-5,xmax=5,ymin=-2,ymax=8]
+		\tkzGrid[color=gray!20]
+		\tkzClip
+
+		\tkzDefPoints{0/0/O, 0/6.5/O', -3/0/A, 3/0/C}
+		\tkzDefPointsBy[translation = from O to O'](A,C){F,H}
+
+		\draw[dashed,fill=blue!0,opacity=0.25] (C) arc (0:180:3cm and 1cm);
+		\draw[fill=blue!20,opacity=0.25,draw opacity=100] (C) arc (0:-180:3cm and 1cm);
+
+		\tkzDrawSegment(A,F)
+		\tkzDrawSegment(C,H)
+
+		\foreach \x in {1,2,3,4}{
+		\draw[<-,line width=2pt] (-3,\x) --++ (0.75,0);
+		\draw[<-,line width=2pt] (3,\x) --++ (-0.75,0);}
+		\foreach \x in {1,2,3,4,5}{
+		\draw[<-,line width=2pt] (-3+\x,0) --++ (0,0.75);}
+
+		\tkzDefPoints{0/5/o1, -3/5/a1, 3/5/c1}
+
+		\draw[dashed,fill=gray!80,opacity=0.5,draw opacity=100] (c1) arc (0:180:3cm and 1cm);
+		\draw (O') ellipse (3cm and 1cm);
+
+		\tkzDefPoints{0/5.3/o2, -3/5.3/a2, 3/5.3/c2}
+
+		\draw[dashed,fill=gray!80,opacity=0.5,draw opacity=100] (c2) arc (0:180:3cm and 1cm);
+		\draw[fill=gray!80,opacity=0.5,draw opacity=100] (c2) arc (0:-180:3cm and 1cm);
+
+		\tkzDefPoints{0/2.5/o'}
+		\tkzDefPointsBy[translation = from o1 to o'](a1,c1){a',c'}
+
+		\tkzDefPoints{0/2/o, 0/3/o', -1/2/a, 1/2/c}
+		\tkzDefPointsBy[translation = from o to o'](a,c){f,h}
+
+		\tkzDefPointsBy[translation = from o to o1](a){d1}
+		\tkzDefPointsBy[translation = from o' to o1](h){h1}
+
+		\draw [<-,line width=1.5pt] (o') --++ (0,0.75);
+		\draw [<-,line width=1.5pt] (o) --++ (0,-0.75);
+		\draw [<-,line width=1.5pt] ($(a)+(0,0.5)$) --++ (-0.75,0);
+		\draw [<-,line width=1.5pt] ($(c)+(0,0.5)$) --++ (0.75,0);
+
+		\draw[fill=gray!20,opacity=0.25] (c) arc (0:-180:1cm and 0.2cm);
+		\draw[fill=gray!20,dashed,opacity=0.25] (c) arc (0:180:1cm and 0.2cm);
+		\draw[fill=gray,draw opacity=0.25,opacity=0.25] (o') ellipse (1cm and 0.2cm);
+
+		\tkzDrawSegment[draw opacity=0.25](a,f)
+		\tkzDrawSegment[draw opacity=0.25](c,h)
+
+		\tkzFillPolygon[fill=blue!20,opacity=0.25](A,C,c1,a1)
+
+		\draw[fill=gray!80,opacity=0.5,draw opacity=100] (c1) arc (0:-180:3cm and 1cm);
+
+		\draw[<-,line width=2.5pt] (o2) --++ (0,1.5) node [above] {$\vec{F}$};
+
+\end{tikzpicture}

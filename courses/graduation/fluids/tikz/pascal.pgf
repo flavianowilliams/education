@@ -1,0 +1,74 @@
+﻿\begin{tikzpicture}[scale=1,transform shape,font=\large]
+
+	\tkzInit[xmin=-1,xmax=11,ymin=-0.5,ymax=6.5]
+%	\tkzGrid[color=gray!30]
+
+	%definindo pontos
+
+	\tkzDefPoints{0/0/A,2/0/B,0/5/C,2/5/D,2/1/E,2/1.5/F}
+	\tkzDefPoints{0/0/A,5/1.5/G,5/1/H,5/1.5/I,5/0/J,10/0/K,10/5/L,5/5/M}
+
+%	\tkzDrawPoints[size=0.5cm](A,B,C,D,E,F,G,H,I,J,K,L,M)
+%	\tkzLabelPoints(A,B,C,D,E,F,G,H,I,J,K,L,M)
+
+	%pistao menor
+
+	\tkzDefPoints{0/4.75/c,2/4.75/d}
+	\tkzDefPoints{0/2.75/c1,2/2.75/d1,0/3/c2,2/3/d2}
+
+	\tkzFillPolygon[fill=green!20](c2,d2,d,c)
+
+	\tkzDrawPolygon[dashed,color=gray,fill=gray!20](C,D,d,c)
+	\tkzDrawPolygon[color=gray,fill=gray!20](c1,d1,d2,c2)
+
+%	\tkzDrawPoints[size=0.5cm](c,d,c1,d1,c2,d2)
+
+	\draw (c1) to [dim arrow={label=$h_1$},brown] (c);
+	\draw (c1) to [dim arrow={label=$A_1$},brown] (d1);
+
+	%pistao maior
+
+	\tkzDefPoints{5/4.75/m,10/4.75/l}
+	\tkzDefPoints{5/3.95/m1,10/3.95/l1,5/3.7/m2,10/3.7/l2}
+
+	\tkzFillPolygon[fill=green!20](m1,l1,l,m)
+
+	\tkzDrawPolygon[color=gray,fill=gray!20](M,L,l,m)
+	\tkzDrawPolygon[dashed,color=gray,fill=gray!20](m1,l1,l2,m2)
+
+%	\tkzDrawPoints[size=0.5cm](m,l,m1,l1,m2,l2)
+
+	\draw (m2) to [short dim arrow={label=$h_2$,label near middle},brown] (m);
+	\draw (M) to [dim arrow={label=$A_2$},brown] (L);
+
+	%desenhando paredes
+
+	\tkzDrawPolygon(A,B,E,H,J,K,L,M,G,F,D,C)
+
+	%desenhando as forças
+	
+	\foreach \x in {1}{
+	\draw[<-,line width=1.5pt] (\x,5) --++ (0,0.75) node [above] {$\vec{F}_1$};}
+
+	\foreach \x in {0.5,1,1.5,2,2.5}{
+	\draw[<-,line width=1.5pt] (0,\x) --++ (0.5,0);}
+
+	\foreach \x in {0.5,1.5,2,2.5}{
+	\draw[<-,line width=1.5pt] (2,\x) --++ (-0.5,0);}
+
+	\foreach \x in {1}{
+	\draw[<-,line width=1.5pt] (\x,0) --++ (0,0.5);}
+
+	\foreach \x in {2.5}{
+	\draw[<-,line width=1.5pt] (\x+5,3.75) --++ (0,-0.75) node [below] {$\vec{F}_2$};}
+
+	\foreach \x in {0.5,1,1.5,2,2.5,3}{
+	\draw[<-,line width=1.5pt] (5,\x) --++ (0.5,0);}
+
+	\foreach \x in {0.5,1,1.5,2,2.5,3}{
+	\draw[<-,line width=1.5pt] (10,\x) --++ (-0.5,0);}
+
+	\foreach \x in {1,1.5,2,2.5,3,3.5,4}{
+	\draw[<-,line width=1.5pt] (\x+5,0) --++ (0,0.5);}
+
+\end{tikzpicture}

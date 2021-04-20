@@ -1,0 +1,42 @@
+﻿\begin{tikzpicture}[scale=1,transform shape,font=\large]
+
+		\tkzInit[xmin=-5,xmax=5,ymin=-2,ymax=9]
+		\tkzGrid[color=gray!20]
+		\tkzClip
+
+		\tkzDefPoints{0/0/O, 0/6.5/O', -3/0/A, 3/0/C}
+		\tkzDefPointsBy[translation = from O to O'](A,C){F,H}
+
+		\draw[dashed,fill=blue!0,opacity=0.25] (C) arc (0:180:3cm and 1cm);
+		\draw[fill=blue!20,opacity=0.25,draw opacity=100] (C) arc (0:-180:3cm and 1cm);
+
+		\tkzDrawSegment(A,F)
+		\tkzDrawSegment(C,H)
+
+		\tkzDefPoints{0/5/o1, -3/5/a1, 3/5/c1}
+
+		\draw[dashed,fill=blue!20,opacity=0.25,draw opacity=100] (c1) arc (0:180:3cm and 1cm);
+		\draw (O') ellipse (3cm and 1cm);
+
+		\tkzDefPoints{0/2.5/o'}
+		\tkzDefPointsBy[translation = from o1 to o'](a1,c1){a',c'}
+
+		\foreach \ox in {-3,-2,-1,0,1,2,3}{
+		\tkzDefPoints{\ox/2.5/\ox}
+		\tkzDrawPoints[fill=red,color=red,size=0.5cm](\ox)}
+
+		\tkzFillPolygon[fill=blue!20,opacity=0.25](A,C,c1,a1)
+
+		\draw[fill=blue!0,opacity=0.25,draw opacity=100] (c1) arc (0:-180:3cm and 1cm);
+
+		\draw (c') to [dim arrow'={label'=$h$},brown] (c1);
+
+		\tkzDrawLine[dotted, add=0.25cm and 0.25cm](a',c')
+		\tkzDrawLine[dotted, add=0.25cm and 0.25cm](a1,c1)
+
+		\tkzText[left=0.25cm](a1){$p_{atm}$}
+		\tkzText[left=0.25cm](a'){$p$}
+		
+		\draw[<-,line width=2.5pt] (O') --++ (0,1.5) node [above] {Gravidade};
+
+\end{tikzpicture}

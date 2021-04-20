@@ -1,0 +1,36 @@
+﻿				\begin{tikzpicture}[scale=1.4,transform shape,font=\large]
+	
+				\tkzInit[xmin=0,xmax=10,ymin=0,ymax=10]
+				\tkzGrid[color=gray!20]
+				\tkzClip[space=1]
+	
+				\tkzDefPoints{0/0/A,2/4/B,3/0/C,4/1/D}
+	
+				\tkzAxeX{x}
+				\tkzAxeY{y}
+	%			\tkzLabelPoint[above](B){B}
+	%			\tkzLabelPoints[below left](A)
+	
+%				\tkzPointShowCoord(B)
+%				\tkzPointShowCoord(D)
+	
+				\tkzDefPointWith[colinear=at D](A,B)\tkzGetPoint{E}
+
+				\tkzDrawSegment[dashed](B,E)
+				\tkzDrawSegment[dashed](D,E)
+
+				\draw[->,line width=1.0pt,color=red] (A) -- (B) node [above left,midway] {$\vec{a}$};
+				\draw[->,line width=1.0pt,color=red] (A) -- (D) node [above,midway] {$\vec{b}$};
+				\draw[->,line width=1.0pt,color=blue] (A) -- (E) node [above,midway] {$\vec{r}$};
+
+				\tkzDrawPoints(A,B)
+	
+				\tkzDefPoints{7/7/a,8/9/b,9/7.5/c}
+
+				\draw[->,line width=1.0pt,color=red] (a) -- (b) node [above left,midway] {$\vec{a}$};
+				\draw[->,line width=1.0pt,color=red] (a) -- (c) node [below right,midway] {$\vec{b}$};
+
+				\tkzMarkAngle[size=0.5](c,a,b)
+				\tkzLabelAngle[pos=0.75](c,a,b){$\theta$}
+
+				\end{tikzpicture}

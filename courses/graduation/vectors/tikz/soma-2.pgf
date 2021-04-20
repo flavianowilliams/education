@@ -1,0 +1,39 @@
+﻿				\begin{tikzpicture}[scale=1.4,transform shape,font=\large]
+				
+				\tkzInit[xmin=-5,xmax=5,ymin=-5,ymax=5]
+				\tkzGrid[color=gray!20]
+				\tkzClip[space=1]
+				
+				\def\aax{4}
+				\def\aay{2}
+				\def\bbx{-2}
+				\def\bby{-4}
+				
+				\pgfmathsetmacro{\rrx}{\aax+\bbx};
+				\pgfmathsetmacro{\rry}{\aay+\bby};
+				
+				\tkzDefPoints{0/0/A,\aax/\aay/B,3/0/C,\bbx/\bby/D}
+				
+				\tkzAxeX{x}
+				\tkzAxeY{y}
+				
+				\tkzPointShowCoord(B)
+				\tkzPointShowCoord(D)
+				
+				\draw[->,line width=1.0pt,color=red] (A) -- (B) node [above left,midway] {$\vec{a}$};
+				\draw[->,line width=1.0pt,color=red] (A) -- (D) node [above left,midway] {$\vec{b}$};
+				
+				%resultante
+				\tkzDefPointWith[colinear= at B](A,D)\tkzGetPoint{E}
+				
+				\tkzDefPoints{\rrx/0/rx,0/\rry/ry,\rrx/\rry/r}
+
+				\tkzPointShowCoord(r)
+
+				\draw[->,line width=1.0pt,color=blue] (A) -- (rx);
+				\draw[->,line width=1.0pt,color=blue] (A) -- (ry);
+
+				\draw[->,line width=1.0pt,color=red,dashed] (B) -- (E) node [above left,midway] {$\vec{b}$};
+				\draw[->,line width=1.0pt,color=red] (A) -- (E) node [below left,midway] {$\vec{r}$};
+				
+				\end{tikzpicture}

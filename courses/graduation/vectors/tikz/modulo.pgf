@@ -1,0 +1,22 @@
+﻿				\begin{tikzpicture}[scale=1.4,transform shape]
+	
+				\tkzInit[xmin=-5,xmax=5,ymin=-5,ymax=5]
+				\tkzGrid[color=gray!20]
+				\tkzClip[space=1]
+	
+				\tkzDefPoints{0/0/A,3/3/B,3/0/C,-4/-2/D}
+	
+				\tkzAxeX{x}
+				\tkzAxeY{y}
+				\tkzLabelPoint[above](B){B}
+				\tkzLabelPoints[below left](A)
+	
+				\tkzPointShowCoord(B)
+				\tkzPointShowCoord(D)
+	
+				\draw[->,line width=1.0pt,color=red] (A) -- (B) node [above,midway] {$\vec{a}$};
+				\draw[->,line width=1.0pt,color=red] (A) -- (D) node [above,midway] {$\vec{b}$};
+				
+				\tkzDrawPoints(A,B)
+	
+				\end{tikzpicture}

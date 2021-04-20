@@ -1,0 +1,884 @@
+% Aula de cinemática para o curso de Física I da graduação
+%
+\documentclass[brazil,aspectratio=169]{beamer}
+%
+%carregando preâmbulo
+\input{../../contrib/preamble}
+
+%Título
+
+\title[Mecânica-2DM]{Movimento em duas e três dimensões}
+
+% The main document
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Sumário}
+  \tableofcontents
+\end{frame}
+
+\section{Posição, velocidade e aceleração}
+
+\subsection{}
+
+\begin{frame}{Vetor posição e deslocamento}
+	\begin{columns}
+		\begin{column}[c]{0.55\textwidth}
+			O vetor posição pode ser definido como
+			\begin{equation*}
+				\vec{r}=x\widehat{i}+y\widehat{j}+z\widehat{k}.
+			\end{equation*}
+			
+%			\begin{block}{Deslocamento}
+			O deslocamento da partícula da posição $\vec{r}_0$ para $\vec{r}_1$ é dado por,
+				\begin{align*}
+					\Delta \vec{r} & = \vec{r}_1-\vec{r}_0,\\
+					\Delta \vec{r} & = (x_1\widehat{i}+y_1\widehat{j}+z_1\widehat{k})-(x_0\widehat{i}+y_0\widehat{j}+z_0\widehat{k}),\\
+					\Delta \vec{r} & = (x_1-x_0)\widehat{i}+(y_1-y_0)\widehat{j}+(z_1-z_0)\widehat{k},\\
+					\Aboxed{\Delta \vec{r} & = \Delta x\widehat{i}+\Delta y\widehat{j}+\Delta z\widehat{k}.}
+				\end{align*}
+%			\end{block}
+		\end{column}
+		\begin{column}[c]{0.45\textwidth}
+			\begin{figure}[c]
+				\begin{tikzpicture}[scale=0.5,transform shape,font=\Large]
+			
+				\tkzInit[xmin=0,xmax=8,ymin=0,ymax=6]
+				%\tkzGrid[color=gray!20]
+				\tkzClip[space=2]
+			
+				\tkzAxeX[right,label=x (m)]
+				\tkzAxeY[above,label=y (m)]
+			
+				\tkzDefPoints{0/0/O}
+
+				\tkzFct[domain=0:8]{3*exp(-0.5*(x-4)**2)}
+				\tkzDefPointByFct(4.5)\tkzGetPoint{A}
+				\tkzDefPointByFct(5.5)\tkzGetPoint{B}
+
+				\tkzPointShowCoord(A);
+				\tkzPointShowCoord(B);
+
+				\draw[->,line width=1.0pt,color=red] (O) -- (A) node [above,midway] {$\vec{r}_0$};
+				\draw[->,line width=1.0pt,color=red] (O) -- (B) node [above right,midway] {$\vec{r}_1$};
+				\draw[->,line width=1.0pt,color=red] (A) -- (B) node [above right,midway] {$\vec{\Delta r}$};
+
+				\tkzDefPoints{4/4.5/t1}
+			
+				\tkzText[text centered,opacity=100,fill=gray!20](t1){$\vec{\Delta r}=\vec{r}_1-\vec{r}_0$}
+
+				\tkzDrawPoints[size=0.3cm](A,B)
+
+				\end{tikzpicture}
+				%\input{tikz/vetor.pgf}
+				\caption*{\footnotesize Deslocamento no plano xy.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Velocidade média}
+	\begin{columns}
+		\begin{column}[c]{0.6\textwidth}
+			Sabemos que
+			\begin{equation*}
+				\text{velocidade média} = \frac{\text{deslocamento}}{\text{intervalo de tempo}}.
+			\end{equation*}
+			Se uma partícula sofre um deslocamento $\Delta \vec{r}$ em um intervalo de tempo $\Delta t$, a velocidade média é dado por
+			\begin{align*}
+				\vec{v}_{\text{médio}} & = \frac{\Delta \vec{r}}{\Delta t},\\
+	 		  	\vec{v}_{\text{médio}} & = \frac{\Delta x}{\Delta t}\widehat{i}+\frac{\Delta y}{\Delta t}\widehat{j}+\frac{\Delta z}{\Delta t}\widehat{k}.
+			\end{align*}
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}
+				\begin{tikzpicture}[scale=0.45,transform shape,font=\Large]
+				
+				\tkzInit[xmin=0,xmax=8,ymin=0,ymax=6]
+				%\tkzGrid[color=gray!20]
+				\tkzClip[space=2]
+				
+				\tkzAxeX[right,label=x (m)]
+				\tkzAxeY[above,label=y (m)]
+				
+				\tkzDefPoints{0/0/O}
+				
+				\tkzFct[domain=0:8]{3*exp(-0.5*(x-4)**2)}
+				\tkzDefPointByFct(4.5)\tkzGetPoint{A}
+				\tkzDefPointByFct(5.5)\tkzGetPoint{B}
+				\tkzDrawTangentLine[color=blue](4.5)
+								
+				\draw[->,line width=1.0pt,color=red] (A) -- (B) node [above right,midway] {$\vec{\Delta r}$};
+				
+				\tkzDefPoints{6/4.5/t1}
+				
+				\tkzText[text centered,opacity=100,fill=gray!20](t1){$\vec{v}_{\text{médio}}=\frac{\Delta \vec{r}}{\Delta t}$}
+				
+				\tkzDrawPoints[size=0.3cm](A,B)
+				\tkzLabelPoint[above right](A){$r_0$}
+				\tkzLabelPoint[right=0.1](B){$r_1$}
+				
+				\end{tikzpicture}
+%				\includegraphics[scale=0.23]{figuras/figura-2.jpg}
+				\caption*{\footnotesize Tangente da trajetória da partícula na posição $\vec{r}_0$.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Velocidade instantânea}
+	\begin{columns}
+		\begin{column}[c]{0.6\textwidth}
+			Reduzindo o intervalo de tempo $\Delta t$ a um valor infinitesimal, $\Delta t\rightarrow 0$, temos
+			\begin{align*}
+				\vec{v}(t)& = {\lim\limits_{\Delta t\rightarrow 0}}\frac{\Delta \vec{r}}{\Delta t}=\frac{d\vec{r}}{dt},\\
+				\vec{v}(t) & = \frac{dx}{dt}\widehat{i}+\frac{dy}{dt}\widehat{j}+\frac{dz}{dt}\widehat{k}.
+			\end{align*}
+			Concluimos assim que
+			\begin{equation*}
+				\boxed{v_x = \frac{dx}{dt},v_y = \frac{dy}{dt},v_z = \frac{dz}{dt}.}
+			\end{equation*}
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}
+				\begin{tikzpicture}[scale=0.45,transform shape,font=\Large]
+				
+				\tkzInit[xmin=0,xmax=8,ymin=0,ymax=6]
+				%\tkzGrid[color=gray!20]
+				\tkzClip[space=2]
+				
+				\tkzAxeX[right,label=x (m)]
+				\tkzAxeY[above,label=y (m)]
+				
+				\tkzDefPoints{0/0/O}
+				
+				\tkzFct[domain=0:8]{3*exp(-0.5*(x-4)**2)}
+				\tkzDefPointByFct(3.5)\tkzGetPoint{A}
+				\tkzDrawTangentLine[color=blue,dashed](3.5)
+				
+				\pgfmathdeclarefunction{vy}{1}{\pgfmathparse{(-3.0*(#1-4)*exp(-0.5*(#1-4)^2))}}
+				
+				\draw[dashed] ($(A)+(0,{vy(3.5)})$) --++ (1,0);
+				\draw[dashed] ($(A)+(1,0)$) --++ (0,{vy(3.5)});
+				
+				\draw[->,line width=1.0pt,color=red] (A) --++ (1,{vy(3.5)}) node [above right] {$\vec{v}$};
+				\draw[->,line width=1.0pt,color=red] (A) --++ (1,0) node [below,midway] {$\vec{v}_x$};
+				\draw[->,line width=1.0pt,color=red] (A) --++ (0,{vy(3.5)}) node [left,midway] {$\vec{v}_y$};
+				
+				\tkzDefPoints{6/5.5/t1}
+				
+				\tkzText[text centered,opacity=100,fill=gray!20](t1){$\vec{v}=\vec{v}_x+\vec{v}_y$}
+				
+				\tkzDrawPoints[size=0.3cm](A)
+				
+				\end{tikzpicture}
+%				\includegraphics[scale=0.23]{figuras/figura-2.jpg}
+				\caption*{\footnotesize Velocidade $\vec{v}$ de uma partícula e suas componentes vetoriais.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Aceleração média}
+	\begin{columns}
+		\begin{column}[c]{0.6\textwidth}
+			Sabemos que
+			\begin{equation*}
+				\text{aceleração média} = \frac{\text{variação da velocidade}}{\text{intervalo de tempo}}.
+			\end{equation*}
+			Se uma partícula sofre uma variação $\Delta \vec{v}$ da sua velocidade em um intervalo de tempo $\Delta t$, a aceleração média é dado por
+			\begin{align*}
+				\vec{a}_{\text{médio}} & = \frac{\Delta \vec{v}}{\Delta t},\\
+	 		  	\vec{a}_{\text{médio}} & = \frac{\Delta v_x}{\Delta t}\widehat{i}+\frac{\Delta v_y}{\Delta t}\widehat{j}+\frac{\Delta v_z}{\Delta t}\widehat{k}.
+			\end{align*}
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.45,transform shape,font=\Large]
+				
+				\tkzInit[xmin=0,xmax=8,ymin=0,ymax=6]
+				%\tkzGrid[color=gray!20]
+				\tkzClip[space=2]
+				
+				\tkzAxeX[right,label=x (m)]
+				\tkzAxeY[above,label=y (m)]
+				
+				\tkzDefPoints{0/0/O}
+				
+				\tkzFct[domain=0:8]{3*exp(-0.5*(x-4)**2)}
+				\tkzDefPointByFct(4.5)\tkzGetPoint{A}
+				\tkzDefPointByFct(5.5)\tkzGetPoint{B}
+				\tkzDrawTangentLine[color=blue](4.5)
+				
+				\draw[->,line width=1.0pt,color=red] (A) -- (B) node [above right,midway] {$\vec{\Delta r}$};
+				
+				\tkzDefPoints{6/4.5/t1}
+				
+				\tkzText[text centered,opacity=100,fill=gray!20](t1){$\vec{v}_{\text{médio}}=\frac{\Delta \vec{r}}{\Delta t}$}
+				
+				\tkzDrawPoints[size=0.3cm](A,B)
+				
+				\end{tikzpicture}
+%				\includegraphics[scale=0.23]{figuras/figura-2.jpg}
+				\caption*{\footnotesize Cálculo da $v_{\text{med}}$ a partir de x(t).}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Aceleração instantânea}
+	\begin{columns}
+		\begin{column}[c]{0.6\textwidth}
+			Reduzindo o intervalo de tempo $\Delta t$ a um valor infinitesimal, $\Delta t\rightarrow 0$, temos
+			\begin{align*}
+				\vec{a}(t)& = {\lim\limits_{\Delta t\rightarrow 0}}\frac{\Delta \vec{v}}{\Delta t}=\frac{d\vec{v}}{dt},\\
+				\vec{a}(t) & = \frac{dv_x}{dt}\widehat{i}+\frac{dv_y}{dt}\widehat{j}+\frac{dv_z}{dt}\widehat{k}.
+			\end{align*}
+			Concluimos assim que
+			\begin{equation*}
+				\boxed{a_x = \frac{dv_x}{dt},a_y = \frac{dv_y}{dt},a_z = \frac{dv_z}{dt}.}
+			\end{equation*}
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.45,transform shape,font=\Large]
+				
+				\tkzInit[xmin=0,xmax=8,ymin=0,ymax=6]
+				%\tkzGrid[color=gray!20]
+				\tkzClip[space=2]
+				
+				\tkzAxeX[right,label=x (m)]
+				\tkzAxeY[above,label=y (m)]
+				
+				\tkzDefPoints{0/0/O}
+				
+				\tkzFct[domain=0:8]{3*exp(-0.5*(x-4)**2)}
+				\tkzDefPointByFct(2.5)\tkzGetPoint{A}
+				
+				\pgfmathdeclarefunction{vy}{1}{\pgfmathparse{(-3.0*exp(-0.5*(#1-4)^2))*(1-3.0*(#1-4)*exp(-0.5*(#1-4)^2))}}
+				
+				\draw[dashed] ($(A)+(0,{vy(2.5)})$) --++ (1,0);
+				\draw[dashed] ($(A)+(1,0)$) --++ (0,{vy(2.5)});
+				
+				\draw[->,line width=1.0pt,color=red] (A) --++ (1,{vy(2.5)}) node [below right] {$\vec{a}$};
+				\draw[->,line width=1.0pt,color=red] (A) --++ (1,0) node [above,midway] {$\vec{a}_x$};
+				\draw[->,line width=1.0pt,color=red] (A) --++ (0,{vy(2.5)}) node [left,pos=0.8] {$\vec{a}_y$};
+				
+				\tkzDefPoints{6/4.5/t1}
+				
+				\tkzText[text centered,opacity=100,fill=gray!20](t1){$\vec{a}=\vec{a}_x+\vec{a}_y$}
+				
+				\tkzDrawPoints[size=0.3cm](A)
+				
+				\end{tikzpicture}
+%				\includegraphics[scale=0.23]{figuras/figura-2.jpg}
+				\caption*{\footnotesize Gráficos da posição e velocidade.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\section{Movimento balístico}
+
+\subsection{}
+
+\begin{frame}[fragile]{Movimento balístico}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			A velocidade inicial $\vec{v}_0$ de um projétil que faz um ângulo $\theta_0$ com o eixo x pode ser decomposta em suas componentes horizontal e vertical,
+			\begin{equation*}
+				\vec{v}=v_0cos\theta_0\widehat{i}+v_0sen\theta_0\widehat{j}.
+			\end{equation*}
+			\begin{corollary}
+				No movimento balístico, o movimento horizontal e o movimento vertical são independentes, e um não interfere no outro.
+			\end{corollary}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.5,transform shape,font=\Large]
+				
+				\tkzInit[xmin=0,xmax=8,ymin=0,ymax=6]
+				%\tkzGrid[color=gray!20]
+				\tkzClip[space=2]
+				
+				\tkzDrawX[right,label=x (m),noticks]
+				\tkzDrawY[above,label=y (m),noticks]
+				
+				\def\tht{45}
+				\def\v0{9}
+				\def\t{0}
+				
+				\pgfmathsetmacro{\thetar}{\tht*3.14/180}
+				
+				\tkzDefPoints{0/0/O}
+				
+				\tkzFct[domain=0:3.75,->,line width=1.0pt]{tan(\thetar)*x-0.5*10*x**2/(\v0*cos(\thetar))**2}
+				\tkzFct[domain=3.75:7.8,->,line width=1.0pt]{tan(\thetar)*x-0.5*10*x**2/(\v0*cos(\thetar))**2}
+				
+				\tkzDefPointByFct(\t)\tkzGetPoint{A}
+				
+				\foreach \a in {2,4,6,8}{
+				\tkzDefPointByFct(\a)\tkzGetPoint{\a}
+				\tkzDrawPoint[size=0.4cm,color=blue](\a)}			
+							
+				\pgfmathdeclarefunction{vx}{1}{\pgfmathparse{0.2*\v0*cos(\tht)}}
+				\pgfmathdeclarefunction{vy}{1}{\pgfmathparse{0.2*\v0*sin(\tht)-0.2*10*#1/(\v0*cos(\tht))}}
+				
+				\tkzDrawPoint[size=0.4cm](A)
+				
+				\draw[dashed] ($(A)+(0,{vy(\t)})$) --++ ({vx(\t)},0);
+				\draw[dashed] ($(A)+({vx(\t)},0)$) --++ (0,{vy(\t)});
+				
+				\coordinate (v) at ({vx(\t)},{vy(\t)});
+				\coordinate (vx) at ({vx(\t)},0);
+				\coordinate (vy) at (0,{vy(\t)});
+				
+				\tkzMarkAngle[size=0.5](vx,O,v)
+				\tkzLabelAngle(vx,O,v){$\theta_0$}
+				
+				\draw[->,line width=1.0pt,color=red] (A) --++ (v) node [above right] {$\vec{v}$};
+				\draw[->,line width=1.0pt,color=red] (A) --++ (vx) node [below,midway] {$\vec{v}_x$};
+				\draw[->,line width=1.0pt,color=red] (A) --++ (vy) node [left,midway] {$\vec{v}_y$};
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Trajetória parabólica de um projétil.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Movimentos horizontal e vertical na trajetória balística}
+	\begin{figure}
+		\centering
+		\begin{subfigure}{0.45\textwidth}
+			\begin{tikzpicture}[scale=0.5,transform shape,font=\Large]
+			
+			\tkzInit[xmin=0,xmax=8,ymin=0,ymax=6]
+			%\tkzGrid[color=gray!20]
+			\tkzClip[space=2]
+			
+			\tkzDrawX[right,label=x (m),noticks]
+			\tkzDrawY[above,label=y (m),noticks]
+			
+			\def\theta{45}
+			\def\v0{9}
+			
+			\pgfmathsetmacro{\thetar}{\theta*3.14/180}
+			
+			\tkzDefPoints{0/0/O}
+			
+			\tkzFct[domain=0:4,->,line width=1.0pt]{tan(\thetar)*x-0.5*10*x**2/(\v0*cos(\thetar))**2}
+			\tkzFct[domain=4:8,->,line width=1.0pt]{tan(\thetar)*x-0.5*10*x**2/(\v0*cos(\thetar))**2}
+			
+			\pgfmathdeclarefunction{vx}{1}{\pgfmathparse{0.2*\v0*cos(\theta)}}
+			\pgfmathdeclarefunction{vy}{1}{\pgfmathparse{0.2*\v0*sin(\theta)-0.2*10*#1/(\v0*cos(\theta))}}
+			
+			\foreach \a in {0,2,4,6,8}{
+				\tkzDefPointByFct(\a)\tkzGetPoint{\a}
+				\tkzDrawPoint[size=0.4cm,color=blue](\a)
+				\draw[dashed] ($(\a)+(0,{vy(\a)})$) --++ ({vx(\a)},0);
+				\draw[dashed] ($(\a)+({vx(\a)},0)$) --++ (0,{vy(\a)});
+				\draw[->,line width=1.0pt,color=blue] (\a) --++ (0,-1.5) node [below] {$\vec{g}$};
+				\draw[->,line width=1.0pt,color=red] (\a) --++ ({vx(\a)},{vy(\a)});
+				\draw[->,line width=1.0pt,color=red] (\a) --++ ({vx(\a)},0);
+				\draw[->,line width=1.0pt,color=red] (\a) --++ (0,{vy(\a)});}
+			
+			\end{tikzpicture}
+			\caption*{\footnotesize Trajetória da partícula.}
+		\end{subfigure}
+		\begin{subfigure}{0.45\textwidth}
+			\centering
+			\begin{tikzpicture}[scale=0.5,transform shape,font=\Large]
+			
+			\tkzInit[xmin=0,xmax=8,ymin=0,ymax=6]
+			%\tkzGrid[color=gray!20]
+			\tkzClip[space=2]
+			
+			\tkzDrawX[right,label=x (m),noticks]
+			\tkzDrawY[above,label=y (m),noticks]
+			
+			\def\theta{45}
+			\def\v0{9}
+			
+			\pgfmathsetmacro{\thetar}{\theta*3.14/180}
+			
+			\pgfmathdeclarefunction{y}{1}{\pgfmathparse{tan(\theta)*#1-0.5*10*#1^2/(\v0*cos(\theta))^2}}
+			\pgfmathdeclarefunction{vx}{1}{\pgfmathparse{0.2*\v0*cos(\theta)}}
+			\pgfmathdeclarefunction{vy}{1}{\pgfmathparse{0.2*\v0*sin(\theta)-0.2*10*#1/(\v0*cos(\theta))}}
+			
+			\foreach \t in {0,2,4,6,8}{
+				\tkzDefPoint(\t,0){a}
+				\coordinate (b) at (0,{y(\t)});
+				\coordinate (c) at (\t,{y(\t)});
+				\tkzDrawPoint[size=1.0cm,color=red,fill=white](b)
+				\tkzDrawPoint[size=1.0cm,color=red,fill=white](a)
+				\tkzDrawPoint[size=1.0cm,color=blue](c)}
+			
+			\end{tikzpicture}
+			\caption*{\footnotesize Movimentos horizontal e vertical.}
+		\end{subfigure}
+	\end{figure}
+\end{frame}
+
+\begin{frame}[fragile]{Movimento horizontal}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			No movimento horizontal temos que a aceleração é zero (pois a única aceleração é a da gravidade que está orientada na direção do eixo y), portanto
+			\begin{equation*}
+				x = x_0+v_{0x}t.
+			\end{equation*}
+			Sabendo que $v_{0x}=v_0cos\theta_0$, temos
+			\begin{align*}
+				x(t) & = x_0+v_{0}cos\theta_0 t,\\
+				v(t) & = v_{0}cos\theta_0.
+			\end{align*}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.5,transform shape,font=\Large]
+				
+				\tkzInit[xmin=0,xmax=8,ymin=0,ymax=6]
+				%\tkzGrid[color=gray!20]
+				\tkzClip[space=2]
+				
+				\tkzDrawX[right,label=x (m),noticks]
+				\tkzDrawY[above,label=y (m),noticks]
+				
+				\def\theta{45}
+				\def\v0{9}
+				
+				\pgfmathsetmacro{\thetar}{\theta*3.14/180}
+				
+				\pgfmathdeclarefunction{y}{1}{\pgfmathparse{tan(\theta)*#1-0.5*10*#1^2/(\v0*cos(\theta))^2}}
+				\pgfmathdeclarefunction{vx}{1}{\pgfmathparse{0.2*\v0*cos(\theta)}}
+				\pgfmathdeclarefunction{vy}{1}{\pgfmathparse{0.2*\v0*sin(\theta)-0.2*10*#1/(\v0*cos(\theta))}}
+				
+				\foreach \t in {0,2,4,6,8}{
+					\tkzDefPoint(\t,0){a}
+					\coordinate (c) at (\t,{y(\t)});
+					\tkzDrawPoint[size=1.0cm,color=red,fill=white](a)
+					\tkzDrawPoint[size=1.0cm,color=blue](c)
+					\draw[->,line width=1.0pt,color=blue] (c) --++ (0,-0.75) node [below] {$\vec{g}$};
+					\draw[->,line width=1.0pt,color=red] (c) --++ ({vx(\t)},0) node [above,midway] {$\vec{v}_x$};}
+				\end{tikzpicture}
+				\caption*{\footnotesize Movimento horizontal da partícula.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Movimento vertical}
+	\begin{columns}
+		\begin{column}[t]{0.4\textwidth}
+			No movimento vertical a aceleração é constante, onde
+			\begin{equation*}
+				\vec{a} = \vec{g}.
+			\end{equation*}
+			 Portanto é válido as fórmulas do movimento retilíneo uniformemente variado. Sabendo que
+			 \begin{equation*}
+				 v_{y} = vsen\theta,
+			 \end{equation*}
+		\end{column}
+		\begin{column}[t]{0.6\textwidth}
+			temos as equações do movimento vertical,
+			\begin{table}
+				\centering
+				\caption*{\footnotesize Movimento vertical.}
+				\begin{tabular}[c]{cl}
+					\hline
+					Definição & Equação\\
+					\hline
+					Velocidade & $v_y(t)=v_0sen\theta_0\alert{-}gt$\\
+					Torricelli & $v_y^2=(v_0sen\theta_0)^2\alert{-}2g\Delta y$\\
+					Posição & $y(t)= y_0+v_0sen\theta_0 t\alert{-}\frac{1}{2}gt^2$\\
+					Posição & $y(t)=y_0+\frac{1}{2}\left(v_0sen\theta+v_y\right)t$\\
+					Posição & $y(t)=y_0+v_yt\alert{+}\frac{1}{2}gt^2$\\
+					\hline					
+				\end{tabular}
+			\end{table}	
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Equação da trajetória}
+	\begin{multicols}{2}
+		Podemos determinar o tempo na equação $x=x_0+v_{0}cos\theta_0 t$ no movimento horizontal, na forma
+		\begin{equation*}
+			t=\frac{x-x_0}{v_0cos\theta_0}.
+		\end{equation*}
+		Sabendo que o tempo registrado nos dois movimentos (horizontal e vertical) são os mesmos e considerando que $x_0=0$ e $y_0=0$, podemos assim substituir $t$ em $y(t)$,
+		\begin{align*}
+			y & = y_0+v_0sen\theta_0 t-\frac{1}{2}gt^2,\\
+			y & = 0+\bcancel{v}_0sen\theta_0\left(\frac{x-0}{\bcancel{v}_0cos\theta_0}\right)-\\
+			 & -\frac{1}{2}g\left(\frac{x-0}{v_0cos\theta_0}\right)^2,\\
+			\Aboxed{y(x) & = tan\theta_0 x-\frac{gx^2}{2(v_0cos\theta_0)^2}.}
+		\end{align*}
+	\end{multicols}
+\end{frame}
+
+\begin{frame}{Alcance horizontal}
+	\begin{multicols}{2}
+		Para determinar a distância horizontal $R$ percorrida pelo projétil ($R=\Delta x$), substituímos R em
+		\begin{equation*}
+			R=v_0cos\theta_0 t.
+		\end{equation*}
+		O trecho $R$ corresponde as posições inicial e final onde $y_{\text{final}}=y_0$, portanto
+		\begin{equation*}
+			\Delta y=v_0sen\theta_0 t-\frac{1}{2}gt^2=0.
+		\end{equation*}
+		Eliminando t na primeira equação e substituindo na segunda temos
+		\begin{align*}
+			\Aboxed{R & = \frac{v_0^2}{g}sen2\theta_0.}
+		\end{align*}
+	\end{multicols}
+	\begin{corollary}
+		O alcance horizontal R é máximo para um ângulo de lançamento igual a \SI{45}{\degree}.
+	\end{corollary}
+\end{frame}
+
+\section{Movimento circular}
+
+\subsection{}
+
+\begin{frame}{Movimento circular uniforme}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			Considerando a trajetória circular de uma partícula, a velocidade $\vec{v}$ é sempre tangente a trajetória. Como o movimento é bidimensional, decompomos em duas componentes, nas direções x e y,
+			\begin{align*}
+				\vec{v} & = v_x\widehat{i}+v_y\widehat{j},\\
+				\vec{v} & = -vsen\theta\widehat{i}+vcos\theta\widehat{j}.
+			\end{align*}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.45,transform shape,font=\Large]
+				
+				\tkzInit[xmin=-4,xmax=4,ymin=-4,ymax=4]
+				%\tkzGrid[color=gray!20]
+				\tkzClip[space=1.7]
+				
+				\tkzDrawX[right,label=x (m)]
+				\tkzDrawY[above,label=y (m)]
+				
+				\tkzDefPoints{0/0/O,4/0/A,0/4/B}
+				
+				\tkzDrawCircle[dashed](O,A)
+				
+				\tkzDefPointsBy[rotation=center O angle 45](O,A){p1,p2}
+				
+				\tkzDefPointWith[orthogonal, K=-0.4](p2,O)\tkzGetPoint{p3}
+				
+				\tkzDefPointsBy[projection=onto O--A](p2){p4}
+				
+				\tkzDefPointsBy[projection=onto p2--p4](p2,p3){p5,p6}
+				
+				\tkzDefPointsBy[projection=onto O--B](O,p2){p7,p8}
+				
+				\tkzDefPointsBy[projection=onto p2--p8](p3){p9}
+				
+				\draw[->,color=red,line width=1.0pt] (p2) -- (p3) node [above right] {$\vec{v}$};
+				\draw[->,color=red,line width=1.0pt] (p2) -- (p9) node [left] {$\vec{v}_x$};
+				\draw[->,color=red,line width=1.0pt] (p2) -- (p6) node [above right] {$\vec{v}_y$};
+				\draw[->,line width=1.0pt] (O) -- (p2) node [above left,midway] {$\vec{r}$};
+				
+				\draw[dashed] (p4) -- (p2);
+				
+				\draw (p4) to[dim arrow'={label={y}}] (p2);
+				\draw (p4) to[dim arrow={label={x}}] (O);
+				
+				\tkzMarkAngle[size=0.7](p6,p2,p3)
+				\tkzLabelAngle[font=\normalsize](p6,p2,p3){$\theta$}
+				
+				\tkzMarkAngle[size=0.7](A,O,p2)
+				\tkzLabelAngle(A,O,p2){$\theta$}
+				
+				\tkzDrawPoints[size=0.5cm](p2)
+				%		\tkzLabelPoints(p2,p3,p4,p6,p8,p9)
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Velocidade $\vec{v}$ tangencial a trajetória circular.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Movimento circular uniforme (continuação)}
+%	\begin{multicols*}{2}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			Usando trigonometria podemos substituir $sen\theta$ por $y/r$ e $cos\theta$ por $x/r$, ou seja,
+			\begin{equation*}
+				\vec{v} = \left(-\frac{yv}{r}\right)\widehat{i}+\left(\frac{xv}{r}\right)\widehat{j}.
+			\end{equation*}
+			Considerando $v$ e $r$ constantes, podemos determinar a aceleração $\vec{a}$ derivando $\vec{v}$ em relação ao tempo,
+			\begin{align*}
+				\vec{a} & = \frac{d\vec{v}}{dt},
+			\end{align*}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+		\begin{align*}
+			\vec{a} & = \left(-\frac{v}{r}\overbracket{\frac{dy}{dt}}^{\tiny \alert{v_y}}\right)\widehat{i}+\left(\frac{v}{r}\overbracket{\frac{dx}{dt}}^{\tiny\alert{v_x}}\right)\widehat{j},\\
+			\vec{a} & = \left(-\frac{v\alert{v_y}}{r}\right)\widehat{i}+\left(\frac{v\alert{v_x}}{r}\right)\widehat{j}.
+			\end{align*}
+			Mas $v_x=-vsen\theta$ e  $v_y=vcos\theta$,
+			\begin{align*}
+				\Aboxed{\vec{a} & = \left(-\frac{v^2}{r}cos\theta\right)\widehat{i}+\left(-\frac{v^2}{r}sen\theta\right)\widehat{j}.}
+			\end{align*}
+		\end{column}
+	\end{columns}
+%	\end{multicols*}
+\end{frame}
+
+\begin{frame}{Movimento circular uniforme (continuação)}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			A partir das aceleração $\vec{a}$ demostrado anteriormente calculamos o seu módulo
+			\begin{align*}
+				a^2 & = a_x^2+a_y^2,\\
+				a^2 & = \left(-\frac{v^2}{r}cos\theta\right)^2+\left(-\frac{v^2}{r}sen\theta\right)^2,\\
+				a^2 & = \left(-\frac{v^2}{r}\right)^2\underbracket{\left(cos^2\theta+sen^2\theta\right)}_{\tiny \alert{1}},\\
+				\Aboxed{a & = \frac{v^2}{r}.}
+			\end{align*}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{figure}
+				\begin{tikzpicture}[scale=0.45,transform shape,font=\Large]
+					
+					\tkzInit[xmin=-4,xmax=4,ymin=-4,ymax=4]
+					%\tkzGrid[color=gray!20]
+					\tkzClip[space=1.7]
+					
+					\tkzDrawX[right,label=x (m)]
+					\tkzDrawY[above,label=y (m)]
+					
+					\tkzDefPoints{0/0/O,4/0/A,0/4/B}
+					
+					\tkzDrawCircle[dashed](O,A)
+					
+					\tkzDefPointsBy[rotation=center O angle 45](O,A){p1,p2}
+					
+					\tkzDefPointWith[linear, K=0.4](p2,O)\tkzGetPoint{p3}
+					
+					\tkzDefPointsBy[projection=onto O--A](p2){p4}
+					
+					\tkzDefPointsBy[projection=onto p2--p4](p2,p3){p5,p6}
+					
+					\tkzDefPointsBy[projection=onto O--B](O,p2){p7,p8}
+					
+					\tkzDefPointsBy[projection=onto p2--p8](p3){p9}
+					
+					\draw[dashed,line width=1.0pt] (O) -- (p2);
+					\draw[->,color=red,line width=1.0pt] (p2) -- (p3) node [above left] {$\vec{a}$};
+					\draw[->,color=red,line width=1.0pt] (p2) -- (p9) node [left] {$\vec{a}_x$};
+					\draw[->,color=red,line width=1.0pt] (p2) -- (p6) node [below] {$\vec{a}_y$};
+					
+					\tkzMarkAngle[size=0.7](p8,p2,p3)
+					\tkzLabelAngle[pos=-1](p8,p2,p3){$\theta$}
+					
+					\tkzMarkAngle[size=0.7](A,O,p2)
+					\tkzLabelAngle(A,O,p2){$\theta$}
+					
+					\tkzDrawPoints[size=0.5cm](p2)
+					
+				\end{tikzpicture}
+				\caption*{\footnotesize Direção radial da aceleração $\vec{a}$.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\section{Apêndice}
+
+\subsection{}
+
+\begin{frame}{Transformar um número em notação científica}
+	\begin{corollary}
+		\begin{enumerate}[leftmargin=1.75cm]
+			\item[Passo 1:] Escrever o número incluindo a vírgula.
+			\item[Passo 2:] Andar com a vírgula até que reste somente um número diferente de zero no lado esquerdo.
+			\item[Passo 3:] Colocar no expoente da potência de 10 o número de casas decimais que tivemos que "andar" com a vírgula. Se ao andar com a vírgula o valor do número diminuiu, o expoente ficará positivo, se aumentou o expoente ficará negativo.
+		\end{enumerate}
+	\end{corollary}
+	\begin{exampleblock}{Exemplo}
+		\begin{equation*}
+			6\; 590\; 000\; 000\; 000\; 000,0 = \SI{6,59e15}{}		
+		\end{equation*}
+	\end{exampleblock}
+\end{frame}
+%
+\begin{frame}{Conversão de unidades em uma dimensão}
+	\begin{figure}
+		\begin{tikzpicture}[scale=0.65,transform shape,font=\Large]
+		
+		\tkzInit[xmin=-2,xmax=17,ymin=-6,ymax=3]
+		%\tkzGrid[color=gray!20]
+		\tkzClip
+		
+		\tikzset{compass style/.append style={->}}
+		
+		\foreach \x in {1,2,...,6}{
+			\tkzDefPoint(\x*3-3,0){\x}
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+			\node at (\x*3-3,2) {$\times 10^{1}$};
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+			\node at (\x*3-3,-2) {$\times 10^{-1}$};}
+		
+		\tkzDefPoints{-1.5/0/p1,1.5/0/p2,4.5/0/p3,7.5/-0.2/p4,10.5/0/p5,13.5/0/p6,16.5/0/p7}
+		
+		\tkzText(p1){m\_}
+		\tkzText(p2){c\_}
+		\tkzText(p3){d\_}
+		\tkzText(p4){\_}
+		\tkzText(p5){da\_}
+		\tkzText(p6){h\_}
+		\tkzText(p7){k\_}
+		
+		%exemplos
+		
+		\tkzText(3,-3.5){$1\;\text{mm}=1\times 10^{(-1)\times\alert{2}}\;\text{dm}\rightarrow 1\times 10^{-2}\;\text{dm}$}
+		\tkzText(3.1,-4.5){$2,5\;\text{kg}=2,5\times 10^{(1)\times\alert{6}}\;\text{mg}\rightarrow2,5\times 10^{6}\;\text{mg}$}
+		\tkzText(2.7,-5.5){$10\;\text{ms}=10\times 10^{(-1)\times\alert{3}}\;\text{s}\rightarrow 10\times 10^{-3}\;\text{s}$}
+		
+		\end{tikzpicture}
+	\end{figure}
+\end{frame}
+%
+\begin{frame}{Conversão de unidades em duas dimensões}
+	\begin{figure}
+		\begin{tikzpicture}[scale=0.65,transform shape,font=\Large]
+	
+		\tkzInit[xmin=-2,xmax=17,ymin=-6,ymax=3]
+		%\tkzGrid[color=gray!20]
+		\tkzClip
+	
+		\tikzset{compass style/.append style={->}}
+	
+		\foreach \x in {1,2,...,6}{
+			\tkzDefPoint(\x*3-3,0){\x}
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+			\node at (\x*3-3,2) {$\times 10^{2}$};
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+			\node at (\x*3-3,-2) {$\times 10^{-2}$};}
+	
+		\tkzDefPoints{-1.5/0/p1,1.5/0/p2,4.5/0/p3,7.5/0/p4,10.5/0/p5,13.5/0/p6,16.5/0/p7}
+	
+		\tkzText(p1){$\text{m}\_^2$}
+		\tkzText(p2){$\text{c}\_^2$}
+		\tkzText(p3){$\text{d}\_^2$}
+		\tkzText(p4){$\_^2$}
+		\tkzText(p5){$\text{da}\_^2$}
+		\tkzText(p6){$\text{h}\_^2$}
+		\tkzText(p7){$\text{k}\_^2$}
+	
+		%exemplos
+	
+		\tkzText(3.3,-3.5){$1\;\text{mm}^2=1\times 10^{(-2)\times\alert{2}}\;\text{dm}^2\rightarrow 1\times 10^{-4}\;\text{dm}^2$}
+		\tkzText(3.6,-4.5){$2,5\;\text{m}^2=2,5\times 10^{(2)\times\alert{3}}\;\text{mm}^2\rightarrow2,5\times 10^{6}\;\text{mm}^2$}
+		\tkzText(3,-5.5){$10\;\text{ms}^2=10\times 10^{(-2)\times\alert{3}}\;\text{s}^2\rightarrow 10\times 10^{-6}\;\text{s}^2$}
+	
+		\end{tikzpicture}
+	\end{figure}
+\end{frame}
+%
+\begin{frame}{Conversão de unidades em três dimensões}
+	\begin{figure}
+		\begin{tikzpicture}[scale=0.65,transform shape,font=\Large]
+	
+		\tkzInit[xmin=-2,xmax=17,ymin=-6,ymax=3]
+		%\tkzGrid[color=gray!20]
+		\tkzClip
+	
+		\tikzset{compass style/.append style={->}}
+	
+		\foreach \x in {1,2,...,6}{
+			\tkzDefPoint(\x*3-3,0){\x}
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+			\node at (\x*3-3,2) {$\times 10^{3}$};
+			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+			\node at (\x*3-3,-2) {$\times 10^{-3}$};}
+	
+		\tkzDefPoints{-1.5/0/p1,1.5/0/p2,4.5/0/p3,7.5/0/p4,10.5/0/p5,13.5/0/p6,16.5/0/p7}
+	
+		\tkzText(p1){$\text{m}\_^3$}
+		\tkzText(p2){$\text{c}\_^3$}
+		\tkzText(p3){$\text{d}\_^3$}
+		\tkzText(p4){$\_^3$}
+		\tkzText(p5){$\text{da}\_^3$}
+		\tkzText(p6){$\text{h}\_^3$}
+		\tkzText(p7){$\text{k}\_^3$}
+	
+		%exemplos
+	
+		\tkzText(3.3,-3.5){$1\;\text{mm}^3=1\times 10^{(-3)\times\alert{2}}\;\text{dm}^3\rightarrow 1\times 10^{-6}\;\text{dm}^3$}
+		\tkzText(3.6,-4.5){$2,5\;\text{m}^3=2,5\times 10^{(3)\times\alert{3}}\;\text{mm}^3\rightarrow2,5\times 10^{9}\;\text{mm}^3$}
+		\tkzText(3.5,-5.5){$2,5\;\text{km}^3=2,5\times 10^{(3)\times\alert{6}}\;\text{mm}^3\rightarrow2,5\times 10^{18}\;\text{mm}^3$}
+
+		\end{tikzpicture}
+	\end{figure}
+\end{frame}
+%
+\begin{frame}{Alfabeto grego}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{table}
+				\begin{tabular}[c]{ccc}
+					Alfa & $A$ & $\alpha$\\
+					Beta & $B$ & $\beta$\\
+					Gama & $\Gamma$ & $\gamma$\\
+					Delta & $\Delta$ & $\delta$\\
+					Epsílon & $E$ & $\epsilon$,$\varepsilon$\\
+					Zeta & $Z$ & $\zeta$\\
+					Eta & $H$ & $\eta$\\
+					Teta & $\Theta$ & $\theta$\\
+					Iota & $I$ & $\iota$\\
+					Capa & $K$ & $\kappa$\\
+					Lambda & $\Lambda$ & $\lambda$\\
+					Mi & $M$ & $\mu$
+				\end{tabular}
+			\end{table}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{table}
+				\begin{tabular}[c]{ccc}
+					Ni & $N$ & $\nu$\\
+					Csi & $\Xi$ & $\xi$\\
+					ômicron & $O$ & $o$\\
+					Pi & $\Pi$ & $\pi$\\
+					Rô & $P$ & $\rho$\\
+					Sigma & $\Sigma$ & $\sigma$\\
+					Tau & $T$ & $\tau$\\
+					Ípsilon & $\Upsilon$ & $\upsilon$\\
+					Fi & $\Phi$ & $\phi$,$\varphi$\\
+					Qui & $X$ & $\chi$\\
+					Psi & $\Psi$ & $\psi$\\
+					Ômega & $\Omega$ & $\omega$
+				\end{tabular}
+			\end{table}
+		\end{column}
+	\end{columns}
+\end{frame}
+%
+\begin{frame}{Observações\footnote{Este material está sujeito a modificações. Recomenda-se acompanhamento permanente.}}
+	\begin{center}
+		Esta apresentação está disponível para download no endereço\\
+		\href{https://flavianowilliams.github.io/education}{\textcolor{blue}{https://flavianowilliams.github.io/education}}
+	\end{center}
+\end{frame}
+%	
+\begin{frame}{Referências}
+	\bibliographystyle{jurabib}
+	\begin{thebibliography}{9}
+		\bibitem{halliday}D. Halliday, R. Resnick, J. Walker, Fundamentos de física. Mecânica, v.1, 10. ed., Rio de Janeiro, LTC (2016)
+	\end{thebibliography}
+\end{frame}
+
+\end{document}

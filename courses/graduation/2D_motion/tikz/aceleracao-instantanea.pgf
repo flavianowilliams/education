@@ -1,0 +1,30 @@
+﻿		\begin{tikzpicture}[scale=1,transform shape,font=\Large]
+			
+				\tkzInit[xmin=0,xmax=8,ymin=0,ymax=6]
+				\tkzGrid[color=gray!20]
+				\tkzClip[space=2]
+			
+				\tkzAxeX[right,label=x (m)]
+				\tkzAxeY[above,label=y (m)]
+			
+				\tkzDefPoints{0/0/O}
+
+				\tkzFct[domain=0:8]{3*exp(-0.5*(x-4)**2)}
+				\tkzDefPointByFct(2.5)\tkzGetPoint{A}
+
+				\pgfmathdeclarefunction{vy}{1}{\pgfmathparse{(-3.0*exp(-0.5*(#1-4)^2))*(1-3.0*(#1-4)*exp(-0.5*(#1-4)^2))}}
+
+				\draw[dashed] ($(A)+(0,{vy(2.5)})$) --++ (1,0);
+				\draw[dashed] ($(A)+(1,0)$) --++ (0,{vy(2.5)});
+
+				\draw[->,line width=1.0pt,color=red] (A) --++ (1,{vy(2.5)}) node [below right] {$\vec{a}$};
+				\draw[->,line width=1.0pt,color=red] (A) --++ (1,0) node [above,midway] {$\vec{a}_x$};
+				\draw[->,line width=1.0pt,color=red] (A) --++ (0,{vy(2.5)}) node [left,pos=0.8] {$\vec{a}_y$};
+
+				\tkzDefPoints{6/4.5/t1}
+			
+				\tkzText[text centered,opacity=100,fill=gray!20](t1){$\vec{a}=\vec{a}_x+\vec{a}_y$}
+
+				\tkzDrawPoints[size=0.3cm](A)
+
+		\end{tikzpicture}

@@ -1,0 +1,29 @@
+﻿		\begin{tikzpicture}[scale=1,transform shape,font=\Large]
+			
+				\tkzInit[xmin=0,xmax=8,ymin=0,ymax=6]
+				\tkzGrid[color=gray!20]
+				\tkzClip[space=2]
+			
+				\tkzAxeX[right,label=x (m)]
+				\tkzAxeY[above,label=y (m)]
+			
+				\tkzDefPoints{0/0/O}
+
+				\tkzFct[domain=0:8]{3*exp(-0.5*(x-4)**2)}
+				\tkzDefPointByFct(4.5)\tkzGetPoint{A}
+				\tkzDefPointByFct(5.5)\tkzGetPoint{B}
+
+				\tkzPointShowCoord(A);
+				\tkzPointShowCoord(B);
+
+				\draw[->,line width=1.0pt,color=red] (O) -- (A) node [above,midway] {$\vec{r}_1$};
+				\draw[->,line width=1.0pt,color=red] (O) -- (B) node [above right,midway] {$\vec{r}_2$};
+				\draw[->,line width=1.0pt,color=red] (A) -- (B) node [above right,midway] {$\vec{\Delta r}$};
+
+				\tkzDefPoints{4/4.5/t1}
+			
+				\tkzText[text centered,opacity=100,fill=gray!20](t1){$\vec{\Delta r}=\vec{r}_2-\vec{r}_1$}
+
+				\tkzDrawPoints[size=0.3cm](A,B)
+
+		\end{tikzpicture}

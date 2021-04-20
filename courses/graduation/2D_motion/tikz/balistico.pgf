@@ -1,0 +1,46 @@
+﻿		\begin{tikzpicture}[scale=1,transform shape,font=\Large]
+			
+				\tkzInit[xmin=0,xmax=8,ymin=0,ymax=6]
+				\tkzGrid[color=gray!20]
+				\tkzClip[space=2]
+			
+				\tkzAxeX[right,label=x (m),noticks]
+				\tkzAxeY[above,label=y (m),noticks]
+			
+				\def\theta{45}
+				\def\v0{9}
+				\def\t{0}
+
+				\pgfmathsetmacro{\thetar}{\theta*3.14/180}
+
+				\tkzDefPoints{0/0/O}
+
+				\tkzFct[domain=0:4,->,line width=1.0pt]{tan(\thetar)*x-0.5*10*x**2/(\v0*cos(\thetar))**2}
+				\tkzFct[domain=4:8,->,line width=1.0pt]{tan(\thetar)*x-0.5*10*x**2/(\v0*cos(\thetar))**2}
+			
+				\tkzDefPointByFct(\t)\tkzGetPoint{A}
+
+				\foreach \a in {2,4,6,8}{
+				\tkzDefPointByFct(\a)\tkzGetPoint{\a}
+				\tkzDrawPoint[size=0.4cm,color=blue](\a)}
+
+%				\pgfmathdeclarefunction{x}{1}{\pgfmathparse{\v0*cos(\theta)*#1}}
+%				\pgfmathdeclarefunction{y}{1}{\pgfmathparse{\v0*sin(\theta)*#1-0.5*10*#1*#1}}
+
+				\pgfmathdeclarefunction{vx}{1}{\pgfmathparse{0.2*\v0*cos(\theta)}}
+				\pgfmathdeclarefunction{vy}{1}{\pgfmathparse{0.2*\v0*sin(\theta)-0.2*10*#1/(\v0*cos(\theta))}}
+
+				\tkzDrawPoint[size=0.4cm](A)
+
+				\draw[dashed] ($(A)+(0,{vy(\t)})$) --++ ({vx(\t)},0);
+				\draw[dashed] ($(A)+({vx(\t)},0)$) --++ (0,{vy(\t)});
+
+				\draw[->,line width=1.0pt,color=red] (A) --++ ({vx(\t)},{vy(\t)}) node [above right] {$\vec{v}$};
+				\draw[->,line width=1.0pt,color=red] (A) --++ ({vx(\t)},0) node [below,midway] {$\vec{v}_x$};
+				\draw[->,line width=1.0pt,color=red] (A) --++ (0,{vy(\t)}) node [left,midway] {$\vec{v}_y$};
+
+%				\tkzDefPoints{6/5.5/t1}
+			
+%				\tkzText[text centered,opacity=100,fill=gray!20](t1){$\vec{\Delta r}=\vec{r}_2-\vec{r}_1$}
+
+		\end{tikzpicture}

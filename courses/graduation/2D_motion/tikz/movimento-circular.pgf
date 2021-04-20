@@ -1,0 +1,45 @@
+﻿\begin{tikzpicture}[scale=1,transform shape,font=\Large]
+			
+		\tkzInit[xmin=-4,xmax=4,ymin=-4,ymax=4]
+		\tkzGrid[color=gray!20]
+%		\tkzClip[space=1.5]
+			
+		\tkzAxeX[right,label=t (s)]
+		\tkzAxeY[above,label=x (m)]
+			
+		\tkzDefPoints{0/0/O,4/0/A,0/4/B}
+
+		\tkzDrawCircle[dashed](O,A)
+
+		\tkzDefPointsBy[rotation=center O angle 45](O,A){p1,p2}
+
+		\tkzDefPointWith[orthogonal, K=-0.4](p2,O)\tkzGetPoint{p3}
+
+		\tkzDefPointsBy[projection=onto O--A](p2){p4}
+
+		\tkzDefPointsBy[projection=onto p2--p4](p2,p3){p5,p6}
+
+		\tkzDefPointsBy[projection=onto O--B](O,p2){p7,p8}
+
+		\tkzDefPointsBy[projection=onto p2--p8](p3){p9}
+
+		\draw[->,color=red,line width=1.0pt] (p2) -- (p3) node [above right] {$\vec{v}$};
+		\draw[->,color=red,line width=1.0pt] (p2) -- (p9) node [left] {$\vec{v}_x$};
+		\draw[->,color=red,line width=1.0pt] (p2) -- (p6) node [above right] {$\vec{v}_y$};
+		\draw[->,line width=1.0pt] (O) -- (p2) node [above left,midway] {$\vec{r}$};
+
+		\draw[dashed] (p4) -- (p2);
+%		\draw[dashed] (p4) -- (O) node [right,midway] {$x$};
+		\draw (p4) to[dim arrow'={label'={y}}] (p2);
+		\draw (p4) to[dim arrow={label={y}}] (O);
+
+		\tkzMarkAngle[size=0.7](p6,p2,p3)
+		\tkzLabelAngle[font=\normalsize](p6,p2,p3){$\theta$}
+
+		\tkzMarkAngle[size=0.7](A,O,p2)
+		\tkzLabelAngle(A,O,p2){$\theta$}
+
+		\tkzDrawPoints[size=0.5cm](p2)
+%		\tkzLabelPoints(p2,p3,p4,p6,p8,p9)
+
+\end{tikzpicture}

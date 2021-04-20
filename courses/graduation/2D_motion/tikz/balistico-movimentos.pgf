@@ -1,0 +1,33 @@
+﻿		\begin{tikzpicture}[scale=1,transform shape,font=\Large]
+			
+				\tkzInit[xmin=0,xmax=8,ymin=0,ymax=6]
+				\tkzGrid[color=gray!20]
+				\tkzClip[space=2]
+			
+				\tkzDrawX[right,label=x (m),noticks]
+				\tkzDrawY[above,label=y (m),noticks]
+			
+				\def\theta{45}
+				\def\v0{9}
+
+				\pgfmathsetmacro{\thetar}{\theta*3.14/180}
+
+				\tkzDefPoints{0/0/O}
+
+				\tkzFct[domain=0:4,->,line width=1.0pt]{tan(\thetar)*x-0.5*10*x**2/(\v0*cos(\thetar))**2}
+				\tkzFct[domain=4:8,->,line width=1.0pt]{tan(\thetar)*x-0.5*10*x**2/(\v0*cos(\thetar))**2}
+			
+				\pgfmathdeclarefunction{vx}{1}{\pgfmathparse{0.2*\v0*cos(\theta)}}
+				\pgfmathdeclarefunction{vy}{1}{\pgfmathparse{0.2*\v0*sin(\theta)-0.2*10*#1/(\v0*cos(\theta))}}
+
+				\foreach \a in {0,2,4,6,8}{
+				\tkzDefPointByFct(\a)\tkzGetPoint{\a}
+				\tkzDrawPoint[size=0.4cm,color=blue](\a)
+				\draw[dashed] ($(\a)+(0,{vy(\a)})$) --++ ({vx(\a)},0);
+				\draw[dashed] ($(\a)+({vx(\a)},0)$) --++ (0,{vy(\a)});
+				\draw[->,line width=1.0pt,color=blue] (\a) --++ (0,-1.5) node [below] {$\vec{g}$};
+				\draw[->,line width=1.0pt,color=red] (\a) --++ ({vx(\a)},{vy(\a)});
+				\draw[->,line width=1.0pt,color=red] (\a) --++ ({vx(\a)},0);
+				\draw[->,line width=1.0pt,color=red] (\a) --++ (0,{vy(\a)});}
+
+		\end{tikzpicture}

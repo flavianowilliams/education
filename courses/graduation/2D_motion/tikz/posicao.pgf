@@ -1,0 +1,42 @@
+﻿\begin{tikzpicture}[scale=1,transform shape,font=\large]
+
+			\tkzInit[xmin=-2,xmax=5,ymin=-2,ymax=5]
+			\tkzGrid[color=gray!20]
+			\tkzClip[space=1]
+
+			\coordinate (O) at (0,0,0);
+			\coordinate (A) at (5,0,0);
+			\coordinate (B) at (0,5,0);
+			\coordinate (C) at (0,0,5);
+
+			%eixos
+			\draw[->] (O) -- (A) node [right] {y};
+			\draw[->] (O) -- (B) node [above] {z};
+			\draw[->] (O) -- (C) node [below left] {x};
+
+			\coordinate (dr) at (4,4,3.5);
+			\coordinate (r1) at (0,0,3.5);
+			\coordinate (r2) at (4,0,3.5);
+
+	  		%vetor v
+			\draw[->, line width=1.0pt,color=red] (O) -- (dr) node [above left,midway] {$\vec{\Delta r}$};
+			\draw[->, line width=1.0pt,color=blue] (O) -- (r1) node [above left,midway] {$\vec{r}_1$};
+			\draw[->, line width=1.0pt,color=blue] (r1) -- (r2) node [above,midway] {$\vec{r}_2$};
+			\draw[->, line width=1.0pt,color=blue] (r2) -- (dr) node [right,midway] {$\vec{r}_3$};
+
+%			\draw[dashed] (Pxy) -- (P);
+%			\draw[dashed] (Pxy) -- (Px);
+%			\draw[dashed] (Pxy) -- (Py);
+
+			%versores
+%			\coordinate (i) at (1,0,0);
+%			\coordinate (j) at (0,1,0);
+%			\coordinate (k) at (0,0,1);
+
+%			\draw[->, line width=1.0pt,color=green] (O) -- (i) node [above] {$\hat{i}$};
+%			\draw[->, line width=1.0pt,color=green] (O) -- (j) node [left] {$\hat{j}$};
+%			\draw[->, line width=1.0pt,color=green] (O) -- (k) node [left] {$\hat{k}$};
+
+%			\tkzDrawPoints(Pxy,Px,Py)
+
+\end{tikzpicture}

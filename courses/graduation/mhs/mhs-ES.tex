@@ -1,0 +1,1208 @@
+% Aula de MHS para o curso de Física I da graduação
+%
+\documentclass[brazil,aspectratio=169]{beamer}
+%
+%carregando preâmbulo
+\input{../../contrib/preamble}
+
+%Título
+
+\title[Oscilações-MHS]{Movimento harmônico simples}
+
+% The main document
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Sumário}
+  \tableofcontents
+\end{frame}
+
+\section{Oscilador harmônico}
+
+\subsection{}
+
+\begin{frame}{Sistema massa-mola}
+	\begin{columns}[c]
+		\begin{column}{0.5\textwidth}
+			\begin{figure}[c]
+				\includegraphics[scale=0.06]{figuras/Robert_Hooke.JPG}
+				\caption*{\footnotesize Robert Hooke.}
+			\end{figure}		
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\begin{figure}[c]
+				%\input{tikz/sistema-massa-mola.pgf}
+				\begin{tikzpicture}[scale=0.7,transform shape]
+				
+				%sistema 1
+				
+				%parede
+				\fill [pattern = north west lines] (-0.2,-0.45) rectangle (0,1);
+				\draw (0,-0.45) -- (0,1);
+				
+				%chao
+				\draw (0,-0.45) -- (5,-0.45);
+				
+				%equilibrio
+				\node[below] at (2.5,-0.45) {$x_{0}$};
+				\node[below] at (4,-0.45) {$x$};
+				
+				% bloco
+				\node[rectangle,fill=gray,inner sep=3.5mm] (a) at (4,0) {\small{m}};
+				
+				%mola
+				\draw[decoration={aspect=0.3, segment length=4mm, amplitude=1.0mm,coil},decorate] (0,0) -- (a); 
+				
+				%vetores
+				\draw[line width=2pt,color=red,->] (a) -- ($(a)-(1,0)$) node [above,midway] {$\vec{F}_{R}$};
+				
+				%deslocamento
+				\draw[line width=1pt,<->] (2.5,-1.25) -- (4,-1.25) node[above,midway] {$x_{m}$};
+				
+				%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+				%sistema 2
+				
+				%transformacao coordenadas
+				\def\ta{2}
+				
+				%parede
+				\fill [pattern = north west lines] (-0.2,-0.45+\ta) rectangle (0,1+\ta);
+				\draw (0,-0.45+\ta) -- (0,1+\ta);
+				
+				%chao
+				\draw (0,-0.45+\ta) -- (5,-0.45+\ta);
+				
+				%equilibrio
+				\draw[dashed] (2.5,-0.45) -- (2.5,1+\ta);
+				
+				% bloco
+				\node[rectangle,fill=gray,inner sep=3.5mm] (a) at (2.5,0+\ta) {\small{m}};
+				
+				%mola
+				\draw[decoration={aspect=0.3, segment length=2mm, amplitude=2.5mm,coil},decorate] (0,0+\ta) -- (a); 
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Sistema massa-mola.}
+			\end{figure}		
+		\end{column}
+	\end{columns}
+	\begin{block}{Força restauradora ($\vec{F}_R$)}
+		Obriga o sistema retornar para a posição de equilíbrio.
+	\end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Lei de Hooke}
+	\begin{columns}[c]
+		\begin{column}{0.4\textwidth}
+			\begin{figure}[c]
+				%\input{tikz/lei-hooke.pgf}
+				\begin{tikzpicture}[scale=0.5, auto, transform shape, samples=50]
+				
+				%eixos
+				\draw[line width=1.0pt,->] (-4,0) -- (4,0) node[right] {$x$};
+				\draw[line width=1.0pt,->] (0,-4) -- (0,4) node[above] {$a$};
+				
+				%curva
+				\pgfmathdeclarefunction{ff}{1}{\pgfmathparse{-1*#1}}
+				
+				%curva
+				\draw[line width=1.5pt,domain=-3:3,variable=\x,color=red] plot (\x,{ff(\x)});
+				
+				%angulo
+				\draw[line width=1pt,->] (1,0) arc (0:125:1) node[above,midway] {$\alpha$};
+				
+				%texto
+				\node at (2,2) {$Tg\left(\alpha\right) = -\frac{k}{m}$};
+				\node at (3,0) [above] {$x_m$};
+				\node at (-3,0) [below] {$-x_m$};
+				
+				%coordenadas
+				\draw [dashed] (-3,0) -- (-3,{ff(-3)});
+				\draw [dashed] (3,0) -- (3,{ff(3)});
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Aceleração a em função do deslocamento x.}
+			\end{figure}
+		\end{column}
+		\begin{column}{0.6\textwidth}
+			\begin{itemize}
+				\item k: constante elástica (depende das propriedades do material);
+				\item Se $x_{0}=0$, pela Lei de Hooke $\vec{F}=-k\vec{x}$.
+			\end{itemize}
+			\begin{align*}
+				\vec{F} & = m\vec{a},\\
+				\vec{a} & = -\frac{k}{m}\vec{x}.
+			\end{align*}
+			\begin{corollary}
+				A aceleração do objeto e a força restauradora possuem sentidos contrários ao deslocamento.
+			\end{corollary}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Movimento harmônico simples (MHS)}
+	\begin{columns}[c]
+		\begin{column}{0.5\textwidth}
+			\begin{figure}[c]
+				%\input{tikz/sistema-massa-mola3.pgf}
+				\begin{tikzpicture}[scale=0.55,transform shape]
+				
+				%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+				
+				%sistema 2
+				
+				%transformacao coordenadas
+				\def\ta{0}
+				\def\tb{6}
+				
+				%parede
+				\fill [pattern = north west lines] (-0.2+\ta,-0.4+\tb) rectangle (0+\ta,1+\tb);
+				\draw (0+\ta,-0.45+\tb) -- (0+\ta,1+\tb);
+				
+				%chao
+				\draw (0+\ta,-0.45+\tb) -- (5+\ta,-0.45+\tb);
+				
+				%posicoes
+				\node[below] at (2.5+\ta,-0.45+\tb) {$x_{0}=0$};
+				\node[below] at (1+\ta,-0.45+\tb) {$-x_{m}$};
+				\node[below] at (4+\ta,-0.45+\tb) {$x_{m}$};
+				
+				\draw[dashed] (2.5+\ta,-0.45+\tb) -- (2.5+\ta,1+\tb);
+				
+				% bloco
+				\node[rectangle,fill=gray,inner sep=3.5mm] (a) at (4+\ta,0+\tb) {\small{m}};
+				
+				%mola
+				\draw[decoration={aspect=0.3, segment length=4mm, amplitude=0.5mm,coil},decorate] (0+\ta,0+\tb) -- (a);
+				
+				%vetores
+				\draw[line width=1pt,color=red,->] (a) -- ($(a)-(1.5,0)$) node [above,midway] {$\vec{F}_R$};
+				\draw[line width=1pt,color=red,->] (a) -- ($(a)+(1,0)$) node [above,midway] {$\vec{x}$};
+				
+				%tempo
+				\node[above] at (4+\ta,0.75+\tb) {$t=0\;\textrm{seg}$};
+				
+				%seta
+				\draw[->,line width=1.5pt,color=blue] (5.25+\ta,\tb) --++ (0.5,0);
+				
+				%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+				%sistema 3
+				
+				%transformacao coordenadas
+				\def\ta{6}
+				\def\tb{6}
+				
+				%parede
+				\fill [pattern = north west lines] (-0.2+\ta,-0.45+\tb) rectangle (\ta,1+\tb);
+				\draw (\ta,-0.45+\tb) -- (\ta,1+\tb);
+				
+				%chao
+				\draw (\ta,-0.45+\tb) -- (5+\ta,-0.45+\tb);
+				
+				%posicoes
+				\node[below] at (2.5+\ta,-0.45+\tb) {$x_{0}=0$};
+				\node[below] at (1+\ta,-0.45+\tb) {$-x_{m}$};
+				\node[below] at (4+\ta,-0.45+\tb) {$x_{m}$};
+				
+				\draw[dashed] (2.5+\ta,-0.45+\tb) -- (2.5+\ta,1+\tb);
+				
+				% bloco
+				\node[rectangle,fill=gray,inner sep=3.5mm] (a) at (2.5+\ta,0+\tb) {\small{m}};
+				
+				%mola
+				\draw[decoration={aspect=0.3, segment length=2mm, amplitude=1.0mm,coil},decorate] (\ta,0+\tb) -- (a); 
+				
+				%vetores
+				\draw[line width=1pt,color=red,->] (a) -- ($(a)-(1,0)$) node [above,midway] {$\vec{v}$};
+				
+				%tempo
+				\node[above] at (4+\ta,0.75+\tb) {$t=\frac{T}{4}\;\textrm{seg}$};
+				
+				%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+				
+				%sistema 4
+				
+				%transformacao coordenadas
+				\def\ta{6}
+				\def\tb{3}
+				
+				%parede
+				\fill [pattern = north west lines] (-0.2+\ta,-0.45+\tb) rectangle (\ta,1+\tb);
+				\draw (\ta,-0.45+\tb) -- (\ta,1+\tb);
+				
+				%chao
+				\draw (\ta,-0.45+\tb) -- (5+\ta,-0.45+\tb);
+				
+				%posicoes
+				\node[below] at (2.5+\ta,-0.45+\tb) {$x_{0}=0$};
+				\node[below] at (1+\ta,-0.45+\tb) {$-x_{m}$};
+				\node[below] at (4+\ta,-0.45+\tb) {$x_{m}$};
+				
+				\draw[dashed] (2.5+\ta,-0.45+\tb) -- (2.5+\ta,1+\tb);
+				
+				% bloco
+				\node[rectangle,fill=gray,inner sep=3.5mm] (a) at (1+\ta,0+\tb) {\small{m}};
+				
+				%mola
+				\draw[decoration={aspect=0.13, segment length=0.75mm, amplitude=1.0mm,coil},decorate] (\ta,0+\tb) -- (a); 
+				
+				%vetores
+				\draw[line width=1pt,color=red,->] (a) -- ($(a)+(1.5,0)$) node [above,midway] {$\vec{F}_R$};
+				\draw[line width=1pt,color=red,->] (a) -- ($(a)-(1,0)$) node [above,midway] {$\vec{x}$};
+				
+				%tempo
+				\node[above] at (4+\ta,0.75+\tb) {$t=\frac{T}{2}\;\textrm{seg}$};
+				
+				%seta
+				\draw[<-,line width=1.5pt,color=blue] (2.5+\ta,1.25+\tb) --++ (0,0.5);
+				
+				%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+				%sistema 5
+				
+				%transformacao coordenadas
+				\def\ta{0}
+				\def\tb{3}
+				
+				%parede
+				\fill [pattern = north west lines] (-0.2+\ta,-0.45+\tb) rectangle (\ta,1+\tb);
+				\draw (\ta,-0.45+\tb) -- (\ta,1+\tb);
+				
+				%chao
+				\draw (\ta,-0.45+\tb) -- (5+\ta,-0.45+\tb);
+				
+				%posicoes
+				\node[below] at (2.5+\ta,-0.45+\tb) {$x_{0}=0$};
+				\node[below] at (1+\ta,-0.45+\tb) {$-x_{m}$};
+				\node[below] at (4+\ta,-0.45+\tb) {$x_{m}$};
+				
+				\draw[dashed] (2.5+\ta,-0.45+\tb) -- (2.5+\ta,1+\tb);
+				
+				% bloco
+				\node[rectangle,fill=gray,inner sep=3.5mm] (a) at (2.5+\ta,0+\tb) {\small{m}};
+				
+				%mola
+				\draw[decoration={aspect=0.3, segment length=2mm, amplitude=1.0mm,coil},decorate] (\ta,0+\tb) -- (a); 
+				
+				%vetores
+				\draw[line width=1pt,color=red,->] (a) -- ($(a)+(1,0)$) node [above,midway] {$\vec{v}$};
+				
+				%tempo
+				\node[above] at (4+\ta,0.75+\tb) {$t=\frac{3T}{4}\;\textrm{seg}$};
+				
+				%seta
+				\draw[<-,line width=1.5pt,color=blue] (5.25+\ta,\tb) --++ (0.5,0);
+				
+				%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+				
+				%sistema 6
+				
+				%transformacao coordenadas
+				\def\ta{0}
+				\def\tb{0}
+				
+				%parede
+				\fill [pattern = north west lines] (-0.2+\ta,-0.4+\tb) rectangle (0+\ta,1+\tb);
+				\draw (0+\ta,-0.45+\tb) -- (0+\ta,1+\tb);
+				
+				%chao
+				\draw (0+\ta,-0.45+\tb) -- (5+\ta,-0.45+\tb);
+				
+				%posicoes
+				\node[below] at (2.5+\ta,-0.45+\tb) {$x_{0}=0$};
+				\node[below] at (1+\ta,-0.45+\tb) {$-x_{m}$};
+				\node[below] at (4+\ta,-0.45+\tb) {$x_{m}$};
+				
+				\draw[dashed] (2.5+\ta,-0.45+\tb) -- (2.5+\ta,1+\tb);
+				
+				% bloco
+				\node[rectangle,fill=gray,inner sep=3.5mm] (a) at (4+\ta,0+\tb) {\small{m}};
+				
+				%mola
+				\draw[decoration={aspect=0.3, segment length=4mm, amplitude=0.5mm,coil},decorate] (0+\ta,0+\tb) -- (a);
+				
+				%vetores
+				\draw[line width=1pt,color=red,->] (a) -- ($(a)-(1.5,0)$) node [above,midway] {$\vec{F}_R$};
+				\draw[line width=1pt,color=red,->] (a) -- ($(a)+(1,0)$) node [above,midway] {$\vec{x}$};
+				
+				%tempo
+				\node[above] at (4+\ta,0.75+\tb) {$t=T\;\textrm{seg}$};
+				
+				%seta
+				\draw[<-,line width=1.5pt,color=blue] (2.5+\ta,1.25+\tb) --++ (0,0.5);
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Quatro etapas de um ciclo completo do MHS.}
+			\end{figure}		
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\begin{itemize}
+				\footnotesize
+				\item Amplitude $(x_{m})$: Máximo deslocamento da mola;
+				\item Período (T): Tempo de cada ciclo;
+				\item Frequência (f): Núm. de ciclos por segundo.
+			\end{itemize}
+			\begin{corollary}
+				Na ausência de atrito, o objeto realiza por tempo infinito um \alert{M}ovimento \alert{H}armônico \alert{S}imples (MHS) a uma frequência de f ciclos por unidade de tempo,
+				\begin{equation*}
+					f = \frac{1}{T}.
+				\end{equation*}
+			\end{corollary}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Sistema massa-mola e movimento circular uniforme (MCU)}
+	\begin{columns}[c]
+		\begin{column}[c]{0.6\textwidth}
+			\begin{figure}[c]
+				%\input{tikz/mhs-movimento-circular.pgf}
+				\begin{tikzpicture}[scale=0.3, transform shape, font=\huge]
+				
+				%eixos
+				\draw[line width=1.0pt,->] (-5,0) -- (5,0) node[right] {$x$};
+				\draw[line width=1.0pt,->] (0,-5) -- (0,5) node[right] {};
+				
+				%circunferencia
+				\draw[line width=1pt,-stealth] (4,0) arc (0:180:4cm);
+				\draw[line width=1pt,-stealth] (-4,0) arc (180:360:4cm);
+				
+				%pontos
+				\filldraw[black] (0,0) circle (2pt) node[anchor=north east] {O};
+				\filldraw[black] (0,0) --++ (45:4) circle (2pt) node[anchor=south west] {};
+				
+				%coordenadas
+				\coordinate (c1) at ({4*cos(45)},0);
+				
+				%vetores
+				\draw[black] (0,0) --++ (45:4);
+				\draw[line width=1pt,red] (45:4) --++ (225:4) node [anchor=south east,midway]  {$x_{m}$};
+				\draw[line width=1pt,red] (0,0) --++ (c1) node [below,midway]  {$x(t)$};
+				
+				%arcos
+				\draw[line width=0.5pt,->] (1.5,0) arc (0:45:1.5cm) node [right=0.1cm,midway] {$\theta$};
+				
+				%linguica
+				\draw[black,dashed] (45:4) -- (c1);
+				
+				%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+				%sistema 1
+				
+				%transformacao coordenadas
+				\def\ta{7}
+				\def\tb{0}
+				
+				%parede
+				\fill [pattern = north west lines] (-0.2+\ta,-0.45+\tb) rectangle (\ta,1+\tb);
+				\draw (\ta,-0.45+\tb) -- (\ta,1+\tb);
+				
+				%chao
+				\draw (\ta,-0.45+\tb) -- (6+\ta,-0.45+\tb);
+				
+				%posicoes
+				\node[below] at (3+\ta,-0.45+\tb) {$0$};
+				\node[below] at (1+\ta,-0.45+\tb) {$-x_{m}$};
+				\node[below] at (5+\ta,-0.45+\tb) {$x_{m}$};
+				
+				% bloco
+				\node[rectangle,fill=gray,inner sep=3.5mm] (a) at (5+\ta,0+\tb) {\small{m}};
+				
+				%mola
+				\draw[decoration={aspect=0.3, segment length=2mm, amplitude=0.5mm,coil},decorate] (\ta,0+\tb) -- (a); 
+				
+				%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+				%sistema 2
+				
+				%transformacao coordenadas
+				\def\ta{-3}
+				\def\tb{7}
+				
+				%parede
+				\fill [pattern = north west lines] (-0.2+\ta,-0.45+\tb) rectangle (\ta,1+\tb);
+				\draw (\ta,-0.45+\tb) -- (\ta,1+\tb);
+				
+				%chao
+				\draw (\ta,-0.45+\tb) -- (6+\ta,-0.45+\tb);
+				
+				%posicoes
+				\node[below] at (3+\ta,-0.45+\tb) {$0$};
+				\node[below] at (1+\ta,-0.45+\tb) {$-x_{m}$};
+				\node[below] at (5+\ta,-0.45+\tb) {$x_{m}$};
+				
+				% bloco
+				\node[rectangle,fill=gray,inner sep=3.5mm] (a) at (3+\ta,0+\tb) {\small{m}};
+				
+				%mola
+				\draw[decoration={aspect=0.3, segment length=1mm, amplitude=1mm,coil},decorate] (\ta,0+\tb) -- (a); 
+				
+				%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+				%sistema 3
+				
+				%transformacao coordenadas
+				\def\ta{-12}
+				\def\tb{0}
+				
+				%parede
+				\fill [pattern = north west lines] (-0.2+\ta,-0.45+\tb) rectangle (\ta,1+\tb);
+				\draw (\ta,-0.45+\tb) -- (\ta,1+\tb);
+				
+				%chao
+				\draw (\ta,-0.45+\tb) -- (6+\ta,-0.45+\tb);
+				
+				%posicoes
+				\node[below] at (3+\ta,-0.45+\tb) {$0$};
+				\node[below] at (1+\ta,-0.45+\tb) {$-x_{m}$};
+				\node[below] at (5+\ta,-0.45+\tb) {$x_{m}$};
+				
+				% bloco
+				\node[rectangle,fill=gray,inner sep=3.5mm] (a) at (1+\ta,0+\tb) {\small{m}};
+				
+				%mola
+				\draw[decoration={aspect=0.3, segment length=0.5mm, amplitude=1mm,coil},decorate] (\ta,0+\tb) -- (a); 
+				
+				%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+				%sistema 4
+				
+				%transformacao coordenadas
+				\def\ta{-3}
+				\def\tb{-7}
+				
+				%parede
+				\fill [pattern = north west lines] (-0.2+\ta,-0.45+\tb) rectangle (\ta,1+\tb);
+				\draw (\ta,-0.45+\tb) -- (\ta,1+\tb);
+				
+				%chao
+				\draw (\ta,-0.45+\tb) -- (6+\ta,-0.45+\tb);
+				
+				%posicoes
+				\node[below] at (3+\ta,-0.45+\tb) {$0$};
+				\node[below] at (1+\ta,-0.45+\tb) {$-x_{m}$};
+				\node[below] at (5+\ta,-0.45+\tb) {$x_{m}$};
+				
+				% bloco
+				\node[rectangle,fill=gray,inner sep=3.5mm] (a) at (3+\ta,0+\tb) {\small{m}};
+				
+				%mola
+				\draw[decoration={aspect=0.3, segment length=1mm, amplitude=1mm,coil},decorate] (\ta,0+\tb) -- (a); 
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Representação das quatro etapas do MHS no MCU.}
+			\end{figure}		
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			Se $\theta=\omega t$, onde $\omega$ é a velocidade angular, a projeção de x(t) no eixo x é dado por
+			\begin{align*}
+				x(t) &= x_{m}cos\left(\theta\right),\\
+				x(t) &= x_{m}cos\left(\omega t\right).
+			\end{align*}
+			Onde pelo MCU sabemos que
+			\begin{align*}
+				\Aboxed{\omega = 2\pi f = \frac{2\pi}{T}.}
+			\end{align*}
+		\end{column}
+	\end{columns}	
+\end{frame}
+
+\begin{frame}{Defasagem}
+content...
+\end{frame}
+
+\begin{frame}{Solução do MHS a partir da segunda lei de Newton}
+%	\begin{multicols}{2}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			Aplicando a segunda lei de Newton para o sistema massa-mola onde $x_0=0$
+			\begin{align*}
+				F & = -kx,\\
+				m\frac{d^2x}{dt^2} & = -kx,
+			\end{align*}
+			Vemos que uma solução para a equação acima seria uma função do tipo $x(t)=x_m\cos(\omega t+\phi)$, onde $\phi$ é a defasagem,
+			\begin{align*}
+				\frac{dx}{dt} & = -\omega\sin(\omega t+\phi),
+			\end{align*}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{align*}
+				\frac{d^2x}{dt^2} = -\omega^2 x_m\cos(\omega t+\phi),
+			\end{align*}
+			Substituindo teremos
+			\begin{align*}
+				-m\omega^2\bcancel{x_m}\bcancel{\cos(\omega t+\phi)} & =-\bcancel{x_m}k\bcancel{\cos(\omega t+\phi)}.
+			\end{align*}
+			Vemos que a equação acima é verdadeira somente se
+			\begin{align*}
+				\Aboxed{\omega=\sqrt{\frac{k}{m}}.}
+			\end{align*}
+		\end{column}
+	\end{columns}
+%	\end{multicols}
+\end{frame}
+
+\begin{frame}[fragile]{Funções horárias do MHS}
+	\begin{columns}
+		\begin{column}[c]{0.45\textwidth}
+			Derivando $x(t)$ teremos
+			\begin{align*}
+				x(t) & = x_m\cos(\omega t+\phi),\\
+				\frac{dx}{dt} & = v(t) = v_m\sin(\omega t+\phi),\\
+				\frac{d^2x}{dt^2} & = a(t) = a_m\cos(\omega t+\phi).
+			\end{align*}
+			Comparando as amplitudes das funções seno e cosseno com os valores obtidos das derivadas, podemos concluir que $v_m=\omega x_m$ e $a_m=\omega^2 x_m$.
+		\end{column}
+		\begin{column}[c]{0.55\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.24, transform shape, samples=60,font=\Large]
+				
+				\tkzInit[xmin=-7,xmax=22,ymin=-18,ymax=2.75]
+				\tkzClip				
+
+				%parametros gerais
+				\def\xm{1.2}
+				\def\ta{3.14}
+				\def\t{-7}
+				\def\tt{2*\t}
+				\def\om{1.5}
+				\def\tx{2}
+				
+				%definindo funcao
+				\pgfmathdeclarefunction{ff}{1}{\pgfmathparse{\xm*cos(deg(#1))}}
+				\pgfmathdeclarefunction{dff}{1}{\pgfmathparse{\t-\om*\xm*sin(deg(#1))}}
+				\pgfmathdeclarefunction{ddff}{1}{\pgfmathparse{\tt-\om*\xm*\xm*cos(deg(#1))}}
+				
+				%eixo
+				\draw[line width=1.0pt,->] (0,-{(\xm+1)}) -- (0,{(\xm+1)}) node[above] {x(t)};
+				\draw[line width=1.0pt,->] (0,0) -- (6.5*\ta,0) node[right] {t (1/T)};
+				
+				%curva
+				\draw[line width=1.0pt,domain=0:6*\ta,variable=\x,color=red] plot (\x,{ff(\x)});
+				
+				%circunferencia
+				\draw[line width=1pt,-stealth] (-1*\tx,0) arc (0:180:\xm);
+				\draw[line width=1pt,-stealth] (-\tx-2*\xm,0) arc (180:360:\xm);
+				
+				%pontos
+				\filldraw[black] (0,0) circle (2pt) node[anchor=north east] {O};
+				\filldraw[black] (-\tx-\xm,0) --++ (90:\xm) circle (2pt) node (cx) {};
+				\filldraw[green] (90:\xm) -- (90:\xm) circle (2pt) node (x1) {};
+				
+				\draw[line width=1pt,color=green] (cx) -- (x1);
+				
+				%coordenadas
+				\node[above left] at (0,\xm) {$x_{m}$};
+				\node[above left] at (0,-\xm) {$-x_{m}$};
+				
+				%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+				%		grafico 2
+				
+				%eixo
+				\draw[line width=1.0pt,->] (0,{-(\om*\xm+1)+\t}) -- (0,{(\om*\xm+1)+\t}) node[above] {v(t)};
+				\draw[line width=1.0pt,->] (0,\t) -- (6.5*\ta,\t) node[right] {t (1/T)};
+				
+				%curva
+				\draw[line width=1.0pt,domain=0:6*\ta,variable=\x,color=red] plot (\x,{dff(\x)});
+				
+				%circunferencia
+				\draw[line width=1pt,-stealth] (-\tx,\t) arc (0:180:\om*\xm);
+				\draw[line width=1pt,-stealth] (-2*\om*\xm-\tx,\t) arc (180:360:\om*\xm);
+				
+				%pontos
+				\filldraw[black] (0,\t) circle (2pt) node[anchor=north east] {O};
+				\filldraw[black] (-\om*\xm-\tx,\t) -- (-\tx,\t) circle (2pt) node (cx) {};
+				\filldraw[green] (0,\t) -- (0,\t) circle (2pt) node (x1) {};
+				
+				\draw[line width=1pt,color=green] (cx) -- (x1);
+				
+				%coordenadas
+				\node[above left] at (0,\om*\xm+\t) {$\omega x_{m}$};
+				\node[above left] at (0,-\om*\xm+\t) {$-\omega x_{m}$};
+				
+				%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+				%		grafico 3
+				
+				%eixo
+				\draw[line width=1.0pt,->] (0,{-(\om*\xm*\xm+1)+\tt}) -- (0,{(\om*\xm*\xm+1)+\tt}) node[above] {a(t)};
+				\draw[line width=1.0pt,->] (0,\tt) -- (6.5*\ta,\tt) node[right] {t (1/T)};
+				
+				%curva
+				\draw[line width=1.0pt,domain=0:6*\ta,variable=\x,color=red] plot (\x,{ddff(\x)});
+				
+				%posicoes
+				\foreach \x in {0.5,1,...,6}
+				\node[below left]  at (\ta*\x,\tt) {$\x\pi$};
+				
+				\foreach \x in {0.5,1,...,6}
+				\draw[dashed] (\ta*\x,{ddff(\ta*\x)}) -- (\ta*\x,{ff(\ta*\x)});
+				
+				%circunferencia
+				\draw[line width=1pt,-stealth] (-\tx,\tt) arc (0:180:\om*\xm*\xm);
+				\draw[line width=1pt,-stealth] (-2*\om*\xm*\xm-\tx,\tt) arc (180:360:\om*\xm*\xm);
+				
+				%pontos
+				\filldraw[black] (0,\tt) circle (2pt) node[anchor=north east] {O};
+				\filldraw[black] (-\om*\xm*\xm-\tx,\tt) -- (-\om*\xm*\xm-\tx,\tt-\om*\xm*\xm) circle (2pt) node (cx) {};
+				\filldraw[green] (0,\tt-\om*\xm*\xm) -- (0,\tt-\om*\xm*\xm) circle (2pt) node (x1) {};
+				
+				\draw[line width=1pt,color=green] (cx) -- (x1);
+				
+				%coordenadas
+				\node[above left] at (0,\om*\xm*\xm+\tt) {$\omega^{2} x_{m}$};
+				\node[above left] at (0,-\om*\xm*\xm+\tt) {$-\omega^{2} x_{m}$};
+				
+				%ciclos
+				\draw[line width=1pt,<->] (0,-\om*\xm*\xm+\tt-1) -- (2*\ta,-\om*\xm*\xm+\tt-1) node [above,midway] {Primeiro ciclo};
+				\draw[line width=1pt,<->] (2*\ta,-\om*\xm*\xm+\tt-1) -- (4*\ta,-\om*\xm*\xm+\tt-1) node [above,midway] {Segundo ciclo};
+				\draw[line width=1pt,<->] (4*\ta,-\om*\xm*\xm+\tt-1) -- (6*\ta,-\om*\xm*\xm+\tt-1) node [above,midway] {Terceiro ciclo};
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Funções horárias no MHS.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Pêndulo simples}
+	\begin{columns}[c]
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}[c]
+				\centering
+				\begin{tikzpicture}[scale=1, transform shape]
+				
+				%transformacao coordenadas
+				\def\ta{0}
+				\def\tb{0}
+				
+				%parede
+				\fill [pattern = north west lines] (1,0.2) rectangle (-1,0);
+				\draw (-1,0) -- (1,0);
+				
+				%normal
+				\draw[dashed] (0,0) -- (0,-3/cos{30}) node [left,midway] {L};
+				
+				%massa
+				\filldraw (0,0) --++ (-60:3) circle (3pt) node (m) {};
+				
+				%angulos
+				\draw[line width=1pt,->] (0,-0.5) arc (-90:-60:0.5) node [below,midway] {$\theta$};
+				\draw[line width=1pt,->] ($(m)+(0,-0.5)$) arc (-90:-60:0.5) node [below,midway] {$\theta$};
+				
+				
+				\draw[dashed] (m) --++ (-60:1);
+				
+				%trajetoria
+				\draw[line width=1pt,<->] (m) arc (-60:-120:3);
+				
+				\draw[line width=1pt,dotted] (m) -- (0,-3/cos{30}) node[below right,midway] {x};
+
+				%vetores
+				\draw[line width=1pt,color=red,->] (m) -- ($(m)-(0,1)$) node[below] {$\vec{P}$};
+				\draw[line width=1pt,color=red,->] (m) --++ (-60:-1) node[right] {$\vec{T}$};
+				\draw[line width=1pt,color=red,->] (m) -- (0,-3/cos{30}) node[below] {$\vec{F}$};
+				
+				%eixos
+				\node (c) at (-45:3) {};
+				\node (cx) at (-53:3) {};
+				\draw[color=blue,->] ($(c)+(-45:0.5)$) --++ (-60:-1) node[above] {$y$};
+				\draw[color=blue,->] (cx) --++ (-150:-1) node[right] {$x$};
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Pêndulo simples.}
+				%\input{tikz/pendulo-simples.pgf}
+			\end{figure}
+		\end{column}
+		\begin{column}[c]{0.6\textwidth}
+			Considere uma partícula presa ao teto por um fio de comprimento L, se $\theta\ll 1$ temos $sen\left(\theta\right)\approx \theta$. Pela figura identificamos $\sin\theta=\frac{x}{L}$, portanto
+			\begin{align*}
+				F & = -mgsen\left(\theta\right)\\
+				\bcancel{m}\frac{d^2x}{dt^2} & = -\bcancel{m}\frac{g}{L}x
+			\end{align*}
+			Resolvendo a equação de maneira análoga ao sistema massa-mola teremos
+			\[\boxed{\omega = \sqrt{\frac{g}{L}}}\]
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Pêndulo físico}
+\begin{columns}[c]
+	\begin{column}[c]{0.4\textwidth}
+		\begin{figure}[c]
+			\centering
+			\begin{tikzpicture}[scale=1, transform shape]
+			
+			%transformacao coordenadas
+			\def\ta{0}
+			\def\tb{0}
+			
+			%corpo rigido
+			\draw[color=green,line width=1pt] (0,0) .. controls (-45:2) and (-30:3) .. (-60:4);
+			\draw[color=green,line width=1pt] (0,0) .. controls (-75:2) and (-90:3) .. (-60:4);
+			
+			%parede
+			\fill [pattern = north west lines] (1,0.2) rectangle (-1,0);
+			\draw (-1,0) -- (1,0);
+			
+			%normal
+			\draw[dashed] (0,0) -- (0,-3/cos{30}) node [left,midway] {L};
+			
+			%massa
+			\filldraw (0,0) --++ (-60:3) circle (3pt) node (m) {};
+			
+			%angulos
+			\draw[line width=1pt,->] (0,-0.5) arc (-90:-60:0.5) node [below,midway] {$\theta$};
+			\draw[line width=1pt,->] ($(m)+(0,-0.5)$) arc (-90:-60:0.5) node [below,midway] {$\theta$};
+			
+			
+			\draw[dashed] (m) --++ (-60:1);
+			
+			%trajetoria
+			\draw[line width=1pt,<->] (m) arc (-60:-120:3);
+			
+			\draw[line width=1pt,dotted] (m) -- (0,-3/cos{30}) node[below right,midway] {x};
+			
+			%vetores
+			\draw[line width=1pt,color=red,->] (m) -- ($(m)-(0,1)$) node[below] {$\vec{P}$};
+			\draw[line width=1pt,color=red,->] (m) --++ (-60:-1) node[right] {$\vec{T}$};
+			\draw[line width=1pt,color=red,->] (m) -- (0,-3/cos{30}) node[below] {$\vec{F}$};
+			
+			\end{tikzpicture}
+			\caption*{\footnotesize Corpo rígido de massa m girando em torno de um ponto fixo.}
+			%\input{tikz/pendulo-simples.pgf}
+		\end{figure}
+	\end{column}
+	\begin{column}[c]{0.6\textwidth}
+		Considere um objeto cujo centro de massa está localizado a uma distância r do eixo de rotação, o torque atuando nele é dado por
+		\begin{align*}
+			\vec{\tau} & = \vec{r}\times \vec{P},\\
+			\tau & = -rP\sin\theta.
+		\end{align*}
+		Se $\theta \ll 1$ podemos dizer que $\sin\theta \approx \theta$, ou seja,
+		\begin{align*}
+			\tau & = -mgr\sin\theta,\\
+			\tau & \approx -mgr\theta.
+		\end{align*}
+	\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Pêndulo físico (continuação)}
+\begin{columns}[c]
+	\begin{column}[c]{0.4\textwidth}
+		\begin{figure}[c]
+			\centering
+			\begin{tikzpicture}[scale=1, transform shape]
+			
+			%transformacao coordenadas
+			\def\ta{0}
+			\def\tb{0}
+			
+			%corpo rigido
+			\draw[color=green,line width=1pt] (0,0) .. controls (-45:2) and (-30:3) .. (-60:4);
+			\draw[color=green,line width=1pt] (0,0) .. controls (-75:2) and (-90:3) .. (-60:4);
+			
+			%parede
+			\fill [pattern = north west lines] (1,0.2) rectangle (-1,0);
+			\draw (-1,0) -- (1,0);
+			
+			%normal
+			\draw[dashed] (0,0) -- (0,-3/cos{30}) node [left,midway] {L};
+			
+			%massa
+			\filldraw (0,0) --++ (-60:3) circle (3pt) node (m) {};
+			
+			%angulos
+			\draw[line width=1pt,->] (0,-0.5) arc (-90:-60:0.5) node [below,midway] {$\theta$};
+			\draw[line width=1pt,->] ($(m)+(0,-0.5)$) arc (-90:-60:0.5) node [below,midway] {$\theta$};
+			
+			
+			\draw[dashed] (m) --++ (-60:1);
+			
+			%trajetoria
+			\draw[line width=1pt,<->] (m) arc (-60:-120:3);
+			
+			\draw[line width=1pt,dotted] (m) -- (0,-3/cos{30}) node[below right,midway] {x};
+			
+			%vetores
+			\draw[line width=1pt,color=red,->] (m) -- ($(m)-(0,1)$) node[below] {$\vec{P}$};
+			\draw[line width=1pt,color=red,->] (m) --++ (-60:-1) node[right] {$\vec{T}$};
+			\draw[line width=1pt,color=red,->] (m) -- (0,-3/cos{30}) node[below] {$\vec{F}$};
+			
+			\end{tikzpicture}
+			\caption*{\footnotesize Pêndulo simples.}
+			%\input{tikz/pendulo-simples.pgf}
+		\end{figure}
+	\end{column}
+	\begin{column}[c]{0.6\textwidth}
+		Porém, sabemos também que o torque é dado por $\tau=I\alpha$, onde $I$ é o momento de inércia do objeto. Temos assim
+		\begin{align*}
+		I\alpha & = -mgr\theta,\\
+		I\frac{d^2\theta}{dt^2} & = -mgr\theta.
+		\end{align*}
+		Temos assim uma equação idêntica ao sistema massa-mola, na variável $\theta$, onde teremos
+		\begin{align*}
+			\Aboxed{\omega = \sqrt{\frac{mgr}{I}}.}
+		\end{align*}
+	\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Pêndulo de torção}
+	\begin{columns}[c]
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}[c]
+				\centering
+				\caption*{\footnotesize Pêndulo de torção.}
+				%\input{tikz/pendulo-simples.pgf}
+			\end{figure}
+		\end{column}
+		\begin{column}[c]{0.6\textwidth}
+			Considere um disco circular de momento de inércia $I$, torcendo o disco por um ângulo $\theta$ o torque atuando no disco será dado por $\tau = I\alpha$. De maneira análoga ao sistema massa-mola, teremos
+			\begin{align*}
+				\tau = -\kappa\theta,
+			\end{align*}
+			onde $\kappa$ é a constante de torção do disco. Similarmente ao sistema massa-mola, a frequência angular equivale a
+			\begin{align*}
+				\Aboxed{\omega = \sqrt{\frac{\kappa}{I}}.}
+			\end{align*}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\section{Energia do MHS}
+
+\subsection{}
+
+\begin{frame}{Energia potencial no MHS}
+	\begin{columns}[c]
+		\begin{column}[c]{0.5\textwidth}
+			Sabendo que a força é conservativa
+			\begin{align*}
+				U(x) - U(x_{0}) & = -\int^{x}_{x_{0}}\overbracket{F(x)}^{\alert{-kx}}dx\\
+				U(x) - U(x_{0}) & = k\int^{x}_{x_{0}}xdx\\
+				U(x) - U(x_{0}) & = \frac{kx^{2}}{2}-\frac{kx^{2}_{0}}{2}
+			\end{align*}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			Se $x_{0}=0$ \ensuremath{\Rightarrow} $U(0)=0$, portanto
+			\[U(x) = \frac{kx^{2}}{2}\]
+			\begin{block}{Energia potencial elástica do MHS}
+				\[U(t) = \frac{kx^{2}_{m}}{2}cos^{2}\left(\omega t\right)\]
+			\end{block}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Energia cinética no MHS}
+	\begin{columns}[c]
+		\begin{column}[c]{0.5\textwidth}
+			Substituindo a expressão da velocidade
+			\[v(t) = -x_{m}\omega sen\left(\omega t\right)\]
+			na energia cinética
+			\begin{align*}
+				K(t) & = \frac{mv^{2}}{2}\\
+				K(t) & = \frac{m\left(x_{m}\omega sen\left(\omega t\right)\right)^{2}}{2}
+			\end{align*}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+				\[K(t) = \frac{mx^{2}_{m}\omega^{2} sen^{2}\left(\omega t\right)}{2}\]
+				mas $\omega^{2}=\frac{k}{m}$,
+				\[K(t) = \frac{\alert{m}x^{2}_{m}\left(\frac{k}{\alert{m}}\right) sen^{2}\left(\omega t\right)}{2}\]
+			\begin{block}{Energia cinética do MHS}
+				\[K(t) = \frac{kx^{2}_{m}}{2}sen^{2}\left(\omega t\right)\]
+			\end{block}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Energia total no MHS}
+	\begin{columns}[c]
+		\begin{column}[c]{0.5\textwidth}
+	Sabendo que a energia total é
+	\[E=K+U.\]
+	Substituindo K e U,
+	\begin{align*}
+		E & = \frac{kx^{2}_{m}}{2}sen^{2}\left(\omega t\right) + \frac{kx^{2}_{m}}{2}cos^{2}\left(\omega t\right)\\
+		E & = \frac{kx^{2}_{m}}{2}\left[\underbracket{sen^{2}\left(\omega t\right) + cos^{2}\left(\omega t\right)}_ {\alert{1}}\right]
+	\end{align*}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{block}{Energia total no MHS}
+				\[E = \frac{kx^{2}_{m}}{2}\]
+			\end{block}
+		\begin{corollary}
+			\justifying{A energia total do MHS é invariante no tempo, dependendo apenas da constante elástica e da amplitude de oscilação.}
+		\end{corollary}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Energia total no MHS}
+	\begin{figure}[c]
+		\begin{subfigure}[b]{0.45\textwidth}
+			\Centering
+			%\input{tikz/aplicacoes-massa-mola2.pgf}
+			\begin{tikzpicture}[scale=0.75, transform shape]
+
+			%eixos
+			\draw[line width=1.0pt,->] (-4,0) -- (4,0) node[right] {$x$};
+			\draw[line width=1.0pt,->] (0,0) -- (0,5) node[above] {$U(x)$};
+
+			%origem
+			\node[below] at (0,0) {O};
+
+			%parametros
+			\def\k{1}
+			\def\a{2}
+
+			%funcao
+			\pgfmathdeclarefunction{ff}{1}{\pgfmathparse{\k*0.5*(#1)^2}}
+
+			%curva
+			\draw[line width=1.0pt,domain=-(\a+1):\a+1,variable=			\x,color=red,samples=50] plot (\x,{ff(\x)}) node[anchor=south west] {$\frac{1}{2}kx^{2}$};
+
+			%energia total
+			\draw[line width=1pt] (-\a,{ff(-\a)}) -- (\a,{ff(\a)}) node [right] {$E=\frac{1}{2}kx^{2}_{m}$};
+
+			%amplitude
+			\draw[dashed] (-\a,0) -- (-\a,{ff(-\a)});
+			\draw[dashed] (\a,0) -- (\a,{ff(\a)});
+
+			\node[below] at (-\a,0) {$-x_{m}$};
+			\node[below] at (\a,0) {$x_{m}$};
+
+			\end{tikzpicture}
+			\caption*{\footnotesize Energia em função do deslocamento.}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.45\textwidth}
+			\Centering
+			%\input{tikz/aplicacoes-massa-mola3.pgf}
+			\begin{tikzpicture}[scale=1, transform shape]
+			
+			%eixos
+			\draw[line width=1.0pt,->] (0,0) -- (2.2*pi,0) node[right] {$t$};
+			\draw[line width=1.0pt,->] (0,0) -- (0,3) node[above] {};
+			
+			%origem
+			\node[below] at (0,0) {O};
+			
+			%parametros
+			\def\k{pi}
+			\def\a{2}
+			
+			%funcao
+			\pgfmathdeclarefunction{fc}{1}{\pgfmathparse{\a*(cos(deg(#1)))^2}}
+			\pgfmathdeclarefunction{fs}{1}{\pgfmathparse{\a*(sin(deg(#1)))^2}}
+			
+			%curva
+			\draw[line width=1.0pt,domain=0:2*pi,variable=\x,color=red,samples=50] plot (\x,{fc(\x)}) node[below] {U};
+			\draw[line width=1.0pt,domain=0:2*pi,variable=\x,color=red,samples=50,dashed] plot (\x,{fs(\x)}) node[above] {K};
+			
+			%energia total
+			\draw[line width=1pt] (0,{fc(\a)+fs(\a)}) -- (2*pi,{fc(\a)+fs(\a)}) node[above,midway] {E = K+U};
+			
+			%formulas
+			\node at (2,3) {$K=\frac{1}{2}kx^ {2}_{m}sen^{2}\left(\omega t\right)$};
+			\node at (5.5,3) {$U=\frac{1}{2}kx^ {2}_{m}cos^{2}\left(\omega t\right)$};
+			
+			\end{tikzpicture}
+			\caption*{\footnotesize Energia em função do tempo.}
+		\end{subfigure}
+	\end{figure}
+\end{frame}
+
+\section{Oscilações forçadas}
+
+\subsection{}
+
+\begin{frame}
+
+\end{frame}
+
+\section{Apêndice}
+
+\subsection{}
+
+%\begin{frame}{Transformar um número em notação científica}
+%	\begin{corollary}
+%		\begin{enumerate}[leftmargin=1.75cm]
+%			\item[Passo 1:] Escrever o número incluindo a vírgula.
+%			\item[Passo 2:] Andar com a vírgula até que reste somente um número diferente de zero no lado esquerdo.
+%			\item[Passo 3:] Colocar no expoente da potência de 10 o número de casas decimais que tivemos que "andar" com a vírgula. Se ao andar com a vírgula o valor do número diminuiu, o expoente ficará positivo, se aumentou o expoente ficará negativo.
+%		\end{enumerate}
+%	\end{corollary}
+%	\begin{exampleblock}{Exemplo}
+%		\begin{equation*}
+%			6\; 590\; 000\; 000\; 000\; 000,0 = \SI{6,59e15}{}		
+%		\end{equation*}
+%	\end{exampleblock}
+%\end{frame}
+%
+%\begin{frame}{Conversão de unidades em uma dimensão}
+%	\begin{figure}
+%		\begin{tikzpicture}[scale=0.65,transform shape,font=\Large]
+%		
+%		\tkzInit[xmin=-2,xmax=17,ymin=-6,ymax=3]
+%		%\tkzGrid[color=gray!20]
+%		\tkzClip
+%		
+%		\tikzset{compass style/.append style={->}}
+%		
+%		\foreach \x in {1,2,...,6}{
+%			\tkzDefPoint(\x*3-3,0){\x}
+%			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+%			\node at (\x*3-3,2) {$\times 10^{1}$};
+%			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+%			\node at (\x*3-3,-2) {$\times 10^{-1}$};}
+%		
+%		\tkzDefPoints{-1.5/0/p1,1.5/0/p2,4.5/0/p3,7.5/-0.2/p4,10.5/0/p5,13.5/0/p6,16.5/0/p7}
+%		
+%		\tkzText(p1){m\_}
+%		\tkzText(p2){c\_}
+%		\tkzText(p3){d\_}
+%		\tkzText(p4){\_}
+%		\tkzText(p5){da\_}
+%		\tkzText(p6){h\_}
+%		\tkzText(p7){k\_}
+%		
+%		%exemplos
+%		
+%		\tkzText(3,-3.5){$1\;\text{mm}=1\times 10^{(-1)\times\alert{2}}\;\text{dm}\rightarrow 1\times 10^{-2}\;\text{dm}$}
+%		\tkzText(3.1,-4.5){$2,5\;\text{kg}=2,5\times 10^{(1)\times\alert{6}}\;\text{mg}\rightarrow2,5\times 10^{6}\;\text{mg}$}
+%		\tkzText(2.7,-5.5){$10\;\text{ms}=10\times 10^{(-1)\times\alert{3}}\;\text{s}\rightarrow 10\times 10^{-3}\;\text{s}$}
+%		
+%		\end{tikzpicture}
+%	\end{figure}
+%\end{frame}
+%
+%\begin{frame}{Conversão de unidades em duas dimensões}
+%	\begin{figure}
+%		\begin{tikzpicture}[scale=0.65,transform shape,font=\Large]
+%	
+%		\tkzInit[xmin=-2,xmax=17,ymin=-6,ymax=3]
+%		%\tkzGrid[color=gray!20]
+%		\tkzClip
+%	
+%		\tikzset{compass style/.append style={->}}
+%	
+%		\foreach \x in {1,2,...,6}{
+%			\tkzDefPoint(\x*3-3,0){\x}
+%			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+%			\node at (\x*3-3,2) {$\times 10^{2}$};
+%			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+%			\node at (\x*3-3,-2) {$\times 10^{-2}$};}
+%	
+%		\tkzDefPoints{-1.5/0/p1,1.5/0/p2,4.5/0/p3,7.5/0/p4,10.5/0/p5,13.5/0/p6,16.5/0/p7}
+%	
+%		\tkzText(p1){$\text{m}\_^2$}
+%		\tkzText(p2){$\text{c}\_^2$}
+%		\tkzText(p3){$\text{d}\_^2$}
+%		\tkzText(p4){$\_^2$}
+%		\tkzText(p5){$\text{da}\_^2$}
+%		\tkzText(p6){$\text{h}\_^2$}
+%		\tkzText(p7){$\text{k}\_^2$}
+%	
+%		%exemplos
+%	
+%		\tkzText(3.3,-3.5){$1\;\text{mm}^2=1\times 10^{(-2)\times\alert{2}}\;\text{dm}^2\rightarrow 1\times 10^{-4}\;\text{dm}^2$}
+%		\tkzText(3.6,-4.5){$2,5\;\text{m}^2=2,5\times 10^{(2)\times\alert{3}}\;\text{mm}^2\rightarrow2,5\times 10^{6}\;\text{mm}^2$}
+%		\tkzText(3,-5.5){$10\;\text{ms}^2=10\times 10^{(-2)\times\alert{3}}\;\text{s}^2\rightarrow 10\times 10^{-6}\;\text{s}^2$}
+%	
+%		\end{tikzpicture}
+%	\end{figure}
+%\end{frame}
+%
+%\begin{frame}{Conversão de unidades em três dimensões}
+%	\begin{figure}
+%		\begin{tikzpicture}[scale=0.65,transform shape,font=\Large]
+%	
+%		\tkzInit[xmin=-2,xmax=17,ymin=-6,ymax=3]
+%		%\tkzGrid[color=gray!20]
+%		\tkzClip
+%	
+%		\tikzset{compass style/.append style={->}}
+%	
+%		\foreach \x in {1,2,...,6}{
+%			\tkzDefPoint(\x*3-3,0){\x}
+%			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+%			\node at (\x*3-3,2) {$\times 10^{3}$};
+%			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+%			\node at (\x*3-3,-2) {$\times 10^{-3}$};}
+%	
+%		\tkzDefPoints{-1.5/0/p1,1.5/0/p2,4.5/0/p3,7.5/0/p4,10.5/0/p5,13.5/0/p6,16.5/0/p7}
+%	
+%		\tkzText(p1){$\text{m}\_^3$}
+%		\tkzText(p2){$\text{c}\_^3$}
+%		\tkzText(p3){$\text{d}\_^3$}
+%		\tkzText(p4){$\_^3$}
+%		\tkzText(p5){$\text{da}\_^3$}
+%		\tkzText(p6){$\text{h}\_^3$}
+%		\tkzText(p7){$\text{k}\_^3$}
+%	
+%		%exemplos
+%	
+%		\tkzText(3.3,-3.5){$1\;\text{mm}^3=1\times 10^{(-3)\times\alert{2}}\;\text{dm}^3\rightarrow 1\times 10^{-6}\;\text{dm}^3$}
+%		\tkzText(3.6,-4.5){$2,5\;\text{m}^3=2,5\times 10^{(3)\times\alert{3}}\;\text{mm}^3\rightarrow2,5\times 10^{9}\;\text{mm}^3$}
+%		\tkzText(3.5,-5.5){$2,5\;\text{km}^3=2,5\times 10^{(3)\times\alert{6}}\;\text{mm}^3\rightarrow2,5\times 10^{18}\;\text{mm}^3$}
+%
+%		\end{tikzpicture}
+%	\end{figure}
+%\end{frame}
+%
+%\begin{frame}{Alfabeto grego}
+%	\begin{columns}
+%		\begin{column}[c]{0.5\textwidth}
+%			\begin{table}
+%				\begin{tabular}[c]{ccc}
+%					Alfa & $A$ & $\alpha$\\
+%					Beta & $B$ & $\beta$\\
+%					Gama & $\Gamma$ & $\gamma$\\
+%					Delta & $\Delta$ & $\delta$\\
+%					Epsílon & $E$ & $\epsilon$,$\varepsilon$\\
+%					Zeta & $Z$ & $\zeta$\\
+%					Eta & $H$ & $\eta$\\
+%					Teta & $\Theta$ & $\theta$\\
+%					Iota & $I$ & $\iota$\\
+%					Capa & $K$ & $\kappa$\\
+%					Lambda & $\Lambda$ & $\lambda$\\
+%					Mi & $M$ & $\mu$
+%				\end{tabular}
+%			\end{table}
+%		\end{column}
+%		\begin{column}[c]{0.5\textwidth}
+%			\begin{table}
+%				\begin{tabular}[c]{ccc}
+%					Ni & $N$ & $\nu$\\
+%					Csi & $\Xi$ & $\xi$\\
+%					ômicron & $O$ & $o$\\
+%					Pi & $\Pi$ & $\pi$\\
+%					Rô & $P$ & $\rho$\\
+%					Sigma & $\Sigma$ & $\sigma$\\
+%					Tau & $T$ & $\tau$\\
+%					Ípsilon & $\Upsilon$ & $\upsilon$\\
+%					Fi & $\Phi$ & $\phi$,$\varphi$\\
+%					Qui & $X$ & $\chi$\\
+%					Psi & $\Psi$ & $\psi$\\
+%					Ômega & $\Omega$ & $\omega$
+%				\end{tabular}
+%			\end{table}
+%		\end{column}
+%	\end{columns}
+%\end{frame}
+%
+\begin{frame}{Observações\footnote{Este material está sujeito a modificações. Recomenda-se acompanhamento permanente.}}
+	\begin{center}
+		Esta apresentação está disponível para download no endereço\\
+		\href{https://flavianowilliams.github.io/education}{\textcolor{blue}{https://flavianowilliams.github.io/education}}
+	\end{center}
+\end{frame}
+%
+\begin{frame}{Referências}
+	\bibliographystyle{jurabib}
+	\begin{thebibliography}{9}
+		\bibitem{halliday}D. Halliday, R. Resnick, J. Walker, Fundamentos de física. Mecânica, v.1, 10. ed., Rio de Janeiro, LTC (2016)
+	\end{thebibliography}
+\end{frame}
+
+\end{document}

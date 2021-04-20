@@ -1,0 +1,52 @@
+﻿				\begin{tikzpicture}[scale=1,transform shape,font=\Large]
+				
+				\tkzInit[xmin=0,xmax=12,ymin=0,ymax=6]
+				\tkzGrid[color=gray!20]
+				\tkzClip[space=1]
+				
+				\tkzDefPoints{0/0/O,0/1/y}
+
+				\tkzDrawX[label=x,below,noticks]
+				\tkzDrawY[label=U(x),pos=1.01,above,noticks]
+				
+				\tkzFct[domain=0:12,color=red,line width=1.0pt]{2*exp(-(x-2.5)**2)-2*exp(-(x-5)**2)-3*exp(-(x-8.5)**2)+3}
+				\tkzDefPointByFct(7)\tkzGetPoint{C}
+				
+				\tkzDefPoints{0/4/e1}
+				
+				\tkzDefPointByFct(3.2)\tkzGetPoint{A}
+				\tkzDefLine[orthogonal=through A](O,y)\tkzGetPoint{a}
+				\tkzInterLL(a,A)(O,y)\tkzGetPoint{a1}
+				\draw[dashed,line width=1.0pt,blue] (a1) -- (A) node [left,at start] {$E_1$};
+				\draw[line width=1.0pt,blue] (A) --++ (12,0);
+				\draw[dashed] (A) -- (3.2,0);
+				\tkzText[color=black,below](3.2,0){$x_1$}
+
+				\tkzDefPointByFct(3.85)\tkzGetPoint{A}
+				\tkzDefPointByFct(10.13)\tkzGetPoint{B}
+				\tkzDefLine[orthogonal=through A](O,y)\tkzGetPoint{a}
+				\tkzInterLL(a,A)(O,y)\tkzGetPoint{a1}
+				\draw[dashed,line width=1.0pt,gray] (a1) -- (A) node [left, at start] {$E_2$};
+				\draw[dashed,line width=1.0pt,gray] (B) --++ (12,0);
+				\draw[line width=1.0pt,gray] (A) -- (B);
+				\draw[dashed] (A) -- (3.85,0);
+				\tkzText[color=black,below](3.85,0){$x_2$}
+
+				\tkzDefPointByFct(7.9)\tkzGetPoint{A}
+				\tkzDefPointByFct(9.1)\tkzGetPoint{B}
+				\tkzDefLine[orthogonal=through A](O,y)\tkzGetPoint{a}
+				\tkzInterLL(a,A)(O,y)\tkzGetPoint{a1}
+				\draw[dashed,line width=1.0pt,green] (a1) -- (A) node [left, at start] {$E_2$};
+				\draw[dashed,line width=1.0pt,green] (B) --++ (12,0);
+				\draw[line width=1.0pt,green] (A) -- (B);
+				\draw[dashed] (A) -- (7.9,0);
+				\tkzText[color=black,below](7.9,0){$x_3$}
+				\draw[dashed] (B) -- (9.1,0);
+				\tkzText[color=black,below](9.1,0){$x_4$}
+
+				\tkzDefPoints{7/5.5/t1,8/160/t2}
+
+				\tkzText[text justified,opacity=100,fill=gray!20](t1){E=K+U}
+				\tkzText[color=black](t2){(a)}
+				
+				\end{tikzpicture}

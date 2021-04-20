@@ -1,0 +1,56 @@
+﻿				\begin{tikzpicture}[scale=1,transform shape,font=\large]
+				
+				\tkzInit[xmin=-4,xmax=4,ymin=-4,ymax=4]
+				\tkzGrid[color=gray!20]
+				\tkzClip
+				
+				\tkzDefPoints{2/2/a,-3/-3/b,1/3/c,3/-3/d,3/2/e,-3/3/f}
+				\tkzDefPoints{0/0/l,1/1/g,-1/1/h,0/-1/i,1/-2/j,-1/-1/k}
+
+				%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+				%sistema isolado
+				\tkzDefPointWith[linear, K=.4](l,g)\tkzGetPoint{v1}
+				\draw[->,line width=0.75pt,red] (l) -- (v1);
+				\tkzDefPointWith[linear, K=.4](g,l)\tkzGetPoint{v1'}
+				\draw[->,line width=0.75pt,red] (g) -- (v1');
+
+				\tkzDefPointWith[linear, K=.4](l,h)\tkzGetPoint{v2}
+				\draw[->,line width=0.75pt,red] (l) -- (v2);
+				\tkzDefPointWith[linear, K=.4](h,l)\tkzGetPoint{v2'}
+				\draw[->,line width=0.75pt,red] (h) -- (v2');
+
+				\tkzDefPointWith[linear, K=.4](l,i)\tkzGetPoint{v3}
+				\draw[->,line width=0.75pt,red] (l) -- (v3);
+				\tkzDefPointWith[linear, K=.4](i,l)\tkzGetPoint{v3'}
+				\draw[->,line width=0.75pt,red] (i) -- (v3');
+
+				\tkzDefPointWith[linear, K=.4](k,i)\tkzGetPoint{v3}
+				\draw[->,line width=0.75pt,red] (k) -- (v3);
+				\tkzDefPointWith[linear, K=.4](i,k)\tkzGetPoint{v3'}
+				\draw[->,line width=0.75pt,red] (i) -- (v3');
+				%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+				\tkzDefPointWith[linear, K=.4](a,c)\tkzGetPoint{v4}
+				\draw[->,line width=0.75pt,red] (a) -- (v4);
+				\tkzDefPointWith[linear, K=.4](c,a)\tkzGetPoint{v4'}
+				\draw[->,line width=0.75pt,red] (c) -- (v4');
+
+				\tkzDefPointWith[linear, K=.4](e,a)\tkzGetPoint{v5}
+				\draw[->,line width=0.75pt,red] (e) -- (v5);
+				\tkzDefPointWith[linear, K=.4](a,e)\tkzGetPoint{v5'}
+				\draw[->,line width=0.75pt,red] (a) -- (v5');
+
+				\tkzDrawPoints[size=0.75cm](a,b,c,d,e,f,g,h,i,j,k,l)
+
+				\tkzDefPoints{0/0/O,2/0/O'}
+
+				\tkzDrawCircle[dashed](O,O')
+
+				\tkzDefPointsBy[rotation=center O angle 250](O,O'){p1,p2}
+
+				\tkzDefPoints{-1/-3.5/t1}
+
+				\draw[->,line width=1.0pt] (t1) -- (p2);
+				\tkzText[text centered,opacity=100,fill=gray!20](t1){Sistema isolado}
+
+				\end{tikzpicture}

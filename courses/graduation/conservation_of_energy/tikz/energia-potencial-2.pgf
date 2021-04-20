@@ -1,0 +1,33 @@
+﻿				\begin{tikzpicture}[scale=1,transform shape,font=\large]
+				
+				\tkzInit[xmin=0,xmax=12,ymin=0,ymax=6]
+				\tkzGrid[color=gray!20]
+				\tkzClip[space=1]
+				
+				\tkzDefPoints{0/0/O,0/1/y}
+
+				\tkzDrawX[label=x,below,noticks]
+				\tkzAxeY[label=U(x),pos=1.01,above,noticks]
+				
+				\tkzFct[domain=0:12,color=red,line width=1.0pt]{2*exp(-(x-2.5)**2)-2*exp(-(x-5)**2)-3*exp(-(x-8.5)**2)+3}
+				\tkzDefPointByFct(8.5)\tkzGetPoint{B}
+				\tkzDefPointByFct(11)\tkzGetPoint{C}
+				
+				\tkzDefPoints{0/4.5/e1,3/4.5/A}
+
+				\draw[dashed] (A) -- (3,0) node [black,below] {$x_1$};
+
+				\draw[dashed] (B) -- (8.5,0) node [black,below] {$x_2$};
+				\draw[<->] (8.5,0) -- (8.5,4.5) node [black,right,midway] {K};
+
+				\draw[dashed] (C) -- (11,0) node [black,below] {$x_3$};
+				\draw[<->] (C) -- (11,4.5) node [black,right,midway] {K};
+
+				\draw (e1) --++ (12,0) node [black,above left] {E = 4,5 J};
+				
+				\tkzDefPoints{7/5.5/t1,8/160/t2}
+
+				\tkzText[text justified,opacity=100,fill=gray!20](t1){E=K+U(x)}
+				\tkzText[color=black](t2){(a)}
+				
+				\end{tikzpicture}

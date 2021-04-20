@@ -1,0 +1,817 @@
+% Aula de conservação de energia para o curso de Física I da graduação
+%
+\documentclass[brazil,aspectratio=169]{beamer}
+%
+%carregando preâmbulo
+\input{../../contrib/preamble}
+
+%Título
+
+\title[Mecânica-ECL]{Conservação de energia}
+
+% The main document
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Sumário}
+  \tableofcontents
+\end{frame}
+
+\section{Forças conservativas e dissipativas}
+
+\subsection{}
+
+\begin{frame}{Leis de conservação do movimento}
+	Existem três Leis de conservação no estudo do movimento de um sistema físico:
+	\begin{enumerate}
+		\item [\ding{51}] Lei de conservação da energia: A energia total do sistema físico é invariante ao longo do tempo;
+		\item[\ding{51}] Lei de conservação do momento linear: O momento linear total do sistema físico é invariante mediante translação;
+		\item[\ding{51}] Lei de conservação do momento angular: O momento angular total do sistema físico é invariante mediante rotação.
+	\end{enumerate}
+	\begin{corollary}
+		Todas as Leis de conservação estão diretamente associadas a algum tipo de simetria (tempo, translação ou rotação).
+	\end{corollary}
+\end{frame}
+
+\begin{frame}{Forças dissipativas e conservativas}
+	\begin{enumerate}
+		\item [\ding{51}] Uma força é dissipativa quando o trabalho por ela realizado converte toda ou parte da energia cinética de um objeto em outra forma de energia, que não pode mais ser reaproveitada como energia cinética.
+		\item [\ding{51}] Uma força é conservativa quando o trabalho por ela realizado conserva toda a energia associada a um objeto, sendo reaproveitada novamente na forma de energia cinética.
+	\end{enumerate}
+	\begin{figure}
+		\centering
+		\begin{subfigure}[b]{0.45\textwidth}
+			\centering
+			\includegraphics[scale=0.25]{figuras/atrito.jpg}
+			\caption*{\footnotesize Calor gerado pelo atrito.}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.45\textwidth}
+			\centering
+			\includegraphics[scale=0.17]{figuras/vento.jpg}
+			\caption*{\footnotesize Som gerado pelo vento.}
+		\end{subfigure}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Forças conservativas}
+	\begin{columns}
+		\begin{column}[c]{0.65\textwidth}
+			\begin{enumerate}
+				\item [\ding{51}] Dizemos que uma força é conservativa quando o trabalho por ela realizado entre dois pontos é independente do caminho percorrido;
+				\item[\ding{51}] O trabalho realizado pela força conservativa depende somente de informações da energia nos pontos inicial e final.
+			\end{enumerate}
+			Na figura ao lado, o trabalho realizado pela força durante a trajetória $c_1$ é igual ao trabalho realizado pela força na trajetória $c_2$, $c_3$..., ou seja,
+			\begin{equation*}
+				W_{c_1}=W_{c_2}=W_{c_3}=W_{c_4}=\cdots
+			\end{equation*}
+		\end{column}
+		\begin{column}[c]{0.35\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.45,transform shape,font=\Large]
+				
+				\tkzInit[xmin=0,xmax=8,ymin=0,ymax=8]
+				%\tkzGrid[color=gray!20]
+				\tkzClip[space=1]
+				
+				\tkzDefPoints{2/2/i,7/7/f,1/7/c1,5/5/c2,4/2/c3,7/3/c4,1/6/c5}
+				
+				\tkzDrawX[label=x,right,noticks]
+				\tkzDrawY[label=y,above,noticks]
+				
+				\tkzDrawPoints(i,f)
+				\tkzLabelPoints[below left](i)
+				\tkzLabelPoints[above right](f)
+				
+				\tkzFct[white]{x}
+				\tkzDefPointByFct(2)\tkzGetPoint{A}
+				\tkzDefPointByFct(7)\tkzGetPoint{B}
+				
+				\tkzPointShowCoord[ylabel=$y_i$,xlabel=$x_i$](A)
+				\tkzPointShowCoord[ylabel=$y_f$,xlabel=$x_f$](B)
+				
+				\draw[mid arrow,line width=1.0pt] (i) -- (c5) node [above] {1};
+				\draw[mid arrow,line width=1.0pt] (c5) -- (f);
+				\draw[mid arrow,line width=1.0pt] (i) .. controls (c1) and (c2) .. (f) node [above left,midway] {2};
+				\draw[mid arrow,line width=1.0pt] (i) -- (f) node [above left,midway] {3};
+				\draw[mid arrow,line width=1.0pt] (i) .. controls (c3) and (c4) .. (f) node [above left,midway] {4};
+
+				\end{tikzpicture}
+				\caption*{\footnotesize Diversos caminhos que uma partícula pode ter de i a f.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Trabalho em um caminho fechado}
+	\begin{columns}
+		\begin{column}[c]{0.65\textwidth}
+			Se a partícula decide percorrer um caminho contrário podemos considerar que cada trecho do percurso terá sinal contrário, $d\vec{r}\rightarrow -d\vec{r}$, portanto a integral mudará de sinal,
+			\begin{equation*}
+				\int_{c_1}\vec{F}\cdot d\vec{r}=-\int_{c_2}\vec{F}\cdot d\vec{r}.
+			\end{equation*}
+			Sabendo que o caminho fechado é a combinação de ambos os caminhos, podemos considerar que o trabalho total em um caminho fechado é zero, ou seja,
+			\begin{equation*}
+				\boxed{W = \oint_{c} \vec{F}\cdot d\vec{r} = 0.}
+			\end{equation*}
+		\end{column}
+		\begin{column}[c]{0.35\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.45,transform shape,font=\Large]
+				
+				\tkzInit[xmin=0,xmax=8,ymin=0,ymax=8]
+				%\tkzGrid[color=gray!20]
+				\tkzClip[space=1]
+				
+				\tkzDefPoints{2/2/i,7/7/f,1/7/c1,5/5/c2,4/2/c3,7/3/c4}
+				
+				\tkzDrawX[label=x,right,noticks]
+				\tkzDrawY[label=y,above,noticks]
+				
+				\tkzDrawPoints(i,f)
+				\tkzLabelPoints[below left](i)
+				\tkzLabelPoints[above right](f)
+				
+				\draw[mid arrow,line width=1.0pt] (i) .. controls (c1) and (c2) .. (f) node [above left,midway] {$c_1$};
+				\draw[mid arrow,line width=1.0pt] (f) .. controls (c3) and (c4) .. (i) node [below right,midway] {$-c_2$};
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Caminho c fechado formado pelos caminhos $c_1$ e o inverso de $c_2$.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\section{Energia potencial}
+
+\subsection{}
+
+\begin{frame}{Energia potencial}
+	\begin{multicols}{2}
+		Sabendo que trabalho representa a transformação de algum tipo de energia em energia cinética, ou vice-versa, deve haver uma energia (chamada de energia potencial U) que depende somente da posições i e f, de modo que a variação da energia potencial $\Delta U$ é convertida em energia cinética pela força conservativa, de modo que
+		\begin{equation*}
+			W=\Delta K\Rightarrow\Delta U.
+		\end{equation*}
+		Sabendo que a energia potencial deve diminuir para aumentar a energia cinética, atribuímos um sinal negativo na expressão acima, de modo que
+		\begin{align*}
+			W=\Delta K=-\Delta U.
+		\end{align*}
+		Pela relação entre trabalho, força e deslocamento podemos dizer que
+		\begin{equation*}
+			\boxed{\Delta U = -\int_{c}\vec{F}\cdot d\vec{r}.}
+		\end{equation*}
+	\end{multicols}
+\end{frame}
+
+\begin{frame}{Energia potencial gravitacional}
+	\begin{multicols}{2}
+		Considerando uma partícula de massa m, que se move verticalmente ao longo do eixo y (com o sentido positivo para cima). Quando a partícula se desloca da posição $y_i$ para a posição $y_f$, a força gravitacional $\vec{F}_g=m\vec{g}$ realiza trabalho sobre ela. Podemos determinar a variação da energia potencial $\Delta U$ usando a equação anterior,
+		\begin{align*}
+			\Delta U & =  -\int_{c}\vec{F}\cdot d\vec{r},
+		\end{align*}
+		\begin{align*}
+			\Delta U & = -\int_{y_i}^{y_f}(-mg)dy,\\
+			\Delta U & = mg\int_{y_i}^{y_f}dy,\\
+			\Delta U & = mg(y_f-y_i).
+		\end{align*}
+		Sabendo que $\Delta U=U(y_f)-U(y_i)$ teremos
+		\begin{equation*}
+			\boxed{U(y)=mgy.}
+		\end{equation*}
+	\end{multicols}
+\end{frame}
+
+\begin{frame}{Relação entre altura e energia potencial gravitacional}
+	\begin{columns}
+		\begin{column}[c]{0.6\textwidth}
+			\begin{enumerate}
+				\item [\ding{51}] A energia potencial gravitacional associada a um sistema partícula-Terra depende apenas da posição vertical y da partícula em relação à posição de referência (y=0).
+				\item [\ding{51}] A energia potencial gravitacional é a mesma em qualquer posição em um plano paralelo ao solo, onde y=0;
+				\item[\ding{51}] Na figura ao lado, se não houver atrito, o trabalho realizado sobre o bloco é justamente o trabalho calculado ao longo da trajetória tracejada.
+			\end{enumerate}
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.5,transform shape,font=\Large]
+				
+				\tkzInit[xmin=0,xmax=10,ymin=0,ymax=7]
+				%\tkzGrid[color=gray!20]
+				\tkzClip[space=0.25]
+				
+				%chao
+				\fill [pattern = north west lines] (10,1.75) rectangle (9,2);
+				\draw (9,2) -- (10,2);
+				
+				\fill (0,6) rectangle (1,6.5);
+
+				\draw[dashed,fill=gray!10] (9,6) rectangle (10,6.5);
+				
+				\tkzFct[domain=1:10]{2+4*exp(-(x-1)**2)-2*exp(-(x-3.5)**2)+2*exp(-(x-7)**2)}
+				
+				\draw[dashed] (9.5,6) -- (9.5,2);
+				
+				\draw[->,line width=1.0pt] (9.5,6) --++ (0,-1);
+				\draw[->,line width=1.0pt] (9.5,4) --++ (0,-1);
+				
+				\tkzFct[domain=1.5:2.0,->,line width=0.75pt]{2+4*exp(-(x-1.25)**2)-2*exp(-(x-3.75)**2)+2*exp(-(x-7.25)**2)}
+
+				\tkzFct[domain=2.25:2.75,->,line width=0.75pt]{2+4*exp(-(x-1.25)**2)-2*exp(-(x-3.75)**2)+2*exp(-(x-7.25)**2)}
+
+				\tkzFct[domain=3:4,->,line width=0.75pt]{2.4+4*exp(-(x-1)**2)-2*exp(-(x-3.5)**2)+2*exp(-(x-7)**2)}
+
+				\tkzFct[domain=4.5:5.75,->,line width=0.75pt]{2.4+4*exp(-(x-1)**2)-2*exp(-(x-3.5)**2)+2*exp(-(x-7)**2)}
+
+				\tkzFct[domain=6.5:7.5,->,line width=0.75pt]{2.4+4*exp(-(x-1)**2)-2*exp(-(x-3.5)**2)+2*exp(-(x-7)**2)}
+
+				\tkzFct[domain=7.75:8.5,->,line width=0.75pt]{2.4+4*exp(-(x-1)**2)-2*exp(-(x-3.5)**2)+2*exp(-(x-7)**2)}
+
+				\end{tikzpicture}
+				\caption*{\footnotesize Trajetória realizada por um objeto ao longo de um caminho sinuoso.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\section{Conservação da energia}
+
+\subsection{}
+
+\begin{frame}{Energia mecânica}
+	\begin{multicols}{2}
+		Como foi mostrado anteriormente, (\alert{se não houver forças dissipativas}) teremos $W=\Delta k=-\Delta U$. Substituindo as expressões de $\Delta k$ e $\Delta U$ teremos
+		\begin{align*}
+			\frac{1}{2}mv^2_f-\frac{1}{2}mv^2_i = -(U_f-U_i),
+		\end{align*}
+		Separando todos os termos referentes ao estado inicial i de um lado da equação e os termos referentes ao estado final f do outro lado teremos
+		\begin{equation*}
+			\frac{1}{2}mv^2_i+U_i = \frac{1}{2}mv^2_f+U_f.
+		\end{equation*}
+		Onde podemos associar as energias referentes a cada estado de movimento como uma única energia, chamada \alert{energia total} ou \alert{energia mecânica E},
+		\begin{equation*}
+			\boxed{E = \frac{1}{2}mv^2+U.}
+		\end{equation*}
+	\end{multicols}
+\end{frame}
+
+\begin{frame}[fragile]{Energia mecânica em caminhos fechados}
+	\begin{figure}
+		\begin{subfigure}[b]{0.55\textwidth}
+			\centering
+				\begin{tikzpicture}[scale=0.55,transform shape]
+				
+				%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+				
+				%sistema 2
+				
+				%transformacao coordenadas
+				\def\ta{0}
+				\def\tb{6}
+				
+				%parede
+				\fill [pattern = north west lines] (-0.2+\ta,-0.4+\tb) rectangle (0+\ta,1+\tb);
+				\draw (0+\ta,-0.45+\tb) -- (0+\ta,1+\tb);
+				
+				%chao
+				\draw (0+\ta,-0.45+\tb) -- (5+\ta,-0.45+\tb);
+				
+				%posicoes
+				\node[below] at (2.5+\ta,-0.45+\tb) {$x_{0}=0$};
+				\node[below] at (1+\ta,-0.45+\tb) {$-x_{m}$};
+				\node[below] at (4+\ta,-0.45+\tb) {$x_{m}$};
+				
+				\draw[dashed] (2.5+\ta,-0.45+\tb) -- (2.5+\ta,1+\tb);
+				
+				% bloco
+				\node[rectangle,fill=gray,inner sep=3.5mm] (a) at (4+\ta,0+\tb) {\small{m}};
+				
+				%mola
+				\draw[decoration={aspect=0.3, segment length=4mm, amplitude=0.5mm,coil},decorate] (0+\ta,0+\tb) -- (a);
+				
+				%vetores
+				\draw[line width=1pt,color=red,->] (a) -- ($(a)-(1.5,0)$) node [above,midway] {$\vec{F}_R$};
+				\draw[line width=1pt,color=red,->] (a) -- ($(a)+(1,0)$) node [above,midway] {$\vec{x}$};
+				
+				%tempo
+				\node[above] at (4+\ta,0.75+\tb) {$t=0\;\textrm{seg}$};
+				
+				%seta
+				\draw[->,line width=1.5pt,color=blue] (5.25+\ta,\tb) --++ (0.5,0);
+				
+				%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+				%sistema 3
+				
+				%transformacao coordenadas
+				\def\ta{6}
+				\def\tb{6}
+				
+				%parede
+				\fill [pattern = north west lines] (-0.2+\ta,-0.45+\tb) rectangle (\ta,1+\tb);
+				\draw (\ta,-0.45+\tb) -- (\ta,1+\tb);
+				
+				%chao
+				\draw (\ta,-0.45+\tb) -- (5+\ta,-0.45+\tb);
+				
+				%posicoes
+				\node[below] at (2.5+\ta,-0.45+\tb) {$x_{0}=0$};
+				\node[below] at (1+\ta,-0.45+\tb) {$-x_{m}$};
+				\node[below] at (4+\ta,-0.45+\tb) {$x_{m}$};
+				
+				\draw[dashed] (2.5+\ta,-0.45+\tb) -- (2.5+\ta,1+\tb);
+				
+				% bloco
+				\node[rectangle,fill=gray,inner sep=3.5mm] (a) at (2.5+\ta,0+\tb) {\small{m}};
+				
+				%mola
+				\draw[decoration={aspect=0.3, segment length=2mm, amplitude=1.0mm,coil},decorate] (\ta,0+\tb) -- (a); 
+				
+				%vetores
+				\draw[line width=1pt,color=red,->] (a) -- ($(a)-(1,0)$) node [above,midway] {$\vec{v}$};
+				
+				%tempo
+				\node[above] at (4+\ta,0.75+\tb) {$t=\frac{T}{4}\;\textrm{seg}$};
+				
+				%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+				
+				%sistema 4
+				
+				%transformacao coordenadas
+				\def\ta{6}
+				\def\tb{3}
+				
+				%parede
+				\fill [pattern = north west lines] (-0.2+\ta,-0.45+\tb) rectangle (\ta,1+\tb);
+				\draw (\ta,-0.45+\tb) -- (\ta,1+\tb);
+				
+				%chao
+				\draw (\ta,-0.45+\tb) -- (5+\ta,-0.45+\tb);
+				
+				%posicoes
+				\node[below] at (2.5+\ta,-0.45+\tb) {$x_{0}=0$};
+				\node[below] at (1+\ta,-0.45+\tb) {$-x_{m}$};
+				\node[below] at (4+\ta,-0.45+\tb) {$x_{m}$};
+				
+				\draw[dashed] (2.5+\ta,-0.45+\tb) -- (2.5+\ta,1+\tb);
+				
+				% bloco
+				\node[rectangle,fill=gray,inner sep=3.5mm] (a) at (1+\ta,0+\tb) {\small{m}};
+				
+				%mola
+				\draw[decoration={aspect=0.13, segment length=0.75mm, amplitude=1.0mm,coil},decorate] (\ta,0+\tb) -- (a); 
+				
+				%vetores
+				\draw[line width=1pt,color=red,->] (a) -- ($(a)+(1.5,0)$) node [above,midway] {$\vec{F}_R$};
+				\draw[line width=1pt,color=red,->] (a) -- ($(a)-(1,0)$) node [above,midway] {$\vec{x}$};
+				
+				%tempo
+				\node[above] at (4+\ta,0.75+\tb) {$t=\frac{T}{2}\;\textrm{seg}$};
+				
+				%seta
+				\draw[<-,line width=1.5pt,color=blue] (2.5+\ta,1.25+\tb) --++ (0,0.5);
+				
+				%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+				%sistema 5
+				
+				%transformacao coordenadas
+				\def\ta{0}
+				\def\tb{3}
+				
+				%parede
+				\fill [pattern = north west lines] (-0.2+\ta,-0.45+\tb) rectangle (\ta,1+\tb);
+				\draw (\ta,-0.45+\tb) -- (\ta,1+\tb);
+				
+				%chao
+				\draw (\ta,-0.45+\tb) -- (5+\ta,-0.45+\tb);
+				
+				%posicoes
+				\node[below] at (2.5+\ta,-0.45+\tb) {$x_{0}=0$};
+				\node[below] at (1+\ta,-0.45+\tb) {$-x_{m}$};
+				\node[below] at (4+\ta,-0.45+\tb) {$x_{m}$};
+				
+				\draw[dashed] (2.5+\ta,-0.45+\tb) -- (2.5+\ta,1+\tb);
+				
+				% bloco
+				\node[rectangle,fill=gray,inner sep=3.5mm] (a) at (2.5+\ta,0+\tb) {\small{m}};
+				
+				%mola
+				\draw[decoration={aspect=0.3, segment length=2mm, amplitude=1.0mm,coil},decorate] (\ta,0+\tb) -- (a); 
+				
+				%vetores
+				\draw[line width=1pt,color=red,->] (a) -- ($(a)+(1,0)$) node [above,midway] {$\vec{v}$};
+				
+				%tempo
+				\node[above] at (4+\ta,0.75+\tb) {$t=\frac{3T}{4}\;\textrm{seg}$};
+				
+				%seta
+				\draw[<-,line width=1.5pt,color=blue] (5.25+\ta,\tb) --++ (0.5,0);
+				
+				%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+				
+				%sistema 6
+				
+				%transformacao coordenadas
+				\def\ta{0}
+				\def\tb{0}
+				
+				%parede
+				\fill [pattern = north west lines] (-0.2+\ta,-0.4+\tb) rectangle (0+\ta,1+\tb);
+				\draw (0+\ta,-0.45+\tb) -- (0+\ta,1+\tb);
+				
+				%chao
+				\draw (0+\ta,-0.45+\tb) -- (5+\ta,-0.45+\tb);
+				
+				%posicoes
+				\node[below] at (2.5+\ta,-0.45+\tb) {$x_{0}=0$};
+				\node[below] at (1+\ta,-0.45+\tb) {$-x_{m}$};
+				\node[below] at (4+\ta,-0.45+\tb) {$x_{m}$};
+				
+				\draw[dashed] (2.5+\ta,-0.45+\tb) -- (2.5+\ta,1+\tb);
+				
+				% bloco
+				\node[rectangle,fill=gray,inner sep=3.5mm] (a) at (4+\ta,0+\tb) {\small{m}};
+				
+				%mola
+				\draw[decoration={aspect=0.3, segment length=4mm, amplitude=0.5mm,coil},decorate] (0+\ta,0+\tb) -- (a);
+				
+				%vetores
+				\draw[line width=1pt,color=red,->] (a) -- ($(a)-(1.5,0)$) node [above,midway] {$\vec{F}_R$};
+				\draw[line width=1pt,color=red,->] (a) -- ($(a)+(1,0)$) node [above,midway] {$\vec{x}$};
+				
+				%tempo
+				\node[above] at (4+\ta,0.75+\tb) {$t=T\;\textrm{seg}$};
+				
+				%seta
+				\draw[<-,line width=1.5pt,color=blue] (2.5+\ta,1.25+\tb) --++ (0,0.5);
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Quatro etapas de um ciclo completo do MHS.}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.4\textwidth}
+			\begin{tikzpicture}[scale=0.75, transform shape]
+			
+			%eixos
+			\draw[line width=1.0pt,->] (0,0) -- (2.2*pi,0) node[right] {$t$};
+			\draw[line width=1.0pt,->] (0,0) -- (0,3) node[above] {};
+			
+			%origem
+			\node[below] at (0,0) {O};
+			
+			%parametros
+			\def\k{pi}
+			\def\a{2}
+			
+			%funcao
+			\pgfmathdeclarefunction{fc}{1}{\pgfmathparse{\a*(cos(deg(#1)))^2}}
+			\pgfmathdeclarefunction{fs}{1}{\pgfmathparse{\a*(sin(deg(#1)))^2}}
+			
+			%curva
+			\draw[line width=1.0pt,domain=0:2*pi,variable=\x,color=red,samples=50] plot (\x,{fc(\x)}) node[below] {U};
+			\draw[line width=1.0pt,domain=0:2*pi,variable=\x,color=red,samples=50,dashed] plot (\x,{fs(\x)}) node[above] {K};
+			
+			%energia total
+			\draw[line width=1pt] (0,{fc(\a)+fs(\a)}) -- (2*pi,{fc(\a)+fs(\a)}) node[above,midway] {E = K+U};
+			
+			%formulas
+			\node at (2,3) {$K=\frac{1}{2}kx^ {2}_{m}sen^{2}\left(\omega t\right)$};
+			\node at (5.5,3) {$U=\frac{1}{2}kx^ {2}_{m}cos^{2}\left(\omega t\right)$};
+			
+			\end{tikzpicture}
+			\centering
+			\caption*{\footnotesize Energia mecânica, cinética e potencial em função do tempo do sistema massa mola.}
+		\end{subfigure}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Cálculo da força à partir do potencial}
+	\begin{columns}
+		\begin{column}[c]{0.6\textwidth}
+			O trabalho realizado por uma força $\vec{F}$ para mover uma partícula de massa m em um deslocamento $dx$ ao longo do eixo x positivo é dado por $dW=Fdx$. Pela relação entre trabalho e variação da energia potencial podemos dizer que
+			\begin{equation*}
+				dU=-F(x)dx,
+			\end{equation*}
+			Pela regra de diferencial podemos dizer que
+			\begin{equation*}
+				\boxed{F(x)=-\frac{dU(x)}{dx}.}
+			\end{equation*}
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\vspace*{-0.5cm}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.3,transform shape,font=\Large]
+				
+				\begin{scope}[shift={(0,0)}]
+				
+				\tkzInit[xmin=0,xmax=12,ymin=-2,ymax=4]
+				%\tkzGrid[color=gray!20]
+				\tkzClip[space=1.5]
+				
+				\tkzDrawX[label=x,below,noticks]
+				\tkzDrawY[label=U(x),pos=1.01,above,noticks]
+				
+				\tkzFct[domain=0:12,color=red,line width=1.0pt]{2*exp(-(x-3)**2)-2*exp(-(x-5)**2)-2*exp(-(x-7)**2)+1}
+				\tkzDefPointByFct(3)\tkzGetPoint{A}
+				\tkzDefPointByFct(5)\tkzGetPoint{B}
+				\tkzDefPointByFct(7)\tkzGetPoint{C}
+				
+				\tkzDefPoints{6/3/t1,8/160/t2}
+				
+				\draw[->,line width=0.5pt] (t1) -- (A);
+				\draw[->,line width=0.5pt] (t1) -- (B);
+				\draw[->,line width=0.5pt] (t1) -- (C);
+				\tkzText[text centered,opacity=100,fill=gray!20,text width=3cm,font=\normalsize](t1){Maximos e minimos de energia potencial}
+				\tkzText[color=black](t2){(a)}
+				
+				\end{scope}
+				
+				\begin{scope}[shift={(0,-8)}]
+				
+				\tkzInit[xmin=0,xmax=12,ymin=-2,ymax=4]
+				%\tkzGrid[color=gray!20]
+				\tkzClip[space=1.5]
+				
+				\tkzDrawX[label=x,below,noticks]
+				\tkzDrawY[label=F(x),pos=1.01,above,noticks]
+				
+				\tkzFct[domain=0:12,color=blue,line width=1.0pt]{4*(x-3)*exp(-(x-3)**2)-4*(x-5)*exp(-(x-5)**2)-4*(x-7)*exp(-(x-7)**2)}
+				\tkzDefPointByFct(3)\tkzGetPoint{A}
+				\tkzDefPointByFct(5)\tkzGetPoint{B}
+				\tkzDefPointByFct(7)\tkzGetPoint{C}
+				
+				\tkzDefPoints{7/3/t1,8/160/t2}
+				
+				\draw[->,line width=0.5pt] (t1) -- (A);
+				\draw[->,line width=0.5pt] (t1) -- (B);
+				\draw[->,line width=0.5pt] (t1) -- (C);
+				\tkzText[text centered,opacity=100,fill=gray!20,text width=3cm,font=\normalsize](t1){A forca e zero nos pontos de maxima e minima energia potencial}
+				\tkzText[color=black](t2){(b)}
+				
+				\end{scope}
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Energia potencial U(x) e força F(x) em função da posição x.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Energia cinética à partir do gráfico energia potencial versus posição}
+	\begin{columns}
+		\begin{column}[c]{0.6\textwidth}
+			Na figura ao lado
+			\begin{enumerate}
+				\item [\ding{51}] A energia mecânica é igual a 4,5 J em qualquer posição;
+				\item [\ding{51}] Em $x_1$ a energia cinética é zero e U=\SI{4,5}{\joule};
+				\item [\ding{51}] Em $x_2$ a energia cinética é máxima, K=\SI{4,5}{\joule};
+				\item [\ding{51}] A energia cinética é igual a 1,5 J em $x\ge x_3$.
+			\end{enumerate}
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.4,transform shape,font=\large]
+				
+				\tkzInit[xmin=0,xmax=12,ymin=0,ymax=6]
+				%\tkzGrid[color=gray!20]
+				\tkzClip[space=1]
+				
+				\tkzDefPoints{0/0/O,0/1/y}
+				
+				\tkzDrawX[label=x,below,noticks]
+				\tkzAxeY[label=U(J),pos=1.01,above,noticks]
+				
+				\tkzFct[domain=0:12,color=red,line width=1.0pt]{2*exp(-(x-2.5)**2)-2*exp(-(x-5)**2)-3*exp(-(x-8.5)**2)+3}
+				\tkzDefPointByFct(8.5)\tkzGetPoint{B}
+				\tkzDefPointByFct(11)\tkzGetPoint{C}
+				
+				\tkzDefPoints{0/4.5/e1,3/4.5/A}
+				
+				\draw[dashed] (A) -- (3,0) node [black,below] {$x_1$};
+				
+				\draw[dashed] (B) -- (8.5,0) node [black,below] {$x_2$};
+				\draw[<->] (8.5,0) -- (8.5,4.5) node [black,right,midway] {K};
+				
+				\draw[dashed] (C) -- (11,0) node [black,below] {$x_3$};
+				\draw[<->] (C) -- (11,4.5) node [black,right,midway] {K};
+				
+				\draw (e1) --++ (12,0) node [black,above left] {E = 4,5 J};
+				
+				\tkzDefPoints{7/5.5/t1,8/160/t2}
+				
+				\tkzText[text justified,opacity=100,fill=gray!20](t1){E=K+U(x)}
+				\tkzText[color=black](t2){(a)}
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Energia potencial em função da posição.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+	\begin{corollary}
+		A energia cinética somente pode assumir valores positivos.
+	\end{corollary}
+\end{frame}
+
+\begin{frame}{Análise do movimento à partir do gráfico energia potencial versus posição}
+	\begin{columns}
+		\begin{column}[c]{0.6\textwidth}
+			\begin{enumerate}
+				\item [\ding{51}] A partícula com energia $E_1$ somente pode se mover na região à direita de $x_1$;
+				\item [\ding{51}] A partícula com energia $E_2$ está aprisionada na região entre $x_2$ e $x_5$;
+				\item [\ding{51}] A partícula com energia $E_3$ somente pode se mover na região entre $x_3$ e $x_4$.
+			\end{enumerate}
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.4,transform shape,font=\large]
+				
+				\tkzInit[xmin=0,xmax=12,ymin=0,ymax=6]
+				%\tkzGrid[color=gray!20]
+				\tkzClip[space=1]
+				
+				\tkzDefPoints{0/0/O,0/1/y}
+				
+				\tkzDrawX[label=x,below,noticks]
+				\tkzDrawY[label=U(x),pos=1.01,above,noticks]
+				
+				\tkzFct[domain=0:12,color=red,line width=1.0pt]{2*exp(-(x-2.5)**2)-2*exp(-(x-5)**2)-3*exp(-(x-8.5)**2)+3}
+				\tkzDefPointByFct(7)\tkzGetPoint{C}
+				
+				\tkzDefPoints{0/4/e1}
+				
+				\tkzDefPointByFct(3.2)\tkzGetPoint{A}
+				\tkzDefLine[orthogonal=through A](O,y)\tkzGetPoint{a}
+				\tkzInterLL(a,A)(O,y)\tkzGetPoint{a1}
+				\draw[dashed,line width=1.0pt,blue] (a1) -- (A) node [left,at start] {$E_1$};
+				\draw[line width=1.0pt,blue] (A) --++ (12,0);
+				\draw[dashed] (A) -- (3.2,0);
+				\tkzText[color=black,below](3.2,0){$x_1$}
+				
+				\tkzDefPointByFct(3.85)\tkzGetPoint{A}
+				\tkzDefPointByFct(10.13)\tkzGetPoint{B}
+				\tkzDefLine[orthogonal=through A](O,y)\tkzGetPoint{a}
+				\tkzInterLL(a,A)(O,y)\tkzGetPoint{a1}
+				\draw[dashed,line width=1.0pt,gray] (a1) -- (A) node [left, at start] {$E_2$};
+				\draw[dashed,line width=1.0pt,gray] (B) --++ (12,0);
+				\draw[line width=1.0pt,gray] (A) -- (B);
+				\draw[dashed] (A) -- (3.85,0);
+				\tkzText[color=black,below](3.85,0){$x_2$}
+				
+				\tkzDefPointByFct(7.9)\tkzGetPoint{A}
+				\tkzDefPointByFct(9.1)\tkzGetPoint{B}
+				\tkzDefPointByFct(10.1)\tkzGetPoint{C}
+				\tkzDefLine[orthogonal=through A](O,y)\tkzGetPoint{a}
+				\tkzInterLL(a,A)(O,y)\tkzGetPoint{a1}
+				\draw[dashed,line width=1.0pt,green] (a1) -- (A) node [left, at start] {$E_2$};
+				\draw[dashed,line width=1.0pt,green] (B) --++ (12,0);
+				\draw[line width=1.0pt,green] (A) -- (B);
+				\draw[dashed] (A) -- (7.9,0);
+				\tkzText[color=black,below](7.9,0){$x_3$}
+				\draw[dashed] (B) -- (9.1,0);
+				\tkzText[color=black,below](9.1,0){$x_4$}
+				\draw[dashed] (C) -- (10.1,0);
+				\tkzText[color=black,below](10.1,0){$x_5$}
+				
+				\tkzDefPoints{7/5.5/t1,8/160/t2}
+				
+				\tkzText[text justified,opacity=100,fill=gray!20](t1){E=K+U}
+				\tkzText[color=black](t2){(a)}
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Regiões proibidas e função da energia.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+	\begin{corollary}
+		A partícula não pode se mover em regiões energeticamente proibidas.
+	\end{corollary}
+\end{frame}
+
+\begin{frame}{Sistema isolado}
+	\begin{columns}
+		\begin{column}[c]{0.7\textwidth}
+			Em um sistema isolado, o sistema não troca energia com o ambiente externo, portanto o trabalho total realizado sobre a partícula corresponderá a variação da energia mecânica, $\Delta E$, caso exista forças dissipativas. No sistema que não é isolado, energia é adicionada ou retirada dele para o ambiente externo, assim o trabalho total será o trabalho realizado pelas forças internas somado a energia extra $E_{extra}$, ou seja,
+			\begin{equation*}
+				\boxed{W = \Delta E+E_{extra}.}
+			\end{equation*}
+		\end{column}
+		\begin{column}[c]{0.3\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.42,transform shape,font=\large]
+				
+				\tkzInit[xmin=-4,xmax=4,ymin=-4,ymax=4]
+				%\tkzGrid[color=gray!20]
+				\tkzClip
+				
+				\tkzDefPoints{2.5/2/a,-3/-3/b,1/3/c,3/-3/d,3/3.5/e,-3/3/f,2/-1.5/j}
+				\tkzDefPoints{0/0/l,1.25/1/g,-0.5/1.5/h,0/-1.5/i,-1.5/-0.5/k}
+				
+				%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+				%sistema isolado
+				\tkzDefPointWith[linear, K=.4](l,g)\tkzGetPoint{v1}
+				\draw[->,line width=0.5pt,red] (l) -- (v1);
+				\tkzDefPointWith[linear, K=.4](g,l)\tkzGetPoint{v1'}
+				\draw[->,line width=0.5pt,red] (g) -- (v1');
+				
+				\tkzDefPointWith[linear, K=.4](l,h)\tkzGetPoint{v2}
+				\draw[->,line width=0.5pt,red] (l) -- (v2);
+				\tkzDefPointWith[linear, K=.4](h,l)\tkzGetPoint{v2'}
+				\draw[->,line width=0.5pt,red] (h) -- (v2');
+				
+				\tkzDefPointWith[linear, K=.4](l,i)\tkzGetPoint{v3}
+				\draw[->,line width=0.5pt,red] (l) -- (v3);
+				\tkzDefPointWith[linear, K=.4](i,l)\tkzGetPoint{v3'}
+				\draw[->,line width=0.5pt,red] (i) -- (v3');
+				
+				\tkzDefPointWith[linear, K=.4](k,i)\tkzGetPoint{v3}
+				\draw[->,line width=0.5pt,red] (k) -- (v3);
+				\tkzDefPointWith[linear, K=.4](i,k)\tkzGetPoint{v3'}
+				\draw[->,line width=0.5pt,red] (i) -- (v3');
+				%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+				
+				\tkzDefPointWith[linear, K=.4](a,c)\tkzGetPoint{v4}
+				\draw[->,line width=0.75pt,red] (a) -- (v4);
+				\tkzDefPointWith[linear, K=.4](c,a)\tkzGetPoint{v4'}
+				\draw[->,line width=0.75pt,red] (c) -- (v4');
+				
+				\tkzDefPointWith[linear, K=.4](e,a)\tkzGetPoint{v5}
+				\draw[->,line width=0.75pt,red] (e) -- (v5);
+				\tkzDefPointWith[linear, K=.4](a,e)\tkzGetPoint{v5'}
+				\draw[->,line width=0.75pt,red] (a) -- (v5');
+				
+				\tkzDefPointWith[linear, K=.4](j,d)\tkzGetPoint{v6}
+				\draw[->,line width=0.75pt,red] (j) -- (v6);
+				\tkzDefPointWith[linear, K=.4](d,j)\tkzGetPoint{v6'}
+				\draw[->,line width=0.75pt,red] (d) -- (v6');
+
+				\tkzDrawPoints[size=0.75cm](a,b,c,d,e,f,g,h,i,j,k,l)
+				%\tkzLabelPoints[font=\small](a,b,c,d,e,f,g,h,i,j,k,l)
+				
+				\tkzDefPoints{0/0/O,2/0/O'}
+				
+				\tkzDrawCircle[dashed](O,O')
+				
+				\tkzDefPointsBy[rotation=center O angle 250](O,O'){p1,p2}
+				
+				\tkzDefPoints{-1/-3.5/t1}
+				
+				\draw[->,line width=1.0pt] (t1) -- (p2);
+				\tkzText[text centered,opacity=100,fill=gray!20](t1){Sistema isolado}
+				\end{tikzpicture}
+				\caption*{\footnotesize Sistema isolado de partículas.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+	\begin{corollary}
+		A força de atrito converte parte da energia cinética em energia térmica.
+	\end{corollary}
+\end{frame}
+
+\section{Apêndice}
+
+\subsection{}
+%
+\begin{frame}{Cálculo da força à partir do potencial em três dimensões}
+	\small
+	\begin{multicols}{2}
+		O trabalho de uma força $\vec{F}$ responsável por mover uma partícula de massa m ao longo de um deslocamento $d\vec{r}$ é dado por $dW=\vec{F}\cdot d\vec{r}$. Mas, se a força for conservativa teremos dW = -dU, ou seja,
+		\begin{equation*}
+			-dU=\vec{F}\cdot d\vec{r}.
+		\end{equation*}
+		Usando a definição de diferencial teremos
+		\begin{equation*}
+			Fcos\theta = -\frac{dU}{dr}.
+		\end{equation*}
+		Se considerarmos o vetor posi\c c\~ao como $\vec{r}=x\widehat{i}+y\widehat{j}+z\widehat{k}$ e $r=\sqrt{x^2+y^2+z^2}$ podemos determinar as componentes da força $\vec{F}$ na direção x usando a regra da cadeia,
+		\begin{align*}
+			\frac{\partial U}{\partial x} & =\frac{dU}{dr}\frac{\partial r}{\partial x}=\left(-Fcos\theta\right)\left(\frac{x}{r}\right),\\
+			\frac{\partial U}{\partial x} & =-\vec{F}\cdot\widehat{i}=-F_x.
+		\end{align*}
+		Usando o mesmo raciocínio nas direções y e z teremos
+		\begin{equation*}
+			\boxed{F_x=-\frac{\partial U}{\partial x},\quad F_y=-\frac{\partial U}{\partial y},\quad F_z=-\frac{\partial U}{\partial z}.}
+		\end{equation*}
+	\end{multicols}
+\end{frame}
+%
+\begin{frame}{Observações\footnote{Este material está sujeito a modificações. Recomenda-se acompanhamento permanente.}}
+	\begin{center}
+		Esta apresentação está disponível para download no endereço\\
+		\href{https://flavianowilliams.github.io/education}{\textcolor{blue}{https://flavianowilliams.github.io/education}}
+	\end{center}
+\end{frame}
+%
+\begin{frame}{Referências}
+	\bibliographystyle{jurabib}
+	\begin{thebibliography}{9}
+		\bibitem{halliday}D. Halliday, R. Resnick, J. Walker, Fundamentos de física. Mecânica, v.1, 10. ed., Rio de Janeiro, LTC (2016)
+	\end{thebibliography}
+\end{frame}
+
+\end{document}

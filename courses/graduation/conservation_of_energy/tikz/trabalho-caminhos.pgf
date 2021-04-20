@@ -1,0 +1,28 @@
+﻿				\begin{tikzpicture}[scale=1,transform shape,font=\Large]
+				
+				\tkzInit[xmin=0,xmax=8,ymin=0,ymax=8]
+				\tkzGrid[color=gray!20]
+				\tkzClip[space=1]
+				
+				\tkzDefPoints{2/2/i,7/7/f,1/7/c1,5/5/c2,4/2/c3,7/3/c4,1/6/c5}
+
+				\tkzDrawX[label=x,right,noticks]
+				\tkzDrawY[label=y,above,noticks]
+				
+				\tkzDrawPoints(i,f)
+				\tkzLabelPoints(i,f)
+
+				\draw[mid arrow,line width=1.5pt] (i) -- (c5) node [above] {1};
+				\draw[mid arrow,line width=1.5pt] (c5) -- (f);
+				\draw[mid arrow,line width=1.5pt] (i) .. controls (c1) and (c2) .. (f) node [above left,midway] {2};
+				\draw[mid arrow,line width=1.5pt] (i) -- (f) node [above left,midway] {3};
+				\draw[mid arrow,line width=1.5pt] (i) .. controls (c3) and (c4) .. (f) node [above left,midway] {4};
+
+				\tkzFct{x}
+				\tkzDefPointByFct(2)\tkzGetPoint{A}
+				\tkzDefPointByFct(7)\tkzGetPoint{B}
+
+				\tkzPointShowCoord[ylabel=$y_i$,xlabel=$x_i$](A)
+				\tkzPointShowCoord[ylabel=$y_f$,xlabel=$x_f$](B)
+
+				\end{tikzpicture}

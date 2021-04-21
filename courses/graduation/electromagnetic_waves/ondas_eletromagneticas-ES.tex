@@ -306,7 +306,7 @@
 				\colorlet{lightred}{red!80!black}
 				
 				% eixos
-				\draw[axis] (-2.5,0) -- (2.5,0) node [right] {x};
+				\draw[axis] (-2.5,0) -- (2.5,0) node [right] {z};
 				\draw[axis] (0,-2) -- (0,2) node [above] {y};
 				
 				\filldraw[polaroid] (-2,-1.5) -- (-2,1.5) -- (2,1.5) -- (2,-1.5) -- (-2,-1.5) node[below, near end]{Polaroid};%
@@ -317,7 +317,7 @@
 				% Electric field vectors
 				\coordinate (c1) at (45:1.5);
 				\draw[line width=1pt,color=red,<->] ($-1*(c1)$) -- (c1) node[above] {$\vec{E}$};
-				\draw[line width=1pt,color=red,->] (0,0) -- (0:{1.5*cos{45}}) node[below] (c2) {$\vec{E_{x}}$};
+				\draw[line width=1pt,color=red,->] (0,0) -- (0:{1.5*cos{45}}) node[below] (c2) {$\vec{E_{z}}$};
 				\draw[line width=1pt,color=red,->] (0,0) -- (90:{1.5*sin{45}}) node[left] (c3) {$\vec{E_{y}}$};
 				\draw[dashed] (c1) -- (c2);
 				\draw[dashed] (c1) -- (c3);
@@ -335,25 +335,26 @@
 \begin{frame}{Polarização da luz incidente não polarizada}
 %	\begin{multicols}{2}
 	\begin{columns}[c]
-		\begin{column}[c]{0.5\textwidth}
-			Se onda for não polarizada, ou seja, teremos frentes de onda cuja direção do campo elétrico assume todos os valores entre $\theta=\SI{0}{\degree}$ a $\theta=\SI{360}{\degree}$. Sabendo que $E^2_m=E^2_{m,x}+E^2_{m,y}$ teremos
+		\begin{column}[t]{0.5\textwidth}
+			Se onda for não polarizada, ou seja, teremos frentes de onda cuja direção do campo elétrico assume todos os valores entre $\theta=\SI{0}{\degree}$ a $\theta=\SI{360}{\degree}$. Sabendo que $E^2_m=E^2_{m,z}+E^2_{m,y}$ teremos para a onda não polarizada
 			\begin{align*}
-				I & = \frac{1}{2c\mu_0}E^2_m,\\
-				I & = \frac{1}{2c\mu_0}E^2_{m,x}+\frac{1}{2c\mu_0}E^2_{m,y}.
+				I_0 & = \sum\frac{1}{2c\mu_0}E^2_m,\\
+				I_0 & = \sum\left(\frac{1}{2c\mu_0}E^2_{m,z}+\frac{1}{2c\mu_0}E^2_{m,y}\right).
 			\end{align*}
-			A soma das componentes em y e a mesma de z, portanto
 		\end{column}
-		\begin{column}[c]{0.5\textwidth}
+		\begin{column}[t]{0.5\textwidth}
+			A soma das componentes em y é a mesma de z, portanto
 			\begin{align*}
-				I & = 2\left(\frac{1}{2c\mu_0}E^2_m\right).
+				I_0 & \rightarrow 2\underbrace{\left(\frac{1}{2c\mu_0}E^2_m\right)}_{\alert{I}}.
 			\end{align*}
-			 Entretanto, as componentes na direção do eixo x não atravessam, pois $\theta=\SI{90}{\degree}$. Portanto, a intensidade será a metade da onda incidente,
+%			 Entretanto, as componentes na direção do eixo z não atravessam, pois $\theta=\SI{90}{\degree}$. Portanto, a intensidade será a metade da onda incidente,
+			Definindo I a intensidade da onda polarizada teremos
 			\begin{align*}
 				\Aboxed{I & = \frac{1}{2}I_0.}
 			\end{align*}
-			onde $I_0$ é a intensidade da onda não polarizada.
+%			onde $I_0$ é a intensidade da onda não polarizada.
 		\end{column}
-	\end{columns}	
+	\end{columns}
 %	\end{multicols}
 \end{frame}
 

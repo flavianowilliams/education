@@ -103,8 +103,8 @@
 		\begin{column}[c]{0.6\textwidth}
 			A catástrofe do ultravioleta representa a enorme discrepância entre a teoria clássica e os resultados experimentais, medidas para a radiação do corpo negro. Resumindo
 			\begin{enumerate}
-				\item [\ding{51}] \textit{Para comprimentos de onda menores, a teoria clássica se aproxima do resultado experimental;}
-				\item [\ding{51}] \textit{Para comprimentos de onda maiores, a teoria clássica se afasta do resultado experimental.}
+				\item [\ding{51}] \textit{Para frequências menores, a teoria clássica se aproxima do resultado experimental;}
+				\item [\ding{51}] \textit{Para frequências maiores, a teoria clássica se afasta do resultado experimental.}
 			\end{enumerate}
 		\end{column}
 		\begin{column}[c]{0.4\textwidth}
@@ -291,13 +291,13 @@
 	\begin{multicols*}{2}
 		Para determinar o valor médio da energia $\left<E\right>$, usamos a expressão abaixo
 		\begin{align*}
-			\left<E\right> & = \frac{\int_{\infty}^{0}Ef(E)}{\int_{\infty}^{0}f(E)}dE,\\
+			\left<E\right> & = \frac{\int_{0}^{\infty}Ef(E)}{\int_{0}^{\infty}f(E)}dE,\\
 			f(E) & = Ae^{-E/k_BT}dE.
 		\end{align*}
 		onde $f(E)$ é conhecida como distribuição de Maxwell-Boltzmann e $k_B$ é chamado constante de Boltzmann.	Substituindo na expressão teremos
 		\begin{align*}
-			\left<E\right> & = \frac{\int_{\infty}^{0}\bcancel{A}Ee^{-E/k_BT}dE}{\int_{\infty}^{0}\bcancel{A}e^{-E/k_BT}dE},\\
-			\left<E\right> & = \frac{\int_{\infty}^{0}Ee^{-E/k_BT}dE}{\int_{\infty}^{0}e^{-E/k_BT}dE}.
+			\left<E\right> & = \frac{\int_{0}^{\infty}\bcancel{A}Ee^{-E/k_BT}dE}{\int_{0}^{\infty}\bcancel{A}e^{-E/k_BT}dE},\\
+			\left<E\right> & = \frac{\int_{0}^{\infty}Ee^{-E/k_BT}dE}{\int_{0}^{\infty}e^{-E/k_BT}dE}.
 		\end{align*}
 		É possível provar que o resultado da equação acima equivale a
 		\begin{align*}

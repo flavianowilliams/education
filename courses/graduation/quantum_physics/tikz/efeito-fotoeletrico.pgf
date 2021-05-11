@@ -1,0 +1,25 @@
+﻿\begin{tikzpicture}[scale=1,transform shape, font=\Large]
+
+	\tkzInit[xmin=0,xmax=6,ymin=0,ymax=4]
+%	\tkzGrid
+	\tkzClip[space=1]
+
+	\tkzDrawX[label=$\nu$,noticks]
+	\tkzDrawY[label=$V_F$,noticks]
+
+	\tkzFct[domain=0:6,color=red,line width=1pt]{(x-1)}
+	\tkzDefPointByFct(2)\tkzGetPoint{p1}
+	\tkzDefPointByFct(4)\tkzGetPoint{p3}
+
+	\tkzDefPoints{1/0/phi,4/1/p2}
+
+	\tkzLabelPoint[below](phi){\Large $\frac{\phi}{e}$}
+
+%	\tkzDrawPoints(p1,p2)
+
+	\draw[dashed] (p1) -- (p2);
+
+	\tkzMarkAngle(p2,p1,p3)
+	\tkzLabelAngle[pos=1.5](p2,p1,p3){\Large $\frac{h}{e}$}
+
+\end{tikzpicture}

@@ -1,0 +1,26 @@
+﻿\begin{tikzpicture}[scale=1,transform shape, font=\Large]
+
+		\tkzInit[xmin=0,xmax=10,ymin=0,ymax=5]
+		\tkzClip[space=1]
+		\tkzGrid[color=gray!50]
+
+		\tkzDrawX[noticks,label=$\nu$]
+		\tkzDrawY[noticks,above,label=$R(\nu)$]
+		
+		\tkzFct[domain=0:5,color=red,line width=1pt]{x**2}
+		\tkzFct[domain=0:10,color=blue,line width=1pt]{x**3/(exp(x)-1)}
+
+		\tkzDefPointByFct[with=a](2)\tkzGetPoint{p1}
+		\tkzDefPointByFct[with=b](5)\tkzGetPoint{p2}
+
+		\tkzDefPoints{3.5/4/t1,7.5/2/t2}
+
+		\draw[->] (t1) -- (p1);
+		\tkzText[text centered,opacity=100,color=black,fill=gray!20](t1){$\frac{2\pi k_BT\nu^2}{c^2}$}
+
+		\draw[->] (t2) -- (p2);
+		\tkzText[text centered,opacity=100,color=black,fill=gray!20](t2){$\frac{2\pi hk_BT\nu^3}{c^2\left(e^{h\nu/k_BT}-1\right)}$}
+
+		\tkzLegend[draw,font=\small,line=true](8,4){solid/1pt/blue/Experiencia,solid/1pt/red/Teoria classica}
+
+\end{tikzpicture}

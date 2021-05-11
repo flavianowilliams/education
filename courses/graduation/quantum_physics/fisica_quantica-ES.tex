@@ -1,0 +1,579 @@
+% Aula de física quântica para o curso de Física II da graduação
+%
+\documentclass[brazil,aspectratio=169]{beamer}
+%
+%carregando preâmbulo
+\input{../../contrib/preamble}
+
+%Título
+
+\title[Física moderna-FIQ]{Física quântica}
+
+% The main document
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Sumário}
+  \tableofcontents
+\end{frame}
+
+\section{Quantização da energia}
+
+\subsection{}
+
+\begin{frame}{A antiga teoria quântica}
+	\begin{enumerate}
+		\item [\ding{51}] \textit{Numa reunião da sociedade alemã de física em 1900, Max Planck apresentou o seu artigo "Sobre a teoria da lei de distribuição de energia do espectro normal". \alert{Esse dia marca o nascimento da física quântica}.}
+		\item[\ding{51}] \textit{Até o surgimento da equação de Schroedinger, diversos estudos foram desenvolvidos demonstrando falhas na física clássica. Esses estudos, \alert{chamados de antiga teoria quântica}, marcam os fundamentos da física quântica atual.}
+		\item[\ding{51}] \textit{Assim como a teoria da relatividade, a física quântica representa uma generalização da física clássica, que inclui as leis clássicas como casos especiais.}
+	\end{enumerate}
+	\begin{corollary}
+		Os fenômenos ligados a física quântica abrangem todas as áreas da física clássica: mecânica, termodinâmica, ondas, mecânica estatística e eletromagnetismo.
+	\end{corollary}
+\end{frame}
+
+\begin{frame}{O que é um corpo negro?}
+	\begin{columns}
+		\begin{column}[c]{0.6\textwidth}
+			O corpo negro é um objeto que absorve toda a radiação que incide sobre ele. Sabendo que a radiação transporta energia por área e tempo, é de se esperar que os elétrons do material absorva a radiação, adquirindo energia cinética e aumentando assim a temperatura do objeto. Pela teoria do eletromagnetismo, cargas em movimento emitem radiação com a mesma frequência que elas oscilam. Portanto, a radiação observada poderá ser reconhecida como aquela emitida pelo corpo negro que se encontra a temperatura T.
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.5,transform shape, font=\Large]
+				
+				\tikzstyle{wave}=[decorate,decoration={snake,post length=2mm,amplitude=1mm, segment length=4mm},thick]
+				
+				\tkzInit[xmin=-4.5,xmax=4.5,ymin=-4.5,ymax=4.5]
+				%\tkzGrid[color=gray!50]
+				\tkzClip
+				
+				\tkzDefPoints{-3/-3/A,3/-3/B,3/-0.75/E,3/0.75/F,2.5/-0.75/G,2.5/0.75/H,-2.5/-2.5/a,2.5/-2.5/b}
+				
+				\tkzDefSquare(A,B)\tkzGetPoints{C}{D}
+				\tkzDefSquare(a,b)\tkzGetPoints{c}{d}
+				
+				\tkzDrawPolygon[fill=gray!50](A,B,E,G,b,a,d,c,H,F,C,D)
+				
+				%\tkzLabelPoints(A,B,E,F,G,H,a,b,c,d,C,D)
+				
+				%carga oscilando
+				\tkzFct[domain=-2.5:2.5]{0.25*sin(3*2*pi*(x+2.5)/5)-2}
+				\tkzFct[domain=-2.5:2.5,dashed]{0.25*sin(3*2*pi*(x+2.5)/5-pi)-2}
+				
+				\tkzDefPointByFct[with=a](-0.5)\tkzGetPoint{p1}
+				
+				\tkzDrawPoints[size=0.75cm,fill=blue](p1)
+				
+				%radiacao incidente
+				\draw[wave,->,line width=1.5pt] (5,-1) -- (-2,2.5);
+				
+				%radiacao emitida
+				\draw[wave,->,line width=1.5pt,color=red] (0,-3) --++ (0,-1.5) node [right=0.25,midway] {$\nu$};
+				\draw[wave,->,line width=1.5pt,color=red] (-3,0) --++ (-1.5,0) node [above=0.25,midway] {$\nu$};
+				\draw[wave,->,line width=1.5pt,color=red] (0,3) --++ (0,1.5) node [right=0.25,midway] {$\nu$};
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Radiação emitida pelo corpo negro.}
+%				\includegraphics[scale=1]{figuras/corpo-negro}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Lei de Stefan-Boltzman}
+	\begin{enumerate}
+		\item [\ding{51}] \textit{A radiação (\alert{intensidade}) incidente aumenta a vibração dos átomos, aumentando a temperatura do corpo negro;}
+		\item [\ding{51}] \textit{A radiação emitida somente depende da temperatura do corpo negro;}
+		\item [\ding{51}] \textit{De acordo com a teoria clássica, a radiação aumenta indefinidamente com a frequência da radiação emitida.}
+	\end{enumerate}
+	Chegando a lei de Stefan-Boltzman que relaciona a radiação emitida por um objeto com a sua temperatura T,
+	\begin{align*}
+		R(T) = \sigma T^4.
+	\end{align*}
+	onde $\sigma=\SI{5,6704e-8}{\watt\per\square\meter\kelvin}$
+\end{frame}
+
+\begin{frame}{Catástrofe do ultravioleta}
+	\begin{columns}
+		\begin{column}[c]{0.6\textwidth}
+			A catástrofe do ultravioleta representa a enorme discrepância entre a teoria clássica e os resultados experimentais, medidas para a radiação do corpo negro. Resumindo
+			\begin{enumerate}
+				\item [\ding{51}] \textit{Para comprimentos de onda menores, a teoria clássica se aproxima do resultado experimental;}
+				\item [\ding{51}] \textit{Para comprimentos de onda maiores, a teoria clássica se afasta do resultado experimental.}
+			\end{enumerate}
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.5,transform shape, font=\Large]
+				
+				\tkzInit[xmin=0,xmax=10,ymin=0,ymax=5]
+				\tkzClip[space=1.1]
+				%\tkzGrid[color=gray!50]
+				
+				\tkzDrawX[noticks,label=$\nu$]
+				\tkzDrawY[noticks,above,label=$R(\nu)$]
+				
+				\tkzFct[domain=0:5,color=red,line width=1pt]{x**2}
+				\tkzFct[domain=0:10,color=blue,line width=1pt]{x**3/(exp(x)-1)}
+				
+				\tkzDefPointByFct[with=a](2)\tkzGetPoint{p1}
+				\tkzDefPointByFct[with=b](5)\tkzGetPoint{p2}
+				
+				\tkzDefPoints{3.5/4/t1,7.5/2/t2}
+				
+				\draw[->] (t1) -- (p1);
+				\tkzText[text centered,opacity=100,color=black,fill=gray!20](t1){$\frac{2\pi k_BT\nu^2}{c^2}$}
+				
+				\draw[->] (t2) -- (p2);
+				\tkzText[text centered,opacity=100,color=black,fill=gray!20](t2){$\frac{2\pi hk_BT\nu^3}{c^2\left(e^{h\nu/k_BT}-1\right)}$}
+				
+				\tkzLegend[draw,font=\small,line=true](8,4){solid/1pt/blue/Experiência,solid/1pt/red/Teoria clássica}
+				
+				\end{tikzpicture}
+				%\includegraphics[scale=0.3]{figuras/catastrofe-ultravioleta.jpeg}
+				\caption*{\footnotesize Comparação entre radiância calculada pela teoria clássica e os dados experimentais.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Radiância e radiação emitida pelo material}
+	\begin{columns}
+		\begin{column}[t]{0.5\textwidth}
+		Pela teoria do eletromagnetismo, a \alert{radiância}, ou seja, radiação emitida por cada onda de frequência $\nu$ ($R(\nu)$), que sai da cavidade de um corpo negro é dado por
+		\begin{align*}
+			R(\nu) = \frac{c}{4} u(\nu),
+		\end{align*}
+		onde $u(\nu)$ é a energia da radiação emitida por volume. Neste caso, a densidade de energia na faixa de radiação com frequências entre $\nu$ e $\nu+d\nu$ vale $u(\nu)d\nu$. Portanto, a quantidade de radiação dR
+		\end{column}
+		\begin{column}[t]{0.5\textwidth}	
+			 neste intervalo vale
+	 		\begin{align*}
+				dR & = R(\nu)d\nu,\\
+				dR & = \frac{c}{4}u(\nu)d\nu.
+			\end{align*}
+			Para determinar a radiação total emitida pelo corpo negro, integramos a equação acima,
+			\begin{align*}
+				R = \frac{c}{4}\int\limits_{0}^{\infty}u(\nu)d\nu.
+			\end{align*}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Relação entre energia e temperatura}
+	\begin{columns}
+		\begin{column}[c]{0.6\textwidth}
+			Pela termodinâmica, a energia de agitação dos elétrons por volume está associado estatisticamente com o valor médio da energia E multiplicado pelo número de elétrons,
+			\begin{align*}
+				u(\nu) = \left<E\right>n(\nu),
+			\end{align*}
+			 No caso acima, cada elétron assume um modo normal de vibração $n(\nu)$. É possível demonstrar que para uma caixa cúbica de volume V teremos
+			 \begin{align*}
+				 \Aboxed{n(\nu) = \frac{8\pi\nu^2}{c^3}.}
+			 \end{align*}
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}
+				\centering
+				%\input{tikz/modos-normais.pgf}
+				\begin{tikzpicture}[scale=0.35, auto, transform shape,font=\huge, samples=200]
+				
+				%parametros gerais
+				\def\t{-3}
+				\def\tt{2*\t}
+				\def\ttt{3*\t}
+				
+				\def\l{8}
+				\def\k{pi/\l}
+				\def\om{0.5*pi}
+				\def\xm{1}
+				
+				%definindo funcao
+				\pgfmathdeclarefunction{f}{2}{\pgfmathparse{\xm*cos(deg(\k*#1-\om*#2))}}
+				
+				%parede
+				\fill [pattern = north west lines] (-0.25,-\xm) rectangle (0,\xm);
+				\draw (0,-\xm) -- (0,\xm);
+				
+				%parede
+				\fill [pattern = north west lines] (\l,-\xm) rectangle (0.25+\l,\xm);
+				\draw (\l,-\xm) -- (\l,\xm);
+				
+				%curva
+				\draw[line width=1.5pt,domain=0:\l,variable=\x,color=gray] plot (\x,{f(\x,1)});
+				\draw[line width=1.5pt,domain=\l:0,variable=\x,color=gray,dashed] plot (\x,{f(\x,3)});
+				
+				%texto
+				\node[right] at (\l+0.25,0) {$n=1\quad (\textcolor{red}{1}\lambda = 2L)$};
+				
+				%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+				%		grafico 2
+				
+				%definindo funcao
+				\pgfmathdeclarefunction{ff}{2}{\pgfmathparse{\t+\xm*cos(deg(2*\k*#1-\om*#2))}}
+				
+				%parede
+				\fill [pattern = north west lines] (-0.25,\t-\xm) rectangle (0,\t+\xm);
+				\draw (0,\t-\xm) -- (0,\t+\xm);
+				
+				%parede
+				\fill [pattern = north west lines] (\l,\t-\xm) rectangle (0.25+\l,\t+\xm);
+				\draw (\l,\t-\xm) -- (\l,\t+\xm);
+				
+				%curva
+				\draw[line width=1.5pt,domain=0:\l,variable=\x,color=gray] plot (\x,{ff(\x,1)});
+				\draw[line width=1.5pt,domain=\l:0,variable=\x,color=gray,dashed] plot (\x,{ff(\x,3)});
+				
+				%texto
+				\node[right] at (\l+0.25,\t) {$n=2\quad (\textcolor{red}{2}\lambda = 2L)$};
+				
+				%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+				%		grafico 3
+				
+				%definindo funcao
+				\pgfmathdeclarefunction{fff}{2}{\pgfmathparse{\tt+\xm*cos(deg(3*\k*#1-\om*#2))}}
+				
+				%parede
+				\fill [pattern = north west lines] (-0.25,\tt-\xm) rectangle (0,\tt+\xm);
+				\draw (0,\tt-\xm) -- (0,\tt+\xm);
+				
+				%parede
+				\fill [pattern = north west lines] (\l,\tt-\xm) rectangle (0.25+\l,\tt+\xm);
+				\draw (\l,\tt-\xm) -- (\l,\tt+\xm);
+				
+				%curva
+				\draw[line width=1.5pt,domain=0:\l,variable=\x,color=gray] plot (\x,{fff(\x,1)});
+				\draw[line width=1.5pt,domain=\l:0,variable=\x,color=gray,dashed] plot (\x,{fff(\x,3)});
+				
+				%texto
+				\node[right] at (\l+0.25,\tt) {$n=3\quad (\textcolor{red}{3}\lambda = 2L)$};
+				
+				%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+				%		grafico 4
+				
+				%definindo funcao
+				\pgfmathdeclarefunction{ffff}{2}{\pgfmathparse{\ttt+\xm*cos(deg(4*\k*#1-\om*#2))}}
+				
+				%parede
+				\fill [pattern = north west lines] (-0.25,\ttt-\xm) rectangle (0,\ttt+\xm);
+				\draw (0,\ttt-\xm) -- (0,\ttt+\xm);
+				
+				%parede
+				\fill [pattern = north west lines] (\l,\ttt-\xm) rectangle (0.25+\l,\ttt+\xm);
+				\draw (\l,\ttt-\xm) -- (\l,\ttt+\xm);
+				
+				%curva
+				\draw[line width=1.5pt,domain=0:\l,variable=\x,color=gray] plot (\x,{ffff(\x,1)});
+				\draw[line width=1.5pt,domain=\l:0,variable=\x,color=gray,dashed] plot (\x,{ffff(\x,3)});
+				
+				%linguica
+				\draw (0,\ttt-\xm-0.1) -- (0,\ttt-\xm-1.1);
+				\draw (\l,\ttt-\xm-0.1) -- (\l,\ttt-\xm-1.1);
+				\draw (0,\ttt-\xm-1) -- (\l,\ttt-\xm-1) node [above,midway] {L};
+				
+				%texto
+				\node[right] at (\l+0.25,\ttt) {$n=4\quad (\textcolor{red}{4}\lambda = 2L)$};
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Modos normais de vibração.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Valor médio da energia para uma distribuição contínua de energia}
+	\begin{multicols*}{2}
+		Para determinar o valor médio da energia $\left<E\right>$, usamos a expressão abaixo
+		\begin{align*}
+			\left<E\right> & = \frac{\int_{\infty}^{0}Ef(E)}{\int_{\infty}^{0}f(E)}dE,\\
+			f(E) & = Ae^{-E/k_BT}dE.
+		\end{align*}
+		onde $f(E)$ é conhecida como distribuição de Maxwell-Boltzmann e $k_B$ é chamado constante de Boltzmann.	Substituindo na expressão teremos
+		\begin{align*}
+			\left<E\right> & = \frac{\int_{\infty}^{0}\bcancel{A}Ee^{-E/k_BT}dE}{\int_{\infty}^{0}\bcancel{A}e^{-E/k_BT}dE},\\
+			\left<E\right> & = \frac{\int_{\infty}^{0}Ee^{-E/k_BT}dE}{\int_{\infty}^{0}e^{-E/k_BT}dE}.
+		\end{align*}
+		É possível provar que o resultado da equação acima equivale a
+		\begin{align*}
+			\Aboxed{\left<E\right> = k_BT.}
+		\end{align*}
+	\end{multicols*}
+\end{frame}
+
+\begin{frame}{A equação de Rayleigh-Jeans}
+	\begin{columns}
+		\begin{column}[t]{0.5\textwidth}
+			Considerando uma distribuição contínua de energia para a radiação emitida pelo corpo negro, teremos que a densidade de energia $u(\nu)$ é dado por
+			\begin{align*}
+				u(\nu) & = \left<E\right>n(\nu);\\
+				u(\nu) & =\left(k_BT\right)\left(\frac{8\pi\nu^2}{c^3}\right).
+			\end{align*}
+			Substituindo na fórmula da radiação,
+			\begin{align*}
+				R = \frac{c}{4}\int_{0}^{\infty}u(\nu)d\nu.
+			\end{align*}
+		\end{column}
+		\begin{column}[t]{0.5\textwidth}
+		\begin{align*}
+			R & = \frac{\bcancel{c}}{4}\int_{0}^{\infty}\frac{8\pi k_BT}{\bcancel{c}^3}\nu^2d\nu,\\
+			R & = \frac{8\pi k_BT}{c^2}\int_{0}^{\infty}\nu^2d\nu,\\
+			R & = \left.\frac{8\pi k_BT}{3c^2}\nu^3\right|_{0}^{\infty}=\infty.
+		\end{align*}
+		Vemos que se considerarmos uma distribuição contínua de energia para $u(\nu)$, quando $\nu\rightarrow \infty$ teremos $R\rightarrow\infty$, o que resulta na catástrofe do ultravioleta.
+		\end{column}
+	\end{columns}
+%	\end{multicols}
+\end{frame}
+
+\begin{frame}{A lei de Planck e o nascimento da física quântica}
+	Para explicar a catástrofe do ultravioleta, duas causas são possíveis
+	\begin{enumerate}
+		\item [\ding{51}] \textit{Contagem errada do número de estados $n(\nu)$;}
+		\item[\ding{51}] \textit{Valor da energia para cada modo vibracional está errado.}
+	\end{enumerate}
+	\begin{block}{Hipótese de Planck}
+		Como opção, Planck sugeriu que a energia das cargas oscilantes ao invés de assumir qualquer valor, ela deverá ter valores discretos bem definidos, e também deverá ser proporcional a frequência da radiação emitida,
+		\begin{align*}
+			E_n = nh\nu,\; n = 0,1,2,\cdots
+		\end{align*}
+		h é conhecido como a \alert{constante de Planck}.
+	\end{block}
+\end{frame}
+
+\begin{frame}{Valor médio da energia para uma distribuição discreta de energia}
+%	\begin{multicols*}{2}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+		O valor médio da energia $\left<E\right>$ para uma distrição discreta de energias é dado por
+		\begin{align*}
+			\left<E\right> & = \frac{\sum_{n=0}^{\infty} E\left(\bcancel{A}e^{-E/k_BT}\right)}{\sum_{n=0}^{\infty}\left(\bcancel{A}e^{-E/k_BT}\right)},\\
+			\left<E\right> & = \frac{\sum_{n=0}^{\infty} Ee^{-E/k_BT}}{\sum_{n=0}^{\infty}e^{-E/k_BT}}.
+		\end{align*}
+		Como temos valores discretos de energia, a integral é substituída por uma somatória de valores de energia $E_n$. É possível provar que o resultado equivale a
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+		\begin{align*}
+			\Aboxed{\left<E\right> = \frac{h\nu}{e^{\frac{h\nu}{k_BT}}-1}.}
+		\end{align*}
+		Substituindo em $u(\nu)$ teremos
+		\begin{align*}
+			\Aboxed{u(\nu) = \frac{8\pi h\nu^3}{c^3\left(e^{\frac{h\nu}{k_BT}}-1\right)}.}
+		\end{align*}
+		O resultado acima em $R(\nu)$ reproduz perfeitamente os dados experimentais.
+		\end{column}
+	\end{columns}
+%	\end{multicols*}
+\end{frame}
+
+\begin{frame}{Lei de Planck para baixas frequências}
+	\begin{columns}
+		\begin{column}[t]{0.5\textwidth}
+		Pela teoria clássica temos que a teoria se aproxima do resultado experimental quando $\nu <<1$, usando a expansão
+		\begin{align*}
+			e^{\frac{h\nu}{k_BT}} = 1+\frac{h\nu}{k_BT}+\frac{1}{2}\left(\frac{h\nu}{k_BT}\right)^2+\cdots,
+		\end{align*}
+		podemos dizer que $e^{\frac{h\nu}{k_BT}}\approx 1$ se $h\nu <<k_BT$. Substituindo em $u(\nu)$ resulta em
+		\end{column}
+		\begin{column}[t]{0.5\textwidth}
+		\begin{align*}
+			u(\nu) & \approx \frac{8\pi \bcancel{h}\nu^{\bcancel{3}}}{c^3\left(\bcancel{1}+\frac{\bcancel{h}\bcancel{\nu}}{k_BT}-\bcancel{1}\right)},\\
+			u(\nu) & \approx \frac{8\pi k_BT\nu^2}{c^3},
+		\end{align*}
+		o que corresponde a lei de Rayleigh-Jeans da teoria clássica da radiação.
+		\end{column}
+	\end{columns}
+	\begin{corollary}
+		Para $h\nu/k_BT<<1$ a equação de Planck se resume na lei de Rayleigh-Jeans.
+	\end{corollary}
+\end{frame}
+
+\section{Quantização da luz}
+
+\subsection{}
+
+\begin{frame}{Efeito fotoelétrico}
+	\begin{columns}
+		\begin{column}[c]{0.6\textwidth}
+			Vamos considerar um equipamento por onde incide uma luz de determinada frequência no alvo T de um metal específico. A experiência mostra que os elétrons são ejetados do material gerando uma corrente i que pode ser registrada pelo amperímetro A. \\
+			Uma diferença de potencial V é ajustada entre os terminais do aparelho com a intenção de frear os elétrons até pararem, registrando assim uma corrente zero no amperímetro. Dessa maneira, a energia cinética máxima K deve ser igual a $eV_F$.
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.25]{figuras/efeito-fotoeletrico.png}
+				\caption*{\footnotesize Montagem usada para o estudo do efeito fotoelétrico.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{O que era esperado pela teoria clássica}
+%	\begin{multicols}{2}
+		De acordo com a teoria do eletromagnetismo, a intensidade da onda I eletromagnética é dado por $I=\frac{E^2_m}{2\mu_0c}$, ou seja, depende somente da amplitude do campo elétrico $E_m$ e não da frequência da luz. Além do mais, como a intensidade é potência por área, era de se esperar que o metal absorvesse cada vez ao longo do tempo. Assim o elétron teria energia cinética o suficiente para escapar do material. Portanto, era de se esperar que
+		\begin{enumerate}
+			\item [\ding{51}] \textit{a energia cinética dos elétrons deveria depender da intensidade da onda;}
+			\item [\ding{51}] \textit{o efeito fotoelétrico deveria ocorrer com a luz de qualquer frequência;}
+			\item [\ding{51}] \textit{deveria haver um retardo de tempo, de modo que o elétron absorvesse energia do feixe continuamente.}
+		\end{enumerate}
+%	\end{multicols}
+\end{frame}
+
+\begin{frame}{O que foi observado experimentalmente}
+	\begin{columns}
+		\begin{column}[c]{0.65\textwidth}
+			Foi observado que a energia cinética K, onde
+			\begin{align*}
+				K = eV_F,
+			\end{align*}
+			independe da luz incidente. Aumentando a intensidade, apenas aumenta a corrente no circuito, mas o potencial de corte $V_F$ permanece o mesmo.
+		\end{column}
+		\begin{column}[c]{0.35\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.5]{figuras/efeito-fotoeletrico-1.png}
+				\caption*{\footnotesize Variação da corrente com o potencial.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+	\begin{corollary}
+		O efeito fotoelétrico independe da intensidade da luz incidente.
+	\end{corollary}
+\end{frame}
+
+\begin{frame}{O que foi observado experimentalmente}
+	\begin{columns}
+		\begin{column}[c]{0.65\textwidth}
+			Foi observado que para cada material existe um limiar de frequência $\nu_0$. Caso a frequência da luz incidente for menor que $\nu_0$, o efeito fotoelétrico não ocorre para aquele material. A figura apresenta um metal alcalino, onde para cada luz incidente, existe um potencial de corte. Nesse caso, o efeito fotoelétrico deixaria de ocorrer para a luz vermelha, que possui frequência menor que a amarela ($\nu_{verm}=\SI{0,4e15}{\per\second}$).
+		\end{column}
+		\begin{column}[c]{0.35\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.5]{figuras/efeito-fotoeletrico-2.png}
+				\caption*{\footnotesize Variação da corrente para diversos valores da frequência da luz.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+	\begin{corollary}
+		Para frequências menores que $\nu_0$ o efeito fotoelétrico não ocorre, qualquer que seja a intensidade da iluminação.
+	\end{corollary}
+\end{frame}
+
+\begin{frame}{Hipótese de Einstein}
+	Para explicar as divergências observadas no efeito fotoelétrico, Einstein propôs que a luz é constituídas por pacotes de energia chamada fóton, onde cada fóton carrega a quantidade de energia
+	\begin{align*}
+		\Aboxed{E = h\nu.}
+	\end{align*}
+	Assim, a energia cinética K dos elétrons que saem do material é dado por
+	\begin{align*}
+		K = eV_F = h\nu-\phi.
+	\end{align*}
+	$\phi$ é denominado função trabalho, que representa a energia necessária para remover o elétron do material.
+\end{frame}
+
+\begin{frame}{Explicações plausíveis para o efeito fotoelétrico}
+	\begin{enumerate}
+		\item [\ding{51}] \textit{O efeito fotoelétrico independe da intensidade da luz incidente.} \alert{Um aumento na intensidade significa mais fótons com a mesma energia $h\nu$ colidindo com elétrons diferentes, o que justifica o aumento na corrente elétrica. Mas se a energia de cada fóton não equivaler a função trabalho, os elétrons não conseguem escapar do material independente da quantidade fótons.}
+		\item [\ding{51}] \textit{Para frequências menores que $\nu_0$ o efeito fotoelétrico não ocorre, qualquer que seja a intensidade da iluminação.} \alert{Na colisão dos fótons com os elétrons, uma energia equivalente a $h\nu$ é absorvida pelo elétron. Se essa energia não equivaler a função trabalho, o elétron não consegue escapar do material.}
+		\item [\ding{51}] \textit{Assim que a luz incide no metal, os elétrons são imediatamente removidos, não havendo um retardo de tempo.} \alert{Na colisão, a energia dos fótons é imediatamente absorvida, não havendo a necessidade de mais colisões.}
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}{Como obter a constante de Planck?}
+	\begin{columns}
+		\begin{column}[c]{0.7\textwidth}
+			Isolando o potencial de corte $V_F$ anteriormente teremos
+			\begin{align*}
+				eV_F & = h\nu - \phi,\\
+				V_F & = \frac{h}{e}\nu-\frac{\phi}{e}.
+			\end{align*}
+			Considerando $V_F$ como função da frequência da luz incidente, podemos representá-la em um gráfico $V_F$ versus $\nu$, onde o coeficiente angular da reta representa o valor da constante de Planck,
+			\begin{align*}
+				\Aboxed{h = \SI{6,57e-34}{\joule\second}.}
+			\end{align*}
+		\end{column}
+		\begin{column}[c]{0.3\textwidth}
+			\begin{figure}
+				\begin{figure}
+					\centering
+					\begin{tikzpicture}[scale=0.6,transform shape, font=\Large]
+					
+					\tkzInit[xmin=0,xmax=6,ymin=0,ymax=4]
+					%	\tkzGrid
+					\tkzClip[space=1]
+					
+					\tkzDrawX[label=$\nu$,noticks]
+					\tkzDrawY[label=$V_F$,noticks]
+					
+					\tkzFct[domain=0:6,color=red,line width=1pt]{(x-1)}
+					\tkzDefPointByFct(2)\tkzGetPoint{p1}
+					\tkzDefPointByFct(4)\tkzGetPoint{p3}
+					
+					\tkzDefPoints{1/0/phi,4/1/p2}
+					
+					\tkzLabelPoint[below](phi){\Large $\frac{\phi}{e}$}
+					
+					%	\tkzDrawPoints(p1,p2)
+					
+					\draw[dashed] (p1) -- (p2);
+					
+					\tkzMarkAngle(p2,p1,p3)
+					\tkzLabelAngle[pos=1.5,color=black](p2,p1,p3){\Large $\frac{h}{e}$}
+					
+					\end{tikzpicture}
+					\caption*{\footnotesize Representação de h a partir do gráfico potencial de corte versus frequência.}
+				\end{figure}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\section{Comportamento ondulatório da matéria}
+
+\subsection{}
+
+\begin{frame}{Hipótese de de Broglie}
+	\begin{columns}
+		\begin{column}[c]{0.6\textwidth}
+			Devido a simetria da natureza, o dualismo onda-partícula é um fenômeno absolutamente geral, ou seja, assim como foi observado que a luz possui comportamento corpuscular, é esperado que a partícula também possua comportamento ondulatório. De forma geral, podemos resumir
+			\begin{align*}
+				\nu & = \frac{E}{h},\\
+				\lambda & = \frac{h}{p}.
+			\end{align*}
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.2]{figuras/interferencia-eletrons.jpeg}
+				\caption*{\footnotesize Fenômeno de interferência ondulatória envolvendo um feixo de elétrons.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\section{Apêndice}
+
+\subsection{}
+
+\begin{frame}{Observações\footnote{Este material está sujeito a modificações. Recomenda-se acompanhamento permanente.}}
+	\begin{center}
+		Esta apresentação está disponível para download no endereço\\
+		\href{https://flavianowilliams.github.io/education}{\textcolor{blue}{https://flavianowilliams.github.io/education}}
+	\end{center}
+\end{frame}
+%
+\begin{frame}{Referências}
+	\bibliographystyle{jurabib}
+	\begin{thebibliography}{9}
+		\bibitem{halliday}D. Halliday, R. Resnick, J. Walker, Fundamentos de física. Eletromagnetismo, v.4, 10. ed., Rio de Janeiro, LTC (2016)
+		\bibitem{randall}R. D. Knight, Física: Uma abordagem estratégica, v.3, 2nd ed., Porto Alegre, Bookman (2009)
+		\bibitem{moyses}H. M. Nussenzveig, Curso de física básica. Eletromagnetismo, v.4, 5. ed., São Paulo, Blucher (2014)
+	\end{thebibliography}
+\end{frame}
+
+\end{document}

@@ -1,0 +1,34 @@
+﻿\begin{tikzpicture}[scale=1,transform shape, font=\Large]
+
+	\tikzstyle{wave}=[decorate,decoration={snake,post length=2mm,amplitude=1.5mm, segment length=4mm},thick]
+
+	\tkzInit[xmin=-4,xmax=4,ymin=-4,ymax=4]
+	\tkzGrid[color=gray!50]
+	\tkzClip
+
+	\tkzDefPoints{-3/-3/A,3/-3/B,3/-0.75/E,3/0.75/F,2.5/-0.75/G,2.5/0.75/H,-2.5/-2.5/a,2.5/-2.5/b}
+
+	\tkzDefSquare(A,B)\tkzGetPoints{C}{D}
+	\tkzDefSquare(a,b)\tkzGetPoints{c}{d}
+
+	\tkzDrawPolygon[fill=gray!50](A,B,E,G,b,a,d,c,H,F,C,D)
+	\tkzDrawPolygon[fill=white](a,b,c,d)
+
+	\tkzLabelPoints(A,B,E,F,G,H,a,b,c,d,C,D)
+
+	%carga oscilando
+	\tkzFct[domain=-2.5:2.5]{0.25*cos(3*2*pi*x/4)-2}
+
+	\tkzDefPointByFct(0)\tkzGetPoint{p1}
+
+	\tkzDrawPoints[size=0.5cm](p1)
+
+	%radiacao incidente
+	\draw[wave,->,line width=1.5pt] (5,-1) -- (-2,2.5);
+
+	%radiacao emitida
+	\draw[wave,->,line width=1.5pt,color=red] (0,-3) --++ (0,-1);
+	\draw[wave,->,line width=1.5pt,color=red] (-3,0) --++ (-1,0);
+	\draw[wave,->,line width=1.5pt,color=red] (0,3) --++ (0,1);
+
+\end{tikzpicture}

@@ -699,12 +699,12 @@
 %	\end{multicols}
 %\end{frame}
 
-\begin{frame}{Número de estados na banda de valência}
+\begin{frame}{Número de estados ocupados por volume}
 	\begin{columns}
 		\begin{column}[c]{0.6\textwidth}
-			Para determinar o número de estados eletrônicos por volume do sólido, ou seja densidade de estados N(E), multiplicamos a densidade de estados eletrônicos por energia E pela probabilidade de estados, definido pela distribuição de Fermi-Dirac,
+			Para determinar o número de estados ocupados por volume do sólido, ou seja densidade de estados $n_o(E)$, multiplicamos a densidade de estados eletrônicos por energia E pela probabilidade de estados, definido pela distribuição de Fermi-Dirac,
 			\begin{equation*}
-				N_o(E) = N(E)P(E).
+				e_{ocup}(E) = e_{total}(E)P(E).
 			\end{equation*}
 		\end{column}
 		\begin{column}[c]{0.4\textwidth}
@@ -743,16 +743,16 @@
 	\end{corollary}
 \end{frame}
 
-\begin{frame}{Número de estados na banda de valência}
+\begin{frame}{Número de estados ocupados por volume}
 	\begin{columns}
 		\begin{column}[c]{0.6\textwidth}
-			Já é conhecido da literatura que o número de estados N(E) é dado por
+			Já é conhecido da literatura que o número de estados disponíveis por volume, N(E), é dado por
 			\begin{equation*}
-				N(E) = \frac{8\pi\sqrt{2}m^{3/2}}{h^3}E^{1/2},
+				e_{total}(E) = \frac{8\pi\sqrt{2}m^{3/2}}{h^3}E^{1/2},
 			\end{equation*}
 			onde m é a massa do elétron e h a constante de Planck. Substituindo temos
 			\begin{align*}
-				\Aboxed{N_o(E) & = \left(\frac{8\pi\sqrt{2}m^{3/2}}{h^3}\right)\frac{E^{1/2}}{e^{(E-E_F)/k_BT}+1}.}
+				\Aboxed{e_{ocup}(E) & = \left(\frac{8\pi\sqrt{2}m^{3/2}}{h^3}\right)\frac{E^{1/2}}{e^{(E-E_F)/k_BT}+1}.}
 			\end{align*}
 		\end{column}
 		\begin{column}[c]{0.4\textwidth}
@@ -825,9 +825,9 @@
 %	\begin{multicols}{2}
 			O número total de elétrons por unidade de volume n é obtido integrando todos os estados ocupados até o nível de Fermi, ou seja,
 			\begin{equation*}
-				n = \int\limits_{0}^{E_F}N_o(E)dE.
+				n = \int\limits_{0}^{E_F}e_{ocup}(E)dE.
 			\end{equation*}
-			Substituindo $N_o(E)$ dado anteriormente e considerando o estado fundamental (T=0 K) teremos
+			Substituindo $e_{ocup}(E)$ dado anteriormente e considerando o estado fundamental (T=0 K) teremos
 		\end{column}
 		\begin{column}[c]{0.55\textwidth}
 			\begin{align*}

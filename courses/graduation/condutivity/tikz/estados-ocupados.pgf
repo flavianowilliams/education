@@ -1,0 +1,28 @@
+﻿				\begin{tikzpicture}[scale=1,transform shape, font=\Large]
+
+				\tkzInit[xmin=0,xmax=10,ymin=0,ymax=4]
+				%\tkzGrid[color=gray!50]
+				%	\tkzClip[space=1.2]
+				
+				\tkzDrawX[right, label=E]
+				\tkzDrawY[above,label=$e_{ocup}(E)$]
+				
+				\tkzDefPoints{0/0/O}
+				
+				\tkzFct[domain=0:10,color=red,line width=1pt]{1.25*sqrt(x)/(exp(x-4)/1+1)}
+				
+				\pgfmathsetmacro{\px}{1.25*sqrt(4)}
+				
+				\tkzFct[domain=0:4,color=blue,dashed,line width=1pt]{1.25*sqrt(x)}
+
+				\tkzDefPoints{10/0/p1,4/0/p4,10/0/p2,9.5/3.5/t,10/0/p5,2/0/p6}
+				
+				\draw[dashed,color=blue,line width=1pt] (4,\px)--(p4);
+				\draw[dashed,color=blue,line width=1pt] (p4)--(p2);
+				
+				\tkzText[color=black,below=0.2](O){a}
+				\tkzText[color=black,below=0.2](p6){b}
+				\tkzText[color=black,below=0.2](p4){c}
+				\tkzText[color=black,below=0.2](p5){d}
+				
+				\end{tikzpicture}

@@ -642,12 +642,12 @@
 				\tkzInterLL(A,C)(B,b)\tkzGetPoint{B'}
 				\tkzDrawSegment[dashed](B,B')
 				\tkzMarkRightAngle(B,B',C)
-				
-				\tkzDefLine[orthogonal= through B'](A,B)\tkzGetPoint{d}
-				\tkzInterLL(A,B)(B',d)\tkzGetPoint{D'}
-				\tkzDrawSegment[dashed](B',D')
-				\tkzMarkRightAngle(B,D',B')
-				
+
+				\tkzDefLine[orthogonal= through C](A,B)\tkzGetPoint{d}
+				\tkzInterLL(A,B)(C,d)\tkzGetPoint{D'}
+				\tkzDrawSegment[dashed](C,D')
+				\tkzMarkRightAngle(B,D',C)
+
 				\draw[->,line width=1.0pt,color=blue] (A) -- (B') node [above,midway,sloped] {$bcos\theta$};
 				\draw[->,line width=1.0pt,color=blue] (A) -- (D') node [below,midway,sloped] {$acos\theta$};
 				

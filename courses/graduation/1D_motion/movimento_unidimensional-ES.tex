@@ -263,13 +263,13 @@
 		\end{align*}
 		onde podemos usar a substituição infinitesimal $dx=\frac{dx}{dt}dt$,
 		\begin{equation*}
-			\int_{t_0}^{t}v(t)dt = \int_{t_0}^{t}dx,
+			\int_{t_0}^{t}v(t)dt = \int_{x_0}^{x}dx,
 		\end{equation*}
 		\end{column}
 		\begin{column}[t]{0.5\textwidth}
 		\begin{align*}
-			\int_{t_0}^{t}v(t) & = \Delta x,\\
-			\int_{t_0}^{t}v(t) & = x(t)-x(t_0).
+			\int_{t_0}^{t}v(t)dt & = \left. x\right|^x_{x_{0}},\\
+			\int_{t_0}^{t}v(t)dt & = x(t)-x_0.
 		\end{align*}
 		Se a velocidade for constante e $t_0=0\;\text{s}$ teremos a função horária da posição.
 		\begin{block}{Função horária da posição (v = cte)}
@@ -422,15 +422,15 @@
 			\end{equation*}
 			onde podemos usar a substituição infinitesimal $dv=\frac{dv}{dt}dt$,
 			\begin{equation*}
-				\int_{t_0}^{t}a(t)dt = \int_{t_0}^{t}dv,
+				\int_{t_0}^{t}a(t)dt = \int_{v_0}^{v}dv,
 			\end{equation*}
 		\end{column}
 		\begin{column}[t]{0.5\textwidth}
 			\begin{align*}
-				\int_{t_0}^{t}a(t) & = \Delta v,\\
-				\int_{t_0}^{t}a(t) & = v(t)-v(t_0).
+				\int_{t_0}^{t}a(t)dt & = \left. v\right|^v_{v_0},\\
+				\int_{t_0}^{t}a(t)dt & = v(t)-v_0.
 			\end{align*}
-			Se a velocidade for constante e $t_0=0\;\text{s}$ teremos a função horária da posição.
+			Se a aceleração for constante e $t_0=0\;\text{s}$ teremos a função horária da posição.
 			\begin{block}{Função horária da velocidade se a=cte}
 				\begin{equation*}
 					\vec{v}(t)=\vec{v}_0 + \vec{a}t.
@@ -455,12 +455,12 @@
 		\begin{column}[t]{0.5\textwidth}
 			Integrando o lado direito e considerando que a aceleração é constante teremos
 			\begin{equation*}
-			\Delta x = v(t_0)t+\frac{1}{2}at^2.
+			\Delta x = v_0t+\frac{1}{2}at^2.
 			\end{equation*}
 			Considerando $t_0=0\;\text{s}$ teremos a função horária da posição.
 			\begin{block}{Função horária da posição se a=cte}
 				\begin{equation*}
-				\vec{x}(t)=\vec{x}_0+\vec{v}(t_0)t+\frac{1}{2}\vec{a}t^2.
+				\vec{x}(t)=\vec{x}_0+\vec{v}_0t+\frac{1}{2}\vec{a}t^2.
 				\end{equation*}
 			\end{block}
 		\end{column}

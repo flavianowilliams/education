@@ -293,7 +293,7 @@
 		\begin{column}[c]{0.5\textwidth}
 			A velocidade inicial $\vec{v}_0$ de um projétil que faz um ângulo $\theta_0$ com o eixo x pode ser decomposta em suas componentes horizontal e vertical,
 			\begin{equation*}
-				\vec{v}=v_0cos\theta_0\widehat{i}+v_0sen\theta_0\widehat{j}.
+				\vec{v}_0=v_0cos\theta_0\widehat{i}+v_0sen\theta_0\widehat{j}.
 			\end{equation*}
 			\begin{corollary}
 				No movimento balístico, o movimento horizontal e o movimento vertical são independentes, e um não interfere no outro.
@@ -343,9 +343,9 @@
 				\tkzMarkAngle[size=0.5](vx,O,v)
 				\tkzLabelAngle(vx,O,v){$\theta_0$}
 				
-				\draw[->,line width=1.0pt,color=red] (A) --++ (v) node [above right] {$\vec{v}$};
-				\draw[->,line width=1.0pt,color=red] (A) --++ (vx) node [below,midway] {$\vec{v}_x$};
-				\draw[->,line width=1.0pt,color=red] (A) --++ (vy) node [left,midway] {$\vec{v}_y$};
+				\draw[->,line width=1.0pt,color=red] (A) --++ (v) node [above] {$\vec{v}_0$};
+				\draw[->,line width=1.0pt,color=red] (A) --++ (vx) node [below,midway] {$\vec{v}_{0x}$};
+				\draw[->,line width=1.0pt,color=red] (A) --++ (vy) node [left,midway] {$\vec{v}_{0y}$};
 				
 				\end{tikzpicture}
 				\caption*{\footnotesize Trajetória parabólica de um projétil.}

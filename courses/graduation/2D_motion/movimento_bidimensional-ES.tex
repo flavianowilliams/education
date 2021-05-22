@@ -414,11 +414,11 @@
 			\pgfmathdeclarefunction{vy}{1}{\pgfmathparse{0.2*\v0*sin(\theta)-0.2*10*#1/(\v0*cos(\theta))}}
 			
 			\foreach \t in {0,2,4,6,8}{
-				\tkzDefPoint(\t,0){a}
-				\coordinate (b) at (0,{y(\t)});
+				\tkzDefPoint(\t,-0.4){a}
+				\coordinate (b) at (-0.4,{y(\t)});
 				\coordinate (c) at (\t,{y(\t)});
 				\tkzDrawPoint[size=1.0cm,color=red,fill=white](b)
-				\tkzDrawPoint[size=1.0cm,color=red,fill=white](a)
+				\tkzDrawPoint[size=1.0cm,color=green,fill=white](a)
 				\tkzDrawPoint[size=1.0cm,color=blue](c)}
 			
 			\end{tikzpicture}
@@ -449,7 +449,7 @@
 				%\tkzGrid[color=gray!20]
 				\tkzClip[space=2]
 				
-				\tkzDrawX[right,label=x (m),noticks]
+				\tkzDrawX[below right,label=x (m),noticks]
 				\tkzDrawY[above,label=y (m),noticks]
 				
 				\def\theta{45}
@@ -641,7 +641,7 @@
 \begin{frame}{Movimento circular uniforme (continuação)}
 	\begin{columns}
 		\begin{column}[c]{0.5\textwidth}
-			A partir das aceleração $\vec{a}$ demostrado anteriormente calculamos o seu módulo
+			A partir da aceleração $\vec{a}$, demostrado anteriormente, calculamos o seu módulo
 			\begin{align*}
 				a^2 & = a_x^2+a_y^2,\\
 				a^2 & = \left(-\frac{v^2}{r}cos\theta\right)^2+\left(-\frac{v^2}{r}sen\theta\right)^2,\\

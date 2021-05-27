@@ -587,7 +587,7 @@
 				\tkzDefPoints{0/0/O,0/1/y}
 				
 				\tkzDrawX[label=x,below,noticks]
-				\tkzAxeY[label=U(J),pos=1.01,above,noticks]
+				\tkzAxeY[label=U(x),pos=1.01,above,noticks]
 				
 				\tkzFct[domain=0:12,color=red,line width=1.0pt]{2*exp(-(x-2.5)**2)-2*exp(-(x-5)**2)-3*exp(-(x-8.5)**2)+3}
 				\tkzDefPointByFct(8.5)\tkzGetPoint{B}
@@ -671,7 +671,7 @@
 				\tkzDefPointByFct(10.1)\tkzGetPoint{C}
 				\tkzDefLine[orthogonal=through A](O,y)\tkzGetPoint{a}
 				\tkzInterLL(a,A)(O,y)\tkzGetPoint{a1}
-				\draw[dashed,line width=1.0pt,green] (a1) -- (A) node [left, at start] {$E_2$};
+				\draw[dashed,line width=1.0pt,green] (a1) -- (A) node [left, at start] {$E_3$};
 				\draw[dashed,line width=1.0pt,green] (B) --++ (12,0);
 				\draw[line width=1.0pt,green] (A) -- (B);
 				\draw[dashed] (A) -- (7.9,0);

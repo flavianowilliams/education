@@ -52,7 +52,7 @@
 		\begin{column}[c]{0.6\textwidth}
 			A posição angular de uma reta é o ângulo que a reta faz com uma direção fixa, em relação a posição angular zero. Na figura ao lado, a posição angular $\theta$ é medida em relação ao eixo x. De acordo com a figura podemos ver que
 			\begin{align*}
-				\Aboxed{\theta = \frac{s}{r},}
+				\Aboxed{\theta = \frac{s}{r},\quad (\theta\ll 1)}
 			\end{align*}
 			onde s é o comprimento de um arco de raio r.
 		\end{column}
@@ -99,8 +99,8 @@
 	\end{corollary}
 \end{frame}
 
-\begin{frame}{Posição angular e sua relação com grandezas vetoriais}
-	A posição angular não pode ser considerada grandeza vetorial pois não obedece a propriedade vetorial de comutatividade, ou seja, $\vec{\theta}_1+\vec{\theta}_2\neq \vec{\theta}_2+\vec{\theta}_1$.
+\begin{frame}{A não representação da posição angular como grandeza vetorial}
+	A posição angular não pode ser considerada grandeza vetorial pois não obedece a propriedade vetorial de comutatividade, ou seja, $\theta_1+\theta_2\neq \theta_2+\theta_1$.
 	\begin{figure}
 		\begin{subfigure}[b]{0.45\textwidth}
 			\centering
@@ -386,7 +386,7 @@
 		\end{column}
 	\end{columns}
 	\begin{corollary}
-		A unidade de medida da velocidade angular é radiano o por segundo (rad/s).
+		A unidade de medida da velocidade angular é radiano por segundo (rad/s).
 	\end{corollary}
 %	\end{multicols}
 \end{frame}
@@ -553,7 +553,7 @@
 		\begin{column}[c]{0.6\textwidth}
 			Derivando a função $v=\omega r$ encontramos
 			\begin{align*}
-				\frac{dv}{dt} & = \frac{d\omega r}{dt},\\
+				\frac{dv}{dt} & = \frac{d(\omega r)}{dt},\\
 				\frac{dv}{dt} & = r\frac{d\omega}{dt},\\
 				\Aboxed{a_t & = \alpha r.}
 			\end{align*}
@@ -763,7 +763,7 @@
 			\begin{align*}
 				\Aboxed{W & = \int\limits_{\theta_1}^{\theta_2}\tau d\theta.}
 			\end{align*}
-			A potência pode ser determinada através da expressão $P=\frac{dW}{dt}$. Considerando uma rotação onde $\tau=cte$ teremos
+			A potência P é definida como $P=\frac{dW}{dt}$, sabendo que $\frac{dW}{d\theta}=\tau$ e aplicando a regra da cadeia $\frac{dW}{dt}=\frac{dW}{d\theta}\frac{d\theta}{dt}$ teremos
 			\begin{align*}
 				\Aboxed{P & = \frac{\tau d\theta}{dt}=\tau\omega.}
 			\end{align*}
@@ -798,7 +798,7 @@
 		\end{align*}
 		Substituindo na expressão do torque
 		\begin{align*}
-			\vec{\tau} & = \frac{d(\vec{r}\times\vec{p})}{dt}-\overbracket{\frac{d\vec{r}}{dt}}^{\alert{v}}\times\vec{p},\\
+			\vec{\tau} & = \frac{d(\vec{r}\times\vec{p})}{dt}-\overbracket{\frac{d\vec{r}}{dt}}^{\alert{\vec{v}}}\times\vec{p},\\
 			\vec{\tau} & = \frac{d(\vec{r}\times\vec{p})}{dt}-\vec{v}\times m\vec{v}.
 		\end{align*}
 		onde sabemos que $\vec{v}=\frac{d\vec{r}}{dt}$ e $\vec{p}=m\vec{v}$.

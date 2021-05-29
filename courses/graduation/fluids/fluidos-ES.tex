@@ -81,17 +81,14 @@
 	\end{columns}
 \end{frame}
 
-\begin{frame}{O que é massa específica?}
+\begin{frame}{Densidade}
 	\begin{columns}
 		\begin{column}{0.6\textwidth}
-				Definimos massa específica ou densidade absoluta $\rho$ de um objeto como a taxa da quantidade infinitesimal de massa $dm$ por elemento $dV$ de seu volume,
+				Definimos densidade $\rho$ de um objeto como a taxa da quantidade infinitesimal de massa $dm$ por elemento $dV$ de seu volume,
 				\begin{align*}
-					\Aboxed{\rho = \frac{dm}{dV}=\lim\limits_{\Delta V\rightarrow 0}\frac{\Delta m}{\Delta V}.}
+					\Aboxed{\rho=\lim\limits_{\Delta V\rightarrow 0}\frac{\Delta m}{\Delta V} = \frac{dm}{dV}.}
 				\end{align*}
-				Dessa maneira, podemos determinar o valor de cada elemento de massa $\Delta m$ que ocupa uma parte $\Delta V$ como
-				\begin{align*}
-					\Delta m = \rho \Delta V.
-				\end{align*}
+				\alert{Assim, a densidade fornece informações de como a massa está sendo distribuída ao longo do volume.}
 		\end{column}
 		\begin{column}{0.4\textwidth}
 %				\includegraphics[scale=0.18]{figuras/densidade-iceberg.jpg}
@@ -99,7 +96,7 @@
 			\centering
 			\begin{tiny}
 				\tdplotsetmaincoords{70}{110}
-				\begin{tikzpicture}[scale=2.9, tdplot_main_coords,
+				\begin{tikzpicture}[scale=2.2, tdplot_main_coords,
 				axis/.style={->,blue,thick},
 				vectora/.style={-stealth,thick},
 				vectorb/.style={-stealth,red,thick}]
@@ -134,6 +131,9 @@
 		\end{figure}
 		\end{column}
 	\end{columns}
+	\begin{corollary}
+		Para objetos homogêneos $\rho$ é chamada de massa específica, onde $\rho = \frac{m}{V}$.
+	\end{corollary}				
 \end{frame}
 
 \begin{frame}{Força atuando em cada elemento de um fluido}
@@ -141,7 +141,7 @@
 		\begin{column}[c]{0.7\textwidth}
 			Considere uma força $\Delta F$ atuando em um pequena área $\Delta A$ no fundo de um recipiente. Chamaremos de $\Delta F$ a força resultante atuando nessa área, onde podemos decompô-la em suas componentes tangencial $\Delta \vec{F}_t$ e perpendicular $\Delta \vec{F}_p$. No entanto, em um fluido em equilíbrio a força resultante deve ser zero, portanto obrigatoriamente deveremos ter $\Delta F_t=0$, restando apenas $\Delta \vec{F}_p$, que no caso deve ser equivalente ao peso da parte do fluido justamente acima, onde
 			\begin{align*}
-				\Delta F_p=\Delta F\cos\theta=\Delta P.
+				\Delta F_p=\Delta F\cos\theta= P.
 			\end{align*}
 		\end{column}
 		\begin{column}[c]{0.3\textwidth}
@@ -196,8 +196,8 @@
 \begin{frame}{Pressão}
 \begin{columns}
 	\begin{column}[c]{0.7\textwidth}
-		 Sabendo que $\Delta\vec{P}=(\Delta m)\vec{g}$, temos para a força que atua em uma pequena área $\Delta A$ da parede do recipiente
-		\begin{NodesList}[margin=2cm]
+		 Sabendo que $\vec{P}=(\Delta m)\vec{g}$, temos para a força que atua em uma pequena área $\Delta A$ da parede do recipiente
+		\begin{NodesList}[margin=3cm]
 			\begin{align*}
 				\Delta F & = (\Delta m) g,\AddNode\\
 				\Delta F & = \rho g\Delta V,\AddNode\\
@@ -207,7 +207,7 @@
 		\end{NodesList}
 		p é a pressão que representa a força por unidade de área perpendicular a superfície, ou seja,
 		\begin{align*}
-			\Aboxed{p = \frac{dF}{dA}=\lim\limits_{\Delta V\rightarrow 0}\frac{\Delta F}{\Delta A}.}
+			\Aboxed{p =\lim\limits_{\Delta V\rightarrow 0}\frac{\Delta F}{\Delta A} = \frac{dF}{dA}.}
 		\end{align*}
 	\end{column}
 	\begin{column}[c]{0.3\textwidth}
@@ -242,6 +242,65 @@
 			\tkzText[text width=2.5cm,align=center](O){$\Delta V$}
 			
 			\draw[->,line width=1pt,color=brown] (p) --(p7) node [left] {$\Delta\vec{P}$};
+			
+			\draw (a) to[dim arrow={label=$\Delta A$}] (b);
+			
+			\end{tikzpicture}
+			%\includegraphics[scale=0.25]{figuras/pressao.jpg}
+			\caption*{\footnotesize Força por unidade de área.}
+		\end{figure}
+	\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Pressão}
+\begin{columns}
+	\begin{column}[c]{0.7\textwidth}
+		Definimos pressão p como a força distribuída por unidade de área perpendicular a superfície, ou seja,
+		\begin{align*}
+			\Aboxed{p =\lim\limits_{\Delta V\rightarrow 0}\frac{\Delta F_p}{\Delta A} = \frac{dF_p}{dA}.}
+		\end{align*}
+		No caso de uma força atuando obliquamente a área A temos que a pressão é definida como o produto escalar da força $\vec{F}$ pelo versor $\widehat{n}$ perpendicular a área A,
+		\begin{align*}
+			\Aboxed{p = \frac{d}{dA}\left(F\cos\theta\right)= \left(\frac{dF}{dA}\right)\cos\theta=\frac{d\vec{F}}{dA}\cdot\widehat{n}.}
+		\end{align*}
+	\end{column}
+	\begin{column}[c]{0.3\textwidth}
+		\begin{figure}
+			\centering
+			\begin{tikzpicture}[scale=0.35,transform shape,font=\Large]
+			
+			\tkzInit[xmin=-4,xmax=4,ymin=-1,ymax=10]
+			%\tkzGrid[color=gray!20]
+			\tkzClip
+			
+			%definindo reservatorio	
+			
+			\tkzDefPoints{-4/2/A,4/2/B,4/9/C,-4/9/D,-4/10/E,4/10/F}
+			
+			\draw[decorate,decoration={segment length=7mm, amplitude=0.25mm,snake},line width=1.0pt,color=blue] (C) -- (D);
+			
+			\tkzFillPolygon[color=blue!20,opacity=0.5](A,B,C,D)
+			\tkzDrawPolygon(A,B,F,E)
+			
+			%definindo volume de água deslocada
+			
+			\tkzDefPoints{0/2.75/O,-1.5/3.5/a,1.5/3.5/b,-1.5/2.15/c,1.5/2.15/d,0/2.15/p,0/-1/p2,0/0/p5}
+			
+			%empuxo e força
+			
+			\tkzDefPointsBy[rotation=center p angle 45](p,p2){p3,p4}
+			\tkzDefPointsBy[projection=onto p5--p](p,p4){p6,p7}
+			
+			\tkzDrawPolygon[fill=white](a,b,d,c)
+			
+			\tkzText[text width=2.5cm,align=center](O){$\Delta V$}
+			
+			\draw[->,line width=1pt,color=brown] (p) --(p7) node [below] {$\widehat{n}$};
+			\draw[->,line width=1pt,color=brown] (p) --(p4) node [below] {$\vec{F}$};
+
+			\tkzMarkAngle(p7,p,p4)
+			\tkzLabelAngle[below,pos=1.1](p7,p,p4){$\theta$}
 			
 			\draw (a) to[dim arrow={label=$\Delta A$}] (b);
 			

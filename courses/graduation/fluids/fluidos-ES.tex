@@ -196,66 +196,6 @@
 \begin{frame}{Pressão}
 \begin{columns}
 	\begin{column}[c]{0.7\textwidth}
-		 Sabendo que $\vec{P}=(\Delta m)\vec{g}$, temos para a força que atua em uma pequena área $\Delta A$ da parede do recipiente
-		\begin{NodesList}[margin=3cm]
-			\begin{align*}
-				\Delta F & = (\Delta m) g,\AddNode\\
-				\Delta F & = \rho g\Delta V,\AddNode\\
-				\Delta F & = p \Delta A.
-			\end{align*}
-			\LinkNodes{\tiny \alert{$\Delta m=\rho\Delta V$}}
-		\end{NodesList}
-		p é a pressão que representa a força por unidade de área perpendicular a superfície, ou seja,
-		\begin{align*}
-			\Aboxed{p =\lim\limits_{\Delta V\rightarrow 0}\frac{\Delta F}{\Delta A} = \frac{dF}{dA}.}
-		\end{align*}
-	\end{column}
-	\begin{column}[c]{0.3\textwidth}
-		\begin{figure}
-			\centering
-			\begin{tikzpicture}[scale=0.35,transform shape,font=\Large]
-			
-			\tkzInit[xmin=-4,xmax=4,ymin=-1,ymax=10]
-			%	\tkzGrid[color=gray!20]
-			\tkzClip
-			
-			%definindo reservatorio	
-			
-			\tkzDefPoints{-4/2/A,4/2/B,4/9/C,-4/9/D,-4/10/E,4/10/F}
-			
-			\draw[decorate,decoration={segment length=7mm, amplitude=0.25mm,snake},line width=1.0pt,color=blue] (C) -- (D);
-			
-			\tkzFillPolygon[color=blue!20,opacity=0.5](A,B,C,D)
-			\tkzDrawPolygon(A,B,F,E)
-			
-			%definindo volume de água deslocada
-			
-			\tkzDefPoints{0/2.75/O,-1.5/3.5/a,1.5/3.5/b,-1.5/2.15/c,1.5/2.15/d,0/2.15/p,0/-1/p2,0/0/p5}
-			
-			%empuxo e força
-			
-			\tkzDefPointsBy[rotation=center p angle 45](p,p2){p3,p4}
-			\tkzDefPointsBy[projection=onto p5--p](p,p4){p6,p7}
-			
-			\tkzDrawPolygon[fill=white](a,b,d,c)
-			
-			\tkzText[text width=2.5cm,align=center](O){$\Delta V$}
-			
-			\draw[->,line width=1pt,color=brown] (p) --(p7) node [left] {$\Delta\vec{P}$};
-			
-			\draw (a) to[dim arrow={label=$\Delta A$}] (b);
-			
-			\end{tikzpicture}
-			%\includegraphics[scale=0.25]{figuras/pressao.jpg}
-			\caption*{\footnotesize Força por unidade de área.}
-		\end{figure}
-	\end{column}
-\end{columns}
-\end{frame}
-
-\begin{frame}{Pressão}
-\begin{columns}
-	\begin{column}[c]{0.7\textwidth}
 		Definimos pressão p como a força distribuída por unidade de área perpendicular a superfície, ou seja,
 		\begin{align*}
 			\Aboxed{p =\lim\limits_{\Delta V\rightarrow 0}\frac{\Delta F_p}{\Delta A} = \frac{dF_p}{dA}.}

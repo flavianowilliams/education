@@ -138,54 +138,62 @@
 
 \begin{frame}{Força atuando em cada elemento de um fluido}
 	\begin{columns}
-		\begin{column}[c]{0.7\textwidth}
+		\begin{column}[c]{0.6\textwidth}
 			Considere uma força $\Delta F$ atuando em um pequena área $\Delta A$ no fundo de um recipiente. Chamaremos de $\Delta F$ a força resultante atuando nessa área, onde podemos decompô-la em suas componentes tangencial $\Delta \vec{F}_t$ e perpendicular $\Delta \vec{F}_p$. No entanto, em um fluido em equilíbrio a força resultante deve ser zero, portanto obrigatoriamente deveremos ter $\Delta F_t=0$, restando apenas $\Delta \vec{F}_p$, que no caso deve ser equivalente ao peso da parte do fluido justamente acima, onde
 			\begin{align*}
-				\Delta F_p=\Delta F\cos\theta= P.
+				\Delta F_p=\Delta F\cos\theta.
 			\end{align*}
 		\end{column}
-		\begin{column}[c]{0.3\textwidth}
+		\begin{column}[c]{0.4\textwidth}
+			\vspace*{-0.5cm}
 			\begin{figure}
 				\centering
-				\begin{tikzpicture}[scale=0.35,transform shape,font=\Large]
-				
-				\tkzInit[xmin=-4,xmax=4,ymin=-1,ymax=10]
-				%	\tkzGrid[color=gray!20]
-				\tkzClip
-				
-				%definindo reservatorio	
-				
-				\tkzDefPoints{-4/2/A,4/2/B,4/9/C,-4/9/D,-4/10/E,4/10/F}
-				
-				\draw[decorate,decoration={segment length=7mm, amplitude=0.25mm,snake},line width=1.0pt,color=blue] (C) -- (D);
-				
-				\tkzFillPolygon[color=blue!20,opacity=0.5](A,B,C,D)
-				\tkzDrawPolygon(A,B,F,E)
-				
-				%definindo volume de água deslocada
-				
-				\tkzDefPoints{0/2.75/O,-1.5/3.5/a,1.5/3.5/b,-1.5/2.15/c,1.5/2.15/d,0/2.15/p,0/-1/p2,0/0/p5}
+			\begin{tikzpicture}[scale=0.38,transform shape,font=\Large, rotate=-45]
+			
+			\tkzInit[xmin=-4.5,xmax=4.5,ymin=-1,ymax=10]
+			\tkzGrid[color=gray!20]
+			\tkzClip
+			
+			%definindo reservatorio	
+			
+			\tkzDefPoints{-4/2/A,4/2/B,4/9/C,-4/9/D,-4/10/E,4/10/F}
+			
+			\draw[decorate,decoration={segment length=7mm, amplitude=0.25mm,snake},line width=1.0pt,color=blue] (C) -- (D);
+			
+			\tkzFillPolygon[color=blue!20,opacity=0.5](A,B,C,D)
+			\tkzDrawPolygon(A,B,F,E)
+			
+				%parede
+				\coordinate (A1) at ($(A)-(1,0)$);
+				\coordinate (B1) at ($(B)+(1,0)$);
 
-				%empuxo e força
-				
-				\tkzDefPointsBy[rotation=center p angle 45](p,p2){p3,p4}
-				\tkzDefPointsBy[projection=onto p5--p](p,p4){p6,p7}
-				\tkzDefPointsBy[projection=onto p--d](p,p4){p8,p9}
+				\fill [pattern = north west lines] (A1) rectangle (5,1.5);
+				\draw (A1) -- (B1);
 
-				\tkzMarkAngle(p7,p,p4)
-				\tkzLabelAngle[pos=1.5](p7,p,p4){\huge $\theta$}
+			%definindo volume de água deslocada
+			
+			\tkzDefPoints{0/2.75/O,-1.5/3.5/a,1.5/3.5/b,-1.5/2.15/c,1.5/2.15/d,0/2.15/p,0/-1/p2,0/0/p5}
+			
+			%empuxo e força
+			
+			\tkzDefPointsBy[rotation=center p angle 45](p,p2){p3,p4}
+			\tkzDefPointsBy[projection=onto p--d](p4){p8}
+			\tkzDefPointsBy[projection=onto p5--p](p,p4){p6,p7}
+			
+			\tkzDrawPolygon[fill=white](a,b,d,c)
+			
+			\tkzText[text width=2.5cm,align=center](O){$\Delta V$}
+			
+			\draw[->,line width=1.5pt,color=brown] (p) --(p8) node [above] {$\vec{F}_t$};
+			\draw[->,line width=1.5pt,color=brown] (p) --(p7) node [below] {$\vec{F}_p$};
+			\draw[->,line width=1.5pt,color=brown] (p) --(p4) node [below] {$\vec{F}$};
 
-				\tkzDrawPolygon[fill=white](a,b,d,c)
-
-				\tkzText[text width=2.5cm,align=center](O){$\Delta V$}
-
-				\draw[->,line width=1pt,color=brown] (p) --(p4) node [right] {$\Delta\vec{F}$};
-				\draw[->,line width=1pt,color=brown] (p) --(p7) node [left] {$\Delta\vec{F}_p$};
-				\draw[->,line width=1pt,color=brown] (p) --(p9) node [right] {$\Delta\vec{F}_t$};
-
-				\draw (a) to[dim arrow={label=$\Delta A$}] (b);
-
-				\end{tikzpicture}
+			\tkzMarkAngle(p7,p,p4)
+			\tkzLabelAngle[below,pos=1.1](p7,p,p4){$\theta$}
+			
+			\draw (a) to[dim arrow={label=$\Delta A$}] (b);
+			
+			\end{tikzpicture}
 				%\includegraphics[scale=0.25]{figuras/pressao.jpg}
 				\caption*{\footnotesize Força por unidade de área.}
 			\end{figure}
@@ -237,7 +245,7 @@
 			\tkzText[text width=2.5cm,align=center](O){$\Delta V$}
 			
 			\draw[->,line width=1pt,color=brown] (p) --(p7) node [below] {$\widehat{n}$};
-			\draw[->,line width=1pt,color=brown] (p) --(p4) node [below] {$\vec{F}$};
+			\draw[->,line width=1pt,color=brown] (p) --(p4) node [below] {$\frac{d\vec{F}}{dA}$};
 
 			\tkzMarkAngle(p7,p,p4)
 			\tkzLabelAngle[below,pos=1.1](p7,p,p4){$\theta$}

@@ -1,8 +1,8 @@
-﻿			\begin{tikzpicture}[scale=1.35,transform shape,font=\Large]
+﻿			\begin{tikzpicture}[scale=1.35,transform shape,font=\Large, rotate=-45]
 			
-			\tkzInit[xmin=-4,xmax=4,ymin=-1,ymax=10]
+			\tkzInit[xmin=-5,xmax=5,ymin=-1,ymax=10]
 			\tkzGrid[color=gray!20]
-			%\tkzClip
+			\tkzClip
 			
 			%definindo reservatorio	
 			
@@ -13,6 +13,13 @@
 			\tkzFillPolygon[color=blue!20,opacity=0.5](A,B,C,D)
 			\tkzDrawPolygon(A,B,F,E)
 			
+				%parede
+				\coordinate (A1) at ($(A)-(1,0)$);
+				\coordinate (B1) at ($(B)+(1,0)$);
+
+				\fill [pattern = north west lines] (A1) rectangle (5,1.75);
+				\draw (A1) -- (B1);
+
 			%definindo volume de água deslocada
 			
 			\tkzDefPoints{0/2.75/O,-1.5/3.5/a,1.5/3.5/b,-1.5/2.15/c,1.5/2.15/d,0/2.15/p,0/-1/p2,0/0/p5}
@@ -20,14 +27,16 @@
 			%empuxo e força
 			
 			\tkzDefPointsBy[rotation=center p angle 45](p,p2){p3,p4}
+			\tkzDefPointsBy[projection=onto p--d](p4){p8}
 			\tkzDefPointsBy[projection=onto p5--p](p,p4){p6,p7}
 			
 			\tkzDrawPolygon[fill=white](a,b,d,c)
 			
 			\tkzText[text width=2.5cm,align=center](O){$\Delta V$}
 			
-			\draw[->,line width=1pt,color=brown] (p) --(p7) node [below] {$\widehat{n}$};
-			\draw[->,line width=1pt,color=brown] (p) --(p4) node [below] {$\vec{F}$};
+			\draw[->,line width=1.5pt,color=brown] (p) --(p8) node [above] {$\vec{F}_t$};
+			\draw[->,line width=1.5pt,color=brown] (p) --(p7) node [below] {$\vec{F}_p$};
+			\draw[->,line width=1.5pt,color=brown] (p) --(p4) node [below] {$\vec{F}$};
 
 			\tkzMarkAngle(p7,p,p4)
 			\tkzLabelAngle[below,pos=1.1](p7,p,p4){$\theta$}

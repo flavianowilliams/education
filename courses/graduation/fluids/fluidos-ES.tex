@@ -206,7 +206,7 @@
 	\begin{column}[c]{0.7\textwidth}
 		Definimos pressão p como a força distribuída por unidade de área perpendicular a superfície, ou seja,
 		\begin{align*}
-			\Aboxed{p =\lim\limits_{\Delta V\rightarrow 0}\frac{\Delta F_p}{\Delta A} = \frac{dF_p}{dA}.}
+			\Aboxed{p =\lim\limits_{\Delta A\rightarrow 0}\frac{\Delta F_p}{\Delta A} = \frac{dF_p}{dA}.}
 		\end{align*}
 		No caso de uma força atuando obliquamente a área A temos que a pressão é definida como o produto escalar da força $\vec{F}$ pelo versor $\widehat{n}$ perpendicular a área A,
 		\begin{align*}
@@ -847,6 +847,28 @@
 		\end{enumerate}
 \end{frame}
 
+\begin{frame}{Definição de vazão ou fluxo}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			\begin{block}{Fluxo}
+				Volume de fluido que atravessa uma seção transversal do tubo de corrente por unidade de tempo.
+				\begin{align*}
+					Z=\frac{Volume}{\Delta t}.
+				\end{align*}
+			\end{block}
+			\begin{corollary}
+				Pela definição de fluxo, percebe-se que a sua unidade no SI é metro cúbico por segundo ($m^3/s$).
+			\end{corollary}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}[c]
+				\includegraphics[scale=0.6]{figuras/vazao.jpg}
+				\caption*{\footnotesize Vazão de um fluido que sai da abertura de um cano e enche uma piscina.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
 \begin{frame}[fragile]{Equação da continuidade baseada na Lei da conservação da matéria}
 	\begin{columns}
 		\begin{column}{0.5\textwidth}
@@ -1039,9 +1061,9 @@
 		\begin{column}{0.6\textwidth}
 			Supondo um fluido de volume V e massa m que atravessa a região 1 no intervalo de tempo $\Delta t$. O trabalho necessário para deslocá-lo a uma distância $s_1$ é dado por 
 			\begin{align*}
-				\tau_1 & = \overbracket{F_1}^{\alert{p_1A_1}}\overbracket{v_1\Delta t}^{\alert{s_1}},\\
-				\tau_1 & = p_1\underbracket{A_1s_1}_{\alert{V}}.\\
-				\Aboxed{\tau_1 & = p_1V.}
+				W_1 & = \overbracket{F_1}^{\alert{p_1A_1}}\overbracket{v_1\Delta t}^{\alert{s_1}},\\
+				W_1 & = p_1\underbracket{A_1s_1}_{\alert{V}}.\\
+				\Aboxed{W_1 & = p_1V.}
 			\end{align*}
 		\end{column}
 		\begin{column}{0.4\textwidth}
@@ -1140,9 +1162,9 @@
 		\begin{column}{0.6\textwidth}
 			O fluido a direita empurra o restante no sentido contrário impedindo o seu deslocamento, isso produz um trabalho negativo, ou seja,
 			\begin{align*}
-				\tau_2 & = -\overbracket{F_2}^{\alert{p_2A_2}}\overbracket{v_2\Delta t}^{\alert{s_2}},\\
-				\tau_2 & = -p_2\underbracket{A_2s_2}_{\alert{V}}.\\
-				\Aboxed{\tau_2 & = -p_2V.}
+				W_2 & = -\overbracket{F_2}^{\alert{p_2A_2}}\overbracket{v_2\Delta t}^{\alert{s_2}},\\
+				W_2 & = -p_2\underbracket{A_2s_2}_{\alert{V}}.\\
+				\Aboxed{W_2 & = -p_2V.}
 			\end{align*}
 		\end{column}
 		\begin{column}{0.4\textwidth}
@@ -1246,13 +1268,13 @@
 		\begin{column}{0.6\textwidth}
 			A força da gravidade é conservativa, de modo que as energias potenciais do fluido nas regiões 1 e 2,
 			\begin{align*}
-				E_{p_1} & = mgh_1\\
-				E_{p_2} & = mgh_2.
+				U_{1} & = mgh_1\\
+				U_{2} & = mgh_2.
 			\end{align*}
 			As energias cinéticas que estão associadas ao movimento nas regiões 1 e 2 são
 			\begin{align*}
-				E_{c_1} & = \frac{1}{2}mv^{2}_{1},\\
-				E_{c_2} & = \frac{1}{2}mv^{2}_{2}.
+				K_{1} & = \frac{1}{2}mv^{2}_{1},\\
+				K_{2} & = \frac{1}{2}mv^{2}_{2}.
 			\end{align*}
 		\end{column}
 		\begin{column}{0.4\textwidth}
@@ -1354,21 +1376,21 @@
 		\begin{column}[t]{0.5\textwidth}
 		\alert{Se não houver perdas de energia}, a energia mecânica do fluido permanece inalterada, de modo que o trabalho total realizado deve ser igual a variação das energias cinéticas e potenciais,
 		\begin{align*}
-			\tau_1+\tau_2 = \Delta E_m = \Delta E_c+\Delta E_p,
+			W_1+W_2 = \Delta E_m = \Delta K+\Delta U,
 		\end{align*}
 		mas
 		\begin{align*}
-			\Delta E_c & = \frac{1}{2}mv^2_2-\frac{1}{2}mv^2_1,\\
-			\Delta E_p & = mgh_2-mgh_1,
+			\Delta K & = \frac{1}{2}mv^2_2-\frac{1}{2}mv^2_1,\\
+			\Delta U & = mgh_2-mgh_1,
 		\end{align*}
 		\end{column}
 		\begin{column}[t]{0.5\textwidth}
 		portanto
 		\begin{align*}
-			\tau_1+\tau_2 & = \overbracket{\left(\frac{1}{2}mv^2_2-\frac{1}{2}mv^2_1\right)}^{\alert{\Delta E_c}}+\\
+			W_1+W_2 & = \overbracket{\left(\frac{1}{2}mv^2_2-\frac{1}{2}mv^2_1\right)}^{\alert{\Delta E_c}}+\\
 			& +\overbracket{\left(mgh_2-mgh_1\right)}^{\alert{\Delta E_p}},\\
-			\tau_1+\tau_2 & = \frac{1}{2}mv^2_2+mgh_2-\frac{1}{2}mv^2_1-mgh_1,\\
-			\tau_1+\tau_2 & = \frac{1}{2}mv^2_2+mgh_2-\left(\frac{1}{2}mv^2_1+mgh_1\right).
+			W_1+W_2 & = \frac{1}{2}mv^2_2+mgh_2-\frac{1}{2}mv^2_1-mgh_1,\\
+			W_1+W_2 & = \frac{1}{2}mv^2_2+mgh_2-\left(\frac{1}{2}mv^2_1+mgh_1\right).
 		\end{align*}
 %	\end{multicols}
 		\end{column}
@@ -1380,13 +1402,13 @@
 		\begin{column}[t]{0.45\textwidth}
 			Separando os termos da região 1 da região 2 temos a equação
 			\begin{align*}
-				\tau_1 + \frac{1}{2}mv^2_1+mgh_1 & = \alert{-}\tau_2 + \frac{1}{2}mv^2_2+\\
+				W_1 + \frac{1}{2}mv^2_1+mgh_1 & = \alert{-}W_2 + \frac{1}{2}mv^2_2+\\
 				& + mgh_2.
 			\end{align*}
 			Mas mostramos que
 			\begin{align*}
-				\tau_1 & = p_1V,\\
-				\tau_2 & = -p_2V.
+				W_1 & = p_1V,\\
+				W_2 & = -p_2V.
 			\end{align*}
 		\end{column}
 		\begin{column}[t]{0.55\textwidth}
@@ -1457,7 +1479,7 @@
 	\end{multicols}
 \end{frame}
 
-\begin{frame}{Variação da pressão com a altitude (em construção)}
+\begin{frame}{Variação da pressão com a altitude}
 	\begin{multicols}{2}
 		No caso anterior, se $\rho = cte$ chegamos na Lei de Stevin como caso especial. Entretanto, se tivermos $\rho (z)=\frac{\rho_{atm}}{p_{atm}}p(z)$, teremos
 		\begin{align*}
@@ -1465,12 +1487,12 @@
 			dp & = -\left[g\frac{\rho_{atm}}{p_{atm}}p(z)\right]dz,\\
 			\frac{dp}{p} & = -\left(g\frac{\rho_{atm}}{p_{atm}}\right)dz.
 		\end{align*}
-		Integrando teremos
+		Consideran g = cte, integrando teremos
 		\begin{align*}
 			\int\limits_{p_{atm}}^{p} \frac{dp}{p} & = -\int\limits_{0}^{z}g\frac{\rho_{atm}}{p_{atm}}dz,\\
-			\ln p(z)-\ln p_{atm} & = -\frac{\rho_{atm}}{p_{atm}}z,\\
-			\ln \left[\frac{p(z)}{p_{atm}}\right] & = -\frac{\rho_{atm}}{p_{atm}}z,\\
-			\Aboxed{p(z) & = p_{atm}e^{-\left(\frac{\rho_{atm}}{p_{atm}}\right)z}.}
+			\ln p(z)-\ln p_{atm} & = -g\frac{\rho_{atm}}{p_{atm}}z,\\
+			\ln \left[\frac{p(z)}{p_{atm}}\right] & = -g\frac{\rho_{atm}}{p_{atm}}z,\\
+			\Aboxed{p(z) & = p_{atm}e^{-\left(g\frac{\rho_{atm}}{p_{atm}}\right)z}.}
 		\end{align*}
 	\end{multicols}
 \end{frame}

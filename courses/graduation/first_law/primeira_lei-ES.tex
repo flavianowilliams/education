@@ -71,7 +71,7 @@
 	\node (ca) [block,entityc] at (1,-1.5) {C};
 
 	%texto
-	\node[below=35pt] at (1,-1.5) {${T_{A}=T_{B} \atop T_{B}=T_{C}}$};
+	\node[below=35pt] at (1,-1.5) {${T_{A}=T_{C} \atop T_{B}=T_{C}}$};
 
 	%conjunto 2
 	\def\t{8}
@@ -80,7 +80,7 @@
 	\node[block,entityc] at (0.75+\t,-1.75) {C};
 
 	%texto
-	\node[below=35pt] at (0.75+\t,-1.5) {${T_{A}=T_{B} \atop T_{B}=T_{C}}$};
+	\node[below=35pt] at (0.75+\t,-1.5) {${T_{A}=T_{B}}$};
 
 \end{tikzpicture}
 		%\input{tikz/lei-zero.pgf}	
@@ -625,7 +625,7 @@
 %			\begin{block}{Pressão}
 				Associado com a transferência de momento das partículas em relação a direção normal das paredes do recipiente.
 				\begin{align*}
-					\Aboxed{\textrm{Pressão}=\sum\limits^{\text{\tiny Moléculas}}\frac{\left(\vec{P}_{2}-\vec{P}_{1}\right)\cdot\hat{n}}{A}.}
+					\Aboxed{\textrm{Pressão}\Rightarrow\sum\limits^{\text{\tiny Moléculas}}\frac{\vec{F}\cdot\hat{n}}{A}=\frac{F_{\text{médio}}}{A}.}
 				\end{align*}
 %			\end{block}
 		\end{column}
@@ -691,7 +691,7 @@
 			Considere um cilindro de área A, sabemos pela definição de pressão que a força $\vec{F}$ que o gás aplica sobre o pistão é dado por $F=pA$, onde $p$ é a pressão sobre a área A. Se o gás expandir o pistão por um deslocamento $dx$, temos pela definição de trabalho
 			\begin{align*}
 				dW & = \vec{F}\cdot d\vec{x},\\
-				dW & = F dx,\\
+				dW & = F_{\text{médio}} dx,\\
 				dW & = pA dx.
 			\end{align*}
 		\end{column}

@@ -712,18 +712,21 @@
 				\node[above left] at (2,{ff(2)}) {1};
 				\node[below right] at (3,{ff2(3)}) {2};
 				
-				\node [text width=5cm,text centered] at (3,4.8) {A integral independe do caminho termodinamico};
+				\node [text width=5cm,text centered] at (3,4.8) {A integral independe do caminho termodinâmico};
 				
 				\end{tikzpicture}
-				\caption*{\footnotesize Dois caminhos diferente, 1 e 2.}
+				\caption*{\footnotesize Dois caminhos diferentes, 1 e 2.}
 %				\input{tikz/entropia.pgf}
 			\end{figure}
 		\end{column}
 		\begin{column}[c]{0.6\textwidth}
 		Pelo teorema de Clausius
-		\[\oint_{C}\frac{dQ}{T} = \int^{f}_{i}\left[\frac{dQ}{T}\right]_{1}+\underbracket{\int^{i}_{f}\left[\frac{dQ}{T}\right]_{2}}_{\alert{-\int^{f}_{i}\left[\frac{dQ}{T}\right]_{2}}}=0\]
-		o que resulta
-		\[\int^{f}_{i}\left[\frac{dQ}{T}\right]_{1}=\int^{f}_{i}\left[\frac{dQ}{T}\right]_{2}\]
+		\begin{align*}
+			\oint_{C}\frac{dQ}{T} & = \int^{f}_{i}\left[\frac{dQ}{T}\right]_{1}+\underbracket{\int^{i}_{f}\left[\frac{dQ}{T}\right]_{2}}_{\alert{-\int^{f}_{i}\left[\frac{dQ}{T}\right]_{2}}}=0,\\
+			\int^{f}_{i}\left[\frac{dQ}{T}\right]_{1} & = \int^{f}_{i}\left[\frac{dQ}{T}\right]_{2},\\
+			S^{(1)}_f-S^{(1)}_i & = S^{(2)}_f-S^{(2)}_i,
+		\end{align*}
+		o que resulta em $S^{(1)}_i=S^{(2)}_i$ e $S^{(1)}_f=S^{(2)}_f$.
 		\end{column}
 	\end{columns}
 \end{frame}
@@ -760,7 +763,7 @@
 				
 				%curva
 				\draw[line width=1.5pt,domain=1:4,variable=\x,color=red,->] plot (\x,{ff(\x)});
-				\draw[line width=1.5pt,dashed,domain=1:4,variable=\x,color=red,->] plot (\x,{ff2(\x)});
+				\draw[line width=1.5pt,dashed,domain=1:4,variable=\x,color=red,<-] plot (\x,{ff2(\x)});
 				
 				%estados termodinamicos
 				\node (e1) at (1,{ff(1)}) {};
@@ -780,7 +783,7 @@
 				\node[below right] at (3,{ff2(3)}) {R};
 				
 				\end{tikzpicture}
-				\caption*{\footnotesize Processos reversível (R) e irreversível (I) saindo do estado i e chegando ao f.}
+				\caption*{\footnotesize Processos reversível (R) e irreversível (I) entre os estados i e f.}
 			\end{figure}
 		\end{column}
 		\begin{column}[c]{0.6\textwidth}
@@ -790,7 +793,7 @@
 			\end{align*}
 			\begin{block}{Variação da entropia no processo irreversível}
 				\begin{align*}
-					\int^{f}_{i}\frac{dQ}{T} = \underbracket{S_{f}-S_{i}}_{\text{irreversível}} < \underbracket{S_{f}-S_{i}}_{\text{reversível}}
+					\underbracket{\int^{f}_{i}\frac{dQ}{T} = \Delta S_I}_{\text{irreversível}} < \underbracket{\Delta S_R}_{\text{reversível}}
 				\end{align*}
 			\end{block}		
 		\end{column}

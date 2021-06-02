@@ -716,7 +716,7 @@
 				
 				%curva
 				\draw[line width=1.5pt,domain=1:4,variable=\x,color=red,->] plot (\x,{ff(\x)});
-				\draw[line width=1.5pt,domain=1:4,variable=\x,color=red,->] plot (\x,{ff2(\x)});
+				\draw[line width=1.5pt,domain=1:4,variable=\x,color=red,<-] plot (\x,{ff2(\x)});
 				
 				%estados termodinamicos
 				\node (e1) at (1,{ff(1)}) {};
@@ -812,13 +812,10 @@
 		\begin{column}[c]{0.6\textwidth}
 			Pelo teorema de Clausius
 			\begin{align*}
-				\int^{f}_{i}\left[\frac{dQ}{T}\right]_{I}+\underbracket{\int^{i}_{f}\left[\frac{dQ_R}{T}\right]_{R}}_{\alert{-\left(S_{f}-S_{i}\right)}}<0
+				\int^{f}_{i}\left[\frac{dQ}{T}\right]_{I}+\underbracket{\int^{i}_{f}\left[\frac{dQ_R}{T}\right]_{R}}_{\alert{-\left(S_{f}-S_{i}\right)}} & < 0,\\
+				\int^{f}_{i}\left[\frac{dQ}{T}\right]_{I}-(S_{f}-S_{i}) & < 0,\\
+					\Aboxed{\int^{f}_{i}\frac{dQ}{T} & < \Delta S.}
 			\end{align*}
-			\begin{block}{Variação da entropia no processo irreversível}
-				\begin{align*}
-					\underbracket{\int^{f}_{i}\frac{dQ}{T} = \Delta S_I}_{\text{irreversível}} < \underbracket{\Delta S_R}_{\text{reversível}}
-				\end{align*}
-			\end{block}		
 		\end{column}
 	\end{columns}		
 \end{frame}

@@ -41,7 +41,7 @@
 		\begin{column}[c]{0.7\textwidth}
 			Cada partícula poderá colidir com as paredes de um recipiente que a contém. Considerando que cada colisão levará um intervalo de tempo $\Delta t$, onde a partícula sofre uma variação do momento $\Delta p$. Considerando que a força $\vec{F}$ atuando nas paredes e em cada molécula constante durante a colisão, poderemos dizer que
 			\begin{align*}
-				F = \frac{\Delta p}{\Delta t}=-\frac{2mv_x}{\Delta t}.
+				F_{\text{médio}} = \frac{\Delta p}{\Delta t}=-\frac{2mv_x}{\Delta t}.
 			\end{align*}
 			Se a colisão acontece em um cubo de aresta L teremos
 			\begin{align*}
@@ -100,7 +100,7 @@
 				\draw[dashed,->] (p1) -- ($(n1)+(0,{2*\a})$) node[left,midway] {$\vec{p}_{f}$};
 				
 				%normal
-				\draw[line width=1pt, ->,color=red] (p1) -- ($(p1)-(+1,0)$) node[left] {$\vec{F}$};
+				\draw[line width=1pt, ->,color=red] (p1) -- ($(p1)-(+1,0)$) node[left] {$\vec{F}_{\text{médio}}$};
 				
 				\end{tikzpicture}
 				\caption*{\footnotesize Moléculas colidindo com as paredes do recipiente.}
@@ -112,52 +112,48 @@
 \begin{frame}{Pressão de um gás ideal}
 	\begin{columns}
 		\begin{column}[t]{0.5\textwidth}
-			Da definição de pressão temos que $p=\left|\frac{F}{A}\right|$, onde $A$ é a área do parede compreendido pelo cubo. Portanto
+			A pressão devido a cada colisão é dado por $p=\frac{F}{A}$, onde $A$ é a área do parede compreendido pelo cubo, assim
 			\begin{align*}
 				P & = \frac{1}{A}\frac{2mv_x}{\Delta t},\\
 				P & = \frac{\bcancel{2}}{L^2}\left(\frac{mv^2_x}{\bcancel{2}L}\right).
 			\end{align*}
 			Para o caso de N partículas teremos
 			\begin{align*}
-				P & = \alert{N}m\sum\limits_{i=1}^{N}\frac{v^2_x}{\alert{N}L^3}.
+				P & = \sum\limits_{i=1}^{N}\frac{m_iv^2_x}{L^3} = \frac{m}{L^3}\sum\limits_{i=1}^{N}v^2_x.
 			\end{align*}
 		\end{column}
 		\begin{column}[t]{0.5\textwidth}
-			Podemos identificar o termo entre parêntesis como o valor médio de $v^2_x$,% e $L^3$ como o volume do cubo, portanto
+			Dividindo e multiplicando por N partículas temos o valor da pressão, dado por
 			\begin{align*}
-				P & = \frac{Nm}{L^3}\left<v^2_x\right>.
+				P & = \frac{\alert{N}m}{L^3}\left(\frac{1}{\alert{N}}\sum\limits_{i=1}^{N}v^2_x\right) = \frac{Nm}{L^3}\left<v^2_x\right>.
 			\end{align*}
-			Considerando que $v^2_x\approx v^2_y\approx v^2_z\approx \frac{1}{3}v^2$, e que $L^3$ é o volume do cubo, teremos
+			Considerando que $v^2_x\approx v^2_y\approx v^2_z\approx \frac{1}{3}v^2$, e que $\rho$ é a densidade do gás, teremos
 			\begin{align*}
-				\Aboxed{p=\frac{1}{3}\rho \left<v^2\right>.}
+				\Aboxed{P=\frac{1}{3}\rho \left<v^2\right>.}
 			\end{align*}
 			onde $\rho$ é a densidade do gás.
 		\end{column}
 	\end{columns}
 \end{frame}
 
-\begin{frame}{Temperatura de um gás ideal}
+\begin{frame}{Valor médio da energia cinética de cada partícula}
 %	\begin{multicols}{2}
 	\begin{columns}
 		\begin{column}[t]{0.5\textwidth}
-			Da equação do gás ideal temos que $pV=nRT$. Substituindo a expressão da pressão obtida anteriormente teremos
+			Da equação do gás ideal temos para um gás \alert{monoatômico} que $pV=nRT$. Substituindo a expressão da pressão teremos
 			\begin{align*}
-				Nk_BT & = V\left(\frac{1}{3}\rho \left<v^2\right>\right).\\
-%			\end{align*}
-%			Sabemos que $\rho=\frac{Nm}{V}$, substituindo
-%			\begin{align*}
-				Nk_BT & = \bcancel{V}\left(\frac{1}{3}\frac{Nm}{\bcancel{V}} \left<v^2\right>\right),
-%				3Nk_BT & = Nm\left<v^2\right>.
+				nRT & = V\left(\frac{1}{3}\rho \left<v^2\right>\right).\\
+				nRT & = \bcancel{V}\left(\frac{1}{3}\frac{Nm}{\bcancel{V}} \left<v^2\right>\right),
 			\end{align*}
 		\end{column}
 		\begin{column}[t]{0.5\textwidth}
 			\vspace*{-0.25cm}
 			\begin{equation*}
-				3Nk_BT = Nm\left<v^2\right>.
+				3nRT = Nm\left<v^2\right>.
 			\end{equation*}
 			Dividindo por 2 poderemos identificar o termo do lado direito como a energia cinética média, onde $\left<K\right> = \frac{m\left<v^2\right>}{2}.$ Assim
 			\begin{equation*}
-				\boxed{\left<K\right> = \frac{3}{2}NRT.}
+				\boxed{\left<K\right> = \frac{3nRT}{2N}.}
 			\end{equation*}
 		\end{column}
 	\end{columns}
@@ -167,20 +163,31 @@
 %	\end{multicols}
 \end{frame}
 
-\section{Princípio da equipartição da energia}
-
-\subsection{}
-
-\begin{frame}{Princípio da equipartição da energia}
+\begin{frame}{Energia interna}
 	Se a energia associada a qualquer grau de liberdade é uma função quadrática da variável que especifica, o grau de liberdade, o valor médio da energia correspondente a este grau de liberdade é igual a
 	\begin{equation*}
 		\boxed{\text{f graus de liberdade e N moléculas}.}
 	\end{equation*}
-	A fórmula para calcular a energia interna $U$ é dado por
-	\begin{equation*}
-		\boxed{U(T) = \frac{f}{2}Nk_BT=\frac{f}{2}nRT.}
-	\end{equation*}
+	\begin{columns}
+		\begin{column}[t]{0.5\textwidth}
+			A energia interna de um gás pode ser determinada multiplicando a energia cinética média pelo número de moléculas N,
+			\begin{align*}
+				U & = N\left<K\right>,\\
+				U(T) & \Rightarrow \bcancel{N}\frac{nRT}{2\bcancel{N}} = \frac{nRT}{2}.
+			\end{align*}
+		\end{column}
+		\begin{column}[t]{0.5\textwidth}
+			Considerando os graus f de liberdade de cada molécula e sabendo que $n=NN_0$, sendo $N_0$ o número de Avogadro e $k_B=N_0R$, temos
+			\begin{equation*}
+				\boxed{U(T) =\frac{f}{2}nRT= \frac{f}{2}Nk_BT.}
+			\end{equation*}
+		\end{column}
+	\end{columns}
 \end{frame}
+
+\section{Princípio da equipartição da energia}
+
+\subsection{}
 
 \begin{frame}{Energia interna de um gás diatômico}
 	Uma molécula diatômica pode apresentar os seguintes graus de liberdade:
@@ -234,13 +241,13 @@
 	\begin{columns}
 		\begin{column}[t]{0.5\textwidth}
 %	\begin{multicols}{2}
-			Considere um processo termodinâmico que o ocorre a pressão constante, onde o gás recebe uma quantidade de calor $dQ_p=nc_pdT$. Pela primeira lei da termodinâmica, sabemos que
+			Considere um processo termodinâmico que o ocorre a pressão constante, onde o gás recebe uma quantidade de calor $dQ_P=nc_PdT$. Pela primeira lei da termodinâmica, sabemos que
 			\begin{NodesList}[margin=1.25cm]
 				\begin{align*}
 					dU & = dQ_P-dW,\AddNode\\
 					dU & = nc_PdT-PdV,\AddNode
 				\end{align*}
-				\LinkNodes{\tiny $dQ_p=nc_PdT$}
+				\LinkNodes{\tiny $dQ_P=nc_PdT$}
 			\end{NodesList}
 			Mas vimos anteriormente que $dU=nc_VdT$. No entanto, pela equação do gás ideal temos $PV=nRT$, onde
 		\end{column}
@@ -248,8 +255,8 @@
 			\vspace*{-0.75cm}
 			\begin{align*}
 				d(PV) & = nRdT,\\
-				PdV+Vdp & = nRdT,\\
-				PdV & = nRdT-Vdp.
+				PdV+VdP & = nRdT,\\
+				PdV & = nRdT-VdP.
 			\end{align*}
 			Substituindo $PdV$ e $dU$ teremos
 			\begin{align*}
@@ -278,7 +285,7 @@
 						\hline
 						Molécula & Transl. & Rot. & Total & C\textsubscript{V} & C\textsubscript{P} =  C\textsubscript{V}+R\\[2.5pt]
 						\hline
-						He & 3 & 3 & 0 & $\frac{3}{2}R$ & $\frac{5}{2}R$\\[2.5pt]
+						He & 3 & 0 & 0 & $\frac{3}{2}R$ & $\frac{5}{2}R$\\[2.5pt]
 						O2 & 3 & 2 & 5 & $\frac{5}{2}R$ & $\frac{7}{2}R$\\[2.5pt]
 						CH4 & 3 & 3 & 6 & $3R$ & $4R$\\[2.5pt]
 						\hline					
@@ -406,7 +413,7 @@
 		\begin{column}[c]{0.5\textwidth}
 			Em mecânica estatística usamos a expressão abaixo para calcular o valor médio de uma grandeza que possui valores contínuos,
 			\begin{equation*}
-				\left<A\right> = \frac{\int_{-\infty}^{\infty}n(A)vdv}{\int_{-\infty}^{\infty}n(A)dA}.
+				\left<A\right> = \frac{\int_{-\infty}^{\infty}n(A)AdA}{\int_{-\infty}^{\infty}n(A)dA}.
 			\end{equation*}
 			Considerando v\textsuperscript{2} como o valor a ser determinado, usamos a distribuição de Maxwell-Boltzmann para representar $n(v)$. Portanto
 		\end{column}

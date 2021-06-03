@@ -196,19 +196,20 @@
 			\begin{enumerate}
 				\item [\ding{51}] Translação:
 				\begin{equation*}
-					K_{\text{trans}}=\frac{1}{2}mv_x^2+\frac{1}{2}mv_y^2+\frac{1}{2}mv_z^2=\frac{3}{2}Nk_BT.
+					\left<K_{\text{trans}}\right>=\frac{1}{2}m\left<v_x^2\right>+\frac{1}{2}m\left<v_y^2\right>+\frac{1}{2}m\left<v_z^2\right>=\frac{3}{2}k_BT.
 				\end{equation*}
 				\item [\ding{51}] Rotação: 
 				\begin{equation*}
-					K_{\text{rot}}=\frac{1}{2}I_x\omega_x^2+\frac{1}{2}I_y\omega_y^2=\frac{\bcancel{2}}{\bcancel{2}}Nk_BT.
+					\left<K_{\text{rot}}\right>=\frac{1}{2}I_x\left<\omega_x^2\right>+\frac{1}{2}I_y\left<\omega_y^2\right>=\frac{\bcancel{2}}{\bcancel{2}}k_BT.
 				\end{equation*}
-				\item [\ding{51}] Vibração: $K_{\text{vib}}=\frac{k}{2}r^2=\frac{1}{2}Nk_BT$.
+				\item [\ding{51}] Vibração: $\left<K_{\text{vib}}\right>=\frac{1}{2}\mu \left<v^2_r\right>=\frac{1}{2}k_BT$.			
 			\end{enumerate}
 		\end{column}
 		\begin{column}[c]{0.4\textwidth}
+			\vspace*{1.25cm}
 			\begin{figure}
 				\centering
-				\includegraphics[scale=0.25]{figuras/graus-liberdade.png}
+				\includegraphics[scale=0.26]{figuras/graus-liberdade.png}
 				\caption*{\footnotesize Graus de liberdade da molécula diatômica \cite{halliday}.}
 			\end{figure}
 		\end{column}
@@ -321,13 +322,13 @@
 				
 				\tkzText[left,color=black,font=\huge](t1){$\frac{3}{2}$}
 				\tkzText[left,color=black,font=\huge](t2){$\frac{5}{2}$}
-				\tkzText[left,color=black,font=\huge](t3){$\frac{9}{2}$}
+				\tkzText[left,color=black,font=\huge](t3){$3$}
 				
 				\tkzFct[domain=-3:6,color=red,line width=1pt]{3+3/(1+exp(-2*x+6))}
 				\tkzFct[domain=6:15,color=red,line width=1pt]{5.85+3/(1+exp(-1.25*x+10.5))}
 
 				\end{tikzpicture}
-				\caption*{\footnotesize Calor específico c\textsubscript{V} em função da temperatura e os graus de liberdade.}
+				\caption*{\footnotesize Calor específico de uma molécula diatômica em função da temperatura.}
 			\end{figure}
 		\end{column}
 	\end{columns}
@@ -352,7 +353,7 @@
 	\end{columns}
 \end{frame}
 
-\section{Distribuição de Maxwell-Boltzmann}
+\section{Apêndice}
 
 \subsection{}
 
@@ -408,7 +409,7 @@
 %	\end{multicols}
 \end{frame}
 
-\begin{frame}{Valor quadrático médio da velocidade}
+\begin{frame}{Valor médio da energia cinética à partir da distribuição de Maxwell-Boltzmann}
 	\begin{columns}
 		\begin{column}[c]{0.5\textwidth}
 			Em mecânica estatística usamos a expressão abaixo para calcular o valor médio de uma grandeza que possui valores contínuos,
@@ -431,10 +432,6 @@
 		\end{column}
 	\end{columns}
 \end{frame}
-
-\section{Apêndice}
-
-\subsection{}
 
 \begin{frame}{Observações\footnote{Este material está sujeito a modificações. Recomenda-se acompanhamento permanente.}}
 	\begin{center}

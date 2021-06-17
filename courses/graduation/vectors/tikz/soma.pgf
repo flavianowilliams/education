@@ -1,4 +1,4 @@
-﻿				\begin{tikzpicture}[scale=1.4,transform shape,font=\large]
+﻿				\begin{tikzpicture}[scale=2,transform shape,font=\large]
 			
 				\tkzInit[xmin=-5,xmax=5,ymin=-5,ymax=5]
 				\tkzGrid[color=gray!20]
@@ -19,16 +19,16 @@
 				\tkzPointShowCoord(B)
 				\tkzPointShowCoord(D)
 			
-				\draw[->,line width=1.0pt,color=red] (A) -- (B) node [above left,midway] {$\vec{a}$};
-				\draw[->,line width=1.0pt,color=red] (A) -- (D) node [above left,midway] {$\vec{b}$};
+				\draw[->,line width=2.0pt,color=red] (A) -- (B) node [above left,midway] {$\vec{a}$};
+				\draw[->,line width=2.0pt,color=red] (A) -- (D) node [above left,midway] {$\vec{b}$};
 			
 				%componentes
 				\tkzDefPoints{\bbx/0/bx,0/\bby/by,\aax/0/ax,0/\aay/ay}
 			
-				\draw[->,line width=1.0pt,color=blue] (A) -- (ax) node [above,midway] {$\vec{a}_x$};
-				\draw[->,line width=1.0pt,color=blue] (A) -- (ay) node [left,midway] {$\vec{a}_y$};
-				\draw[->,line width=1.0pt,color=blue] (A) -- (bx) node [above,midway] {$\vec{b}_x$};
-				\draw[->,line width=1.0pt,color=blue] (A) -- (by) node [right,midway] {$\vec{b}_y$};
+				\draw[->,line width=2.0pt,color=blue] (A) -- (ax) node [above,midway] {$\vec{a}_x$};
+				\draw[->,line width=2.0pt,color=blue] (A) -- (ay) node [left,midway] {$\vec{a}_y$};
+				\draw[->,line width=2.0pt,color=blue] (A) -- (bx) node [above,midway] {$\vec{b}_x$};
+				\draw[->,line width=2.0pt,color=blue] (A) -- (by) node [right,midway] {$\vec{b}_y$};
 			
 				\tkzDrawPoints(A,B)
 			

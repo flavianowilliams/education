@@ -1,0 +1,23 @@
+﻿			\begin{tikzpicture}[scale=2,transform shape,font=\large]
+			
+			\tkzInit[xmin=-5,xmax=5,ymin=-5,ymax=5]
+			\tkzGrid[color=gray!20]
+			\tkzClip[space=1]
+			
+			\tkzDefPoints{0/0/A,3/3/B,3/0/C,0/3/D}
+			
+			\tkzAxeX{x}
+			\tkzAxeY{y}
+			
+			\tkzPointShowCoord(B)
+			
+			\draw[->,line width=2.0pt,color=red] (A) -- (B) node [above left,midway] {$\vec{r}$};
+			\draw[->,line width=2.0pt,color=blue] (A) -- (C) node [above,pos=0.75] {$\vec{r}_x$};
+			\draw[->,line width=2.0pt,color=blue] (A) -- (D) node [left=0.4,pos=0.85] {$\vec{r}_y$};
+			
+			\tkzMarkAngle[size=0.75,<->](C,A,B)
+			\tkzMarkRightAngle[fill=blue!30](B,C,A)
+			
+			\tkzLabelAngle[pos=1.0](C,A,B){$\theta$}
+			
+			\end{tikzpicture}

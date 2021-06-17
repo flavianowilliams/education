@@ -5,7 +5,7 @@
 				\tkzClip[space=1.5]
 			
 				\tkzAxeX[right,label=t (s)]
-				\tkzAxeY[above,label=x (m)]
+				\tkzAxeY[above,label=v (m/s)]
 			
 				\tkzFct[domain=0:8]{0.01*(x-2)**3+(x-2)-2}
 				\tkzDefPointByFct(1)\tkzGetPoint{A}
@@ -16,11 +16,11 @@
 			
 				\tkzDrawLine[add= 0.1 and 0.1,color=red](A,B)
 			
-				\draw[->,line width=2.0pt] (t1) -- (D);
-				\tkzText[text centered,opacity=100,fill=gray!20](t1){$v_{\text{med}}=\frac{\Delta x}{\Delta t}$}
+%				\draw[->,line width=2.0pt] (t1) -- (D);
+%				\tkzText[text centered,opacity=100,fill=gray!20](t1){$v_{\text{med}}=\frac{\Delta x}{\Delta t}$}
 
 				\draw[->,line width=2.0pt] (t2) -- (C);
-				\tkzText[text centered,opacity=100,fill=gray!20](t2){$x(t)$}
+				\tkzText[text centered,opacity=100,fill=gray!20](t2){$v(t)$}
 
 				\tkzDrawPoints[size=0.3cm](A,B)
 
@@ -34,6 +34,6 @@
 				\draw[dashed] (B) -- (p5);
 
 				\draw (A) to [dim arrow'={label'=$\Delta t$}] (p5);
-				\draw (B) to [dim arrow={label=$\Delta x$}] (p5);
+				\draw (B) to [dim arrow={label=$\Delta v$}] (p5);
 
 		\end{tikzpicture}

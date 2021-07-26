@@ -50,15 +50,19 @@ class: middle
 
 1. xxxxxx
 
-2. Apêndice A
-
-3. Apêndice B
+2. Apêndice - xxxxx
 
 6. Bibliografia
 
----
+<div class="footnote">
+  <ul>
+  <li> Esta apresentação está disponível para download em <a href="https://flavianowilliams.github.io/education">flavianowilliams.github.io/education</a>;
+  <li> Este material está sujeito a modificações. Recomenda-se acompanhamento permanente.
+  </ul>
+</div>
 
-<div class="my-header"><span>Texto</span></div>
+---
+<div class="my-header"><span>xxxxxx</span></div>
 
 Este é o livro texto que será utilizado [`r Cite(bib, "halliday")`]
 
@@ -69,6 +73,5 @@ class: middle
 
 ```{r, results='asis', echo=FALSE, message=FALSE}
 PrintBibliography(bib)
-#?Cite
 ```
 

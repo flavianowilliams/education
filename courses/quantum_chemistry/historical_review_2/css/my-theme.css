@@ -10,7 +10,7 @@ Updated: xx/xx/xxxx
 .sliding-background { 
   background: url("css/img/logo.jpg") repeat-x; 
   height: 960px; 
-  width: 6000px;
+  width: 6000px; 
 } 
 
 .pull-left {
@@ -67,7 +67,7 @@ div.my-footer {
     position: absolute;
     bottom: 0;
     left: 0;
-    height: 25px;
+    height: 30px;
     width: 100%;
 }
 
@@ -125,9 +125,9 @@ p, li{
 /* slightly lower and bigger than default */
 .footnote {
   position: absolute;
-  bottom: 1em;
+  bottom: 1.5em;
   padding-right: 4em;
-  font-size: 95%;
+  font-size: 70%;
 }
 
 td{

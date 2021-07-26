@@ -67,7 +67,7 @@ div.my-footer {
     position: absolute;
     bottom: 0;
     left: 0;
-    height: 25px;
+    height: 30px;
     width: 100%;
 }
 
@@ -125,9 +125,9 @@ p, li{
 /* slightly lower and bigger than default */
 .footnote {
   position: absolute;
-  bottom: 1em;
+  bottom: 1.5em;
   padding-right: 4em;
-  font-size: 95%;
+  font-size: 70%;
 }
 
 td{
@@ -216,8 +216,8 @@ thead, tfoot, tr:nth-child(even) { background: none; }
 /* Add image and change bg color */
 .title-slide {
   background-image: url(img/logo.jpg);
-  background-position: 50% 15%;
-  background-size: 500px;
+  background-position: 50% 20%;
+  background-size: 650px;
   background-color: #fff;
   padding-left: 100px;  /* delete this for 4:3 aspect ratio */
   margin: auto;

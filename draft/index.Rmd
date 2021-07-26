@@ -22,7 +22,7 @@ layout: true
 background-image: url('css/img/logo-transparente.jpg')
 background-size: contain
 
-<div class="my-footer"><span>Flaviano Williams Fernandes</span></div>
+<div class="my-footer"><span>curso - Modelo</span></div>
 
 ```{r setup, include=FALSE}
   options(htmltools.dir.version = FALSE)
@@ -56,6 +56,7 @@ class: middle
 
 <div class="footnote">
   <ul>
+  <hr>
   <li> Esta apresentação está disponível para download em <a href="https://flavianowilliams.github.io/education">flavianowilliams.github.io/education</a>;
   <li> Este material está sujeito a modificações. Recomenda-se acompanhamento permanente.
   </ul>

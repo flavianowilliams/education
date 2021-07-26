@@ -1,6 +1,6 @@
 ---
-title: "Modelo atômico e princípio da interceteza de Heissenberg"
-subtitle: "Introdução a química quântica"
+title: "Introdução a química quântica"
+subtitle: "Modelo atômico e o princípio da interceteza de Heissenberg"
 author: "Flaviano Williams Fernandes"
 institute: "Instituto Federal do Paraná - Irati"
 date: "16 de março de 2021 (atualizado em `r format(Sys.Date(), format='%d/%m/%Y')`)"
@@ -56,6 +56,7 @@ class: middle
 
 <div class="footnote">
   <ul>
+  <hr>
   <li> Esta apresentação está disponível para download em <a href="https://flavianowilliams.github.io/education">flavianowilliams.github.io/education</a>;
   <li> Este material está sujeito a modificações. Recomenda-se acompanhamento permanente.
   </ul>

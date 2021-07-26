@@ -32,6 +32,13 @@ background-size: contain
 #  knitr::opts_chunk$set(fig.path = 'img')
 ```
 
+```{r, load_refs, echo=FALSE, message=FALSE}
+  library(RefManageR)
+  BibOptions(check.entries = FALSE, bib.style = "authoryear", style = "markdown",
+           dashed = TRUE)
+  bib <- ReadBib("references.bib", check = FALSE)
+```
+
 ```{r, include=FALSE, eval=FALSE, echo=FALSE}
   xaringan::inf_mr()
 ```
@@ -41,19 +48,27 @@ class: middle
 
 <div class="my-header"><span>Sumário</span></div>
 
-1. Motivação
+1. xxxxxx
 
-2. Cenário atual no campus Irati e pretensões futuras
+2. Apêndice A
 
-3. A simulação computacional
+3. Apêndice B
 
-4. Ambiente computacional no campus Irati
+6. Bibliografia
 
-5. Apêndice A (Campo de força)
+---
 
-6. Apêndice B (Resultados com glifosato)
+<div class="my-header"><span>Texto</span></div>
+
+Este é o livro texto que será utilizado [`r Cite(bib, "halliday")`]
 
 ---
 class: middle
 
-<div class="my-header"><span>Motivação</span></div>
+<div class="my-header"><span>Bibliografia</span></div>
+
+```{r, results='asis', echo=FALSE, message=FALSE}
+PrintBibliography(bib)
+#?Cite
+```
+

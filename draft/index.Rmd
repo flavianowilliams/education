@@ -65,7 +65,7 @@ class: middle
 ---
 <div class="my-header"><span>xxxxxx</span></div>
 
-Este é o livro texto que será utilizado [`r Cite(bib, "halliday")`]
+Este é o livro texto que será utilizado [`r Cite(bib, c("nussenzveig","tipler","mcquarrie","braga","eisberg"))`]
 
 ---
 class: middle

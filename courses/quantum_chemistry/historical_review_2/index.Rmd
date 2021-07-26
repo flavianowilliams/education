@@ -34,7 +34,7 @@ background-size: contain
 
 ```{r, load_refs, echo=FALSE, message=FALSE}
   library(RefManageR)
-  BibOptions(check.entries = FALSE, bib.style = "authoryear", style = "markdown",
+  BibOptions(check.entries = TRUE, bib.style = "authoryear", style = "markdown",
            dashed = TRUE)
   bib <- ReadBib("references.bib", check = FALSE)
 ```
@@ -66,7 +66,7 @@ class: middle
 
 <div class="my-header"><span>Texto</span></div>
 
-Este é o livro texto que será utilizado [`r Cite(bib, "halliday")`]
+Este é o livro texto que será utilizado [`r Cite(bib, c("nussenzveig","tipler","mcquarrie","braga","eisberg"))`]
 
 ---
 class: middle

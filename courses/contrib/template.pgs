@@ -22,7 +22,7 @@
 \DeclareFontShape{OMS}{mdbch}{bx}{n}{<->ssub * mdbch/b/n}{}
 \usetikzlibrary{arrows,3d,calc,automata,positioning,shadows,math,fit,shapes}
 \usetikzlibrary{patterns,hobby,optics}
-\usetkzobj{all}
+%\usetkzobj{all}
 \usepgfplotslibrary{fillbetween}
 \tikzset{>=stealth, thick, global scale/.style={scale=#1,every node/.style={scale=#1}}}
 \tikzset{mid arrow/.style={postaction={decorate,decoration={markings,mark=at position .5 with {\arrow[#1]{stealth}}}}}}

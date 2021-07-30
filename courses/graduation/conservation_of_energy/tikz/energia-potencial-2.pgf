@@ -6,8 +6,8 @@
 				
 				\tkzDefPoints{0/0/O,0/1/y}
 
-				\tkzDrawX[label=x,below,noticks]
-				\tkzAxeY[label=U(x),pos=1.01,above,noticks]
+				\tkzDrawX[label=x,below]
+				\tkzAxeY[pos=1.01,left]
 				
 				\tkzFct[domain=0:12,color=red,line width=1.0pt]{2*exp(-(x-2.5)**2)-2*exp(-(x-5)**2)-3*exp(-(x-8.5)**2)+3}
 				\tkzDefPointByFct(8.5)\tkzGetPoint{B}

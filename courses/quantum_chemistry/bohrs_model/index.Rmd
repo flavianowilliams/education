@@ -23,6 +23,10 @@ background-size: contain
 
 <div class="my-footer"><span>Flaviano Williams Fernandes</span></div>
 
+```{r, include=FALSE, eval=FALSE, echo=FALSE}
+  xaringan::inf_mr()
+```
+
 ```{r setup, include=FALSE}
   options(htmltools.dir.version = FALSE)
   library("ggplot2")
@@ -35,11 +39,7 @@ background-size: contain
   library(RefManageR)
   BibOptions(check.entries = TRUE, bib.style = "authoryear", style = "markdown",
            dashed = TRUE)
-  bib <- ReadBib("references.bib", check = FALSE)
-```
-
-```{r, include=FALSE, eval=FALSE, echo=FALSE}
-  xaringan::inf_mr()
+  bib <- ReadBib("./references.bib", check = FALSE)
 ```
 
 ---
@@ -47,7 +47,9 @@ class: middle
 
 <div class="my-header"><span>Sumário</span></div>
 
-1. Modelo atômico de Bohr
+1. Modelo clássico do átomo de hidrogênio
+
+2. Modelo de Bohr do átomo de hidrogênio
 
 2. Espectro do átomo de hidrogênio
 
@@ -68,9 +70,9 @@ class: middle
 ---
 class: left, middle
 
-<div class="my-header"><span>Modelos atômicos</span></div>
+<div class="my-header"><span>Modelo clássico do átomo de hidrogênio - Modelos atômicos</span></div>
 
-* O modelo de Thompson é chamado de pudim de passas. O átomo seria uma massa carregada positivamente e os elétrons estariam mergulhados, como as passas de um pudim. [`r Cite(bib, c("nussenzveig","tipler","mcquarrie","braga","eisberg"))`];
+* O modelo de Thompson é chamado de pudim de passas. O átomo seria uma massa carregada positivamente e os elétrons estariam mergulhados, como as passas de um pudim. [`r Citep(bib, c("nussenzveig","tipler","mcquarrie","braga","eisberg"))`];
 * No modelo de Rutherford, as cargas positivas estariam concentradas em uma pequena região que chamamos de núcleo atômico, e os elétrons orbitariam ao redor do núcleo. Rutherford desenvolveu o seu modelo a partir do experimento de Geiger-Marsden.
 
 .pull-left[
@@ -87,26 +89,10 @@ class: left, middle
 ---
 class: left, middle
 
-<div class="my-header"><span>Modelo clássico do átomo de hidrogênio</span></div>
+<div class="my-header"><span>Modelo clássico do átomo de hidrogênio - discrepâncias com os valores observados</span></div>
 
 .pull-left[
-* Os elétrons se movem ao redor do núcleo, idêntico ao modelo planetário;
-* Pelas leis do eletromagnetismo, o elétron em movimento emite radiação e com isso a sua energia deveria diminuir à medida que se move ao redor do núcleo;
-* Com o colapso do elétron no interior do núcleo, não seria possível a formação de moléculas ou demais combinações envolvendo átomos.
-]
-.pull-right[
-```{r, echo=FALSE, fig.align='center',fig.cap='Modelo de Rutherford.',out.width="100%",fig.asp=1,fig.ncol=2}
-  knitr::include_graphics("img/modelo-rutheford.jpg")
-```
-]
-
----
-class: left, middle
-
-<div class="my-header"><span>Modelo clássico do átomo de hidrogênio (continuação)</span></div>
-
-.pull-left[
-  Pela lei de Coulomb, o elétron ao redor do núcleo é submetido a uma força dado pela equação abaixo,
+  Pela lei de Coulomb, o elétron de carga -e ao redor do núcleo que possui uma carga elétrica Ze, sendo e a carga elementar, é submetido a uma força dado pela equação abaixo,
   \begin{aligned}
     F = \frac{Kze^2}{r^2}=\frac{mv^2}{r}.
   \end{aligned}
@@ -118,10 +104,9 @@ class: left, middle
   \begin{aligned}
     K = \frac{kze^2}{2r},
   \end{aligned}
-  Se o elétron perdesse energia cinética K devido a emissão de radiação, então o raio r da órbita diminuiria sucessivamente. Assim a colisão seria inevitável!!!
+  Considerando que a energia potencial U é dado por
 ]
 .pull-right[
-  Considerando que a energia potencial U é dado por
   \begin{aligned}
     U &= -\frac{kze^2}{r},
   \end{aligned}
@@ -131,10 +116,67 @@ class: left, middle
   \end{aligned}
   onde podemos considerar que
   \begin{aligned}
-    E\;\alpha -\frac{1}{r}.
+    E\;\sim -\frac{1}{r}.
   \end{aligned}
-  Seguindo o modelo clássico, o elétron poderia assumir qualquer valor de energia até a sua colisão com o núcleo.
+* <font class="red">Se o elétron perdesse energia cinética K devido a emissão de radiação, então o raio r da órbita diminuiria sucessivamente. Assim a colisão seria inevitável!!!;
+* Seguindo o modelo clássico, o elétron poderia assumir qualquer valor de energia até a sua colisão com o núcleo.</font>
 ]
+
+---
+class: left, middle
+
+<div class="my-header"><span>Modelo clássico do átomo de hidrogênio - discrepâncias com os valores observados</span></div>
+
+.pull-left[
+Do movimento circular podemos dizer que
+\begin{aligned}
+  \nu & = \frac{v}{2\pi r},\\\
+      & = \left(\frac{kZe^2}{rm}\right)\frac{1}{2\pi r},\\\
+      & = \left(\frac{kZe^2}{4\pi^2m}\right)\frac{1}{r^{3/2}}.
+\end{aligned}
+  onde podemos considerar que
+  \begin{aligned}
+    \nu\;\sim \frac{1}{r^{3/2}}.
+  \end{aligned}
+  <p class="red">De acordo com a física clássica, à medida que o elétron perde energia por emissão de radiação, a frequência da radiação emitida torna-se cada vez maior, terminando apenas quando o elétron se choca com o núcleo.</p>
+]
+.pull-right[
+```{r, echo=FALSE, fig.align='center',fig.cap='Modelo clássico do átomo de hidrogênio.',out.width="80%",fig.asp=1,fig.ncol=2}
+  knitr::include_graphics("img/modelo-classico.jpeg")
+```
+]
+
+---
+class: left, middle
+
+<div class="my-header"><span>Modelo de Bohr do átomo de hidrogênio - Postulados de Bohr</span></div>
+
+Todas as discrepâncias do modelo clássico foram resolvidas por Bohr através dos seguintes postulados:
+
+* Os elétrons se movem em certas órbitas sem irradiar energia (Essas órbitas foram chamadas de estados estacionários.);
+* O átomo emite radiação quando um elétron faz uma transição de um estado estacionário para outro,
+
+\begin{aligned}
+    h\nu = E_f-E_i.
+\end{aligned}
+
+* No limite de grandes órbitas e altas energias, os resultados quânticos devem coincidir com os resultados classicos.
+
+.pull-left[
+```{r, echo=FALSE, fig.align='center',fig.cap='Emissão de um fóton quando o elétron salta para uma órbita menos energética.',out.width="65%",fig.asp=1,fig.ncol=2}
+  knitr::include_graphics("img/modelo-bohr-2.jpeg")
+```
+]
+.pull-right[
+```{r, echo=FALSE, fig.align='center',fig.cap='O elétron salta para uma órbita mais energética quando ele absorve um fóton de energia equivalente.',out.width="65%",fig.asp=1,fig.ncol=2}
+  knitr::include_graphics("img/modelo-bohr-3.jpeg")
+```
+]
+
+---
+class: left, middle
+
+<div class="my-header"><span>Modelo de Bohr do átomo de hidrogênio - Quantização do momento angular</span></div>
 
 ---
 class: left, middle

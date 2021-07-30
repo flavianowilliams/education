@@ -1,0 +1,77 @@
+﻿\begin{tikzpicture}[scale=2,transform shape,font=\Large, wave/.style={decorate,decoration={snake,post length=2.5mm,amplitude=3mm, segment length=5mm},thick}]
+			
+		\tkzInit[xmin=-4,xmax=20,ymin=-5,ymax=5]
+%		\tkzGrid[color=gray!20]
+		\tkzClip
+
+%		\tkzDrawX
+%		\tkzDrawY			
+%		\tkzAxeX[right,label=t (s)]
+%		\tkzAxeY[above,label=x (m)]
+			
+		\tkzDefPoints{0/0/O}
+
+		%primeira orbita
+		\tkzDefPoints{4/0/A}
+		\tkzDrawCircle[dashed,line width=1.5pt](O,A)
+		\tkzDefPointsBy[rotation=center O angle 45](O,A){p1,p2}
+		\tkzText[right](A){$n_2$}
+		\tkzText[above right](p2){\huge\textit{e}\textsuperscript{-}}
+
+		%segunda orbita
+		\tkzDefPoints{2/0/B}
+		\tkzDrawCircle[dashed,line width=1.5pt](O,B)
+		\tkzDefPointsBy[rotation=center O angle 45](O,B){p3,p4}
+		\tkzText[right](B){$n_1$}
+
+		%definindo salto quantico
+		\tkzDefMidPoint(p2,p4)\tkzGetPoint{p5}
+		\tkzDefPointWith[orthogonal, K=-1](p5,p2)\tkzGetPoint{p6}
+		\tkzDrawPoints[size=0.3cm](p2,p4)
+		\tkzDrawArc[line width=5pt,color=red,-{Stealth[width=7mm]}](p6,p2)(p4)
+
+		%foton emitido
+		\coordinate (t1) at ($(p2)+(0.5,0)$);
+		\coordinate (t2) at ($(p2)+(3.5,0)$);
+		\draw[-{Stealth[width=6mm]},wave,line width=1.5pt](t1) --  (t2);	
+		\tkzText[right](t2){$\nu$}
+
+%		\tkzDrawPoints[size=0.1cm](p1,p2,p3,p4,p5,p6)
+%		\tkzLabelPoints(p1,p2,p3,p4,p5,p6)
+
+		\begin{scope}[shift={(15,0)}]
+%			\tkzDrawX
+%			\tkzDrawY
+			\tkzDefPoints{0/0/O}
+
+			%primeira orbita
+			\tkzDefPoints{4/0/A}
+			\tkzDrawCircle[dashed,line width=1.5pt](O,A)
+			\tkzDefPointsBy[rotation=center O angle 135](O,A){p1,p2}
+			\tkzText[right](A){$n_2$}
+
+			%segunda orbita
+			\tkzDefPoints{2/0/B}
+			\tkzDrawCircle[dashed,line width=1.5pt](O,B)
+			\tkzDefPointsBy[rotation=center O angle 135](O,B){p3,p4}
+			\tkzText[right](B){$n_1$}
+			\tkzText[below right](p4){\huge\textit{e}\textsuperscript{-}}
+
+			%definindo salto quantico
+			\tkzDefMidPoint(p2,p4)\tkzGetPoint{p5}
+			\tkzDefPointWith[orthogonal, K=-1](p5,p4)\tkzGetPoint{p6}
+			\tkzDrawPoints[size=0.3cm](p2,p4)
+			\tkzDrawArc[line width=2pt,color=red,line width=5pt,color=red,-{Stealth[width=7mm]}](p6,p4)(p2)
+
+			%foton emitido
+			\coordinate (t1) at ($(p4)-(3.5,0)$);
+			\coordinate (t2) at ($(p4)-(0.5,0)$);
+			\tkzDefPointWith[linear,K=-1](p2,p5)\tkzGetPoint{p7}
+			\tkzDefPointWith[linear,K=2.5](p2,p7)\tkzGetPoint{p8}
+			\draw[-{Stealth[width=6mm]},wave,line width=1.5pt](t1) -- (t2) node [above=2mm, midway,fill=white] {$\Delta E=h\nu$};
+
+%		\tkzDrawPoints[size=0.1cm](p1,p2,p3,p4,p5,p6)
+%		\tkzLabelPoints(p1,p2,p3,p4,p5,p6,p7,p8)
+		\end{scope}
+
+\end{tikzpicture}

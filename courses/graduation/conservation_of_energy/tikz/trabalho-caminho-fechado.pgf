@@ -12,7 +12,7 @@
 				\tkzDrawPoints(i,f)
 				\tkzLabelPoints(i,f)
 
-				\draw[mid arrow,line width=1.5pt] (i) .. controls (c1) and (c2) .. (f) node [above left,midway] {1};
-				\draw[mid arrow,line width=1.5pt] (f) .. controls (c3) and (c4) .. (i) node [above left,midway] {2};
+				\draw[midarrow,line width=1.5pt] (i) .. controls (c1) and (c2) .. (f) node [above left,midway] {1};
+				\draw[midarrow,line width=1.5pt] (f) .. controls (c3) and (c4) .. (i) node [above left,midway] {2};
 
 				\end{tikzpicture}

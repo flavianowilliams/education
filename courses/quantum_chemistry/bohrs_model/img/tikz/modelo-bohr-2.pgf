@@ -1,0 +1,45 @@
+﻿\begin{tikzpicture}[scale=2,transform shape,font=\Large, wave/.style={decorate,decoration={snake,post length=2.5mm,amplitude=3mm, segment length=5mm},thick}]
+			
+		\tkzInit[xmin=-7,xmax=7,ymin=-5,ymax=5]
+%		\tkzGrid[color=gray!20]
+		\tkzClip
+
+%		\tkzDrawX
+%		\tkzDrawY			
+%		\tkzAxeX[right,label=t (s)]
+%		\tkzAxeY[above,label=x (m)]
+			
+		\tkzDefPoints{0/0/O}
+
+		%definindo nucleo atomico
+		\tkzDrawPoint[size=7mm, fill=blue!50](O)
+
+		%primeira orbita
+		\tkzDefPoints{4/0/A}
+		\tkzDrawCircle[dashed,line width=1.5pt](O,A)
+		\tkzDefPointsBy[rotation=center O angle 45](O,A){p1,p2}
+		\tkzText[right](A){$n_2$}
+		\tkzText[above right](p2){\huge\textit{e}\textsuperscript{-}}
+
+		%segunda orbita
+		\tkzDefPoints{2/0/B}
+		\tkzDrawCircle[dashed,line width=1.5pt](O,B)
+		\tkzDefPointsBy[rotation=center O angle 45](O,B){p3,p4}
+		\tkzText[right](B){$n_1$}
+
+		%definindo salto quantico
+		\tkzDefMidPoint(p2,p4)\tkzGetPoint{p5}
+		\tkzDefPointWith[orthogonal, K=-1](p5,p2)\tkzGetPoint{p6}
+		\tkzDrawPoints[size=0.3cm](p2,p4)
+		\tkzDrawArc[line width=5pt,color=red,-{Stealth[width=7mm]}](p6,p2)(p4)
+
+		%foton emitido
+		\coordinate (t1) at ($(p2)+(0.5,0)$);
+		\coordinate (t2) at ($(p2)+(3.5,0)$);
+		\draw[-{Stealth[width=6mm]},wave,line width=1.5pt](t1) --  (t2);	
+		\tkzText[right](t2){$\nu$}
+
+%		\tkzDrawPoints[size=0.1cm](p1,p2,p3,p4,p5,p6)
+%		\tkzLabelPoints(p1,p2,p3,p4,p5,p6)
+
+\end{tikzpicture}

@@ -6,7 +6,8 @@
 \usepackage[LGR,T1]{fontenc}
 \usepackage{tikz,pgfplots,tikz-3dplot,bm}
 \usepackage{circuitikz}
-\usepackage{tkz-euclide,tkz-fct}
+\usepackage{tkz-euclide}
+\usepackage{tkz-fct}
 \usepackage{tkz-base}
 \usepackage{ragged2e}
 \usepackage{animate}
@@ -25,7 +26,7 @@
 %\usetkzobj{all}
 \usepgfplotslibrary{fillbetween}
 \tikzset{>=stealth, thick, global scale/.style={scale=#1,every node/.style={scale=#1}}}
-\tikzset{mid arrow/.style={postaction={decorate,decoration={markings,mark=at position .5 with {\arrow[#1]{stealth}}}}}}
+\tikzset{midarrow/.style={postaction={decorate,decoration={markings,mark=at position .5 with {\arrow[#1]{stealth}}}}}}
 \PreviewEnvironment[]{tikzpicture}
 \PreviewEnvironment[]{pgfpicture}
 \begin{document}

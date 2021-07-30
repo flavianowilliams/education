@@ -29,6 +29,7 @@ background-size: contain
 
 ```{r setup, include=FALSE}
   options(htmltools.dir.version = FALSE)
+  library("tidyverse")
   library("ggplot2")
   library("gganimate")
   library("latex2exp")
@@ -177,6 +178,82 @@ Todas as discrepâncias do modelo clássico foram resolvidas por Bohr através d
 class: left, middle
 
 <div class="my-header"><span>Modelo de Bohr do átomo de hidrogênio - Quantização do momento angular</span></div>
+
+.pull-left[
+De acordo com Bohr, para que o modelo faça sentido, o elétron que se move ao redor do núcleo em órbitas circulares com velocidade v, não poderia assumir qualquer valor, ou seja, ele é <font class="red">quantizado</font>,
+\begin{aligned}
+  L = n\hbar,\quad n=1,2,3,\cdots,
+\end{aligned}
+onde $\hbar = h/2\pi$ e h é a constante de Planck. Do movimento circular temos que
+\begin{aligned}
+  L & = \vec{r}\times\vec{p},\\\
+  L & = mvr.
+\end{aligned}
+Substituindo $v= \left(\frac{kze^2}{mr}\right)^{1/2}$ teremos
+\begin{aligned}
+  L & = mr\left(\frac{KZe^2}{mr}\right)^{1/2},\\\
+  n\hbar & = mr\left(\frac{KZe^2}{mr}\right)^{1/2}.
+\end{aligned}
+]
+.pull-right[
+  Isolando r na equação teremos
+  \begin{aligned}
+    r = \left(\frac{\hbar^2}{mKe^2}\right)\frac{n^2}{Z}
+  \end{aligned}
+  Podemos ver que o termo entre parêntesis é uma constante, cujo valor correspende exatamente ao raio do átomo de hidrogênio $a_0$, onde $a_0=0,0594\; nm$.
+
+```{r, echo=FALSE, fig.align='center',fig.cap='O movimento do elétron deve ser equivalente a números inteiros de comprimentos de onda.',out.width="50%",fig.asp=1,fig.ncol=2}
+  knitr::include_graphics("img/momento-angular.jpeg")
+```
+]
+
+---
+class: left, middle
+
+.pull-left[
+Substituindo r na expressão da energia encontramos
+\begin{aligned}
+  E_n & = -\frac{KZe^2}{2r_n},\\\
+      & = -\left(\frac{mKZ^2e^4}{2\hbar^2}\right)\frac{Z}{n^2},\\\
+      & = - E_0\frac{Z^2}{n^2},\quad n=1,2,3,\cdots.
+\end{aligned}
+Podemos ver que o termo entre parêntesis é uma constante e seu valor corresponde a energia do estado fundamental do átomo de hidrogênio, ou seja, $E_0 = -13,6\; eV$.
+* <font class="red">De acordo com o modelo de Bohr, as órbitas estacionárias são comprovadas pela relação $r\sim n^2$ assumindo valores discretos com valores de n;</font>
+* <font class="red">Cada órbita possui valor discreto de energia $E_n$, como mostra a equação acima.</font>
+]
+.pull-right[
+```{r, echo=FALSE, fig.align='center',fig.cap='Movimento ondulatório do elétron de acordo com o número quântico n, demonstrando assim que o modelo de Bohr concorda com os postulados de de Broglie.',out.width="100%"}
+myfuncx <- function(A,n,t){
+  (A+0.5*cos(n*t))*cos(t)
+}
+myfuncy <- function(A,n,t){
+  (A+0.5*cos(n*t))*sin(t)
+}
+
+smpl=400
+nt=7
+t=rep(0,nt*smpl)
+n=rep(0,nt*smpl)
+for (nx in 3:nt) {
+  t[nx*smpl+1]=2*(nx+1)*pi/smpl
+  n[nx*smpl+1]=nx
+  for (i in 2:smpl) {
+    t[nx*smpl+i] = t[nx*smpl+i-1]+2*(nx+1)*pi/smpl
+    n[nx*smpl+i]=nx
+  }
+}
+
+my_data <- data.frame(n,t) %>%
+  mutate(x=myfuncx(4,n,t),y=myfuncy(4,n,t)) %>%
+  mutate(x=ifelse(n==0,myfuncx(3.5,0,t),x),y=ifelse(n==0,myfuncy(3.5,0,t),y))
+
+  ggplot(data=my_data,mapping=aes(x=x,y=y))+
+    geom_point()+
+    theme(legend.position = "none")+
+    labs(title = 'n: {previous_state}')+
+    transition_states(as.factor(n))
+```
+]
 
 ---
 class: left, middle

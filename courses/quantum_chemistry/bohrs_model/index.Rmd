@@ -218,8 +218,8 @@ Substituindo r na expressão da energia encontramos
       & = - E_0\frac{Z^2}{n^2},\quad n=1,2,3,\cdots.
 \end{aligned}
 Podemos ver que o termo entre parêntesis é uma constante e seu valor corresponde a energia do estado fundamental do átomo de hidrogênio, ou seja, $E_0 = -13,6\; eV$.
-* <font class="red">De acordo com o modelo de Bohr, as órbitas estacionárias são comprovadas pela relação $r\sim n^2$ assumindo valores discretos com valores de n;</font>
-* <font class="red">Cada órbita possui valor discreto de energia $E_n$, como mostra a equação acima.</font>
+* <font class="red">De acordo com o modelo de Bohr, as órbitas estacionárias são comprovadas pela relação r ~ n<sup>2</sup> assumindo valores discretos com valores de n;</font>
+* <font class="red">Cada órbita possui valor discreto de energia E<sub>n</sub>, onde E<sub>n</sub> ~ 1/n<sup>2</sup>, como mostra a equação acima.</font>
 ]
 .pull-right[
 ```{r, echo=FALSE, fig.align='center',fig.cap='Movimento ondulatório do elétron de acordo com o número quântico n, demonstrando assim que o modelo de Bohr concorda com os postulados de de Broglie.',out.width="100%"}
@@ -231,7 +231,7 @@ myfuncy <- function(A,n,t){
 }
 
 smpl=400
-nt=7
+nt=9
 t=rep(0,nt*smpl)
 n=rep(0,nt*smpl)
 for (nx in 3:nt) {
@@ -243,12 +243,22 @@ for (nx in 3:nt) {
   }
 }
 
-my_data <- data.frame(n,t) %>%
-  mutate(x=myfuncx(4,n,t),y=myfuncy(4,n,t)) %>%
-  mutate(x=ifelse(n==0,myfuncx(3.5,0,t),x),y=ifelse(n==0,myfuncy(3.5,0,t),y))
+smpl=0.5*smpl
+t2=rep(0,smpl)
+t2[1]=2*pi/smpl
+for (i in 2:smpl) {
+  t2[i] = t2[i-1]+2*pi/smpl
+}
 
-  ggplot(data=my_data,mapping=aes(x=x,y=y))+
-    geom_point()+
+my_data2 = data.frame(t2) %>%
+  mutate(x2=myfuncx(3.5,0,t2),y2=myfuncy(3.5,0,t2))
+
+my_data <- data.frame(n,t) %>%
+  mutate(x=myfuncx(4,n,t),y=myfuncy(4,n,t))
+
+  ggplot()+
+    geom_point(data=my_data2,mapping = aes(x=x2,y=y2),size=0.5,shape=21)+
+    geom_point(data=my_data,mapping=aes(x=x,y=y),color='red')+
     theme(legend.position = "none")+
     labs(title = 'n: {previous_state}')+
     transition_states(as.factor(n))

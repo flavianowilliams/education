@@ -47,7 +47,9 @@ class: middle
 
 <div class="my-header"><span>Sumário</span></div>
 
-1. Pacotes de onda e conceitos de probabilidade
+1. Discrepâncias no modelo de de Broglie
+
+2. Pacotes de onda
 
 2. Interpretação probabilística da função de onda
 
@@ -66,26 +68,22 @@ class: middle
 ---
 class: left, middle
 
-<div class="my-header"><span>Pacotes de onda e conceitos de probabilidade</span></div>
+<div class="my-header"><span>Discrepâncias no modelo de de Broglie</span></div>
 
-* O modelo de Thompson é chamado de pudim de passas. O átomo seria uma massa carregada positivamente e os elétrons estariam mergulhados, como as passas de um pudim. [`r Cite(bib, c("nussenzveig","tipler","mcquarrie","braga","eisberg"))`];
-* No modelo de Rutherford, as cargas positivas estariam concentradas em uma pequena região que chamamos de núcleo atômico, e os elétrons orbitariam ao redor do núcleo. Rutherford desenvolveu o seu modelo a partir do experimento de Geiger-Marsden.
-
-.pull-left[
-```{r, echo=FALSE, fig.align='center',fig.cap='Modelo de Thompson.',out.width="40%",fig.asp=1,fig.ncol=2}
-  knitr::include_graphics("img/modelo-thompson.png")
-```
-]
-.pull-right[
-```{r, echo=FALSE, fig.align='center',fig.cap='Modelo de Rutherford.',out.width="40%",fig.asp=1,fig.ncol=2}
-  knitr::include_graphics("img/modelo-rutheford.jpg")
-```
-]
+referencias: [`r Cite(bib, c("nussenzveig","tipler","mcquarrie","braga","eisberg"))`];
 
 ---
 class: left, middle
 
-<div class="my-header"><span>Interpretação probabilística da função de onda</span></div>
+<div class="my-header"><span>Pacotes de onda</span></div>
+
+.pull-left[
+]
+.pull-right[
+```{r, echo=FALSE, fig.align='center',fig.cap='Superposição de duas ondas harmônicas.',out.width="100%",fig.asp=1,fig.ncol=2}
+  knitr::include_graphics("img/superposicao-ondas.jpeg")
+```
+]
 
 ---
 class: left, middle

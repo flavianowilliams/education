@@ -60,12 +60,69 @@ class: left, middle
 
 &lt;div class="my-header"&gt;&lt;span&gt;Discrepâncias no modelo de de Broglie&lt;/span&gt;&lt;/div&gt;
 
-referencias: [([Nussenzveig, 2003](https://books.google.com.br/books?id=KjHjAAAACAAJ); [Tipler and Llewellyn, 2003](https://books.google.com.br/books?id=tpU18JqcSNkC); [McQuarrie, 2008](https://books.google.com.br/books?id=zzxLTIljQB4C); [Braga, 2007](https://www.editoraufv.com.br/produto/fundamentos-de-quimica-quantica/1108949); [Eisberg, Eisberg, Resnick, et al., 1985](https://books.google.com.br/books?id=mv5QAAAAMAAJ))];
+.pull-left[
+A energia de uma partícula livre é dada por
+`\begin{aligned}
+  E = \frac{1}{2}mv^2=\frac{p^2}{2m}.
+\end{aligned}`
+Dividindo por p teremos
+`\begin{aligned}
+  \frac{E}{p} = \frac{mv^2}{2mv},
+\end{aligned}`
+ou seja, 
+`\begin{aligned}
+  v_{\text{partícula}} = \frac{E}{2p}
+\end{aligned}`
+Sabemos desde os postulados de de Broglie [([Nussenzveig, 2003](https://books.google.com.br/books?id=KjHjAAAACAAJ); [Tipler and Llewellyn, 2003](https://books.google.com.br/books?id=tpU18JqcSNkC); [McQuarrie, 2008](https://books.google.com.br/books?id=zzxLTIljQB4C); [Braga, 2007](https://www.editoraufv.com.br/produto/fundamentos-de-quimica-quantica/1108949); [Eisberg, Eisberg, Resnick, et al., 1985](https://books.google.com.br/books?id=mv5QAAAAMAAJ))] que
+]
+.pull-right[
+`\begin{aligned}
+  E &amp; = h\nu;\\\
+  p &amp; = \frac{h}{\lambda}.
+\end{aligned}`
+Substituindo na equação da velocidade acima encontramos
+`\begin{aligned}
+  v &amp; = \frac{h\nu}{2\left(\frac{h}{\lambda}\right)},\\\
+    &amp; = \frac{\lambda\nu}{2}.
+\end{aligned}`
+A velocidade de uma onda progressiva é dado por
+`\begin{aligned}
+  v_{\text{onda}} = \lambda\nu,
+\end{aligned}`
+portanto, &lt;font class="red"&gt;podemos perceber que se adotarmos o movimento da partícula equivalente a apenas o movimento de uma onda progressiva, a sua velocidade não irá coincidir com a velocidade da onda&lt;/font&gt;.
+]
 
 ---
 class: left, middle
 
-&lt;div class="my-header"&gt;&lt;span&gt;Pacotes de onda&lt;/span&gt;&lt;/div&gt;
+&lt;div class="my-header"&gt;&lt;span&gt;Pacotes de onda - Definição&lt;/span&gt;&lt;/div&gt;
+
+.pull-left[
+Considere duas ondas harmônicas que possuem números de onda `\(k_1\)` e `\(k_2\)` e frequência angular `\(\omega_1\)` e `\(\omega_2\)`, respectivamente. A superposição do encontro dessas duas ondas é dado por
+`\begin{aligned}
+  y(x,t) &amp; = y_1(x,t)+y_2(x,t),\\\
+         &amp; = y_m\cos(k_1x-\omega_1t)+y_m\cos(k_2x-\omega_2t).
+\end{aligned}`
+Definindo as diferenças `\(\Delta k=k_2-k_1\)` e `\(\Delta \omega = \omega_2-\omega_1\)`, e os valores médios `\(\bar{k}=(k_1+k_2)/2\)` e  `\(\bar{\omega}=(\omega_1+\omega_2)/2\)` encontramos o valor do pacote de onda, como mostra a figura ao lado (para maiores detalhes, veja o apêndice A),
+`\begin{aligned}
+  y(x,t) = 2y_m\cos\left(\frac{\Delta k}{2}x-\frac{\Delta \omega}{2}t\right)\cos\left(\bar{k}x-\bar{\omega}t\right).
+\end{aligned}`
+Lembrando que
+`\begin{aligned}
+  k = \frac{2\pi}{\lambda};\quad  \omega = 2\pi\nu.
+\end{aligned}`
+]
+.pull-right[
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/superposicao-ondas.jpeg" alt="Superposição de duas ondas harmônicas com números de onda e frequências diferentes." width="100%" /&gt;
+&lt;p class="caption"&gt;Superposição de duas ondas harmônicas com números de onda e frequências diferentes.&lt;/p&gt;
+&lt;/div&gt;
+]
+
+---
+class: left, middle
+
+&lt;div class="my-header"&gt;&lt;span&gt;Pacotes de onda - Velocidade de um pacote de onda&lt;/span&gt;&lt;/div&gt;
 
 .pull-left[
 ]
@@ -79,7 +136,56 @@ class: left, middle
 ---
 class: left, middle
 
+&lt;div class="my-header"&gt;&lt;span&gt;Pacotes de onda - Pacotes de onda da matéria&lt;/span&gt;&lt;/div&gt;
+
+.pull-left[
+]
+.pull-right[
+]
+
+---
+class: left, middle
+
 &lt;div class="my-header"&gt;&lt;span&gt;Princípio filosófico da física quântica&lt;/span&gt;&lt;/div&gt;
+
+---
+class: middle
+
+&lt;div class="my-header"&gt;&lt;span&gt;Apêndice A&lt;/span&gt;&lt;/div&gt;
+
+.pull-left[
+Definindo as diferenças `\(\Delta k=k_2-k_1\)` e `\(\Delta \omega = \omega_2-\omega_1\)`, e os valores médios `\(\bar{k}=(k_1+k_2)/2\)` e  `\(\bar{\omega}=(\omega_1+\omega_2)/2\)` podemos dizer que
+`\begin{aligned}
+  k_1 &amp; = \bar{k}-\Delta K;\quad k_2 = \bar{k}+\Delta K,\\\
+  \omega_1 &amp; = \bar{\omega}-\Delta \omega;\quad \omega_2 = \bar{\omega}+\Delta \omega.
+\end{aligned}`
+Para obter a função de onda resultante é conveniente usarmos a fórmula de Euler, onde `\(e^{i\theta}=\cos\theta+i\sin\theta\)`, onde apenas nos interessa a parte real,
+`\begin{aligned}
+  y(x,t) &amp; = y_m\left[\cos(k_1x-\omega_1t)+\cos(k_2x-\omega_2t)\right],\\
+         &amp; = y_m\Re\left[e^{i(k_1x-\omega_1t)}+e^{i(k_2x-\omega_2t)}\right],\\
+         &amp; = y_m\Re\left[e^{i[(\bar{k}-\Delta k)x-(\bar{\omega}-\Delta \omega)t]}+e^{i[(\bar{k}+\Delta K)x-(\bar{\omega}+\Delta \omega)t]}\right],\\
+         &amp; = y_m\Re\left[e^{i(\bar{k}x-\Delta Kx-\bar{\omega}t+\Delta \omega t)}+e^{i(\bar{k}x+\Delta Kx-\bar{\omega}t-\Delta \omega t)}\right],\\
+         &amp; = y_m\Re\left[e^{i(\bar{k}x-\bar{\omega}t)}e^{-i(\Delta Kx-\Delta \omega t)}\right.+\\
+         &amp; + \left.e^{i(\bar{k}x-\bar{\omega}t)}e^{i(\Delta Kx-\Delta \omega t)}\right],
+\end{aligned}`
+]
+.pull-right[
+`\begin{aligned}
+  y(x,t) &amp; = y_m\left(e^{-i(\Delta Kx-\Delta \omega t)}+e^{i(\Delta Kx-\Delta \omega t)}\right)\Re\left[e^{i(\bar{k}x-\bar{\omega}t)}\right].
+\end{aligned}`
+Pela fórmula de Euler, podemos usar a identidade
+`\begin{aligned}
+  \cos\theta = \frac{e^{i\theta}+e^{-i\theta}}{2}.
+\end{aligned}`
+Substituindo teremos
+`\begin{aligned}
+  y(x,t) &amp; = y_m\left(2\cos\left(\Delta Kx-\Delta \omega t\right)\right)\Re\left[e^{i(\bar{k}x-\bar{\omega}t)}\right].
+\end{aligned}`
+Isolando a parte real do termo `\(e^{i(\bar{k}x-\bar{\omega}t)}\)` chegaremos na função de onda resultante,
+`\begin{aligned}
+  \boxed{y(x,t) = 2y_m\cos\left(\frac{\Delta k}{2}x-\frac{\Delta \omega}{2}t\right)\cos\left(\bar{k}x-\bar{\omega}t\right).}
+\end{aligned}`
+]
 
 ---
 class: middle

@@ -17,7 +17,7 @@ class: center, middle, inverse, title-slide
 ## Modelo atômico de Bohr
 ### Flaviano Williams Fernandes
 ### Instituto Federal do Paraná - Irati
-### 16 de março de 2021 (atualizado em 31/07/2021)
+### 16 de março de 2021 (atualizado em 02/08/2021)
 
 ---
 
@@ -226,12 +226,76 @@ Podemos ver que o termo entre parêntesis é uma constante e seu valor correspon
 ---
 class: left, middle
 
+&lt;div class="my-header"&gt;&lt;span&gt;Cálculo dos níveis de energia do átomo de hidrogênio&lt;/span&gt;&lt;/div&gt;
+
+.pull-left[
+Supondo que o elétron realize um salto do nível `\(n_i\)` para outro nível menos energético `\(n_f\)`, pelo postulado de Bohr para que o elétron faça essa transição, ele obrigatoriamente deverá emitir um fóton com energia equivalente a diferença de energia `\(\Delta E = E_{n_i} - E_{n_f}\)`,
+`\begin{aligned}
+  \Delta E &amp; = -E_0\frac{Z^2}{n^2_i}-\left(-E_0\frac{Z^2}{n^2_f}\right),\\\
+           &amp; = E_0Z^2\left(\frac{1}{n^2_f}-\frac{1}{n^2_i}\right)
+\end{aligned}`
+Mas sabemos, a partir do efeito fotoelétrico, que a energia do fóton é dado por `\(E=h\nu\)`, onde `\(\nu\)` é a sua frequência, assim
+`\begin{aligned}
+  \nu = \frac{E_0Z^2}{h}\left(\frac{1}{n^2_f}-\frac{1}{n^2_i}\right).
+\end{aligned}`
+]
+.pull-right[
+Além do mais, sabemos também que `\(c=\nu\lambda\)`, onde substituindo na equação anterior resulta em
+`\begin{aligned}
+  \frac{c}{\lambda} &amp; = \frac{E_0Z^2}{h}\left(\frac{1}{n^2_f}-\frac{1}{n^2_i}\right),\\\
+  \frac{1}{\lambda} &amp; = \frac{E_0Z^2}{hc}\left(\frac{1}{n^2_f}-\frac{1}{n^2_i}\right).
+\end{aligned}`
+Podemos observar que `\(E_0\)`, `\(Z\)` e `\(h\)` são constantes, onde podemos substituir por uma única constante R, chamada de constante de Rydberg,
+`\begin{aligned}
+\frac{1}{\lambda} &amp; = R\left(\frac{1}{n^2_f}-\frac{1}{n^2_i}\right).
+\end{aligned}`
+Bohr calculou teoricamente o valor da constante de Rydberg e surpreendentemente obteve boa concordância com os dados experimentais obtidos à partir da espectroscopia.
+]
+
+---
+class: left, middle
+
 &lt;div class="my-header"&gt;&lt;span&gt;Espectro do átomo de hidrogênio&lt;/span&gt;&lt;/div&gt;
+
+.pull-left[
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/espectro.jpeg" alt="Espectro do átomo de hidrogênio  e as transições de Lyman, Balmer e Paschen." width="90%" /&gt;
+&lt;p class="caption"&gt;Espectro do átomo de hidrogênio  e as transições de Lyman, Balmer e Paschen.&lt;/p&gt;
+&lt;/div&gt;
+]
+.pull-right[
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/atomo-transicao.jpeg" alt="Órbitas circulares de Bohr e emissões K e L." width="95%" /&gt;
+&lt;p class="caption"&gt;Órbitas circulares de Bohr e emissões K e L.&lt;/p&gt;
+&lt;/div&gt;
+]
 
 ---
 class: left, middle
 
 &lt;div class="my-header"&gt;&lt;span&gt;Princípio da correspondência&lt;/span&gt;&lt;/div&gt;
+
+.pull-left[
+De acordo com o princípio da correspondência, se os níveis de energia estão mais próximos, a quantização não é importante e os cálculos quânticos e clássicos devem conduzir ao mesmo resultado. Podemos ver isso claramente no espectro do átomo de hidrogênio, onde os níveis de energia vão se tornando cada vez mais próximos à medida que n aumenta. Para verificar o princípio da correspondência vamos tomar como exemplo a frequência do fóton emitido quando o elétron salta da órbita `\(n_i=n\)` para a órbita subsequente `\(n_f=n-1\)`,
+`\begin{aligned}
+  \nu &amp; = \frac{E_0Z^2}{h}\left(\frac{1}{n^2_f}-\frac{1}{n^2_i}\right),\\\
+    &amp; = \frac{E_0Z^2}{h}\left(\frac{1}{(n-1)^2}-\frac{1}{n^2}\right),\\\
+    &amp; = \frac{E_0Z^2}{h}\left(\frac{2n-1}{n^2(n-1)^2}\right).
+\end{aligned}`
+]
+.pull-right[
+Considerando que a transição ocorre entre grandes números quânticos, ou seja, no limite `\(n&gt;&gt;1\)`,
+`\begin{aligned}
+  \nu &amp; \approx \frac{E_0Z^2}{h}\left(\frac{2n}{n^3}\right),\\\
+  \nu &amp; \approx \left(\frac{mk^2Z^2e^4}{2\pi\hbar^3n^3}\right),
+\end{aligned}`
+onde `\(E_0=\frac{mk^2e^4}{2\hbar^2}\)` e `\(h=2\pi\hbar\)`. Mas vimos anteriormente que de acordo com o modelo de Bohr `\(r=\frac{\hbar^2n^2}{mKZe^2}\)` e `\(v=\left(\frac{kze^2}{mr}\right)^{1/2}\)`, ou seja,
+`\begin{aligned}
+  \nu &amp; = \left(\frac{1}{2\pi}\right)\underbrace{\left(\frac{mkZe^2}{\hbar^2n^2}\right)}_{1/r}\underbrace{\left(\frac{kZe^2}{\hbar n}\right)}_{v},\\\
+  \nu &amp; = \frac{v}{2\pi r},
+\end{aligned}`
+correspondendo a frequência na mecânica clássica.
+]
 
 ---
 class: middle

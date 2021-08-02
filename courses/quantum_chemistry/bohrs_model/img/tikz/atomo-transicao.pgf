@@ -1,0 +1,56 @@
+﻿\begin{tikzpicture}[scale=1,transform shape,font=\huge, samples=900, wave/.style={decorate,decoration={snake,post length=2.5mm,amplitude=2mm, segment length=12mm},thick}]
+			
+		\tkzInit[xmin=-12,xmax=12,ymin=-12,ymax=12]
+%		\tkzGrid[color=gray!20]
+		\tkzClip
+
+%			\tkzDrawX
+%			\tkzDrawY
+			\tkzDefPoints{0/0/O}
+
+			%definindo nucleo atomico
+			\tkzDrawPoint[size=7mm, fill=blue!50](O)
+
+			%primeira orbita
+			\tkzDefPoints{1/0/A}
+			\tkzDrawCircle[dashed,line width=1.5pt](O,A)
+			\tkzDefPointsBy[rotation=center O angle 135](O,A){p1,p2}
+			\tkzDefPointsBy[rotation=center O angle -45](O,A){p1a,p2a}
+			\tkzText[below right](p2a){$n_1$}
+			\tkzDrawPoint[size=5mm](p2)
+			\tkzText[above right=3mm](p2){\textit{e}\textsuperscript{-}}
+
+			%segunda orbita
+			\tkzDefPoints{4/0/B}
+			\tkzDrawCircle[dashed,line width=1.5pt](O,B)
+			\tkzDefPointsBy[rotation=center O angle 135](O,B){p3,p4}
+			\tkzDefPointsBy[rotation=center O angle -45](O,B){p3a,p4a}
+			\tkzText[below right](p4a){$n_2$}
+			\tkzDrawPoint[size=5mm,fill=white, line width=3pt](p4)
+
+			%terceira orbita
+			\tkzDefPoints{9/0/C}
+			\tkzDrawCircle[dashed,line width=1.5pt](O,C)
+			\tkzDefPointsBy[rotation=center O angle 150](O,C){p5,p6}
+			\tkzDefPointsBy[rotation=center O angle -45](O,C){p5a,p6a}
+			\tkzText[below right](p6a){$n_3$}
+			\tkzDrawPoint[size=5mm,fill=white,line width=3pt](p6)
+
+			%foton Kalpha
+			\tkzDefMidPoint(p2,p4)\tkzGetPoint{p7}
+			\tkzDefPointWith[orthogonal, K=0.25](p7,p2)\tkzGetPoint{p8}
+			\tkzDefPointWith[orthogonal, K=7](p7,p2)\tkzGetPoint{p9}
+			\draw[line width=2pt,color=red,line width=3pt,color=red,-{Stealth[width=7mm]}](p4) -- (p2);
+			\draw[-{Stealth[width=6mm]},wave, segment length=4mm,line width=1.5pt](p8) -- (p9) node [above right,fill=white] {$K_{\alpha}$};
+
+			%foton Lalpha
+			\tkzDefMidPoint(p6,p4)\tkzGetPoint{p10}
+			\tkzDefPointWith[orthogonal, K=-0.25](p10,p4)\tkzGetPoint{p11}
+			\tkzDefPointWith[orthogonal, K=-4](p10,p4)\tkzGetPoint{p12}
+			\draw[line width=2pt,color=red,line width=3pt,color=red,-{Stealth[width=7mm]}](p6) -- (p4);
+			\draw[-{Stealth[width=6mm]},wave,line width=1.5pt](p11) -- (p12) node [below=1mm,fill=white] {$L_{\alpha}$};
+
+%		\tkzDrawPoints[size=0.1cm](p1,p2,p3,p4,p5,p6)
+%		\tkzLabelPoints(p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12)
+
+\end{tikzpicture}

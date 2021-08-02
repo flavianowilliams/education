@@ -1,0 +1,111 @@
+﻿\begin{tikzpicture}[scale=1,transform shape,font=\Large]
+			
+		\tkzInit[xmin=0,xmax=15,ymin=-14,ymax=0]
+		\tkzGrid[color=gray!20]
+%		\tkzClip[space=0.5]
+
+%		\tkzDrawX[noticks]
+		\tkzDrawY[noticks, label=Energia (eV),above]
+%		\tkzAxeX[right,label=t (s)]
+%		\tkzAxeY[above,label=x (m)]
+			
+		%energias
+		\tkzDefPoints{0/-13.6/e1,0/-3.4/e2,0/-1.51/e3}
+		\tkzDefPoints{0/-0.85/e4,0/-0.54/e5,0/0/e6,0/-0.4/e7}
+
+		\draw (e1) --++ (15,0) node [right] {\large $n=1$};
+		\draw (e2) --++ (15,0) node [right] {\large $n=2$};
+		\draw (e3) --++ (15,0) node [right] {\large $n=3$};
+		\draw (e4) --++ (15,0) node [right] {\large $n=4$};
+		\draw (e5) --++ (15,0) node [right] {\large $n=5$};
+		\draw ($(e5)+(0,0.2)$) --++ (15,0);
+		\draw ($(e5)+(0,0.3)$) --++ (15,0);
+		\draw ($(e5)+(0,0.4)$) --++ (15,0);
+		\draw (e6) --++ (15,0) node [right] {\large $n\rightarrow \infty$};
+
+		\tkzText[left](e1){-13,6}
+		\tkzText[left](e2){-3,4}
+		\tkzText[left](e3){-1,51}
+		\tkzText[left](e4){-0.85}
+		\tkzText[left](e5){-0,54}
+		\tkzText[left](e6){0}
+
+		%serie lyman
+		\def\p1{3.5};
+		\def\pa{2.2};
+		\def\pb{1.5};
+		\def\pbx{1.0};
+
+		\draw[->,line width=1pt] ($(e5)+(\pbx,0)$) -- ($(e1)+(\pbx,0)$);
+		\draw[->,line width=1pt] ($(e4)+(\pb,0)$) -- ($(e1)+(\pb,0)$);
+		\draw[->,line width=1pt] ($(e3)+(\pa,0)$) -- ($(e1)+(\pa,0)$);
+		\draw[->,line width=1pt] ($(e2)+(\p1,0)$) -- ($(e1)+(\p1,0)$) node [right, midway] {$K_{\alpha}$};
+
+		%serie balmer
+		\def\pc{11};
+		\def\pd{10};
+		\def\pe{9.5};
+		\def\pex{9.0};
+
+		\draw[->,line width=1pt] ($(e7)+(\pex,0)$) -- ($(e2)+(\pex,0)$);
+		\draw[->,line width=1pt] ($(e5)+(\pe,0)$) -- ($(e2)+(\pe,0)$);
+		\draw[->,line width=1pt] ($(e4)+(\pd,0)$) -- ($(e2)+(\pd,0)$);
+		\draw[->,line width=1pt] ($(e3)+(\pc,0)$) -- ($(e2)+(\pc,0)$) node [right, midway] {$L_{\alpha}$};
+
+		%serie paschen
+		\def\ph{13.25};
+		\def\pg{13.6};
+		\def\pf{14.1};
+		\def\pk{13.0};
+
+		\draw[->,line width=1pt] ($(e7)+(\pk,0)$) -- ($(e3)+(\pk,0)$);
+		\draw[->,line width=1pt] ($(e7)+(\ph,0)$) -- ($(e3)+(\ph,0)$);
+		\draw[->,line width=1pt] ($(e5)+(\pg,0)$) -- ($(e3)+(\pg,0)$);
+		\draw[->,line width=1pt] ($(e4)+(\pf,0)$) -- ($(e3)+(\pf,0)$) node [right, midway] {$L_{\alpha}$};
+
+		\begin{scope}[shift={(0,-17)}]
+
+		\tkzInit[xmin=0,xmax=15,ymin=0,ymax=0]
+
+		\tkzDrawX[label=$\lambda\, nm$,right,noticks]
+
+		%retangulo
+        \draw[fill=gray!50] (0,2) -- (15,2) -- (15,0.25) -- (0,0.25)  -- cycle;
+
+		\tkzDefPoints{\p1/0.25/px,\pa/0.25/py,\pb/0.25/pz,\pbx/0.25/pzy,\pc/0.25/pxx,\pd/0.25/pyy}
+		\tkzDefPoints{\pe/0.25/pzz,\pex/0.25/pzx,\pf/0.25/pff,\pg/0.25/pgg,\ph/0.25/phh}
+		\tkzDefPoints{\pk/0.25/pw}
+
+		\draw[dashed]($(e1)+(\pbx,0)$) -- (pzy);
+		\draw[dashed]($(e1)+(\pb,0)$) -- (pz);
+		\draw[dashed]($(e1)+(\pa,0)$) -- (py);
+		\draw[dashed]($(e1)+(\p1,0)$) -- (px);
+		\draw[dashed]($(e2)+(\pc,0)$) -- (pxx);
+		\draw[dashed]($(e2)+(\pd,0)$) -- (pyy);
+		\draw[dashed]($(e2)+(\pe,0)$) -- (pzz);
+		\draw[dashed]($(e2)+(\pex,0)$) -- (pzx);
+		\draw[dashed]($(e3)+(\pk,0)$) -- (pw);
+		\draw[dashed]($(e3)+(\ph,0)$) -- (phh);
+		\draw[dashed]($(e3)+(\pg,0)$) -- (pgg);
+		\draw[dashed]($(e3)+(\pf,0)$) -- (pff);
+
+		\draw[color=white,line width=2pt] (px) --++ (0,1.75);
+		\draw[color=white,line width=2pt] (py) --++ (0,1.75);
+		\draw[color=white,line width=2pt] (pz) --++ (0,1.75);
+		\draw[color=white,line width=2pt] (pzy) --++ (0,1.75);
+		\draw[color=white,line width=2pt] (pxx) --++ (0,1.75);
+		\draw[color=white,line width=2pt] (pyy) --++ (0,1.75);
+		\draw[color=white,line width=2pt] (pzz) --++ (0,1.75);
+		\draw[color=white,line width=2pt] (pzx) --++ (0,1.75);
+		\draw[color=white,line width=2pt] (pw) --++ (0,1.75);
+		\draw[color=white,line width=2pt] (pff) --++ (0,1.75);
+		\draw[color=white,line width=2pt] (pgg) --++ (0,1.75);
+		\draw[color=white,line width=2pt] (phh) --++ (0,1.75);
+
+		\tkzText[below=5mm](py){100}
+		\tkzText[below=5mm](pyy){500}
+		\tkzText[below=5mm](phh){1000}
+
+		\end{scope}
+
+\end{tikzpicture}

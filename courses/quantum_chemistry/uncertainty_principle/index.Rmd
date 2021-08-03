@@ -84,10 +84,12 @@ ou seja,
   v_{\text{partícula}} = \frac{E}{2p}
 \end{aligned}
 Sabemos desde os postulados de de Broglie [`r Cite(bib, c("nussenzveig","tipler","mcquarrie","braga","eisberg"))`] que
+\begin{aligned}
+  E & = h\nu;
+\end{aligned}
 ]
 .pull-right[
 \begin{aligned}
-  E & = h\nu;\\\
   p & = \frac{h}{\lambda}.
 \end{aligned}
 Substituindo na equação da velocidade acima encontramos

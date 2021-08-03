@@ -1,0 +1,39 @@
+﻿\begin{tikzpicture}[scale=1,transform shape,font=\Large, samples=500]
+			
+		\tkzInit[xmin=4,xmax=20,ymin=-15,ymax=1]
+		\tkzGrid[color=gray!20]
+		\tkzClip[space=1]
+
+			\def\y0{1}
+
+			\def\k{6}
+			\def\om{1}
+			\def\dk{0.5}
+			\def\dom{0.5}
+			\def\t{3.14}
+
+			\begin{scope}[shift={(0,0)}]
+				\tkzDrawX{label=x}
+				\tkzDrawY{label=y(x,t)}
+				\tkzFct[domain=pi:7*pi,line width=1pt,samples=500]{\y0*cos(\k*x-\om*\t)}
+			\end{scope}
+
+			\begin{scope}[shift={(0,-3)}]
+				\tkzDrawX{label=x}
+				\tkzFct[domain=pi:7*pi,line width=1pt,samples=500]{\y0*cos((\k+\dk)*x-\om*\t)}
+			\end{scope}
+
+			\begin{scope}[shift={(0,-6)}]
+				\tkzDrawX{label=x}
+				\tkzFct[domain=pi:7*pi,line width=1pt,samples=500]{\y0*cos((\k+2*\dk)*x-\om*\t)}
+			\end{scope}
+
+			\begin{scope}[shift={(0,-12)}]
+				\tkzInit[xmin=4,xmax=20,ymin=-3,ymax=3]
+
+				\tkzDrawX{label=x}
+
+				\tkzFct[domain=pi:7*pi,line width=1pt,samples=500]{\y0*(cos(\k*x-\om*\t)+cos((\k+\dk)*x-\om*\t)+cos((\k+2*\dk)*x-\om*\t))}
+			\end{scope}
+
+\end{tikzpicture}

@@ -136,8 +136,8 @@ class: left, middle
 .pull-left[
 ]
 .pull-right[
-```{r, echo=FALSE, fig.align='center',fig.cap='Superposição de duas ondas harmônicas.',out.width="100%",fig.asp=1,fig.ncol=2}
-  knitr::include_graphics("img/superposicao-ondas.jpeg")
+```{r, echo=FALSE, fig.align='center',fig.cap='Pacote de onda formado pela superposição de três ondas harmômicas.',out.width="100%",fig.asp=1,fig.ncol=2}
+  knitr::include_graphics("img/superposicao-ondas-2.jpeg")
 ```
 ]
 

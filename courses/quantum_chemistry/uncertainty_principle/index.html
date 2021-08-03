@@ -100,12 +100,12 @@ class: left, middle
 .pull-left[
 Considere duas ondas harmônicas que possuem números de onda `\(k_1\)` e `\(k_2\)` e frequência angular `\(\omega_1\)` e `\(\omega_2\)`, respectivamente. A superposição do encontro dessas duas ondas é dado por
 `\begin{aligned}
-  y(x,t) &amp; = y_1(x,t)+y_2(x,t),\\\
+  \psi(x,t) &amp; = y_1(x,t)+y_2(x,t),\\\
          &amp; = y_m\cos(k_1x-\omega_1t)+y_m\cos(k_2x-\omega_2t).
 \end{aligned}`
 Definindo as diferenças `\(\Delta k=k_2-k_1\)` e `\(\Delta \omega = \omega_2-\omega_1\)`, e os valores médios `\(\bar{k}=(k_1+k_2)/2\)` e  `\(\bar{\omega}=(\omega_1+\omega_2)/2\)` encontramos o valor do pacote de onda, como mostra a figura ao lado (para maiores detalhes, veja o apêndice A),
 `\begin{aligned}
-  y(x,t) = 2y_m\cos\left(\frac{\Delta k}{2}x-\frac{\Delta \omega}{2}t\right)\cos\left(\bar{k}x-\bar{\omega}t\right).
+  \psi(x,t) = 2y_m\cos\left(\frac{\Delta k}{2}x-\frac{\Delta \omega}{2}t\right)\cos\left(\bar{k}x-\bar{\omega}t\right).
 \end{aligned}`
 Lembrando que
 `\begin{aligned}
@@ -153,13 +153,30 @@ class: left, middle
 &lt;div class="my-header"&gt;&lt;span&gt;Pacotes de onda - Pacotes de onda da matéria&lt;/span&gt;&lt;/div&gt;
 
 .pull-left[
-Pelos postulados de de Broglie, temos que
+Pelos postulados de de Broglie, temos para a energia do elétron
 `\begin{aligned}
   E &amp; = h\nu,\\
-    &amp; = \left(2\pi\hbar\right)\left(\frac{\omega}{2\pi}\right)
+  E &amp; = \left(2\pi\hbar\right)\left(\frac{\omega}{2\pi}\right),\\
+  E &amp; = \hbar\omega.
 \end{aligned}`
+Para o momento do elétron temos a seguinte expressão
+`\begin{aligned}
+  p &amp; = \frac{h}{\lambda},\\
+  p &amp; = \frac{2\pi\hbar}{2\pi/k},\\
+  p &amp; = \hbar k.
+\end{aligned}`
+Da equação acima podemos dizer que `\(\omega(k)=E(k)/\hbar\)`. Calculando a derivada de `\(\omega\)` encontramos a velocidade do pacote de onda para um elétron que se propaga livremente com velocidade v,
 ]
 .pull-right[
+`\begin{aligned}
+  v_{\text{pacote}} &amp; = \frac{d\omega(k)}{dk},\\
+  v_{\text{pacote}} &amp; = \frac{d\omega}{dE}\frac{dE}{dk},\\
+  v_{\text{pacote}} &amp; = \underbrace{\frac{d\omega}{dE}}_{1/\hbar}\underbrace{\frac{dE}{dp}}_{2p/2m}\underbrace{\frac{dp}{dk}}_{\hbar},\\
+  v_{\text{pacote}} &amp; = \left(\frac{1}{\hbar}\right)\left(\frac{2p}{2m}\right)\left(\hbar\right),\\
+  v_{\text{pacote}} &amp; = \frac{p}{m},\\
+  v_{\text{pacote}} &amp; \equiv v.
+\end{aligned}`
+Portanto, o pacote de onda `\(\psi\)` se propaga com a velocidade do elétron. &lt;font class="red"&gt;Isso demonstra o fato que o movimento ondulatório da matéria devemos tratá-lo como um pacote de ondas, ao invés de apenas uma onda progressiva.&lt;/font&gt;
 ]
 
 ---
@@ -180,7 +197,7 @@ Definindo as diferenças `\(\Delta k=k_2-k_1\)` e `\(\Delta \omega = \omega_2-\o
 \end{aligned}`
 Para obter a função de onda resultante é conveniente usarmos a fórmula de Euler, onde `\(e^{i\theta}=\cos\theta+i\sin\theta\)`, onde apenas nos interessa a parte real,
 `\begin{aligned}
-  y(x,t) &amp; = y_m\left[\cos(k_1x-\omega_1t)+\cos(k_2x-\omega_2t)\right],\\
+  \psi(x,t) &amp; = y_m\left[\cos(k_1x-\omega_1t)+\cos(k_2x-\omega_2t)\right],\\
          &amp; = y_m\Re\left[e^{i(k_1x-\omega_1t)}+e^{i(k_2x-\omega_2t)}\right],\\
          &amp; = y_m\Re\left[e^{i[(\bar{k}-\Delta k)x-(\bar{\omega}-\Delta \omega)t]}+e^{i[(\bar{k}+\Delta K)x-(\bar{\omega}+\Delta \omega)t]}\right],\\
          &amp; = y_m\Re\left[e^{i(\bar{k}x-\Delta Kx-\bar{\omega}t+\Delta \omega t)}+e^{i(\bar{k}x+\Delta Kx-\bar{\omega}t-\Delta \omega t)}\right],\\
@@ -190,7 +207,7 @@ Para obter a função de onda resultante é conveniente usarmos a fórmula de Eu
 ]
 .pull-right[
 `\begin{aligned}
-  y(x,t) &amp; = y_m\left(e^{-i(\Delta Kx-\Delta \omega t)}+e^{i(\Delta Kx-\Delta \omega t)}\right)\Re\left[e^{i(\bar{k}x-\bar{\omega}t)}\right].
+  \psi(x,t) &amp; = y_m\left(e^{-i(\Delta Kx-\Delta \omega t)}+e^{i(\Delta Kx-\Delta \omega t)}\right)\Re\left[e^{i(\bar{k}x-\bar{\omega}t)}\right].
 \end{aligned}`
 Pela fórmula de Euler, podemos usar a identidade
 `\begin{aligned}
@@ -198,11 +215,11 @@ Pela fórmula de Euler, podemos usar a identidade
 \end{aligned}`
 Substituindo teremos
 `\begin{aligned}
-  y(x,t) &amp; = y_m\left(2\cos\left(\Delta Kx-\Delta \omega t\right)\right)\Re\left[e^{i(\bar{k}x-\bar{\omega}t)}\right].
+  \psi(x,t) &amp; = y_m\left(2\cos\left(\Delta Kx-\Delta \omega t\right)\right)\Re\left[e^{i(\bar{k}x-\bar{\omega}t)}\right].
 \end{aligned}`
 Isolando a parte real do termo `\(e^{i(\bar{k}x-\bar{\omega}t)}\)` chegaremos na função de onda resultante,
 `\begin{aligned}
-  \boxed{y(x,t) = 2y_m\cos\left(\frac{\Delta k}{2}x-\frac{\Delta \omega}{2}t\right)\cos\left(\bar{k}x-\bar{\omega}t\right).}
+  \boxed{\psi(x,t) = 2y_m\cos\left(\frac{\Delta k}{2}x-\frac{\Delta \omega}{2}t\right)\cos\left(\bar{k}x-\bar{\omega}t\right).}
 \end{aligned}`
 ]
 

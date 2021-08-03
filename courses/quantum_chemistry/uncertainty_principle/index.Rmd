@@ -230,9 +230,69 @@ O vídeo abaixo mostra a comparação do experimento da fenda dupla realizado co
 ]
 
 ---
+class: justify, middle
+
+<div class="my-header"><span>Interpretação probabilística da função de onda - A incerteza no momento e posição </span></div>
+
+Para entender melhor a incerteza na medição ao adotar a função de onda para representar o elétron, analisemos dois casos extremos.
+
+Para diminuir a incerteza na localização da partícula deveremos ter um pacote de onda curto, bem localizado, cujo comprimento $\Delta x$ é o menor possível. Isso se deve ao fato que a localização do elétron está associado a amplitude da onda. No entanto, para obter um pacote de onda bem localizado, deveríamos ter uma quantidade infinita de ondas, cuja onda resultante produziria tal pacote. Isso por sua vez acarreta no aumento da incerteza do número de onda, ou seja, se $\Delta x\rightarrow 0$ acarreta em $\Delta k\rightarrow\infty$,
+
+```{r, echo=FALSE, message=FALSE, fig.align='center',fig.cap='Experimento da fenda dupla com baixa intensidade.',out.width="80%",fig.asp=0.5}
+  knitr::include_graphics("img/pacotes-onda.jpg")
+```
+
+---
+class: left, middle
+
+<div class="my-header"><span>Interpretação probabilística da função de onda - A incerteza no momento e posição (continuação) </span></div>
+
+.pull-left[
+Entretanto, se tivermos apenas uma única onda progressiva com número de onda k para representar o movimento do elétron, teríamos $\Delta k = 0$, assim o número de onda do elétron seria totalmente determinado. Porém, consequentemente também teríamos $\Delta x\rightarrow\infty$, pois assim não teríamos um pacote de onda definido. Assim, é impossível obter com total certeza a localização e o número de onda do elétron simultaneante. A total certeza de um acarreta na completa incerteza de outro. Porém, para qualquer pacote de onda podemos observar que
+\begin{aligned}
+  \Delta x\Delta k \approx 1.
+\end{aligned}
+Podemos obter algo semelhante analisando a incerteza na frequência angular e o intervalo de tempo $\Delta t$, ao invés de $\Delta k$ na figura anterior, onde
+\begin{aligned}
+  \Delta \omega\Delta t \approx 1.
+\end{aligned}
+]
+.pull-right[
+Agora, qual é a relação entre a incerteza nas medições da posição, número de onda e momento do elétron? Sabemos a partir dos postulados de de Broglie que $p=\hbar k$, assim
+\begin{aligned}
+  \Delta p = \hbar\Delta k.
+\end{aligned}
+Multiplicando os dois lados da relação anterior e identificando $\Delta p$ da equação acima teremos
+\begin{aligned}
+    \hbar\Delta x\Delta k \approx \hbar,\\
+    \Delta x(\hbar\Delta k) \approx \hbar,\\
+    \Delta x\Delta p \approx \hbar.
+\end{aligned}
+Para a frequência angular temos que $E=\hbar\omega$, assim
+\begin{aligned}
+  \Delta E = \hbar\Delta\omega.
+\end{aligned}
+Multiplicando $\Delta\omega\Delta t\approx 1$ por $\hbar$ teremos
+\begin{aligned}
+  \Delta E\Delta t\approx \hbar.
+\end{aligned}
+]
+---
 class: left, middle
 
 <div class="my-header"><span>Princípio filosófico da física quântica</span></div>
+
+Foi defendido por Niels Bohr e Wener Heisenberg na interpretação de Copenhague
+.pull-left[
+* Na mecânica quântica os resultados são indeterminísticos;
+* A física é a ciência onde os resultados são obtidos através de um processo de medida;
+* O simples ato de observar destrói a certeza da medição, causando o colapso da função de onda.
+]
+.pull-right[
+```{r, echo=FALSE, message=FALSE, fig.align='center',fig.cap='Experimento da fenda dupla com baixa intensidade.',out.width="100%",fig.asp=1}
+  knitr::include_graphics("img/copenhague.jpg")
+```
+]
 
 ---
 class: middle

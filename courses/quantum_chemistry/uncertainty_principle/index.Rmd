@@ -134,10 +134,24 @@ class: left, middle
 <div class="my-header"><span>Pacotes de onda - Velocidade de um pacote de onda</span></div>
 
 .pull-left[
+Da velocidade de uma onda temos que
+\begin{aligned}
+  v_{\text{onda}} & = \lambda\nu,\\
+    & = \left(\frac{2\pi}{k}\right)\left(\frac{\omega}{2\pi}\right),\\
+    & = \frac{\omega}{k}.
+\end{aligned}
+No caso do pacote de onda formado por duas ondas harmônicas, pela expressão da função de onda podemos dizer que
+\begin{aligned}
+  v_{\text{pacote}} & = \frac{\Delta \omega}{\Delta k}.
+\end{aligned}
+Expandindo a definição para um pacote de onda formado por uma inifinidade de ondas harmônicas, onde o número de onda varia por um valor $\Delta k << 1$,
+\begin{aligned}
+  \boxed{v_{\text{pacote}} = \lim_{\Delta k\rightarrow 0} \frac{\Delta \omega}{\Delta k} = \frac{d\omega}{dk}.}
+\end{aligned}
 ]
 .pull-right[
-```{r, echo=FALSE, fig.align='center',fig.cap='Pacote de onda formado pela superposição de três ondas harmômicas.',out.width="100%",fig.asp=1,fig.ncol=2}
-  knitr::include_graphics("img/superposicao-ondas-2.jpeg")
+```{r, echo=FALSE, fig.align='center',fig.cap='Pacote de onda formado pela superposição de três ondas harmômicas, cujo número de onda k de cada onda varia por um intervalo &Delta; k.',out.width="100%",fig.asp=1,fig.ncol=2}
+  knitr::include_graphics("img/superposicao-ondas-2.jpg")
 ```
 ]
 
@@ -147,6 +161,11 @@ class: left, middle
 <div class="my-header"><span>Pacotes de onda - Pacotes de onda da matéria</span></div>
 
 .pull-left[
+Pelos postulados de de Broglie, temos que
+\begin{aligned}
+  E & = h\nu,\\
+    & = \left(2\pi\hbar\right)\left(\frac{\omega}{2\pi}\right)
+\end{aligned}
 ]
 .pull-right[
 ]

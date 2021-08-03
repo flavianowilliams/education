@@ -73,7 +73,7 @@ ou seja,
 `\begin{aligned}
   v_{\text{partícula}} = \frac{E}{2p}
 \end{aligned}`
-Sabemos desde os postulados de de Broglie [([Nussenzveig, 2003](https://books.google.com.br/books?id=KjHjAAAACAAJ); [Tipler and Llewellyn, 2003](https://books.google.com.br/books?id=tpU18JqcSNkC); [McQuarrie, 2008](https://books.google.com.br/books?id=zzxLTIljQB4C); [Braga, 2007](https://www.editoraufv.com.br/produto/fundamentos-de-quimica-quantica/1108949); [Eisberg, Eisberg, Resnick, et al., 1985](https://books.google.com.br/books?id=mv5QAAAAMAAJ))] que
+Sabemos desde os postulados de de Broglie [&lt;a name=cite-nussenzveig&gt;&lt;/a&gt;&lt;a name=cite-tipler&gt;&lt;/a&gt;&lt;a name=cite-mcquarrie&gt;&lt;/a&gt;&lt;a name=cite-braga&gt;&lt;/a&gt;&lt;a name=cite-eisberg&gt;&lt;/a&gt;([Nussenzveig, 2003](https://books.google.com.br/books?id=KjHjAAAACAAJ); [Tipler and Llewellyn, 2003](https://books.google.com.br/books?id=tpU18JqcSNkC); [McQuarrie, 2008](https://books.google.com.br/books?id=zzxLTIljQB4C); [Braga, 2007](https://www.editoraufv.com.br/produto/fundamentos-de-quimica-quantica/1108949); [Eisberg, Eisberg, Resnick, Caldwell, Derringh, Christman, and Sons, 1985](https://books.google.com.br/books?id=mv5QAAAAMAAJ))] que
 `\begin{aligned}
   E &amp; = h\nu;
 \end{aligned}`
@@ -184,6 +184,47 @@ Portanto, o pacote de onda `\(\psi\)` se propaga com a velocidade do elétron. &
 ---
 class: left, middle
 
+&lt;div class="my-header"&gt;&lt;span&gt;Interpretação probabilística da função de onda - O caso da fenda dupla&lt;/span&gt;&lt;/div&gt;
+
+.pull-left[
+Considere o experimento da fenda dupla. Explicando o fenômeno usando o conceito de fótons dado pelo efeito fotoelétrico. Ao incidir na fenda um feixe de luz de baixa intensidade I, ou seja, com uma quantidade razoável de fótons, podemos ver a formação de pontos localizados nas regiões de interferências construtivas. Assim deve haver uma relação com a probabilidade de localizar um fóton com o quadrado da amplitude do campo elétrico, já que `\(I \sim E^2_m\)` (veja a figura ao lado &lt;a name=cite-myles&gt;&lt;/a&gt;([Myles, 2020](https://mylespsherman.medium.com/the-basics-of-the-double-slit-experiment-10ce3ca91794))).
+
+Do ponto de vista do eletromagnetismo, a função de onda neste caso refere-se a função da onda eletromagnética `\(\psi(x,t)=E_m\cos(kx-\omega t)\)`, mas à medida que a intensidade da luz aumenta, a sobreposição dos fótons impede a observação de pontos localizados, estando no lugar as franjas de interferência de acordo com a teoria ondulatória. Neste caso os efeitos quânticos já não são mais observados.
+]
+.pull-right[
+As figuras de interferência também pode ser observado com a matéria, onde em 
+analogia com a luz, onde a probabilidade de localizar um fóton está relacionado com `\(E^2_m\)`, a grandeza `\(|\psi|^2\)` deve ser proporcional à probabilidade de que um elétron seja encontrado em uma certa região no espaço.
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/fenda-dupla.gif" alt="Experimento da fenda dupla com baixa intensidade." width="100%" /&gt;
+&lt;p class="caption"&gt;Experimento da fenda dupla com baixa intensidade.&lt;/p&gt;
+&lt;/div&gt;
+]
+
+---
+class: left, middle
+
+&lt;div class="my-header"&gt;&lt;span&gt;Interpretação probabilística da função de onda - A relação com a mecânica estatística&lt;/span&gt;&lt;/div&gt;
+
+.pull-left[
+De acordo com a interpretação probabilística da matéria, a probabilidade em localizar um elétron em uma certa região no espaço é dado por `\(|\psi|^2\)`. Supondo um elétron propagando na direção x, podemos dizer que a probabilidade de ser encontrado no intevalo dx é dado por `\(|\psi|^2dx\)`.
+
+Neste caso `\(\psi\)` pode ter partes complexas, com a intenção de representar a incerteza na medição. Portanto, não basta apenas fazer o produto `\(\psi^2\)`, pois &lt;font class="red"&gt;devemos multiplicar a função de onda pelo seu complexo conjugado, precisamos de um valor real para representar a localização do elétron&lt;/font&gt;.
+
+Chamamos a probabilidade em localizar o elétron no intervalo dx por `\(P(x)dx\)`, onde
+`\begin{aligned}
+  P(x)dx = |\psi|^2dx.
+\end{aligned}`
+]
+.pull-right[
+O vídeo abaixo mostra a comparação do experimento da fenda dupla realizado com ondas luminosas e elétrons. Percebe-se claramente o comportamento quântico do elétron ao formar franjas de interferência, idêntico a teoria ondulatória da luz.
+
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/UtPf0XYQzfI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
+]
+
+---
+class: left, middle
+
 &lt;div class="my-header"&gt;&lt;span&gt;Princípio filosófico da física quântica&lt;/span&gt;&lt;/div&gt;
 
 ---
@@ -230,27 +271,32 @@ class: middle
 
 &lt;div class="my-header"&gt;&lt;span&gt;Bibliografia&lt;/span&gt;&lt;/div&gt;
 
-&lt;a name=bib-braga&gt;&lt;/a&gt;[Braga, J. P.](#cite-braga) (2007). _Fundamentos de Química
-Quântica_. Editora UFV, p. 272. ISBN: 8572692673. URL:
+&lt;a name=bib-braga&gt;&lt;/a&gt;[Braga, J. P.](#cite-braga) (2007). _Fundamentos
+de Qu\'imica Quântica_. Editora UFV, p. 272. ISBN: 8572692673. URL:
 [https://www.editoraufv.com.br/produto/fundamentos-de-quimica-quantica/1108949](https://www.editoraufv.com.br/produto/fundamentos-de-quimica-quantica/1108949).
 
-&lt;a name=bib-eisberg&gt;&lt;/a&gt;[Eisberg, R., R. M. Eisberg, R. Resnick, et al.](#cite-eisberg)
-(1985). _Quantum Physics of Atoms, Molecules, Solids, Nuclei, and Particles_. Quantum
-Physics of Atoms, Molecules, Solids, Nuclei and Particles. Wiley. ISBN: 9780471873730.
-URL:
+&lt;a name=bib-eisberg&gt;&lt;/a&gt;[Eisberg, R., R. M. Eisberg, R. Resnick, et
+al.](#cite-eisberg) (1985). _Quantum Physics of Atoms, Molecules,
+Solids, Nuclei, and Particles_. Quantum Physics of Atoms, Molecules,
+Solids, Nuclei and Particles. Wiley. ISBN: 9780471873730. URL:
 [https://books.google.com.br/books?id=mv5QAAAAMAAJ](https://books.google.com.br/books?id=mv5QAAAAMAAJ).
 
-&lt;a name=bib-mcquarrie&gt;&lt;/a&gt;[McQuarrie, D. A.](#cite-mcquarrie) (2008). _Quantum
-Chemistry_. University Science Books. ISBN: 9781891389504. URL:
+&lt;a name=bib-mcquarrie&gt;&lt;/a&gt;[McQuarrie, D. A.](#cite-mcquarrie) (2008).
+_Quantum Chemistry_. University Science Books. ISBN: 9781891389504.
+URL:
 [https://books.google.com.br/books?id=zzxLTIljQB4C](https://books.google.com.br/books?id=zzxLTIljQB4C).
 
-&lt;a name=bib-nussenzveig&gt;&lt;/a&gt;[Nussenzveig, H. M.](#cite-nussenzveig) (2003). _Curso de
-física básica: ótica, relatividade, física quântica_. Curso de física básica. Edgard
-Blucher. ISBN: 9788521201632. URL:
+&lt;a name=bib-myles&gt;&lt;/a&gt;[Myles, S.](#cite-myles) (2020). _The Basics of
+the Double Slit Experiment_. URL:
+[https://mylespsherman.medium.com/the-basics-of-the-double-slit-experiment-10ce3ca91794](https://mylespsherman.medium.com/the-basics-of-the-double-slit-experiment-10ce3ca91794).
+
+&lt;a name=bib-nussenzveig&gt;&lt;/a&gt;[Nussenzveig, H. M.](#cite-nussenzveig)
+(2003). _Curso de física básica: ótica, relatividade, física quântica_.
+Curso de física básica. Edgard Blucher. ISBN: 9788521201632. URL:
 [https://books.google.com.br/books?id=KjHjAAAACAAJ](https://books.google.com.br/books?id=KjHjAAAACAAJ).
 
-&lt;a name=bib-tipler&gt;&lt;/a&gt;[Tipler, P. A. and R. Llewellyn](#cite-tipler) (2003). _Modern
-Physics_. W. H. Freeman. ISBN: 9780716743453. URL:
+&lt;a name=bib-tipler&gt;&lt;/a&gt;[Tipler, P. A. and R. Llewellyn](#cite-tipler)
+(2003). _Modern Physics_. W. H. Freeman. ISBN: 9780716743453. URL:
 [https://books.google.com.br/books?id=tpU18JqcSNkC](https://books.google.com.br/books?id=tpU18JqcSNkC).
 
     </textarea>

@@ -17,7 +17,7 @@ class: center, middle, inverse, title-slide
 ## Princípio da incerteza de Heissenberg
 ### Flaviano Williams Fernandes
 ### Instituto Federal do Paraná - Irati
-### 16 de março de 2021 (atualizado em 03/08/2021)
+### xx de xxxxx de 2021 (atualizado em 04/08/2021)
 
 ---
 
@@ -116,7 +116,7 @@ Lembrando que
 ]
 .pull-right[
 &lt;div class="figure" style="text-align: center"&gt;
-&lt;img src="img/superposicao-ondas.jpeg" alt="Superposição de duas ondas harmônicas com números de onda e frequências angulares diferentes." width="100%" /&gt;
+&lt;img src="img/superposicao-ondas.jpg" alt="Superposição de duas ondas harmônicas com números de onda e frequências angulares diferentes." width="100%" /&gt;
 &lt;p class="caption"&gt;Superposição de duas ondas harmônicas com números de onda e frequências angulares diferentes.&lt;/p&gt;
 &lt;/div&gt;
 ]
@@ -232,8 +232,8 @@ Para entender melhor a incerteza na medição ao adotar a função de onda para 
 Para diminuir a incerteza na localização da partícula deveremos ter um pacote de onda curto, bem localizado, cujo comprimento `\(\Delta x\)` é o menor possível. Isso se deve ao fato que a localização do elétron está associado a amplitude da onda. No entanto, para obter um pacote de onda bem localizado, deveríamos ter uma quantidade infinita de ondas, cuja onda resultante produziria tal pacote. Isso por sua vez acarreta no aumento da incerteza do número de onda, ou seja, se `\(\Delta x\rightarrow 0\)` acarreta em `\(\Delta k\rightarrow\infty\)`,
 
 &lt;div class="figure" style="text-align: center"&gt;
-&lt;img src="img/pacotes-onda.jpg" alt="Experimento da fenda dupla com baixa intensidade." width="80%" /&gt;
-&lt;p class="caption"&gt;Experimento da fenda dupla com baixa intensidade.&lt;/p&gt;
+&lt;img src="img/pacotes-onda.jpg" alt="Formação de pacotes de onda para diversos valores &amp;amp;Delta; k." width="80%" /&gt;
+&lt;p class="caption"&gt;Formação de pacotes de onda para diversos valores &amp;Delta; k.&lt;/p&gt;
 &lt;/div&gt;
 
 ---
@@ -274,20 +274,40 @@ Multiplicando `\(\Delta\omega\Delta t\approx 1\)` por `\(\hbar\)` teremos
 ---
 class: left, middle
 
-&lt;div class="my-header"&gt;&lt;span&gt;Princípio filosófico da física quântica&lt;/span&gt;&lt;/div&gt;
+&lt;div class="my-header"&gt;&lt;span&gt;Princípio filosófico da física quântica - A interpretação de Copenhague&lt;/span&gt;&lt;/div&gt;
 
-Foi defendido por Niels Bohr e Wener Heisenberg na interpretação de Copenhague
 .pull-left[
+Foi defendido por Niels Bohr e Wener Heisenberg em 1927, logo após a conferência de Solvay, a interpretação de Copenhague, que consistia dos seguintes preceitos:
 * Na mecânica quântica os resultados são indeterminísticos;
 * A física é a ciência onde os resultados são obtidos através de um processo de medida;
 * O simples ato de observar destrói a certeza da medição, causando o colapso da função de onda.
+
+Para entender como o observador interfere na medição, vamos supor que gostaríamos de medir a posição de um elétron, para isso emitimos um feixe de luz que possui um determinado comprimento de onda. Ao incidir a luz no elétron, ocorre troca de momento entre o fóton e o elétron, alterando o comprimento de onda da luz refletida e o momento do elétron.
 ]
 .pull-right[
+A localização do elétron pode ser determinada a partir do ângulo de espalhamento `\(\theta\)`, obtido a partir equação de Compton abaixo,
+`\begin{aligned}
+  \lambda_2-\lambda_1 = \frac{h}{mc}(1-\cos\theta).
+\end{aligned}`
+Portanto, o simples fato de incidir um feixe de luz no elétron com a intenção de obter a sua posição, modificou substancialmente o seu momento linear.
+
 &lt;div class="figure" style="text-align: center"&gt;
-&lt;img src="img/copenhague.jpg" alt="Experimento da fenda dupla com baixa intensidade." width="100%" /&gt;
-&lt;p class="caption"&gt;Experimento da fenda dupla com baixa intensidade.&lt;/p&gt;
+&lt;img src="img/efeito-compton.jpg" alt="Espalhamento Compton." width="65%" /&gt;
+&lt;p class="caption"&gt;Espalhamento Compton.&lt;/p&gt;
 &lt;/div&gt;
 ]
+
+---
+class: middle
+
+&lt;div class="my-header"&gt;&lt;span&gt;Princípio filosófico da física quântica - Conferência de Solvay&lt;/span&gt;&lt;/div&gt;
+
+A figura abaixo mostra a ilustre Conferência de Solvay, em 1927 (a princípio, uma das mais famosas imagens da física moderna). Nesta conferência Bohr e Heisenberg defenderam as suas idéias a respeito da incerteza na medição, no qual serviram como base para a formulação da equação de Schroedinger e o surgimento da mecânica quântica moderna.
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/copenhague.jpg" alt="Participantes da Quinta Conferência de Solvay. Destaca-se a presença da única mulher no grupo: Marie Curie." width="100%" /&gt;
+&lt;p class="caption"&gt;Participantes da Quinta Conferência de Solvay. Destaca-se a presença da única mulher no grupo: Marie Curie.&lt;/p&gt;
+&lt;/div&gt;
 
 ---
 class: middle
@@ -300,7 +320,7 @@ Definindo as diferenças `\(\Delta k=k_2-k_1\)` e `\(\Delta \omega = \omega_2-\o
   k_1 &amp; = \bar{k}-\Delta K;\quad k_2 = \bar{k}+\Delta K,\\\
   \omega_1 &amp; = \bar{\omega}-\Delta \omega;\quad \omega_2 = \bar{\omega}+\Delta \omega.
 \end{aligned}`
-Para obter a função de onda resultante é conveniente usarmos a fórmula de Euler, onde `\(e^{i\theta}=\cos\theta+i\sin\theta\)`, onde apenas nos interessa a parte real,
+Para obter a função de onda resultante é conveniente usarmos a fórmula de Euler, `\(e^{i\theta}=\cos\theta+i\sin\theta\)`, onde apenas nos interessa a parte real,
 `\begin{aligned}
   \psi(x,t) &amp; = y_m\left[\cos(k_1x-\omega_1t)+\cos(k_2x-\omega_2t)\right],\\
          &amp; = y_m\Re\left[e^{i(k_1x-\omega_1t)}+e^{i(k_2x-\omega_2t)}\right],\\

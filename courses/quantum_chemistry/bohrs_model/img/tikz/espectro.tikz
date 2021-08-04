@@ -1,7 +1,7 @@
-﻿\begin{tikzpicture}[scale=1,transform shape,font=\Large]
+﻿\begin{tikzpicture}[scale=1,transform shape,font=\Large,samples=900]
 			
 		\tkzInit[xmin=0,xmax=15,ymin=-14,ymax=0]
-		\tkzGrid[color=gray!20]
+%		\tkzGrid[color=gray!20]
 %		\tkzClip[space=0.5]
 
 %		\tkzDrawX[noticks]
@@ -61,7 +61,7 @@
 		\draw[->,line width=1pt] ($(e7)+(\pk,0)$) -- ($(e3)+(\pk,0)$);
 		\draw[->,line width=1pt] ($(e7)+(\ph,0)$) -- ($(e3)+(\ph,0)$);
 		\draw[->,line width=1pt] ($(e5)+(\pg,0)$) -- ($(e3)+(\pg,0)$);
-		\draw[->,line width=1pt] ($(e4)+(\pf,0)$) -- ($(e3)+(\pf,0)$) node [right, midway] {$L_{\alpha}$};
+		\draw[->,line width=1pt] ($(e4)+(\pf,0)$) -- ($(e3)+(\pf,0)$);
 
 		\begin{scope}[shift={(0,-17)}]
 

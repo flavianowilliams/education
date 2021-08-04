@@ -1,5 +1,8 @@
-﻿\begin{tikzpicture}[scale=2,transform shape,font=\Large, wave/.style={decorate,decoration={snake,post length=2.5mm,amplitude=3mm, segment length=5mm},thick}]
+﻿\begin{tikzpicture}[scale=2,transform shape,font=\huge,samples=900]
 			
+				\tikzstyle{s1}=[circle, ball color=gray!50];
+				\tikzstyle{wave}=[decorate,decoration={snake,post length=2.5mm,amplitude=3mm, segment length=5mm},thick];
+
 		\tkzInit[xmin=-7,xmax=7,ymin=-5,ymax=5]
 %		\tkzGrid[color=gray!20]
 		\tkzClip
@@ -12,7 +15,7 @@
 		\tkzDefPoints{0/0/O}
 
 		%definindo nucleo atomico
-		\tkzDrawPoint[size=7mm, fill=blue!50](O)
+		\tkzDrawPoint[s1,size=7mm,ball color=gray](O)
 
 		%primeira orbita
 		\tkzDefPoints{4/0/A}
@@ -30,7 +33,7 @@
 		%definindo salto quantico
 		\tkzDefMidPoint(p2,p4)\tkzGetPoint{p5}
 		\tkzDefPointWith[orthogonal, K=-1](p5,p2)\tkzGetPoint{p6}
-		\tkzDrawPoints[size=0.3cm](p2,p4)
+		\tkzDrawPoints[s1,size=0.3cm](p2,p4)
 		\tkzDrawArc[line width=5pt,color=red,-{Stealth[width=7mm]}](p6,p2)(p4)
 
 		%foton emitido

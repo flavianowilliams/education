@@ -1,5 +1,8 @@
-﻿\begin{tikzpicture}[scale=1,transform shape,font=\huge, samples=900, wave/.style={decorate,decoration={snake,post length=2.5mm,amplitude=2mm, segment length=12mm},thick}]
+﻿\begin{tikzpicture}[scale=1,transform shape,font=\huge, samples=900]
 			
+		\tikzstyle{s1}=[circle, ball color=gray!50];
+		\tikzstyle{wave}=[decorate,decoration={snake,post length=2.5mm,amplitude=2mm, segment length=12mm},thick];
+
 		\tkzInit[xmin=-12,xmax=12,ymin=-12,ymax=12]
 %		\tkzGrid[color=gray!20]
 		\tkzClip
@@ -9,7 +12,7 @@
 			\tkzDefPoints{0/0/O}
 
 			%definindo nucleo atomico
-			\tkzDrawPoint[size=7mm, fill=blue!50](O)
+			\tkzDrawPoint[s1,size=10mm,ball color=gray](O)
 
 			%primeira orbita
 			\tkzDefPoints{1/0/A}
@@ -17,7 +20,7 @@
 			\tkzDefPointsBy[rotation=center O angle 135](O,A){p1,p2}
 			\tkzDefPointsBy[rotation=center O angle -45](O,A){p1a,p2a}
 			\tkzText[below right](p2a){$n_1$}
-			\tkzDrawPoint[size=5mm](p2)
+			\tkzDrawPoint[s1,size=5mm](p2)
 			\tkzText[above right=3mm](p2){\textit{e}\textsuperscript{-}}
 
 			%segunda orbita
@@ -26,7 +29,7 @@
 			\tkzDefPointsBy[rotation=center O angle 135](O,B){p3,p4}
 			\tkzDefPointsBy[rotation=center O angle -45](O,B){p3a,p4a}
 			\tkzText[below right](p4a){$n_2$}
-			\tkzDrawPoint[size=5mm,fill=white, line width=3pt](p4)
+			\tkzDrawPoint[s1,size=5mm](p4)
 
 			%terceira orbita
 			\tkzDefPoints{9/0/C}
@@ -34,7 +37,7 @@
 			\tkzDefPointsBy[rotation=center O angle 150](O,C){p5,p6}
 			\tkzDefPointsBy[rotation=center O angle -45](O,C){p5a,p6a}
 			\tkzText[below right](p6a){$n_3$}
-			\tkzDrawPoint[size=5mm,fill=white,line width=3pt](p6)
+			\tkzDrawPoint[s1,size=5mm](p6)
 
 			%foton Kalpha
 			\tkzDefMidPoint(p2,p4)\tkzGetPoint{p7}

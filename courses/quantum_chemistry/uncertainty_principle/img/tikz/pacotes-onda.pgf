@@ -10,7 +10,7 @@
 
 			\begin{scope}[shift={(0,0)}]
 				\tkzInit[xmin=4,xmax=20,ymin=-13,ymax=1]
-				\tkzGrid[color=gray!20]
+%				\tkzGrid[color=gray!20]
 				\tkzClip[space=1]
 
 				\tkzDrawX{label=x}
@@ -19,7 +19,7 @@
 
 			\begin{scope}[shift={(0,-2)}]
 				\tkzInit[xmin=4,xmax=20,ymin=-13,ymax=1]
-				\tkzGrid[color=gray!20]
+%				\tkzGrid[color=gray!20]
 				\tkzClip[space=1]
 
 				\tkzDrawX{label=x}
@@ -41,7 +41,7 @@
 
 			\begin{scope}[shift={(18,0)}]
 				\tkzInit[xmin=4,xmax=20,ymin=-3,ymax=1]
-				\tkzGrid[color=gray!20]
+%				\tkzGrid[color=gray!20]
 				\tkzClip[space=1]
 
 				\tkzDrawX{label=x}
@@ -50,7 +50,7 @@
 
 			\begin{scope}[shift={(18,-2)}]
 				\tkzInit[xmin=4,xmax=20,ymin=-13,ymax=1]
-				\tkzGrid[color=gray!20]
+%				\tkzGrid[color=gray!20]
 				\tkzClip[space=1]
 
 				\tkzDrawX{label=x}
@@ -59,7 +59,7 @@
 
 			\begin{scope}[shift={(18,-4)}]
 				\tkzInit[xmin=4,xmax=20,ymin=-3,ymax=1]
-				\tkzGrid[color=gray!20]
+%				\tkzGrid[color=gray!20]
 				\tkzClip[space=1]
 
 				\tkzDrawX{label=x}
@@ -81,7 +81,7 @@
 
 			\begin{scope}[shift={(36,0)}]
 				\tkzInit[xmin=4,xmax=20,ymin=-3,ymax=1]
-				\tkzGrid[color=gray!20]
+%				\tkzGrid[color=gray!20]
 				\tkzClip[space=1]
 
 				\tkzDrawX{label=x}
@@ -90,7 +90,7 @@
 
 			\begin{scope}[shift={(36,-2)}]
 				\tkzInit[xmin=4,xmax=20,ymin=-13,ymax=1]
-				\tkzGrid[color=gray!20]
+%				\tkzGrid[color=gray!20]
 				\tkzClip[space=1]
 
 				\tkzDrawX{label=x}
@@ -99,7 +99,7 @@
 
 			\begin{scope}[shift={(36,-4)}]
 				\tkzInit[xmin=4,xmax=20,ymin=-3,ymax=1]
-				\tkzGrid[color=gray!20]
+%				\tkzGrid[color=gray!20]
 				\tkzClip[space=1]
 
 				\tkzDrawX{label=x}
@@ -108,7 +108,7 @@
 
 			\begin{scope}[shift={(36,-6)}]
 				\tkzInit[xmin=4,xmax=20,ymin=-3,ymax=1]
-				\tkzGrid[color=gray!20]
+%				\tkzGrid[color=gray!20]
 				\tkzClip[space=1]
 
 				\tkzDrawX{label=x}

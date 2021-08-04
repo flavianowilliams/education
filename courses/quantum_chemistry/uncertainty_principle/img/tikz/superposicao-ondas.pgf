@@ -1,7 +1,7 @@
 ﻿\begin{tikzpicture}[scale=1,transform shape,font=\Large, samples=500]
 			
 		\tkzInit[xmin=0,xmax=12.6,ymin=-8,ymax=1]
-		\tkzGrid[color=gray!20]
+%		\tkzGrid[color=gray!20]
 		\tkzClip[space=1]
 
 			\def\y0{1}

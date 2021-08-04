@@ -1,6 +1,8 @@
 ﻿		\foreach \n in {4}{
-\begin{tikzpicture}[scale=1,transform shape,font=\Large]
+\begin{tikzpicture}[scale=1,transform shape,font=\Large,samples=900]
 			
+		\tikzstyle{s1}=[circle, ball color=gray!50];
+
 		\tkzInit[xmin=-4.6,xmax=4.6,ymin=-4.6,ymax=4.6]
 %		\tkzGrid[color=gray!20]
 		\tkzClip
@@ -12,7 +14,7 @@
 			
 		\tkzDefPoints{0/0/O,4/0/A,0/4/B}
 
-		\tkzDrawCircle[dashed](O,A)
+		\tkzDrawCircle[dashed,line width=1.5pt](O,A)
 
 		\tkzDefPointsBy[rotation=center O angle 45](O,A){p1,p2}
 
@@ -26,8 +28,8 @@
 
 %		\tkzLabelPoints(p7)
 
-		\draw[->,color=red,line width=1.0pt] (p2) -- (p6) node [above left] {$\vec{v}$};
-		\draw[->,color=red,line width=1.0pt] (p2) -- (p3) node [left] {$\vec{F}$};
+		\draw[->,color=blue,line width=2pt] (p2) -- (p6) node [above left] {$\vec{v}$};
+		\draw[->,color=blue,line width=2pt] (p2) -- (p3) node [left] {$\vec{F}$};
 
 		\tkzMarkRightAngle[size=0.35](O,p2,p6)
 %		\tkzLabelAngle[font=\normalsize](p3,p2,p6){$\theta$}
@@ -35,11 +37,11 @@
 %		\tkzMarkAngle[size=0.7](A,O,p2)
 %		\tkzLabelAngle(A,O,p2){$\theta$}
 
-		\tkzDrawPoints[size=0.5cm](p2)
+		\tkzDrawPoints[s1,size=0.5cm](p2)
 %		\tkzLabelPoints(p2,p3,p4,p6,p8,p9)
 
 		%onda circular
-		\tkzFctPar[domain=0:2*pi,color=red]{(4+0.5*cos(\n*t))*cos(t)}{(4+0.5*cos(\n*t))*sin(t)}
+		\tkzFctPar[domain=0:2*pi,color=red,line width=1.5pt]{(4+0.5*cos(\n*t))*cos(t)}{(4+0.5*cos(\n*t))*sin(t)}
 
 \end{tikzpicture}
 		}

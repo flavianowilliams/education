@@ -1,5 +1,8 @@
-﻿\begin{tikzpicture}[scale=1,transform shape,font=\Large, wave/.style={decorate,decoration={snake,post length=2.5mm,amplitude=1mm, segment length=2.5mm},thick}]
+﻿\begin{tikzpicture}[scale=1,transform shape,font=\Large]
 			
+				\tikzstyle{s1}=[circle, ball color=gray!50];
+				\tikzstyle{wave}=[decorate,decoration={snake,post length=2.5mm,amplitude=1mm, segment length=2.5mm},thick];
+
 		\tkzInit[xmin=-4,xmax=4,ymin=-4,ymax=4]
 %		\tkzGrid[color=gray!20]
 		\tkzClip
@@ -12,7 +15,7 @@
 		\tkzDefPoints{0/0/O}
 
 		%nucleo atomico
-		\tkzDrawPoint[fill=blue!50,size=7mm](O)
+		\tkzDrawPoint[s1,size=7mm, ball color=gray!75](O)
 
 		\def\a{0.8};
 		\def\k{0.25};
@@ -22,28 +25,28 @@
 
 		%foton emitido
 		\coordinate (e1) at ({ex(0.25*pi)},{ey(0.25*pi)});
-		\tkzDrawPoint[fill=gray!50,size=2mm](e1)
+		\tkzDrawPoint[s1,size=2mm](e1)
 		\tkzDefPointWith[linear,K=1.2](O,e1)\tkzGetPoint{p1}
 		\tkzDefPointWith[linear,K=3.3](O,e1)\tkzGetPoint{p2}
 		\draw[-{Stealth[width=2mm]},wave,line width=1.5pt](p1) --  (p2) node [above] {$\nu$};
 
 		%foton emitido
 		\coordinate (e1) at ({ex(0.5*pi)},{ey(0.5*pi)});
-		\tkzDrawPoint[fill=gray!50,size=2mm](e1)
+		\tkzDrawPoint[s1,size=2mm](e1)
 		\tkzDefPointWith[linear,K=1.2](O,e1)\tkzGetPoint{p1}
 		\tkzDefPointWith[linear,K=2.5](O,e1)\tkzGetPoint{p2}
 		\draw[-{Stealth[width=2mm]},wave,line width=1.5pt](p1) --  (p2) node [above] {$\nu$};
 
 		%foton emitido
 		\coordinate (e1) at ({ex(pi)},{ey(pi)});
-		\tkzDrawPoint[fill=gray!50,size=2mm](e1)
+		\tkzDrawPoint[s1,size=2mm](e1)
 		\tkzDefPointWith[linear,K=1.1](O,e1)\tkzGetPoint{p1}
 		\tkzDefPointWith[linear,K=1.9](O,e1)\tkzGetPoint{p2}
 		\draw[-{Stealth[width=2mm]},wave,line width=1.5pt](p1) --  (p2) node [left] {$\nu$};
 
 		%foton emitido
 		\coordinate (e1) at ({ex(1.5*pi)},{ey(1.5*pi)});
-		\tkzDrawPoint[fill=gray!50,size=2mm](e1)
+		\tkzDrawPoint[s1,size=2mm](e1)
 		\tkzDefPointWith[linear,K=1.1](O,e1)\tkzGetPoint{p1}
 		\tkzDefPointWith[linear,K=1.45](O,e1)\tkzGetPoint{p2}
 		\draw[-{Stealth[width=2mm]},wave,line width=1.5pt](p1) --  (p2) node [left] {$\nu$};

@@ -141,7 +141,7 @@ Do movimento circular podemos dizer que
 ]
 .pull-right[
 ```{r, echo=FALSE, fig.align='center',fig.cap='Modelo clássico do átomo de hidrogênio.',out.width="80%",fig.asp=1,fig.ncol=2}
-  knitr::include_graphics("img/modelo-classico.jpeg")
+  knitr::include_graphics("img/modelo-classico.jpg")
 ```
 ]
 
@@ -163,12 +163,12 @@ Todas as discrepâncias do modelo clássico foram resolvidas por Bohr através d
 
 .pull-left[
 ```{r, echo=FALSE, fig.align='center',fig.cap='Emissão de um fóton quando o elétron salta para uma órbita menos energética.',out.width="65%",fig.asp=1,fig.ncol=2}
-  knitr::include_graphics("img/modelo-bohr-2.jpeg")
+  knitr::include_graphics("img/modelo-bohr-2.jpg")
 ```
 ]
 .pull-right[
 ```{r, echo=FALSE, fig.align='center',fig.cap='O elétron salta para uma órbita mais energética quando ele absorve um fóton de energia equivalente.',out.width="65%",fig.asp=1,fig.ncol=2}
-  knitr::include_graphics("img/modelo-bohr-3.jpeg")
+  knitr::include_graphics("img/modelo-bohr-3.jpg")
 ```
 ]
 
@@ -201,7 +201,7 @@ Substituindo $v= \left(\frac{kze^2}{mr}\right)^{1/2}$ teremos
   Podemos ver que o termo entre parêntesis é uma constante, cujo valor correspende exatamente ao raio do átomo de hidrogênio $a_0$, onde $a_0=0,0594\; nm$.
 
 ```{r, echo=FALSE, fig.align='center',fig.cap='O movimento do elétron deve ser equivalente a números inteiros de comprimentos de onda.',out.width="50%",fig.asp=1,fig.ncol=2}
-  knitr::include_graphics("img/momento-angular.jpeg")
+  knitr::include_graphics("img/momento-angular.jpg")
 ```
 ]
 
@@ -215,7 +215,7 @@ Substituindo r na expressão da energia encontramos
 \begin{aligned}
   E_n & = -\frac{KZe^2}{2r_n},\\\
       & = -\left(\frac{mK^2e^4}{2\hbar^2}\right)\frac{Z^2}{n^2},\\\
-      & = - E_0\frac{Z^2}{n^2},\quad n=1,2,3,\cdots.
+      & = - E_0\frac{Z^2}{n^2},\quad n=1,2,3,\cdots
 \end{aligned}
 Podemos ver que o termo entre parêntesis é uma constante e seu valor corresponde a energia do estado fundamental do átomo de hidrogênio, ou seja, $E_0 = -13,6\; eV$.
 * <font class="red">De acordo com o modelo de Bohr, as órbitas estacionárias são comprovadas pela relação r ~ n<sup>2</sup> assumindo valores discretos com valores de n;</font>
@@ -260,7 +260,7 @@ my_data <- data.frame(n,t) %>%
     geom_point(data=my_data2,mapping = aes(x=x2,y=y2),size=0.5,shape=21)+
     geom_point(data=my_data,mapping=aes(x=x,y=y),color='red')+
     theme(legend.position = "none")+
-    labs(title = 'n: {previous_state}')+
+    labs(title = 'n: {previous_state}',x='x',y='y')+
     transition_states(as.factor(n))
 ```
 ]
@@ -301,12 +301,12 @@ class: left, middle
 
 .pull-left[
 ```{r, echo=FALSE, fig.align='center',fig.cap='Espectro do átomo de hidrogênio  e as transições de Lyman, Balmer e Paschen.',out.width="90%",fig.asp=1,fig.ncol=2}
-  knitr::include_graphics("img/espectro.jpeg")
+  knitr::include_graphics("img/espectro.jpg")
 ```
 ]
 .pull-right[
 ```{r, echo=FALSE, fig.align='center',fig.cap='Órbitas circulares de Bohr e emissões K e L.',out.width="95%",fig.asp=1,fig.ncol=2}
-  knitr::include_graphics("img/atomo-transicao.jpeg")
+  knitr::include_graphics("img/atomo-transicao.jpg")
 ```
 ]
 

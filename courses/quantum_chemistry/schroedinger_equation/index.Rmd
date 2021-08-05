@@ -71,7 +71,7 @@ class: middle
 
 .pull-left[
 Em física, para analisar qualquer sistema físico precisamos obter uma expressão matemática que representa esse sistema. Matematicamente, o primeiro passo seria encontrar uma equação matemática, cuja solução nos fornece a variável que precisamos. Essa equação geralmente é uma equação diferencial, ou seja, uma equação contendo derivadas de diversas ordens. [`r Cite(bib, c("nussenzveig","tipler","mcquarrie","braga","eisberg"))`]
-Portanto, para estudar o sistema físico, o primeiro passo seria construir essa equação diferencial. Agora, qual seria a variável de interesse, que pode ser obtida a partir dessa equação diferencial? Bem... como foi mencionado na aula sobre o princípio da incerteza de Heisenberg, um elétron pode ser estudado do ponto de vista quântico a partir da função de onda que descreve o seu movimento. Portanto, a solução desejada após resolver essas equação diferencial deverá ser a função de onda do sistema físico.
+Portanto, para estudar o sistema físico, o primeiro passo seria construir essa equação diferencial. Agora, qual seria a variável de interesse, que pode ser obtida a partir dessa equação diferencial? Bem... um elétron pode ser estudado do ponto de vista quântico a partir da função de onda que descreve o seu movimento. Portanto, a solução desejada após resolver essas equação diferencial deverá ser a função de onda do sistema físico.
 ]
 .pull-right[
 Agora, como obter uma equação diferencial cuja solução poderá fornecer informações físicas a respeito do sistema a nível quântico? Para isso, essa equação deverá satisfazer certos critérios, e alguns deles foram mencionados anteriormente;
@@ -79,11 +79,11 @@ Agora, como obter uma equação diferencial cuja solução poderá fornecer info
 \begin{aligned}
   k = \frac{p}{\hbar},\quad \omega=\frac{E}{\hbar};
 \end{aligned}
-2. Ela deve ser consistente com a equação da energia (a nível não-relativístico),
+2. Ela deve ser consistente com a equação da energia (a nível não-relativístico);
 \begin{aligned}
   E = \frac{p^2}{2m}+V;
 \end{aligned}
-3. Ela deve ser linearmente dependente, onde os seus termos são funções do tipo $\psi(x,t)$;
+3. Ela deve ser linearmente independente, onde os seus termos são funções do tipo $\psi(x,t)$;
 4. Ela deve satisfazer o princípio da incerteza.
 ]
 
@@ -118,9 +118,9 @@ Agora, de acordo com a condição 2 do slide anterior, vamos focar na equação 
   E & = \frac{p^2}{2m}+V,\\
     \hbar\omega & = \frac{\hbar^2k^2}{2m}+V.
 \end{aligned}
-Podemos ver que as equações coincidem se $\alpha=\hbar^2k^2/2m$ e $\beta=i\hbar$. Assim chegamos na **tão desejada** equação de Schroedinger em uma dimensão,
+Podemos ver que as equações coincidem se $\alpha=-\hbar^2/2m$ e $\beta=i\hbar$. Assim chegamos na **tão desejada** equação de Schroedinger em uma dimensão,
 \begin{aligned}
-  \boxed{-\frac{\hbar^2}{2m}\frac{\partial^2}{\partial x^2}\psi(x,t)+V(x,t)\psi(x,t) = \beta\frac{\partial}{\partial t}\psi(x,t).}
+  \boxed{-\frac{\hbar^2}{2m}\frac{\partial^2}{\partial x^2}\psi(x,t)+V(x,t)\psi(x,t) = i\hbar\frac{\partial}{\partial t}\psi(x,t).}
 \end{aligned}
 ]
 

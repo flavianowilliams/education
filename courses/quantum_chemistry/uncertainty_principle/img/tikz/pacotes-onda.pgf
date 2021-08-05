@@ -1,4 +1,4 @@
-﻿\begin{tikzpicture}[scale=1,transform shape,font=\Huge, samples=700]
+﻿\begin{tikzpicture}[scale=1,transform shape,font=\Huge, samples=900]
 			
 			\def\y0{0.5}
 
@@ -9,29 +9,31 @@
 			\def\t{3.14}
 
 			\begin{scope}[shift={(0,0)}]
+				\tkzDefPoint(2.75*pi,0){O}
+				\tkzText[above=0.75](O){$(\Delta k)$}
 				\tkzInit[xmin=4,xmax=20,ymin=-13,ymax=1]
 %				\tkzGrid[color=gray!20]
 				\tkzClip[space=1]
 
 				\tkzDrawX{label=x}
-				\tkzFct[domain=pi:7*pi,line width=1pt,samples=500]{\y0*cos(\k*x-\om*\t)}
+				\tkzFct[domain=pi:7*pi,line width=2pt,samples=500]{\y0*cos(\k*x-\om*\t)}
 			\end{scope}
 
 			\begin{scope}[shift={(0,-2)}]
-				\tkzInit[xmin=4,xmax=20,ymin=-13,ymax=1]
+				\tkzInit[xmin=4,xmax=20,ymin=-11,ymax=1]
 %				\tkzGrid[color=gray!20]
 				\tkzClip[space=1]
 
 				\tkzDrawX{label=x}
-				\tkzFct[domain=pi:7*pi,line width=1pt,samples=500]{\y0*cos((\k+\dk)*x-\om*\t)}
+				\tkzFct[domain=pi:7*pi,line width=2pt,samples=500]{\y0*cos((\k+\dk)*x-\om*\t)}
 			\end{scope}
 
 			\begin{scope}[shift={(0,-10)}]
-				\tkzInit[xmin=4,xmax=20,ymin=-3,ymax=3]
+				\tkzInit[xmin=4,xmax=20,ymin=-2,ymax=3]
 
 				\tkzDrawX{label=x}
 
-				\tkzFct[domain=pi:7*pi,line width=1pt,samples=500]{\y0*(cos(\k*x-\om*\t)+cos((\k+\dk)*x-\om*\t))}
+				\tkzFct[domain=pi:7*pi,line width=2pt,samples=500]{\y0*(cos(\k*x-\om*\t)+cos((\k+\dk)*x-\om*\t))}
 
 				\coordinate (p1) at (2.5,-2.5);
 				\coordinate (p2) at (14.5,-2.5);
@@ -40,38 +42,40 @@
 			\end{scope}
 
 			\begin{scope}[shift={(18,0)}]
-				\tkzInit[xmin=4,xmax=20,ymin=-3,ymax=1]
+				\tkzDefPoint(2.75*pi,0){O}
+				\tkzText[above=0.75](O){$(2\Delta k)$}
+				\tkzInit[xmin=4,xmax=20,ymin=-2,ymax=1]
 %				\tkzGrid[color=gray!20]
 				\tkzClip[space=1]
 
 				\tkzDrawX{label=x}
-				\tkzFct[domain=pi:7*pi,line width=1pt,samples=500]{\y0*cos(\k*x-\om*\t)}
+				\tkzFct[domain=pi:7*pi,line width=2pt,samples=500]{\y0*cos(\k*x-\om*\t)}
 			\end{scope}
 
 			\begin{scope}[shift={(18,-2)}]
-				\tkzInit[xmin=4,xmax=20,ymin=-13,ymax=1]
+				\tkzInit[xmin=4,xmax=20,ymin=-11,ymax=1]
 %				\tkzGrid[color=gray!20]
 				\tkzClip[space=1]
 
 				\tkzDrawX{label=x}
-				\tkzFct[domain=pi:7*pi,line width=1pt,samples=500]{\y0*cos((\k+\dk)*x-\om*\t)}
+				\tkzFct[domain=pi:7*pi,line width=2pt,samples=500]{\y0*cos((\k+\dk)*x-\om*\t)}
 			\end{scope}
 
 			\begin{scope}[shift={(18,-4)}]
-				\tkzInit[xmin=4,xmax=20,ymin=-3,ymax=1]
+				\tkzInit[xmin=4,xmax=20,ymin=-2,ymax=1]
 %				\tkzGrid[color=gray!20]
 				\tkzClip[space=1]
 
 				\tkzDrawX{label=x}
-				\tkzFct[domain=pi:7*pi,line width=1pt,samples=500]{\y0*cos((\k+2*\dk)*x-\om*\t)}
+				\tkzFct[domain=pi:7*pi,line width=2pt,samples=500]{\y0*cos((\k+2*\dk)*x-\om*\t)}
 			\end{scope}
 
 			\begin{scope}[shift={(18,-10)}]
-				\tkzInit[xmin=4,xmax=20,ymin=-3,ymax=3]
+				\tkzInit[xmin=4,xmax=20,ymin=-2,ymax=3]
 
 				\tkzDrawX{label=x}
 
-				\tkzFct[domain=pi:7*pi,line width=1pt,samples=500]{\y0*(cos(\k*x-\om*\t)+cos((\k+\dk)*x-\om*\t)+cos((\k+2*\dk)*x-\om*\t))}
+				\tkzFct[domain=pi:7*pi,line width=2pt,samples=500]{\y0*(cos(\k*x-\om*\t)+cos((\k+\dk)*x-\om*\t)+cos((\k+2*\dk)*x-\om*\t))}
 
 				\coordinate (p1) at (4.5,-2.5);
 				\coordinate (p2) at (12.5,-2.5);
@@ -80,47 +84,49 @@
 			\end{scope}
 
 			\begin{scope}[shift={(36,0)}]
-				\tkzInit[xmin=4,xmax=20,ymin=-3,ymax=1]
+				\tkzDefPoint(2.75*pi,0){O}
+				\tkzText[above=0.75](O){$(3\Delta k)$}
+				\tkzInit[xmin=4,xmax=20,ymin=-2,ymax=1]
 %				\tkzGrid[color=gray!20]
 				\tkzClip[space=1]
 
 				\tkzDrawX{label=x}
-				\tkzFct[domain=pi:7*pi,line width=1pt,samples=500]{\y0*cos(\k*x-\om*\t)}
+				\tkzFct[domain=pi:7*pi,line width=2pt,samples=500]{\y0*cos(\k*x-\om*\t)}
 			\end{scope}
 
 			\begin{scope}[shift={(36,-2)}]
-				\tkzInit[xmin=4,xmax=20,ymin=-13,ymax=1]
+				\tkzInit[xmin=4,xmax=20,ymin=-11,ymax=1]
 %				\tkzGrid[color=gray!20]
 				\tkzClip[space=1]
 
 				\tkzDrawX{label=x}
-				\tkzFct[domain=pi:7*pi,line width=1pt,samples=500]{\y0*cos((\k+\dk)*x-\om*\t)}
+				\tkzFct[domain=pi:7*pi,line width=2pt,samples=500]{\y0*cos((\k+\dk)*x-\om*\t)}
 			\end{scope}
 
 			\begin{scope}[shift={(36,-4)}]
-				\tkzInit[xmin=4,xmax=20,ymin=-3,ymax=1]
+				\tkzInit[xmin=4,xmax=20,ymin=-2,ymax=1]
 %				\tkzGrid[color=gray!20]
 				\tkzClip[space=1]
 
 				\tkzDrawX{label=x}
-				\tkzFct[domain=pi:7*pi,line width=1pt,samples=500]{\y0*cos((\k+2*\dk)*x-\om*\t)}
+				\tkzFct[domain=pi:7*pi,line width=2pt,samples=500]{\y0*cos((\k+2*\dk)*x-\om*\t)}
 			\end{scope}
 
 			\begin{scope}[shift={(36,-6)}]
-				\tkzInit[xmin=4,xmax=20,ymin=-3,ymax=1]
+				\tkzInit[xmin=4,xmax=20,ymin=-2,ymax=1]
 %				\tkzGrid[color=gray!20]
 				\tkzClip[space=1]
 
 				\tkzDrawX{label=x}
-				\tkzFct[domain=pi:7*pi,line width=1pt,samples=500]{\y0*cos((\k+3*\dk)*x-\om*\t)}
+				\tkzFct[domain=pi:7*pi,line width=2pt,samples=500]{\y0*cos((\k+3*\dk)*x-\om*\t)}
 			\end{scope}
 
 			\begin{scope}[shift={(36,-10)}]
-				\tkzInit[xmin=4,xmax=20,ymin=-3,ymax=3]
+				\tkzInit[xmin=4,xmax=20,ymin=-2,ymax=3]
 
 				\tkzDrawX{label=x}
 
-				\tkzFct[domain=pi:7*pi,line width=1pt,samples=500]{\y0*(cos(\k*x-\om*\t)+cos((\k+\dk)*x-\om*\t)+cos((\k+2*\dk)*x-\om*\t)+cos((\k+3*\dk)*x-\om*\t))}
+				\tkzFct[domain=pi:7*pi,line width=2pt,samples=500]{\y0*(cos(\k*x-\om*\t)+cos((\k+\dk)*x-\om*\t)+cos((\k+2*\dk)*x-\om*\t)+cos((\k+3*\dk)*x-\om*\t))}
 
 				\coordinate (p1) at (5.5,-2.5);
 				\coordinate (p2) at (11.5,-2.5);

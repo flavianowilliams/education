@@ -1,4 +1,4 @@
-﻿\begin{tikzpicture}[scale=1,transform shape,font=\Large, samples=500]
+﻿\begin{tikzpicture}[scale=1,transform shape,font=\Large, samples=900]
 			
 		\tkzInit[xmin=0,xmax=12.6,ymin=-8,ymax=1]
 %		\tkzGrid[color=gray!20]
@@ -14,8 +14,8 @@
 			\begin{scope}[shift={(0,0)}]
 				\tkzDrawX{label=x}
 				\tkzDrawY{label=y(x,t)}
-				\tkzFct[domain=0:7*pi,line width=1pt,samples=500]{\y0*cos(\ka*x)}
-				\tkzFct[domain=0:7*pi,color=red,line width=1pt,samples=500]{\y0*cos(\kb*x)}
+				\tkzFct[domain=0:7*pi,line width=2pt,samples=500]{\y0*cos(\ka*x)}
+				\tkzFct[domain=0:7*pi,color=red,line width=2pt,samples=500]{\y0*cos(\kb*x)}
 				\tkzDefPointByFct(pi)\tkzGetPoint{p1}
 				\tkzDefPointByFct(2*pi)\tkzGetPoint{p1a}
 				\tkzDefPointByFct(3*pi)\tkzGetPoint{p2a}
@@ -28,7 +28,7 @@
 
 				\tkzDrawX{label=x}
 
-				\tkzFct[domain=0:7*pi,line width=1pt,samples=500]{2*\y0*cos(0.5*(\kb-\ka)*x)*cos(0.5*(\ka+\kb)*x)}
+				\tkzFct[domain=0:7*pi,line width=2pt,samples=500]{2*\y0*cos(0.5*(\kb-\ka)*x)*cos(0.5*(\ka+\kb)*x)}
 				\tkzDefPointByFct(pi)\tkzGetPoint{p2}
 				\tkzDefPointByFct(2*pi)\tkzGetPoint{p1b}
 				\tkzDefPointByFct(3*pi)\tkzGetPoint{p2b}

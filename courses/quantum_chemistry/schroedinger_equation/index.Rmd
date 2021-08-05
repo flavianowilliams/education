@@ -19,10 +19,13 @@ output:
       countdown: 60000
 ---
 layout: true
-background-image: url('css/img/logo-transparente.jpg')
 background-size: contain
 
 <div class="my-footer"><span>Flaviano Williams Fernandes</span></div>
+
+```{r, include=FALSE, eval=FALSE, echo=FALSE}
+  xaringan::inf_mr()
+```
 
 ```{r setup, include=FALSE}
   options(htmltools.dir.version = FALSE)
@@ -39,18 +42,18 @@ background-size: contain
   bib <- ReadBib("references.bib", check = FALSE)
 ```
 
-```{r, include=FALSE, eval=FALSE, echo=FALSE}
-  xaringan::inf_mr()
-```
-
 ---
 class: middle
 
 <div class="my-header"><span>Sumário</span></div>
 
-1. xxxxxx
+1. A equação de Schroedinger
 
-2. Apêndice - xxxxx
+2. A equação de Scrhroedinger independente do tempo
+
+3. O problema do elétron livre
+
+2. Apêndice A
 
 6. Bibliografia
 

@@ -238,7 +238,7 @@ Para entender melhor a incerteza na medição ao adotar a função de onda para 
 
 Para diminuir a incerteza na localização da partícula deveremos ter um pacote de onda curto, bem localizado, cujo comprimento $\Delta x$ é o menor possível. Isso se deve ao fato que a localização do elétron está associado a amplitude da onda. No entanto, para obter um pacote de onda bem localizado, deveríamos ter uma quantidade infinita de ondas, cuja onda resultante produziria tal pacote. Isso por sua vez acarreta no aumento da incerteza do número de onda, ou seja, se $\Delta x\rightarrow 0$ acarreta em $\Delta k\rightarrow\infty$,
 
-```{r, echo=FALSE, message=FALSE, fig.align='center',fig.cap='Formação de pacotes de onda para diversos valores &Delta; k.',out.width="80%",fig.asp=0.5}
+```{r, echo=FALSE, message=FALSE, fig.align='center',fig.cap='Formação de pacotes de onda para diversos valores &Delta; k.',out.width="90%",fig.asp=0.5}
   knitr::include_graphics("img/pacotes-onda.jpg")
 ```
 
@@ -288,14 +288,14 @@ Foi defendido por Niels Bohr e Wener Heisenberg em 1927, logo após a conferênc
 * A física é a ciência onde os resultados são obtidos através de um processo de medida;
 * O simples ato de observar destrói a certeza da medição, causando o colapso da função de onda.
 
-Para entender como o observador interfere na medição, vamos supor que gostaríamos de medir a posição de um elétron, para isso emitimos um feixe de luz que possui um determinado comprimento de onda. Ao incidir a luz no elétron, ocorre troca de momento entre o fóton e o elétron, alterando o comprimento de onda da luz refletida e o momento do elétron.
+Para entender como o observador interfere na medição, vamos supor que gostaríamos de medir a posição de um elétron, e para isso emitimos um feixe de luz que possui um determinado comprimento de onda $\lambda_1$. Ao incidir a luz no elétron, ocorre troca de momento entre o fóton e o elétron, alterando o comprimento de onda da luz refletida e o momento do elétron.
 ]
 .pull-right[
-A localização do elétron pode ser determinada a partir do ângulo de espalhamento $\theta$, obtido a partir equação de Compton abaixo,
+A localização do elétron pode ser determinada a partir do ângulo de espalhamento $\theta$, obtido a partir da equação de Compton abaixo,
 \begin{aligned}
   \lambda_2-\lambda_1 = \frac{h}{mc}(1-\cos\theta).
 \end{aligned}
-Portanto, o simples fato de incidir um feixe de luz no elétron com a intenção de obter a sua posição, modificou substancialmente o seu momento linear.
+Portanto, a simples intenção de obter a sua posição alterou substancialmente o momento do elétron, perdendo a informação do seu valor antes da colisão.
 
 ```{r, echo=FALSE, message=FALSE, fig.align='center',fig.cap='Espalhamento Compton.',out.width="65%",fig.asp=1}
   knitr::include_graphics("img/efeito-compton.jpg")

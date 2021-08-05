@@ -14,14 +14,14 @@ Updated: xx/xx/xxxx
 } 
 
 .pull-left {
-  text-align: left;
+  text-align: justify;
   float: left;
   position: relative;
   top: 0.1cm;
   width: 47%;
 }
 .pull-right {
-  text-align: left;
+  text-align: justify;
   float: right;
   position: relative;
   top: 0.1cm;
@@ -30,7 +30,7 @@ Updated: xx/xx/xxxx
 .pull-left70 {
   margin-bottom: 0.1cm;
   margin-top: 0.1cm;
-  text-align: left;
+  text-align: justify;
   float: left;
   position: relative;
   width: 69%;
@@ -38,7 +38,7 @@ Updated: xx/xx/xxxx
 .pull-left30 {
   margin-bottom: 0.1cm;
   margin-top: 0.1cm;
-  text-align: left;
+  text-align: justify;
   float: left;
   position: relative;
   width: 29%;
@@ -46,7 +46,7 @@ Updated: xx/xx/xxxx
 .pull-right30 {
   margin-bottom: 0.1cm;
   margin-top: 0.1cm;
-  text-align: left;
+  text-align: justify;
   float: right;
   position: relative;
   width: 29%;
@@ -54,7 +54,7 @@ Updated: xx/xx/xxxx
 .pull-right70 {
   margin-bottom: 0.1cm;
   margin-top: 0.1cm;
-  text-align: left;
+  text-align: justify;
   float: right;
   position: relative;
   width: 69%;
@@ -343,6 +343,12 @@ strong {
 /* Add blue tag */
 .blue {
   color: #0000CC;
+  font-weight: bold;
+}
+
+/* Add blue tag */
+.red {
+  color: red;
   font-weight: bold;
 }
 

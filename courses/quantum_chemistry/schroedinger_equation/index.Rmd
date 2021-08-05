@@ -67,9 +67,62 @@ class: middle
 
 ---
 
-<div class="my-header"><span>Texto</span></div>
+<div class="my-header"><span>A equação de Schroedinger - Considerações iniciais</span></div>
 
-Este é o livro texto que será utilizado [`r Cite(bib, c("nussenzveig","tipler","mcquarrie","braga","eisberg"))`]
+.pull-left[
+Em física, para analisar qualquer sistema físico precisamos obter uma expressão matemática que representa esse sistema. Matematicamente, o primeiro passo seria encontrar uma equação matemática, cuja solução nos fornece a variável que precisamos. Essa equação geralmente é uma equação diferencial, ou seja, uma equação contendo derivadas de diversas ordens. [`r Cite(bib, c("nussenzveig","tipler","mcquarrie","braga","eisberg"))`]
+Portanto, para estudar o sistema físico, o primeiro passo seria construir essa equação diferencial. Agora, qual seria a variável de interesse, que pode ser obtida a partir dessa equação diferencial? Bem... como foi mencionado na aula sobre o princípio da incerteza de Heisenberg, um elétron pode ser estudado do ponto de vista quântico a partir da função de onda que descreve o seu movimento. Portanto, a solução desejada após resolver essas equação diferencial deverá ser a função de onda do sistema físico.
+]
+.pull-right[
+Agora, como obter uma equação diferencial cuja solução poderá fornecer informações físicas a respeito do sistema a nível quântico? Para isso, essa equação deverá satisfazer certos critérios, e alguns deles foram mencionados anteriormente;
+1. Ela deve ser consistente com o princípio da dualidade onda-partícula, onde
+\begin{aligned}
+  k = \frac{p}{\hbar},\quad \omega=\frac{E}{\hbar};
+\end{aligned}
+2. Ela deve ser consistente com a equação da energia (a nível não-relativístico),
+\begin{aligned}
+  E = \frac{p^2}{2m}+V;
+\end{aligned}
+3. Ela deve ser linearmente dependente, onde os seus termos são funções do tipo $\psi(x,t)$;
+4. Ela deve satisfazer o princípio da incerteza.
+]
+
+---
+class: middle
+
+<div class="my-header"><span>A equação de Schroedinger - Representação matemática</span></div>
+
+.pull-left[
+Unindo todas as condições, um bom chute para representar essa equação (em uma dimensão) seria
+\begin{aligned}
+\alpha\frac{\partial^2}{\partial x^2}\psi(x,t)+V(x,t)\psi(x,t)=\beta\frac{\partial}{\partial t}\psi(x,t).
+\end{aligned}
+O próximo passo seria obter as expressões para $\alpha$ e $\beta$. Para isso, tomamos como exemplo o pacote de onda
+\begin{aligned}
+  \psi(x,t)=\cos(kx-\omega t)+i\sin(kx-\omega t).
+\end{aligned}
+<font class="red">(Observe que a função possui uma parte complexa, afim de estar de acordo com o princípio da incerteza)</font>. Usando a fórmula de Euler $e^{i\theta}=\cos\theta + i\sin\theta$, teremos $\psi (x,t)=e^{i(kx-\omega t)}$ (*esta expressão corresponde justamente a função de onda do elétron livre, que será discutido a seguir*). Substituindo na equação acima teremos
+\begin{aligned}
+  \alpha\frac{\partial^2}{\partial x^2}e^{i(kx-\omega t)}+V(x,t)e^{i(kx-\omega t)} & = \beta\frac{\partial}{\partial t}e^{i(kx-\omega t)},
+\end{aligned}
+]
+.pull-right[
+\begin{aligned}
+  \alpha(ik)^2e^{i(kx-\omega t)}+V(x,t)e^{i(kx-\omega t)} & = -i\beta\omega e^{i(kx-\omega t)},\\
+  \left[-\alpha k^2+V(x,t)\right]e^{i(kx-\omega t)} & = -i\beta\omega e^{i(kx-\omega t)},\\
+  \left[-\alpha k^2+V(x,t)\right] & = -i\beta\omega.
+\end{aligned}
+
+Agora, de acordo com a condição 2 do slide anterior, vamos focar na equação da energia representado pela mecânica clássica, onde substituímos os termos $p=\hbar k$ e $E=\hbar\omega$, seguindo o condição 1,
+\begin{aligned}
+  E & = \frac{p^2}{2m}+V,\\
+    \hbar\omega & = \frac{\hbar^2k^2}{2m}+V.
+\end{aligned}
+Podemos ver que as equações coincidem se $\alpha=\hbar^2k^2/2m$ e $\beta=i\hbar$. Assim chegamos na **tão desejada** equação de Schroedinger em uma dimensão,
+\begin{aligned}
+  \boxed{-\frac{\hbar^2}{2m}\frac{\partial^2}{\partial x^2}\psi(x,t)+V(x,t)\psi(x,t) = \beta\frac{\partial}{\partial t}\psi(x,t).}
+\end{aligned}
+]
 
 ---
 class: middle

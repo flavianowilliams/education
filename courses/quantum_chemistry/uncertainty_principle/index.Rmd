@@ -16,7 +16,7 @@ output:
       highlightStyle: github
       highlightLines: true
       countIncrementalSlides: false
-      countdown: 60000
+      countdown: 277000
 ---
 layout: true
 background-size: contain

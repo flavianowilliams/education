@@ -17,9 +17,10 @@
 		%nucleo atomico
 		\tkzDrawPoint[s1,size=7mm, ball color=gray!75](O)
 
+		%orbita elicoidal
 		\def\a{0.8};
 		\def\k{0.25};
-		\tkzFctPar[smooth,samples=200,domain=-2*pi:2*pi,>-,line width=1.5pt]{\a*exp(\k*t)*cos(t)}{\a*exp(\k*t)*sin(t)}
+		\tkzFctPar[smooth,samples=200,domain=-2*pi:2*pi,>-,line width=1.5pt,dashed]{\a*exp(\k*t)*cos(t)}{\a*exp(\k*t)*sin(t)}
 		\pgfmathdeclarefunction{ex}{1}{\pgfmathparse{\a*exp(\k*#1)*cos(#1*180/pi)}}
 		\pgfmathdeclarefunction{ey}{1}{\pgfmathparse{\a*exp(\k*#1)*sin(#1*180/pi)}}
 

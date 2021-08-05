@@ -3,7 +3,7 @@ title: "Introdução a química quântica"
 subtitle: "Modelo atômico de Bohr"
 author: "Flaviano Williams Fernandes"
 institute: "Instituto Federal do Paraná - Irati"
-date: "16 de março de 2021 (atualizado em `r format(Sys.Date(), format='%d/%m/%Y')`)"
+date: "xx de xxxxx de 2021 (atualizado em `r format(Sys.Date(), format='%d/%m/%Y')`)"
 encoding: "UTF-8"
 output:
   xaringan::moon_reader:
@@ -16,7 +16,7 @@ output:
       highlightStyle: github
       highlightLines: true
       countIncrementalSlides: false
-      countdown: 60000
+      countdown: 120000
 ---
 layout: true
 background-size: contain
@@ -196,11 +196,11 @@ Substituindo $v= \left(\frac{kze^2}{mr}\right)^{1/2}$ teremos
 .pull-right[
   Isolando r na equação teremos
   \begin{aligned}
-    r = \left(\frac{\hbar^2}{mKe^2}\right)\frac{n^2}{Z}
+    r_n = \left(\frac{\hbar^2}{mKe^2}\right)\frac{n^2}{Z}
   \end{aligned}
   Podemos ver que o termo entre parêntesis é uma constante, cujo valor correspende exatamente ao raio do átomo de hidrogênio $a_0$, onde $a_0=0,0594\; nm$.
 
-```{r, echo=FALSE, fig.align='center',fig.cap='O movimento do elétron deve ser equivalente a números inteiros de comprimentos de onda.',out.width="50%",fig.asp=1,fig.ncol=2}
+```{r, echo=FALSE, fig.align='center',fig.cap='O movimento completo do elétron deve ser equivalente a números inteiros de comprimentos de onda.',out.width="50%",fig.asp=1,fig.ncol=2}
   knitr::include_graphics("img/momento-angular.jpg")
 ```
 ]
@@ -218,7 +218,7 @@ Substituindo r na expressão da energia encontramos
       & = - E_0\frac{Z^2}{n^2},\quad n=1,2,3,\cdots
 \end{aligned}
 Podemos ver que o termo entre parêntesis é uma constante e seu valor corresponde a energia do estado fundamental do átomo de hidrogênio, ou seja, $E_0 = -13,6\; eV$.
-* <font class="red">De acordo com o modelo de Bohr, as órbitas estacionárias são comprovadas pela relação r ~ n<sup>2</sup> assumindo valores discretos com valores de n;</font>
+* <font class="red">De acordo com o modelo de Bohr, as órbitas estacionárias são comprovadas pela relação r ~ n<sup>2</sup>, assumindo valores discretos com valores de n;</font>
 * <font class="red">Cada órbita possui valor discreto de energia E<sub>n</sub>, onde E<sub>n</sub> ~ 1/n<sup>2</sup>, como mostra a equação acima.</font>
 ]
 .pull-right[

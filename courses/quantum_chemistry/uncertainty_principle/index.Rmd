@@ -112,12 +112,12 @@ class: left, middle
 .pull-left[
 Considere duas ondas harmônicas que possuem números de onda $k_1$ e $k_2$ e frequência angular $\omega_1$ e $\omega_2$, respectivamente. A superposição do encontro dessas duas ondas é dado por
 \begin{aligned}
-  \psi(x,t) & = y_1(x,t)+y_2(x,t),\\\
+  \Psi(x,t) & = y_1(x,t)+y_2(x,t),\\\
          & = y_m\cos(k_1x-\omega_1t)+y_m\cos(k_2x-\omega_2t).
 \end{aligned}
 Definindo as diferenças $\Delta k=k_2-k_1$ e $\Delta \omega = \omega_2-\omega_1$, e os valores médios $\bar{k}=(k_1+k_2)/2$ e  $\bar{\omega}=(\omega_1+\omega_2)/2$ encontramos o valor do pacote de onda, como mostra a figura ao lado (para maiores detalhes, veja o apêndice A),
 \begin{aligned}
-  \psi(x,t) = 2y_m\cos\left(\frac{\Delta k}{2}x-\frac{\Delta \omega}{2}t\right)\cos\left(\bar{k}x-\bar{\omega}t\right).
+  \Psi(x,t) = 2y_m\cos\left(\frac{\Delta k}{2}x-\frac{\Delta \omega}{2}t\right)\cos\left(\bar{k}x-\bar{\omega}t\right).
 \end{aligned}
 Lembrando que
 \begin{aligned}
@@ -186,7 +186,7 @@ Da equação acima podemos dizer que $\omega(k)=E(k)/\hbar$. Calculando a deriva
   v_{\text{pacote}} & = \frac{p}{m},\\
   v_{\text{pacote}} & \equiv v.
 \end{aligned}
-Portanto, o pacote de onda $\psi$ se propaga com a velocidade do elétron. <font class="red">Isso demonstra o fato que o movimento ondulatório da matéria devemos tratá-lo como um pacote de ondas, ao invés de apenas uma onda progressiva.</font>
+Portanto, o pacote de onda $\Psi$ se propaga com a velocidade do elétron. <font class="red">Isso demonstra o fato que o movimento ondulatório da matéria devemos tratá-lo como um pacote de ondas, ao invés de apenas uma onda progressiva.</font>
 ]
 
 ---
@@ -197,11 +197,11 @@ class: left, middle
 .pull-left[
 Considere o experimento da fenda dupla. Explicando o fenômeno usando o conceito de fótons dado pelo efeito fotoelétrico. Ao incidir na fenda um feixe de luz de baixa intensidade I, ou seja, com uma quantidade razoável de fótons, podemos ver a formação de pontos localizados nas regiões de interferências construtivas. Assim deve haver uma relação com a probabilidade de localizar um fóton com o quadrado da amplitude do campo elétrico, já que $I \sim E^2_m$ (veja a figura ao lado `r Cite(bib, c("myles"))`).
 
-Do ponto de vista do eletromagnetismo, a função de onda neste caso refere-se a função da onda eletromagnética $\psi(x,t)=E_m\cos(kx-\omega t)$, mas à medida que a intensidade da luz aumenta, a sobreposição dos fótons impede a observação de pontos localizados, estando no lugar as franjas de interferência de acordo com a teoria ondulatória. Neste caso os efeitos quânticos já não são mais observados.
+Do ponto de vista do eletromagnetismo, a função de onda neste caso refere-se a função da onda eletromagnética $\Psi(x,t)=E_m\cos(kx-\omega t)$, mas à medida que a intensidade da luz aumenta, a sobreposição dos fótons impede a observação de pontos localizados, estando no lugar as franjas de interferência de acordo com a teoria ondulatória. Neste caso os efeitos quânticos já não são mais observados.
 ]
 .pull-right[
 As figuras de interferência também pode ser observado com a matéria, onde em 
-analogia com a luz, onde a probabilidade de localizar um fóton está relacionado com $E^2_m$, a grandeza $|\psi|^2$ deve ser proporcional à probabilidade de que um elétron seja encontrado em uma certa região no espaço.
+analogia com a luz, onde a probabilidade de localizar um fóton está relacionado com $E^2_m$, a grandeza $|\Psi|^2$ deve ser proporcional à probabilidade de que um elétron seja encontrado em uma certa região no espaço.
 
 ```{r, echo=FALSE, message=FALSE, fig.align='center',fig.cap='Experimento da fenda dupla com baixa intensidade.',out.width="100%",fig.asp=1,fig.ncol=2}
   knitr::include_graphics("img/fenda-dupla.gif")
@@ -214,13 +214,13 @@ class: left, middle
 <div class="my-header"><span>Interpretação probabilística da função de onda - A relação com a mecânica estatística</span></div>
 
 .pull-left[
-De acordo com a interpretação probabilística da matéria, a probabilidade em localizar um elétron em uma certa região no espaço é dado por $|\psi|^2$. Supondo um elétron propagando na direção x, podemos dizer que a probabilidade de ser encontrado no intevalo dx é dado por $|\psi|^2dx$.
+De acordo com a interpretação probabilística da matéria, a probabilidade em localizar um elétron em uma certa região no espaço é dado por $|\Psi|^2$. Supondo um elétron propagando na direção x, podemos dizer que a probabilidade de ser encontrado no intevalo dx é dado por $|\Psi|^2dx$.
 
-Neste caso $\psi$ pode ter partes complexas, com a intenção de representar a incerteza na medição. Portanto, não basta apenas fazer o produto $\psi^2$, pois <font class="red">devemos multiplicar a função de onda pelo seu complexo conjugado, precisamos de um valor real para representar a localização do elétron</font>.
+Neste caso $\Psi$ pode ter partes complexas, com a intenção de representar a incerteza na medição. Portanto, não basta apenas fazer o produto $\Psi^2$, pois <font class="red">devemos multiplicar a função de onda pelo seu complexo conjugado, precisamos de um valor real para representar a localização do elétron</font>.
 
 Chamamos a probabilidade em localizar o elétron no intervalo dx por $P(x)dx$, onde
 \begin{aligned}
-  P(x)dx = |\psi|^2dx.
+  P(x)dx = |\Psi|^2dx.
 \end{aligned}
 ]
 .pull-right[
@@ -326,7 +326,7 @@ Definindo as diferenças $\Delta k=k_2-k_1$ e $\Delta \omega = \omega_2-\omega_1
 \end{aligned}
 Para obter a função de onda resultante é conveniente usarmos a fórmula de Euler, $e^{i\theta}=\cos\theta+i\sin\theta$, onde apenas nos interessa a parte real,
 \begin{aligned}
-  \psi(x,t) & = y_m\left[\cos(k_1x-\omega_1t)+\cos(k_2x-\omega_2t)\right],\\
+  \Psi(x,t) & = y_m\left[\cos(k_1x-\omega_1t)+\cos(k_2x-\omega_2t)\right],\\
          & = y_m\Re\left[e^{i(k_1x-\omega_1t)}+e^{i(k_2x-\omega_2t)}\right],\\
          & = y_m\Re\left[e^{i[(\bar{k}-\Delta k)x-(\bar{\omega}-\Delta \omega)t]}+e^{i[(\bar{k}+\Delta K)x-(\bar{\omega}+\Delta \omega)t]}\right],\\
          & = y_m\Re\left[e^{i(\bar{k}x-\Delta Kx-\bar{\omega}t+\Delta \omega t)}+e^{i(\bar{k}x+\Delta Kx-\bar{\omega}t-\Delta \omega t)}\right],\\
@@ -336,7 +336,7 @@ Para obter a função de onda resultante é conveniente usarmos a fórmula de Eu
 ]
 .pull-right[
 \begin{aligned}
-  \psi(x,t) & = y_m\left(e^{-i(\Delta Kx-\Delta \omega t)}+e^{i(\Delta Kx-\Delta \omega t)}\right)\Re\left[e^{i(\bar{k}x-\bar{\omega}t)}\right].
+  \Psi(x,t) & = y_m\left(e^{-i(\Delta Kx-\Delta \omega t)}+e^{i(\Delta Kx-\Delta \omega t)}\right)\Re\left[e^{i(\bar{k}x-\bar{\omega}t)}\right].
 \end{aligned}
 Pela fórmula de Euler, podemos usar a identidade
 \begin{aligned}
@@ -344,11 +344,11 @@ Pela fórmula de Euler, podemos usar a identidade
 \end{aligned}
 Substituindo teremos
 \begin{aligned}
-  \psi(x,t) & = y_m\left(2\cos\left(\Delta Kx-\Delta \omega t\right)\right)\Re\left[e^{i(\bar{k}x-\bar{\omega}t)}\right].
+  \Psi(x,t) & = y_m\left(2\cos\left(\Delta Kx-\Delta \omega t\right)\right)\Re\left[e^{i(\bar{k}x-\bar{\omega}t)}\right].
 \end{aligned}
 Isolando a parte real do termo $e^{i(\bar{k}x-\bar{\omega}t)}$ chegaremos na função de onda resultante,
 \begin{aligned}
-  \boxed{\psi(x,t) = 2y_m\cos\left(\frac{\Delta k}{2}x-\frac{\Delta \omega}{2}t\right)\cos\left(\bar{k}x-\bar{\omega}t\right).}
+  \boxed{\Psi(x,t) = 2y_m\cos\left(\frac{\Delta k}{2}x-\frac{\Delta \omega}{2}t\right)\cos\left(\bar{k}x-\bar{\omega}t\right).}
 \end{aligned}
 ]
 

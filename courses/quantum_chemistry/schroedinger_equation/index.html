@@ -17,7 +17,7 @@ class: center, middle, inverse, title-slide
 ## A equação de Schroedinger
 ### Flaviano Williams Fernandes
 ### Instituto Federal do Paraná - Irati
-### 16 de março de 2021 (atualizado em 05/08/2021)
+### 16 de março de 2021 (atualizado em 06/08/2021)
 
 ---
 
@@ -85,11 +85,11 @@ class: middle
 .pull-left[
 Unindo todas as condições, um bom chute para representar essa equação (em uma dimensão) seria
 `\begin{aligned}
-\alpha\frac{\partial^2}{\partial x^2}\psi(x,t)+V(x,t)\psi(x,t)=\beta\frac{\partial}{\partial t}\psi(x,t).
+\alpha\frac{\partial^2}{\partial x^2}\Psi(x,t)+V(x,t)\psi(x,t)=\beta\frac{\partial}{\partial t}\Psi(x,t).
 \end{aligned}`
 O próximo passo seria obter as expressões para `\(\alpha\)` e `\(\beta\)`. Para isso, tomamos como exemplo o pacote de onda
 `\begin{aligned}
-  \psi(x,t)=\cos(kx-\omega t)+i\sin(kx-\omega t).
+  \Psi(x,t)=\cos(kx-\omega t)+i\sin(kx-\omega t).
 \end{aligned}`
 &lt;font class="red"&gt;(Observe que a função possui uma parte complexa, afim de estar de acordo com o princípio da incerteza)&lt;/font&gt;. Usando a fórmula de Euler `\(e^{i\theta}=\cos\theta + i\sin\theta\)`, teremos `\(\psi (x,t)=e^{i(kx-\omega t)}\)` (*esta expressão corresponde justamente a função de onda do elétron livre, que será discutido a seguir*). Substituindo na equação acima teremos
 `\begin{aligned}
@@ -110,8 +110,23 @@ Agora, de acordo com a condição 2 do slide anterior, vamos focar na equação 
 \end{aligned}`
 Podemos ver que as equações coincidem se `\(\alpha=-\hbar^2/2m\)` e `\(\beta=i\hbar\)`. Assim chegamos na **tão desejada** equação de Schroedinger em uma dimensão,
 `\begin{aligned}
-  \boxed{-\frac{\hbar^2}{2m}\frac{\partial^2}{\partial x^2}\psi(x,t)+V(x,t)\psi(x,t) = i\hbar\frac{\partial}{\partial t}\psi(x,t).}
+  \boxed{-\frac{\hbar^2}{2m}\frac{\partial^2}{\partial x^2}\Psi(x,t)+V(x,t)\psi(x,t) = i\hbar\frac{\partial}{\partial t}\Psi(x,t).}
 \end{aligned}`
+]
+
+---
+class: middle
+
+&lt;div class="my-header"&gt;&lt;span&gt;Equação de Schroedinger independente do tempo - O método de separação de variáveis&lt;/span&gt;&lt;/div&gt;
+
+.pull-left[
+Em problemas em que a energia potencial não varia com o tempo, ou seja, `\(V(x,t)\equiv V(x)\)`, as funções do tempo e do espaço podem ser separadas, o que permite reescrever a equação de Schroedinger em uma forma mais simples. Para isso, supomos que a função `\(\psi\)` pode ser escrita na forma abaixo,
+`\begin{aligned}
+  \Psi (x,t) = \psi(x)\phi(t).
+\end{aligned}`
+]
+.pull-right[
+
 ]
 
 ---

@@ -14,10 +14,10 @@
 class: center, middle, inverse, title-slide
 
 # Introdução a química quântica
-## A equação de Schroedinger
+## A equação de Scrödinger
 ### Flaviano Williams Fernandes
 ### Instituto Federal do Paraná - Irati
-### 16 de março de 2021 (atualizado em 06/08/2021)
+### 16 de março de 2021 (atualizado em 13/08/2021)
 
 ---
 
@@ -37,9 +37,9 @@ class: middle
 
 &lt;div class="my-header"&gt;&lt;span&gt;Sumário&lt;/span&gt;&lt;/div&gt;
 
-1. A equação de Schroedinger
+1. A equação de Schrödinger
 
-2. A equação de Scrhroedinger independente do tempo
+2. A equação de Scrhrödinger independente do tempo
 
 3. O problema do elétron livre
 
@@ -57,7 +57,7 @@ class: middle
 
 ---
 
-&lt;div class="my-header"&gt;&lt;span&gt;A equação de Schroedinger - Considerações iniciais&lt;/span&gt;&lt;/div&gt;
+&lt;div class="my-header"&gt;&lt;span&gt;A equação de Scrödinger - Considerações iniciais&lt;/span&gt;&lt;/div&gt;
 
 .pull-left[
 Em física, para analisar qualquer sistema físico precisamos obter uma expressão matemática que representa esse sistema. Matematicamente, o primeiro passo seria encontrar uma equação matemática, cuja solução nos fornece a variável que precisamos. Essa equação geralmente é uma equação diferencial, ou seja, uma equação contendo derivadas de diversas ordens. [&lt;a name=cite-nussenzveig&gt;&lt;/a&gt;&lt;a name=cite-tipler&gt;&lt;/a&gt;&lt;a name=cite-mcquarrie&gt;&lt;/a&gt;&lt;a name=cite-braga&gt;&lt;/a&gt;&lt;a name=cite-eisberg&gt;&lt;/a&gt;([Nussenzveig, 2003](https://books.google.com.br/books?id=KjHjAAAACAAJ); [Tipler and Llewellyn, 2003](https://books.google.com.br/books?id=tpU18JqcSNkC); [McQuarrie, 2008](https://books.google.com.br/books?id=zzxLTIljQB4C); [Braga, 2007](https://www.editoraufv.com.br/produto/fundamentos-de-quimica-quantica/1108949); [Eisberg, Eisberg, Resnick, Caldwell, Derringh, Christman, and Sons, 1985](https://books.google.com.br/books?id=mv5QAAAAMAAJ))]
@@ -80,7 +80,7 @@ Agora, como obter uma equação diferencial cuja solução poderá fornecer info
 ---
 class: middle
 
-&lt;div class="my-header"&gt;&lt;span&gt;A equação de Schroedinger - Representação matemática&lt;/span&gt;&lt;/div&gt;
+&lt;div class="my-header"&gt;&lt;span&gt;A equação de Scrödinger - Representação matemática&lt;/span&gt;&lt;/div&gt;
 
 .pull-left[
 Unindo todas as condições, um bom chute para representar essa equação (em uma dimensão) seria
@@ -108,7 +108,7 @@ Agora, de acordo com a condição 2 do slide anterior, vamos focar na equação 
   E &amp; = \frac{p^2}{2m}+V,\\
     \hbar\omega &amp; = \frac{\hbar^2k^2}{2m}+V.
 \end{aligned}`
-Podemos ver que as equações coincidem se `\(\alpha=-\hbar^2/2m\)` e `\(\beta=i\hbar\)`. Assim chegamos na **tão desejada** equação de Schroedinger em uma dimensão,
+Podemos ver que as equações coincidem se `\(\alpha=-\hbar^2/2m\)` e `\(\beta=i\hbar\)`. Assim chegamos na **tão desejada** equação de Scrödinger em uma dimensão,
 `\begin{aligned}
   \boxed{-\frac{\hbar^2}{2m}\frac{\partial^2}{\partial x^2}\Psi(x,t)+V(x,t)\psi(x,t) = i\hbar\frac{\partial}{\partial t}\Psi(x,t).}
 \end{aligned}`
@@ -117,16 +117,86 @@ Podemos ver que as equações coincidem se `\(\alpha=-\hbar^2/2m\)` e `\(\beta=i
 ---
 class: middle
 
-&lt;div class="my-header"&gt;&lt;span&gt;Equação de Schroedinger independente do tempo - O método de separação de variáveis&lt;/span&gt;&lt;/div&gt;
+&lt;div class="my-header"&gt;&lt;span&gt;Equação de Scrödinger independente do tempo - O método de separação de variáveis&lt;/span&gt;&lt;/div&gt;
 
 .pull-left[
-Em problemas em que a energia potencial não varia com o tempo, ou seja, `\(V(x,t)\equiv V(x)\)`, as funções do tempo e do espaço podem ser separadas, o que permite reescrever a equação de Schroedinger em uma forma mais simples. Para isso, supomos que a função `\(\psi\)` pode ser escrita na forma abaixo,
+Em problemas em que a energia potencial não muda com o tempo, ou seja, `\(V(x,t)\equiv V(x)\)`, as funções do tempo e do espaço podem ser separadas, o que permite reescrever a equação de Scrödinger em uma forma mais simples. Para isso, supomos que a função `\(\psi\)` pode ser escrita na forma abaixo,
 `\begin{aligned}
   \Psi (x,t) = \psi(x)\phi(t).
 \end{aligned}`
+Substituindo na equação de Schrödinger teremos
+`\begin{aligned}
+\small
+  -\frac{\hbar^2}{2m}\frac{\partial^2}{\partial x^2}\left(\psi(x)\phi(t)\right)+V(x)\psi(x)\phi(t) &amp; = i\hbar\frac{\partial}{\partial t}\left(\psi(x)\phi(t)\right),\\
+  -\frac{\hbar^2\phi(t)}{2m}\frac{\partial^2}{\partial x^2}\psi(x)+\phi(t)V(x)\psi(x) &amp; = i\hbar\psi(x)\frac{\partial}{\partial t}\phi(t).
+\end{aligned}`
+Dividindo a equação por `\(\psi(x)\phi(t)\)` teremos
+`\begin{aligned}
+\small
+  -\frac{\hbar^2\phi(t)}{2m\psi(x)\phi(t)}\frac{\partial^2}{\partial x^2}\psi(x)+\frac{\psi(x)\phi(t)}{\psi(x)\phi(t)}V(x) &amp; = \frac{i\hbar\psi(x)}{\psi(x)\phi(t)}\frac{\partial}{\partial t}\phi(t).
+\end{aligned}`
 ]
 .pull-right[
+`\begin{aligned}
+  -\frac{\hbar^2}{2m}\frac{1}{\psi(x)}\frac{\partial^2}{\partial x^2}\psi(x)+V(x) &amp; = i\hbar\frac{1}{\phi(t)}\frac{\partial}{\partial t}\phi(t).
+\end{aligned}`
+Como `\(V(x)\)` é uma função independente do tempo, podemos dizer que o lado esquerdo independe da variável t e o lado direito independe da variável x, assim para que a equação seja satisfeita, a única maneira disso ser verdade é se ambos os lados forem iguais a um mesmo valor constante C, que não dependa nem de x ou t,
+`\begin{aligned}
+  -\frac{\hbar^2}{2m}\frac{1}{\psi(x)}\frac{d^2\psi(x)}{dx^2}+V(x) &amp; = C,\\
+  -i\hbar\frac{1}{\phi(t)}\frac{d\phi(t)}{dt} &amp; = C.
+\end{aligned}`
+Inicialmente o problema era obter a solução `\(\Psi(x,t)\)` partindo de uma única equação complicada. De acordo com o esquema acima, o problema se resume em obter a solução de duas equações simples, separadamente.
+]
 
+---
+class: middle
+
+&lt;div class="my-header"&gt;&lt;span&gt;Equação de Scrödinger independente do tempo - Solução da parte dependente do tempo&lt;/span&gt;&lt;/div&gt;
+
+.pull-left[
+A equação referente a parte temporal pode ser reescrita na forma abaixo
+`\begin{aligned}
+  -i\hbar\frac{1}{\phi(t)}\frac{d\phi(t)}{dt} &amp; = C,\\
+  -i\hbar\frac{d\phi(t)}{dt} &amp; = C\phi(t),\\
+  -i\hbar\frac{d\phi(t)}{dt} - C\phi(t) &amp; = 0.
+\end{aligned}`
+Uma possível solução para a equação acima seria se `\(\phi(t)=e^{-iCt/\hbar}\)`. Para checar essa possibilidade, substituímos `\(\phi(t)\)` na equação diferencial,
+`\begin{aligned}
+  -i\hbar\frac{d}{dt}\left(e^{-iCt/\hbar}\right) - Ce^{-iCt/\hbar} &amp; = 0,\\
+  -i\hbar\left(\frac{-iC}{\hbar}e^{-iCt/\hbar}\right) - Ce^{-iCt/\hbar} &amp; = 0,\\
+  Ce^{-iCt/\hbar} - Ce^{-iCt/\hbar} &amp; = 0.
+\end{aligned}`
+]
+.pull-right[
+Podemos ver claramente que a opção `\(\phi(t)=e^{-iCt/\hbar}\)` é a solução da parte temporal da função de onda. Agora, para completar a solução da parte de temporal basta obter a expressão de C. Podemos dizer que
+`\begin{aligned}
+  e^{-iCt/\hbar}=\cos\left(-\frac{C}{\hbar}t\right)-i\sin\left(-\frac{C}{\hbar}t.\right)
+\end{aligned}`
+Comparando com a função da onda progressiva, `\(y(x,t)=y_m\cos(kx-\omega t)\)`, podemos perceber que `\(C=\hbar\omega\Rightarrow E\)`, ou seja, 
+`\begin{aligned}
+  \phi(t)=e^{-iEt/\hbar}.
+\end{aligned}`
+Assim obtemos a solução da parte dependente do tempo de `\(\Psi(x,t)\)`. No entanto `\(\phi(t)\)` torna-se irrelevante ao calcular a densidade de probabilidade, pois
+`\begin{aligned}
+  \Psi^*(x,t)\Psi(x,t) &amp; = \psi^*(x)\psi(x)e^{iEt/\hbar}e^{-iEt/\hbar},\\
+  \Psi^*(x,t)\Psi(x,t) &amp; = \psi^*(x)\psi(x).
+\end{aligned}`
+]
+
+---
+class: middle
+
+&lt;div class="my-header"&gt;&lt;span&gt;Equação de Scrödinger independente do tempo - Solução da parte dependente do tempo&lt;/span&gt;&lt;/div&gt;
+
+.pull-left[
+Substituindo C na equação dependente de x teremos
+`\begin{aligned}
+  -\frac{\hbar^2}{2m}\frac{1}{\psi(x)}\frac{d^2\psi(x)}{dx^2}+V(x) &amp; = E.
+\end{aligned}`
+Multiplicando por `\(\psi(x)\)` chegamos na equação de Schrödinger independente do tempo,
+`\begin{aligned}
+  \boxed{-\frac{\hbar^2}{2m}\frac{d^2\psi(x)}{dx^2}+V(x)\psi(x) = E\psi(x).}
+\end{aligned}`
 ]
 
 ---

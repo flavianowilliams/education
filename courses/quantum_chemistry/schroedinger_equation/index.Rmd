@@ -222,11 +222,11 @@ Agora, supondo um elétronse propagando livremente ao longo da direção, onde $
 \end{aligned}
 Podemos ver que uma possível solução para a equação seria
 \begin{aligned}
-  \psi_1(x) = Ae^{ikx},
+  \psi_1(x) = c'_1e^{ikx},
 \end{aligned}
-sendo A uma constante arbitrária, Substituindo $\psi(x)$ teremos
+sendo $c'_1$ uma constante arbitrária, Substituindo $\psi(x)$ teremos
 \begin{aligned}
-  \frac{\hbar^2}{2m}\frac{d^2}{dx^2}\left(Ae^{ikx}\right) +E\left(Ae^{ikx}\right) & = 0,
+  \frac{\hbar^2}{2m}\frac{d^2}{dx^2}\left(c'_1e^{ikx}\right) +E\left(c'_1e^{ikx}\right) & = 0,
 \end{aligned}
 ]
 
@@ -237,44 +237,39 @@ class: middle
 
 .pull-left[
 \begin{aligned}
-  \frac{\hbar^2}{2m}\frac{d^2}{dx^2}\left(Ae^{ikx}\right) +E\left(Ae^{ikx}\right) & = 0,\\
-  \frac{\hbar^2}{2m}\left(-Ak^2e^{ikx}\right) +E\left(Ae^{ikx}\right) & = 0,\\
-  \frac{-A\hbar^2k^2}{2m}e^{ikx} +AEe^{ikx} & = 0.
+  \frac{\hbar^2}{2m}\frac{d^2}{dx^2}\left(c'_1e^{ikx}\right) +E\left(c'_1e^{ikx}\right) & = 0,\\
+  \frac{\hbar^2}{2m}\left(-c'_1k^2e^{ikx}\right) +E\left(c'_1e^{ikx}\right) & = 0,\\
+  \frac{-c'_1\hbar^2k^2}{2m}e^{ikx} +c'_1Ee^{ikx} & = 0.
 \end{aligned}
 Podemos ver que $\psi_1(x)$ faz parte da solução se
 \begin{aligned}
   E = \frac{\hbar^2k^2}{2m}.
 \end{aligned}
-Porém, podemos ver que $\psi_2(x)=Be^{-kx}$ também pode ser outra solução para o problema,
+Porém, podemos ver que $\psi_2(x)=c'_2e^{-kx}$ também pode ser outra solução para o problema,
 \begin{aligned}
-  \frac{\hbar^2}{2m}\frac{d^2}{dx^2}\left(B'e^{-ikx}\right) +E\left(B'e^{-ikx}\right) & = 0,\\
-  \frac{\hbar^2}{2m}\left(-B'k^2e^{-ikx}\right) +E\left(B'e^{-ikx}\right) & = 0,\\
-  \frac{-B'\hbar^2k^2}{2m}e^{-ikx} +B'Ee^{-ikx} & = 0,
+  \frac{\hbar^2}{2m}\frac{d^2}{dx^2}\left(c'_2e^{-ikx}\right) +E\left(c'_2e^{-ikx}\right) & = 0,\\
+  \frac{\hbar^2}{2m}\left(-c'_2k^2e^{-ikx}\right) +E\left(c'_2e^{-ikx}\right) & = 0,\\
+  \frac{-c'_2\hbar^2k^2}{2m}e^{-ikx} +c'_2Ee^{-ikx} & = 0,
 \end{aligned}
 ]
 .pull-right[
 Portanto, podemos perceber que a solução geral para o elétron livre seria uma função que contemplasse todas as soluções possíveis, ou seja,
 \begin{aligned}
   \psi(x) & = \psi_1(x)+\psi_2(x),\\
-  \psi(x) & = A'e^{ikx}+B'e^{-ikx}.
+  \psi(x) & = c'_1e^{ikx}+c'_2e^{-ikx}.
 \end{aligned}
 Pela igualdade $e^{i\theta}=\cos\theta+i\sin\theta$ teremos
 \begin{aligned}
-  \psi(x) & = A'\cos(kx)+A'i\sin(kx)\\
-  & +B'\cos(-kx)+B'i\sin(-kx),\\
-  \psi(x) & = (A'+B')\cos(kx)+(A'-B')i\sin(kx).
+  \psi(x) & = c'_1\cos(kx)+c'_1i\sin(kx)\\
+  & +c'_2\cos(-kx)+c'_2i\sin(-kx),\\
+  \psi(x) & = (c'_1+c'_2)\cos(kx)+(c'_1-c'_2)i\sin(kx).
 \end{aligned}
-Sabendo que A' e B' são constantes, então podemos substituí-las por outras constantes, onde $A=A'+B'$ e $B=(A'-B')i$, assim
+Sabendo que $c'_1$ e $c'_2$ são constantes, então podemos substituí-las por outras constantes, onde $c_1=c'_1+c'_2$ e $c_2=(c'_1-c'_2)i$, assim
 \begin{aligned}
-  \psi(x) & = A\cos(kx)+B\sin(kx).
+  \psi(x) & = c_1\cos(kx)+c_2\sin(kx).
 \end{aligned}
-A e B são chamadas constantes de normalização.
+$c_1$ e $c_2$ são chamadas constantes de normalização.
 ]
-
----
-class: middle
-
-<div class="my-header"><span>Bibliografia</span></div>
 
 ---
 class: middle

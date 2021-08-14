@@ -51,7 +51,7 @@ class: middle
 
 2. A equação de Scrhrödinger independente do tempo
 
-3. O problema do elétron livre
+3. O problema do elétron na caixa
 
 2. Apêndice A
 
@@ -196,7 +196,7 @@ Assim obtemos a solução da parte dependente do tempo de $\Psi(x,t)$. No entant
 ---
 class: middle
 
-<div class="my-header"><span>Equação de Scrödinger independente do tempo - Solução da parte dependente do tempo</span></div>
+<div class="my-header"><span>Equação de Scrödinger independente do tempo - Solução da partícula livre</span></div>
 
 .pull-left[
 Substituindo C na equação dependente de x teremos
@@ -207,7 +207,74 @@ Multiplicando por $\psi(x)$ chegamos na equação de Schrödinger independente d
 \begin{aligned}
   \boxed{-\frac{\hbar^2}{2m}\frac{d^2\psi(x)}{dx^2}+V(x)\psi(x) = E\psi(x).}
 \end{aligned}
+Podemos ver que a solução para $\psi(x)$ depende diretamente do potencial $V(x)$. A equação de Schrödinger é uma equação diferencial ordinária, cuja solução $\psi(x)$ deve satisfazer as condições de um função analítica, onde
+* $\psi(x)$ e $d\psi(x)/dx$ devem ser contínuas;
+* $\psi(x)$ e $d\psi(x)/dx$ devem ser finitas;
+* $\psi(x)$ e $d\psi(x)/dx$ devem ser unívocas;
 ]
+.pull-right[
+Agora, supondo um elétronse propagando livremente ao longo da direção, onde $-\infty<x<\infty$, sem a ação de qualquer potencial. Neste caso teremos $V=0$, portanto a equação de Schrödinger se torna
+\begin{aligned}
+  -\frac{\hbar^2}{2m}\frac{d^2\psi(x)}{dx^2} = E\psi(x),
+\end{aligned}
+\begin{aligned}
+  \frac{\hbar^2}{2m}\frac{d^2\psi(x)}{dx^2} +E\psi(x) & = 0,\\
+\end{aligned}
+Podemos ver que uma possível solução para a equação seria
+\begin{aligned}
+  \psi_1(x) = Ae^{ikx},
+\end{aligned}
+sendo A uma constante arbitrária, Substituindo $\psi(x)$ teremos
+\begin{aligned}
+  \frac{\hbar^2}{2m}\frac{d^2}{dx^2}\left(Ae^{ikx}\right) +E\left(Ae^{ikx}\right) & = 0,
+\end{aligned}
+]
+
+---
+class: middle
+
+<div class="my-header"><span>Equação de Scrödinger independente do tempo - Solução geral da partícula livre</span></div>
+
+.pull-left[
+\begin{aligned}
+  \frac{\hbar^2}{2m}\frac{d^2}{dx^2}\left(Ae^{ikx}\right) +E\left(Ae^{ikx}\right) & = 0,\\
+  \frac{\hbar^2}{2m}\left(-Ak^2e^{ikx}\right) +E\left(Ae^{ikx}\right) & = 0,\\
+  \frac{-A\hbar^2k^2}{2m}e^{ikx} +AEe^{ikx} & = 0.
+\end{aligned}
+Podemos ver que $\psi_1(x)$ faz parte da solução se
+\begin{aligned}
+  E = \frac{\hbar^2k^2}{2m}.
+\end{aligned}
+Porém, podemos ver que $\psi_2(x)=Be^{-kx}$ também pode ser outra solução para o problema,
+\begin{aligned}
+  \frac{\hbar^2}{2m}\frac{d^2}{dx^2}\left(B'e^{-ikx}\right) +E\left(B'e^{-ikx}\right) & = 0,\\
+  \frac{\hbar^2}{2m}\left(-B'k^2e^{-ikx}\right) +E\left(B'e^{-ikx}\right) & = 0,\\
+  \frac{-B'\hbar^2k^2}{2m}e^{-ikx} +B'Ee^{-ikx} & = 0,
+\end{aligned}
+]
+.pull-right[
+Portanto, podemos perceber que a solução geral para o elétron livre seria uma função que contemplasse todas as soluções possíveis, ou seja,
+\begin{aligned}
+  \psi(x) & = \psi_1(x)+\psi_2(x),\\
+  \psi(x) & = A'e^{ikx}+B'e^{-ikx}.
+\end{aligned}
+Pela igualdade $e^{i\theta}=\cos\theta+i\sin\theta$ teremos
+\begin{aligned}
+  \psi(x) & = A'\cos(kx)+A'i\sin(kx)\\
+  & +B'\cos(-kx)+B'i\sin(-kx),\\
+  \psi(x) & = (A'+B')\cos(kx)+(A'-B')i\sin(kx).
+\end{aligned}
+Sabendo que A' e B' são constantes, então podemos substituí-las por outras constantes, onde $A=A'+B'$ e $B=(A'-B')i$, assim
+\begin{aligned}
+  \psi(x) & = A\cos(kx)+B\sin(kx).
+\end{aligned}
+A e B são chamadas constantes de normalização.
+]
+
+---
+class: middle
+
+<div class="my-header"><span>Bibliografia</span></div>
 
 ---
 class: middle

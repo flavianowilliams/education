@@ -274,6 +274,22 @@ $c_1$ e $c_2$ são chamadas constantes de normalização.
 ---
 class: middle
 
+<div class="my-header"><span>O problema do elétron na caixa - Exemplo de um caso real</span></div>
+
+.pull-left[
+Agora iremos aplicar a equação de Schrödinger para obter a solução de um dos problemas mais simples que poderemos considerar. Imagine um elétron confinado em um tubo onde nas extremidades possuem duas placas paralelas carregadas eletricamente. Próximo as placas existem duas grades aterradas, fazendo que o potencial entre elas seja zero. Portanto, entre as grades o elétron pode se mover livremente, porém ao atravessá-la, ele se depara com um potencial eletrostático de intensidade $V(r)$, onde
+\begin{aligned}
+  V(r) = \frac{1}{4\pi\varepsilon_0}\frac{q}{r},
+\end{aligned}
+sendo r a distância relativa entre o elétron e a placa (*podemos ver que o potencial aumenta rapidamente, assumindo valores próximo ao infinito, à medida que o elétron se aproxima da placa eletricamente carregada*).
+]
+.pull-right[
+
+]
+
+---
+class: middle
+
 <div class="my-header"><span>Bibliografia</span></div>
 
 ```{r, results='asis', echo=FALSE, message=FALSE}

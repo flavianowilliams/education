@@ -1,0 +1,10 @@
+@startuml
+    (*) -right-> "Definição do sistema físico"
+    --right-> "Minimização da energia"
+    --right-> "Dinâmica molecular em
+    sua fase de pré-equilíbrio"
+    --right-> "Dinâmica molecular no
+    equilíbrio termodinâmico"
+    --right-> "Análise dos resultados"
+    -right-> (*)
+@enduml

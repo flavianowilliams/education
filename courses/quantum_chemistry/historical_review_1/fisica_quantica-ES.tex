@@ -503,7 +503,7 @@
 					\centering
 					\begin{tikzpicture}[scale=0.6,transform shape, font=\Large]
 					
-					\tkzInit[xmin=0,xmax=6,ymin=0,ymax=4]
+					\tkzInit[xmin=0,xmax=6,ymin=-1,ymax=4]
 					%	\tkzGrid
 					\tkzClip[space=1]
 					
@@ -514,16 +514,16 @@
 					\tkzDefPointByFct(2)\tkzGetPoint{p1}
 					\tkzDefPointByFct(4)\tkzGetPoint{p3}
 					
-					\tkzDefPoints{1/0/phi,4/1/p2}
+					\tkzDefPoints{0/-1/phi,4/1/p2}
 					
-					\tkzLabelPoint[below](phi){\Large $\frac{\phi}{h}$}
+					\tkzLabelPoint[left](phi){\Large $\frac{\phi}{e}$}
 					
 					%	\tkzDrawPoints(p1,p2)
 					
 					\draw[dashed] (p1) -- (p2);
 					
 					\tkzMarkAngle(p2,p1,p3)
-					\tkzLabelAngle[pos=1.5,color=black](p2,p1,p3){\Large $\frac{h}{e}$}
+					\tkzLabelAngle[above right,color=black](p2,p1,p3){\Large $\tan\alpha =\frac{h}{e}$}
 					
 					\end{tikzpicture}
 					\caption*{\footnotesize Representação de h a partir do gráfico potencial de corte versus frequência.}

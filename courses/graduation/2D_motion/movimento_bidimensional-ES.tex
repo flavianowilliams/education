@@ -51,8 +51,8 @@
 				%\tkzGrid[color=gray!20]
 				\tkzClip[space=2]
 			
-				\tkzAxeX[right,label=x (m)]
-				\tkzAxeY[above,label=y (m)]
+				\tkzDrawX[right,label=x (m)]
+				\tkzDrawY[above,label=y (m)]
 			
 				\tkzDefPoints{0/0/O}
 
@@ -102,8 +102,8 @@
 				%\tkzGrid[color=gray!20]
 				\tkzClip[space=2]
 				
-				\tkzAxeX[right,label=x (m)]
-				\tkzAxeY[above,label=y (m)]
+				\tkzDrawX[right,label=x (m)]
+				\tkzDrawY[above,label=y (m)]
 				
 				\tkzDefPoints{0/0/O}
 				
@@ -151,8 +151,8 @@
 				%\tkzGrid[color=gray!20]
 				\tkzClip[space=2]
 				
-				\tkzAxeX[right,label=x (m)]
-				\tkzAxeY[above,label=y (m)]
+				\tkzDrawX[right,label=x (m)]
+				\tkzDrawY[above,label=y (m)]
 				
 				\tkzDefPoints{0/0/O}
 				
@@ -205,8 +205,8 @@
 				%\tkzGrid[color=gray!20]
 				\tkzClip[space=2]
 				
-				\tkzAxeX[right,label=x (m)]
-				\tkzAxeY[above,label=y (m)]
+				\tkzDrawX[right,label=x (m)]
+				\tkzDrawY[above,label=y (m)]
 				
 				\tkzDefPoints{0/0/O}
 				
@@ -253,8 +253,8 @@
 				%\tkzGrid[color=gray!20]
 				\tkzClip[space=2]
 				
-				\tkzAxeX[right,label=x (m)]
-				\tkzAxeY[above,label=y (m)]
+				\tkzDrawX[right,label=x (m)]
+				\tkzDrawY[above,label=y (m)]
 				
 				\tkzDefPoints{0/0/O}
 				
@@ -417,9 +417,9 @@
 				\tkzDefPoint(\t,-0.4){a}
 				\coordinate (b) at (-0.4,{y(\t)});
 				\coordinate (c) at (\t,{y(\t)});
-				\tkzDrawPoint[size=1.0cm,color=red,fill=white](b)
-				\tkzDrawPoint[size=1.0cm,color=green,fill=white](a)
-				\tkzDrawPoint[size=1.0cm,color=blue](c)}
+				\tkzDrawPoint[size=5mm,color=red,fill=white](b)
+				\tkzDrawPoint[size=5mm,color=green,fill=white](a)
+				\tkzDrawPoint[size=5mm,color=blue](c)}
 			
 			\end{tikzpicture}
 			\caption*{\footnotesize Movimentos horizontal e vertical.}
@@ -464,8 +464,8 @@
 				\foreach \t in {0,2,4,6,8}{
 					\tkzDefPoint(\t,0){a}
 					\coordinate (c) at (\t,{y(\t)});
-					\tkzDrawPoint[size=1.0cm,color=red,fill=white](a)
-					\tkzDrawPoint[size=1.0cm,color=blue](c)
+					\tkzDrawPoint[size=5mm,color=red,fill=white](a)
+					\tkzDrawPoint[size=5mm,color=blue](c)
 					\draw[->,line width=1.0pt,color=blue] (c) --++ (0,-0.75) node [below] {$\vec{g}$};
 					\draw[->,line width=1.0pt,color=red] (c) --++ ({vx(\t)},0) node [above,midway] {$\vec{v}_x$};}
 				\end{tikzpicture}

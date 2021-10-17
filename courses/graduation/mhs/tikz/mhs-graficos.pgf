@@ -1,0 +1,105 @@
+﻿				\begin{tikzpicture}[scale=1.5, transform shape, samples=60,font=\Large]
+
+					\tkzInit[xmin=0,xmax=4*pi,ymin=-13.5,ymax=2.5]
+
+					\tkzGrid[color=gray!50]
+					\tkzClip[space = 1.0]
+
+					\let\tkzmathstyle\textstyle
+
+					\begin{scope}[shift={(0,0)}]
+
+					%parametros gerais
+					\def\xm{1.5}
+					\def\T{2*pi}
+					\def\om{2*pi/(\T)}
+					\def\xmb{2}
+
+					\tkzDrawX[right, label = t, trig = 1]
+%					\tkzLabelX[orig = false]
+					\tkzDrawY[above, label = x (t), noticks]
+%					\tkzLabelY[orig = false]
+
+					%definindo funcao
+				    \tkzFct[domain=0:8*pi, color=red, line width=1pt]{\xm*cos(\om*x)}
+				    \tkzFct[domain=0:8*pi, color=blue, line width=1pt]{\xmb*cos(\om*x)}
+
+					%textos
+					\tkzDefPoints{0/\xm/xm,0/-\xm/xml,\T/0/T1,2*\T/0/T2, 9.5/2.5/txt}
+
+					\tkzText[color=black, left](xm){$x_m$}
+					\tkzText[color=black, left](xml){$-x_m$}
+					\tkzText[color=black, below](T1){T}
+					\tkzText[color=black, below](T2){T}
+					\tkzText[color=black, opacity=100,fill=gray!20](txt){\normalsize  amplitudes diferentes}
+
+					\end{scope}
+
+					\begin{scope}[shift={(0,-6)}]
+
+					%parametros gerais
+					\def\xm{1.5}
+					\def\T{2*pi}
+					\def\Tb{pi}
+					\def\om{2*pi/(\T)}
+					\def\omb{2*pi/(\Tb)}
+
+					\tkzDrawX[right, label = t, trig = 1]
+%					\tkzLabelX[orig = false]
+					%\tkzDrawY[above, noticks]
+%					\tkzLabelY[orig = false]
+
+					%definindo funcao
+				    \tkzFct[domain=0:8*pi, color=red, line width=1pt]{\xm*cos(\om*x)}
+					\tkzDefPointByFct(0.5)\tkzGetPoint{p1}
+				    \tkzFct[domain=0:8*pi, color=blue, line width=1pt]{\xm*cos(\omb*x)}
+					\tkzDefPointByFct(2.3)\tkzGetPoint{p2}
+
+					%textos
+					\tkzDefPoints{0/1.25/T1,\Tb/1.25/T2, 0/2/T1b,\T/2/T2b, 9.5/2.0/txt}
+
+					\draw (T1.center) to[dim arrow={label=$T$}, color=black] (T2.center);
+					\draw (T1b.center) to[dim arrow={label=$T$}, color=black] (T2b.center);
+
+					\tkzText[color=black, left](xm){$x_m$}
+					\tkzText[color=black, left](xml){$-x_m$}
+					\tkzText[color=black, opacity=100,fill=gray!20](txt){\normalsize  períodos e frequências diferentes}
+
+					\end{scope}
+
+					\begin{scope}[shift={(0,-12)}]
+
+					%parametros gerais
+					\def\xm{1.5}
+					\def\T{2*pi}
+					\def\om{2*pi/(\T)}
+
+					\tkzDrawX[right, label = t, trig = 1]
+%					\tkzLabelX[orig = false]
+					%\tkzDrawY[above, noticks]
+%					\tkzLabelY[orig = false]
+
+					%definindo funcao
+				    \tkzFct[domain=0:8*pi, color=red, line width=1pt]{\xm*cos(\om*x)}
+					\tkzDefPointByFct(0.5)\tkzGetPoint{p1}
+				    \tkzFct[domain=0:8*pi, color=blue, line width=1pt]{\xm*cos(\om*x-0.5*pi)}
+					\tkzDefPointByFct(2.3)\tkzGetPoint{p2}
+
+					%textos
+					\tkzDefPoints{0/\xm/xm,0/-\xm/xml,\T/0/T1,2*\T/0/T2, 9.5/2.0/txt}
+					\tkzDefPoints{1.5/2/t1, 3.5/2/t2}
+
+					\tkzText[color=black, left](xm){$x_m$}
+					\tkzText[color=black, left](xml){$-x_m$}
+					\tkzText[color=black, below](T1){T}
+					\tkzText[color=black, below](T2){T}
+					\tkzText[color=black, opacity=100,fill=gray!20](txt){\normalsize  fases diferentes}
+
+					\draw[->, line width=1pt] (t1) -- (p1);
+					\draw[->, line width=1pt] (t2) -- (p2);
+					\tkzText[color=black, opacity=100,fill=gray!20](t1){\normalsize $\phi = 0$}
+					\tkzText[color=black, opacity=100,fill=gray!20](t2){\normalsize $\phi = 90^o$}
+
+					\end{scope}
+
+				\end{tikzpicture}

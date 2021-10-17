@@ -506,31 +506,27 @@
 	\end{columns}	
 \end{frame}
 
-\begin{frame}{Defasagem}
-content...
-\end{frame}
-
 \begin{frame}{Solução do MHS a partir da segunda lei de Newton}
 %	\begin{multicols}{2}
 	\begin{columns}
 		\begin{column}[c]{0.5\textwidth}
-			Aplicando a segunda lei de Newton para o sistema massa-mola onde $x_0=0$
+			Aplicando a segunda lei de Newton para o sistema massa-mola onde $x_0=0$,
 			\begin{align*}
 				F & = -kx,\\
 				m\frac{d^2x}{dt^2} & = -kx,
 			\end{align*}
-			Vemos que uma solução para a equação acima seria uma função do tipo $x(t)=x_m\cos(\omega t+\phi)$, onde $\phi$ é a defasagem,
+			Uma possível solução para a equação acima, usando a analogia com o MCU seria uma função do tipo $x(t)=x_m\cos(\omega t)$,
 			\begin{align*}
-				\frac{dx}{dt} & = -\omega\sin(\omega t+\phi),
+				\frac{dx}{dt} & = -\omega\sin(\omega t),
 			\end{align*}
 		\end{column}
 		\begin{column}[c]{0.5\textwidth}
 			\begin{align*}
-				\frac{d^2x}{dt^2} = -\omega^2 x_m\cos(\omega t+\phi),
+				\frac{d^2x}{dt^2} = -\omega^2 x_m\cos(\omega t),
 			\end{align*}
 			Substituindo teremos
 			\begin{align*}
-				-m\omega^2\bcancel{x_m}\bcancel{\cos(\omega t+\phi)} & =-\bcancel{x_m}k\bcancel{\cos(\omega t+\phi)}.
+				-m\omega^2\bcancel{x_m}\bcancel{\cos(\omega t)} & =-\bcancel{x_m}k\bcancel{\cos(\omega t)}.
 			\end{align*}
 			Vemos que a equação acima é verdadeira somente se
 			\begin{align*}
@@ -539,6 +535,351 @@ content...
 		\end{column}
 	\end{columns}
 %	\end{multicols}
+\end{frame}
+
+\begin{frame}{Função horária do MHS}
+	\begin{columns}
+		\begin{column}[c]{0.7\textwidth}
+			Assim, seguindo a analogia com o movimento circular, podemos imaginar que a função horária da posição do MHS pode ser dado por $x(t)=x_m\cos\omega t$. Essa expressão é válida em situações onde, no caso do sistema massa-mola, o bloco se localiza na amplitude no instante inicial t = 0, ou de maneira equivalente podemos dizer que o tempo foi contabilizado a partir de um instante inicial $t_0 \neq 0$, assim
+			\begin{align*}
+				x(t) & = x_m\cos(\omega (t-t_0)),\\
+				x(t) & = x_m\cos(\omega t-\omega t_0),\\
+				x(t) & = x_m\cos(\omega t-\phi).
+			\end{align*}
+			$\phi$ é chamado de constante de fase.
+		\end{column}
+		\begin{column}[c]{0.3\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.25, transform shape, font=\huge]
+				
+				\tkzInit[xmin=-7,xmax=7,ymin=-13.5,ymax=4]
+				%\tkzGrid[color=gray!50]
+				\tkzClip[space = 1.0]
+				
+				%eixos
+				\draw[line width=1.0pt,->] (-5,0) -- (5,0) node[right] {$x$};
+				\draw[line width=1.0pt,->] (0,-5) -- (0,5) node[right] {};
+				
+				%circunferencia
+				\draw[line width=1pt,-stealth] (4,0) arc (0:180:4cm);
+				\draw[line width=1pt,-stealth] (-4,0) arc (180:360:4cm);
+				
+				%pontos
+				\filldraw[black] (0,0) circle (2pt) node[anchor=north east] {O};
+				\filldraw[black] (0,0) --++ (45:4) circle (2pt) node[anchor=south west] {};
+				
+				%coordenadas
+				\coordinate (c1) at ({4*cos(45)},0);
+				\coordinate (c2) at ({4*cos(45)},{4*sin(45)});
+				
+				%vetores
+				\draw[black] (0,0) --++ (45:4);
+				\draw[line width=1pt,red] (45:4) --++ (225:4) node [anchor=south east,midway]  {$x_{m}$};
+				\draw[line width=1pt,red] (0,0) --++ (c1) node [below,midway]  {$x(t)$};
+				
+				%arcos
+				\draw[line width=0.5pt,->] (1.5,0) arc (0:45:1.5cm) node [right=0.1cm,midway] {$\theta$};
+				
+				%seta direcionando para o grafico
+				
+				\draw[->,color=red, line width=2pt](0,-5.5) --++ (0,-2);
+				
+				%grafico da senoide
+				\begin{scope}[shift={(-7,-11)}]
+				
+				\tkzInit[xmin=-7,xmax=14,ymin=-13.5,ymax=2]
+				
+				%parametros gerais
+				\def\xm{2}
+				\def\T{2*pi}
+				\def\om{2*pi/(\T)}
+				\def\phi{0.75*pi}
+				
+				\tkzDrawX[right, label = t, trig = 1]
+				%					\tkzLabelX[orig = false]
+				\tkzDrawY[above, label = x (t), noticks]
+				%					\tkzLabelY[orig = false]
+				
+				%definindo funcao
+				\tkzFct[domain=0:8*pi, color=red, line width=1pt]{\xm*cos(\om*x-\phi)}
+				\tkzDefPointByFct(3.12*pi)\tkzGetPoint{p1}
+				\tkzDefPointByFct(4.35*pi)\tkzGetPoint{p2}
+				
+				%textos
+				\tkzDefPoints{0/\xm/xm,0/-\xm/xml,0.75*pi/\xm/T1,(0.75*pi+\T)/\xm/T2, 12/2.5/txt}
+				
+				\draw (T1.center) to[dim arrow={label=$T$}, color=black, line width = 0.25pt] (T2.center);
+				
+				\draw[->, line width=1pt]	(txt) -- (p2);
+				
+				\tkzText[color=black, left](xm){$x_m$}
+				\tkzText[color=black, left](xml){$-x_m$}
+				\tkzText[color=black, opacity=100,fill=gray!20](txt){\large  $x(t) = x_m\cos (\omega t)$}
+				
+				\draw[dashed] (c2) -- (p1);
+				
+				\tkzDrawPoint[size = 4mm, fill= green](c2)
+				\tkzDrawPoint[size = 4mm, fill= green](p1)
+				
+				\end{scope}
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Função horária do MHS.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Função horária do MHS (continuação)}
+	\begin{columns}
+		\begin{column}[c]{0.6\textwidth}
+			\begin{figure}[c]
+				%\input{tikz/mhs-movimento-circular.pgf}
+				\begin{tikzpicture}[scale=0.3, transform shape, font=\huge]
+				
+				%eixos
+				\draw[line width=1.0pt,->] (-5,0) -- (5,0) node[right] {$x$};
+				\draw[line width=1.0pt,->] (0,-5) -- (0,5) node[right] {};
+				
+				%circunferencia
+				\draw[line width=1pt,-stealth] (4,0) arc (0:180:4cm);
+				\draw[line width=1pt,-stealth] (-4,0) arc (180:360:4cm);
+				
+				%pontos
+				\filldraw[black] (0,0) circle (2pt) node[anchor=north east] {O};
+				\filldraw[black] (0,0) --++ (45:4) circle (2pt) node[anchor=south west] {};
+				
+				%coordenadas
+				\coordinate (c1) at ({4*cos(45)},0);
+				
+				%vetores
+				\draw[black] (0,0) --++ (45:4);
+				\draw[line width=1pt,red] (45:4) --++ (225:4) node [anchor=south east,midway]  {$x_{m}$};
+				\draw[line width=1pt,red] (0,0) --++ (c1) node [below,midway]  {$x(t)$};
+				
+				%arcos
+				\draw[line width=0.5pt,->] (1.5,0) arc (0:45:1.5cm) node [right=0.1cm,midway] {$\theta$};
+				
+				%linguica
+				\draw[black,dashed] (45:4) -- (c1);
+				
+				%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+				%sistema 1
+				
+				%transformacao coordenadas
+				\def\ta{7}
+				\def\tb{0}
+				
+				%parede
+				\fill [pattern = north west lines] (-0.2+\ta,-0.45+\tb) rectangle (\ta,1+\tb);
+				\draw (\ta,-0.45+\tb) -- (\ta,1+\tb);
+				
+				%chao
+				\draw (\ta,-0.45+\tb) -- (6+\ta,-0.45+\tb);
+				
+				%posicoes
+				\node[below] at (3+\ta,-0.45+\tb) {$0$};
+				\node[below] at (1+\ta,-0.45+\tb) {$-x_{m}$};
+				\node[below] at (5+\ta,-0.45+\tb) {$x_{m}$};
+				
+				% bloco
+				\node[rectangle,fill=gray,inner sep=3.5mm] (a) at (5+\ta,0+\tb) {\small{m}};
+				
+				%mola
+				\draw[decoration={aspect=0.3, segment length=2mm, amplitude=0.5mm,coil},decorate] (\ta,0+\tb) -- (a); 
+				
+				%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+				%sistema 2
+				
+				%transformacao coordenadas
+				\def\ta{-3}
+				\def\tb{7}
+				
+				%parede
+				\fill [pattern = north west lines] (-0.2+\ta,-0.45+\tb) rectangle (\ta,1+\tb);
+				\draw (\ta,-0.45+\tb) -- (\ta,1+\tb);
+				
+				%chao
+				\draw (\ta,-0.45+\tb) -- (6+\ta,-0.45+\tb);
+				
+				%posicoes
+				\node[below] at (3+\ta,-0.45+\tb) {$0$};
+				\node[below] at (1+\ta,-0.45+\tb) {$-x_{m}$};
+				\node[below] at (5+\ta,-0.45+\tb) {$x_{m}$};
+				
+				% bloco
+				\node[rectangle,fill=gray,inner sep=3.5mm] (a) at (3+\ta,0+\tb) {\small{m}};
+				
+				%mola
+				\draw[decoration={aspect=0.3, segment length=1mm, amplitude=1mm,coil},decorate] (\ta,0+\tb) -- (a); 
+				
+				%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+				%sistema 3
+				
+				%transformacao coordenadas
+				\def\ta{-12}
+				\def\tb{0}
+				
+				%parede
+				\fill [pattern = north west lines] (-0.2+\ta,-0.45+\tb) rectangle (\ta,1+\tb);
+				\draw (\ta,-0.45+\tb) -- (\ta,1+\tb);
+				
+				%chao
+				\draw (\ta,-0.45+\tb) -- (6+\ta,-0.45+\tb);
+				
+				%posicoes
+				\node[below] at (3+\ta,-0.45+\tb) {$0$};
+				\node[below] at (1+\ta,-0.45+\tb) {$-x_{m}$};
+				\node[below] at (5+\ta,-0.45+\tb) {$x_{m}$};
+				
+				% bloco
+				\node[rectangle,fill=gray,inner sep=3.5mm] (a) at (1+\ta,0+\tb) {\small{m}};
+				
+				%mola
+				\draw[decoration={aspect=0.3, segment length=0.5mm, amplitude=1mm,coil},decorate] (\ta,0+\tb) -- (a); 
+				
+				%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+				%sistema 4
+				
+				%transformacao coordenadas
+				\def\ta{-3}
+				\def\tb{-7}
+				
+				%parede
+				\fill [pattern = north west lines] (-0.2+\ta,-0.45+\tb) rectangle (\ta,1+\tb);
+				\draw (\ta,-0.45+\tb) -- (\ta,1+\tb);
+				
+				%chao
+				\draw (\ta,-0.45+\tb) -- (6+\ta,-0.45+\tb);
+				
+				%posicoes
+				\node[below] at (3+\ta,-0.45+\tb) {$0$};
+				\node[below] at (1+\ta,-0.45+\tb) {$-x_{m}$};
+				\node[below] at (5+\ta,-0.45+\tb) {$x_{m}$};
+				
+				% bloco
+				\node[rectangle,fill=gray,inner sep=3.5mm] (a) at (3+\ta,0+\tb) {\small{m}};
+				
+				%mola
+				\draw[decoration={aspect=0.3, segment length=1mm, amplitude=1mm,coil},decorate] (\ta,0+\tb) -- (a); 
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Representação das quatro etapas do MHS no MCU.}
+			\end{figure}
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.3, transform shape, samples=60,font=\Large]
+				
+				\tkzInit[xmin=0,xmax=4*pi,ymin=-12,ymax=2.5]
+				
+				%\tkzGrid[color=gray!50]
+				\tkzClip[space = 1.0]
+				
+				\let\tkzmathstyle\textstyle
+				
+				\begin{scope}[shift={(0,0)}]
+				
+				%parametros gerais
+				\def\xm{1.5}
+				\def\T{2*pi}
+				\def\om{2*pi/(\T)}
+				\def\xmb{1.0}
+				
+				\tkzDrawX[right, label = t, trig = 1]
+				%					\tkzLabelX[orig = false]
+				\tkzDrawY[above, label = x (t), noticks]
+				%					\tkzLabelY[orig = false]
+				
+				%definindo funcao
+				\tkzFct[domain=0:8*pi, color=red, line width=1pt]{\xm*cos(\om*x)}
+				\tkzFct[domain=0:8*pi, color=blue, line width=1pt]{\xmb*cos(\om*x)}
+				
+				%textos
+				\tkzDefPoints{0/\xm/xm,0/-\xm/xml,\T/0/T1,2*\T/0/T2, 9.5/2.5/txt}
+				
+				\tkzText[color=black, left](xm){$x_m$}
+				\tkzText[color=black, left](xml){$-x_m$}
+				\tkzText[color=black, below](T1){T}
+				\tkzText[color=black, below](T2){T}
+				\tkzText[color=black, opacity=100,fill=gray!20](txt){\normalsize  amplitudes diferentes}
+				
+				\end{scope}
+				
+				\begin{scope}[shift={(0,-5)}]
+				
+				%parametros gerais
+				\def\xm{1.5}
+				\def\T{2*pi}
+				\def\Tb{pi}
+				\def\om{2*pi/(\T)}
+				\def\omb{2*pi/(\Tb)}
+				
+				\tkzDrawX[right, label = t, trig = 1]
+				%					\tkzLabelX[orig = false]
+				%\tkzDrawY[above, noticks]
+				%					\tkzLabelY[orig = false]
+				
+				%definindo funcao
+				\tkzFct[domain=0:8*pi, color=red, line width=1pt]{\xm*cos(\om*x)}
+				\tkzDefPointByFct(0.5)\tkzGetPoint{p1}
+				\tkzFct[domain=0:8*pi, color=blue, line width=1pt]{\xm*cos(\omb*x)}
+				\tkzDefPointByFct(2.3)\tkzGetPoint{p2}
+				
+				%textos
+				\tkzDefPoints{0/1.25/T1,\Tb/1.25/T2, 0/2/T1b,\T/2/T2b, 9.5/2.5/txt}
+				
+				\draw (T1.center) to[dim arrow={label=$T$}, color=black, line width = 0.25pt] (T2.center);
+				\draw (T1b.center) to[dim arrow={label=$T$}, color=black, line width = 0.25pt] (T2b.center);
+				
+				\tkzText[color=black, left](xm){$x_m$}
+				\tkzText[color=black, left](xml){$-x_m$}
+				\tkzText[color=black, opacity=100,fill=gray!20](txt){\normalsize  períodos e frequências diferentes}
+				
+				\end{scope}
+				
+				\begin{scope}[shift={(0,-11)}]
+				
+				%parametros gerais
+				\def\xm{1.5}
+				\def\T{2*pi}
+				\def\om{2*pi/(\T)}
+				
+				\tkzDrawX[right, label = t, trig = 1]
+				%					\tkzLabelX[orig = false]
+				%\tkzDrawY[above, noticks]
+				%					\tkzLabelY[orig = false]
+				
+				%definindo funcao
+				\tkzFct[domain=0:8*pi, color=red, line width=1pt]{\xm*cos(\om*x)}
+				\tkzDefPointByFct(0.5)\tkzGetPoint{p1}
+				\tkzFct[domain=0:8*pi, color=blue, line width=1pt]{\xm*cos(\om*x-0.5*pi)}
+				\tkzDefPointByFct(2.3)\tkzGetPoint{p2}
+				
+				%textos
+				\tkzDefPoints{0/\xm/xm,0/-\xm/xml,\T/0/T1,2*\T/0/T2, 9.5/2.0/txt}
+				\tkzDefPoints{1.5/2/t1, 3.5/2/t2}
+				
+				\tkzText[color=black, left](xm){$x_m$}
+				\tkzText[color=black, left](xml){$-x_m$}
+				\tkzText[color=black, below](T1){T}
+				\tkzText[color=black, below](T2){T}
+				\tkzText[color=black, opacity=100,fill=gray!20](txt){\normalsize  fases diferentes}
+				
+				\draw[->, line width=0.25pt] (t1) -- (p1);
+				\draw[->, line width=0.25pt] (t2) -- (p2);
+				\tkzText[color=black, opacity=100,fill=gray!20](t1){\normalsize $\phi = 0$}
+				\tkzText[color=black, opacity=100,fill=gray!20](t2){\normalsize $\phi = 90^o$}
+				
+				\end{scope}
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Comparações entre dois MHS.}
+			\end{figure}
+		\end{column}
+	\end{columns}
 \end{frame}
 
 \begin{frame}[fragile]{Funções horárias do MHS}
@@ -737,9 +1078,13 @@ content...
 			\def\tb{0}
 			
 			%corpo rigido
-			\draw[color=green,line width=1pt] (0,0) .. controls (-45:2) and (-30:3) .. (-60:4);
-			\draw[color=green,line width=1pt] (0,0) .. controls (-75:2) and (-90:3) .. (-60:4);
+			\draw[color=green,line width=1pt, fill= green!25, opacity=0.5] (0,0) .. controls (-45:2) and (-30:3) .. (-60:4);
+			\draw[color=green,line width=1pt, fill= green!25, opacity=0.5] (0,0) .. controls (-75:2) and (-90:3) .. (-60:4);
 			
+			%angulos
+			\draw[line width=1pt,->] (0,-0.5) arc (-90:-60:0.5) node [below,midway] {$\theta$};
+			\draw[line width=1pt,->] ($(m)+(0,-0.5)$) arc (-90:-60:0.5) node [below,midway] {$\theta$};
+
 			%parede
 			\fill [pattern = north west lines] (1,0.2) rectangle (-1,0);
 			\draw (-1,0) -- (1,0);
@@ -749,12 +1094,7 @@ content...
 			
 			%massa
 			\filldraw (0,0) --++ (-60:3) circle (3pt) node (m) {};
-			
-			%angulos
-			\draw[line width=1pt,->] (0,-0.5) arc (-90:-60:0.5) node [below,midway] {$\theta$};
-			\draw[line width=1pt,->] ($(m)+(0,-0.5)$) arc (-90:-60:0.5) node [below,midway] {$\theta$};
-			
-			
+							
 			\draw[dashed] (m) --++ (-60:1);
 			
 			%trajetoria
@@ -768,7 +1108,7 @@ content...
 			\draw[line width=1pt,color=red,->] (m) -- (0,-3/cos{30}) node[below] {$\vec{F}$};
 			
 			\end{tikzpicture}
-			\caption*{\footnotesize Corpo rígido de massa m girando em torno de um ponto fixo.}
+			\caption*{\footnotesize Objeto rígido de massa m girando em torno de um ponto fixo.}
 			%\input{tikz/pendulo-simples.pgf}
 		\end{figure}
 	\end{column}
@@ -799,8 +1139,8 @@ content...
 			\def\tb{0}
 			
 			%corpo rigido
-			\draw[color=green,line width=1pt] (0,0) .. controls (-45:2) and (-30:3) .. (-60:4);
-			\draw[color=green,line width=1pt] (0,0) .. controls (-75:2) and (-90:3) .. (-60:4);
+			\draw[color=green,line width=1pt, fill= green!25, opacity=0.5] (0,0) .. controls (-45:2) and (-30:3) .. (-60:4);
+			\draw[color=green,line width=1pt, fill= green!25, opacity=0.5] (0,0) .. controls (-75:2) and (-90:3) .. (-60:4);
 			
 			%parede
 			\fill [pattern = north west lines] (1,0.2) rectangle (-1,0);
@@ -830,7 +1170,7 @@ content...
 			\draw[line width=1pt,color=red,->] (m) -- (0,-3/cos{30}) node[below] {$\vec{F}$};
 			
 			\end{tikzpicture}
-			\caption*{\footnotesize Pêndulo simples.}
+			\caption*{\footnotesize Objeto rígido de massa m girando em torno de um ponto fixo.}
 			%\input{tikz/pendulo-simples.pgf}
 		\end{figure}
 	\end{column}
@@ -938,7 +1278,7 @@ content...
 	\end{columns}
 \end{frame}
 
-\begin{frame}[fragile]{Energia total no MHS}
+\begin{frame}[fragile]{Representação gráfica da energia no MHS}
 	\begin{figure}[c]
 		\begin{subfigure}[b]{0.45\textwidth}
 			\Centering
@@ -1012,12 +1352,132 @@ content...
 	\end{figure}
 \end{frame}
 
-\section{Oscilações forçadas}
+\section{Oscilações forçadas e ressonância}
 
 \subsection{}
 
-\begin{frame}
+\begin{frame}{Bloco sob a ação de uma força externa de frequência $\omega_0$}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			Considere um sistema massa-mola onde além da força restauradora $\vec{F}_R$ atua sobre ele uma outra força $F(t)$, cujo valor depende de uma frequência $\omega_0$, onde
+			\begin{align*}
+				F(t) = F_m\cos(\omega t).
+			\end{align*}
+			Assim, aplicando a segunda Lei de Newton teremos
+			\begin{align*}
+				m\frac{dv}{dt} = -kx+F_m\cos(\omega_0 t),
+			\end{align*}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{align*}
+				\frac{d^2x}{dt^2}+\omega^2x = \frac{F_m}{m}\cos(\omega_0 t).
+			\end{align*}
+			\begin{figure}				
+				\centering
+				\begin{tikzpicture}[scale=0.7,transform shape]
+				
+				%sistema 1
+				
+				%parede
+				\fill [pattern = north west lines] (-0.2,-0.45) rectangle (0,1);
+				\draw (0,-0.45) -- (0,1);
+				
+				%chao
+				\draw (0,-0.45) -- (5,-0.45);
+				
+				%equilibrio
+				\node[below] at (2.5,-0.45) {$x_{0}$};
+				\node[below] at (4,-0.45) {$x$};
+				
+				% bloco
+				\node[rectangle,fill=gray,inner sep=3.5mm] (a) at (4,0) {\small{m}};
+				
+				%mola
+				\draw[decoration={aspect=0.3, segment length=4mm, amplitude=1.0mm,coil},decorate] (0,0) -- (a); 
+				
+				%vetores
+				\draw[line width=2pt,color=red,->] (a) -- ($(a)-(1,0)$) node [above,midway] {$\vec{F}_{R}$};
+				\draw[line width=2pt,color=green,<-] ($(a)+(0.5,0)$) -- ($(a)+(1.5,0)$) node [right] {$\vec{F}(t)$};
+				
+				%deslocamento
+				\draw[line width=1pt,<->] (2.5,-1.25) -- (4,-1.25) node[above,midway] {$x_{m}$};
+				
+				%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+				%sistema 2
+				
+				%transformacao coordenadas
+				\def\ta{2}
+				
+				%parede
+				\fill [pattern = north west lines] (-0.2,-0.45+\ta) rectangle (0,1+\ta);
+				\draw (0,-0.45+\ta) -- (0,1+\ta);
+				
+				%chao
+				\draw (0,-0.45+\ta) -- (5,-0.45+\ta);
+				
+				%equilibrio
+				\draw[dashed] (2.5,-0.45) -- (2.5,1+\ta);
+				
+				% bloco
+				\node[rectangle,fill=gray,inner sep=3.5mm] (a) at (2.5,0+\ta) {\small{m}};
+				
+				%mola
+				\draw[decoration={aspect=0.3, segment length=2mm, amplitude=2.5mm,coil},decorate] (0,0+\ta) -- (a); 
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Sistema massa-mola sob ação da força externa $\vec{F}(t)$.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
 
+\begin{frame}{Solução da equação do oscilador harmônico forçado}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			Para resolver a equação anterior, onde temos explicitamente o termo $F_m\cos(\omega_0 t)$, supomos uma solução do tipo
+			\begin{align*}
+				x(t) = x_m\cos(\omega_0 t)+x_m'\sin(\omega_0 t).
+			\end{align*}
+			Calculando a derivada de ordem 2 e substituindo na equação teremos
+			\begin{align*}
+				\frac{d^2x}{dt^2} = -x_m\omega_0^2\cos(\omega_0 t)-x_m'\omega_0^2\sin(\omega_0 t).
+			\end{align*}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{align*}
+				& -x_m\omega_0^2\cos(\omega_0 t)-x_m'\omega_0^2\sin(\omega_0 t)+\\
+				 & + \omega^2(x_m\cos(\omega_0 t)+x_m'\sin(\omega_0 t)) =\\
+				 & = \frac{F_m}{m}\cos(\omega_0 t).
+			\end{align*}
+			Reorganizando os termos do lado esquerdo teremos
+			\begin{align*}
+				& (\omega^2-\omega_0^2)x_m\cos(\omega_0 t)+(\omega^2-\omega_0^2)x_m'\sin(\omega_0 t)\\
+				& = \frac{F_m}{m}\cos(\omega_0 t).
+			\end{align*}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Ressonância}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			Impondo a condição $x_m'=0$, podemos simplificar a expressão anterior eliminando o termo dependente de $\sin(\omega_0 t)$, assim
+			\begin{align*}
+				(\omega^2-\omega_0^2)x_m\cos(\omega_0 t) = \frac{F_m}{m}\cos(\omega_0 t).
+			\end{align*}
+			Assim podemos afirmar que $x(t)$ é uma solução para o problema se
+			\begin{align*}
+				(\omega^2-\omega_0^2)x_m = \frac{F_m}{m},
+			\end{align*}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			ou seja,
+			\begin{align*}
+				x_m = \frac{F_m}{m(\omega^2-\omega_0^2)}.
+			\end{align*}
+			Portanto, podemos concluir que a amplitude $x_m$ da oscilação aumenta à medida que a frequência $\omega_0$ do oscilador se aproxima gradualmente da frequência $\omega$ de oscilação do MHS. \alert{Esse efeito é chamado de ressonância da oscilação}. Caso não houver amortecimento temos que $x_m\rightarrow \infty$ se $\omega_0\rightarrow \omega$.
+		\end{column}
+	\end{columns}
 \end{frame}
 
 \section{Apêndice}

@@ -111,11 +111,11 @@ class: left, middle
   \end{aligned}
   temos que a energia total E, somando a energia cinética e potencial, é dado por
   \begin{aligned}
-    E = \frac{kze^2}{2r}-\frac{kze^2}{r} = -\frac{kze^2}{2r},
+    E = \frac{kze^2}{2r}-\frac{kze^2}{r},
   \end{aligned}
   onde podemos considerar que
   \begin{aligned}
-    E\;\sim -\frac{1}{r}.
+    E\sim -\frac{1}{r}.
   \end{aligned}
 * <font class="red">Se o elétron perdesse energia cinética K devido a emissão de radiação, então o raio r da órbita diminuiria sucessivamente. Assim a colisão seria inevitável!!!;
 * Seguindo o modelo clássico, o elétron poderia assumir qualquer valor de energia até a sua colisão com o núcleo.</font>

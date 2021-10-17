@@ -1,0 +1,71 @@
+﻿				\begin{tikzpicture}[scale=1, transform shape, font=\huge]
+				
+					\tkzInit[xmin=-7,xmax=7,ymin=-13.5,ymax=4]
+					\tkzGrid[color=gray!50]
+					\tkzClip[space = 1.0]
+
+				%eixos
+				\draw[line width=1.0pt,->] (-5,0) -- (5,0) node[right] {$x$};
+				\draw[line width=1.0pt,->] (0,-5) -- (0,5) node[right] {};
+				
+				%circunferencia
+				\draw[line width=1pt,-stealth] (4,0) arc (0:180:4cm);
+				\draw[line width=1pt,-stealth] (-4,0) arc (180:360:4cm);
+				
+				%pontos
+				\filldraw[black] (0,0) circle (2pt) node[anchor=north east] {O};
+				\filldraw[black] (0,0) --++ (45:4) circle (2pt) node[anchor=south west] {};
+				
+				%coordenadas
+				\coordinate (c1) at ({4*cos(45)},0);
+				\coordinate (c2) at ({4*cos(45)},{4*sin(45)});
+				
+				%vetores
+				\draw[black] (0,0) --++ (45:4);
+				\draw[line width=1pt,red] (45:4) --++ (225:4) node [anchor=south east,midway]  {$x_{m}$};
+				\draw[line width=1pt,red] (0,0) --++ (c1) node [below,midway]  {$x(t)$};
+				
+				%arcos
+				\draw[line width=0.5pt,->] (1.5,0) arc (0:45:1.5cm) node [right=0.1cm,midway] {$\theta$};
+				
+				%seta direcionando para o grafico
+
+				\draw[->,color=red, line width=5pt](0,-6) --++ (0,-2);
+
+				%grafico da senoide
+				\begin{scope}[shift={(-7,-11)}]
+
+					\tkzInit[xmin=-7,xmax=14,ymin=-13.5,ymax=2]
+
+					%parametros gerais
+					\def\xm{2}
+					\def\T{2*pi}
+					\def\om{2*pi/(\T)}
+					\def\phi{0.75*pi}
+
+					\tkzDrawX[right, label = t, trig = 1]
+%					\tkzLabelX[orig = false]
+					\tkzDrawY[above, label = x (t), noticks]
+%					\tkzLabelY[orig = false]
+
+					%definindo funcao
+				    \tkzFct[domain=0:8*pi, color=red, line width=1pt]{\xm*cos(\om*x-\phi)}
+					\tkzDefPointByFct(3.12*pi)\tkzGetPoint{p1}
+					\tkzDefPointByFct(4.35*pi)\tkzGetPoint{p2}
+
+					%textos
+					\tkzDefPoints{0/\xm/xm,0/-\xm/xml,0.5*pi/\xm/T1,(0.5*pi+\T)/\xm/T2, 12/2.5/txt}
+
+					\draw (T1.center) to[dim arrow={label=$T$}, color=black] (T2.center);
+
+					\draw[->, line width=1pt]	(txt) -- (p2);
+	
+					\tkzText[color=black, left](xm){$x_m$}
+					\tkzText[color=black, left](xml){$-x_m$}
+					\tkzText[color=black, opacity=100,fill=gray!20](txt){\large  $x(t) = x_m\cos (\omega t)$}
+
+					\draw[dashed] (c2) -- (p1);
+
+					\end{scope}
+
+				\end{tikzpicture}

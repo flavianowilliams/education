@@ -788,7 +788,7 @@
 				\def\om{2*pi/(\T)}
 				\def\xmb{1.0}
 				
-				\tkzDrawX[right, label = t, trig = 1]
+				\tkzDrawX[right, label = t, trig = 1, noticks]
 				%					\tkzLabelX[orig = false]
 				\tkzDrawY[above, label = x (t), noticks]
 				%					\tkzLabelY[orig = false]
@@ -802,9 +802,7 @@
 				
 				\tkzText[color=black, left](xm){$x_m$}
 				\tkzText[color=black, left](xml){$-x_m$}
-				\tkzText[color=black, below](T1){T}
-				\tkzText[color=black, below](T2){T}
-				\tkzText[color=black, opacity=100,fill=gray!20](txt){\normalsize  amplitudes diferentes}
+				\tkzText[color=black, opacity=100,fill=gray!20](txt){\Large  amplitudes diferentes}
 				
 				\end{scope}
 				
@@ -829,14 +827,14 @@
 				\tkzDefPointByFct(2.3)\tkzGetPoint{p2}
 				
 				%textos
-				\tkzDefPoints{0/1.25/T1,\Tb/1.25/T2, 0/2/T1b,\T/2/T2b, 9.5/2.5/txt}
+				\tkzDefPoints{0/1.25/T1,\Tb/1.25/T2, 0/2/T1b,\T/2/T2b, 10/2.5/txt}
 				
 				\draw (T1.center) to[dim arrow={label=$T$}, color=black, line width = 0.25pt] (T2.center);
 				\draw (T1b.center) to[dim arrow={label=$T$}, color=black, line width = 0.25pt] (T2b.center);
 				
 				\tkzText[color=black, left](xm){$x_m$}
 				\tkzText[color=black, left](xml){$-x_m$}
-				\tkzText[color=black, opacity=100,fill=gray!20](txt){\normalsize  períodos e frequências diferentes}
+				\tkzText[color=black, opacity=100,fill=gray!20](txt){\Large  períodos e frequências distintas}
 				
 				\end{scope}
 				
@@ -859,24 +857,22 @@
 				\tkzDefPointByFct(2.3)\tkzGetPoint{p2}
 				
 				%textos
-				\tkzDefPoints{0/\xm/xm,0/-\xm/xml,\T/0/T1,2*\T/0/T2, 9.5/2.0/txt}
-				\tkzDefPoints{1.5/2/t1, 3.5/2/t2}
+				\tkzDefPoints{0/\xm/xm,0/-\xm/xml,\T/0/T1,2*\T/0/T2, 9.5/2.5/txt}
+				\tkzDefPoints{1.5/2.5/t1, 3.5/2.5/t2}
 				
 				\tkzText[color=black, left](xm){$x_m$}
 				\tkzText[color=black, left](xml){$-x_m$}
-				\tkzText[color=black, below](T1){T}
-				\tkzText[color=black, below](T2){T}
-				\tkzText[color=black, opacity=100,fill=gray!20](txt){\normalsize  fases diferentes}
+				\tkzText[color=black, opacity=100,fill=gray!20](txt){\Large  fases diferentes}
 				
 				\draw[->, line width=0.25pt] (t1) -- (p1);
 				\draw[->, line width=0.25pt] (t2) -- (p2);
-				\tkzText[color=black, opacity=100,fill=gray!20](t1){\normalsize $\phi = 0$}
-				\tkzText[color=black, opacity=100,fill=gray!20](t2){\normalsize $\phi = 90^o$}
+				\tkzText[color=black, opacity=100,fill=gray!20](t1){\Large $\phi = 0$}
+				\tkzText[color=black, opacity=100,fill=gray!20](t2){\Large $\phi = 90^o$}
 				
 				\end{scope}
 				
 				\end{tikzpicture}
-				\caption*{\footnotesize Comparações entre dois MHS.}
+				\caption*{\footnotesize Comparações entre MHS diferentes.}
 			\end{figure}
 		\end{column}
 	\end{columns}
@@ -1193,6 +1189,51 @@
 		\begin{column}[c]{0.4\textwidth}
 			\begin{figure}[c]
 				\centering
+				\tdplotsetmaincoords{70}{110}
+				
+				\begin{tikzpicture}
+				[scale=0.9, transform shape,
+				axis/.style={->,black,thick},
+				vectora/.style={tdplot_rotated_coords,stealth-stealth,thick},
+				vectorb/.style={thick}
+				]
+				
+				\tkzInit[xmin=-2,xmax=3.5,ymin=-2,ymax=3]
+				%\tkzGrid[color=gray!50]
+				\tkzClip[space=0.2]
+				
+				%parede
+				\fill [pattern = north west lines] (1,3.2) rectangle (-1,3);
+				\draw (-1,3) -- (1,3);
+				
+				\coordinate (O) at (0,0,0);
+				\coordinate (y'') at (3,0,0);
+				\draw[axis] (O) -- (y'') node[anchor=north west]{$y$};
+				
+				\begin{scope}[tdplot_main_coords]
+				
+				%standard tikz coordinate definition using x, y, z coords
+				\coordinate (O) at (0,0,0);
+				\coordinate (x) at (5,0,0);
+				\coordinate (y) at (0,3,0);
+				\coordinate (z) at (0,0,3.2);
+				\coordinate (y') at (0,-5,0);
+				
+				%draw axes
+				\draw[axis] (O) -- (x) node[anchor=north east]{$x$};
+				%	\draw[axis] (O) -- (y) node[anchor=north west]{$y$};
+				\draw[vectorb] (O) -- (z) node[anchor=south]{};
+				
+				%desenhando cilindros
+				\node[cylinder, draw,  shape aspect=.5, rotate=-137, minimum height=3cm] at (O) {};
+				\node[cylinder, draw,  dashed, shape aspect=.5, rotate=-8, minimum height=3cm] at (O) {};
+				
+				\tkzMarkAngle[size=5mm,->,line width=1pt](x,O,y)
+				\tkzLabelAngle[right, pos=2.5](x,O,y'){$\theta$}
+				
+				\end{scope}
+				
+				\end{tikzpicture}
 				\caption*{\footnotesize Pêndulo de torção.}
 				%\input{tikz/pendulo-simples.pgf}
 			\end{figure}

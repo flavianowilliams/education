@@ -29,6 +29,7 @@
 \tikzset{midarrow/.style={postaction={decorate,decoration={markings,mark=at position .5 with {\arrow[#1]{stealth}}}}}}
 \PreviewEnvironment[]{tikzpicture}
 \PreviewEnvironment[]{pgfpicture}
+
 \begin{document}
 <>
 \end{document}

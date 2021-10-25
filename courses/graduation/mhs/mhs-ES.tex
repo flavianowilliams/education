@@ -1410,7 +1410,7 @@
 		\begin{column}[c]{0.5\textwidth}
 			Considere um sistema massa-mola onde além da força restauradora $\vec{F}_R$ atua sobre ele uma outra força $F(t)$, cujo valor depende de uma frequência $\omega_0$, onde
 			\begin{align*}
-				F(t) = F_m\cos(\omega t).
+				F(t) = F_m\cos(\omega_0 t).
 			\end{align*}
 			Assim, aplicando a segunda Lei de Newton teremos
 			\begin{align*}
@@ -1509,8 +1509,8 @@
 
 \begin{frame}{Ressonância}
 	\begin{columns}
-		\begin{column}[c]{0.5\textwidth}
-			Impondo a condição $x_m'=0$, podemos simplificar a expressão anterior eliminando o termo dependente de $\sin(\omega_0 t)$, assim
+		\begin{column}[t]{0.5\textwidth}
+			Para satisfazer a equação anterior devemos impor a condição $x_m'=0$, para que fique apenas o termo dependente de $\cos(\omega_0 t)$, assim
 			\begin{align*}
 				(\omega^2-\omega_0^2)x_m\cos(\omega_0 t) = \frac{F_m}{m}\cos(\omega_0 t).
 			\end{align*}
@@ -1519,7 +1519,7 @@
 				(\omega^2-\omega_0^2)x_m = \frac{F_m}{m},
 			\end{align*}
 		\end{column}
-		\begin{column}[c]{0.5\textwidth}
+		\begin{column}[t]{0.5\textwidth}
 			ou seja,
 			\begin{align*}
 				x_m = \frac{F_m}{m(\omega^2-\omega_0^2)}.

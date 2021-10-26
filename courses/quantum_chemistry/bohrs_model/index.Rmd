@@ -332,7 +332,7 @@ Considerando que a transição ocorre entre grandes números quânticos, ou seja
 onde $E_0=\frac{mk^2e^4}{2\hbar^2}$ e $h=2\pi\hbar$. Mas vimos anteriormente que de acordo com o modelo de Bohr $r=\frac{\hbar^2n^2}{mKZe^2}$ e $v=\left(\frac{kze^2}{mr}\right)^{1/2}$, ou seja,
 \begin{aligned}
   \nu & = \left(\frac{1}{2\pi}\right)\underbrace{\left(\frac{mkZe^2}{\hbar^2n^2}\right)}_{1/r}\underbrace{\left(\frac{kZe^2}{\hbar n}\right)}_{v},\\\
-  \nu & = \frac{v}{2\pi r},
+  \nu & = \frac{v}{2\pi r}\Rightarrow r = \frac{v}{2\pi\nu}.
 \end{aligned}
 correspondendo a frequência na mecânica clássica.
 ]

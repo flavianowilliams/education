@@ -1,4 +1,4 @@
-﻿				\begin{tikzpicture}[scale=1.5, transform shape, samples=60,font=\Large]
+﻿				\begin{tikzpicture}[scale=1, transform shape, samples=60,font=\Large]
 
 					\tkzInit[xmin=0,xmax=4*pi,ymin=-13.5,ymax=2.5]
 
@@ -27,11 +27,9 @@
 					%textos
 					\tkzDefPoints{0/\xm/xm,0/-\xm/xml,\T/0/T1,2*\T/0/T2, 9.5/2.5/txt}
 
-					\tkzText[color=black, left](xm){$x_m$}
-					\tkzText[color=black, left](xml){$-x_m$}
-					\tkzText[color=black, below](T1){T}
-					\tkzText[color=black, below](T2){T}
-					\tkzText[color=black, opacity=100,fill=gray!20](txt){\normalsize  amplitudes diferentes}
+%					\tkzText[color=black, left](xm){$x_m$}
+%					\tkzText[color=black, left](xml){$-x_m$}
+%					\tkzText[color=black, opacity=100,fill=gray!20](txt){\normalsize  amplitudes diferentes}
 
 					\end{scope}
 
@@ -58,12 +56,12 @@
 					%textos
 					\tkzDefPoints{0/1.25/T1,\Tb/1.25/T2, 0/2/T1b,\T/2/T2b, 9.5/2.0/txt}
 
-					\draw (T1.center) to[dim arrow={label=$T$}, color=black] (T2.center);
-					\draw (T1b.center) to[dim arrow={label=$T$}, color=black] (T2b.center);
+%					\draw (T1.center) to[dim arrow={label=$T$}, color=black] (T2.center);
+%					\draw (T1b.center) to[dim arrow={label=$T$}, color=black] (T2b.center);
 
-					\tkzText[color=black, left](xm){$x_m$}
-					\tkzText[color=black, left](xml){$-x_m$}
-					\tkzText[color=black, opacity=100,fill=gray!20](txt){\normalsize  períodos e frequências diferentes}
+%					\tkzText[color=black, left](xm){$x_m$}
+%					\tkzText[color=black, left](xml){$-x_m$}
+%					\tkzText[color=black, opacity=100,fill=gray!20](txt){\normalsize  períodos e frequências diferentes}
 
 					\end{scope}
 
@@ -89,16 +87,14 @@
 					\tkzDefPoints{0/\xm/xm,0/-\xm/xml,\T/0/T1,2*\T/0/T2, 9.5/2.0/txt}
 					\tkzDefPoints{1.5/2/t1, 3.5/2/t2}
 
-					\tkzText[color=black, left](xm){$x_m$}
-					\tkzText[color=black, left](xml){$-x_m$}
-					\tkzText[color=black, below](T1){T}
-					\tkzText[color=black, below](T2){T}
-					\tkzText[color=black, opacity=100,fill=gray!20](txt){\normalsize  fases diferentes}
+%					\tkzText[color=black, left](xm){$x_m$}
+%					\tkzText[color=black, left](xml){$-x_m$}
+%					\tkzText[color=black, opacity=100,fill=gray!20](txt){\normalsize  fases diferentes}
 
-					\draw[->, line width=1pt] (t1) -- (p1);
-					\draw[->, line width=1pt] (t2) -- (p2);
-					\tkzText[color=black, opacity=100,fill=gray!20](t1){\normalsize $\phi = 0$}
-					\tkzText[color=black, opacity=100,fill=gray!20](t2){\normalsize $\phi = 90^o$}
+%					\draw[->, line width=1pt] (t1) -- (p1);
+%					\draw[->, line width=1pt] (t2) -- (p2);
+%					\tkzText[color=black, opacity=100,fill=gray!20](t1){\normalsize $\phi = 0$}
+%					\tkzText[color=black, opacity=100,fill=gray!20](t2){\normalsize $\phi = 90^o$}
 
 					\end{scope}
 

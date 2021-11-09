@@ -1,0 +1,103 @@
+﻿				\begin{tikzpicture}[scale=0.75, transform shape, samples=60,font=\Large]
+				
+				\tkzInit[xmin=-7,xmax=22,ymin=-18,ymax=2.75]
+				\tkzClip				
+
+				%parametros gerais
+				\def\xm{1.2}
+				\def\ta{3.14}
+				\def\t{-7}
+				\def\tt{2*\t}
+				\def\om{1.5}
+				\def\tx{2}
+				
+				%definindo funcao
+				\pgfmathdeclarefunction{ff}{1}{\pgfmathparse{\xm*cos(deg(#1))}}
+				\pgfmathdeclarefunction{dff}{1}{\pgfmathparse{\t-\om*\xm*sin(deg(#1))}}
+				\pgfmathdeclarefunction{ddff}{1}{\pgfmathparse{\tt-\om*\xm*\xm*cos(deg(#1))}}
+				
+				%eixo
+				\draw[line width=1.0pt,->] (0,-{(\xm+1)}) -- (0,{(\xm+1)}) node[above] {x(t)};
+				\draw[line width=1.0pt,->] (0,0) -- (6.5*\ta,0) node[right] {t (1/T)};
+				
+				%curva
+				\draw[line width=1.0pt,domain=0:6*\ta,variable=\x,color=red] plot (\x,{ff(\x)});
+				
+				%circunferencia
+				\draw[line width=1pt,-stealth] (-1*\tx,0) arc (0:180:\xm);
+				\draw[line width=1pt,-stealth] (-\tx-2*\xm,0) arc (180:360:\xm);
+				
+				%pontos
+				\filldraw[black] (0,0) circle (2pt) node[anchor=north east] {O};
+				\filldraw[black] (-\tx-\xm,0) --++ (90:\xm) circle (2pt) node (cx) {};
+				\filldraw[green] (90:\xm) -- (90:\xm) circle (2pt) node (x1) {};
+				
+				\draw[line width=1pt,color=green] (cx) -- (x1);
+				
+				%coordenadas
+				\node[above left] at (0,\xm) {$x_{m}$};
+				\node[above left] at (0,-\xm) {$-x_{m}$};
+				
+				%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+				%		grafico 2
+				
+				%eixo
+				\draw[line width=1.0pt,->] (0,{-(\om*\xm+1)+\t}) -- (0,{(\om*\xm+1)+\t}) node[above] {v(t)};
+				\draw[line width=1.0pt,->] (0,\t) -- (6.5*\ta,\t) node[right] {t (1/T)};
+				
+				%curva
+				\draw[line width=1.0pt,domain=0:6*\ta,variable=\x,color=red] plot (\x,{dff(\x)});
+				
+				%circunferencia
+				\draw[line width=1pt,-stealth] (-\tx,\t) arc (0:180:\om*\xm);
+				\draw[line width=1pt,-stealth] (-2*\om*\xm-\tx,\t) arc (180:360:\om*\xm);
+				
+				%pontos
+				\filldraw[black] (0,\t) circle (2pt) node[anchor=north east] {O};
+				\filldraw[black] (-\om*\xm-\tx,\t) -- (-\tx,\t) circle (2pt) node (cx) {};
+				\filldraw[green] (0,\t) -- (0,\t) circle (2pt) node (x1) {};
+				
+				\draw[line width=1pt,color=green] (cx) -- (x1);
+				
+				%coordenadas
+				\node[above left] at (0,\om*\xm+\t) {$\omega x_{m}$};
+				\node[above left] at (0,-\om*\xm+\t) {$-\omega x_{m}$};
+				
+				%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+				%		grafico 3
+				
+				%eixo
+				\draw[line width=1.0pt,->] (0,{-(\om*\xm*\xm+1)+\tt}) -- (0,{(\om*\xm*\xm+1)+\tt}) node[above] {a(t)};
+				\draw[line width=1.0pt,->] (0,\tt) -- (6.5*\ta,\tt) node[right] {t (1/T)};
+				
+				%curva
+				\draw[line width=1.0pt,domain=0:6*\ta,variable=\x,color=red] plot (\x,{ddff(\x)});
+				
+				%posicoes
+				\foreach \x in {0.5,1,...,6}
+				\node[below left]  at (\ta*\x,\tt) {$\x\pi$};
+				
+				\foreach \x in {0.5,1,...,6}
+				\draw[dashed] (\ta*\x,{ddff(\ta*\x)}) -- (\ta*\x,{ff(\ta*\x)});
+				
+				%circunferencia
+				\draw[line width=1pt,-stealth] (-\tx,\tt) arc (0:180:\om*\xm*\xm);
+				\draw[line width=1pt,-stealth] (-2*\om*\xm*\xm-\tx,\tt) arc (180:360:\om*\xm*\xm);
+				
+				%pontos
+				\filldraw[black] (0,\tt) circle (2pt) node[anchor=north east] {O};
+				\filldraw[black] (-\om*\xm*\xm-\tx,\tt) -- (-\om*\xm*\xm-\tx,\tt-\om*\xm*\xm) circle (2pt) node (cx) {};
+				\filldraw[green] (0,\tt-\om*\xm*\xm) -- (0,\tt-\om*\xm*\xm) circle (2pt) node (x1) {};
+				
+				\draw[line width=1pt,color=green] (cx) -- (x1);
+				
+				%coordenadas
+				\node[above left] at (0,\om*\xm*\xm+\tt) {$\omega^{2} x_{m}$};
+				\node[above left] at (0,-\om*\xm*\xm+\tt) {$-\omega^{2} x_{m}$};
+				
+				%ciclos
+				\draw[line width=1pt,<->] (0,-\om*\xm*\xm+\tt-1) -- (2*\ta,-\om*\xm*\xm+\tt-1) node [above,midway] {Primeiro ciclo};
+				\draw[line width=1pt,<->] (2*\ta,-\om*\xm*\xm+\tt-1) -- (4*\ta,-\om*\xm*\xm+\tt-1) node [above,midway] {Segundo ciclo};
+				\draw[line width=1pt,<->] (4*\ta,-\om*\xm*\xm+\tt-1) -- (6*\ta,-\om*\xm*\xm+\tt-1) node [above,midway] {Terceiro ciclo};
+				
+				\end{tikzpicture}

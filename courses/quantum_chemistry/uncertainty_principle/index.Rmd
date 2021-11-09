@@ -243,9 +243,22 @@ Para diminuir a incerteza na localização da partícula deveremos ter um pacote
 ```
 
 ---
+class: justify, middle
+
+<div class="my-header"><span>Interpretação probabilística da função de onda - A incerteza no tempo e energia </span></div>
+
+A mesma análise pode ser feita para o pacote de onda formado por diversos valores de frequência.
+
+A figura abaixo mostra a formação do pacote de onda a partir da superposição de diversas funções de onda com frequências diferentes. Podemos perceber que a largura do pacote diminui à medida que aumentamos os valores possíveis de frequência. Isso por sua vez está associado em um aumento na incerteza no seu valor. A hipótese de de Broglie sugere que a frequência no movimento da partícula está associado a sua energia. Assim, podemos concluir que a incerteza na frequência reflete na incerteza na energia.
+
+```{r, echo=FALSE, message=FALSE, fig.align='center',fig.cap='Formação de pacotes de onda para diversos valores &Delta; &omega;.',out.width="100%",fig.asp=0.5}
+  knitr::include_graphics("img/pacotes-onda-frequencia.jpeg")
+```
+
+---
 class: left, middle
 
-<div class="my-header"><span>Interpretação probabilística da função de onda - A incerteza no momento e posição (continuação) </span></div>
+<div class="my-header"><span>Interpretação probabilística da função de onda - O princípio da incerteza </span></div>
 
 .pull-left[
 Entretanto, se tivermos apenas uma única onda progressiva com número de onda k para representar o movimento do elétron, teríamos $\Delta k = 0$, assim o número de onda do elétron seria totalmente determinado. Porém, consequentemente também teríamos $\Delta x\rightarrow\infty$, pois assim não teríamos um pacote de onda definido. Assim, é impossível obter com total certeza a localização e o número de onda do elétron simultaneante. A total certeza de um acarreta na completa incerteza de outro. Porém, para qualquer pacote de onda podemos observar que

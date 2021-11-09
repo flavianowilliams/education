@@ -1,0 +1,29 @@
+﻿			\begin{tikzpicture}[scale=2.5, transform shape]
+			
+			%eixos
+			\draw[line width=1.0pt,->] (0,0) -- (2.2*pi,0) node[right] {$t$};
+			\draw[line width=1.0pt,->] (0,0) -- (0,3) node[above] {};
+			
+			%origem
+			\node[below] at (0,0) {O};
+			
+			%parametros
+			\def\k{pi}
+			\def\a{2}
+			
+			%funcao
+			\pgfmathdeclarefunction{fc}{1}{\pgfmathparse{\a*(cos(deg(#1)))^2}}
+			\pgfmathdeclarefunction{fs}{1}{\pgfmathparse{\a*(sin(deg(#1)))^2}}
+			
+			%curva
+			\draw[line width=2.0pt,domain=0:2*pi,variable=\x,color=blue,samples=50] plot (\x,{fc(\x)}) node[below] {};
+			\draw[line width=2.0pt,domain=0:2*pi,variable=\x,color=red,samples=50] plot (\x,{fs(\x)}) node[above] {};
+			
+			%energia total
+			\draw[line width=2pt] (0,{fc(\a)+fs(\a)}) -- (2*pi,{fc(\a)+fs(\a)}) node[above,midway] {};
+			
+			%formulas
+%			\node at (2,3) {$K=\frac{1}{2}kx^ {2}_{m}sen^{2}\left(\omega t\right)$};
+%			\node at (5.5,3) {$U=\frac{1}{2}kx^ {2}_{m}cos^{2}\left(\omega t\right)$};
+			
+			\end{tikzpicture}

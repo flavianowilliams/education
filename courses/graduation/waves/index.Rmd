@@ -3,7 +3,7 @@ title: "Fundamentos de física"
 subtitle: "Ondas"
 author: "Flaviano Williams Fernandes"
 institute: "Instituto Federal do Paraná - Irati"
-date: "09 de novembro de 2021 (atualizado em `r format(Sys.Date(), format='%d/%m/%Y')`)"
+date: "16 de novembro de 2021 (atualizado em `r format(Sys.Date(), format='%d/%m/%Y')`)"
 encoding: "UTF-8"
 output:
   xaringan::moon_reader:

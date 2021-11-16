@@ -1,0 +1,87 @@
+﻿		\begin{tikzpicture}[scale=8,transform shape]
+				
+				%sistema 1
+				
+				%transformacao coordenadas
+				\def\ta{3}
+				
+				%paredes
+				\fill [pattern = north west lines] (-0.2,-0.5) rectangle (0,0.5);
+				\draw (0,-0.5) -- (0,0.5);
+				\fill [pattern = north west lines] (5.2,-0.5) rectangle (5,0.5);
+				\draw (5,-0.5) -- (5,0.5);
+				
+				%parametro
+				\def\tx{1.5}
+				\def\ty{-1}
+				\def\teta{(atan{(1/(1))})}
+				
+				% massa
+				\filldraw[gray] (\tx,\ty) circle (3pt) node (a) {};
+				
+				%mola
+				\draw[decoration={aspect=0.3, segment length=4mm, amplitude=6mm,coil},decorate] (0,0) -- (a); 
+				\draw[decoration={aspect=0.3, segment length=4mm, amplitude=6mm,coil},decorate] (5,0) -- (a); 
+				
+				%eixos
+				\draw[color=blue,->] ($(a)-(0,1.25)$) -- ($(a)+(0,1.25)$) node[above] {$y$};
+				\draw[color=blue,->] ($(a)-(1.25,0)$) -- ($(a)+(1.25,0)$) node[right] {$x$};
+				
+				%vetores
+				\draw[line width=5pt,color=red,->] (a) --++ ($0.3*(0,0)-0.3*(a)$) node [above] {$\vec{T}_{1}$};
+				\draw[line width=5pt,color=green,->] (a) --++ ($({0.3*(0-\tx)},0)$) node [below] {$\vec{T}_{1_{x}}$};
+				\draw[line width=5pt,color=green,->] (a) --++ ($(0,{2*0.3*(0-\ty)})$) node [right] {$\vec{T}_{y}$};
+				\draw[line width=5pt,color=red,->] (a) --++ ($0.3*(5,0)-0.3*(a)$) node [above] {$\vec{T}_{2}$};
+				\draw[line width=5pt,color=green,->] (a) --++ ($({0.3*((5-\tx)-0)},0)$) node [below] {$\vec{T}_{2_{x}}$};
+				
+				%texto
+				\node at (4,-2) {$T_{2_{x}}>T_{1_{x}}$};
+				
+				%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+				%sistema 2
+				
+				%eixos
+				\draw[color=blue,->] (0,\ty-0.5+\ta) -- (0,-\ty+0.5+\ta) node[above] {$y$};
+				
+				\node[left] at (0,\ty+\ta) {$-y_{m}$};
+				\node[left] at (0,-\ty+\ta) {$y_{m}$};
+				
+				%paredes
+				\fill [pattern = north west lines] (-0.2,-0.5+\ta) rectangle (0,0.5+\ta);
+				\draw (0,-0.5+\ta) -- (0,0.5+\ta);
+				\fill [pattern = north west lines] (5.2,-0.5+\ta) rectangle (5,0.5+\ta);
+				\draw (5,-0.5+\ta) -- (5,0.5+\ta);
+				
+				% massa
+				\filldraw[gray] (\tx,\ty+\ta) circle (3pt) node (a) {};
+				\filldraw[gray] (\tx,-\ty+\ta) circle (3pt) node (aa) {};
+				
+				%mola
+				\draw[decoration={aspect=0.3, segment length=4mm, amplitude=6mm,coil},decorate] (0,0+\ta) -- (a); 
+				\draw[decoration={aspect=0.3, segment length=4mm, amplitude=6mm,coil},decorate] (5,0+\ta) -- (a); 
+				\draw[decoration={aspect=0.3, segment length=4mm, amplitude=6mm,coil},decorate] (0,0+\ta) -- (aa); 
+				\draw[decoration={aspect=0.3, segment length=4mm, amplitude=6mm,coil},decorate] (5,0+\ta) -- (aa); 
+				
+				%vetores
+				\draw[line width=5pt,color=red,->] (a) -- ($(a)-(0,0.75)$) node [right] {$\vec{F}$};
+				
+				%oscilacao
+				\draw[line width=5pt,<->] (a) -- (aa) node[right,midway] {$2y_{m}$};
+				
+				%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+				%sistema 3
+				
+				%parametro
+%				\def\tt{6}
+				
+				%eixos
+%				\draw[color=blue,->] (0+\tt,0+0.5*\ta) -- (0+\tt,1+0.5*\ta) node[above] {$y$};
+%				\draw[color=blue,->] (0+\tt,0+0.5*\ta) -- (3.5+\tt,0+0.5*\ta) node[right] {$x$};	
+				
+				%pulso
+				\pgfmathdeclarefunction{f}{1}{\pgfmathparse{0.5*\ta+0.5*exp(-15*(#1-1.12*\tt)^2))}}
+%				\draw[line width=1.5pt,domain=\tt:3+\tt,variable=\x,color=red,samples=100] plot (\x,{f(\x)});
+				
+%				\draw[line width=1pt,color=red,->] (0.5+\tt,0.75+0.5*\ta) --++(0.5,0) node[above,midway] {$\vec{v}$};
+				
+		\end{tikzpicture}

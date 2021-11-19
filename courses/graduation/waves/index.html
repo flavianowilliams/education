@@ -17,7 +17,7 @@ class: center, middle, inverse, title-slide
 ## Ondas
 ### Flaviano Williams Fernandes
 ### Instituto Federal do Paraná - Irati
-### 16 de novembro de 2021 (atualizado em 16/11/2021)
+### 16 de novembro de 2021 (atualizado em 18/11/2021)
 
 ---
 
@@ -152,7 +152,158 @@ class: middle
 ---
 class: middle
 
+&lt;div class="my-header"&gt;&lt;span&gt;A função de onda - o número de onda k&lt;/span&gt;&lt;/div&gt;
+
+.pull-left[
+Analisando o movimento da onda, podemos dizer que o movimento vertical por ser um MHS a amplitude da onda deve ser uma função senoidal do tempo, do tipo `\(y\sim \cos\omega t\)`, e sabendo que a onda se propaga na direção x, então a amplitude da onda também deve também apresentar uma dependência da posição x. Portanto, a função no qual descreve a amplitude da onda (que chamamos de "função de onda") deve ser uma função de duas variáves, x e t,
+`\begin{align}
+  y \equiv y(x,t).
+\end{align}`
+
+Existem várias maneiras de obter a expressão `\(y(x,t)\)`. Aqui usaremos uma estratégia muito empregada por físicos para a solução de problemas. Primeiramente iremos obter uma equação matemática (que a princípio é uma equação diferencial contendo derivadas em sua expressão), no qual a partir da sua solução encontraremos `\(y(x,t)\)`.
+]
+.pull-right[
+Observando a onda, onde para cada instante de tempo teremos uma curva senoidal ao longo de x, então a amplitude da onda deverá se repetir para cada distância `\(\lambda\)`, de modo que
+`\begin{align}
+  y_m\cos kx = y_m\cos k(x+\lambda),
+\end{align}`
+onde k é uma constante arbitrária. Portanto
+`\begin{align}
+  y_m\cos kx = y_m\cos (kx+k\lambda).
+\end{align}`
+De acordo com o comportamento periódico da função cosseno, podemos ver que a igualdade será satisfeita se `\(k\lambda = 2\pi\)`, ou seja,
+`\begin{align}
+  k = \frac{2\pi}{\lambda}\quad\text{(número de onda)}.
+\end{align}`
+O parâmetro k é chamado de número de onda e sua a unidade no SI é o radiano por metro
+ou `\(m^{-1}\)`.
+]
+
+---
+class: middle
+
+&lt;div class="my-header"&gt;&lt;span&gt;A função de onda - a velocidade da onda&lt;/span&gt;&lt;/div&gt;
+
+.pull-left[
+Supondo que a função de onda deve possuir como variáveis independentes x e t, e considerando que as seguintes condições devem acontecer
+`\begin{align}
+  y(x,0) &amp; = y_m\cos (kx-\phi),\\
+  y(0,t) &amp; = y_m\cos (\omega t - \phi'),
+\end{align}`
+então podemos imaginar que a função `\(y(x,t)\)` deve ser algo do tipo
+`\begin{align}
+  y(x,t) \Rightarrow \cos kx\cos \omega t.
+\end{align}`
+Usando a identidade `\(\cos A\cos B = \frac{1}{2}(\cos (A+B) + \cos (A-B))\)` podemos dizer que
+`\begin{align}
+  y(x,t) \Rightarrow \cos (kx + \omega t)+ \cos (kx - \omega t),
+\end{align}`
+onde `\(A = kx\)` e `\(B = \omega t\)`. Portanto
+`\begin{align}
+  y(x,t) = y_m\cos (kx + \omega t)+ y_m\cos (kx - \omega t).
+\end{align}`
+]
+.pull-right[
+Assim para qualquer onda, onde a sua amplitude se repete a cada intervalo `\(kx \pm \omega t\)`, podemos supor pela característica de periodicidade da função cosseno que
+`\begin{align}
+  kx\pm\omega t = \text{constante}.
+\end{align}`
+Derivando em relação ao tempo o primeiro termo, onde `\(kx-\omega t\)`, teremos
+`\begin{align}
+ k\frac{dx}{dt}-\omega &amp; = 0,\\
+ \frac{dx}{dt} = \frac{\omega}{k}.
+\end{align}`
+Sabendo que `\(\frac{dx}{dt}=v\)`, onde v é a velocidade da onda e `\(k = \frac{2\pi}{\lambda}\)` e `\(\omega = 2\pi\nu\)`, teremos
+`\begin{align}
+ v = \frac{\omega}{k} = \lambda\nu\quad\text{(velocidade da onda)}.
+\end{align}`
+Para `\(kx+\omega t\)` teremos `\(v=-\lambda\nu\)`, ou seja, uma onda se propagando no sentido contrário.
+]
+
+---
+class: middle
+
 &lt;div class="my-header"&gt;&lt;span&gt;A equação da onda&lt;/span&gt;&lt;/div&gt;
+
+.pull-left[
+Supomos que na figura anterior, temos uma pequena parte da mola de comprimento dx e massa dm, onde `\(dm=\mu dx\)`, e `\(\mu\)` é a densidade de massa. Podemos dizer que ao aplicar a segunda lei de Newton para o seu movimento vertical teremos a sequinte expressão abaixo,
+`\begin{align}
+  T_{2y}-T_{1y} = dma_y.
+\end{align}`
+Se que a mola estiver esticada próxima ao seu começo, podemos sugerir que `\(T_1&lt;&lt;T_2\)`, portanto
+`\begin{align}
+  T_{2y} \approx \mu dxa_y.
+\end{align}`
+Porém podemos ver que `\(\frac{T_{2x}}{T_{1x}}=\tan\theta\)`. E pela definição de derivada teremos `\(\tan\theta = \frac{dy}{dx}\)`. Assim
+`\begin{align}
+  T_{2y} &amp; = T_{2x}\left(\frac{dy}{dx}\right).
+\end{align}`
+]
+.pull-right[
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/pulso.jpeg" alt="Propagação de um pulso em uma corda elástica." width="90%" /&gt;
+&lt;p class="caption"&gt;Propagação de um pulso em uma corda elástica.&lt;/p&gt;
+&lt;/div&gt;
+]
+
+---
+class: middle
+
+&lt;div class="my-header"&gt;&lt;span&gt;A equação da onda (continuação)&lt;/span&gt;&lt;/div&gt;
+
+.pull-left[
+Substituindo `\(T_{2y}\)` definido anteriormente
+`\begin{align}
+  T_{2x}\left(\frac{dy}{dx}\right) \approx \mu dxa_y.
+\end{align}`
+Supondo que a amplitude da onda é muito pequena em relação ao comprimento da mola, onde `\(T_{2x}\approx T_2\)`, então
+`\begin{align}
+  T_{2}\left(\frac{dy}{dx}\right) &amp; = \mu dxa_y,\\
+  \frac{dy}{dx} &amp; = \left(\frac{\mu}{T_2}\frac{d^2y}{dt^2}\right)dx.
+\end{align}`
+Pela definição de derivada chegamos a conclusão que
+`\begin{align}
+  \frac{d^2y}{dx^2} &amp; = \frac{\mu}{T_2}\frac{d^2y}{dt^2},\\
+  \frac{\partial^2y}{\partial x^2} &amp; = \frac{1}{v^2}\frac{\partial^2y}{\partial t^2},\quad\text{(equação da onda)},
+\end{align}`
+onde v é a velocidade da onda na mola (veja o apêndice).
+]
+.pull-right[
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/pulso.jpeg" alt="Propagação de um pulso em uma corda elástica." width="90%" /&gt;
+&lt;p class="caption"&gt;Propagação de um pulso em uma corda elástica.&lt;/p&gt;
+&lt;/div&gt;
+]
+
+---
+class: middle
+
+&lt;div class="my-header"&gt;&lt;span&gt;A equação da onda (continuação)&lt;/span&gt;&lt;/div&gt;
+
+.pull-left[
+Agora iremos checar se a função `\(y(x,t)\)` satisfaz a equação da onda, e assim concretizando-se como função de onda. Derivando em relação x teremos
+`\begin{align}
+  \frac{\partial y(x,t)}{\partial x} &amp; = -k\sin (kx-\omega t),\\
+  \frac{\partial^2 y(x,t)}{\partial x^2} &amp; = -k^2\cos (kx-\omega t).
+\end{align}`
+Derivando em relação a t teremos
+`\begin{align}
+  \frac{\partial y(x,t)}{\partial t} &amp; = \omega\sin (kx-\omega t),\\
+  \frac{\partial^2 y(x,t)}{\partial t^2} &amp; = -\omega^2\cos (kx-\omega t).
+\end{align}`
+Substitundo na equação da onda teremos
+`\begin{align}
+  -k^2\cos (kx-\omega t) = \frac{-\omega^2}{v^2}\cos (kx-\omega t)
+\end{align}`
+]
+.pull-right[
+Cancelando os termos remanescentes em ambos os lados da equação chegaremos a
+`\begin{align}
+  k^2 &amp; = \frac{\omega^2}{v^2},\\
+  v^2 &amp; = \frac{\omega^2}{k^2}.
+\end{align}`
+Assim podemos perceber que `\(y(x,t)\)` somente satisfaz a equação se `\(v=\frac{\omega}{k}\)`, o que é verdade, como foi demonstrado anteriormente.
+]
 
 ---
 class: middle

@@ -16,21 +16,21 @@
 
 		\tkzFct[domain=0:5*pi, color=red, line width=5pt]{\ym*cos(\k*x)}
 
-		\tkzDefPoints{pi/\ym/p1,2*pi/\ym/p2}	
-		\draw (p1.center) to[dim arrow={label=$\lambda$}, color=black, line width=5pt] (p2.center);
+%		\tkzDefPoints{pi/\ym/p1,2*pi/\ym/p2}	
+%		\draw (p1.center) to[dim arrow={label=$\lambda$}, color=black, line width=5pt] (p2.center);
 				
-		\tkzDefPoints{0/0/a1,0/\ym/a2}
-		\draw (a1.center) to[dim arrow={label=amplitude}, color=black, sloped, line width=5pt] (a2.center);
+%		\tkzDefPoints{0/0/a1,0/\ym/a2}
+%		\draw (a1.center) to[dim arrow={label=amplitude}, color=black, sloped, line width=5pt] (a2.center);
 
-		\tkzDefPoints{3.5*pi/4/t1/,3*pi/\ym/p3}
-		\draw[->, line width=4pt](t1) -- (p3);
-		\tkzText[color=black, above](t1){crista}
+%		\tkzDefPoints{3.5*pi/4/t1/,3*pi/\ym/p3}
+%		\draw[->, line width=4pt](t1) -- (p3);
+%		\tkzText[color=black, above](t1){crista}
 				
-		\tkzDefPoints{3*pi/-4/t2/,2.5*pi/-\ym/p4}
-		\draw[->, line width=4pt](t2) -- (p4);
-		\tkzText[color=black, below](t2){vale}
+%		\tkzDefPoints{3*pi/-4/t2/,2.5*pi/-\ym/p4}
+%		\draw[->, line width=4pt](t2) -- (p4);
+%		\tkzText[color=black, below](t2){vale}
 
 		\tkzDefPoints{4.25*pi/4/v1}
-		\draw[->,line width=4pt](v1)	 --++ (1.5,0) node [above, midway, color=black, line width=5pt] {$\vec{v}$};
+		\draw[<-,line width=10pt](v1)	 --++ (1.5,0) node [above, midway, color=black, line width=5pt] {$\vec{v}$};
 
 \end{tikzpicture}

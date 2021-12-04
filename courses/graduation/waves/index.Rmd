@@ -304,7 +304,13 @@ Cancelando os termos remanescentes em ambos os lados da equação chegaremos a
   k^2 & = \frac{\omega^2}{v^2},\\
   v^2 & = \frac{\omega^2}{k^2}.
 \end{align}
-Assim podemos perceber que $y(x,t)$ somente satisfaz a equação se $v=\frac{\omega}{k}$, o que é verdade, como foi demonstrado anteriormente.
+Assim podemos perceber que $y(x,t)$ somente satisfaz a equação se $v=\pm\frac{\omega}{k}$, o que é verdade, como foi demonstrado anteriormente.
+
+O mesmo é válido para a função $y(x,t)=y_m\cos (kx+\omega t)$. Substituindo na equação de onda teremos a equação abaixo,
+\begin{align}
+  -k^2\cos (kx+\omega t) = \frac{-\omega^2}{v^2}\cos (kx+\omega t),
+\end{align}
+ou seja, somente será solução da equação se $v=\pm \frac{\omega}{k}$.
 ]
 
 ---

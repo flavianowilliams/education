@@ -36,7 +36,13 @@
 				
 				%texto
 				\node at (4,-2) {$T_{2_{x}}>T_{1_{x}}$};
-				
+		
+				%angulo
+				\coordinate (p1) at ($(a)+({0.3*((5-\tx)-0)},0)$);
+				\coordinate (p2) at ($(a)+0.3*(5,0)-0.3*(a)$);
+				\tkzMarkAngle[size=0.6, line width=3pt](p1,a,p2)
+				\tkzLabelAngle[dist=0.75cm](p1,a,p2){\tiny$\theta$}
+		
 				%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 				%sistema 2
 				

@@ -17,7 +17,7 @@ class: center, middle, inverse, title-slide
 ## Ondas
 ### Flaviano Williams Fernandes
 ### Instituto Federal do Paraná - Irati
-### 16 de novembro de 2021 (atualizado em 05/12/2021)
+### 16 de novembro de 2021 (atualizado em 07/12/2021)
 
 ---
 
@@ -281,19 +281,20 @@ class: middle
 &lt;div class="my-header"&gt;&lt;span&gt;A equação da onda (continuação)&lt;/span&gt;&lt;/div&gt;
 
 .pull-left[
-Agora iremos checar se a função `\(y(x,t)\)` satisfaz a equação da onda, e assim concretizando-se como função de onda. Derivando em relação x teremos
+Vamos verificar se `\(y(x,t)\)` satisfaz a equação da onda. Primeiramente, vamos representá-la em uma forma mais geral, onde a mesma pode ter uma fase inicial `\(\phi\)`,
 `\begin{align}
-  \frac{\partial y(x,t)}{\partial x} &amp; = -k\sin (kx-\omega t),\\
-  \frac{\partial^2 y(x,t)}{\partial x^2} &amp; = -k^2\cos (kx-\omega t).
+  y(x,t) = y_m\cos (kx - \omega t+\phi)
 \end{align}`
-Derivando em relação a t teremos
+Derivando em relação x e t teremos
 `\begin{align}
-  \frac{\partial y(x,t)}{\partial t} &amp; = \omega\sin (kx-\omega t),\\
-  \frac{\partial^2 y(x,t)}{\partial t^2} &amp; = -\omega^2\cos (kx-\omega t).
+  \frac{\partial y(x,t)}{\partial x} &amp; = -k\sin (kx-\omega t+\phi),\\
+  \frac{\partial^2 y(x,t)}{\partial x^2} &amp; = -k^2\cos (kx-\omega t+\phi),\\
+  \frac{\partial y(x,t)}{\partial t} &amp; = \omega\sin (kx-\omega t+\phi),\\
+  \frac{\partial^2 y(x,t)}{\partial t^2} &amp; = -\omega^2\cos (kx-\omega t+\phi).
 \end{align}`
 Substitundo na equação da onda teremos
 `\begin{align}
-  -k^2\cos (kx-\omega t) = \frac{-\omega^2}{v^2}\cos (kx-\omega t)
+  -k^2\cos (kx-\omega t+\phi) = \frac{-\omega^2}{v^2}\cos (kx-\omega t+\phi)
 \end{align}`
 ]
 .pull-right[
@@ -304,9 +305,9 @@ Cancelando os termos remanescentes em ambos os lados da equação chegaremos a
 \end{align}`
 Assim podemos perceber que `\(y(x,t)\)` somente satisfaz a equação se `\(v=\pm\frac{\omega}{k}\)`, o que é verdade, como foi demonstrado anteriormente.
 
-O mesmo é válido para a função `\(y(x,t)=y_m\cos (kx+\omega t)\)`. Substituindo na equação de onda teremos a equação abaixo,
+O mesmo é válido para a função `\(y(x,t)=y_m\cos (kx+\omega t+\phi)\)`. Substituindo na equação de onda teremos a equação abaixo,
 `\begin{align}
-  -k^2\cos (kx+\omega t) = \frac{-\omega^2}{v^2}\cos (kx+\omega t),
+  -k^2\cos (kx+\omega t+\phi) = \frac{-\omega^2}{v^2}\cos (kx+\omega t+\phi),
 \end{align}`
 ou seja, somente será solução da equação se `\(v=\pm \frac{\omega}{k}\)`.
 ]
@@ -314,32 +315,285 @@ ou seja, somente será solução da equação se `\(v=\pm \frac{\omega}{k}\)`.
 ---
 class: middle
 
-&lt;div class="my-header"&gt;&lt;span&gt;Refração e reflexão de uma onda&lt;/span&gt;&lt;/div&gt;
+&lt;div class="my-header"&gt;&lt;span&gt;Reflexão de uma onda&lt;/span&gt;&lt;/div&gt;
+
+# Reflexão da onda
+
+* Na extremidade móvel, o pulso é refletido e retorna igual ao pulso incidente;
+* Na extremidade fixa, o pulso é refletido e retorna invertido ao pulso incidente;
+* Numa corda, somente pode existir números inteiros de comprimentos de onda.
+
+.pull-left[
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/onda-extremidade-movel.jpeg" alt="Extremidade móvel. A onda se propaga livremente na corda, e para manter o seu movimento ela é refletida para a esquerda." width="90%" /&gt;
+&lt;p class="caption"&gt;Extremidade móvel. A onda se propaga livremente na corda, e para manter o seu movimento ela é refletida para a esquerda.&lt;/p&gt;
+&lt;/div&gt;
+]
+.pull-right[
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/onda-extremidade-fixa.jpeg" alt="Extremidade fixa. Afim de satisfazer a conservação do momento, a onda refletida deve estar em sentido oposto ao onda incidente." width="90%" /&gt;
+&lt;p class="caption"&gt;Extremidade fixa. Afim de satisfazer a conservação do momento, a onda refletida deve estar em sentido oposto ao onda incidente.&lt;/p&gt;
+&lt;/div&gt;
+]
 
 ---
 class: middle
 
-&lt;div class="my-header"&gt;&lt;span&gt;O princípio da superposição&lt;/span&gt;&lt;/div&gt;
+&lt;div class="my-header"&gt;&lt;span&gt;Refração de uma onda&lt;/span&gt;&lt;/div&gt;
+
+# Refração da onda
+
+* A velocidade de uma onda diminui quando ela atravessa o meio 1 (mais fino) para o meio 2 (mais grosso) (v2 &lt; v1);
+* O comprimento de onda também diminui quando ela atravessa um meio mais fino para o mais grosso, λ2 &lt; λ1;
+* Parte do pulso é refratado e parte é refletido;
+* A frequência é a mesma da fonte geradora do pulso, portanto ela não se altera no processo.
+
+.pull-left[
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/onda-refracao.jpeg" alt="Propagação de um pulso em uma corda elástica." width="100%" /&gt;
+&lt;p class="caption"&gt;Propagação de um pulso em uma corda elástica.&lt;/p&gt;
+&lt;/div&gt;
+]
+.pull-right[
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/onda-refracao-2.jpeg" alt="Propagação de um pulso em uma corda elástica." width="100%" /&gt;
+&lt;p class="caption"&gt;Propagação de um pulso em uma corda elástica.&lt;/p&gt;
+&lt;/div&gt;
+]
+
+---
+class: middle
+
+&lt;div class="my-header"&gt;&lt;span&gt;O princípio da superposição - Definição&lt;/span&gt;&lt;/div&gt;
+
+# Princípio da superposição
+
+*"Qualquer combinação linear de soluções também é solução."*
+
+.pull-left[
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/interferencia-construtiva.jpeg" alt="Interferência construtiva." width="80%" /&gt;
+&lt;p class="caption"&gt;Interferência construtiva.&lt;/p&gt;
+&lt;/div&gt;
+]
+.pull-right[
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/interferencia-destrutiva.jpeg" alt="Interferência destrutiva." width="80%" /&gt;
+&lt;p class="caption"&gt;Interferência destrutiva.&lt;/p&gt;
+&lt;/div&gt;
+]
+
+---
+class: middle
+
+&lt;div class="my-header"&gt;&lt;span&gt;O princípio da superposição - Regra dos fasores&lt;/span&gt;&lt;/div&gt;
+
+.pull-left[
+A soma de duas ondas da forma indicada no slide anterior só pode ser executada se as ondas tiverem a mesma amplitude. Caso as ondas tenham o **mesmo número de onda**, **frequência** e **velocidade**, porém com amplitudes diferentes e uma defasagem `\(\phi\)` entre ambas, precisamos recorrer a métodos mais gerais. Um desses métodos é o uso de fasores para representar as ondas, que a princípio usa técnica de adição de vetores. Considere duas ondas com o número de onda `\(k\)` e frequência `\(\omega\)`, a função de onda de ambas é dada por
+`\begin{align}
+y_1(x,t) &amp; = y_{m1}\cos (kx-\omega t)\Rightarrow y_{m1}\cos\theta_1,\\
+y_2(x,t) &amp; = y_{m2}\cos (kx-\omega t+\phi)\Rightarrow y_{m2}\cos\theta_2.
+\end{align}`
+Porém, representando no plano cartesiano, podemos considerar que o termo cosseno seria a projeção do vetor `\(\vec{y}_1\)` no eixo x, ou seja, `\(y_{1x}\)`, etc. Assim, podemos dizer que a onda resultante `\(y\)`, onde `\(y(x,t)=y_1(x,t)+y_2(x,t)\)` seria
+]
+.pull-right[
+`\begin{align}
+y(x,t) &amp; = y_{m1}\cos\theta_1+y_{m2}\cos\theta_2,\\
+y(x,t) &amp; = y_{1_{x}}+y_{2_{x}}.
+\end{align}`
+Pela regra do paralelogramo temos que
+`\begin{align}
+|\vec{y}|^2 &amp; = |\vec{y}_1|^2+|\vec{y}_2|^2+2|\vec{y}_1||\vec{y}_2|\cos\phi,\\
+y_{m}^2 &amp; = y_{m1}^2+y_{m2}^2+2y_{m1}y_{m2}\cos\phi,
+\end{align}`
+onde `\(y_{m}\)`, `\(y_{m1}\)` e `\(y_{m2}\)` são os módulos dos vetores.
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/fasores.jpeg" alt="Regra dos fasores aplicado a dois vetores." width="100%" /&gt;
+&lt;p class="caption"&gt;Regra dos fasores aplicado a dois vetores.&lt;/p&gt;
+&lt;/div&gt;
+]
 
 ---
 class: middle
 
 &lt;div class="my-header"&gt;&lt;span&gt;O princípio da superposição - Interferência&lt;/span&gt;&lt;/div&gt;
 
----
-class: middle
-
-&lt;div class="my-header"&gt;&lt;span&gt;O princípio da superposição - Fasores e o plano complexo&lt;/span&gt;&lt;/div&gt;
+.pull-left[
+Pela regra dos fasores podemos perceber que a amplitude de duas ondas com a mesma velocidade, número de onda e frequência poderá atingir um valor máximo ou mínimo. A partir da equação anterior, que representa a amplitude máxima da onda resultante, teremos
+`\begin{align}
+y_{m}^2 &amp; = y_{m1}^2+y_{m2}^2+2y_{m1}y_{m2}\cos\phi.
+\end{align}`
+Pela propriedade da função cosseno, podemos perceber que `\(y_m\)` será mínimo (*interferência destrutiva*) se o terceiro termo for zero, e sabendo que `\(y_{m1}\neq 0\)` e `\(y_{m2}\neq 0\)`, isso somente é possível se `\(\cos\phi = -1\)`. Situação idêntica também acontece quando `\(y_m\)` assume um valor máximo (*interferência construtiva*), onde somente é possível se `\(\cos\phi = 1\)`. Pelas propriedades da função cosseno temos que isso poderá acontecer se
+`\begin{align}
+\phi = \begin{cases}
+						n\lambda &amp; \text{(Construtiva)},\\
+						\left(n+\frac{1}{2}\right)\lambda &amp; \text{(Destrutiva)},
+					\end{cases}
+\end{align}`
+]
+.pull-right[
+onde n é um número inteiro. Para outros valores de `\(\phi\)`, `\(y_m\)` irá assumir valores entre `\(\sqrt{y_{m1}^2-y_{m2}^2}\)` e `\(\sqrt{y_{m1}^2+y_{m2}^2}\)`.
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/interferencia.jpg" alt="Interferência de ondas na água." width="90%" /&gt;
+&lt;p class="caption"&gt;Interferência de ondas na água.&lt;/p&gt;
+&lt;/div&gt;
+]
 
 ---
 class: middle
 
 &lt;div class="my-header"&gt;&lt;span&gt;O princípio da superposição - Ondas estacionárias&lt;/span&gt;&lt;/div&gt;
 
+.pull-left[
+Supondo duas ondas se propagando com a mesma amplitude, número de onda e frequência e mesma velocidade mas em sentidos contrários, a função de onda de cada uma é dado como mostra a equação abaixo,
+`\begin{align}
+y_1(x,t) &amp; =y_{m}\cos (kx-\omega t),\\
+y_2(x,t) &amp; =y_{m}\cos (kx+\omega t - \pi).
+\end{align}`
+Neste caso a onda `\(y_2\)`, além de se mover no sentido contrário a `\(y_1\)`, ela também possui uma defasagem `\(\pi\)`. Isso foi feito afim de reproduzir o efeito de uma onda `\(y_1\)` sendo refletida no contrário, assim como mostra o slide xxx. A onda resultante é dado pela soma `\(y=y_1+y_2\)`,
+`\begin{align}
+y(x,t) &amp; = y_1(x,t)+y_2(x,t),\\
+       &amp; = y_{m}\cos (kx-\omega t)+y_{m}\cos (kx+\omega t+\pi),\\
+       &amp; = y_{m}\cos \left[\left(kx+\pi/2\right)-\left(\omega t+\pi/2\right)\right]+\\
+       &amp; + y_{m}\cos \left[\left(kx+\pi/2\right)+\left(\omega t+\pi/2\right)\right]
+\end{align}`
+]
+.pull-right[
+Fazendo a substituição `\(A=kx+\pi/2\)` e `\(B=\omega t+\pi/2\)` teremos
+`\begin{align}
+y(x,t) &amp; = y_{m}\cos (A-B)+y_{m}\cos (A+B),\\
+       &amp; = y_{m}\left[\cos (A-B)+\cos (A+B)\right].
+\end{align}`
+
+Usando a propriedade trigonométrica `\(\cos(A+B)+\cos(A-B)=2\cos A\cos B\)` teremos
+`\begin{align}
+y(x,t) &amp; = 2y_{m}\cos A\cos B,\\
+       &amp; = 2y_{m}\cos(kx+\pi/2)\cos(\omega t+\pi/2).
+\end{align}`
+Usando também a identidade trigonométrica que `\(\cos(A+\pi/2)=\sin A\)`, teremos
+`\begin{align}
+\boxed{y(x,t) = 2y_{m}\sin(kx)\sin(\omega t).}
+\end{align}`
+A função de onda resultante resulta em uma onda que não se propaga no espaço e no tempo, no qual chamamos de **onda estacionária**. A seguir veremos a imagem de uma onda estacionária.
+]
+
+---
+class: middle
+
+&lt;div class="my-header"&gt;&lt;span&gt;O princípio da superposição - Ondas estacionárias (continuação)&lt;/span&gt;&lt;/div&gt;
+
+.pull-left[
+A figura abaixo mostra a onda estacionária a partir da superposição de duas ondas progressivas. Neste caso podemos imaginar que as a amplitude da onda se anula nas extremidades e em diversos pontos ao longo do comprimento. Esses pontos são denominados de nós.
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/onda-estacionaria.jpeg" alt="Onda estacionária a partir de duas ondas progressivas." width="75%" /&gt;
+&lt;p class="caption"&gt;Onda estacionária a partir de duas ondas progressivas.&lt;/p&gt;
+&lt;/div&gt;
+]
+.pull-right[
+Esse tipo de onda possui aplicação em teoria musical, mais especificamente em cordas vibrantes, onde as notas musicais são reproduzidas a partir dos modos normais de vibração da corda. Usando o princípio que a onda resultante deve ter números inteiros de comprimentos de onda, podemos formar ondas estacionárias, como mostra o vídeo abaixo.
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/5ICHZjnxgTs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
+]
+
+---
+class: middle
+
+&lt;div class="my-header"&gt;&lt;span&gt;O princípio da superposição - Modos normais de vibração&lt;/span&gt;&lt;/div&gt;
+
+.pull-left[
+em construção...
+]
+.pull-right[
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/modos-normais.jpeg" alt="Modos normais de vibração em uma corda esticada." width="100%" /&gt;
+&lt;p class="caption"&gt;Modos normais de vibração em uma corda esticada.&lt;/p&gt;
+&lt;/div&gt;
+]
+
+---
+class: middle
+
+&lt;div class="my-header"&gt;&lt;span&gt;O princípio da superposição - Tubos sonoros&lt;/span&gt;&lt;/div&gt;
+
+.pull-left[
+em construção...
+]
+.pull-right[
+
+]
+
 ---
 class: middle
 
 &lt;div class="my-header"&gt;&lt;span&gt;O princípio da superposição - Pacotes de onda&lt;/span&gt;&lt;/div&gt;
+
+.pull-left[
+Considere duas ondas harmônicas que possuem números de onda `\(k_1\)` e `\(k_2\)` e frequência angular `\(\omega_1\)` e `\(\omega_2\)`, respectivamente. A superposição do encontro dessas duas ondas é dado por
+`\begin{aligned}
+  y(x,t) &amp; = y_1(x,t)+y_2(x,t),\\\
+         &amp; = y_m\cos(k_1x-\omega_1t)+y_m\cos(k_2x-\omega_2t).
+\end{aligned}`
+Definindo as diferenças `\(\Delta k=k_2-k_1\)` e `\(\Delta \omega = \omega_2-\omega_1\)`, e os valores médios `\(\bar{k}=(k_1+k_2)/2\)` e  `\(\bar{\omega}=(\omega_1+\omega_2)/2\)`, podemos fazer as substituições
+`\begin{aligned}
+  k_1 &amp; = \bar{k}-\Delta K;\quad k_2 = \bar{k}+\Delta K,\\\
+  \omega_1 &amp; = \bar{\omega}-\Delta \omega;\quad \omega_2 = \bar{\omega}+\Delta \omega.
+\end{aligned}`
+Após a substituição em `\(y(x,t)\)` teremos (para maiores detalhes, veja o Apêndice A)
+`\begin{aligned}
+  y(x,t) = 2y_m\cos\left(\frac{\Delta k}{2}x-\frac{\Delta \omega}{2}t\right)\cos\left(\bar{k}x-\bar{\omega}t\right).
+\end{aligned}`
+]
+.pull-right[
+Na figura abaixo, a curva preta representa a onda `\(y_1\)` e a curva vermelha a onda `\(y_2\)`. O encontro de ambas as ondas remete a fenômenos de interferência, e o resultado é a formação de um pacote de onda,
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/pacote-ondas.jpeg" alt="Superposição de duas ondas harmônicas com números de onda e frequências angulares diferentes." width="90%" /&gt;
+&lt;p class="caption"&gt;Superposição de duas ondas harmônicas com números de onda e frequências angulares diferentes.&lt;/p&gt;
+&lt;/div&gt;
+]
+
+---
+class: middle
+
+&lt;div class="my-header"&gt;&lt;span&gt;O princípio da superposição - O plano complexo (em construção...)&lt;/span&gt;&lt;/div&gt;
+
+---
+class: middle
+
+&lt;div class="my-header"&gt;&lt;span&gt;Apêndice A&lt;/span&gt;&lt;/div&gt;
+
+.pull-left[
+Definindo as diferenças `\(\Delta k=k_2-k_1\)` e `\(\Delta \omega = \omega_2-\omega_1\)`, e os valores médios `\(\bar{k}=(k_1+k_2)/2\)` e  `\(\bar{\omega}=(\omega_1+\omega_2)/2\)` podemos dizer que
+`\begin{aligned}
+  k_1 &amp; = \bar{k}-\Delta K;\quad k_2 = \bar{k}+\Delta K,\\\
+  \omega_1 &amp; = \bar{\omega}-\Delta \omega;\quad \omega_2 = \bar{\omega}+\Delta \omega.
+\end{aligned}`
+Para obter a função de onda resultante é conveniente usarmos a fórmula de Euler, `\(e^{i\theta}=\cos\theta+i\sin\theta\)`, onde apenas nos interessa a parte real,
+`\begin{aligned}
+  \Psi(x,t) &amp; = y_m\left[\cos(k_1x-\omega_1t)+\cos(k_2x-\omega_2t)\right],\\
+         &amp; = y_m\Re\left[e^{i(k_1x-\omega_1t)}+e^{i(k_2x-\omega_2t)}\right],\\
+         &amp; = y_m\Re\left[e^{i[(\bar{k}-\Delta k)x-(\bar{\omega}-\Delta \omega)t]}+e^{i[(\bar{k}+\Delta K)x-(\bar{\omega}+\Delta \omega)t]}\right],\\
+         &amp; = y_m\Re\left[e^{i(\bar{k}x-\Delta Kx-\bar{\omega}t+\Delta \omega t)}+e^{i(\bar{k}x+\Delta Kx-\bar{\omega}t-\Delta \omega t)}\right],\\
+         &amp; = y_m\Re\left[e^{i(\bar{k}x-\bar{\omega}t)}e^{-i(\Delta Kx-\Delta \omega t)}\right.+\\
+         &amp; + \left.e^{i(\bar{k}x-\bar{\omega}t)}e^{i(\Delta Kx-\Delta \omega t)}\right],
+\end{aligned}`
+]
+.pull-right[
+`\begin{aligned}
+  \Psi(x,t) &amp; = y_m\left(e^{-i(\Delta Kx-\Delta \omega t)}+e^{i(\Delta Kx-\Delta \omega t)}\right)\Re\left[e^{i(\bar{k}x-\bar{\omega}t)}\right].
+\end{aligned}`
+Pela fórmula de Euler, podemos usar a identidade
+`\begin{aligned}
+  \cos\theta = \frac{e^{i\theta}+e^{-i\theta}}{2}.
+\end{aligned}`
+Substituindo teremos
+`\begin{aligned}
+  \Psi(x,t) &amp; = y_m\left(2\cos\left(\Delta Kx-\Delta \omega t\right)\right)\Re\left[e^{i(\bar{k}x-\bar{\omega}t)}\right].
+\end{aligned}`
+Isolando a parte real do termo `\(e^{i(\bar{k}x-\bar{\omega}t)}\)` chegaremos na função de onda resultante,
+`\begin{aligned}
+  \boxed{\Psi(x,t) = 2y_m\cos\left(\frac{\Delta k}{2}x-\frac{\Delta \omega}{2}t\right)\cos\left(\bar{k}x-\bar{\omega}t\right).}
+\end{aligned}`
+]
 
 ---
 class: middle

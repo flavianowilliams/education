@@ -1,0 +1,90 @@
+\begin{tikzpicture}[scale=6,transform shape,samples=200, font=\Large]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		%interferencia 1
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+		%parametros de cada frame
+		\def\xm{1.5}
+		\def\xa{5}
+		\def\xb{10}
+		\def\xt{15}
+		\def\l{2}
+
+		\tkzInit[xmin=2,xmax=18,ymin=-11,ymax=3]
+		%\tkzGrid
+
+%		\useasboundingbox (-0.5,-9-\xm) rectangle (\xt+0.5,\xm+1);
+
+		%eixo
+%		\draw[line width=1.0pt,->,color=blue] (0,{-(\xm+1)}) -- (0,{(\xm+1)}) node[above] {};
+		\draw[line width=7pt,->,color=blue] (0,0) -- (\xt,0) node[right] {x};
+
+	%definindo funcao
+	\pgfmathdeclarefunction{ff}{1}{\pgfmathparse{\xm*exp(-\l*(#1-\xa)^2)}}
+	\pgfmathdeclarefunction{fff}{1}{\pgfmathparse{-\xm*exp(-\l*(#1-\xb)^2)}}
+
+	%curva
+	\draw[line width=7pt,domain=\xa-3:\xa+3,variable=\x,color=red] plot (\x,{ff(\x)});
+	\draw[line width=7pt,domain=\xb-3:\xb+3,variable=\x,color=red] plot (\x,{fff(\x)});
+
+	%vetores
+	\draw[->,line width=7.0pt] (\xa-0.5,\xm+0.5) -- (\xa+0.5,\xm+0.5) node [ above,midway] {$\vec{v}_1$};
+	\draw[<-,line width=7.0pt] (\xb-0.5,-\xm-1) -- (\xb+0.5,-\xm-1) node [ above,midway] {$\vec{v}_2$};
+
+	\draw[<->,line width=7.0pt] (\xa,0) -- (\xa,\xm) node [left,midway,fill=white, opacity=1] {$y_{m_1}$};
+	\draw[<->,line width=7.0pt] (\xb,0) -- (\xb,-\xm) node [left,midway,fill=white, opacity=1] {$y_{m_2}$};
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		%interferencia 2
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+		%parametros de cada frame
+		\def\dy{-4}
+		\def\xm{1.5}
+		\def\xc{0.5*(\xa+\xb)}
+		\def\xt{15}
+
+		%eixo
+%		\draw[line width=1.0pt,->,color=blue] (0,{-(\xm+1)+\dy}) -- (0,{(\xm+1)+\dy}) node[above] {};
+		\draw[line width=7.0pt,->,color=blue] (0,\dy) -- (\xt,\dy) node[right] {x};
+
+	%definindo funcao
+	\pgfmathdeclarefunction{ffff}{1}{\pgfmathparse{\dy+0*\xm*exp(-\l*(#1-\xc)^2)}}
+
+	%curva
+	\draw[line width=7pt,domain=\xc-3:\xc+3,variable=\x,color=red] plot (\x,{ffff(\x)});
+
+	%vetores
+%	\draw[<->,line width=1.0pt] ({\xc},{0+\dy}) -- ({\xc},{2*\xm+\dy}) node [left,midway] {$(A_1+A_2)$};
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		%interferencia 3
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+		%parametros de cada frame
+		\def\dy{-8}
+		\def\xm{1.5}
+		\def\xa{5}
+		\def\xb{10}
+		\def\xt{15}
+		\def\l{2}
+
+		%eixo
+%		\draw[line width=1.0pt,->,color=blue] (0,{-(\xm+1)+\dy}) -- (0,{(\xm+1)+\dy}) node[above] {};
+		\draw[line width=7.0pt,->,color=blue] (0,+\dy) -- (\xt,+\dy) node[right] {x};
+
+	%definindo funcao
+	\pgfmathdeclarefunction{fffff}{1}{\pgfmathparse{\dy-\xm*exp(-\l*(#1-\xa)^2)}}
+	\pgfmathdeclarefunction{ffffff}{1}{\pgfmathparse{\dy+\xm*exp(-\l*(#1-\xb)^2)}}
+
+	%curva
+	\draw[line width=7pt,domain=\xa-3:\xa+3,variable=\x,color=red] plot (\x,{fffff(\x)});
+	\draw[line width=7pt,domain=\xb-3:\xb+3,variable=\x,color=red] plot (\x,{ffffff(\x)});
+
+	%vetores
+	\draw[<-,line width=7.0pt] (\xa-0.5,-\xm-1+\dy) -- (\xa+0.5,-\xm-1+\dy) node [ above,midway] {$\vec{v}_2$};
+	\draw[->,line width=7.0pt] (\xb-0.5,\xm+0.5+\dy) -- (\xb+0.5,\xm+0.5+\dy) node [ above,midway] {$\vec{v}_1$};
+
+	\draw[<->,line width=7.0pt] (\xa,{0+\dy}) -- (\xa,{-\xm+\dy}) node [left,midway,fill=white, opacity=1] {$y_{m_2}$};
+	\draw[<->,line width=7.0pt] (\xb,{0+\dy}) -- (\xb,{\xm+\dy}) node [left,midway,fill=white, opacity=1] {$y_{m_1}$};
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{tikzpicture}

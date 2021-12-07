@@ -1,0 +1,83 @@
+\begin{tikzpicture}[scale=6, auto, samples=70, transform shape, font=\Large]
+
+		%parametros gerais
+		\def\xm{1.2}
+		\def\ta{3.14}
+		\def\tb{6.28}
+		\def\ty{-5}
+		\def\om{1.5}
+		\def\k{1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		%grafico 1
+
+		%definindo funcao
+		\pgfmathdeclarefunction{ff}{2}{\pgfmathparse{\xm*cos(deg(\k*#1-\om*#2))}}
+
+		%eixo
+		\draw[line width=15.0pt,->] (0,-{(\xm+1)}) -- (0,{(\xm+1)}) node[above] {};
+		\draw[line width=15.0pt] (0,0) -- (5*\ta,0);
+
+		%curva
+		\draw[line width=7.0pt,domain=0:5*\ta,variable=\x,color=red] plot (\x,{ff(\x,1)});
+
+		%velocidade
+		\draw[->, line width=15pt] (4.1*\ta,1.5*\xm) -- (4.6*\ta,1.5*\xm) node[above,midway] {$\vec{v}$};
+
+	%periodicidade
+	\node at (5.5*\ta,0) {$\large{\cdots}$};
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		%grafico 2
+
+		%definindo funcao
+		\pgfmathdeclarefunction{ff2}{2}{\pgfmathparse{\ty+\xm*cos(deg(\k*#1+\om*#2+\tb))}}
+
+		%eixo
+		\draw[line width=15.0pt,->] (0,-{(\xm+1)+\ty}) -- (0,{(\xm+1)+\ty}) node[above] {};
+		\draw[line width=15.0pt] (0,0+\ty) -- (5*\ta,0+\ty);
+
+		%curva
+		\draw[line width=7.0pt,domain=0:5*\ta,variable=\x,color=red] plot (\x,{ff2(\x,1)});
+
+		%velocidade
+		\draw[<-, line width=15pt] (4.1*\ta,1.5*\xm+\ty) -- (4.6*\ta,1.5*\xm+\ty) node[above,midway] {$-\vec{v}$};
+
+	%periodicidade
+	\node at (5.5*\ta,0+\ty) {$\large{\cdots}$};
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		%grafico 3
+
+		%parede
+		\fill [pattern = north west lines] (-0.2,-1+2.25*\ty) rectangle (0,1+2.25*\ty);
+		\draw (0,-1+2.25*\ty) -- (0,1+2.25*\ty);
+
+		\fill [pattern = north west lines] (5*\ta+0.2,-1+2.25*\ty) rectangle (5*\ta,1+2.25*\ty);
+		\draw (5*\ta,-1+2.25*\ty) -- (5*\ta,1+2.25*\ty);
+
+		%definindo funcao
+		\pgfmathdeclarefunction{ff4}{2}{\pgfmathparse{2.25*\ty+2*\xm*sin(deg(-\k*#1))*sin(deg(\om*#2))}}
+		\pgfmathdeclarefunction{ff3}{2}{\pgfmathparse{2.25*\ty+2*\xm*sin(deg(\k*#1))*sin(deg(\om*#2))}}
+
+		%eixo
+%		\draw[line width=1.0pt,->] (0,-{(2*\xm+1)+2.25*\ty}) -- (0,{(2*\xm+1)+2.25*\ty}) node[above] {};
+		\draw[line width=7.0pt,dashed] (0,0+2.25*\ty) -- (5*\ta,0+2.25*\ty);
+
+		%curva
+		\draw[line width=7.0pt,domain=0:5*\ta,variable=\x,color=red] plot (\x,{ff3(\x,1)});
+		\draw[line width=7.0pt,domain=0:5*\ta,variable=\x,color=red] plot (\x,{ff4(\x,1)});
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+		\foreach \x in {0.5,1,...,15}
+		\draw[<->, line width=15pt] (\x,{ff3(\x,1)}) -- (\x,{ff4(\x,1)});
+
+		\coordinate (t1a) at (6.28,2.25*\ty);
+		\coordinate (t1b) at (6.28,2.5+2.25*\ty);
+
+		\draw[color=blue, line width=7pt](t1a) circle (7pt);
+		\draw[<-, line width=15pt, color=blue]($(t1a)+(0,0.3)$) -- (t1b);
+		\tkzText[color=black, opacity=100,fill=gray!20](t1b){no}
+
+\end{tikzpicture}

@@ -1,0 +1,44 @@
+		\begin{tikzpicture}[scale=6,transform shape,samples=100]
+		
+			\tkzInit[xmin=0,xmax=16, ymin=-1,ymax=5]
+			%\tkzGrid
+
+		%parametros
+		\def\lambdax{8}
+		\def\lambday{4}
+		\def\a{2}
+		\def\k{4*pi/\lambdax}
+		\def\kb{4*pi/\lambday}
+		\def\om{0.5*pi}
+		\def\xm{1}
+		
+		%setup styles
+		\tikzstyle{s1}=[circle, radius=0.25, ball color=gray];
+		
+		%definindo funcao
+		\pgfmathdeclarefunction{f}{2}{\pgfmathparse{\a+\xm*cos(deg(\kb*#1-\om*#2))}}
+		\pgfmathdeclarefunction{ff}{2}{\pgfmathparse{\a+\xm*cos(deg(\k*#1-\om*#2))}}
+		
+		%curva
+		\draw[line width=15pt,domain=0:\lambdax,variable=\x,color=gray] plot (\x,{f(\x,1)});
+		\draw[line width=5pt,domain=\lambdax:2*\lambdax,variable=\x,color=gray] plot (\x,{ff(\x,1)});
+		
+		%linha de referencia
+		\draw[loosely dashed] (0,\a) -- (4*\lambday,\a);
+		
+		%comprimento de onda
+		\draw[<->,color=gray, line width=7pt] (0.5,3.5*\xm) -- (0.6*\lambday,3.5*\xm) node [above,midway] {$\lambda_1$};
+		\draw[<->,color=gray, line width=7pt] (1.13*\lambdax,3.5*\xm) -- (1.62*\lambdax,3.5*\xm) node [above,midway] {$\lambda_2$};
+		
+		%texto
+		\node[text width=1cm] (t1) at (0.5*\lambdax,-0.5) {$\text{Onda incidente}$};
+		\draw[->, line width=7pt]	(t1) -- (0.45*\lambdax,\xm-0.2);
+		
+		\node[text width=1cm] (t2) at (1.5*\lambdax,-0.5) {$\text{Onda refratada}$};
+		\draw[->, line width=7pt]	(t2) -- (1.4*\lambdax,\xm-0.2);
+		
+		%velocidades
+		\draw[->,color=gray, line width=7pt] (0.5*\lambdax+0.5,3.5*\xm) --++ (1,0) node[above,midway] {$\vec{v}_1$};	
+		\draw[->,color=gray, line width=7pt] (1.25*\lambdax+0.5*\lambday+2,3.5*\xm) --++ (1,0) node[above,midway] {$\vec{v}_2$};	
+		
+		\end{tikzpicture}

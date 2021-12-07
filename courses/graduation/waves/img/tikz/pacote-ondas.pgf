@@ -1,0 +1,58 @@
+\begin{tikzpicture}[scale=6,transform shape,font=\Large, samples=900]
+			
+		\tkzInit[xmin=0,xmax=12.6,ymin=-9,ymax=1]
+%		\tkzGrid[color=gray!20]
+		\tkzClip[space=1]
+
+			\def\y0{1}
+
+			\def\ka{6}
+			\def\oma{1}
+			\def\kb{5}
+			\def\omb{2}
+
+			\begin{scope}[shift={(0,0)}]
+				\tkzDrawX{label=x}
+				\tkzDrawY{label=y(x,t)}
+				\tkzFct[domain=0:7*pi,line width=7pt,samples=500]{\y0*cos(\ka*x)}
+				\tkzFct[domain=0:7*pi,color=red,line width=7pt,samples=500]{\y0*cos(\kb*x)}
+				\tkzDefPointByFct(pi)\tkzGetPoint{p1}
+				\tkzDefPointByFct(2*pi)\tkzGetPoint{p1a}
+				\tkzDefPointByFct(3*pi)\tkzGetPoint{p2a}
+				\tkzDefPointByFct(4*pi)\tkzGetPoint{p3a}
+				\tkzDefPointByFct(5*pi)\tkzGetPoint{p4a}
+			\end{scope}
+
+			\begin{scope}[shift={(0,-6)}]
+				\tkzInit[xmin=0,xmax=12.6,ymin=-3,ymax=2]
+
+				\tkzDrawX{label=x}
+
+				\tkzFct[domain=0:7*pi,line width=7pt,samples=500]{2*\y0*cos(0.5*(\kb-\ka)*x)*cos(0.5*(\ka+\kb)*x)}
+				\tkzDefPointByFct(pi)\tkzGetPoint{p2}
+				\tkzDefPointByFct(2*pi)\tkzGetPoint{p1b}
+				\tkzDefPointByFct(3*pi)\tkzGetPoint{p2b}
+				\tkzDefPointByFct(4*pi)\tkzGetPoint{p3b}
+				\tkzDefPointByFct(5*pi)\tkzGetPoint{p4b}
+				\tkzDefPointByFct(pi)\tkzGetPoint{p5b}
+				\tkzDefPointByFct(3*pi)\tkzGetPoint{p6b}
+
+				\draw[dashed] (p1) -- (p2);
+				\draw[dashed] (p1a) -- (p1b);
+				\draw[dashed] (p2a) -- (p2b);
+				\draw[dashed] (p3a) -- (p3b);
+				\draw[dashed] (p4a) -- (p4b);
+				
+				\coordinate (t1) at ($(p5b)+(pi,-3.5)$);
+				\coordinate (t2) at ($(p1b)+(-3,1)$);
+
+				\draw[->, line width=15pt] (t1) -- (p5b);
+				\draw[->, line width=15pt] (t1) -- (p6b);
+				\tkzText[color=black, opacity=100,fill=gray!20](t1){Interferencia destrutiva}
+
+				\draw[->, line width=15pt] (t2) -- (p1b);
+				\tkzText[color=black, opacity=100,fill=gray!20](t2){Interferencia construtiva}
+
+			\end{scope}
+
+\end{tikzpicture}

@@ -17,7 +17,7 @@ class: center, middle, inverse, title-slide
 ## Princípio da incerteza de Heissenberg
 ### Flaviano Williams Fernandes
 ### Instituto Federal do Paraná - Irati
-### xx de xxxxx de 2021 (atualizado em 08/11/2021)
+### xx de xxxxx de 2021 (atualizado em 07/12/2021)
 
 ---
 
@@ -105,7 +105,7 @@ Considere duas ondas harmônicas que possuem números de onda `\(k_1\)` e `\(k_2
   \Psi(x,t) &amp; = y_1(x,t)+y_2(x,t),\\\
          &amp; = y_m\cos(k_1x-\omega_1t)+y_m\cos(k_2x-\omega_2t).
 \end{aligned}`
-Definindo as diferenças `\(\Delta k=k_2-k_1\)` e `\(\Delta \omega = \omega_2-\omega_1\)`, e os valores médios `\(\bar{k}=(k_1+k_2)/2\)` e  `\(\bar{\omega}=(\omega_1+\omega_2)/2\)` encontramos o valor do pacote de onda, como mostra a figura ao lado (para maiores detalhes, veja o apêndice A),
+Definindo as diferenças `\(\Delta k=k_2-k_1\)` e `\(\Delta \omega = \omega_2-\omega_1\)`, e os valores médios `\(\bar{k}=(k_1+k_2)/2\)` e  `\(\bar{\omega}=(\omega_1+\omega_2)/2\)` encontramos o valor do pacote de onda, como mostra a figura ao lado (para maiores detalhes, veja a aula sobre "Ondas"),
 `\begin{aligned}
   \Psi(x,t) = 2y_m\cos\left(\frac{\Delta k}{2}x-\frac{\Delta \omega}{2}t\right)\cos\left(\bar{k}x-\bar{\omega}t\right).
 \end{aligned}`
@@ -322,45 +322,6 @@ A figura abaixo mostra a ilustre Conferência de Solvay, em 1927 (a princípio, 
 &lt;img src="img/copenhague.jpg" alt="Participantes da Quinta Conferência de Solvay. Destaca-se a presença da única mulher no grupo: Marie Curie." width="100%" /&gt;
 &lt;p class="caption"&gt;Participantes da Quinta Conferência de Solvay. Destaca-se a presença da única mulher no grupo: Marie Curie.&lt;/p&gt;
 &lt;/div&gt;
-
----
-class: middle
-
-&lt;div class="my-header"&gt;&lt;span&gt;Apêndice A&lt;/span&gt;&lt;/div&gt;
-
-.pull-left[
-Definindo as diferenças `\(\Delta k=k_2-k_1\)` e `\(\Delta \omega = \omega_2-\omega_1\)`, e os valores médios `\(\bar{k}=(k_1+k_2)/2\)` e  `\(\bar{\omega}=(\omega_1+\omega_2)/2\)` podemos dizer que
-`\begin{aligned}
-  k_1 &amp; = \bar{k}-\Delta K;\quad k_2 = \bar{k}+\Delta K,\\\
-  \omega_1 &amp; = \bar{\omega}-\Delta \omega;\quad \omega_2 = \bar{\omega}+\Delta \omega.
-\end{aligned}`
-Para obter a função de onda resultante é conveniente usarmos a fórmula de Euler, `\(e^{i\theta}=\cos\theta+i\sin\theta\)`, onde apenas nos interessa a parte real,
-`\begin{aligned}
-  \Psi(x,t) &amp; = y_m\left[\cos(k_1x-\omega_1t)+\cos(k_2x-\omega_2t)\right],\\
-         &amp; = y_m\Re\left[e^{i(k_1x-\omega_1t)}+e^{i(k_2x-\omega_2t)}\right],\\
-         &amp; = y_m\Re\left[e^{i[(\bar{k}-\Delta k)x-(\bar{\omega}-\Delta \omega)t]}+e^{i[(\bar{k}+\Delta K)x-(\bar{\omega}+\Delta \omega)t]}\right],\\
-         &amp; = y_m\Re\left[e^{i(\bar{k}x-\Delta Kx-\bar{\omega}t+\Delta \omega t)}+e^{i(\bar{k}x+\Delta Kx-\bar{\omega}t-\Delta \omega t)}\right],\\
-         &amp; = y_m\Re\left[e^{i(\bar{k}x-\bar{\omega}t)}e^{-i(\Delta Kx-\Delta \omega t)}\right.+\\
-         &amp; + \left.e^{i(\bar{k}x-\bar{\omega}t)}e^{i(\Delta Kx-\Delta \omega t)}\right],
-\end{aligned}`
-]
-.pull-right[
-`\begin{aligned}
-  \Psi(x,t) &amp; = y_m\left(e^{-i(\Delta Kx-\Delta \omega t)}+e^{i(\Delta Kx-\Delta \omega t)}\right)\Re\left[e^{i(\bar{k}x-\bar{\omega}t)}\right].
-\end{aligned}`
-Pela fórmula de Euler, podemos usar a identidade
-`\begin{aligned}
-  \cos\theta = \frac{e^{i\theta}+e^{-i\theta}}{2}.
-\end{aligned}`
-Substituindo teremos
-`\begin{aligned}
-  \Psi(x,t) &amp; = y_m\left(2\cos\left(\Delta Kx-\Delta \omega t\right)\right)\Re\left[e^{i(\bar{k}x-\bar{\omega}t)}\right].
-\end{aligned}`
-Isolando a parte real do termo `\(e^{i(\bar{k}x-\bar{\omega}t)}\)` chegaremos na função de onda resultante,
-`\begin{aligned}
-  \boxed{\Psi(x,t) = 2y_m\cos\left(\frac{\Delta k}{2}x-\frac{\Delta \omega}{2}t\right)\cos\left(\bar{k}x-\bar{\omega}t\right).}
-\end{aligned}`
-]
 
 ---
 class: middle

@@ -428,7 +428,7 @@ Pela propriedade da função cosseno, podemos perceber que $y_m$ será mínimo (
 \end{align}
 ]
 .pull-right[
-onde n é um número inteiro. Para outros valores de $\phi$, $y_m$ irá assumir valores entre $\sqrt{y_{m1}^2-y_{m2}^2}$ e $\sqrt{y_{m1}^2+y_{m2}^2}$.
+onde n é um número inteiro. Para outros valores de $\phi$, $y_m$ irá assumir valores entre $|y_{m1}-y_{m2}|$ e $y_{m1}+y_{m2}$.
 ```{r, echo=FALSE, fig.align='center',fig.cap='Interferência de ondas na água.',out.width="90%",fig.asp=1,fig.ncol=2}
   knitr::include_graphics("img/interferencia.jpg")
 ```

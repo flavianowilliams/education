@@ -17,7 +17,7 @@ class: center, middle, inverse, title-slide
 ## Ondas
 ### Flaviano Williams Fernandes
 ### Instituto Federal do Paraná - Irati
-### 16 de novembro de 2021 (atualizado em 08/12/2021)
+### 16 de novembro de 2021 (atualizado em 09/12/2021)
 
 ---
 
@@ -321,7 +321,7 @@ class: middle
 
 * Na extremidade móvel, o pulso é refletido e retorna igual ao pulso incidente;
 * Na extremidade fixa, o pulso é refletido e retorna invertido ao pulso incidente;
-* Numa corda, somente pode existir números inteiros de comprimentos de onda.
+* Numa corda com ambas as extremidades fixas ou móveis, somente pode existir números inteiros de comprimentos de onda.
 
 .pull-left[
 &lt;div class="figure" style="text-align: center"&gt;
@@ -501,11 +501,24 @@ class: middle
 &lt;div class="my-header"&gt;&lt;span&gt;O princípio da superposição - Modos normais de vibração&lt;/span&gt;&lt;/div&gt;
 
 .pull-left[
-em construção...
+Em uma onda estacionária em uma corda com extremidades fixas e densidade linear de massa `\(\mu\)`, podemos formar ondas estacionárias dependendo da relação entre o seu comprimento de onda e o comprimento da corda. A figura ao lado mostra o caso onde temos vários tipos de onda com comprimento de onda diferente. Porém considerando que na ida e vinda o percurso completo da onda seria 2L, teremos
+`\begin{align}
+  n\lambda &amp; = 2L,\\
+  \lambda &amp; = \frac{2L}{n},
+\end{align}`
+onde n representa o modo normal de vibração. Sabemos que a onda se propagando na corda possui velocidade de `\(v=\lambda\nu\)`, ou seja, `\(\lambda = v/\nu\)`, portanto
+`\begin{align}
+  \frac{v}{\nu} &amp; = \frac{2L}{n},\\
+  \nu &amp; = \frac{nv}{2L}.
+\end{align}`
 ]
 .pull-right[
+Porém, para a corda a velocidade é dado por `\(\sqrt{\frac{T}{\nu}}\)`, onde T é a tração na corda, portanto
+`\begin{align}
+  \boxed{\nu = \frac{n}{2L}\sqrt{\frac{T}{\nu}}\quad (n=1,2,3,\cdots).}
+\end{align}`
 &lt;div class="figure" style="text-align: center"&gt;
-&lt;img src="img/modos-normais.jpeg" alt="Modos normais de vibração em uma corda esticada." width="100%" /&gt;
+&lt;img src="img/modos-normais.jpeg" alt="Modos normais de vibração em uma corda esticada." width="70%" /&gt;
 &lt;p class="caption"&gt;Modos normais de vibração em uma corda esticada.&lt;/p&gt;
 &lt;/div&gt;
 ]
@@ -515,11 +528,25 @@ class: middle
 
 &lt;div class="my-header"&gt;&lt;span&gt;O princípio da superposição - Tubos sonoros&lt;/span&gt;&lt;/div&gt;
 
+No caso de um tubo sonoro com uma das extremidades aberta, ao contrário das cordas vibrantes, a amplitude da onda será máxima ao invés de ser nula. Além disso, teremos n+1 comprimentos de onda completos a cada duas voltas (ida e vinda), assim como mostra a figura abaixo. Portanto
+`\begin{align}
+  (2n-1)\lambda = 4L.
+\end{align}`
+De maneira análoga ao que foi feito para as cordas vibrantes chegaremos ao resultado
+`\begin{align}
+  \nu = \frac{(2n-1)v}{4L}.
+\end{align}`
 .pull-left[
-em construção...
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/tubos-sonoros.jpeg" alt="Tubo aberto em ambas as extremidades." width="60%" /&gt;
+&lt;p class="caption"&gt;Tubo aberto em ambas as extremidades.&lt;/p&gt;
+&lt;/div&gt;
 ]
 .pull-right[
-
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/tubos-sonoros2.jpeg" alt="Tubo fechado em uma das extremidades." width="60%" /&gt;
+&lt;p class="caption"&gt;Tubo fechado em uma das extremidades.&lt;/p&gt;
+&lt;/div&gt;
 ]
 
 ---

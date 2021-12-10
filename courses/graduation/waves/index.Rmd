@@ -572,6 +572,27 @@ class: middle
 
 <div class="my-header"><span>O princípio da superposição - O plano complexo (em construção...)</span></div>
 
+.pull-left[
+Considere o número complexo z=a+ib. z representado em um plano complexo, assim como mostra a figura ao lado, e usando as definições seno e cosseno, podemos dizer que
+\begin{align}
+ z = |z|\cos\theta + i|z|\sin\theta,
+\end{align}
+onde $\theta$ é o ângulo de rotação em relação ao eixo Real. De acordo com Euler, z também pode ser representado por $z=|z|e^{i\theta}$. Assim, podemos dizer que
+\begin{align}
+ z = |z|e^{i\theta}.
+\end{align}
+Comparando a função de onda $y(x,t)=y_m\cos(kx-\omega t)$ com a expressão acima, podemos afirmar que a função pode ser representada na parte Real no plano complexo, ou seja,
+\begin{align}
+ y(x,t) = y_m\Re(e^{i(kx-\omega t)}).
+\end{align}
+]
+.pull-right[
+Isso vale para qualquer função de onda, inclusive para a onda resultante que surge do princípio da superposição.
+```{r, echo=FALSE, fig.align='center',fig.cap='Representação do número complexo z no plano complexo.',out.width="90%",fig.asp=1,fig.ncol=2}
+  knitr::include_graphics("img/plano-complexo.jpeg")
+```
+]
+
 ---
 class: middle
 

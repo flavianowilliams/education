@@ -54,19 +54,30 @@ class: middle
   + Formação de uma onda progressiva
   + Tipos de onda
 
-2. A equação da onda
+2. A função de onda
+  + O número de onda k
+  + A velocidade da onda
+  
+3. A equação da onda
 
-3. Reflexão e refração da onda
+4. Reflexão da onda
 
-4. O princípio da superposição
-  * Interferência
-  * Fasores e o plano complexo
-  * Ondas estacionárias
-  * Pacotes de onda
+5. Reflação da onda
 ]
 .pull-right[
 <ol start="5">
+<li> O princípio da superposição
+  <ul>
+    <li> Definição
+    <li> Regra dos fasores
+    <li> Interferência
+    <li> Ondas estacionárias
+    <li> Modos normais de vibração
+    <li> Tubos sonoros
+    <li> Pacotes de onda
+  </ul>
 <li> Apêndice A
+<li> Apêndice B
 
 <li> Bibliografia
 </ol>
@@ -529,12 +540,12 @@ De maneira análoga ao que foi feito para as cordas vibrantes chegaremos ao resu
   \nu = \frac{(2n-1)v}{4L}.
 \end{align}
 .pull-left[
-```{r, echo=FALSE, fig.align='center',fig.cap='Tubo aberto em ambas as extremidades.',out.width="60%",fig.asp=1,fig.ncol=2}
+```{r, echo=FALSE, fig.align='center',fig.cap='Tubo aberto em ambas as extremidades.',out.width="55%",fig.asp=1,fig.ncol=2}
   knitr::include_graphics("img/tubos-sonoros.jpeg")
 ```
 ]
 .pull-right[
-```{r, echo=FALSE, fig.align='center',fig.cap='Tubo fechado em uma das extremidades.',out.width="60%",fig.asp=1,fig.ncol=2}
+```{r, echo=FALSE, fig.align='center',fig.cap='Tubo fechado em uma das extremidades.',out.width="55%",fig.asp=1,fig.ncol=2}
   knitr::include_graphics("img/tubos-sonoros2.jpeg")
 ```
 ]
@@ -562,7 +573,7 @@ Após a substituição em $y(x,t)$ teremos (para maiores detalhes, veja o Apênd
 ]
 .pull-right[
 Na figura abaixo, a curva preta representa a onda $y_1$ e a curva vermelha a onda $y_2$. O encontro de ambas as ondas remete a fenômenos de interferência, e o resultado é a formação de um pacote de onda,
-```{r, echo=FALSE, fig.align='center',fig.cap='Superposição de duas ondas harmônicas com números de onda e frequências angulares diferentes.',out.width="90%",fig.asp=1,fig.ncol=2}
+```{r, echo=FALSE, fig.align='center',fig.cap='Superposição de duas ondas harmônicas com números de onda e frequências angulares diferentes.',out.width="85%",fig.asp=1,fig.ncol=2}
   knitr::include_graphics("img/pacote-ondas.jpeg")
 ```
 ]
@@ -570,7 +581,7 @@ Na figura abaixo, a curva preta representa a onda $y_1$ e a curva vermelha a ond
 ---
 class: middle
 
-<div class="my-header"><span>O princípio da superposição - O plano complexo (em construção...)</span></div>
+<div class="my-header"><span>Apêndice A - O plano complexo</span></div>
 
 .pull-left[
 Considere o número complexo z=a+ib. z representado em um plano complexo, assim como mostra a figura ao lado, e usando as definições seno e cosseno, podemos dizer que
@@ -587,8 +598,8 @@ Comparando a função de onda $y(x,t)=y_m\cos(kx-\omega t)$ com a expressão aci
 \end{align}
 ]
 .pull-right[
-Isso vale para qualquer função de onda, inclusive para a onda resultante que surge do princípio da superposição.
-```{r, echo=FALSE, fig.align='center',fig.cap='Representação do número complexo z no plano complexo.',out.width="90%",fig.asp=1,fig.ncol=2}
+Essa consideração é válida para qualquer função de onda, inclusive para a onda resultante que surge do princípio da superposição.
+```{r, echo=FALSE, fig.align='center',fig.cap='Representação do número complexo z no plano complexo.',out.width="85%",fig.asp=1,fig.ncol=2}
   knitr::include_graphics("img/plano-complexo.jpeg")
 ```
 ]
@@ -596,7 +607,7 @@ Isso vale para qualquer função de onda, inclusive para a onda resultante que s
 ---
 class: middle
 
-<div class="my-header"><span>Apêndice A</span></div>
+<div class="my-header"><span>Apêndice B</span></div>
 
 .pull-left[
 Definindo as diferenças $\Delta k=k_2-k_1$ e $\Delta \omega = \omega_2-\omega_1$, e os valores médios $\bar{k}=(k_1+k_2)/2$ e  $\bar{\omega}=(\omega_1+\omega_2)/2$ podemos dizer que

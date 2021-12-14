@@ -216,9 +216,9 @@ class: left, middle
 .pull-left[
 De acordo com a interpretação probabilística da matéria, a probabilidade em localizar um elétron em uma certa região no espaço é dado por $|\Psi|^2$. Supondo um elétron propagando na direção x, podemos dizer que a probabilidade de ser encontrado no intevalo dx é dado por $|\Psi|^2dx$.
 
-Neste caso $\Psi$ pode ter partes complexas, com a intenção de representar a incerteza na medição. Portanto, não basta apenas fazer o produto $\Psi^2$, pois <font class="red">devemos multiplicar a função de onda pelo seu complexo conjugado, precisamos de um valor real para representar a localização do elétron</font>.
+Neste caso $\Psi$ pode ter partes complexas, com a intenção de representar a incerteza na medição. Portanto, não basta apenas fazer o produto $\Psi^2$, pois <font class="red">devemos multiplicar a função de onda pelo seu complexo conjugado. Isso é necessário, pois precisamos de um valor real para representar a localização do elétron</font>.
 
-Definimos a probabilidade em localizar o elétron no intervalo dx por $P(x)dx$ e $|\Psi|^2$ de densidade de probabilidade, onde
+Definimos a probabilidade em localizar o elétron no intervalo dx por $P(x)dx$ e $|\Psi|^2$, sendo P(x) a função chamada densidade de probabilidade,
 \begin{aligned}
   P(x)dx = |\Psi|^2dx.
 \end{aligned}
@@ -261,7 +261,7 @@ class: left, middle
 <div class="my-header"><span>Interpretação probabilística da função de onda - O princípio da incerteza </span></div>
 
 .pull-left[
-Entretanto, se tivermos apenas uma única onda progressiva com número de onda k para representar o movimento do elétron, teríamos $\Delta k = 0$, assim o número de onda do elétron seria totalmente determinado. Porém, consequentemente também teríamos $\Delta x\rightarrow\infty$, pois assim não teríamos um pacote de onda definido. Assim, é impossível obter com total certeza a localização e o número de onda do elétron simultaneante. A total certeza de um acarreta na completa incerteza de outro. Porém, para qualquer pacote de onda podemos observar que
+Entretanto, se tivermos apenas uma única onda progressiva com número de onda k para representar o movimento do elétron, teríamos $\Delta k = 0$, assim o número de onda do elétron seria totalmente determinado. Porém, consequentemente também teríamos $\Delta x\rightarrow\infty$, pois assim não teríamos um pacote de onda sendo formado. Assim, é impossível obter com total certeza a localização e o número de onda do elétron simultaneante. A total certeza de um acarreta na completa incerteza de outro. Porém, para qualquer pacote de onda podemos observar que
 \begin{aligned}
   \Delta x\Delta k \approx 1.
 \end{aligned}

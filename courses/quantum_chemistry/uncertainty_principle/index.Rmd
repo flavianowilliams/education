@@ -1,6 +1,6 @@
 ---
 title: "Introdução a química quântica"
-subtitle: "Princípio da incerteza de Heissenberg"
+subtitle: "Princípio da incerteza de Heisenberg"
 author: "Flaviano Williams Fernandes"
 institute: "Instituto Federal do Paraná - Irati"
 date: "xx de xxxxx de 2021 (atualizado em `r format(Sys.Date(), format='%d/%m/%Y')`)"

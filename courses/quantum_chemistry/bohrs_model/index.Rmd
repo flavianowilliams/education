@@ -217,7 +217,7 @@ Substituindo r na expressão da energia encontramos
       & = -\left(\frac{mK^2e^4}{2\hbar^2}\right)\frac{Z^2}{n^2},\\\
       & = - E_0\frac{Z^2}{n^2},\quad n=1,2,3,\cdots
 \end{aligned}
-Podemos ver que o termo entre parêntesis é uma constante e seu valor corresponde a energia do estado fundamental do átomo de hidrogênio, ou seja, $E_0 = -13,6\; eV$.
+Podemos ver que o termo entre parêntesis é uma constante e seu valor corresponde a energia do estado fundamental do átomo de hidrogênio (-13,6 eV).
 * <font class="red">De acordo com o modelo de Bohr, as órbitas estacionárias são comprovadas pela relação r ~ n<sup>2</sup>, assumindo valores discretos com valores de n;</font>
 * <font class="red">Cada órbita possui valor discreto de energia E<sub>n</sub>, onde E<sub>n</sub> ~ 1/n<sup>2</sup>, como mostra a equação acima.</font>
 ]

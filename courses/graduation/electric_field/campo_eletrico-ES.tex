@@ -341,11 +341,11 @@
 		\begin{column}{0.6\textwidth}
 			Sabendo que $\vec{E}=\frac{\vec{F}}{q}$, e que  $\vec{F}_q=\vec{F}_{q1}+\vec{F}_{q2}+\cdots$, podemos afirmar que para uma distribuição de cargas teremos
 			\begin{align*}
-				\frac{\vec{F}_{\text{\tiny p}}}{q_{\text{\tiny p}}}=\frac{\vec{F}_{p1}}{q_{\text{\tiny p}}}+\frac{\vec{F}_{p2}}{q_{\text{\tiny p}}}+\frac{\vec{F}_{p3}}{q_{\text{\tiny p}}}+\cdots
+				\frac{\vec{F}_{\text{\tiny p}}}{q_{\text{\tiny p}}}=\frac{\vec{F}_{q1}}{q_{\text{\tiny p}}}+\frac{\vec{F}_{q2}}{q_{\text{\tiny p}}}+\frac{\vec{F}_{q3}}{q_{\text{\tiny p}}}+\cdots
 			\end{align*}
 			O campo elétrico $\vec{E}$, existente no ponto p, é dado pela resultante dos campos $\vec{E}_{p1}$, $\vec{E}_{p2}$,..., produzidos separadamente pelas cargas $q_1$, $q_2$, ...,
 			\begin{align*}
-				\vec{E}_p = \vec{E}_{p1}+\vec{E}_{p2}+\vec{E}_{p3}+\cdots.
+				\vec{E}_p = \vec{E}_{q1}+\vec{E}_{q2}+\vec{E}_{q3}+\cdots.
 			\end{align*}
 		\end{column}
 		\begin{column}{0.4\textwidth}
@@ -361,14 +361,14 @@
 				
 				\tikzstyle{s1}=[circle, radius=0.25, ball color=gray!50];
 				
-				\draw [line width=1.0pt, ->] (\nax,\nay) -- ({(\nax-\nbx)*\nar},{(\nay-\nby)*\nar}) node [above left] {$\vec{E}_+$};
-				\draw [line width=1.0pt, ->] (-0.16,-0.2) -- (-0.94,-1.17) node [below right] {$\vec{E}_-$};
-				\draw [line width=1.0pt, ->] (0.16,-0.2) -- (0.94,-1.17) node [right] {$\vec{E}_-$};
+				\draw [line width=1.0pt, ->] (\nax,\nay) -- ({(\nax-\nbx)*\nar},{(\nay-\nby)*\nar}) node [above left] {$\vec{E}_{q_1}$};
+				\draw [line width=1.0pt, ->] (-0.16,-0.2) -- (-0.94,-1.17) node [below right] {$\vec{E}_{q_2}$};
+				\draw [line width=1.0pt, ->] (0.16,-0.2) -- (0.94,-1.17) node [right] {$\vec{E}_{q_3}$};
 				
 				\node [s1] (n1) at (\nax,\nay) {$q_p$};
-				\node [s1] (n3) at (\nbx,\nby) {$q_+$};
-				\node [s1] (n5) at (-4,-5) {$q_-$};
-				\node [s1] (n6) at (4,-5) {$q_-$};
+				\node [s1] (n3) at (\nbx,\nby) {$q_1$};
+				\node [s1] (n5) at (-4,-5) {$q_2$};
+				\node [s1] (n6) at (4,-5) {$q_3$};
 				
 				\draw [dashed] (n1) -- (n3);
 				\draw [dashed] (n1) -- (n5);
@@ -770,7 +770,7 @@
 \begin{frame}{Energia potencial de um dipolo elétrico}
 	\begin{columns}
 		\begin{column}[t]{0.5\textwidth}
-			Sabemos que a força $\vec{F}$ é conservativa, portanto podemos encontrar a energia potencial através do trabalho realizado pelo torque. Supondo $\theta'=180-\theta$ e $\sin (180-\theta)=-\sin\theta$ temos
+			Sabemos que a força $\vec{F}$ é conservativa, portanto podemos encontrar a energia potencial através do trabalho realizado pelo torque. Supondo $\theta=180-\theta'$ e $\sin (180-\theta')=-\sin\theta'$ temos
 			\begin{NodesList}[margin=1.0cm]
 				\begin{align*}
 					\Delta U & = -W,\\

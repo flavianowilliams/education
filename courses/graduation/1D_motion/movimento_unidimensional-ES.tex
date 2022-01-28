@@ -62,11 +62,11 @@
 			
 				\tkzDefPoints{0/0/O,0/-3/A,0/3/B}
 			
-				\tkzAxeX[right,label=t (s)]
-				\tkzAxeY[above,label=x (m)]
+				\tkzDrawX[right,label=t (s)]
+				\tkzDrawY[above,label=x (m)]
 			
-				\tkzLabelPoint[above](A){\Large $x_0$}
-				\tkzLabelPoint[above](B){\Large $x_1$}
+				\tkzLabelPoint[left](A){\Large $x_0$}
+				\tkzLabelPoint[left](B){\Large $x_1$}
 			
 				\draw[->,line width=1.0pt,color=red] (O) -- (A) node [right,midway] {$\vec{x}_0$};
 				\draw[->,line width=1.0pt,color=red] (O) -- (B) node [right,midway] {$\vec{x}_1$};
@@ -146,8 +146,8 @@
 				\tkzGrid[color=gray!20]
 				\tkzClip[space=1.5]
 				
-				\tkzAxeX[right,label=t (s)]
-				\tkzAxeY[above,label=x (m)]
+				\tkzDrawX[right,label=t (s)]
+				\tkzDrawY[above,label=x (m)]
 				
 				\tkzFct[domain=0:8]{0.01*(x-2)**3+(x-2)-2}
 				\tkzDefPointByFct(1)\tkzGetPoint{A}
@@ -208,8 +208,8 @@
 				\tkzGrid[color=gray!20]
 				\tkzClip[space=1.5]
 				
-				\tkzAxeX[right,label=t (s)]
-				\tkzAxeY[above,label=x (m)]
+				\tkzDrawX[right,label=t (s)]
+				\tkzDrawY[above,label=x (m)]
 				
 				\tkzFct[domain=0:8]{0.1*x**2}
 				\tkzDefPointByFct(4)\tkzGetPoint{A}
@@ -232,8 +232,8 @@
 				\tkzGrid[color=gray!20]
 				\tkzClip[space=1.5]
 				
-				\tkzAxeX[right,label=t (s)]
-				\tkzAxeY[above,label=v (m/s)]
+				\tkzDrawX[right,label=t (s)]
+				\tkzDrawY[above,label=v (m/s)]
 				
 				\tkzFct[domain=0:8,color=red]{0.2*x}
 				\tkzDefPointByFct(4)\tkzGetPoint{A}

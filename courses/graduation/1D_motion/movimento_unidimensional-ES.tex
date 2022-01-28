@@ -212,6 +212,13 @@
 				\tkzDrawY[above,label=x (m)]
 				
 				\tkzFct[domain=0:8]{0.1*x**2}
+
+				\tkzDefPointByFct(5)\tkzGetPoint{p1}
+				\coordinate (p2) at ($(p1)+(1,0)$);
+				\tkzDefPointByFct(6)\tkzGetPoint{p3}
+				\tkzDrawPolygon[fill=green!50,opacity=0.7, draw=white](p1,p2,p3)
+
+				\tkzFct[domain=0:8]{0.1*x**2}
 				\tkzDefPointByFct(4)\tkzGetPoint{A}
 				
 				\foreach \x in {2,3,4,5}{
@@ -253,19 +260,19 @@
 	\end{columns}
 \end{frame}
 
-\begin{frame}{Trabalho à partir do gráfico força versus deslocamento}
+\begin{frame}{Deslocamento à partir da velocidade instantânea}
 	\begin{columns}
-		\begin{column}[c]{0.65\textwidth}
-			O trabalho da força $\vec{F}$ em um deslocamento $\Delta x$ é a área do retângulo de base $\Delta x$ e altura $F$. podemos dizer que o trabalho total durante a trajetória de i a f é a soma dos trabalhos individuais $\Delta W$,
+		\begin{column}[c]{0.7\textwidth}
+			Considere o intervalo entre $t_i$ a $t_f$, separando-o em vários trechos $\Delta t$ e multiplicando pela altura temos a área dos retângulos. Sabendo que a altura corresponde a velocidade em cada trecho temos o deslocamento $\Delta x$. Somando a área de todos os retângulos teremos
 			\begin{equation*}
-				\Delta W = \sum F\Delta x.
+				\Delta x = \sum v\Delta t.
 			\end{equation*}
-			Se $\Delta x\rightarrow 0$ podemos aproximar a área abaixo da curva como se fosse a soma dos retângulos, portanto
+			Se $\Delta t\rightarrow 0$ a área dos retângulos se aproxima da área abaixo da curva, onde
 			\begin{equation*}
-				\boxed{W = \lim_{\Delta x\rightarrow 0}\Delta W = \int_{x_i}^{x_f}F(x)dx.}
+				\boxed{\Delta x = \lim_{\Delta t\rightarrow 0}\Delta t = \int_{t_i}^{t_f}v(t)dt.}
 			\end{equation*}
 		\end{column}
-		\begin{column}[c]{0.35\textwidth}
+		\begin{column}[c]{0.3\textwidth}
 			\begin{figure}
 				\centering
 				\begin{tikzpicture}[scale=0.35,transform shape,font=\Large]
@@ -276,13 +283,13 @@
 %				\tkzGrid[color=gray!20,step=0.5]
 				\tkzClip[space=1.1]
 				
-				\tkzDrawX[label=x,below,noticks]
-				\tkzDrawY[label=F(x),pos=1.01,above,noticks]
+				\tkzDrawX[label=t,below,noticks]
+				\tkzDrawY[label=v(t),pos=1.01,above,noticks]
 				
 				\tkzDefPoints{3.5/0/x1,4.5/0/x2}
-				\draw (x1) to [short dim arrow'={label'=$\Delta x$,label near middle}] (x2);
+				\draw (x1) to [short dim arrow'={label'=$\Delta t$,label near middle}] (x2);
 				
-				\tkzFct[domain=0:8,color=red,line width=0.5pt]{4*exp(-0.025*x**2)}
+				\tkzFct[domain=0:8,color=red,line width=0.5pt]{1.5*exp(0.025*x**2)}
 				
 				\foreach \x in {1,2,...,7}{
 					\tkzDefPoint(\x+0.5,5){y}
@@ -293,7 +300,9 @@
 					\tkzDefLine[orthogonal=through x](y,z)\tkzGetPoint{c}
 					\tkzInterLL(y,z)(x,c)\tkzGetPoint{k}
 					\tkzDefPointsBy[reflection=over x--p](x,k){l1,l2}
-					\tkzDrawPolygon[fill=green!50,opacity=0.7](h,l2,k,z)}
+					\tkzDrawPolygon[fill=green!50,opacity=0.7](h,l2,k,z)
+					\tkzDrawPoint[size=0.2cm](x)
+				}
 				
 				\foreach \x in {4}{
 					\tkzDefPoint(\x+0.5,5){y}
@@ -305,17 +314,17 @@
 					\tkzInterLL(y,z)(x,c)\tkzGetPoint{k}
 					\tkzDefPointsBy[reflection=over x--p](x,k){l1,l2}}
 				
-				\draw (l2) to [color=black,dim arrow'={label'=$F$}] (h);
+				\draw (l2) to [color=black,dim arrow'={label'=$v$}] (h);
 				
 				\tkzDefPointByFct(4)\tkzGetPoint{B}
 				
 				\tkzPointShowCoord[noydraw,noxdraw,xlabel=$x_i$](0.5,0)
 				\tkzPointShowCoord[noydraw,noxdraw,xlabel=$x_f$](7.5,0)
 				
-				\tkzDefPoints{6.5/4/t1,5/2/D,8/4/t2,4/2/E}
+				\tkzDefPoints{2.5/4/t1,5/2/D,8.5/4/t2,4/1.5/E}
 				
 				\draw[->,line width=0.5pt] (t1) -- (E);
-				\tkzText[text centered,opacity=100,fill=gray!20](t1){\small $\Delta W$}
+				\tkzText[text centered,opacity=100,fill=gray!20](t1){\small $\Delta x=v\Delta t$}
 				\tkzText[color=black](t2){(a)}
 				
 				\end{scope}
@@ -326,19 +335,19 @@
 %				\tkzGrid[color=gray!20,step=0.5]
 				\tkzClip[space=1.1]
 				
-				\tkzDrawX[label=x,below,noticks]
-				\tkzDrawY[label=F(x),pos=1.01,above,noticks]
+				\tkzDrawX[label=t,below,noticks]
+				\tkzDrawY[label=v(t),pos=1.01,above,noticks]
 				
-				\tkzFct[domain=0:8,color=red,line width=1.0pt]{4*exp(-0.025*x**2)}
+				\tkzFct[domain=0:8,color=red,line width=1.0pt]{1.5*exp(0.025*x**2)}
 				\tkzDrawArea[domain=0.5:7.5,fill=green!50,opacity=0.7]
 				
 				\tkzDefPointByFct(4)\tkzGetPoint{B}
 				
-				\tkzPointShowCoord[noydraw,noxdraw,xlabel=$x_i$](0.5,0)
-				\tkzPointShowCoord[noydraw,noxdraw,xlabel=$x_f$](7.5,0)
+				\tkzPointShowCoord[noydraw,noxdraw,xlabel=$t_i$](0.5,0)
+				\tkzPointShowCoord[noydraw,noxdraw,xlabel=$t_f$](7.5,0)
 				
-				\tkzDefPoints{4/1.5/t1,8/4/t2}
-				\tkzText[text centered,opacity=100,fill=gray!20](t1){$W$}
+				\tkzDefPoints{4/1.0/t1,8.5/4/t2}
+				\tkzText[text centered,opacity=100,fill=gray!20](t1){$\Delta x$}
 				\tkzText[color=black](t2){(b)}
 				
 				\end{scope}

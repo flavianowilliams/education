@@ -153,7 +153,7 @@ Dividindo a equação por $\psi(x)\phi(t)$ teremos
 Como $V(x)$ é uma função independente do tempo, podemos dizer que o lado esquerdo independe da variável t e o lado direito independe da variável x, assim para que a equação seja satisfeita, a única maneira disso ser verdade é se ambos os lados forem iguais a um mesmo valor constante C, que não dependa nem de x ou t,
 \begin{aligned}
   -\frac{\hbar^2}{2m}\frac{1}{\psi(x)}\frac{d^2\psi(x)}{dx^2}+V(x) & = C,\\
-  -i\hbar\frac{1}{\phi(t)}\frac{d\phi(t)}{dt} & = C.
+  i\hbar\frac{1}{\phi(t)}\frac{d\phi(t)}{dt} & = C.
 \end{aligned}
 Inicialmente o problema era obter a solução $\Psi(x,t)$ partindo de uma única equação complicada. De acordo com o esquema acima, o problema se resume em obter a solução de duas equações simples, separadamente.
 ]
@@ -166,14 +166,14 @@ class: middle
 .pull-left[
 A equação referente a parte temporal pode ser reescrita na forma abaixo
 \begin{aligned}
-  -i\hbar\frac{1}{\phi(t)}\frac{d\phi(t)}{dt} & = C,\\
-  -i\hbar\frac{d\phi(t)}{dt} & = C\phi(t),\\
-  -i\hbar\frac{d\phi(t)}{dt} - C\phi(t) & = 0.
+  i\hbar\frac{1}{\phi(t)}\frac{d\phi(t)}{dt} & = C,\\
+  i\hbar\frac{d\phi(t)}{dt} & = C\phi(t),\\
+  i\hbar\frac{d\phi(t)}{dt} - C\phi(t) & = 0.
 \end{aligned}
 Uma possível solução para a equação acima seria se $\phi(t)=e^{-iCt/\hbar}$. Para checar essa possibilidade, substituímos $\phi(t)$ na equação diferencial,
 \begin{aligned}
-  -i\hbar\frac{d}{dt}\left(e^{-iCt/\hbar}\right) - Ce^{-iCt/\hbar} & = 0,\\
-  -i\hbar\left(\frac{-iC}{\hbar}e^{-iCt/\hbar}\right) - Ce^{-iCt/\hbar} & = 0,\\
+  i\hbar\frac{d}{dt}\left(e^{-iCt/\hbar}\right) - Ce^{-iCt/\hbar} & = 0,\\
+  i\hbar\left(\frac{-iC}{\hbar}e^{-iCt/\hbar}\right) - Ce^{-iCt/\hbar} & = 0,\\
   Ce^{-iCt/\hbar} - Ce^{-iCt/\hbar} & = 0.
 \end{aligned}
 ]
@@ -186,10 +186,10 @@ Comparando com a função da onda progressiva, $y(x,t)=y_m\cos(kx-\omega t)$, po
 \begin{aligned}
   \phi(t)=e^{-iEt/\hbar}.
 \end{aligned}
-Assim obtemos a solução da parte dependente do tempo de $\Psi(x,t)$. No entanto $\phi(t)$ torna-se irrelevante ao calcular a densidade de probabilidade, pois
+Assim chegamos na solução da parte dependente do tempo de $\Psi(x,t)$. Entretanto, para obter a densidade de probabilidade basta sabermos $|\psi(x)|^2$, pois
 \begin{aligned}
   \Psi^*(x,t)\Psi(x,t) & = \psi^*(x)\psi(x)e^{iEt/\hbar}e^{-iEt/\hbar},\\
-  \Psi^*(x,t)\Psi(x,t) & = \psi^*(x)\psi(x).
+  \Psi^*(x,t)\Psi(x,t) & = \psi^*(x)\psi(x)\Rightarrow|\psi(x)|^2.
 \end{aligned}
 ]
 
@@ -203,7 +203,7 @@ Substituindo C na equação dependente de x teremos
 \begin{aligned}
   -\frac{\hbar^2}{2m}\frac{1}{\psi(x)}\frac{d^2\psi(x)}{dx^2}+V(x) & = E.
 \end{aligned}
-Multiplicando por $\psi(x)$ chegamos na equação de Schrödinger independente do tempo,
+Multiplicando por $\psi(x)$ chegamos na **equação de Schrödinger independente do tempo**,
 \begin{aligned}
   \boxed{-\frac{\hbar^2}{2m}\frac{d^2\psi(x)}{dx^2}+V(x)\psi(x) = E\psi(x).}
 \end{aligned}
@@ -213,7 +213,7 @@ Podemos ver que a solução para $\psi(x)$ depende diretamente do potencial $V(x
 * $\psi(x)$ e $d\psi(x)/dx$ devem ser unívocas;
 ]
 .pull-right[
-Agora, supondo um elétronse propagando livremente ao longo da direção, onde $-\infty<x<\infty$, sem a ação de qualquer potencial. Neste caso teremos $V=0$, portanto a equação de Schrödinger se torna
+Agora, supondo um elétron se propagando livremente ao longo da direção x, onde $-\infty<x<\infty$, sem a ação de qualquer potencial. Neste caso teremos $V=0$, portanto a equação de Schrödinger se torna
 \begin{aligned}
   -\frac{\hbar^2}{2m}\frac{d^2\psi(x)}{dx^2} = E\psi(x),
 \end{aligned}

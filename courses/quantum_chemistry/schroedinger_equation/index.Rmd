@@ -356,6 +356,82 @@ Realmente $\psi(x)$ é a solução para a equação acima. A solução geral da 
     c_3e^{-\kappa x},\quad & (x\ge 0).
   \end{cases}
 \end{aligned}
+Podemos ver que a solução ainda não está completa, pois falta os valores das constantes $c_1$, $c_2$ e $c_3$. Como poderemos obtê-las? Uma maneira seri empregar a condição de que a função de onda e sua derivada devem ser contínuas ao longo de todo o valor de x, ou seja,
+\begin{aligned}
+  \left[ c_1e^{ik_1x}+c_2e^{-ik_1x}\right]_{x=0} & = \left[ c_3e^{-\kappa x}\right]_{x=0},\\
+  \left[ c_1ik_1e^{ik_1x}-c_2ik_1e^{-ik_1x}\right]_{x=0} & = \left[-c_3\kappa e^{-\kappa x}\right]_{x=0}.
+\end{aligned}
+Substituindo $x=0$ nas equações acima, teremos
+\begin{aligned}
+  c_1+c_2 & = c_3,\\
+  (c_1-c_2)ik_1 & = -c_3\kappa.
+\end{aligned}
+Multiplicando a primeira equação por $ik_1$ chegaremos a
+\begin{aligned}
+  c_1 = \frac{c_3(ik_1-\kappa)}{2ik_1}.
+\end{aligned}
+]
+
+---
+class: middle
+
+<div class="my-header"><span>Aplicações da equação de Schrodinger - Potencial degrau</span></div>
+
+.pull-left[
+Agora multiplicando a primeira equação por $-ik_1$ e somando a segunda equação teremos
+\begin{aligned}
+  c_2 = \frac{c_3(ik_1+\kappa)}{2ik_1}.
+\end{aligned}
+Assim, podemos substituir na solução de $\psi(x)$ chegando a
+\begin{aligned}
+\psi(x)=
+  \begin{cases}
+    \left(\frac{c_3(ik_1-\kappa)}{2ik_1}\right)e^{ik_1x}+\left(\frac{c_3(ik_1+\kappa)}{2ik_1}\right)e^{-ik_1x},\; & (x<0),\\
+    c_3e^{-\kappa x},\; & (x\ge 0).
+  \end{cases}
+\end{aligned}
+Podemos perceber que para chegar na solução final devemos conhecer $c_3$. Usaremos como recurso que a probabilidade de encontrar a partícula em qualquer posição ao longo do eixo x é 100%, ou seja,
+\begin{aligned}
+  \int^{\infty}_{\infty}|\psi(x)|^2dx & = 1.
+\end{aligned}
+]
+.pull-right[
+(*Não se preocupe se não estiver claro, pois esse assunto será aborado com mais detalhes futuramente*). Assim, para $x>0$ teremos
+\begin{aligned}
+  \int^{\infty}_{0}\left(c_3^*e^{-\kappa x}\right)\left(c_3e^{-\kappa x}\right)dx & = 1,\\
+  c^*_3c_3\int^{\infty}_{0}e^{-2\kappa x}dx & = 1,\\
+  c^*_3c_3\left[\frac{e^{-2\kappa x}}{-2\kappa}\right]^{\infty}_{0} & = 1,\\
+  |c_3|^2\left[0-\frac{1}{(-2\kappa)}\right] & = 1,\\
+  c_3 & = \sqrt{2\kappa}.
+\end{aligned}
+Substituindo em $\psi(x)$ chegaremos na solução final,
+\begin{aligned}
+\psi(x)=
+  \begin{cases}
+    \frac{(ik_1-\kappa)\sqrt{2\kappa}}{2ik_1}e^{ik_1x}+\frac{(ik_1+\kappa)\sqrt{2\kappa}}{2ik_1}e^{-ik_1x},\; & (x<0),\\
+    \sqrt{2\kappa}e^{-\kappa x},\; & (x\ge 0).
+  \end{cases}
+\end{aligned}
+]
+
+---
+class: middle
+
+<div class="my-header"><span>Aplicações da equação de Schrodinger - Potencial degrau</span></div>
+
+.pull-left[
+Agora vamos determinar a densidade de probabilidade de encontrar o elétron por unidade de comprimento x, ou seja, $\psi^*(x)\psi(x)$ (*lembrando que daqui por diante não precisaremos da dependência da função no tempo, pois $|\Psi(x,t)|^2\equiv |\psi(x)|^2$*). Para $x<0$ teremos
+\begin{aligned}
+  |\psi(x)|^2 & = \left(c_1e^{ik_1x}+c_2e^{-ik_1x}\right)^*\left(c_1e^{ik_1x}+c_2e^{-ik_1x}\right),\\
+  |\psi(x)|^2 & = \left(c^\star_1e^{-ik_1x}+c^\star_2e^{ik_1x}\right)\left(c_1e^{ik_1x}+c_2e^{-ik_1x}\right),\\
+  & = c^\star_1c_1e^0+c^\star_1c_2e^{-2ik_1x}+c_1c^\star_2e^{2ik_1x}+c^\star_2c_2e^0.
+\end{aligned}
+Além disso, $c_1$ e $c_2$ já foram obtidas anteriormente. Substituindo os seus valores teremos
+\begin{aligned}
+\end{aligned}
+]
+.pull-right[
+|\psi(x)|^2 & =
 ]
 
 ---

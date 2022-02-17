@@ -366,7 +366,7 @@ Substituindo $x=0$ nas equações acima, teremos
   c_1+c_2 & = c_3,\\
   (c_1-c_2)ik_1 & = -c_3\kappa.
 \end{aligned}
-Multiplicando a primeira equação por $ik_1$ chegaremos a
+Multiplicando a primeira equação por $ik_1$ e adicionando a segunda equação chegaremos a
 \begin{aligned}
   c_1 = \frac{c_3(ik_1-\kappa)}{2ik_1}.
 \end{aligned}
@@ -394,9 +394,9 @@ Podemos perceber que para chegar na solução final devemos conhecer $c_3$. Usar
 \begin{aligned}
   \int^{\infty}_{\infty}|\psi(x)|^2dx & = 1.
 \end{aligned}
-]
+(*Não se preocupe se não estiver claro, pois esse assunto será aborado com mais detalhes futuramente*).]
 .pull-right[
-(*Não se preocupe se não estiver claro, pois esse assunto será aborado com mais detalhes futuramente*). Assim, para $x>0$ teremos
+Assim, para $x>0$ teremos
 \begin{aligned}
   \int^{\infty}_{0}\left(c_3^*e^{-\kappa x}\right)\left(c_3e^{-\kappa x}\right)dx & = 1,\\
   c^*_3c_3\int^{\infty}_{0}e^{-2\kappa x}dx & = 1,\\
@@ -428,10 +428,10 @@ Agora vamos determinar a densidade de probabilidade de encontrar o elétron por 
 \end{aligned}
 Além disso, $c_1$ e $c_2$ já foram obtidas anteriormente. Substituindo os seus valores teremos
 \begin{aligned}
+  |\psi(x)|^2 & =
 \end{aligned}
 ]
 .pull-right[
-|\psi(x)|^2 & =
 ]
 
 ---

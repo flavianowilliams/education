@@ -305,7 +305,7 @@ class: middle
 Considere uma situação onde a energia do elétron é menor que a energia potencial $V_0$. A figura abaixo mostra graficamente uma situação deste tipo,
 
 ```{r, echo=FALSE, fig.align='center',fig.cap='Representação gráfica da energia  potencial.',out.width="75%",fig.asp=1}
-  knitr::include_graphics("img/potencial-degrau-grafico.jpeg")
+  knitr::include_graphics("img/potencial-degrau-energia1.jpeg")
 ```
 
 Do ponto de vista da mecânica clássica, o elétron estaria impedido de se mover para regiões além de $x=0$, mas será que isso também acontece na mecânica quântica? Para verificar isso, vamos determinar a função de onda do elétron para $x<0$ e para $x>0$.
@@ -444,6 +444,20 @@ Para $x\ge 0$ teremos
   |\psi(x)|^2_{x\ge 0} & = 2\kappa e^{-2\kappa x}.
 \end{aligned}
 **Pode-se perceber que para $x<0$, onde o elétron se comporta como uma partícula livre, a densidade de probabilidade é uma função senoidal. Entretanto, para $x\ge 0$ temos que a probabilidade de encontrar o elétron decai exponencialmente, à medida que e ele se afasta da origem.** No próximo slide teremos uma figura ilustrando esse efeito.
+]
+
+---
+class: middle
+
+<div class="my-header"><span>Aplicações da equação de Schrodinger - Potencial degrau</span></div>
+
+.pull-left[
+```{r, echo=FALSE, fig.align='center',fig.cap='Representação gráfica da energia  potencial.',out.width="75%",fig.asp=1}
+  knitr::include_graphics("img/potencial-degrau-probabilidade.jpeg")
+```
+]
+.pull-right[
+
 ]
 
 ---

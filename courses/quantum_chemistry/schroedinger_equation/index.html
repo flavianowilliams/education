@@ -349,7 +349,7 @@ Realmente `\(\psi(x)\)` é a solução para a equação acima. A solução geral
     c_3e^{-\kappa x},\quad &amp; (x\ge 0).
   \end{cases}
 \end{aligned}`
-Podemos ver que a solução ainda não está completa, pois falta os valores das constantes `\(c_1\)`, `\(c_2\)` e `\(c_3\)`. Como poderemos obtê-las? Uma maneira seri empregar a condição de que a função de onda e sua derivada devem ser contínuas ao longo de todo o valor de x, ou seja,
+Podemos ver que a solução ainda não está completa, pois faltam os valores das constantes `\(c_1\)`, `\(c_2\)` e `\(c_3\)`. Como poderemos obtê-las? Como sugestão seria empregar a condição de que a função de onda e sua derivada devem ser contínuas ao longo de todo o valor de x, ou seja,
 `\begin{aligned}
   \left[ c_1e^{ik_1x}+c_2e^{-ik_1x}\right]_{x=0} &amp; = \left[ c_3e^{-\kappa x}\right]_{x=0},\\
   \left[ c_1ik_1e^{ik_1x}-c_2ik_1e^{-ik_1x}\right]_{x=0} &amp; = \left[-c_3\kappa e^{-\kappa x}\right]_{x=0}.
@@ -361,7 +361,7 @@ Substituindo `\(x=0\)` nas equações acima, teremos
 \end{aligned}`
 Multiplicando a primeira equação por `\(ik_1\)` e adicionando a segunda equação chegaremos a
 `\begin{aligned}
-  c_1 = \frac{c_3(ik_1-\kappa)}{2ik_1}.
+  c_1 = -\frac{c_3(\kappa-ik_1)}{2ik_1}.
 \end{aligned}`
 ]
 
@@ -373,23 +373,23 @@ class: middle
 .pull-left[
 Agora multiplicando a primeira equação por `\(-ik_1\)` e somando a segunda equação teremos
 `\begin{aligned}
-  c_2 = \frac{c_3(ik_1+\kappa)}{2ik_1}.
+  c_2 = \frac{c_3(\kappa-ik_1)}{2ik_1}.
 \end{aligned}`
-Assim, podemos substituir na solução de `\(\psi(x)\)` chegando a
+Assim, podemos substituir na solução de `\(\psi(x)\)`, chegando a
 `\begin{aligned}
 \psi(x)=
   \begin{cases}
-    \left(\frac{c_3(ik_1-\kappa)}{2ik_1}\right)e^{ik_1x}+\left(\frac{c_3(ik_1+\kappa)}{2ik_1}\right)e^{-ik_1x},\; &amp; (x&lt;0),\\
+    -\frac{c_3(\kappa-ik_1)}{2ik_1}e^{ik_1x}+\frac{c_3(\kappa-ik_1)}{2ik_1}e^{-ik_1x},\; &amp; (x&lt;0),\\
     c_3e^{-\kappa x},\; &amp; (x\ge 0).
   \end{cases}
 \end{aligned}`
-Podemos perceber que para chegar na solução final devemos conhecer `\(c_3\)`. Usaremos como recurso que a probabilidade de encontrar a partícula em qualquer posição ao longo do eixo x é 100%, ou seja,
+Podemos perceber que para alcançar a solução final, precisamos de `\(c_3\)`. Usaremos como recurso que a probabilidade de encontrar a partícula em qualquer posição ao longo do eixo x é 100%, ou seja,
 `\begin{aligned}
   \int^{\infty}_{\infty}|\psi(x)|^2dx &amp; = 1.
 \end{aligned}`
-(*Não se preocupe se não estiver claro, pois esse assunto será aborado com mais detalhes futuramente*).]
+]
 .pull-right[
-Assim, para `\(x&gt;0\)` teremos
+(*Não se preocupe se não estiver claro, pois esse assunto será aborado com mais detalhes futuramente*). Assim, para `\(x&gt;0\)` teremos
 `\begin{aligned}
   \int^{\infty}_{0}\left(c_3^*e^{-\kappa x}\right)\left(c_3e^{-\kappa x}\right)dx &amp; = 1,\\
   c^*_3c_3\int^{\infty}_{0}e^{-2\kappa x}dx &amp; = 1,\\
@@ -401,7 +401,7 @@ Substituindo em `\(\psi(x)\)` chegaremos na solução final,
 `\begin{aligned}
 \psi(x)=
   \begin{cases}
-    \frac{(ik_1-\kappa)\sqrt{2\kappa}}{2ik_1}e^{ik_1x}+\frac{(ik_1+\kappa)\sqrt{2\kappa}}{2ik_1}e^{-ik_1x},\; &amp; (x&lt;0),\\
+    \frac{(\kappa-ik_1)\sqrt{2\kappa}}{2ik_1}\left(e^{-ik_1x}-e^{ik_1x}\right),\; &amp; (x&lt;0),\\
     \sqrt{2\kappa}e^{-\kappa x},\; &amp; (x\ge 0).
   \end{cases}
 \end{aligned}`
@@ -415,16 +415,28 @@ class: middle
 .pull-left[
 Agora vamos determinar a densidade de probabilidade de encontrar o elétron por unidade de comprimento x, ou seja, `\(\psi^*(x)\psi(x)\)` (*lembrando que daqui por diante não precisaremos da dependência da função no tempo, pois `\(|\Psi(x,t)|^2\equiv |\psi(x)|^2\)`*). Para `\(x&lt;0\)` teremos
 `\begin{aligned}
-  |\psi(x)|^2 &amp; = \left(c_1e^{ik_1x}+c_2e^{-ik_1x}\right)^*\left(c_1e^{ik_1x}+c_2e^{-ik_1x}\right),\\
-  |\psi(x)|^2 &amp; = \left(c^\star_1e^{-ik_1x}+c^\star_2e^{ik_1x}\right)\left(c_1e^{ik_1x}+c_2e^{-ik_1x}\right),\\
-  &amp; = c^\star_1c_1e^0+c^\star_1c_2e^{-2ik_1x}+c_1c^\star_2e^{2ik_1x}+c^\star_2c_2e^0.
+  |\psi(x)|^2 &amp; = \left[\frac{(\kappa-ik_1)\sqrt{2\kappa}}{2ik_1}\left(e^{-ik_1x}-e^{ik_1x}\right)\right]^*\times,\\
+  &amp; \times \left[\frac{(\kappa-ik_1)\sqrt{2\kappa}}{2ik_1}\left(e^{-ik_1x}-e^{ik_1x}\right)\right],\\
+  &amp; = \frac{\kappa(\kappa^2+k_1^2)}{2k_1^2}\left(e^{-ik_1x}-e^{ik_1x}\right)^*\left(e^{-ik_1x}-e^{ik_1x}\right),\\
+  &amp; = \frac{\kappa(\kappa^2+k_1^2)}{2k_1^2}\left(2-e^{ik_1x}-e^{-ik_1x}\right).
 \end{aligned}`
-Além disso, `\(c_1\)` e `\(c_2\)` já foram obtidas anteriormente. Substituindo os seus valores teremos
+Usando a identidade `\(2\cos\theta=e^{i\theta}+e^{-i\theta}\)` teremos
 `\begin{aligned}
-  |\psi(x)|^2 &amp; =
+  |\psi(x)|^2 = \frac{\kappa(\kappa^2+k_1^2)}{2k_1^2}\left[1-\cos(2k_1x)\right].\\
 \end{aligned}`
 ]
 .pull-right[
+Usando a identidade trigonométrica `\(\sin^2\theta=\frac{1}{2}\left(1-\cos2\theta\right)\)` teremos
+`\begin{aligned}
+  |\psi(x)|^2_{x&lt;0} = \frac{\kappa(\kappa^2+k_1^2)}{2k_1^2}\sin^2(2k_1x).
+\end{aligned}`
+
+Para `\(x\ge 0\)` teremos
+`\begin{aligned}
+  |\psi(x)|^2 &amp; = \left[\sqrt{2\kappa}e^{-\kappa x}\right]^*\left[\sqrt{2\kappa}e^{-\kappa x}\right].\\
+  |\psi(x)|^2_{x\ge 0} &amp; = 2\kappa e^{-2\kappa x}.
+\end{aligned}`
+**Pode-se perceber que para `\(x&lt;0\)`, onde o elétron se comporta como uma partícula livre, a densidade de probabilidade é uma função senoidal. Entretanto, para `\(x\ge 0\)` temos que a probabilidade de encontrar o elétron decai exponencialmente, à medida que e ele se afasta da origem.** No próximo slide teremos uma figura ilustrando esse efeito.
 ]
 
 ---

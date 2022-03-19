@@ -430,7 +430,7 @@ Usando a identidade $2\cos\theta=e^{i\theta}+e^{-i\theta}$ teremos
 .pull-right[
 Usando a identidade trigonométrica $\sin^2\theta=\frac{1}{2}\left(1-\cos2\theta\right)$ e supondo que $\theta=\frac{k_1x}{2}$ teremos
 \begin{aligned}
-  |\psi(x)|^2_{x<0} = \frac{\kappa(\kappa^2+k_1^2)}{k_1^2}\sin^2(k_1x).
+  |\psi(x)|^2_{x<0} = \frac{\kappa(\kappa^2+k_1^2)}{k_1^2}\sin^2(\frac{k_1x}{2}).
 \end{aligned}
 
 Para $x\ge 0$ teremos

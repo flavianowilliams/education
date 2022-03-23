@@ -19,9 +19,9 @@
 	\tkzText[text centered,opacity=100,fill=gray!20, above=0.1](A){\small $V(x)=0$}
 	\tkzText[text centered,opacity=100,fill=gray!20, above=0.1](B){\small $V(x)=V_0$}
 
-	\tkzFct[domain=0:8, line width=1pt]{2}
+	\tkzFct[domain=0:8, line width=1pt]{4}
 
-	\tkzDefPoints{2/2/A}
-	\tkzText[text centered,opacity=100,fill=gray!20, above=0.1](A){\small $E<V_0$}
+	\tkzDefPoints{2/4/A}
+	\tkzText[text centered,opacity=100,fill=gray!20, above=0.1](A){\small $E>V_0$}
 
 \end{tikzpicture}

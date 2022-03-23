@@ -274,7 +274,7 @@ $c_1$ e $c_2$ são chamadas constantes de normalização.
 ---
 class: middle
 
-<div class="my-header"><span>Aplicações da equação de Schrodinger - Potencial degrau</span></div>
+<div class="my-header"><span>Aplicações da equação de Schrodinger - Potencial degrau(E < V<sub>0</sub>)</span></div>
 
 .pull-left[
 Imagine um elétron se movendo na direção do eixo x de um sistema formado por dois eletrodos ligeiramente separados, assim como mostra a figura ao lado. Esses eletrodos produzem uma diferença de potencial $V_0$ justamente na posição de separação $x=0$. Do ponto de vista de mecânica clássica, poderíamos imaginar uma partícula se movendo livremente até $x=0$. A partir daí a partícula sofreria a ação de uma força atuando no sentido contrário a x. Caso a energia da partícula fosse menor que $V_0$, ela 
@@ -299,7 +299,7 @@ Temos assim duas regiões distintas no qual o elétron estaria sendo submetido. 
 ---
 class: middle
 
-<div class="my-header"><span>Aplicações da equação de Schrodinger - Potencial degrau</span></div>
+<div class="my-header"><span>Aplicações da equação de Schrodinger - Potencial degrau(E < V<sub>0</sub>)</span></div>
 
 .pull-left[
 Considere uma situação onde a energia do elétron é menor que a energia potencial $V_0$. A figura abaixo mostra graficamente uma situação deste tipo,
@@ -332,7 +332,7 @@ Para $x\ge 0$ a equação de Schrodinger se torna
 ---
 class: middle
 
-<div class="my-header"><span>Aplicações da equação de Schrodinger - Potencial degrau</span></div>
+<div class="my-header"><span>Aplicações da equação de Schrodinger - Potencial degrau(E < V<sub>0</sub>)</span></div>
 
 .pull-left[
 Dividindo ambos os lados da equação por $2m/\hbar^2$, onde m é a massa do elétron, teremos
@@ -370,7 +370,7 @@ Multiplicando a primeira equação por $ik_1$ e adicionando a segunda equação 
 ---
 class: middle
 
-<div class="my-header"><span>Aplicações da equação de Schrodinger - Potencial degrau</span></div>
+<div class="my-header"><span>Aplicações da equação de Schrodinger - Potencial degrau(E < V<sub>0</sub>)</span></div>
 
 .pull-left[
 Agora multiplicando a primeira equação por $-ik_1$ e somando com a segunda teremos
@@ -412,7 +412,7 @@ Substituindo em $\psi(x)$ chegaremos na solução final,
 ---
 class: middle
 
-<div class="my-header"><span>Aplicações da equação de Schrodinger - Potencial degrau</span></div>
+<div class="my-header"><span>Aplicações da equação de Schrodinger - Potencial degrau(E < V<sub>0</sub>)</span></div>
 
 .pull-left[
 Agora vamos determinar a densidade de probabilidade de encontrar o elétron por unidade de comprimento x, ou seja, $\psi^*(x)\psi(x)$ (*lembrando que $|\Psi(x,t)|^2\equiv |\psi(x)|^2$*). Para $x<0$ teremos
@@ -444,7 +444,7 @@ Para $x\ge 0$ teremos
 ---
 class: middle
 
-<div class="my-header"><span>Aplicações da equação de Schrodinger - Potencial degrau</span></div>
+<div class="my-header"><span>Aplicações da equação de Schrodinger - Potencial degrau (E < V<sub>0</sub>)</span></div>
 
 .pull-left[
 ```{r, echo=FALSE, fig.align='center',fig.cap='Representação gráfica da energia  potencial.',out.width="75%",fig.asp=1}
@@ -458,16 +458,83 @@ class: middle
 ---
 class: middle
 
-<div class="my-header"><span>O problema do elétron na caixa - Exemplo de um caso real</span></div>
+<div class="my-header"><span>Aplicações da equação de Schrodinger - Potencial degrau(E > V<sub>0</sub>)</span></div>
 
 .pull-left[
-Agora iremos aplicar a equação de Schrödinger para obter a solução de um dos problemas mais simples que poderemos considerar. Imagine um elétron confinado em um tubo onde nas extremidades possuem duas placas paralelas carregadas eletricamente. Próximo as placas existem duas grades aterradas, fazendo que o potencial entre elas seja zero. Portanto, entre as grades o elétron pode se mover livremente, porém ao atravessá-la, ele se depara com um potencial eletrostático de intensidade $V(r)$, onde
-\begin{aligned}
-  V(r) = \frac{1}{4\pi\varepsilon_0}\frac{q}{r},
-\end{aligned}
-sendo r a distância relativa entre o elétron e a placa (*podemos ver que o potencial aumenta rapidamente, assumindo valores próximo ao infinito, à medida que o elétron se aproxima da placa eletricamente carregada*).
+Agora, considere uma situação onde a energia do elétron é maior ou igual a energia potencial $V_0$. A figura abaixo mostra graficamente uma situação deste tipo,
+
+```{r, echo=FALSE, fig.align='center',fig.cap='Representação gráfica da energia  potencial.',out.width="75%",fig.asp=1}
+  knitr::include_graphics("img/potencial-degrau-energia2.jpeg")
+```
+
+Assim como no caso $E<V_0$, podemos separar a solução do problema nas regiões $x<0$ e $x\ge 0$. Para $x<0$ ainda permanece a solução da partícula livre, onde
+
 ]
 .pull-right[
+
+\begin{aligned}
+  \psi(x) & = c_1e^{ik_1x}+c_2e^{-ik_1x}.
+\end{aligned}
+Neste caso $k_1=\frac{\sqrt{2mE}}{\hbar}$. 
+
+Para $x\ge 0$ a equação de Schrodinger se torna
+\begin{aligned}
+  -\frac{\hbar^2}{2m}\frac{d^2\psi(x)}{dx^2}+V_0\psi(x) & = E\psi(x),\\
+  -\frac{\hbar^2}{2m}\frac{d^2\psi(x)}{dx^2}+V_0\psi(x)-E\psi(x) & =0,\\
+  \frac{d^2\psi(x)}{dx^2}+\frac{2m}{\hbar^2}(E-V_0)\psi(x) & =0.
+\end{aligned}
+Podemos ver que a solução geral desta equação seria $\psi(x)=c_3e^{ik_2x}+c_4e^{-ik_2x}$, onde
+\begin{aligned}
+  k_2 = \frac{\sqrt{2m(E-V_0)}}{\hbar}.
+\end{aligned}
+*(Observação. Percebe-se que $k_2<k_1$)*.
+]
+
+---
+class: middle
+
+<div class="my-header"><span>Aplicações da equação de Schrodinger - Potencial degrau(E > V<sub>0</sub>)</span></div>
+
+.pull-left[
+
+Podemos escrever a solução completa da função de onda na forma mais compacta, como mostrado abaixo,
+\begin{aligned}
+\psi(x)=
+  \begin{cases}
+    c_1e^{ik_1x}+c_2e^{-ik_1x},\quad & (x<0),\\
+    c_3e^{ik_2x}+c_4e^{-ik_2x},\quad & (x\ge 0).
+  \end{cases}
+\end{aligned}
+Podemos ver que o termo $e^{-ik_2x}$ representa uma onda se propagando da direita para a esquerda, desde $x\rightarrow\infty$ até $x=0$. Se impusermos que os elétrons saem inicialmente de $x\rightarrow-\infty$, podemos impor $c_4=0$, afim de impor a condição de que não existem elétrons partindo de $x\rightarrow\infty$. Para obter as constantes $c_1$, $c_2$ e $c_3$, empregamos a condição de analiticidade da função de onda e sua deriva. Isso resulta nas equações abaixo,
+\begin{aligned}
+  c_1+c_2 & = c_3,\\
+  (c_1-c_2)ik_1 & = ik_2c_3.
+\end{aligned}
+Substituindo $c_3$ da primeira equação na segunda teremos
+
+]
+.pull-right[
+
+\begin{aligned}
+    (c_1-c_2)k_1 & = k_2(c_1+c_2),\\
+    c_1k_1-c_2k_1 & = c_1k_2+c_2k_2,\\
+    c_2 & = \frac{k_2+k_1}{k_2-k_1}c_1.
+\end{aligned}
+Substituindo $c_2$ na primeira equação teremos
+\begin{aligned}
+  c_1+c_2 & = c_3,\\
+  c_1+\frac{k_2+k_1}{k_2-k_1}c_1 & = c_3,\\
+  c_3 & = \frac{2k_2}{k_2-k_1}c_1.
+\end{aligned}
+Substituindo $c_2$ e $c_3$ em $\psi$ chegamos na solução
+\begin{aligned}
+\psi(x)=
+  \begin{cases}
+    c_1e^{ik_1x}+c_1\frac{k_2+k_1}{k_2-k_1}e^{-ik_1x},\quad & (x<0),\\
+    c_1\frac{2k_2}{k_2-k_1}e^{ik_2x},\quad & (x\ge 0).
+  \end{cases}
+\end{aligned}
+Para obter $c_1$, usamos a condição da probabilidade de 100% de encontrar a partícula em qualquer região.
 
 ]
 

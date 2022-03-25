@@ -345,7 +345,7 @@ onde definimos $\kappa=\frac{\sqrt{2m(V_0-E)}}{\hbar}$. Uma possível solução 
 \psi(x)=
   \begin{cases}
     c_1e^{ik_1x}+c_2e^{-ik_1x},\quad & (x<0),\\
-    c_3e^{-\kappa x},\quad & (x\ge 0).
+    c_3e^{-\kappa x}+c_4e^{\kappa x},\quad & (x\ge 0).
   \end{cases}
 \end{aligned}
 Podemos ver que a solução ainda não está completa, pois faltam as constantes $c_1$, $c_2$, $c_3$ e $c_4$.
@@ -420,17 +420,17 @@ Agora vamos determinar a densidade de probabilidade de encontrar o elétron por 
   |\psi(x)|^2 & = \left[\frac{(\kappa-ik_1)\sqrt{2\kappa}}{2ik_1}\left(e^{-ik_1x}-e^{ik_1x}\right)\right]^*\times,\\
   & \times \left[\frac{(\kappa-ik_1)\sqrt{2\kappa}}{2ik_1}\left(e^{-ik_1x}-e^{ik_1x}\right)\right],\\
   & = \frac{\kappa(\kappa^2+k_1^2)}{2k_1^2}\left(e^{-ik_1x}-e^{ik_1x}\right)^*\left(e^{-ik_1x}-e^{ik_1x}\right),\\
-  & = \frac{\kappa(\kappa^2+k_1^2)}{2k_1^2}\left[2-\left(e^{ik_1x}+e^{-ik_1x}\right)\right].
+  & = \frac{\kappa(\kappa^2+k_1^2)}{2k_1^2}\left[2-\left(e^{2ik_1x}+e^{-2ik_1x}\right)\right].
 \end{aligned}
 Usando a identidade $2\cos\theta=e^{i\theta}+e^{-i\theta}$ teremos
 \begin{aligned}
-  |\psi(x)|^2 = \frac{\kappa(\kappa^2+k_1^2)}{k_1^2}\left[1-\cos(k_1x)\right].\\
+  |\psi(x)|^2 = \frac{\kappa(\kappa^2+k_1^2)}{k_1^2}\left[1-\cos(2k_1x)\right].\\
 \end{aligned}
 ]
 .pull-right[
-Usando a identidade trigonométrica $\sin^2\theta=\frac{1}{2}\left(1-\cos2\theta\right)$ e supondo que $\theta=\frac{k_1x}{2}$ teremos
+Usando a identidade trigonométrica $\sin^2\theta=\frac{1}{2}\left(1-\cos2\theta\right)$ e supondo que $\theta=k_1x$ teremos
 \begin{aligned}
-  |\psi(x)|^2_{x<0} = \frac{\kappa(\kappa^2+k_1^2)}{k_1^2}\sin^2(\frac{k_1x}{2}).
+  |\psi(x)|^2_{x<0} = \frac{\kappa(\kappa^2+k_1^2)}{k_1^2}\sin^2(k_1x).
 \end{aligned}
 
 Para $x\ge 0$ teremos

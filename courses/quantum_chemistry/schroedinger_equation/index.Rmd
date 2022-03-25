@@ -573,7 +573,7 @@ Para $x\ge 0$ teremos
 A figura abaixo mostra a densidade de probabilidade para $x<0$ e para $x\ge 0$.
 
 ```{r, echo=FALSE, fig.align='center',fig.cap='Representação gráfica da densidade de probabilidade.',out.width="75%",fig.asp=1}
-  knitr::include_graphics("img/potencial-degrau-energia2.jpeg")
+  knitr::include_graphics("img/potencial-degrau-probabilidade2.jpeg")
 ```
 
 ]

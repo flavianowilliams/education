@@ -335,9 +335,9 @@ class: middle
 <div class="my-header"><span>Aplicações da equação de Schrodinger - Potencial degrau(E < V0)</span></div>
 
 .pull-left[
-Dividindo ambos os lados da equação por $2m/\hbar^2$, onde m é a massa do elétron, teremos
+Multiplicando ambos os lados da equação por $2m/\hbar^2$, onde m é a massa do elétron, teremos
 \begin{aligned}
-  \frac{d^2\psi(x)}{dx^2}-\frac{2m}{\hbar}(V_0-E)\psi(x) & =0,\\
+  \frac{d^2\psi(x)}{dx^2}-\frac{2m}{\hbar^2}(V_0-E)\psi(x) & =0,\\
   \frac{d^2\psi(x)}{dx^2}-\kappa^2\psi(x) & =0,
 \end{aligned}
 onde definimos $\kappa=\frac{\sqrt{2m(V_0-E)}}{\hbar}$. Uma possível solução desta equação seria $\psi(x)=c_3e^{-\kappa x}$. Outra solução seria $\psi(x)=c_4e^{\kappa x}$, ou seja, temos a solução geral $\psi(x)=c_3e^{-\kappa x}+c_4e^{\kappa x}$. Assim, podemos escrever a solução completa da função de onda na forma mais compacta, como mostrado abaixo,
@@ -385,28 +385,26 @@ Assim, podemos substituir na solução de $\psi(x)$, chegando a
     c_3e^{-\kappa x},\; & (x\ge 0).
   \end{cases}
 \end{aligned}
-Podemos perceber que para alcançar a solução final, precisamos de $c_3$. Usaremos como recurso que a probabilidade de encontrar a partícula em qualquer posição ao longo do eixo x é 100%, ou seja,
+Para alcançar a solução final, precisamos de $c_3$. Ele pode ser obtido considerando que a probabilidade de encontrar a partícula em qualquer região é 100%,
 \begin{aligned}
   \int^{\infty}_{\infty}|\psi(x)|^2dx & = 1.
 \end{aligned}
+Entretanto, é possível fazer uma análise qualitativa sem saber o valor de $c_3$.
 ]
 .pull-right[
-(*Não se preocupe se não estiver claro, pois esse assunto será aborado com mais detalhes futuramente*). Assim, para $x>0$ teremos
+
+Agora vamos determinar a densidade de probabilidade de encontrar o elétron por unidade de comprimento x, ou seja, $\psi^*(x)\psi(x)$ (*lembrando que $|\Psi(x,t)|^2\equiv |\psi(x)|^2$*). Para $x<0$ teremos
 \begin{aligned}
-  \int^{\infty}_{0}\left(c_3^*e^{-\kappa x}\right)\left(c_3e^{-\kappa x}\right)dx & = 1,\\
-  c^*_3c_3\int^{\infty}_{0}e^{-2\kappa x}dx & = 1,\\
-  c^*_3c_3\left[\frac{e^{-2\kappa x}}{-2\kappa}\right]^{\infty}_{0} & = 1,\\
-  |c_3|^2\left[0-\frac{1}{(-2\kappa)}\right] & = 1,\\
-  c_3 & = \sqrt{2\kappa}.
+  |\psi(x)|^2 & = \left[c_3\frac{(\kappa-ik_1)}{2ik_1}\left(e^{-ik_1x}-e^{ik_1x}\right)\right]^*\times,\\
+  & \times \left[c_3\frac{(\kappa-ik_1)}{2ik_1}\left(e^{-ik_1x}-e^{ik_1x}\right)\right],\\
+  & = |c_3|^2\frac{(\kappa^2+k_1^2)}{4k_1^2}\left(e^{-ik_1x}-e^{ik_1x}\right)^*\left(e^{-ik_1x}-e^{ik_1x}\right),\\
+  & = |c_3|^2\frac{(\kappa^2+k_1^2)}{4k_1^2}\left[2-\left(e^{2ik_1x}+e^{-2ik_1x}\right)\right].
 \end{aligned}
-Substituindo em $\psi(x)$ chegaremos na solução final,
+Usando a identidade $2\cos\theta=e^{i\theta}+e^{-i\theta}$ teremos
 \begin{aligned}
-\psi(x)=
-  \begin{cases}
-    \frac{(\kappa-ik_1)\sqrt{2\kappa}}{2ik_1}\left(e^{-ik_1x}-e^{ik_1x}\right),\; & (x<0),\\
-    \sqrt{2\kappa}e^{-\kappa x},\; & (x\ge 0).
-  \end{cases}
+  |\psi(x)|^2 = |c_3|^2\frac{(\kappa^2+k_1^2)}{2k_1^2}\left[1-\cos(2k_1x)\right].\\
 \end{aligned}
+
 ]
 
 ---
@@ -415,50 +413,32 @@ class: middle
 <div class="my-header"><span>Aplicações da equação de Schrodinger - Potencial degrau(E < V0)</span></div>
 
 .pull-left[
-Agora vamos determinar a densidade de probabilidade de encontrar o elétron por unidade de comprimento x, ou seja, $\psi^*(x)\psi(x)$ (*lembrando que $|\Psi(x,t)|^2\equiv |\psi(x)|^2$*). Para $x<0$ teremos
-\begin{aligned}
-  |\psi(x)|^2 & = \left[\frac{(\kappa-ik_1)\sqrt{2\kappa}}{2ik_1}\left(e^{-ik_1x}-e^{ik_1x}\right)\right]^*\times,\\
-  & \times \left[\frac{(\kappa-ik_1)\sqrt{2\kappa}}{2ik_1}\left(e^{-ik_1x}-e^{ik_1x}\right)\right],\\
-  & = \frac{\kappa(\kappa^2+k_1^2)}{2k_1^2}\left(e^{-ik_1x}-e^{ik_1x}\right)^*\left(e^{-ik_1x}-e^{ik_1x}\right),\\
-  & = \frac{\kappa(\kappa^2+k_1^2)}{2k_1^2}\left[2-\left(e^{2ik_1x}+e^{-2ik_1x}\right)\right].
-\end{aligned}
-Usando a identidade $2\cos\theta=e^{i\theta}+e^{-i\theta}$ teremos
-\begin{aligned}
-  |\psi(x)|^2 = \frac{\kappa(\kappa^2+k_1^2)}{k_1^2}\left[1-\cos(2k_1x)\right].\\
-\end{aligned}
-]
-.pull-right[
+
 Usando a identidade trigonométrica $\sin^2\theta=\frac{1}{2}\left(1-\cos2\theta\right)$ e supondo que $\theta=k_1x$ teremos
 \begin{aligned}
-  |\psi(x)|^2_{x<0} = \frac{\kappa(\kappa^2+k_1^2)}{k_1^2}\sin^2(k_1x).
+  |\psi(x)|^2_{x<0} = |c_3|^2\frac{\kappa(\kappa^2+k_1^2)}{2k_1^2}\sin^2(k_1x).
 \end{aligned}
 
 Para $x\ge 0$ teremos
 \begin{aligned}
-  |\psi(x)|^2 & = \left[\sqrt{2\kappa}e^{-\kappa x}\right]^*\left[\sqrt{2\kappa}e^{-\kappa x}\right].\\
-  |\psi(x)|^2_{x\ge 0} & = 2\kappa e^{-2\kappa x}.
+  |\psi(x)|^2 & = \left[c_3e^{-\kappa x}\right]^*\left[c_3e^{-\kappa x}\right].\\
+  |\psi(x)|^2_{x\ge 0} & = |c_3|^2 e^{-2\kappa x}.
 \end{aligned}
 **Pode-se perceber que para $x<0$, onde o elétron se comporta como uma partícula livre, a densidade de probabilidade é uma função senoidal. Entretanto, para $x\ge 0$ temos que a probabilidade de encontrar o elétron decai exponencialmente, à medida que e ele se afasta da origem.** No próximo slide será mostrado uma figura ilustrando este efeito.
-]
 
----
-class: middle
-
-<div class="my-header"><span>Aplicações da equação de Schrodinger - Potencial degrau (E < V0)</span></div>
-
-.pull-left[
-```{r, echo=FALSE, fig.align='center',fig.cap='Representação gráfica da energia  potencial.',out.width="75%",fig.asp=1}
-  knitr::include_graphics("img/potencial-degrau-probabilidade.jpeg")
-```
 ]
 .pull-right[
 
+```{r, echo=FALSE, fig.align='center',fig.cap='Representação gráfica da energia  potencial.',out.width="75%",fig.asp=1}
+  knitr::include_graphics("img/potencial-degrau-probabilidade.jpeg")
+```
+
 ]
 
 ---
 class: middle
 
-<div class="my-header"><span>Aplicações da equação de Schrodinger - Potencial degrau(E > V<sub>0</sub>)</span></div>
+<div class="my-header"><span>Aplicações da equação de Schrodinger - Potencial degrau(E > V0)</span></div>
 
 .pull-left[
 Agora, considere uma situação onde a energia do elétron é maior ou igual a energia potencial $V_0$. A figura abaixo mostra graficamente uma situação deste tipo,

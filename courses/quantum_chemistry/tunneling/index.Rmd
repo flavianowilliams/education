@@ -1,6 +1,6 @@
 ---
 title: "Introdução a química quântica"
-subtitle: "O efeito túnel"
+subtitle: "Efeito túnel"
 author: "Flaviano Williams Fernandes"
 institute: "Instituto Federal do Paraná - Irati"
 date: "16 de março de 2021 (atualizado em `r format(Sys.Date(), format='%d/%m/%Y')`)"

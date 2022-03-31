@@ -70,7 +70,7 @@ class: middle
 ---
 class: middle
 
-<div class="my-header"><span>Aplicações da equação de Schrodinger - Potencial degrau(E < V0)</span></div>
+<div class="my-header"><span>Potencial degrau(E < V0) - exemplo real</span></div>
 
 .pull-left[
 Imagine um elétron se movendo na direção do eixo x de um sistema formado por dois eletrodos ligeiramente separados, assim como mostra a figura ao lado. Esses eletrodos produzem uma diferença de potencial $V_0$ justamente na posição de separação $x=0$. Do ponto de vista de mecânica clássica, poderíamos imaginar uma partícula se movendo livremente até $x=0$. A partir daí a partícula sofreria a ação de uma força atuando no sentido contrário a x. Caso a energia da partícula fosse menor que $V_0$, ela 
@@ -95,7 +95,7 @@ Temos assim duas regiões distintas no qual o elétron estaria sendo submetido. 
 ---
 class: middle
 
-<div class="my-header"><span>Aplicações da equação de Schrodinger - Potencial degrau(E < V0)</span></div>
+<div class="my-header"><span>Potencial degrau(E < V0) - Solução para x < 0</span></div>
 
 .pull-left[
 Considere uma situação onde a energia do elétron é menor que a energia potencial $V_0$. A figura abaixo mostra graficamente uma situação deste tipo,
@@ -128,7 +128,7 @@ Para $x\ge 0$ a equação de Schrodinger se torna
 ---
 class: middle
 
-<div class="my-header"><span>Aplicações da equação de Schrodinger - Potencial degrau(E < V0)</span></div>
+<div class="my-header"><span>Potencial degrau(E < V0) - Solução para x > 0</span></div>
 
 .pull-left[
 Multiplicando ambos os lados da equação por $2m/\hbar^2$, onde m é a massa do elétron, teremos
@@ -166,7 +166,7 @@ Multiplicando a primeira equação por $ik_1$ e adicionando a segunda equação 
 ---
 class: middle
 
-<div class="my-header"><span>Aplicações da equação de Schrodinger - Potencial degrau(E < V0)</span></div>
+<div class="my-header"><span>Potencial degrau(E < V0) - solução geral</span></div>
 
 .pull-left[
 Agora multiplicando a primeira equação por $-ik_1$ e somando com a segunda teremos
@@ -206,7 +206,7 @@ Usando a identidade $2\cos\theta=e^{i\theta}+e^{-i\theta}$ teremos
 ---
 class: middle
 
-<div class="my-header"><span>Aplicações da equação de Schrodinger - Potencial degrau(E < V0)</span></div>
+<div class="my-header"><span>Potencial degrau(E < V0) - densidade de probabilidade</span></div>
 
 .pull-left[
 
@@ -225,7 +225,7 @@ Para $x\ge 0$ teremos
 ]
 .pull-right[
 
-```{r, echo=FALSE, fig.align='center',fig.cap='Representação gráfica da energia  potencial.',out.width="75%",fig.asp=1}
+```{r, echo=FALSE, fig.align='center',fig.cap='Representação gráfica da densidade de probabilidade.',out.width="75%",fig.asp=1}
   knitr::include_graphics("img/potencial-degrau-probabilidade.jpeg")
 ```
 
@@ -234,7 +234,7 @@ Para $x\ge 0$ teremos
 ---
 class: middle
 
-<div class="my-header"><span>Aplicações da equação de Schrodinger - Potencial degrau(E > V0)</span></div>
+<div class="my-header"><span>Potencial degrau(E > V0) - solução para x > 0</span></div>
 
 .pull-left[
 Agora, considere uma situação onde a energia do elétron é maior ou igual a energia potencial $V_0$. A figura abaixo mostra graficamente uma situação deste tipo,
@@ -269,7 +269,7 @@ Podemos ver que a solução geral desta equação seria $\psi(x)=c_3e^{ik_2x}+c_
 ---
 class: middle
 
-<div class="my-header"><span>Aplicações da equação de Schrodinger - Potencial degrau (E > V0)</span></div>
+<div class="my-header"><span>Potencial degrau (E > V0) - solução geral</span></div>
 
 .pull-left[
 
@@ -317,7 +317,7 @@ Para obter $c_1$, usamos a condição da probabilidade de 100% de encontrar a pa
 ---
 class: middle
 
-<div class="my-header"><span>Aplicações da equação de Schrodinger - Potencial degrau (E > V0)</span></div>
+<div class="my-header"><span>Potencial degrau (E > V0) - densidade de probabilidade</span></div>
 
 .pull-left[
 

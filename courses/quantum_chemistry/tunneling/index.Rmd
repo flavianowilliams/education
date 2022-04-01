@@ -352,18 +352,6 @@ class: middle
 
 .pull-left[
 
-$c_1$, $c_2$ e $c_3$ foram obtidos anteriormente, assim basta sabermos $c_4$ e $c_5$.
-Usando a mesma condição de analiticidade da função de onda em $x=a$ deveremos ter
-\begin{aligned}
-  \left[ c_3e^{-\kappa x}\right]_{x=a} & = \left[ c_4e^{ik_1x}\right]_{x=a},\\
-  \left[ -c_3\kappa e^{-\kappa x}\right]_{x=a} & = \left[c_4ik_1 e^{ik_1x}\right]_{x=a},
-\end{aligned}
-ou seja,
-\begin{aligned}
-  c_3e^{-\kappa a} & = c_4e^{ik_1a},\\
-  -c_3\kappa e^{-\kappa a} & = c_4ik_1e^{ik_1a}.
-\end{aligned}
-
 ]
 .pull-right[
 

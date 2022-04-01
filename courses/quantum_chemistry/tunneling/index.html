@@ -17,7 +17,7 @@ class: center, middle, inverse, title-slide
 ## Efeito túnel
 ### Flaviano Williams Fernandes
 ### Instituto Federal do Paraná - Irati
-### 16 de março de 2021 (atualizado em 31/03/2022)
+### 16 de março de 2021 (atualizado em 01/04/2022)
 
 ---
 
@@ -152,7 +152,7 @@ Substituindo `\(x=0\)` nas equações acima, teremos
 \end{aligned}`
 Multiplicando a primeira equação por `\(ik_1\)` e adicionando a segunda equação chegaremos a
 `\begin{aligned}
-  c_1 = -\frac{c_3(\kappa-ik_1)}{2ik_1}.
+  c_1 = \frac{c_3(k_1+i\kappa)}{2k_1}.
 \end{aligned}`
 ]
 
@@ -162,61 +162,32 @@ class: middle
 &lt;div class="my-header"&gt;&lt;span&gt;Potencial degrau(E &lt; V0) - solução geral&lt;/span&gt;&lt;/div&gt;
 
 .pull-left[
+
 Agora multiplicando a primeira equação por `\(-ik_1\)` e somando com a segunda teremos
 `\begin{aligned}
-  c_2 = \frac{c_3(\kappa-ik_1)}{2ik_1}.
+  c_2 = \frac{c_3(k_1-i\kappa)}{2k_1}.
 \end{aligned}`
 Assim, podemos substituir na solução de `\(\psi(x)\)`, chegando a
 `\begin{aligned}
 \psi(x)=
   \begin{cases}
-    -\frac{c_3(\kappa-ik_1)}{2ik_1}e^{ik_1x}+\frac{c_3(\kappa-ik_1)}{2ik_1}e^{-ik_1x},\; &amp; (x&lt;0),\\
+    \frac{c_3(k_1+i\kappa)}{2k_1}e^{ik_1x}+\frac{c_3(k_1-i\kappa)}{2k_1}e^{-ik_1x},\; &amp; (x&lt;0),\\
     c_3e^{-\kappa x},\; &amp; (x\ge 0).
   \end{cases}
 \end{aligned}`
-Para alcançar a solução final, precisamos de `\(c_3\)`. Ele pode ser obtido considerando que a probabilidade de encontrar a partícula em qualquer região é 100%,
+O comportamento físico interessante poderia ser obtida através da densidade de probabilidade, `\(|\psi(x)|^2\)` (para mais detalhes, veja o apêndice A),
 `\begin{aligned}
-  \int^{\infty}_{\infty}|\psi(x)|^2dx &amp; = 1.
+|\psi(x)|^2\Rightarrow
+  \begin{cases}
+    \left[\cos(k_1x)-\frac{\kappa}{k_1}\sin(k_1x)\right]^2, &amp; (x&lt;0),\\
+    e^{-2\kappa x}, &amp; (x\ge 0).
+  \end{cases}
 \end{aligned}`
-Entretanto, é possível fazer uma análise qualitativa sem saber o valor de `\(c_3\)`.
+
 ]
 .pull-right[
 
-Agora vamos determinar a densidade de probabilidade de encontrar o elétron por unidade de comprimento x, ou seja, `\(\psi^*(x)\psi(x)\)` (*lembrando que `\(|\Psi(x,t)|^2\equiv |\psi(x)|^2\)`*). Para `\(x&lt;0\)` teremos
-`\begin{aligned}
-  |\psi(x)|^2 &amp; = \left[c_3\frac{(\kappa-ik_1)}{2ik_1}\left(e^{-ik_1x}-e^{ik_1x}\right)\right]^*\times,\\
-  &amp; \times \left[c_3\frac{(\kappa-ik_1)}{2ik_1}\left(e^{-ik_1x}-e^{ik_1x}\right)\right],\\
-  &amp; = |c_3|^2\frac{(\kappa^2+k_1^2)}{4k_1^2}\left(e^{-ik_1x}-e^{ik_1x}\right)^*\left(e^{-ik_1x}-e^{ik_1x}\right),\\
-  &amp; = |c_3|^2\frac{(\kappa^2+k_1^2)}{4k_1^2}\left[2-\left(e^{2ik_1x}+e^{-2ik_1x}\right)\right].
-\end{aligned}`
-Usando a identidade `\(2\cos\theta=e^{i\theta}+e^{-i\theta}\)` teremos
-`\begin{aligned}
-  |\psi(x)|^2 = |c_3|^2\frac{(\kappa^2+k_1^2)}{2k_1^2}\left[1-\cos(2k_1x)\right].\\
-\end{aligned}`
-
-]
-
----
-class: middle
-
-&lt;div class="my-header"&gt;&lt;span&gt;Potencial degrau(E &lt; V0) - densidade de probabilidade&lt;/span&gt;&lt;/div&gt;
-
-.pull-left[
-
-Usando a identidade trigonométrica `\(\sin^2\theta=\frac{1}{2}\left(1-\cos2\theta\right)\)` e supondo que `\(\theta=k_1x\)` teremos
-`\begin{aligned}
-  |\psi(x)|^2_{x&lt;0} = |c_3|^2\frac{\kappa(\kappa^2+k_1^2)}{2k_1^2}\sin^2(k_1x).
-\end{aligned}`
-
-Para `\(x\ge 0\)` teremos
-`\begin{aligned}
-  |\psi(x)|^2 &amp; = \left[c_3e^{-\kappa x}\right]^*\left[c_3e^{-\kappa x}\right].\\
-  |\psi(x)|^2_{x\ge 0} &amp; = |c_3|^2 e^{-2\kappa x}.
-\end{aligned}`
-**Pode-se perceber que para `\(x&lt;0\)`, onde o elétron se comporta como uma partícula livre, a densidade de probabilidade é uma função senoidal. Entretanto, para `\(x\ge 0\)` temos que a probabilidade de encontrar o elétron decai exponencialmente, à medida que e ele se afasta da origem.** No próximo slide será mostrado uma figura ilustrando este efeito.
-
-]
-.pull-right[
+**Pode-se perceber que para `\(x&lt;0\)` a densidade de probabilidade é uma função senoidal devido a combinação das ondas incidente e refletida do elétron. Entretanto, para `\(x\ge 0\)` temos que a probabilidade de encontrar o elétron decai exponencialmente, à medida que e ele se afasta da origem. Isso pode ser visto através da exponencial decrescente.**
 
 &lt;div class="figure" style="text-align: center"&gt;
 &lt;img src="img/potencial-degrau-probabilidade.jpeg" alt="Representação gráfica da densidade de probabilidade." width="75%" /&gt;
@@ -281,31 +252,34 @@ Podemos ver que o termo `\(e^{-ik_2x}\)` representa uma onda se propagando da di
   c_1+c_2 &amp; = c_3,\\
   (c_1-c_2)ik_1 &amp; = ik_2c_3.
 \end{aligned}`
-Substituindo `\(c_3\)` da primeira equação na segunda teremos
+Multiplicando a primeira equação por `\(ik_1\)` e substituindo na segunda teremos
 
 ]
 .pull-right[
 
 `\begin{aligned}
-    (c_1-c_2)k_1 &amp; = k_2(c_1+c_2),\\
-    c_1k_1-c_2k_1 &amp; = c_1k_2+c_2k_2,\\
-    c_2 &amp; = \frac{k_1-k_2}{k_1+k_2}c_1.
+      c_1 &amp; = \frac{k_1+k_2}{2k_1}c_3.
 \end{aligned}`
-Substituindo `\(c_2\)` na primeira equação teremos
+Multiplicando a primeira equação por `\(-ik_1\)` e substituindo na segunda teremos
 `\begin{aligned}
-  c_1+c_2 &amp; = c_3,\\
-  c_1+\frac{k_1-k_2}{k_1+k_2}c_1 &amp; = c_3,\\
-  c_3 &amp; = \frac{2k_1}{k_1+k_2}c_1.
+      c_2 &amp; = \frac{k_1-k_2}{2k_1}c_3.
 \end{aligned}`
-Substituindo `\(c_2\)` e `\(c_3\)` em `\(\psi\)` chegamos na solução
+Substituindo `\(c_1\)` e `\(c_2\)` em `\(\psi\)` chegamos na solução
 `\begin{aligned}
 \psi(x)=
   \begin{cases}
-    c_1e^{ik_1x}+c_1\frac{k_1-k_2}{k_1+k_2}e^{-ik_1x},\quad &amp; (x&lt;0),\\
-    c_1\frac{2k_1}{k_1+k_2}e^{ik_2x},\quad &amp; (x\ge 0).
+    \frac{c_3(k_1+k_2)}{2k_1}e^{ik_1x}+\frac{c_3(k_1-k_2)}{2k_1}e^{-ik_1x}, &amp; (x&lt;0),\\
+    c_3e^{ik_2x}, &amp; (x\ge 0).
   \end{cases}
 \end{aligned}`
-Para obter `\(c_1\)`, usamos a condição da probabilidade de 100% de encontrar a partícula em qualquer região.
+O comportamento físico interessante poderia ser obtida através da densidade de probabilidade, `\(|\psi(x)|^2\)` (para mais detalhes, veja o apêndice B),
+`\begin{aligned}
+|\psi(x)|^2\Rightarrow
+  \begin{cases}
+    \left[\cos^2(k_1x)+\frac{k_2^2}{k_1^2}\sin^2(k_1x)\right], &amp; (x&lt;0),\\
+    \text{constante}, &amp; (x\ge 0).
+  \end{cases}
+\end{aligned}`
 
 ]
 
@@ -316,30 +290,7 @@ class: middle
 
 .pull-left[
 
-Agora vamos determinar a densidade de probabilidade, `\(|\psi(x)|^2\)`. Para `\(x&lt;0\)` teremos
-`\begin{aligned}
-  |\psi(x)|^2 &amp; = |c_1|^2\left[e^{ik_1x}+\frac{k_1-k_2}{k_1+k_2}e^{-ik_1x}\right]^*\times\\
-  &amp; \times \left[e^{ik_1x}+\frac{k_1-k_2}{k_1+k_2}e^{-ik_1x}\right].
-\end{aligned}`
-Consideremos o valor complexo `\(z=Ae^{i\theta}+Be^{-i\theta}\)`, onde A e B são valores reais. teremos
-`\begin{aligned}
-  z^\star z &amp; = \left(Ae^{i\theta}+Be^{-i\theta}\right)^*\left(Ae^{i\theta}+Be^{-i\theta}\right),\\
-  &amp; = A^2+B^2+ABe^{2i\theta}+ABe^{-2i\theta},\\
-  z^\star z &amp; = A^2+B^2+2AB\cos(2\theta).
-\end{aligned}`
-Supondo `\(A=1\)` e `\(B=\frac{k_1-k_2}{k_1+k_2}\)` na equação acima,
-`\begin{aligned}
-  |\psi(x)|^2 = |c_1|^2\left[1+\frac{(k_1-k_2)^2}{(k_1+k_2)^2}+2\frac{k_1-k_2}{k_1+k_2}\cos(2k_1x)\right].
-\end{aligned}`
-
-]
-.pull-right[
-
-Para `\(x\ge 0\)` teremos
-`\begin{aligned}
-  |\psi(x)|^2_{x\ge 0} &amp; = \left[c_1\frac{2k_1}{k_1+k_2}e^{ik_2x}\right]^*\left[c_1\frac{2k_1}{k_1+k_2}e^{ik_2x}\right].\\
-  |\psi(x)|^2_{x\ge 0} &amp; = |c_1|^2\left(\frac{2k_1}{k_1+k_2}\right)^2.
-\end{aligned}`
+**Pode-se perceber que para `\(x&lt;0\)` a densidade de probabilidade é uma função senoidal devido a combinação das ondas incidente e refletida do elétron, assim como no caso `\(E&lt;V_0\)`. Para `\(x\ge 0\)`, o elétron se comporta como a partícula livre, onde a densidade de probabilidade é uma função constante.**
 
 A figura abaixo mostra a densidade de probabilidade para `\(x&lt;0\)` e para `\(x\ge 0\)`.
 
@@ -347,6 +298,152 @@ A figura abaixo mostra a densidade de probabilidade para `\(x&lt;0\)` e para `\(
 &lt;img src="img/potencial-degrau-probabilidade2.jpeg" alt="Representação gráfica da densidade de probabilidade." width="75%" /&gt;
 &lt;p class="caption"&gt;Representação gráfica da densidade de probabilidade.&lt;/p&gt;
 &lt;/div&gt;
+
+
+]
+.pull-right[
+
+]
+
+---
+class: middle
+
+&lt;div class="my-header"&gt;&lt;span&gt;Potencial barreira - &lt;/span&gt;&lt;/div&gt;
+
+.pull-left[
+
+Considere uma situação onde o elétron se propaga entre três regiões. A primeira e a terceira regiões, o elétron estaria sujeito a um potencial nulo, se comportanto como uma partícula livre. A segunda região, `\(0&lt;x&lt;a\)`, o elétron estaria sujeito a um potencial constante `\(V_0\)`. Essa região chamamos de barreira de potencial, de largura a e altura `\(V_0\)`. A figura abaixo mostra graficamente uma situação deste tipo,
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/potencial-barreira-grafico.jpeg" alt="Representação gráfica da energia no  potencial barreira." width="100%" /&gt;
+&lt;p class="caption"&gt;Representação gráfica da energia no  potencial barreira.&lt;/p&gt;
+&lt;/div&gt;
+
+
+]
+.pull-right[
+
+Assim como foi feito no caso do potencial degrau, iremos analisar a função de onda nas três regiões separadamente. Para `\(x&lt;0\)` e `\(0&lt;x&lt;a\)` valem os resultados obtidos anteriormente. Para `\(x\ge a\)`, como foi dito a solução seria a mesma da partícula livre,
+`\begin{aligned}
+  \psi_{x\ge a}(x) = c_4e^{ik_2x}+c_5e^{-ik_2x}.
+\end{aligned}`
+Supondo que não existe elétrons se propagando no sentido contrário ao eixo x, dentro da região `\(x\ge a\)`, poderemos impor `\(c_5=0\)`. Temos assim
+`\begin{aligned}
+\psi(x)=
+  \begin{cases}
+    c_1e^{ik_1x}+c_2e^{-ik_1x},\quad &amp; (x&lt;0),\\
+    c_3e^{-\kappa x}+c_4e^{\kappa x},\quad &amp; (x\ge 0),\\
+    c_5e^{ik_1x}.
+  \end{cases}
+\end{aligned}`
+Dois detalhes devem ser levados em consideração:
+* Percebe-se que `\(k_1\)` é o mesmo número de onda na região `\(x&lt;0\)`,
+* O termo `\(e^{\kappa x}\)` deve ser incluído neste caso.
+
+]
+
+---
+class: middle
+
+&lt;div class="my-header"&gt;&lt;span&gt;Potencial barreira - &lt;/span&gt;&lt;/div&gt;
+
+.pull-left[
+
+`\(c_1\)`, `\(c_2\)` e `\(c_3\)` foram obtidos anteriormente, assim basta sabermos `\(c_4\)` e `\(c_5\)`.
+Usando a mesma condição de analiticidade da função de onda em `\(x=a\)` deveremos ter
+`\begin{aligned}
+  \left[ c_3e^{-\kappa x}\right]_{x=a} &amp; = \left[ c_4e^{ik_1x}\right]_{x=a},\\
+  \left[ -c_3\kappa e^{-\kappa x}\right]_{x=a} &amp; = \left[c_4ik_1 e^{ik_1x}\right]_{x=a},
+\end{aligned}`
+ou seja,
+`\begin{aligned}
+  c_3e^{-\kappa a} &amp; = c_4e^{ik_1a},\\
+  -c_3\kappa e^{-\kappa a} &amp; = c_4ik_1e^{ik_1a}.
+\end{aligned}`
+
+]
+.pull-right[
+
+]
+
+---
+class: middle
+
+&lt;div class="my-header"&gt;&lt;span&gt;Apêndice A - densidade de probabilidade do potencial degrau (E &lt; V0) &lt;/span&gt;&lt;/div&gt;
+
+.pull-left[
+
+Agora vamos determinar a densidade de probabilidade de encontrar o elétron por unidade de comprimento x, `\(\psi^*(x)\psi(x)\)`. Para `\(x&lt;0\)` teremos
+`\begin{aligned}
+  |\psi(x)|^2 &amp; = \left[c_3\frac{(k_1+i\kappa)}{2k_1}e^{ik_1x}+c_3\frac{(k_1-i\kappa)}{2k_1}e^{-ik_1x}\right]^*\times,\\
+  &amp; \times \left[c_3\frac{(k_1+i\kappa)}{2k_1}e^{ik_1x}+c_3\frac{(k_1-i\kappa)}{2k_1}e^{-ik_1x}\right],\\
+   &amp; = \frac{|c_3|^2}{4}\left[(e^{ik_1x}+e^{-ik_1x})+\frac{\kappa}{k_1}i(e^{ik_1x}-e^{-ik_1x})\right]^*\times\\
+   &amp; \times \left[(e^{ik_1x}+e^{-ik_1x})+\frac{\kappa}{k_1}i(e^{ik_1x}-e^{-ik_1x})\right].
+\end{aligned}`
+Sabendo que `\(e^{i\theta}=\cos\theta+i\sin\theta\)` e `\(e^{-i\theta}=\cos\theta-i\sin\theta\)` podemos dizer que
+`\begin{aligned}
+  e^{i\theta}+e^{-i\theta} &amp; = \cos\theta+i\sin\theta+\cos\theta-i\sin\theta,\\
+  e^{i\theta}+e^{-i\theta} &amp; = 2\cos\theta.
+\end{aligned}`
+
+]
+.pull-right[
+
+O mesmo é válido para a equação abaixo,
+
+`\begin{aligned}
+  e^{i\theta}-e^{-i\theta} &amp; = \cos\theta+i\sin\theta-\cos\theta+i\sin\theta,\\
+  e^{i\theta}-e^{-i\theta} &amp; = 2i\sin\theta.
+\end{aligned}`
+
+Substituindo em `\(|\psi(x)|^2\)` teremos
+
+`\begin{aligned}
+  |\psi(x)|^2 &amp; = \frac{|c_3|^2}{4}\left[2\cos(k_1x)-\frac{2\kappa}{k_1}\sin(k_1x)\right]^*\times\\
+  &amp; \times\left[2\cos(k_1x)-\frac{2\kappa}{k_1}\sin(k_1x)\right],\\
+  &amp; = c_3|^2\left[\cos(k_1x)-\frac{\kappa}{k_1}\sin(k_1x)\right]^2.
+\end{aligned}`
+
+Podemos ver que a densidade de probabilidade para `\(x&lt;0\)` é uma função senoidal. Para `\(x\ge 0\)` teremos
+`\begin{aligned}
+  |\psi(x)|^2 &amp; = \left[c_3e^{-\kappa x}\right]^*\left[c_3e^{-\kappa x}\right].\\
+  |\psi(x)|^2_{x\ge 0} &amp; = |c_3|^2 e^{-2\kappa x}.
+\end{aligned}`
+
+]
+
+---
+class: middle
+
+&lt;div class="my-header"&gt;&lt;span&gt;Apêndice B - densidade de probabilidade do potencial degrau (E &gt; V0) &lt;/span&gt;&lt;/div&gt;
+
+.pull-left[
+
+Agora vamos determinar a densidade de probabilidade, `\(|\psi(x)|^2\)`. Para `\(x&lt;0\)` teremos
+`\begin{aligned}
+  |\psi(x)|^2 &amp; = \frac{|c_3|^2}{4}\left[\frac{(k_1+k_2)}{k_1}e^{ik_1x}+\frac{(k_1-k_2)}{k_1}e^{-ik_1x}\right]^*\times\\
+  &amp; \times \left[\frac{(k_1+k_2)}{k_1}e^{ik_1x}+\frac{(k_1-k_2)}{k_1}e^{-ik_1x}\right],\\
+  &amp; = \frac{|c_3|^2}{4}\left[(e^{ik_1x}+e^{-ik_1x})+\frac{k_2}{k_1}(e^{ik_1x}-e^{-ik_1x})\right]^*\times\\
+  &amp; \times\left[(e^{ik_1x}+e^{-ik_1x})+\frac{k_2}{k_1}(e^{ik_1x}-e^{-ik_1x})\right].
+\end{aligned}`
+De maneira similar ao caso `\(E&lt;V_0\)`, teremos
+`\begin{aligned}
+  |\psi(x)|^2 &amp; = |c_3|^2\left[\cos(k_1x)+\frac{k_2}{k_1}i\sin(k_1x)\right]^*\times\\
+  &amp; \times \left[\cos(k_1x)+\frac{k_2}{k_1}i\sin(k_1x)\right].
+\end{aligned}`
+
+]
+.pull-right[
+
+Para `\(z=x+iy\)` temos `\(|z|^2=x^2+y^2\)`, portanto
+`\begin{aligned}
+  |\psi(x)|^2_{x&lt;0} &amp; = |c_3|^2\left[\cos^2(k_1x)+\frac{k_2^2}{k_1^2}\sin^2(k_1x)\right].
+\end{aligned}`
+Para `\(x\ge 0\)` teremos
+`\begin{aligned}
+  |\psi(x)|^2_{x\ge 0} &amp; = \left[c_3e^{ik_2x}\right]^*\left[c_3e^{ik_2x}\right],\\
+  |\psi(x)|^2_{x\ge 0} &amp; = |c_3|^2.
+\end{aligned}`
 
 ]
 

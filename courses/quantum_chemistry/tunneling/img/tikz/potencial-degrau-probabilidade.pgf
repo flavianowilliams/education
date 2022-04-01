@@ -2,14 +2,14 @@
 			
 	\begin{scope}[shift={(0,0)}]	
 
-	\tkzInit[xmin=0,xmax=8,ymin=0,ymax=4]
+	\tkzInit[xmin=-4,xmax=4, ymin=0, ymax=4]
 %	\tkzGrid[color=gray!20]
 	\tkzClip[space=1.1]
 	
 	\tkzDrawX[right,label=x, noticks]
 	\tkzDrawY[above,label=$|\psi(x)|^2$, noticks]
 	
-	\tkzDefPoints{0/0/A, 4/0/B, 4/3/C, 8/3/D}
+	\tkzDefPoints{-4/0/A, 0/0/B, 0/3/C, 4/3/D}
 					
 	\tkzDrawSegment[color=red, line width=2pt](A,B)
 	\tkzDrawSegment[dashed, color=red, line width=1pt](B,C)
@@ -17,14 +17,20 @@
 
 	\tkzText[text centered,opacity=100,fill=gray!20, below=0.2](B){\small $x=0$}
 
-	\tkzDefPoints{2.25/2/A, 6.5/0.1/B}
+	\tkzDefPoints{-2.25/2/A, 2.5/0.1/B}
 	\tkzText[text centered,opacity=100,fill=gray!20, above=0.1](A){\small $|\psi(x)|^2_{x<0}$}
 	\tkzText[text centered,opacity=100,fill=gray!20, above=0.1](B){\small $|\psi(x)|^2_{x\ge 0}$}
 
-	\def\lambda{3.15}
+	\def\E{3}
+	\def\m{1}
+	\def\V0{4}
+	\def\c{1.5}
 
-	\tkzFct[domain=0:4, line width=1pt]{2*sin(2*pi*x/\lambda)**2}
-	\tkzFct[domain=4:8, line width=1pt]{2*sin(2*pi*4/\lambda)**2*exp(-2*(x-4))}
+	\def\kappa{sqrt(2*\m*(\V0-\E))}
+	\def\k{sqrt(2*\m*\E)}
+
+	\tkzFct[domain=-4:0, line width=1pt]{\c*(cos(\k*x)-\kappa*sin(\k*x)/\k)**2}
+	\tkzFct[domain=0:4, line width=1pt]{\c*exp(-2*x))}
 
 	\end{scope}
 

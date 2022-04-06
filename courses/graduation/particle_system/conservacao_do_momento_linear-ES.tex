@@ -260,7 +260,7 @@
 		\begin{column}[c]{0.65\textwidth}
 			Como exemplo, considere um disco circular homogêneo contendo um orifício também circular como mostra a figura ao lado. Do ponto de vista matemático, podemos dizer que a distribuição de massa é equivalente a soma da massa de um círculo maciço com outro disco de massa negativa. Para calcular o centro de massa do conjunto, concentramos toda a massa em dois pontos de massa $m_1$ e $m_2$,
 			\begin{align*}
-				\vec{r}_{cm} = \frac{m_1\vec{r}_1+m_2\vec{r}_2}{(m_1+\alert_{-m_2})}.
+				\vec{r}_{cm} = \frac{m_1\vec{r}_1+m_2\vec{r}_2}{(m_1-m_2)}.
 			\end{align*}
 		\end{column}
 		\begin{column}[c]{0.35\textwidth}
@@ -269,7 +269,7 @@
 				\begin{tikzpicture}[scale=0.4,transform shape,font=\Large]
 				
 				\tkzInit[xmin=-4.5,xmax=4.5,ymin=-4.5,ymax=4.5]
-				%\tkzGrid[color=gray!20]
+			%\tkzGrid[color=gray!20]
 				\tkzClip[space=1]
 				
 				\tkzDefPoint(0,0){O}
@@ -801,11 +801,11 @@
 				\draw[s1] (C') circle [radius=0.25cm];	
 				\draw[s1] (B') circle [radius=0.25cm];
 				
-				\tkzMarkAngle[<->,size=1](x,O,C')
-				\tkzLabelAngle[pos=1.5](x,O,C'){$\theta_1$}
+				\tkzMarkAngle[<->,size=1.5](x,O,C')
+				\tkzLabelAngle[pos=2](x,O,C'){$\theta_1$}
 				
-				\tkzMarkAngle[size=1](B',O',x')
-				\tkzLabelAngle[below,pos=1.5](B',O,x){$\theta_2$}
+				\tkzMarkAngle[size=1.5](B',O',x')
+				\tkzLabelAngle[below,pos=2](B',O,x){$\theta_2$}
 				
 				\end{scope}
 				
@@ -826,7 +826,7 @@
 				\tkzDefPoint(2.5,-2.5){p2}
 				
 				\tkzDrawX[label=x,right,noticks]
-				\tkzDrawY[label=y,pos=1.01,above,noticks]
+%				\tkzDrawY[label=y,pos=1.01,above,noticks]
 				
 				\draw[dashed,line width=0.5pt] ($(O)+(-0.0,-0.0)$) -- (B');
 				\draw[dashed,line width=0.5pt] (O) -- (C');
@@ -840,14 +840,11 @@
 				\draw[->,line width=0.5pt,color=blue] (O) --++ (1.5,0);
 				\draw[->,line width=0.5pt,color=blue] (O) --++ (0,1.5) node [left] {$\vec{p}_{y,(2,f)}$};
 				
-%				\tkzPointShowCoord(p1)
-%				\tkzPointShowCoord(p2)
+				\tkzMarkAngle[<->,size=1.5](x,O,p1)
+				\tkzLabelAngle[pos=2](x,O,C'){$\theta_1$}
 				
-				\tkzMarkAngle[<->,size=1](x,O,p1)
-				\tkzLabelAngle[pos=1.5](x,O,C'){$\theta_1$}
-				
-				\tkzMarkAngle[size=1](B',O,x)
-				\tkzLabelAngle[pos=1.5](B',O,x){$\theta_2$}
+				\tkzMarkAngle[size=1.5](B',O,x)
+				\tkzLabelAngle[pos=2](B',O,x){$\theta_2$}
 				
 				\end{scope}
 				

@@ -1,0 +1,38 @@
+\begin{tikzpicture}[scale=1,transform shape,font=\Large]
+			
+	\begin{scope}[shift={(0,0)}]	
+
+	\tkzInit[xmin=-4,xmax=4]
+%	\tkzGrid[color=gray!20]
+%	\tkzClip[space=1.1]
+	
+	\tkzDrawX[right,label=x, noticks]
+	\tkzDrawY[above,label=$|\psi(x)|^2$, noticks]
+	
+	\def\a{1}
+
+	\tkzDefPoints{-4/0/A, 0/0/B, 0/3/C, \a/3/D}
+					
+	\tkzDrawSegment[color=red, line width=2pt](A,B)
+	\tkzDrawSegment[dashed, color=red, line width=1pt](B,C)
+	\tkzDrawSegment[color=red, line width=2pt](C,D)
+
+	\tkzText[text centered,opacity=100,fill=gray!20, below=0.2](B){\small $x=0$}
+
+	\tkzDefPoints{-2.25/2/A, 2.5/0.1/B}
+	\tkzText[text centered,opacity=100,fill=gray!20, above=0.1](A){\small $|\psi(x)|^2_{x<0}$}
+	\tkzText[text centered,opacity=100,fill=gray!20, above=0.1](B){\small $|\psi(x)|^2_{x\ge 0}$}
+
+	\def\E{3}
+	\def\m{1}
+	\def\V0{4}
+	\def\c{0.1}
+
+	\def\kappa{sqrt(2*\m*(\V0-\E))}
+	\def\k{sqrt(2*\m*\E)}
+
+	\tkzFct[domain=-4:0, line width=1pt]{2+\c**2*(\kappa**2+\k**2)**2*(sinh(2*\kappa*\a)+(\kappa**4-\k**4)*sinh(\kappa*\a)*cos(\k*x)+\kappa*\k*cosh(\kappa*\a)*sin(\k*x))/(4*\k**2*\kappa**2)}
+
+	\end{scope}
+
+\end{tikzpicture}

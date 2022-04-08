@@ -47,9 +47,9 @@ class: middle
 
 <div class="my-header"><span>Sumário</span></div>
 
-1. O potencial degrau ($E<V_0$)
+1. O potencial degrau $(E<V_0)$
 
-2. O potencial degrau ($E>V_0$)
+2. O potencial degrau $(E>V_0)$
 
 3. O potencial barreira
 

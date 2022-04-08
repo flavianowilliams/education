@@ -47,9 +47,9 @@ class: middle
 
 <div class="my-header"><span>Sumário</span></div>
 
-1. O potencial degrau ($E<V_0$)
+1. O potencial degrau $(E<V_0)$
 
-2. O potencial degrau ($E>V_0$)
+2. O potencial degrau $(E>V_0)$
 
 3. O potencial barreira
 
@@ -312,7 +312,7 @@ A figura abaixo mostra a densidade de probabilidade para $x<0$ e para $x\ge 0$.
 ---
 class: middle
 
-<div class="my-header"><span>Potencial barreira - </span></div>
+<div class="my-header"><span>Potencial barreira - solução geral</span></div>
 
 .pull-left[
 
@@ -348,7 +348,7 @@ Dois detalhes devem ser levados em consideração:
 ---
 class: middle
 
-<div class="my-header"><span>Potencial barreira - </span></div>
+<div class="my-header"><span>Potencial barreira - solução geral</span></div>
 
 .pull-left[
 
@@ -394,7 +394,7 @@ Portanto
 ---
 class: middle
 
-<div class="my-header"><span>Potencial barreira - </span></div>
+<div class="my-header"><span>Potencial barreira - coeficiente de transmissão</span></div>
 
 .pull-left[
 
@@ -432,7 +432,7 @@ Sabendo que $k=\frac{\sqrt{2mE}}{\hbar}$ e $\alpha=\frac{\sqrt{2m(V_0-E)}}{\hbar
 ---
 class: middle
 
-<div class="my-header"><span>Potencial barreira - </span></div>
+<div class="my-header"><span>Potencial barreira - coeficiente de reflexão</span></div>
 
 .pull-left[
 
@@ -468,7 +468,7 @@ onde $X=E/V_0$.
 ---
 class: middle
 
-<div class="my-header"><span>Potencial barreira - </span></div>
+<div class="my-header"><span>Potencial barreira - T+R=1</span></div>
 
 .pull-left[
 
@@ -497,9 +497,14 @@ class: middle
 
 .pull-left[
 
+Uma das aplicações do efeito túnel está no mapeamento de superfícies. A figura ao lado  mostra a agulha de um microscópio por tunelamento `r Cite(bib, c("tipler"))`. Aplica-se uma d.d.p entre a agulha e o material no qual deseja mapear. Essa d.d.p. faz o papel análogo a barreira de potencial $(V_0)$ e a distância entre a ponta da agulha e os átomos da superfície a largura da barreira de potencial (a). Ao deslizar a agulha para a horizontal, a distância entre a agulha e a superfície aumenta e diminui. Como vimos que o coeficiente de transmissão de elétrons depende da largura do potencial, à medida que a distância diminui, ocorre a transferência de elétrons, acusando assim uma corrente elétrica no dispositivo. Esse efeito é extremamente sensível, onde uma variação de a nível atômico é suficiente para acusar uma corrente elétrica. De maneira semelhante, pode-se ajustar
+
 ]
 .pull-right[
-```{r, echo=FALSE, fig.align='center',fig.cap='Percurso da agulha de um microscópio atômico. [referencia]',out.width="100%",fig.asp=1}
+
+dinamicamente a altura da agulha afim de manter a corrente elétrica constante ao longo da superfície.
+ 
+```{r, echo=FALSE, fig.align='center',fig.cap='Percurso da agulha de um microscópio atômico.',out.width="100%",fig.asp=1}
   knitr::include_graphics("img/efeito-tunel-2.png")
 ```
 
@@ -514,8 +519,13 @@ class: middle
 
 .pull-left[
 
+Outra aplicação envolvendo efeito túnel é o princípio de funcionamento do relógio atômico à base da molécula de amônia $(NH_3)$ `r Cite(bib, c("tipler"))`. A molécula possui duas configurações estáveis. As duas configurações seria o átomo de nitrogênio oscilando entre duas posições, onde os três átomos de hidrogênio estariam localizados no mesmo plano. Essas duas opções da molécula é possível devido a aparência da energia potencial. Como é possível ver na figura ao lado, a energia potencial possui dois valores mínimos de energia (um para $x<0$ e outro para $x>0$), e entre eles existe uma barreira de potencial. Graças ao efeito túnel existe uma probabilidade finita de que seja atravessada pelo átomo de N. E isso acontece a cada intervalo de tempo de $4,2\times 10^{-11}\;Hz$. Essa frequência é relativamente baixa comparado com vibrações moleculares, que são da ordem de $10^{-30}\;s$.
+
 ]
 .pull-right[
+
+ Isso permite que esse tempo de tunelamento fosse usado como referência para relógios atômicos.
+ 
 ```{r, echo=FALSE, fig.align='center',fig.cap='(a) Vibração da molécula NH3; (b) Energia potencial da molécula.',out.width="100%",fig.asp=1}
   knitr::include_graphics("img/efeito-tunel.png")
 ```

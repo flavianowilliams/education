@@ -17,7 +17,7 @@ class: center, middle, inverse, title-slide
 ## Efeito túnel
 ### Flaviano Williams Fernandes
 ### Instituto Federal do Paraná - Irati
-### 16 de março de 2021 (atualizado em 01/04/2022)
+### 16 de março de 2021 (atualizado em 08/04/2022)
 
 ---
 
@@ -325,20 +325,20 @@ Considere uma situação onde o elétron se propaga entre três regiões. A prim
 
 Assim como foi feito no caso do potencial degrau, iremos analisar a função de onda nas três regiões separadamente. Para `\(x&lt;0\)` e `\(0&lt;x&lt;a\)` valem os resultados obtidos anteriormente. Para `\(x\ge a\)`, como foi dito a solução seria a mesma da partícula livre,
 `\begin{aligned}
-  \psi_{x\ge a}(x) = c_4e^{ik_2x}+c_5e^{-ik_2x}.
+  \psi_{x\ge a}(x) = c_4e^{ikx}+c_5e^{-ikx}.
 \end{aligned}`
 Supondo que não existe elétrons se propagando no sentido contrário ao eixo x, dentro da região `\(x\ge a\)`, poderemos impor `\(c_5=0\)`. Temos assim
 `\begin{aligned}
 \psi(x)=
   \begin{cases}
-    c_1e^{ik_1x}+c_2e^{-ik_1x},\quad &amp; (x&lt;0),\\
-    c_3e^{-\kappa x}+c_4e^{\kappa x},\quad &amp; (x\ge 0),\\
-    c_5e^{ik_1x}.
+    c_1e^{ikx}+c_2e^{-ikx},\quad &amp; (x&lt;0),\\
+    c_3e^{-\alpha x}+c_4e^{\alpha x},\quad &amp; (x\ge 0),\\
+    c_5e^{ikx}.
   \end{cases}
 \end{aligned}`
 Dois detalhes devem ser levados em consideração:
-* Percebe-se que `\(k_1\)` é o mesmo número de onda na região `\(x&lt;0\)`,
-* O termo `\(e^{\kappa x}\)` deve ser incluído neste caso.
+* Percebe-se que `\(k\)` é o mesmo número de onda na região `\(x&lt;0\)`,
+* O termo `\(e^{\alpha x}\)` deve ser incluído neste caso.
 
 ]
 
@@ -349,8 +349,168 @@ class: middle
 
 .pull-left[
 
+Aplicando as condições de analiticidade da função de onda em `\(x=0\)` encontraremos as seguintes equações,
+`\begin{aligned}
+  c_1 + c_2 &amp; = c_3 + c_4,\\
+  ik(c_1-c_2) &amp; = (c_4-c_3)\lambda.
+\end{aligned}`
+Isolando `\(c_1\)` e `\(c_2\)` teremos
+`\begin{aligned}
+  c_1 &amp; = \frac{k+i\alpha}{2k}c_3+\frac{k-i\alpha}{2k}c_4,\\
+  c_2 &amp; = \frac{k-i\alpha}{2k}c_3+\frac{k+i\alpha}{2k}c_4.
+\end{aligned}`
+Aplicando as condições de analiticidade da função de onda em `\(x=a\)` encontraremos as equações
+`\begin{aligned}
+  c_3e^{-\alpha a} + c_4e^{\alpha a} &amp; = c_5e^{ika},\\
+  -\alpha c_3e^{-\alpha a}-\alpha c_4e^{-\alpha a} &amp; = c_5ike^{ika}.
+\end{aligned}`
+Isolando `\(c_3\)` e `\(c_4\)` teremos
+
 ]
 .pull-right[
+
+`\begin{aligned}
+  c_3 &amp; = \frac{\alpha-ik}{2\alpha}c_5e^{ika}e^{\alpha a},\\
+  c_4 &amp; = -\frac{\alpha+ik}{2\alpha}c_5e^{ika}e^{-\alpha a}.
+\end{aligned}`
+Substituindo `\(c_3\)` e `\(c_4\)` teremos as expressões para `\(c_1\)`,
+`\begin{aligned}
+  c_1 &amp; = \left(\frac{k+i\alpha}{2k}\right)\left(\frac{\alpha-ik}{2\alpha}\right)c_5e^{ika}e^{\alpha a}-\\
+  &amp; - \left(\frac{k-i\alpha}{2k}\right)\left(\frac{\alpha+ik}{2\alpha}\right)c_5e^{ika}e^{-\alpha a},\\
+  &amp; = \frac{c_5}{4\alpha k}\left[-i(k+i\alpha)(k+i\alpha)e^{ika}e^{\alpha a}\right.\\
+  &amp; + \left.i(k-i\alpha)(k-i\alpha)e^{ika}e^{-\alpha a}\right],\\
+  &amp; = \frac{c_5i}{4\alpha k}\left[(k-i\alpha)^2e^{-\alpha a}-(k+i\alpha)^2e^{\alpha a}\right]e^{ika}.
+\end{aligned}`
+Portanto
+`\begin{aligned}
+  \boxed{c_1 = \frac{c_5i}{4\alpha k}\left[(k-i\alpha)^2e^{-\alpha a}-(k+i\alpha)^2e^{\alpha a}\right]e^{ika}.}
+\end{aligned}`
+
+]
+
+---
+class: middle
+
+&lt;div class="my-header"&gt;&lt;span&gt;Potencial barreira - &lt;/span&gt;&lt;/div&gt;
+
+.pull-left[
+
+O mesmo pode ser feito para `\(c_2\)`,
+`\begin{aligned}
+  c_2 &amp; = \left(\frac{k-i\alpha}{2k}\right)\left(\frac{\alpha-ik}{2\alpha}\right)c_5e^{ika}e^{\alpha a}-\\
+  &amp; - \left(\frac{k+i\alpha}{2k}\right)\left(\frac{\alpha+ik}{2\alpha}\right)c_5e^{ika}e^{-\alpha a},\\
+  &amp; = \frac{c_5}{4\alpha k}\left[-i(k-i\alpha)(k+i\alpha)e^{\alpha a}+\right.\\
+  &amp; + \left. i(k+i\alpha)(k-i\alpha)e^{-\alpha a}\right]e^{ika},\\
+  &amp; = \frac{c_5i}{4\alpha k}(k^2+\alpha^2)\left(e^{-\alpha a}-e^{\alpha a}\right)e^{ika}.
+\end{aligned}`
+Usando a identidade `\(2\sinh\theta=e^\theta-e^{-\theta}\)`, teremos
+`\begin{aligned}
+  \boxed{c_2 = -\frac{c_5i}{2\alpha k}(k^2+\alpha^2)\sinh(\alpha a)e^{ika}.}
+\end{aligned}`
+Afim de analisar a capacidade de transmissão por efeito túnel, um resultado comumente utilizado para esse fim é o coeficiente de transmissão T. Definido com a taxa de 
+
+]
+.pull-right[
+transmissibilidade da partícula, e por sua vez depende da amplitude da onda incidente e transmitida,
+`\begin{aligned}
+  T = \frac{|c_5|^2}{|c_1|^2}.
+\end{aligned}`
+Substituindo `\(c_1\)` obtido no slide anterior chegaremos no coeficente de transmissão (para maiores detalhes, veja o apêndice C),
+`\begin{aligned}
+  \boxed{T = \left[1+\frac{(k^2+\alpha^2)^2}{4\alpha^2 k^2}\sinh^2(\alpha a)\right]^{-1}.}
+\end{aligned}`
+Sabendo que `\(k=\frac{\sqrt{2mE}}{\hbar}\)` e `\(\alpha=\frac{\sqrt{2m(V_0-E)}}{\hbar}\)`, substituímos em T e chegaremos na solução abaixo,
+`\begin{aligned}
+  \boxed{T = \left[1+\frac{V_0^2}{4E(V_0-E)}\sinh^2(\alpha a)\right]^{-1}.}
+\end{aligned}`
+
+]
+
+---
+class: middle
+
+&lt;div class="my-header"&gt;&lt;span&gt;Potencial barreira - &lt;/span&gt;&lt;/div&gt;
+
+.pull-left[
+
+Além do coeficiente de transmissão temos o coeficiente de reflexão, pois o elétron ao incidir na barreira de potencial, ele pode ser refletido no sentido negativo do eixo x em `\(x&lt;0\)`. Para determinar o coeficiente de reflexão, consideramos a razão entre a amplitude da onda refletida pela amplitude da onda incidente,
+`\begin{aligned}
+  R = \frac{|c_2|^2}{|c_1|^2}.
+\end{aligned}`
+Substituindo `\(c_1\)` e `\(c_2\)` obtidos no slide anterior chegaremos no coeficente de transmissão (para maiores detalhes, veja o apêndice D),
+`\begin{aligned}
+  R = \frac{(k^2+\alpha^2)^2}{4\alpha^2 k^2\left[\frac{(k^2-\alpha^2)^2}{4\alpha^2 k^2}+\coth^2(\alpha a)\right]}.
+\end{aligned}`
+
+]
+.pull-right[
+
+A partir dos valores de `\(k\)` e `\(\alpha\)` encontraremos a expressão para o coeficiente de reflexão em função da energia E, potencial `\(v_0\)` e a largura `\(a\)`,
+`\begin{aligned}
+  R = \frac{V_0^2}{4E(V_0-E)}\left[\frac{(2E-V_0)^2}{4E(V_0-E)}+\coth^2(\alpha a)\right]^{-1}.
+\end{aligned}`
+Ou de maneira equivalente,
+`\begin{aligned}
+  R = \frac{1}{4X(1-X)}\left[\frac{(2X-1)^2}{4X(1-X)}+\coth^2(\alpha a)\right]^{-1}.
+\end{aligned}`
+onde `\(X=E/V_0\)`.
+
+**Após uma análise minuciosa dos coeficientes de transmissão e reflexão, pode-se perceber que a taxa de transmissão somado a taxa de reflexão deve ser equivalente a 100%**, ou seja,
+`\begin{aligned}
+  \boxed{T+R = 1.}
+\end{aligned}`
+
+]
+
+---
+class: middle
+
+&lt;div class="my-header"&gt;&lt;span&gt;Potencial barreira - &lt;/span&gt;&lt;/div&gt;
+
+.pull-left[
+
+A figura ao lado mostra o gráfico dos coeficientes de transmissão T e reflexão R em função da razão `\(E/V_0\)`. Percebe-se que o coeficiente de reflexão diminui relativamente quando a energia E aumenta em relação a barreira de potencial `\(V_0\)`. Em contraposição, o coeficiente de transmissão aumenta com a razão `\(E/V_0\)`. Percebe-se também que para qualquer valor `\(E/V_0\)` vale a relação `\(T+R=1\)`.
+
+]
+.pull-right[
+
+![](index_files/figure-html/unnamed-chunk-9-1.png)&lt;!-- --&gt;
+
+]
+
+---
+class: middle
+
+&lt;div class="my-header"&gt;&lt;span&gt;Potencial barreira - Aplicações &lt;/span&gt;&lt;/div&gt;
+
+### Microscopia por tunelamento quântico
+
+.pull-left[
+
+]
+.pull-right[
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/efeito-tunel-2.png" alt="Percurso da agulha de um microscópio atômico. [referencia]" width="100%" /&gt;
+&lt;p class="caption"&gt;Percurso da agulha de um microscópio atômico. [referencia]&lt;/p&gt;
+&lt;/div&gt;
+
+]
+
+---
+class: middle
+
+&lt;div class="my-header"&gt;&lt;span&gt;Potencial barreira - Aplicações &lt;/span&gt;&lt;/div&gt;
+
+### O relógio atômico NH3
+
+.pull-left[
+
+]
+.pull-right[
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/efeito-tunel.png" alt="(a) Vibração da molécula NH3; (b) Energia potencial da molécula." width="100%" /&gt;
+&lt;p class="caption"&gt;(a) Vibração da molécula NH3; (b) Energia potencial da molécula.&lt;/p&gt;
+&lt;/div&gt;
 
 ]
 
@@ -431,6 +591,86 @@ Para `\(x\ge 0\)` teremos
 `\begin{aligned}
   |\psi(x)|^2_{x\ge 0} &amp; = \left[c_3e^{ik_2x}\right]^*\left[c_3e^{ik_2x}\right],\\
   |\psi(x)|^2_{x\ge 0} &amp; = |c_3|^2.
+\end{aligned}`
+
+]
+
+---
+class: middle
+
+&lt;div class="my-header"&gt;&lt;span&gt;Apêndice C - Coeficiente de transmissão &lt;/span&gt;&lt;/div&gt;
+
+.pull-left[
+
+Definimos o coeficiente de transmissão como
+`\begin{aligned}
+  T = \frac{|c_5|^2}{|c_1|^2},
+\end{aligned}`
+onde `\(c_1\)` é o coeficiente da onda incidente calculado no potencial barreira. Portanto, podemos dizer que
+`\begin{aligned}
+  \frac{c_1}{c_5} &amp; = \frac{i}{4\alpha k}\left[(k-i\alpha)^2e^{-\alpha a}-(k+i\alpha)^2e^{\alpha a}\right]e^{ika},\\
+  &amp; = \frac{i}{4\alpha k}\left[-2i\alpha k\left(e^{\alpha a}+e^{-\alpha a}\right)\right.\\
+  &amp; -\left.(k^2-\alpha^2)\left(e^{\alpha a}-e^{-\alpha a}\right)\right]e^{ika}.\\
+\end{aligned}`
+Empregando as identidades `\(2\cosh\theta=e^\theta+e^{-\theta}\)` e `\(2\sinh\theta=e^\theta-e^{-\theta}\)` teremos
+`\begin{aligned}
+  \frac{c_1}{c_5} &amp; = \frac{1}{2\alpha k}\left[2\alpha k\cosh(\alpha a)-i(k^2-\alpha^2)\sinh(\alpha a)\right]e^{ika}.
+\end{aligned}`
+
+]
+.pull-right[
+
+Multiplicando pelo complexo conjugado teremos
+`\begin{aligned}
+  \left|\frac{c_1}{c_5}\right|^2 &amp; = \left\{\left[\cosh(\alpha a)+i\frac{(k^2-\alpha^2)}{2\alpha k}\sinh(\alpha a)\right]e^{-ika}\right\}\times\\
+  &amp; \times \left\{\left[\cosh(\alpha a)-i\frac{(k^2-\alpha^2)}{2\alpha k}\sinh(\alpha a)\right]e^{ika}\right\},\\
+  \left|\frac{c_1}{c_5}\right|^2 &amp; = \left[\cosh^2(\alpha a)+\frac{(k^2-\alpha^2)^2}{4\alpha^2 k^2}\sinh^2(\alpha a)\right]
+\end{aligned}`
+Usando a identidade `\(\cosh^2\theta=1+\sinh^2\theta\)` teremos
+`\begin{aligned}
+  \left|\frac{c_1}{c_5}\right|^2 &amp; = \left[1+\frac{(k^2+\alpha^2)^2}{4\alpha^2 k^2}\sinh^2(\alpha a)\right]
+\end{aligned}`
+Invertendo a equação chegaremos no coeficiente de transmissão `\(T=\frac{|c_5|^2}{|c_1|^2}\)`,
+`\begin{aligned}
+  \boxed{T = \left[1+\frac{(k^2+\alpha^2)^2}{4\alpha^2 k^2}\sinh^2(\alpha a)\right]^{-1}.}
+\end{aligned}`
+
+]
+
+---
+class: middle
+
+&lt;div class="my-header"&gt;&lt;span&gt;Apêndice D - Coeficiente de reflexão &lt;/span&gt;&lt;/div&gt;
+
+.pull-left[
+
+O coeficiente de reflexão R pode ser obtido por
+`\begin{aligned}
+  R = \frac{|c_2|^2}{|c_1|^2},
+\end{aligned}`
+onde `\(c_1\)` e `\(c_2\)` são as amplitudes das ondas incidente e refletida, respectivamente. Substituindo das expressões encontradas para o potencial barreira teremos
+`\begin{aligned}
+  \frac{c_1}{c_2} &amp; = \frac{\frac{c_5}{2\alpha k}\left[2\alpha k\cosh(\alpha a)-i(k^2-\alpha^2)\sinh(\alpha a)\right]e^{ika}}{-\frac{c_5i}{2\alpha k}(k^2+\alpha^2)\sinh(\alpha a)e^{ika}},\\
+  &amp; = -\frac{2\alpha k}{(k^2+\alpha^2)i}\frac{\cosh(\alpha a)}{\sinh(\alpha a)}+\frac{(k^2-\alpha^2)}{(k^2+\alpha^2)}\frac{\sinh(\alpha a)}{\sinh(\alpha a)},\\
+  &amp; = \frac{(k^2-\alpha^2)}{(k^2+\alpha^2)}+\frac{2\alpha ki}{(k^2+\alpha^2)}\frac{\cosh(\alpha a)}{\sinh(\alpha a)}.
+\end{aligned}`
+Aplicando a identidade `\(\coth\theta=\frac{\cosh\theta}{\sinh\theta}\)`, teremos
+
+]
+.pull-right[
+
+`\begin{aligned}
+  \frac{c_1}{c_2} &amp; = \frac{(k^2-\alpha^2)}{(k^2+\alpha^2)}+\frac{2\alpha ki}{(k^2+\alpha^2)}\coth(\alpha a),\\
+  \frac{c_1}{c_2} &amp; = \frac{2\alpha k}{(k^2+\alpha^2)}\left[\frac{(k^2-\alpha^2)}{2\alpha k}+i\coth(\alpha a)\right].
+\end{aligned}`
+Multiplicando pelo complexo conjugado teremos
+`\begin{aligned}
+  \left|\frac{c_1}{c_2}\right|^2 &amp; = \frac{4\alpha^2 k^2}{(k^2+\alpha^2)^2}\left\{\left[\frac{(k^2-\alpha^2)}{2\alpha k}\right]^2+\left[\coth(\alpha a)\right]^2\right\},\\
+   &amp; = \frac{4\alpha^2 k^2}{(k^2+\alpha^2)^2}\left\{\frac{(k^2-\alpha^2)^2}{4\alpha^2 k^2}+\coth^2(\alpha a)\right\},
+\end{aligned}`
+Invertendo os dois lados da equação teremos `\(\frac{|c_2|^2}{|c_1|^2}\)`, portanto
+`\begin{aligned}
+  \boxed{R = \frac{(k^2+\alpha^2)^2}{4\alpha^2 k^2\left[\frac{(k^2-\alpha^2)^2}{4\alpha^2 k^2}+\coth^2(\alpha a)\right]}.}
 \end{aligned}`
 
 ]

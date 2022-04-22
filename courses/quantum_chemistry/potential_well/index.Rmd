@@ -49,10 +49,6 @@ class: middle
 
 1. O poço quadrado infinito
 
-2. O poço de quadrado finito
-
-5. Apêndice A
-
 6. Bibliografia
 
 <div class="footnote">
@@ -306,18 +302,6 @@ Considerando que o comprimento do butadieno é 5,6 angstrons, teremos $\lambda=2
 ```{r, echo=FALSE, fig.align='center',fig.cap='Emissão de um fóton devido a transição do primeiro estado n=3 para o estado fundamental (n=2).',out.width="75%",fig.asp=1}
   knitr::include_graphics("img/transicao-grafico.jpeg")
 ```
-
-]
-
----
-class: middle
-
-<div class="my-header"><span>Apêndice A - </span></div>
-
-.pull-left[
-
-]
-.pull-right[
 
 ]
 

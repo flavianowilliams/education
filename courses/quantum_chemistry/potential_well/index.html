@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Introdução a química quântica</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Flaviano Williams Fernandes" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link rel="stylesheet" href="css/default.css" type="text/css" />
+    <link rel="stylesheet" href="css/my-theme.css" type="text/css" />
+    <link rel="stylesheet" href="css/my-fonts.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Introdução a química quântica
+## O poço de potencial
+### Flaviano Williams Fernandes
+### Instituto Federal do Paraná - Irati
+### Atualizado em 22/04/2022
+
+---
+
+layout: true
+background-size: contain
+
+&lt;div class="my-footer"&gt;&lt;span&gt;Flaviano Williams Fernandes&lt;/span&gt;&lt;/div&gt;
+
+
+
+
+
+
+
+---
+class: middle
+
+&lt;div class="my-header"&gt;&lt;span&gt;Sumário&lt;/span&gt;&lt;/div&gt;
+
+1. O poço quadrado infinito
+
+2. O poço de quadrado finito
+
+5. Apêndice A
+
+6. Bibliografia
+
+&lt;div class="footnote"&gt;
+  &lt;ul&gt;
+  &lt;hr&gt;
+  &lt;li&gt; Esta apresentação está disponível para download em &lt;a href="https://flavianowilliams.github.io/education"&gt;flavianowilliams.github.io/education&lt;/a&gt;;
+  &lt;li&gt; Este material está sujeito a modificações. Recomenda-se acompanhamento permanente.
+  &lt;/ul&gt;
+&lt;/div&gt;
+
+---
+class: middle
+
+&lt;div class="my-header"&gt;&lt;span&gt;O poço quadrado infinito - exemplo real&lt;/span&gt;&lt;/div&gt;
+
+.pull-left[
+
+A figura abaixo mostra um elétron aprisionado em uma cúpula à vácuo, onde as extremidades dessa cúpula está submetida a uma d.d.p. V, &lt;a name=cite-tipler&gt;&lt;/a&gt;([Tipler and Llewellyn, 2003](https://books.google.com.br/books?id=tpU18JqcSNkC)). Podemos considerar que o elétron pode se mover livremente dentro da cúpula, mas ao se aproximar das extremidades, ele sofre uma forte repulsão, impedindo-o de estar além das extremidades desta cúpula.
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/poco-potencial-representacao.jpeg" alt="Dois eletrodos sujeitos a uma d.d.p. `\(V_0\)`." width="75%" /&gt;
+&lt;p class="caption"&gt;Dois eletrodos sujeitos a uma d.d.p. `\(V_0\)`.&lt;/p&gt;
+&lt;/div&gt;
+
+]
+.pull-right[
+
+De acordo com o dispositivo ao lado, supondo que a barreira de potencial assume valores extremamente elevados nas extremidades da cúpula, podemos dizer que o potencial `\(V(x)\)` assume valores como mostra abaixo,
+`\begin{aligned}
+V(x)=
+  \begin{cases}
+    \infty,\quad &amp; (x\le 0),\\
+    0,\quad &amp; (0&lt; x&lt; a),\\
+    \infty,\quad &amp; (x\ge 0).
+  \end{cases}
+\end{aligned}`
+
+Para `\(x&lt;0\)` e `\(x&gt;a\)` temos que a partícula não poderá aparecer devido a barreira de potencial, assim a função de onda deve ser zero nessa região. E para `\(0\le x \le a\)` temos a solução da partícula. Reunindo essas informações temos a solução geral do elétron,
+
+`\begin{aligned}
+\psi(x)=
+  \begin{cases}
+    0,\quad &amp; (x\le 0),\\
+    c_1e^{ik_1x}+c_2e^{-ik_1x},\quad &amp; (0&lt; x&lt; a),\\
+    0,\quad &amp; (x\ge 0).
+  \end{cases}
+\end{aligned}`
+
+]
+
+---
+class: middle
+
+&lt;div class="my-header"&gt;&lt;span&gt;O poço quadrado infinito - solução geral&lt;/span&gt;&lt;/div&gt;
+
+.pull-left[
+
+Para obter as constantes `\(c_1\)` e `\(c_2\)` usamos as condições de analiticidade da função de onda em `\(x=0\)` e `\(x=a\)`. Pela expressão da função de onda deveremos ter
+`\begin{aligned}
+  \psi(x=0) =\psi(x=a) = 0.
+\end{aligned}`
+Contudo, primeiramente faremos a substituição `\(e^{i\theta}=\cos\theta+i\sin\theta\)`, onde
+`\begin{aligned}
+  \psi(x) &amp; = c_1(\cos(kx)+i\sin(kx))+\\
+  &amp; + c_2(\cos(-kx)+i\sin(-kx)).
+\end{aligned}`
+Sabendo que `\(\cos(-\theta)=\cos(\theta)\)` e `\(\sin(-\theta)=-\sin(\theta)\)` teremos
+`\begin{aligned}
+  \psi(x) &amp; = c_1\cos(kx)+ic_1\sin(kx)+\\
+  &amp; + c_2\cos(kx)-ic_2\sin(kx),\\
+  &amp; = (c_1+c_2)\cos(kx)+i(c_1-c_2)\sin(kx).
+\end{aligned}`
+Podemos ver que `\(\psi(x)=0\)` em `\(x=0\)` somente se o termo contendo `\(\cos(kx)\)` for nulo, ou seja, `\(c_2=-c_1\)`.
+
+]
+.pull-right[
+
+Assim teremos como solução
+`\begin{aligned}
+\psi(x)=
+  \begin{cases}
+    0,\quad &amp; (x\le 0),\\
+    2ic_1\sin(kx),\quad &amp; (0&lt; x&lt; a),\\
+    0,\quad &amp; (x\ge 0).
+  \end{cases}
+\end{aligned}`
+Para obter `\(c_1\)` usamos a condição de encontrar o elétron em toda a região é 100%, ou seja, igua a 1,
+`\begin{aligned}
+  \int^{\infty}_{-\infty}|\psi(x)|^2dx &amp; = 1,\\
+  \int^{a}_{0}(2ic_1\sin(kx))^*(-2ic_1\sin(kx)) &amp; = 1,\\
+  4|c_1|^2\int^{a}_{0}\sin^2(kx)dx &amp; = 1.
+\end{aligned}`
+Aplicando a identidade `\(\sin^2\theta=\frac{1}{2}(1-\cos2\theta)\)`
+`\begin{aligned}
+  \frac{4|c_1|^2}{2}\int^{a}_{0}(1-\cos2kx)dx &amp; = 1.
+\end{aligned}`
+
+]
+
+---
+class: middle
+
+&lt;div class="my-header"&gt;&lt;span&gt;O poço quadrado infinito - Níveis de energia&lt;/span&gt;&lt;/div&gt;
+
+.pull-left[
+
+`\begin{aligned}
+  2|c_1|^2\int^{a}_{0}(1-\cos2kx)dx &amp; = 1,\\
+  2|c_1|^2\left[\int^{a}_{0}dx-\int^{a}_{0}\cos2kx\right] &amp; = 1,\\
+  2|c_1|^2\left(a-\frac{\sin2ka}{2k}\right) &amp; = 1.
+\end{aligned}`
+Aplicando a condição `\(\psi(x=a)=0\)` teremos
+`\begin{aligned}
+  2c_1\sin ka = 0.
+\end{aligned}`
+Isso será verdade se `\(\sin ka=0\)`. Assim, poderemos dizer que `\(\sin2ka\)` também será zero,
+`\begin{aligned}
+  2|c_1|^2a &amp; = 1,\\
+  c_1 &amp; = \frac{1}{\sqrt{2a}}.
+\end{aligned}`
+Retomando a equação `\(\sin ka=0\)`. Pela propriedade da função seno, temos que ela somente será zero se
+
+]
+.pull-right[
+
+`\begin{aligned}
+  ka &amp; = n\pi,\\
+  k &amp; = \frac{n\pi}{a},\quad (n=1, 2,\cdots)
+\end{aligned}`
+Porém, a partir da solução da partícula livre, sabemos que `\(k=\frac{\sqrt{2mE}}{\hbar}\)`, portanto
+`\begin{aligned}
+   \frac{\sqrt{2mE}}{\hbar} &amp; = \frac{n\pi}{a},\\
+   E &amp; = \frac{n^2\pi^2\hbar^2}{2ma^2},\quad (n= 1, 2,\cdots).
+\end{aligned}`
+**Podemos perceber que a energia do elétron assume valores discretos que dependem de `\(n^2\)`**. Além do mais, temos que os demais valores são constantes, assim
+`\begin{aligned}
+   E_n &amp; = \left(\frac{\pi^2\hbar^2}{2ma^2}\right)n^2= E_1n^2.
+\end{aligned}`
+`\(E_1\)` é chamado energia do estado fundamental.
+
+]
+
+---
+class: middle
+
+&lt;div class="my-header"&gt;&lt;span&gt;O poço quadrado infinito - Representação gráfica dos níveis de energia&lt;/span&gt;&lt;/div&gt;
+
+.pull-left[
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/energia-grafico.jpeg" alt="Representação gráfica dos níveis de energia para n=1,2,3 e 4." width="75%" /&gt;
+&lt;p class="caption"&gt;Representação gráfica dos níveis de energia para n=1,2,3 e 4.&lt;/p&gt;
+&lt;/div&gt;
+
+]
+.pu---right[
+
+]
+
+---
+class: middle
+
+&lt;div class="my-header"&gt;&lt;span&gt;O poço quadrado infinito - Densidade de probabilidade&lt;/span&gt;&lt;/div&gt;
+
+.pull-left[
+
+Através de `\(c_1\)` reescrevemos a expressão final da função de onda,
+`\begin{aligned}
+\psi(x)=
+  \begin{cases}
+    0,\quad &amp; (x\le 0),\\
+    i\sqrt{\frac{2}{a}}\sin\left(\frac{n\pi}{a}x\right),\quad &amp; (0&lt; x&lt; a),\\
+    0,\quad &amp; (x\ge 0).
+  \end{cases}
+\end{aligned}`
+Podemos obter a densidade de probabilidade multiplicando `\(\psi\)` pelo complexo conjugado, ou seja,
+`\begin{aligned}
+|\psi(x)|^2=
+  \begin{cases}
+    0,\quad &amp; (x\le 0),\\
+    \frac{2}{a}\sin^2\left(\frac{n\pi}{a}x\right),\quad &amp; (0&lt; x&lt; a),\\
+    0,\quad &amp; (x\ge 0).
+  \end{cases}
+\end{aligned}`
+Podemos ver que `\(|\psi(x)|^2\)` é uma função senoidal, onde seu valor é zero nas extremidades, como era esperado.
+
+A figura ao lado mostra a densidade de probabilidade para `\(n=1,2,3,4\)`.
+
+]
+.pull-right[
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/probabilidade.jpeg" alt="Representação gráfica da densidade de probabilidade para n=1,2,3 e 4." width="75%" /&gt;
+&lt;p class="caption"&gt;Representação gráfica da densidade de probabilidade para n=1,2,3 e 4.&lt;/p&gt;
+&lt;/div&gt;
+
+]
+
+---
+class: middle
+
+&lt;div class="my-header"&gt;&lt;span&gt;Potencial barreira - Aplicações &lt;/span&gt;&lt;/div&gt;
+
+### Ressonância eletrônica na molécula de butadieno
+
+.pull-left[
+
+A molécula de butadieno tem a estrutura `\(C=C-C=C\)`. Nela um elétron viaja repetidamente de uma extremidade a outra como se estivesse em um poço de potencial. Do ponto de vista mecânica quântica, este problema pode ser traduzido como o elétron na caixa.
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/butadieno.jpg" alt="Molécula de butadieno." width="75%" /&gt;
+&lt;p class="caption"&gt;Molécula de butadieno.&lt;/p&gt;
+&lt;/div&gt;
+
+]
+.pull-right[
+
+Do poblema do poço de potencial infinito, temos que os níveis de energia são dados por
+`\begin{aligned}
+ E_n &amp; = \frac{n^2\pi^2\hbar^2}{2ma^2} = \frac{n^2h^2}{8ma^2},
+\end{aligned}`
+sabendo que `\(\hbar=h/2\pi\)`. Se o elétron saltar de um nível mais energético n+1 para o nível menos energético n, neste salto ele emite um fóton de energia `\(\Delta E\)`, onde
+`\begin{aligned}
+  \Delta E &amp; = E_{n+1}-E_n,\\
+  &amp; = \frac{(n+1)^2h^2}{8ma^2}-\frac{n^2h^2}{8ma^2},\\
+  &amp; = \frac{(2n+1)h^2}{8ma^2}.
+\end{aligned}`
+No caso do fóton emitido, temos que a sua energia é `\(\Delta E = h\nu\)`, ou de maneira equivalente `\(\lambda = \frac{hc}{\Delta E}\)`.
+
+]
+
+---
+class: middle
+
+&lt;div class="my-header"&gt;&lt;span&gt;Potencial barreira - Aplicações &lt;/span&gt;&lt;/div&gt;
+
+### Ressonância eletrônica na molécula de butadieno
+
+.pull-left[
+
+No butadieno, o níveis n=1 e 2 encontram-se ocupados por dois elétrons cada (considerando a multiplicidade de spin). Portanto, o primeiro estado excitado seria o nível n=3, devido a transição de um dos elétrons no nível n = 2 para n = 3. Assim teríamos
+`\begin{aligned}
+  \lambda &amp; = \frac{hc}{\Delta E},\\
+  &amp; = \frac{8mc}{h(2n+1)}a^2.
+\end{aligned}`
+Para o elétron, teríamos
+`\begin{aligned}
+  \lambda = \frac{32,97}{2n+1}a^2.
+\end{aligned}`
+Considerando que o comprimento do butadieno é 5,6 angstrons, teremos `\(\lambda=207\;nm\)`. Este resultado concorda bem com o valor experimental de `\(210\;nm\)`.
+
+]
+.pull-right[
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/transicao-grafico.jpeg" alt="Emissão de um fóton devido a transição do primeiro estado n=3 para o estado fundamental (n=2)." width="75%" /&gt;
+&lt;p class="caption"&gt;Emissão de um fóton devido a transição do primeiro estado n=3 para o estado fundamental (n=2).&lt;/p&gt;
+&lt;/div&gt;
+
+]
+
+---
+class: middle
+
+&lt;div class="my-header"&gt;&lt;span&gt;Apêndice A - &lt;/span&gt;&lt;/div&gt;
+
+.pull-left[
+
+]
+.pull-right[
+
+]
+
+---
+class: middle
+
+&lt;div class="my-header"&gt;&lt;span&gt;Bibliografia&lt;/span&gt;&lt;/div&gt;
+
+&lt;a name=bib-tipler&gt;&lt;/a&gt;[Tipler, P. A. and R. Llewellyn](#cite-tipler)
+(2003). _Modern Physics_. W. H. Freeman. ISBN: 9780716743453. URL:
+[https://books.google.com.br/books?id=tpU18JqcSNkC](https://books.google.com.br/books?id=tpU18JqcSNkC).
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="libs/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"ratio": "16:9",
+"slideNumberFormat": "%current% de %total%,",
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+(function(time) {
+  var d2 = function(number) {
+    return ('0' + number).slice(-2); // left-pad 0 to minutes/seconds
+  },
+
+  time_format = function(total) {
+    var secs = Math.abs(total) / 1000;
+    var h = Math.floor(secs / 3600);
+    var m = Math.floor(secs % 3600 / 60);
+    var s = Math.round(secs % 60);
+    var res = d2(m) + ':' + d2(s);
+    if (h > 0) res = h + ':' + res;
+    return res;  // [hh:]mm:ss
+  },
+
+  slide_number_div = function(i) {
+    return document.getElementsByClassName('remark-slide-number').item(i);
+  },
+
+  current_page_number = function(i) {
+    return slide_number_div(i).firstChild.textContent;  // text "i / N"
+  };
+
+  var timer = document.createElement('span'); timer.id = 'slide-time-left';
+  var time_left = time, k = slideshow.getCurrentSlideIndex(),
+      last_page_number = current_page_number(k);
+
+  setInterval(function() {
+    time_left = time_left - 1000;
+    timer.innerHTML = ' ' + time_format(time_left);
+    if (time_left < 0) timer.style.color = 'red';
+  }, 1000);
+
+  slide_number_div(k).appendChild(timer);
+
+  slideshow.on('showSlide', function(slide) {
+    var i = slide.getSlideIndex(), n = current_page_number(i);
+    // reset timer when a new slide is shown and the page number is changed
+    if (last_page_number !== n) {
+      time_left = time; last_page_number = n;
+      timer.innerHTML = ' ' + time_format(time); timer.style.color = null;
+    }
+    slide_number_div(i).appendChild(timer);
+  });
+})(60000);
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

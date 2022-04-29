@@ -1,0 +1,188 @@
+---
+title: "Introdução a química quântica"
+subtitle: "O poço de potencial"
+author: "Flaviano Williams Fernandes"
+institute: "Instituto Federal do Paraná - Irati"
+date: "Atualizado em `r format(Sys.Date(), format='%d/%m/%Y')`"
+encoding: "UTF-8"
+output:
+  xaringan::moon_reader:
+    css: [css/default.css, css/my-theme.css, css/my-fonts.css]
+    chakra: libs/remark-latest.min.js
+    lib_dir: libs
+    nature:
+      ratio: "16:9"
+      slideNumberFormat: "%current% de %total%,"
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      countdown: 60000
+---
+layout: true
+background-size: contain
+
+<div class="my-footer"><span>Flaviano Williams Fernandes</span></div>
+
+```{r, include=FALSE, eval=FALSE, echo=FALSE}
+  xaringan::inf_mr()
+```
+
+```{r setup, include=FALSE}
+  options(htmltools.dir.version = FALSE)
+  library("ggplot2")
+  library("gganimate")
+  library("latex2exp")
+#  knitr::opts_chunk$set(fig.path = 'img')
+```
+
+```{r, load_refs, echo=FALSE, message=FALSE}
+  library(RefManageR)
+  BibOptions(check.entries = FALSE, bib.style = "authoryear", style = "markdown",
+           dashed = TRUE)
+  bib <- ReadBib("references.bib", check = FALSE)
+```
+
+---
+class: middle
+
+<div class="my-header"><span>Sumário</span></div>
+
+1. A equação de Schrodinger em coordenadas esféricas
+
+2. Solução da parte radial e número quântico principal
+
+2. Momento angular
+
+3. Solução da parte angular e número quântico orbital
+
+4. Solução da parte azimutal e número quântico magnético
+
+5. Quantização da energia
+
+5. Funções hidrogenóides
+
+6. Bibliografia
+
+<div class="footnote">
+  <ul>
+  <hr>
+  <li> Esta apresentação está disponível para download em <a href="https://flavianowilliams.github.io/education">flavianowilliams.github.io/education</a>;
+  <li> Este material está sujeito a modificações. Recomenda-se acompanhamento permanente.
+  </ul>
+</div>
+
+---
+class: middle
+
+<div class="my-header"><span>A equação de Schrödinger em três dimensões - equação de Schrödinger independente do tempo</span></div>
+
+.pull-left[
+
+Até o momento consideramos movimentos em apenas uma dimensão (no caso ao longo do eixo x). Mas a maioria dos casos reais, o movimento acontece nas três dimensões. Um exemplo é o movimento do elétron no átomo de hidrogênio.
+
+Em coordenadas retangulares, a equação de Schrödinger pode ser escrito na forma
+\begin{aligned}
+  -\frac{\hbar^2}{2m}\left(\frac{\partial^2\Psi}{\partial x^2}+\frac{\partial^2\Psi}{\partial y^2}+\frac{\partial^2\Psi}{\partial z^2}\right)+V\Psi=i\hbar\frac{\partial\Psi}{\partial t},
+\end{aligned}
+onde $\Psi\equiv\Psi(x,y,z,t)$. Usando o método de separação de variáveis, onde consideramos
+\begin{aligned}
+  \Psi(x,y,z,t)=\psi(x,y,z)\phi(t)
+\end{aligned}
+podemos chegar de maneira equivalente ao método usado na equação de Schrödinger em uma dimensão para a equação de Schrödinger independente do tempo.
+
+]
+.pull-right[
+
+A primeira equação abaixo depende das variáveis x, y e z, enquanto que a segunda depende da variável t.
+\begin{aligned}
+  -\frac{\hbar^2}{2m}\left(\frac{\partial^2\psi}{\partial x^2}+\frac{\partial^2\psi}{\partial y^2}+\frac{\partial^2\psi}{\partial z^2}\right)+V\psi & = E\psi,\\
+  i\hbar\frac{\partial\phi}{\partial t} & = E\phi.
+\end{aligned}
+Podemos ver assim que a equação de Schrödinger independente do tempo em coordenadas retangulares é dada por
+\begin{aligned}
+  -\frac{\hbar^2}{2m}\left(\frac{\partial^2\psi}{\partial x^2}+\frac{\partial^2\psi}{\partial y^2}+\frac{\partial^2\psi}{\partial z^2}\right)+V\psi & = E\psi.
+\end{aligned}
+Ou de maneira equivalente
+\begin{aligned}
+  -\frac{\hbar^2}{2m}\nabla^2\psi+V\psi & = E\psi.
+\end{aligned}
+Chamamos $\nabla^2=\frac{\partial^2}{\partial x^2}+\frac{\partial^2}{\partial y^2}+\frac{\partial^2}{\partial z^2}$ de Laplaciano.
+
+]
+
+---
+class: middle
+
+<div class="my-header"><span>A equação de Schrödinger em coordenadas esféricas - A equação em três dimensões</span></div>
+
+.pull-left[
+
+No caso do átomo de hidrogênio, ocorre a interação entre o elétron e o núcleo governada pelas leis da eletrostática, onde a energia potencial é dada por
+\begin{aligned}
+  V(r) = -\frac{Ze^2}{r}.
+\end{aligned}
+Podemos ver a distância relativa entre o núcleo e o elétron é dado por $r=\sqrt{x^2+y^2+z^2}$. Substituindo na equação de Schrödinger, torna-se praticamente impossível separar as variáveis x, y e z em três equações distintas. Isso inviabiliza obter uma solução usando coordenadas retangulares. Outra maneira seria empregar outro sistema de coordenadas. Devido a simetria do potencial, vemos que o problema fica mais fácil de resolver em coordenadas esféricas $r$, $\theta$ e $\phi$, onde
+\begin{aligned}
+  x & = r\sin\theta\cos\phi,\\
+  y & = r\sin\theta\sin\phi,\\
+  z & = r\cos\theta.
+\end{aligned}
+
+]
+.pull-right[
+Após a transformação para o sistema de coordenadas esféricas, ela se torna (veja o Apêndice A)
+\begin{aligned}
+  -\frac{\hbar^2}{2mr^2}\frac{\partial }{\partial r^2}\left(r^2\frac{\partial\psi}{\partial r}\right) & -\frac{\hbar^2}{2mr^2}\frac{1}{\sin\theta}\frac{\partial}{\partial\theta}\left(\sin\theta\frac{\partial\psi}{\partial\theta}\right) - \\
+  -\frac{\hbar^2}{2mr^2}\frac{1}{\sin^2\theta}\frac{\partial^2\psi}{\partial\phi^2} & + V(r)\psi = E\psi.
+\end{aligned}
+
+```{r, echo=FALSE, fig.align='center',fig.cap='Vetor posição em coordenadas esféricas.',out.width="60%",fig.asp=1}
+  knitr::include_graphics("img/coordenadas_esfericas.jpeg")
+```
+
+]
+
+---
+class: middle
+
+<div class="my-header"><span>A equação de Schrödinger em coordenadas esféricas - O método de separação de variáveis</span></div>
+
+.pull-left[
+
+]
+.pull-right[
+
+]
+
+---
+class: middle
+
+<div class="my-header"><span>A equação de Schrödinger em coordenadas esféricas - Solução da parte radial</span></div>
+
+.pull-left[
+
+]
+.pull-right[
+
+]
+
+---
+class: middle
+
+<div class="my-header"><span>A equação de Schrödinger em coordenadas esféricas - Momento angular e potencial efetivo</span></div>
+
+.pull-left[
+
+]
+.pull-right[
+
+]
+
+---
+class: middle
+
+<div class="my-header"><span>Bibliografia</span></div>
+
+```{r, results='asis', echo=FALSE, message=FALSE}
+PrintBibliography(bib)
+```

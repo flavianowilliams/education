@@ -1,0 +1,48 @@
+\begin{tikzpicture}[scale=1.75,transform shape,font=\large, declare function={x(\r,\theta,\phi)=\r*sin(\theta)*cos(\phi); y(\r,\theta,\phi)=\r*sin(\theta)*sin(\phi); z(\r,\theta)=\r*cos(\theta);}]
+
+	\tkzInit[xmin=-2,xmax=5,ymin=-2,ymax=5]
+	%\tkzGrid[color=gray!20]
+	\tkzClip[space=0.1]
+	
+	\coordinate (O) at (0,0,0);
+	\coordinate (x) at (0,0,4.5);
+	\coordinate (y) at (4,0,0);
+	\coordinate (z) at (0,3.5,0);
+	
+	\draw[->,line width=1pt] (0,0,0) -- (y) node [right] {y};
+	\draw[->,line width=1pt] (0,0,0) -- (x) node [below left] {x};
+	\draw[->,line width=1pt] (0,0,0) -- (z) node [above] {z};
+	
+	%vetor posicao
+
+	\coordinate (P) at ({y(5,60,45)},{z(5,60)},{x(5,60,45)}); %(y,z,x)
+	\coordinate (pz) at ({y(5,60,45)},0,{x(5,60,45)});
+	\coordinate (px) at (0,0,{x(5,60,45)});
+	\coordinate (py) at ({y(5,60,45)},0,0);
+	\coordinate (pk) at (0,{z(5,60)},0);
+
+	\node[above right, circle, inner sep=1.5pt, fill, label={\small$a$}] (p) at (P) {};
+
+	\draw[->, line width=2pt] (O) -- (P) node [above, midway] {\small $\vec{r}$};
+	\draw[dashed] (P) -- (pz) node [above right, midway] {\small z};
+	\draw[dashed] (pz) -- (px) node [below, midway] {\small y};
+	\draw[dashed] (pz) -- (py) node [below right, midway] {\small x};
+	\draw[dashed] (O) -- (pz) node [above, midway, sloped] {\small $r\sin\theta$};
+
+	%texto
+	\tkzDefPoints{4/3/t1,4/2.5/t2,3.66/2.05/t3}
+	\tkzText[text centered,opacity=100](t1){\small $x=r\cos\theta\cos\phi$}
+	\tkzText[text centered,opacity=100](t2){\small $y=r\cos\theta\sin\phi$}
+	\tkzText[text centered,opacity=100](t3){\small $z=r\cos\theta$}
+
+	%angulos
+	\tkzMarkAngle[arrows=->,size=0.5, line width=1pt](px,O,pz)
+	\tkzLabelAngle[pos=0.75](px,O,pz){\small$\phi$}
+	
+	\tkzMarkAngle[arrows=<-,size=0.75, line width=1pt](P,O,pk)
+	\tkzLabelAngle[pos=0.75,above](P,O,pk){\small$\theta$}
+
+	\tkzMarkRightAngle[size=0.15](O,py,pz)
+	\tkzMarkRightAngle[size=0.15](O,px,pz)
+
+\end{tikzpicture}

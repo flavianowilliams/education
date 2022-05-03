@@ -17,7 +17,7 @@ class: center, middle, inverse, title-slide
 # Introdução a química quântica
 ]
 .subtitle[
-## O poço de potencial
+## O átomo de hidrogênio
 ]
 .author[
 ### Flaviano Williams Fernandes
@@ -26,7 +26,7 @@ class: center, middle, inverse, title-slide
 ### Instituto Federal do Paraná - Irati
 ]
 .date[
-### Atualizado em 29/04/2022
+### Atualizado em 03/05/2022
 ]
 
 ---
@@ -148,12 +148,42 @@ class: middle
 
 &lt;div class="my-header"&gt;&lt;span&gt;A equação de Schrödinger em coordenadas esféricas - O método de separação de variáveis&lt;/span&gt;&lt;/div&gt;
 
-.pull-left[
+Para resolver a equação anterior, a melhor opção seria utilizar o método de separação de variáveis, onde
+`\begin{aligned}
+  \psi(r,\theta,\phi) = R(r)\Theta(\theta)\Phi(\phi).
+\end{aligned}`
+Substituindo a equação teremos
 
-]
-.pull-right[
+`\begin{aligned}
+  -\frac{\hbar^2}{2mr^2}\frac{\partial}{\partial r}\left[r^2\frac{\partial }{\partial r}R(r)\Theta(\theta)\Phi(\phi)\right]-\frac{\hbar^2}{2mr^2\sin\theta}\frac{\partial}{\partial\theta}\left[\sin\theta\frac{\partial}{\partial\theta}R(r)\Theta(\theta)\Phi(\phi)\right] &amp; -\\
+  -\frac{\hbar^2}{2mr^2\sin^2\theta}\frac{\partial^2}{\partial\phi^2}R(r)\Theta(\theta)\Phi(\phi)+V(r)R(r)\Theta(\theta)\Phi(\phi) &amp; =ER(r)\Theta(\theta)\Phi(\phi),\\
+  -\frac{\hbar^2\Theta(\theta)\Phi(\phi)}{2mr^2}\frac{\partial}{\partial r}\left[r^2\frac{\partial }{\partial r}R(r)\right]-\frac{\hbar^2R(r)\Phi(\phi)}{2mr^2\sin\theta}\frac{\partial}{\partial\theta}\left[\sin\theta\frac{\partial}{\partial\theta}\Theta(\theta)\right] &amp; -\\
+  -\frac{\hbar^2R(r)\Theta(\theta)}{2mr^2\sin^2\theta}\frac{\partial^2}{\partial\phi^2}\Phi(\phi)+V(r)R(r)\Theta(\theta)\Phi(\phi) &amp; =ER(r)\Theta(\theta)\Phi(\phi).
+\end{aligned}`
+Dividindo por `\(R\Theta\Phi\)` teremos
+`\begin{aligned}
+  -\frac{\hbar^2}{2mr^2R(r)}\frac{\partial}{\partial r}\left[r^2\frac{\partial }{\partial r}R(r)\right]-\frac{\hbar^2}{2mr^2\sin\theta\Theta(\theta)}\frac{\partial}{\partial\theta}\left[\sin\theta\frac{\partial}{\partial\theta}\Theta(\theta)\right]-\frac{\hbar^2}{2mr^2\sin^2\theta\Phi(\phi)}\frac{\partial^2}{\partial\phi^2}\Phi(\phi)+V(r) =E.
+\end{aligned}`
 
-]
+---
+class: middle
+
+&lt;div class="my-header"&gt;&lt;span&gt;A equação de Schrödinger em coordenadas esféricas - Solução da parte radial&lt;/span&gt;&lt;/div&gt;
+
+Organizando os termos da equação anterior teremos
+`\begin{aligned}
+  \frac{\hbar^2}{2mr^2R(r)}\frac{\partial}{\partial r}\left[r^2\frac{\partial }{\partial r}R(r)\right]+\frac{\hbar^2}{2mr^2\sin\theta\Theta(\theta)}\frac{\partial}{\partial\theta}\left[\sin\theta\frac{\partial}{\partial\theta}\Theta(\theta)\right]+\frac{\hbar^2}{2mr^2\sin^2\theta\Phi(\phi)}\frac{\partial^2}{\partial\phi^2}\Phi(\phi)+E-V(r) =0.
+\end{aligned}`
+
+Podemos simplificar ainda mais a expressão anterior dividindo os termos por `\(\frac{\hbar^2}{2mr^2}\)`,
+`\begin{aligned}
+  \frac{1}{R(r)}\frac{\partial}{\partial r}\left[r^2\frac{\partial }{\partial r}R(r)\right]+\frac{1}{\sin\theta\Theta(\theta)}\frac{\partial}{\partial\theta}\left[\sin\theta\frac{\partial}{\partial\theta}\Theta(\theta)\right]+\frac{1}{\sin^2\theta\Phi(\phi)}\frac{\partial^2}{\partial\phi^2}\Phi(\phi)+\frac{2mr^2}{\hbar}\left[E-V(r)\right]=0.
+\end{aligned}`
+Após essa operação, podemos perceber que existem termos que dependem somente de R e termos que dependem somente de `\(\theta\)` e `\(\phi\)`. Isolando esses termos em lados opostos teremos
+`\begin{aligned}
+  \frac{1}{R(r)}\frac{\partial}{\partial r}\left[r^2\frac{\partial }{\partial r}R(r)\right]+\frac{2mr^2}{\hbar}\left[E-V(r)\right]=-\frac{1}{\sin\theta\Theta(\theta)}\frac{\partial}{\partial\theta}\left[\sin\theta\frac{\partial}{\partial\theta}\Theta(\theta)\right]-\frac{1}{\sin^2\theta\Phi(\phi)}\frac{\partial^2}{\partial\phi^2}\Phi(\phi).
+\end{aligned}`
+Como o lado direito da equação não possui dependência na variável r, o lado esquerdo enxerga o lado direito como uma constante. A mesma afirmação pode ser feito no sentido oposto, o lado direito enxerga o lado esquerdo como uma constante devido a ausência das variáveis `\(\theta\)` e `\(\phi\)`. No próximo slide será discutido sobre a solução da parte radial `\(R(r)\)` da função de onda `\(\psi(r,\theta,\phi)\)`, após a reestruturação da equação acima.
 
 ---
 class: middle

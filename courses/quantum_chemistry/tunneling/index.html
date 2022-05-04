@@ -13,11 +13,21 @@
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
+.title[
 # Introdução a química quântica
+]
+.subtitle[
 ## Efeito túnel
+]
+.author[
 ### Flaviano Williams Fernandes
+]
+.institute[
 ### Instituto Federal do Paraná - Irati
-### 16 de março de 2021 (atualizado em 20/04/2022)
+]
+.date[
+### 16 de março de 2021 (atualizado em 03/05/2022)
+]
 
 ---
 
@@ -487,7 +497,7 @@ class: middle
 
 .pull-left[
 
-Uma das aplicações do efeito túnel está no mapeamento de superfícies. A figura ao lado  mostra a agulha de um microscópio por tunelamento &lt;a name=cite-tipler&gt;&lt;/a&gt;([Tipler and Llewellyn, 2003](https://books.google.com.br/books?id=tpU18JqcSNkC)). Aplica-se uma d.d.p entre a agulha e o material no qual deseja mapear. Essa d.d.p. faz o papel análogo a barreira de potencial `\((V_0)\)` e a distância entre a ponta da agulha e os átomos da superfície a largura da barreira de potencial (a). Ao deslizar a agulha para a horizontal, a distância entre a agulha e a superfície aumenta e diminui. Como vimos que o coeficiente de transmissão de elétrons depende da largura do potencial, à medida que a distância diminui, ocorre a transferência de elétrons, acusando assim uma corrente elétrica no dispositivo. Esse efeito é extremamente sensível, onde uma variação de a nível atômico é suficiente para acusar uma corrente elétrica. De maneira semelhante, pode-se ajustar
+Uma das aplicações do efeito túnel está no mapeamento de superfícies. A figura ao lado  mostra a agulha de um microscópio por tunelamento . Aplica-se uma d.d.p entre a agulha e o material no qual deseja mapear. Essa d.d.p. faz o papel análogo a barreira de potencial `\((V_0)\)` e a distância entre a ponta da agulha e os átomos da superfície a largura da barreira de potencial (a). Ao deslizar a agulha para a horizontal, a distância entre a agulha e a superfície aumenta e diminui. Como vimos que o coeficiente de transmissão de elétrons depende da largura do potencial, à medida que a distância diminui, ocorre a transferência de elétrons, acusando assim uma corrente elétrica no dispositivo. Esse efeito é extremamente sensível, onde uma variação de a nível atômico é suficiente para acusar uma corrente elétrica. De maneira semelhante, pode-se ajustar
 
 ]
 .pull-right[
@@ -510,7 +520,7 @@ class: middle
 
 .pull-left[
 
-Outra aplicação envolvendo efeito túnel é o princípio de funcionamento do relógio atômico à base da molécula de amônia `\((NH_3)\)` ([Tipler and Llewellyn, 2003](https://books.google.com.br/books?id=tpU18JqcSNkC)). A molécula possui duas configurações estáveis. As duas configurações seria o átomo de nitrogênio oscilando entre duas posições, onde os três átomos de hidrogênio estariam localizados no mesmo plano. Essas duas opções da molécula é possível devido a aparência da energia potencial. Como é possível ver na figura ao lado, a energia potencial possui dois valores mínimos de energia (um para `\(x&lt;0\)` e outro para `\(x&gt;0\)`), e entre eles existe uma barreira de potencial. Graças ao efeito túnel existe uma probabilidade finita de que seja atravessada pelo átomo de N. E isso acontece a cada intervalo de tempo de `\(4,2\times 10^{-11}\;Hz\)`. Essa frequência é relativamente baixa comparado com vibrações moleculares, que são da ordem de `\(10^{-30}\;s\)`.
+Outra aplicação envolvendo efeito túnel é o princípio de funcionamento do relógio atômico à base da molécula de amônia `\((NH_3)\)` . A molécula possui duas configurações estáveis. As duas configurações seria o átomo de nitrogênio oscilando entre duas posições, onde os três átomos de hidrogênio estariam localizados no mesmo plano. Essas duas opções da molécula é possível devido a aparência da energia potencial. Como é possível ver na figura ao lado, a energia potencial possui dois valores mínimos de energia (um para `\(x&lt;0\)` e outro para `\(x&gt;0\)`), e entre eles existe uma barreira de potencial. Graças ao efeito túnel existe uma probabilidade finita de que seja atravessada pelo átomo de N. E isso acontece a cada intervalo de tempo de `\(4,2\times 10^{-11}\;Hz\)`. Essa frequência é relativamente baixa comparado com vibrações moleculares, que são da ordem de `\(10^{-30}\;s\)`.
 
 ]
 .pull-right[
@@ -690,9 +700,7 @@ class: middle
 
 &lt;div class="my-header"&gt;&lt;span&gt;Bibliografia&lt;/span&gt;&lt;/div&gt;
 
-&lt;a name=bib-tipler&gt;&lt;/a&gt;[Tipler, P. A. and R. Llewellyn](#cite-tipler)
-(2003). _Modern Physics_. W. H. Freeman. ISBN: 9780716743453. URL:
-[https://books.google.com.br/books?id=tpU18JqcSNkC](https://books.google.com.br/books?id=tpU18JqcSNkC).
+NULL
 
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
@@ -743,6 +751,19 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     deleted = true;
   });
 })();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
 (function() {
   "use strict"
   // Replace <script> tags in slides area to make them executable

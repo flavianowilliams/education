@@ -78,7 +78,7 @@ class: middle
 
 .pull-left[
 
-Até o momento consideramos movimentos em apenas uma dimensão (no caso ao longo do eixo x). Mas a maioria dos casos reais, o movimento acontece nas três dimensões. Um exemplo é o movimento do elétron no átomo de hidrogênio.
+Até o momento consideramos movimentos em apenas uma dimensão (no caso ao longo do eixo x). Mas a maioria dos casos reais, o movimento acontece nas três dimensões. Um exemplo é o movimento do elétron no átomo de hidrogênio ([Tipler and Llewellyn, 2003](https://books.google.com.br/books?id=tpU18JqcSNkC)).
 
 Em coordenadas retangulares, a equação de Schrödinger pode ser escrito na forma
 `\begin{aligned}
@@ -130,6 +130,7 @@ Podemos ver a distância relativa entre o núcleo e o elétron é dado por `\(r=
 
 ]
 .pull-right[
+
 Após a transformação para o sistema de coordenadas esféricas, ela se torna (veja o Apêndice A)
 `\begin{aligned}
   -\frac{\hbar^2}{2mr^2}\frac{\partial }{\partial r^2}\left(r^2\frac{\partial\psi}{\partial r}\right) &amp; -\frac{\hbar^2}{2mr^2}\frac{1}{\sin\theta}\frac{\partial}{\partial\theta}\left(\sin\theta\frac{\partial\psi}{\partial\theta}\right) - \\
@@ -192,8 +193,35 @@ class: middle
 
 .pull-left[
 
+Portanto para a equação referente a R(r) pode ser escrito como
+`\begin{aligned}
+  \frac{1}{R(r)}\frac{\partial}{\partial r}\left[r^2\frac{\partial }{\partial r}R(r)\right]+\frac{2mr^2}{\hbar}\left[E-V(r)\right]=C.
+\end{aligned}`
+Chamando `\(C=\ell(\ell+1)\)`, sendo `\(\ell\)` um número inteiro positivo, temos
+`\begin{aligned}
+  \frac{\partial}{\partial r}\left[r^2\frac{\partial }{\partial r}R(r)\right]+\frac{2mr^2}{\hbar}\left[E-V(r)\right]R(r)=\ell(\ell+1)R(r)
+\end{aligned}`
+Usando técnicas matemáticas, como o método de solução por série de potências, poderemos encontrar a solução para a equação acima, como
+`\begin{aligned}
+  R_{n\ell}(r) = A_{n\ell}e^{-r/a_0n}r^\ell L_{n\ell}.
+\end{aligned}`
+`\(L_{n\ell}\)` são chamados polinômios de Laguerre e depende dos valores inteiros n e `\(\ell\)`. `\(R_{n\ell}\)` depende de n que assume valores inteiros positivos e não-nulos.
+
 ]
 .pull-right[
+
+Pelos polinômios de Laguerre, os valores de `\(\ell\)` estão amarrados com os valores de n, ou seja,
+`\begin{aligned}
+  n &amp; = 1,2,3,\cdots,\\
+  \ell &amp; = 0,1,2,\cdots,(n-1).
+\end{aligned}`
+n é chamada de número quântico principal e `\(\ell\)`, como veremos à seguir, é chamado número quântico angular. Abaixo mostramos algumas funções de Laguerre, para `\(n=1\)` e `\(n=2\)`.
+`\begin{eqnarray}
+  n = 1 &amp;\quad \ell=0 &amp;\quad R_{10} = \frac{2}{\sqrt{a^3_0}}e^{-r/a_0},\\
+  n = 2 &amp;\quad \ell=0 &amp;\quad R_{20} = \frac{1}{2a^3_0}\left(1-\frac{r}{2a_0}\right)e^{-r/2a_0},\\
+  n = 2 &amp;\quad \ell=1 &amp;\quad R_{21} = \frac{1}{\sqrt{6a^3_0}}\frac{r}{a_0}e^{-r/2a_0},\\
+   &amp; \quad\vdots &amp;
+\end{eqnarray}`
 
 ]
 
@@ -214,7 +242,9 @@ class: middle
 
 &lt;div class="my-header"&gt;&lt;span&gt;Bibliografia&lt;/span&gt;&lt;/div&gt;
 
-NULL
+&lt;a name=bib-tipler&gt;&lt;/a&gt;[Tipler, P. A. and R. Llewellyn](#cite-tipler) (2003). _Modern Physics_.
+W. H. Freeman. ISBN: 9780716743453. URL:
+[https://books.google.com.br/books?id=tpU18JqcSNkC](https://books.google.com.br/books?id=tpU18JqcSNkC).
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="libs/remark-latest.min.js"></script>

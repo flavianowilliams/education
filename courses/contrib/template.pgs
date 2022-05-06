@@ -22,7 +22,7 @@
 \DeclareFontShape{OMS}{mdbch}{b}{n}{<->s*[0.96] mdbchb7y}{}
 \DeclareFontShape{OMS}{mdbch}{bx}{n}{<->ssub * mdbch/b/n}{}
 \usetikzlibrary{arrows,3d,calc,automata,positioning,shadows,math,fit,shapes}
-\usetikzlibrary{patterns,hobby,optics}
+\usetikzlibrary{patterns,hobby,optics,calc}
 %\usetkzobj{all}
 \usepgfplotslibrary{fillbetween}
 \tikzset{>=stealth, thick, global scale/.style={scale=#1,every node/.style={scale=#1}}}

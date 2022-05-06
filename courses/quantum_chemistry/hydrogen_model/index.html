@@ -26,7 +26,7 @@ class: center, middle, inverse, title-slide
 ### Instituto Federal do Paraná - Irati
 ]
 .date[
-### Atualizado em 03/05/2022
+### Atualizado em 06/05/2022
 ]
 
 ---
@@ -78,7 +78,7 @@ class: middle
 
 .pull-left[
 
-Até o momento consideramos movimentos em apenas uma dimensão (no caso ao longo do eixo x). Mas a maioria dos casos reais, o movimento acontece nas três dimensões. Um exemplo é o movimento do elétron no átomo de hidrogênio ([Tipler and Llewellyn, 2003](https://books.google.com.br/books?id=tpU18JqcSNkC)).
+Até o momento consideramos movimentos em apenas uma dimensão (no caso ao longo do eixo x). Mas a maioria dos casos reais, o movimento acontece nas três dimensões. Um exemplo é o movimento do elétron no átomo de hidrogênio &lt;a name=cite-tipler&gt;&lt;/a&gt;([Tipler and Llewellyn, 2003](https://books.google.com.br/books?id=tpU18JqcSNkC)).
 
 Em coordenadas retangulares, a equação de Schrödinger pode ser escrito na forma
 `\begin{aligned}
@@ -197,9 +197,9 @@ Portanto para a equação referente a R(r) pode ser escrito como
 `\begin{aligned}
   \frac{1}{R(r)}\frac{\partial}{\partial r}\left[r^2\frac{\partial }{\partial r}R(r)\right]+\frac{2mr^2}{\hbar}\left[E-V(r)\right]=C.
 \end{aligned}`
-Chamando `\(C=\ell(\ell+1)\)`, sendo `\(\ell\)` um número inteiro positivo, temos
+Chamando `\(C=\ell(\ell+1)\)`, sendo `\(\ell\)` um número inteiro positivo, teremos
 `\begin{aligned}
-  \frac{\partial}{\partial r}\left[r^2\frac{\partial }{\partial r}R(r)\right]+\frac{2mr^2}{\hbar}\left[E-V(r)\right]R(r)=\ell(\ell+1)R(r)
+  \frac{\partial}{\partial r}\left[r^2\frac{\partial }{\partial r}R(r)\right]+\frac{2mr^2\left[E-V(r)\right]}{\hbar}R(r)=\ell(\ell+1)R(r)
 \end{aligned}`
 Usando técnicas matemáticas, como o método de solução por série de potências, poderemos encontrar a solução para a equação acima, como
 `\begin{aligned}
@@ -217,10 +217,10 @@ Pelos polinômios de Laguerre, os valores de `\(\ell\)` estão amarrados com os 
 \end{aligned}`
 n é chamada de número quântico principal e `\(\ell\)`, como veremos à seguir, é chamado número quântico angular. Abaixo mostramos algumas funções de Laguerre, para `\(n=1\)` e `\(n=2\)`.
 `\begin{eqnarray}
-  n = 1 &amp;\quad \ell=0 &amp;\quad R_{10} = \frac{2}{\sqrt{a^3_0}}e^{-r/a_0},\\
-  n = 2 &amp;\quad \ell=0 &amp;\quad R_{20} = \frac{1}{2a^3_0}\left(1-\frac{r}{2a_0}\right)e^{-r/2a_0},\\
-  n = 2 &amp;\quad \ell=1 &amp;\quad R_{21} = \frac{1}{\sqrt{6a^3_0}}\frac{r}{a_0}e^{-r/2a_0},\\
-   &amp; \quad\vdots &amp;
+  (n = 1, \ell=0)&amp;\Rightarrow&amp; R_{10} = \frac{2}{\sqrt{a^3_0}}e^{-r/a_0},\\
+  (n = 2, \ell=0)&amp;\Rightarrow&amp; R_{20} = \frac{1}{2a^3_0}\left(1-\frac{r}{2a_0}\right)e^{-r/2a_0},\\
+  (n = 2, \ell=1)&amp;\Rightarrow&amp; R_{21}  =  \frac{1}{\sqrt{6a^3_0}}\frac{r}{a_0}e^{-r/2a_0},\\
+   &amp; \vdots &amp;
 \end{eqnarray}`
 
 ]
@@ -230,10 +230,148 @@ class: middle
 
 &lt;div class="my-header"&gt;&lt;span&gt;A equação de Schrödinger em coordenadas esféricas - Momento angular e potencial efetivo&lt;/span&gt;&lt;/div&gt;
 
+Agora, retornando a equação anterior,
+`\begin{aligned}
+  \frac{1}{R(r)}\frac{\partial}{\partial r}\left[r^2\frac{\partial }{\partial r}R(r)\right]+\frac{2mr^2}{\hbar}\left[E-V(r)\right]=-\frac{1}{\sin\theta\Theta(\theta)}\frac{\partial}{\partial\theta}\left[\sin\theta\frac{\partial}{\partial\theta}\Theta(\theta)\right]-\frac{1}{\sin^2\theta\Phi(\phi)}\frac{\partial^2}{\partial\phi^2}\Phi(\phi).
+\end{aligned}`
+Podemos escrever o lado direito como
+`\begin{aligned}
+  -\frac{1}{\sin\theta\Theta(\theta)}\frac{\partial}{\partial\theta}\left[\sin\theta\frac{\partial}{\partial\theta}\Theta(\theta)\right]-\frac{1}{\sin^2\theta\Phi(\phi)}\frac{\partial^2}{\partial\phi^2}\Phi(\phi)=\ell(\ell+1).
+\end{aligned}`
+Multiplicando ambos lados da equação por `\(-\sin^2\theta\)`, poderemos separar os termos em função das variáveis `\(\theta\)` e `\(\phi\)`,
+`\begin{aligned}
+  \frac{1}{\Phi(\phi)}\frac{\partial^2}{\partial\phi^2}\Phi(\phi)=-\ell(\ell+1)\sin^2\theta-\frac{\sin\theta}{\Theta(\theta)}\frac{\partial}{\partial\theta}\left[\sin\theta\frac{\partial}{\partial\theta}\Theta(\theta)\right].
+\end{aligned}`
+Assim como foi feito para `\(R(r)\)` temos que o lado esquerdo é independente do lado direito e vice-versa. Igualando ambos os lados por uma constante, que chamaremos convenientemente de `\(-m^2\)`, teremos para o lado esquerdo
+`\begin{aligned}
+  \frac{1}{\Phi(\phi)}\frac{\partial^2}{\partial\phi^2}\Phi(\phi)=-m^2\Rightarrow\frac{1}{\Phi(\phi)}\frac{\partial^2}{\partial\phi^2}\Phi(\phi)+m^2\Phi(\phi)=0.
+\end{aligned}`
+
+---
+class: middle
+
+&lt;div class="my-header"&gt;&lt;span&gt;A equação de Schrödinger em coordenadas esféricas - solução da parte angular&lt;/span&gt;&lt;/div&gt;
+
+.pull-left[
+Como foi mostrado em aulas anteriores, a solução da equação acima seria
+`\begin{aligned}
+  \Phi(\phi)\Rightarrow e^{im\phi}+e^{-im\phi}
+\end{aligned}`
+Para o lado direito da equação, teremos
+`\begin{aligned}
+  -\ell(\ell+1)\sin^2\theta-\frac{\sin\theta}{\Theta(\theta)}\frac{\partial}{\partial\theta}\left[\sin\theta\frac{\partial}{\partial\theta}\Theta(\theta)\right] &amp; =-m^2,\\
+    -\ell(\ell+1)\sin^2\theta-\frac{\sin\theta}{\Theta(\theta)}\frac{\partial}{\partial\theta}\left[\sin\theta\frac{\partial}{\partial\theta}\Theta(\theta)\right] + m^2 &amp; = 0.
+\end{aligned}`
+Para que a equação acima tenha solução para qualquer valor de `\(\theta\)`, obrigatoriamente deveremos impor a condição
+`\begin{aligned}
+  |m| &amp; \le \ell,\\
+  |m| &amp; = 0,\pm 1,\pm 2,\cdots,\pm\ell.
+\end{aligned}`
+Sabendo que `\(\ell\)` assume valores inteiros positivos, isso faz com que m também seja um número inteiro.
+
+]
+.pull-right[
+
+Em outras palavras, poderemos afirmar que para qualquer valor de `\(\ell\)`, teremos
+`\begin{aligned}
+  m = -\ell+1,-\ell+2,\cdots,0,\cdots,\ell-2,\ell-1,
+\end{aligned}`
+ou seja, para cada valor de `\(\ell\)` teremos `\(2\ell+1\)` valores possíveis para m. Além do mais, sabendo que `\(|m|\le \pm \ell\)`, poderemos resumir a solução para `\(\Phi(\phi)\)` na forma
+`\begin{aligned}
+  \Phi(\phi)\Rightarrow e^{im\phi},
+\end{aligned}`
+pois seria redundante se `\(e^{-im\phi}\)` fosse considerado.
+
+Para `\(\Theta(\theta)\)` temos como solução da equação anterior os polinômios de Legendre, escrito na forma abaixo,
+`\begin{aligned}
+  \Theta_{lm}(\theta) = \frac{\sin^{|m|}\theta}{2^\ell\ell!}\left[\frac{d}{d\cos\theta}\right]^{\ell+|m|}\left(\cos^2\theta-1\right)^\ell.
+\end{aligned}`
+
+]
+
+---
+class: middle
+
+&lt;div class="my-header"&gt;&lt;span&gt;A equação de Schrödinger em coordenadas esféricas - Harmônicos esféricos&lt;/span&gt;&lt;/div&gt;
+
+.pull-left[
+
+Portanto, sabendo as funções `\(R(r)\)`, `\(\Theta(\theta)\)` e `\(\Phi(\phi)\)`, poderemos obter a função de onda `\(\phi(r,\theta,\phi)=R(r)\Theta(\theta)\Phi(\phi)\)`. Ou poderemos reescrever `\(\psi\)` em termos da solução da parte radial e da parte angular,
+`\begin{aligned}
+  \psi_{n\ell m}(r,\theta,\phi) = R_{n\ell}(r)Y_{\ell m}(\theta,\phi).
+\end{aligned}`
+`\(Y_{\ell m}\)` recebe o nome de **harmônicos esféricos**. Ao lado temos os harmônicos esféricos para os números quânticos `\(\ell=0,1,2\)`. Após a solução da função de onda, podemos ver que ela depende de três números quânticos: `\(n\)` chamado de número quântico principal, `\(\ell\)` de número angular e `\(m\)` de número magnético (seu significado será discutido a seguir). Abaixo mostra um resumo de valores para n, `\(\ell\)` e m,
+`\begin{aligned}
+  n &amp; = 1, 2, 3, \cdots,\\
+  \ell &amp; = 0, 1, 2, \cdots, (n-1),\\
+  m &amp; = -\ell, -\ell+1, -2,-1,\cdots,0,1,2,\ell-1,\ell.
+\end{aligned}`
+
+]
+.pull-right[
+
+`\begin{eqnarray}
+  (\ell = 0, m=0)&amp;\Rightarrow&amp; Y_{10} = \sqrt{\frac{1}{4\pi}},\\
+  (\ell = 1, m=1)&amp;\Rightarrow&amp; Y_{11} = - \sqrt{\frac{3}{8\pi}}\sin\theta e^{i\phi},\\
+  (\ell = 1, m=0)&amp;\Rightarrow&amp; Y_{10}  = \sqrt{\frac{3}{4\pi}}\cos\theta,\\
+  (\ell = 1, m=-1)&amp;\Rightarrow&amp; Y_{1-1}  = \sqrt{\frac{3}{8\pi}}\sin\theta e^{-i\phi},\\
+  (\ell = 2, m=2)&amp;\Rightarrow&amp; Y_{22} = \sqrt{\frac{15}{32\pi}}\sin^2\theta e^{2i\phi},\\
+  (\ell = 2, m=1)&amp;\Rightarrow&amp; Y_{21} = - \sqrt{\frac{15}{8\pi}}\sin\theta\cos\theta e^{i\phi},\\
+  (\ell = 2, m=0)&amp;\Rightarrow&amp; Y_{20} = - \sqrt{\frac{5}{16\pi}}(3\cos^2\theta-1),\\
+  (\ell = 2, m=-1)&amp;\Rightarrow&amp; Y_{2-1}  = \sqrt{\frac{15}{8\pi}}\sin\theta\cos\theta e^{-i\phi},\\
+  (\ell = 2, m=-2)&amp;\Rightarrow&amp; Y_{2-2}  = \sqrt{\frac{15}{8\pi}}\sin^2\theta e^{-2i\phi}.
+\end{eqnarray}`
+
+]
+
+---
+class: middle
+
+&lt;div class="my-header"&gt;&lt;span&gt; Momento angular - Potencial efetivo&lt;/span&gt;&lt;/div&gt;
+
+.pull-left[
+Sabemos que a equação de Schrodinger deve satisfazer a equação da energia, ou seja,
+`\(\frac{p^2}{2m}+V(r)=E\)`. Porém, vamos supor que o elétron esteja se movendo em órbitas elípticas como mostra a figura ao lado. O momento angular deste elétron é dado por
+`\begin{aligned}
+  \vec{L} &amp; = \vec{r}\times\vec{p},\\
+  L &amp; = rp_\perp.
+\end{aligned}`
+Considerando que `\(p^2=p^2_\perp+p^2_\|\)` teremos
+`\begin{aligned}
+  \frac{p^2}{2m} &amp; = \frac{p^2_\perp+p^2_\|}{2m},\\
+                 &amp; = \frac{p^2_\perp}{2m}+\frac{p^2_\|}{2m}.
+\end{aligned}`
+Substituindo na equação da energia teremos
+`\begin{aligned}
+  \frac{p^2_r}{2m}+\frac{L^2}{2mr^2}+V(r) = E.
+\end{aligned}`
+
+]
+.pull-right[
+
+O termo `\(L^2/2mr^2\)` surge devido a contribuição da força centrípeta para a energia potencial.
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/momento-angular.jpeg" alt="Momento angular do elétron ao redor do núcleo." width="90%" /&gt;
+&lt;p class="caption"&gt;Momento angular do elétron ao redor do núcleo.&lt;/p&gt;
+&lt;/div&gt;
+
+]
+
+---
+class: middle
+
+&lt;div class="my-header"&gt;&lt;span&gt; Momento angular - Valores&lt;/span&gt;&lt;/div&gt;
+
 .pull-left[
 
 ]
 .pull-right[
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/momento-angular-valores.jpeg" alt="Modelo vetorial do momento angular." width="90%" /&gt;
+&lt;p class="caption"&gt;Modelo vetorial do momento angular.&lt;/p&gt;
+&lt;/div&gt;
 
 ]
 
@@ -242,8 +380,8 @@ class: middle
 
 &lt;div class="my-header"&gt;&lt;span&gt;Bibliografia&lt;/span&gt;&lt;/div&gt;
 
-&lt;a name=bib-tipler&gt;&lt;/a&gt;[Tipler, P. A. and R. Llewellyn](#cite-tipler) (2003). _Modern Physics_.
-W. H. Freeman. ISBN: 9780716743453. URL:
+&lt;a name=bib-tipler&gt;&lt;/a&gt;[Tipler, P. A. and R. Llewellyn](#cite-tipler)
+(2003). _Modern Physics_. W. H. Freeman. ISBN: 9780716743453. URL:
 [https://books.google.com.br/books?id=tpU18JqcSNkC](https://books.google.com.br/books?id=tpU18JqcSNkC).
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>

@@ -1,0 +1,39 @@
+\begin{tikzpicture}[scale=2,transform shape,font=\large]
+
+	\tkzInit[xmin=-2,xmax=4,ymin=-3,ymax=3]
+%	\tkzGrid[color=gray!20]
+	\tkzClip[space=0.5]
+	
+	\coordinate (O) at (0,0,0);
+	\coordinate (x) at (0,0,4);
+	\coordinate (y) at (4,0,0);
+	\coordinate (zi) at (0,-4,0);
+	\coordinate (z) at (0,3,0);
+	
+	\draw[->,line width=0.5pt] (O) -- (y) node [right] {y};
+	\draw[->,line width=0.5pt] (zi) -- (z) node [above] {z};
+
+	\def\l{6}
+
+	\foreach \n in {-2,-1,0,1,2}{
+		\def\cx{sqrt(\l-\n*\n)}
+		\tkzDefPoint(\cx,\n){cl}
+		\tkzDefPoint(0,\n){c}
+		\filldraw[fill=gray!10, draw=black, dashed, opacity=0.75, line width=1.5pt] (c) ellipse [x radius=\cx,y radius=0.5-0.1*abs(\n)];
+		\tkzText[left](c){\small\n$\hbar$}
+	}
+
+	\foreach \n in {-2,-1,0,1,2}{
+		\def\cx{sqrt(\l-\n*\n)}
+		\tkzDefPoint(\cx,\n){cl}
+		\tkzDefPoint(0,\n){c}
+		\draw[->,line width=1.5pt] (O) -- (cl);
+	}
+
+	\tkzDefPoint(3,2.5){t1}
+
+	\tkzText(t1){$L=\hbar\sqrt{6}$}
+
+	\draw[->,line width=0.5pt] (O) -- (x) node [below left] {x};
+
+\end{tikzpicture}

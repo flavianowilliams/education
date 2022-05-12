@@ -26,7 +26,7 @@ class: center, middle, inverse, title-slide
 ### Instituto Federal do Paraná - Irati
 ]
 .date[
-### Atualizado em 06/05/2022
+### Atualizado em 12/05/2022
 ]
 
 ---
@@ -51,15 +51,19 @@ class: middle
 
 2. Solução da parte radial e número quântico principal
 
-2. Momento angular
-
 3. Solução da parte angular e número quântico orbital
 
 4. Solução da parte azimutal e número quântico magnético
 
-5. Quantização da energia
+5. Harmônicos esféricos
+
+2. Momento angular
+
+5. Níveis de energia do átomo de hidrogênio
 
 5. Funções hidrogenóides
+
+6. Aplicações
 
 6. Bibliografia
 
@@ -78,7 +82,7 @@ class: middle
 
 .pull-left[
 
-Até o momento consideramos movimentos em apenas uma dimensão (no caso ao longo do eixo x). Mas a maioria dos casos reais, o movimento acontece nas três dimensões. Um exemplo é o movimento do elétron no átomo de hidrogênio &lt;a name=cite-tipler&gt;&lt;/a&gt;([Tipler and Llewellyn, 2003](https://books.google.com.br/books?id=tpU18JqcSNkC)).
+Até o momento consideramos movimentos em apenas uma dimensão (no caso ao longo do eixo x). Mas a maioria dos casos reais, o movimento acontece nas três dimensões. Um exemplo é o movimento do elétron no átomo de hidrogênio ([Tipler and Llewellyn, 2003](https://books.google.com.br/books?id=tpU18JqcSNkC)).
 
 Em coordenadas retangulares, a equação de Schrödinger pode ser escrito na forma
 `\begin{aligned}
@@ -244,7 +248,7 @@ Multiplicando ambos lados da equação por `\(-\sin^2\theta\)`, poderemos separa
 \end{aligned}`
 Assim como foi feito para `\(R(r)\)` temos que o lado esquerdo é independente do lado direito e vice-versa. Igualando ambos os lados por uma constante, que chamaremos convenientemente de `\(-m^2\)`, teremos para o lado esquerdo
 `\begin{aligned}
-  \frac{1}{\Phi(\phi)}\frac{\partial^2}{\partial\phi^2}\Phi(\phi)=-m^2\Rightarrow\frac{1}{\Phi(\phi)}\frac{\partial^2}{\partial\phi^2}\Phi(\phi)+m^2\Phi(\phi)=0.
+  \frac{1}{\Phi(\phi)}\frac{\partial^2}{\partial\phi^2}\Phi(\phi)=-m^2\Rightarrow\frac{\partial^2\Phi(\phi)}{\partial\phi^2}+m^2\Phi(\phi)=0.
 \end{aligned}`
 
 ---
@@ -361,10 +365,48 @@ O termo `\(L^2/2mr^2\)` surge devido a contribuição da força centrípeta para
 ---
 class: middle
 
+&lt;div class="my-header"&gt;&lt;span&gt; Momento angular - Relação entre o segundo número quântico e o momento angular&lt;/span&gt;&lt;/div&gt;
+
+Temos a equação de Schrödinger em coordenadas esféricas como foi mostrado anteriormente,
+`\begin{aligned}
+  -\frac{\hbar^2}{2mr^2}\frac{\partial}{\partial r}\left(r^2\frac{\partial }{\partial r}\psi\right)-\frac{\hbar^2}{2mr^2\sin\theta}\frac{\partial}{\partial\theta}\left(\sin\theta\frac{\partial}{\partial\theta}\psi\right) -\frac{\hbar^2}{2mr^2\sin^2\theta}\frac{\partial^2}{\partial\phi^2}\psi+V(r)\psi &amp; =E\psi.
+\end{aligned}`
+Analisando o termo `\(\frac{p^2_r}{2m}\)` podemos ver que das variáveis `\(r\)`, `\(\theta\)` e `\(\phi\)` ele somente deve depender de `\(r\)`. Como excessão do termo contendo `\(V(r)\)`, os demais termos da equação acima devem estar associados a `\(\frac{L^2}{2mr^2}\)`, portanto
+`\begin{aligned}
+  \underbrace{-\frac{\hbar^2}{2mr^2}\frac{\partial}{\partial r}\left(r^2\frac{\partial }{\partial r}\psi\right)}_{\frac{p^2_r}{2m}}-\frac{1}{2mr^2}\underbrace{\left[\frac{\hbar^2}{\sin\theta}\frac{\partial}{\partial\theta}\left(\sin\theta\frac{\partial}{\partial\theta}\psi\right) +\frac{\hbar^2}{2mr^2\sin^2\theta}\frac{\partial^2}{\partial\phi^2}\psi\right]}_{L^2}+V(r)\psi &amp; =E\psi.
+\end{aligned}`
+Podemos ver que o termo entre colchetes representa a parte angular da equação de Schrödinger, onde deduzimos que
+`\begin{aligned}
+  \left[\frac{\hbar^2}{\sin\theta}\frac{\partial}{\partial\theta}\left(\sin\theta\frac{\partial}{\partial\theta}\psi\right) +\frac{\hbar^2}{2mr^2\sin^2\theta}\frac{\partial^2}{\partial\phi^2}\psi\right]Y_{\ell m}(\theta,\phi) = \hbar\ell(\ell+1)Y_{\ell m}(\theta,\phi) = L^2Y_{\ell m}(\theta,\phi)
+\end{aligned}`
+Assim podemos concluir que
+`\begin{aligned}
+  \boxed{L = \hbar\sqrt{\ell(\ell+1)},\quad (\ell=0,1,2,\cdots)}
+\end{aligned}`
+
+.pull-left[
+
+]
+.pull-right[
+]
+
+---
+class: middle
+
 &lt;div class="my-header"&gt;&lt;span&gt; Momento angular - Valores&lt;/span&gt;&lt;/div&gt;
 
 .pull-left[
 
+Para a componente `\(L_z\)` do momento angular, é possível provar que
+`\begin{aligned}
+  L^2_z\Phi(\phi) = \hbar^2\frac{d^2\Phi(\phi)}{d\phi^2}.
+\end{aligned}`
+A partir da parte angular da equação de Schrödinger, devemos também impor que a componente `\(L_z\)` de L também assume valores discretos, onde
+`\begin{aligned}
+  L_z = \hbar m,\quad (m=0,\pm 1, \pm 2,\cdots)
+\end{aligned}`
+
+A figura abaixo representa os possíveis valores do momento angular definido na forma vetorial, onde `\(\vec{L}=\vec{L_x}+\vec{L_y}+\vec{L_z}\)`. Sabemos que L e `\(L_z\)` devem assumir valores discretos, porém não há nenhuma restrição para `\(L_x\)` e `\(L_y\)`. Porém, a partir da relação `\(L^2=L^2_x+L^2_y+L^2_z\)` temos que `\(\sqrt{L^2_x+L^2_y}=\sqrt{L^2-L^2_z}\)`, sendo os raios das circunferências na figura ao lado.
 ]
 .pull-right[
 
@@ -378,10 +420,51 @@ class: middle
 ---
 class: middle
 
+&lt;div class="my-header"&gt;&lt;span&gt; Espectro vibracional - níveis de energia&lt;/span&gt;&lt;/div&gt;
+
+.pull-left[
+
+Agora, uma prática muito é obter os valores da energia a partir da equação de Schrödinger. No caso do átomo de hidrogênio, a equação de Schrödinger seria
+`\begin{aligned}
+  -\frac{\hbar^2}{2mr^2}\frac{\partial}{\partial r}\left(r^2\frac{\partial }{\partial r}\psi\right)-\frac{\hbar^2\ell(\ell+1)}{2mr^2}\psi+V(r)\psi &amp; =E\psi.
+\end{aligned}`
+Substituindo `\(\psi\)` na equação acima, encontraremos os valores da energia `\(E_n\)`, onde
+`\begin{aligned}
+  E_n=-\left(\frac{KmZe^2}{2\hbar}\right)^2\frac{1}{n^2}=-\frac{Z^2E_1}{n^2},
+\end{aligned}`
+onde `\(E_1=-13,6\;\text{eV}\)` é a energia do estado fundamental do átomo de hidrogênio.
+
+A figura mostra os níveis de energia para `\(n=1,2,3,4\)`. Percebe-se que algumas transições são possíveis e outras não. Como exemplo temos que a transição `\(\psi_{210}\rightarrow\psi_{100}\)` pode acontecer mas `\(\psi_{200}\rightarrow\psi_{100}\)` não.
+
+
+]
+.pull-right[
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/energia-grafico.jpeg" alt="Transições permitidas no átomo de hidrogênio." width="70%" /&gt;
+&lt;p class="caption"&gt;Transições permitidas no átomo de hidrogênio.&lt;/p&gt;
+&lt;/div&gt;
+
+]
+
+---
+class: middle
+
+&lt;div class="my-header"&gt;&lt;span&gt; Espectro vibracional - regras de seleção&lt;/span&gt;&lt;/div&gt;
+
+.pull-left[
+]
+.pull-right[
+
+]
+
+---
+class: middle
+
 &lt;div class="my-header"&gt;&lt;span&gt;Bibliografia&lt;/span&gt;&lt;/div&gt;
 
-&lt;a name=bib-tipler&gt;&lt;/a&gt;[Tipler, P. A. and R. Llewellyn](#cite-tipler)
-(2003). _Modern Physics_. W. H. Freeman. ISBN: 9780716743453. URL:
+&lt;a name=bib-tipler&gt;&lt;/a&gt;[Tipler, P. A. and R. Llewellyn](#cite-tipler) (2003). _Modern Physics_.
+W. H. Freeman. ISBN: 9780716743453. URL:
 [https://books.google.com.br/books?id=tpU18JqcSNkC](https://books.google.com.br/books?id=tpU18JqcSNkC).
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>

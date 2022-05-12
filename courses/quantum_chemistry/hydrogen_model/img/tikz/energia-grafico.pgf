@@ -1,0 +1,88 @@
+\begin{tikzpicture}[scale=1,transform shape,font=\Large]
+			
+	\tkzInit[xmin=0,xmax=8,ymin=-14,ymax=0]
+%	\tkzGrid[color=gray!20]
+	\tkzClip[space=1.5]
+	
+%	\tkzDrawX[right,label=x, noticks]
+	\tkzDrawY[above,label=Energia (eV), noticks]
+
+	%label
+	\def\E{0}
+	\tkzDefPoints{1.25/\E/S,3.25/\E/P,5.25/\E/D,7.25/\E/F,7.5/\E/t1}
+
+	\tkzText[text centered,opacity=100](S){$\ell=0$}
+	\tkzText[text centered,opacity=100](P){$\ell=1$}
+	\tkzText[text centered,opacity=100](D){$\ell=2$}
+	\tkzText[text centered,opacity=100](F){$\ell=3$}
+
+	%n=1
+	\def\E{-13.6}
+	\tkzDefPoints{0.5/\E/S1,7.5/\E/t1}
+
+	\tkzText[text centered,opacity=100, left=0.7](S1){\small \E}
+	\tkzText[text centered,opacity=100, right=0.7](t1){\small $n=1$}
+
+	\draw[line width=1pt] (S1) --++(1.5,0);
+
+	%n=2
+	\def\E{-3.4}
+	\tkzDefPoints{0.5/\E/S2,2.5/\E/P2,7.5/\E/t1}
+
+	\tkzText[text centered,opacity=100, left=0.7](S2){\small \E}
+	\tkzText[text centered,opacity=100, right=0.7](t1){\small $n=2$}
+
+	\draw[line width=1pt] (S2) --++(1.5,0);
+	\draw[line width=1pt] (P2) --++(1.5,0);
+
+	%n=3
+	\def\E{-1.51}
+	\tkzDefPoints{0.5/\E/S3,2.5/\E/P3,4.5/\E/D3,7.5/\E/t1}
+
+	\tkzText[text centered,opacity=100, left=0.7](S3){\small \E}
+	\tkzText[text centered,opacity=100, right=0.7](t1){\small $n=3$}
+
+	\draw[line width=1pt] (S3) --++(1.5,0);
+	\draw[line width=1pt] (P3) --++(1.5,0);
+	\draw[line width=1pt] (D3) --++(1.5,0);
+
+	%n=4
+	\def\E{-0.85}
+	\tkzDefPoints{0.5/\E/S4,2.5/\E/P4,4.5/\E/D4,6.5/\E/F4,7.5/\E/t1}
+
+	\tkzText[text centered,opacity=100, left=0.7](S4){\small \E}
+	\tkzText[text centered,opacity=100, right=0.7](t1){\small $n=4$}
+
+	\draw[line width=1pt] (S4) --++(1.5,0);
+	\draw[line width=1pt] (P4) --++(1.5,0);
+	\draw[line width=1pt] (D4) --++(1.5,0);
+	\draw[line width=1pt] (F4) --++(1.5,0);
+
+	%transicoes proibidas
+%	\draw[dashed, color=red,->,line width=1.5pt] ($(S2)+(0.75,0)$) -- ($(S1)+(0.75,0)$);
+%	\draw[dashed, color=red,->,line width=1.5pt] ($(S3)+(0.75,0)$) -- ($(S2)+(0.75,0)$);
+%	\draw[dashed, color=red,->,line width=1.5pt] ($(S4)+(0.75,0)$) -- ($(S3)+(0.75,0)$);
+%	\draw[dashed, color=red, ->,line width=1.5pt] ($(P4)+(0.75,0)$) -- ($(P3)+(0.75,0)$);
+%	\draw[dashed, color=red, ->,line width=1.5pt] ($(D4)+(0.75,0)$) -- ($(D3)+(0.75,0)$);
+%	\draw[dashed, color=red, ->,line width=1.5pt] ($(D3)+(0.75,0)$) -- ($(S2)+(0.75,0)$);
+
+	%transicoes permitidas
+	\draw[->, color=gray!50, line width=1.5pt] ($(P2)+(0.75,0)$) -- ($(S1)+(0.75,0)$);
+	\draw[->, color=gray!50, line width=1.5pt] ($(P3)+(0.75,0)$) -- ($(S2)+(0.75,0)$);
+	\draw[->, color=gray!50, line width=1.5pt] ($(P3)+(0.75,0)$) -- ($(S1)+(0.75,0)$);
+	\draw[->, color=gray!50, line width=1.5pt] ($(D3)+(0.75,0)$) -- ($(S1)+(0.75,0)$);
+	\draw[->, color=gray!50, line width=1.5pt] ($(D3)+(0.75,0)$) -- ($(P2)+(0.75,0)$);
+	\draw[->, color=gray!50, line width=1.5pt] ($(S3)+(0.75,0)$) -- ($(P2)+(0.75,0)$);
+	\draw[->, color=gray!50, line width=1.5pt] ($(S4)+(0.75,0)$) -- ($(P2)+(0.75,0)$);
+	\draw[->, color=gray!50, line width=1.5pt] ($(D4)+(0.75,0)$) -- ($(P2)+(0.75,0)$);
+	\draw[->, color=gray!50, line width=1.5pt] ($(P4)+(0.75,0)$) -- ($(S2)+(0.75,0)$);
+	\draw[->, color=gray!50, line width=1.5pt] ($(P4)+(0.75,0)$) -- ($(S1)+(0.75,0)$);
+	\draw[->, color=gray!50, line width=1.5pt] ($(F4)+(0.75,0)$) -- ($(D3)+(0.75,0)$);
+
+%	\foreach \n in {1,2,3,4}{
+%		\tkzFct[domain=0:8, line width=0.5pt, color=black]{\E*\n**2}
+%		\tkzDefPointByFct(8)\tkzGetPoint{A}
+%		\tkzText[text centered,opacity=100,fill=gray!20, right=0.1](A){\small $n=\n$}
+%	}
+
+\end{tikzpicture}

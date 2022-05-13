@@ -1,0 +1,47 @@
+\begin{tikzpicture}[scale=1,transform shape,font=\Large,samples=900]
+			
+		\begin{scope}[shift={(0,0)}]
+
+			\tkzInit[xmin=0,xmax=10,ymin=0,ymax=5]
+%			\tkzGrid[color=gray!20]
+	  	    \tkzClip[space=0.5]
+
+			\tkzDefPoints{0/0/A,10/0/B,10/5/C,0/5/D}
+			\tkzDrawPolygon(A,B,C,D)
+
+			\foreach \n in {0,1,...,5}{
+				\foreach \y in {0,1,2}{
+					\tkzDefPoint(1.6*\n+1.5,1.6*\y+1.5){p}
+					\def\theta{max(0,360*random())}
+					\draw[->, color=red,line width=2pt] ($(p)-(0.5,0.5)$) --++ ($0.5*({cos(\theta)},{sin(\theta)})$);
+				}
+			}
+
+		\end{scope}
+
+		\begin{scope}[shift={(0,-8)}]
+
+			\tkzInit[xmin=0,xmax=10,ymin=0,ymax=5]
+%			\tkzGrid[color=gray!20]
+	%		\tkzClip[space=0.5]
+
+			\tkzDefPoints{0/0/A,10/0/B,10/5/C,0/5/D}
+			\tkzDrawPolygon(A,B,C,D)
+
+			\foreach \n in {0,1,...,5}{
+				\foreach \y in {0,1,2}{
+					\tkzDefPoint(1.6*\n+0.5,1.6*\y+0.5){p}
+					\draw[->, color=red,line width=2pt] (p) --++ (0,1);
+				}
+				\tkzDefPoint(1.6*\n+0.5,5.5){B1}
+				\draw[->, color=blue,line width=2pt] (B1) --++ (0,1);
+				\tkzDefPoint(1.6*\n+0.5,-0.5){B2}
+				\draw[<-, color=blue,line width=2pt] (B2) --++ (0,-1);
+			}
+
+				\tkzText[above right=0.5](B1){$\vec{B}$}
+				\tkzText[below right=0.5](B2){$\vec{B}$}
+
+		\end{scope}
+
+\end{tikzpicture}

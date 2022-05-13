@@ -445,11 +445,68 @@ A figura mostra os níveis de energia para $n=1,2,3,4$. Percebe-se que algumas t
 ---
 class: middle
 
-<div class="my-header"><span> Espectro vibracional - regras de seleção</span></div>
+<div class="my-header"><span> Momento magnético do átomo de hidrogênio - momento de dipolo magnético</span></div>
 
 .pull-left[
+
+Podemos considerar que um elétron com carga $-e$ em órbita ao redor do núcleo apresenta uma corrente elétrica dado por
+\begin{aligned}
+  i = -\frac{e}{T},
+\end{aligned}
+onde T é o período do movimento. Pela teoria do eletromagnetismo, uma corrente elétrica circular produz um momento de dipolo magnético dado por
+\begin{aligned}
+  \mu = iA,
+\end{aligned}
+onde A é a área de uma espira circular. O período do elétron é dado por $2\pi r/v$, onde v é a velocidade do elétron. Substituindo i e v teremos
+\begin{aligned}
+  \mu & = -\frac{e}{\left(\frac{2\pi r}{v}\right)}\left(\pi r^2\right),\\
+      & = -\frac{erv}{2}.
+\end{aligned}
+
 ]
 .pull-right[
+
+Multiplicando e dividindo por m, teremos
+\begin{aligned}
+      \mu = -\frac{e}{2m}rmv.
+\end{aligned}
+Pela definição do momento angular, onde $L=rmv$ teremos
+\begin{aligned}
+      \mu & = -\frac{e}{2m}L,\\
+      \vec{\mu} & = -\frac{e}{2m}\vec{L}.
+\end{aligned}
+No caso do átomo de hidrogênio, onde $L=\hbar\sqrt{\ell(\ell+1)}$ teremos
+\begin{aligned}
+      \mu & = -\left(\frac{e\hbar}{2m}\right)\sqrt{\ell(\ell+1)},\\
+          & = -\sqrt{\ell(\ell+1)}\mu_B.
+\end{aligned}
+$\mu_B$ é chamado de magneto de Bohr.
+
+]
+
+---
+class: middle
+
+<div class="my-header"><span> Momento magnético do átomo de hidrogênio - Comportamento ferromagnético do átomo</span></div>
+
+.pull-left[
+
+Agora, podemos também definir a componente z do momento de dipolo magnético, onde
+\begin{aligned}
+  \mu_z & = -\frac{e}{2m}L_z.
+\end{aligned}
+No caso do átomo de hidrogênio temos $L_z=\hbar m$, portanto a componente z do dipolo magnético é dado por
+\begin{aligned}
+  \mu_z = -m\mu_B
+\end{aligned}
+Naturalmente, o dipolo magnético do átomo não possui uma orientação preferencial. Entretanto, na presença de um campo magnético externo $\vec{B}$, surge um torque $\vec{\tau}=\vec{\mu}\times\vec{B}$ no elétron com a intenção de alinhar a componente $\mu_z$ com o direção de $\vec{B}$. Como consequência, o campo $\vec{B}$ é somado com o campo magnético gerado por $\mu_z$ e o material se torna ferromagnético.
+
+]
+.pull-right[
+
+```{r, echo=FALSE, fig.align='center',fig.cap='Alinhamento dos dipolos magnéticos do átomo na presença de um campo magnético externo.',out.width="70%",fig.asp=1}
+  knitr::include_graphics("img/material_ferromagnetico.jpeg")
+```
 
 ]
 

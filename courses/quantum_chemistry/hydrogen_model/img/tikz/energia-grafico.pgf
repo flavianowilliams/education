@@ -79,10 +79,8 @@
 	\draw[->, color=gray!50, line width=1.5pt] ($(P4)+(0.75,0)$) -- ($(S1)+(0.75,0)$);
 	\draw[->, color=gray!50, line width=1.5pt] ($(F4)+(0.75,0)$) -- ($(D3)+(0.75,0)$);
 
-%	\foreach \n in {1,2,3,4}{
-%		\tkzFct[domain=0:8, line width=0.5pt, color=black]{\E*\n**2}
-%		\tkzDefPointByFct(8)\tkzGetPoint{A}
-%		\tkzText[text centered,opacity=100,fill=gray!20, right=0.1](A){\small $n=\n$}
-%	}
+	\tkzDefPoints{7/-8/t1,7.1/-9/t2}
+	\tkzText(t1){$\Delta\ell=\pm 1$}
+	\tkzText(t2){$\Delta m=0,\pm 1$}
 
 \end{tikzpicture}

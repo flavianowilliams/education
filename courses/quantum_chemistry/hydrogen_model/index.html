@@ -26,7 +26,7 @@ class: center, middle, inverse, title-slide
 ### Instituto Federal do Paraná - Irati
 ]
 .date[
-### Atualizado em 12/05/2022
+### Atualizado em 13/05/2022
 ]
 
 ---
@@ -82,7 +82,7 @@ class: middle
 
 .pull-left[
 
-Até o momento consideramos movimentos em apenas uma dimensão (no caso ao longo do eixo x). Mas a maioria dos casos reais, o movimento acontece nas três dimensões. Um exemplo é o movimento do elétron no átomo de hidrogênio ([Tipler and Llewellyn, 2003](https://books.google.com.br/books?id=tpU18JqcSNkC)).
+Até o momento consideramos movimentos em apenas uma dimensão (no caso ao longo do eixo x). Mas a maioria dos casos reais, o movimento acontece nas três dimensões. Um exemplo é o movimento do elétron no átomo de hidrogênio &lt;a name=cite-tipler&gt;&lt;/a&gt;([Tipler and Llewellyn, 2003](https://books.google.com.br/books?id=tpU18JqcSNkC)).
 
 Em coordenadas retangulares, a equação de Schrödinger pode ser escrito na forma
 `\begin{aligned}
@@ -450,11 +450,69 @@ A figura mostra os níveis de energia para `\(n=1,2,3,4\)`. Percebe-se que algum
 ---
 class: middle
 
-&lt;div class="my-header"&gt;&lt;span&gt; Espectro vibracional - regras de seleção&lt;/span&gt;&lt;/div&gt;
+&lt;div class="my-header"&gt;&lt;span&gt; Momento magnético do átomo de hidrogênio - momento de dipolo magnético&lt;/span&gt;&lt;/div&gt;
 
 .pull-left[
+
+Podemos considerar que um elétron com carga `\(-e\)` em órbita ao redor do núcleo apresenta uma corrente elétrica dado por
+`\begin{aligned}
+  i = -\frac{e}{T},
+\end{aligned}`
+onde T é o período do movimento. Pela teoria do eletromagnetismo, uma corrente elétrica circular produz um momento de dipolo magnético dado por
+`\begin{aligned}
+  \mu = iA,
+\end{aligned}`
+onde A é a área de uma espira circular. O período do elétron é dado por `\(2\pi r/v\)`, onde v é a velocidade do elétron. Substituindo i e v teremos
+`\begin{aligned}
+  \mu &amp; = -\frac{e}{\left(\frac{2\pi r}{v}\right)}\left(\pi r^2\right),\\
+      &amp; = -\frac{erv}{2}.
+\end{aligned}`
+
 ]
 .pull-right[
+
+Multiplicando e dividindo por m, teremos
+`\begin{aligned}
+      \mu = -\frac{e}{2m}rmv.
+\end{aligned}`
+Pela definição do momento angular, onde `\(L=rmv\)` teremos
+`\begin{aligned}
+      \mu &amp; = -\frac{e}{2m}L,\\
+      \vec{\mu} &amp; = -\frac{e}{2m}\vec{L}.
+\end{aligned}`
+No caso do átomo de hidrogênio, onde `\(L=\hbar\sqrt{\ell(\ell+1)}\)` teremos
+`\begin{aligned}
+      \mu &amp; = -\left(\frac{e\hbar}{2m}\right)\sqrt{\ell(\ell+1)},\\
+          &amp; = -\sqrt{\ell(\ell+1)}\mu_B.
+\end{aligned}`
+`\(\mu_B\)` é chamado de magneto de Bohr.
+
+]
+
+---
+class: middle
+
+&lt;div class="my-header"&gt;&lt;span&gt; Momento magnético do átomo de hidrogênio - Comportamento ferromagnético do átomo&lt;/span&gt;&lt;/div&gt;
+
+.pull-left[
+
+Agora, podemos também definir a componente z do momento de dipolo magnético, onde
+`\begin{aligned}
+  \mu_z &amp; = -\frac{e}{2m}L_z.
+\end{aligned}`
+No caso do átomo de hidrogênio temos `\(L_z=\hbar m\)`, portanto a componente z do dipolo magnético é dado por
+`\begin{aligned}
+  \mu_z = -m\mu_B
+\end{aligned}`
+Naturalmente, o dipolo magnético do átomo não possui uma orientação preferencial. Entretanto, na presença de um campo magnético externo `\(\vec{B}\)`, surge um torque `\(\vec{\tau}=\vec{\mu}\times\vec{B}\)` no elétron com a intenção de alinhar a componente `\(\mu_z\)` com o direção de `\(\vec{B}\)`. Como consequência, o campo `\(\vec{B}\)` é somado com o campo magnético gerado por `\(\mu_z\)` e o material se torna ferromagnético.
+
+]
+.pull-right[
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/material_ferromagnetico.jpeg" alt="Alinhamento dos dipolos magnéticos do átomo na presença de um campo magnético externo." width="70%" /&gt;
+&lt;p class="caption"&gt;Alinhamento dos dipolos magnéticos do átomo na presença de um campo magnético externo.&lt;/p&gt;
+&lt;/div&gt;
 
 ]
 
@@ -463,8 +521,8 @@ class: middle
 
 &lt;div class="my-header"&gt;&lt;span&gt;Bibliografia&lt;/span&gt;&lt;/div&gt;
 
-&lt;a name=bib-tipler&gt;&lt;/a&gt;[Tipler, P. A. and R. Llewellyn](#cite-tipler) (2003). _Modern Physics_.
-W. H. Freeman. ISBN: 9780716743453. URL:
+&lt;a name=bib-tipler&gt;&lt;/a&gt;[Tipler, P. A. and R. Llewellyn](#cite-tipler)
+(2003). _Modern Physics_. W. H. Freeman. ISBN: 9780716743453. URL:
 [https://books.google.com.br/books?id=tpU18JqcSNkC](https://books.google.com.br/books?id=tpU18JqcSNkC).
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>

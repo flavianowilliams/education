@@ -40,7 +40,7 @@
 
 \begin{frame}{Definição de um vetor}
 	\begin{columns}
-		\begin{column}[c]{0.5\textwidth}
+		\begin{column}[c]{0.65\textwidth}
 			 \begin{block}{Vetor}
 				Entidade matemática dotada de:
 				\begin{itemize}
@@ -49,14 +49,15 @@
 					\item [\ding{51}] Sentido:
 				\end{itemize}
 			\end{block}
-			Na figura ao lado, as propriedades do vetor $\vec{r}$ são dados por:
+			As propriedades do vetor $\vec{r}$ são dados por:
 			\begin{itemize}
 				\item [\ding{51}] Módulo: $2\sqrt{2}$ unidades;
 				\item [\ding{51}] Direção: \SI{45}{\degree} em relação ao eixo x;
 				\item [\ding{51}] Sentido: De A para B.
 			\end{itemize}
+		\textit{\small \href{https://phet.colorado.edu/pt_BR/simulations/vector-addition}{Utilize a animação para ver as propriedades de um vetor}.}
 		\end{column}
-	\begin{column}[c]{0.5\textwidth}
+	\begin{column}[c]{0.35\textwidth}
 		\begin{figure}[c]
 			\begin{tikzpicture}[scale=0.4,transform shape]
 
@@ -137,14 +138,15 @@
 
 \begin{frame}{Multiplicação de um vetor por um escalar}
 	\begin{columns}
-		\begin{column}[c]{0.5\textwidth}
+		\begin{column}[c]{0.55\textwidth}
 			\begin{itemize}
 				\item [\ding{51}] Na multiplicação de um vetor por um escalar, a direção e sentido não se varia, alterando apenas o seu módulo;
 				\item[\ding{51}] Vetores com a mesma orientação (direção e sentido) e mesmo módulo são idênticos, não importando a sua representação no espaço;
 				\item[\ding{51}] O módulo de um vetor é medido pelo seu comprimento do segmento de reta que o representa.
 			\end{itemize}
+				\textit{\small \href{https://phet.colorado.edu/pt_BR/simulations/vector-addition}{Utilize a animação para ver a mudança de um vetor quando multiplicado por um escalar}.}
 		\end{column}
-		\begin{column}[c]{0.5\textwidth}
+		\begin{column}[c]{0.45\textwidth}
 			\begin{figure}
 				\begin{tikzpicture}[scale=0.4,transform shape]
 				
@@ -197,6 +199,7 @@
 			\begin{block}{Versor $(\widehat{r})$}
 				Vetor que possui módulo igual a um.
 			\end{block}
+			\textit{\small \href{https://phet.colorado.edu/pt_BR/simulations/vector-addition}{Utilize a animação para ver o módulo de um vetor a partir das suas componentes}.}
 		\end{column}
 		\begin{column}[c]{0.5\textwidth}
 			\begin{figure}[c]
@@ -287,6 +290,7 @@
 		\begin{equation*}
 			\boxed{\vec{r} = rcos\theta \hat{i}+rsen\theta \hat{j}.}
 		\end{equation*}
+				\textit{\small \href{https://phet.colorado.edu/pt_BR/simulations/vector-addition}{Utilize a animação para ver as componentes de um vetor}.}
 	\end{column}
 	\begin{column}[c]{0.5\textwidth}
 		\begin{figure}[c]
@@ -398,7 +402,7 @@
 
 \begin{frame}{Soma de vetores e vetor resultante}
 	\begin{columns}
-		\begin{column}[c]{0.5\textwidth}
+		\begin{column}[c]{0.65\textwidth}
 			Considere a equação abaixo
 			\begin{equation*}
 				\vec{r} = \vec{a} + \vec{b},
@@ -410,9 +414,9 @@
 				\Aboxed{\vec{r} & = r_x\hat{i}+r_y\hat{j}.}
 			\end{align*}
 		\end{column}
-		\begin{column}[c]{0.5\textwidth}
+		\begin{column}[c]{0.35\textwidth}
 			\begin{figure}
-				\begin{tikzpicture}[scale=0.4,transform shape,font=\large]
+				\begin{tikzpicture}[scale=0.37,transform shape,font=\large]
 			
 				\tkzInit[xmin=-5,xmax=5,ymin=-5,ymax=5]
 				\tkzGrid[color=gray!20]
@@ -447,6 +451,7 @@
 			\end{figure}
 		\end{column}
 	\end{columns}
+	\textit{\small \href{https://phet.colorado.edu/pt_BR/simulations/vector-addition}{Utilize a animação para ver a adição de dois vetores}.}
 \end{frame}
 
 \begin{frame}{Vetor resultante a partir da representação gráfica}
@@ -500,6 +505,49 @@
 
 				\end{tikzpicture}
 				\caption*{\footnotesize Vetor resultante $\vec{r}$ da soma $\vec{a}+\vec{b}$.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Vetor resultante a partir da regra do paralelogramo}
+	\begin{columns}
+		\begin{column}[c]{0.65\textwidth}
+			Ordenando os vetores de modo que o início de um coincida com o fina do outro teremos que
+			\begin{align*}
+				\vec{a}+\vec{b}+\vec{c}+\vec{r}+\cdots = \vec{0}.
+			\end{align*}
+			Sabendo que -$\vec{r}$ representa o vetor $\vec{r}$ no sentido oposto teremos
+			\begin{align*}
+				\boxed{\vec{r} = \vec{a}+\vec{b}+\vec{c}+\cdots.}
+			\end{align*}			
+			\textit{\small \href{https://phet.colorado.edu/pt_BR/simulations/vector-addition}{Utilize a animação para encontrar o vetor resultante a partir da formação de um polígono}.}
+		\end{column}
+		\begin{column}[c]{0.35\textwidth}
+			\begin{figure}
+							\begin{tikzpicture}[scale=0.4,transform shape,font=\large]
+				
+				\tkzInit[xmin=0,xmax=10,ymin=0,ymax=10]
+				\tkzGrid[color=gray!20]
+				\tkzClip[space=1]
+				
+				\tkzDefPoints{2/4/A,4/6/B,6/4/C,6/2/D}
+				
+				\tkzAxeX{x}
+				\tkzAxeY{y}
+				
+				\tkzDefPointWith[colinear=at D](A,B)\tkzGetPoint{E}
+				
+				\draw[->,line width=1.0pt,color=red] (A) -- (B) node [above left,midway] {$\vec{a}$};
+				\draw[->,line width=1.0pt,color=red] (B) -- (C) node [above,midway] {$\vec{b}$};
+				\draw[->,line width=1.0pt,color=red] (C) -- (D) node [right,midway] {$\vec{c}$};
+				\draw[->,line width=1.0pt,color=blue] (A) -- (D) node [above,midway] {$\vec{r}$};
+				
+				\tkzDefPoints{8/8/t1}
+				
+				\tkzText[text centered,opacity=100,fill=gray!20](t1){$\vec{r}=\vec{a}+\vec{b}+\vec{c}$}
+				\end{tikzpicture}
+				\caption*{\footnotesize Vetor resultante $\vec{r}$.}
 			\end{figure}
 		\end{column}
 	\end{columns}
@@ -666,7 +714,7 @@
 
 \begin{frame}{Módulo de um vetor resultante}
 	\begin{columns}
-		\begin{column}[c]{0.5\textwidth}
+		\begin{column}[c]{0.65\textwidth}
 			O módulo da soma vetorial $\vec{r}=\vec{a}+\vec{b}$ pode ser calculada à partir do produto escalar $r^2=\vec{r}\cdot\vec{r}$,
 			\begin{align*}
 %				r^2 & = \vec{r}\cdot\vec{r},\\
@@ -678,9 +726,9 @@
 				\boxed{r^2 = a^2+b^2+2abcos\theta.}
 			\end{equation*}
 		\end{column}
-		\begin{column}[c]{0.5\textwidth}
+		\begin{column}[c]{0.35\textwidth}
 			\begin{figure}[c]
-				\begin{tikzpicture}[scale=0.4,transform shape,font=\Large]
+				\begin{tikzpicture}[scale=0.38,transform shape,font=\Large]
 	
 				\tkzInit[xmin=0,xmax=10,ymin=0,ymax=10]
 				\tkzGrid[color=gray!20]
@@ -712,10 +760,11 @@
 
 				\end{tikzpicture}
 				%\input{tikz/vetor.pgf}
-				\caption*{\footnotesize Representação de um vetor no plano cartesiano.}
+				\caption*{\footnotesize Vetor resultante $\vec{r}$.}
 			\end{figure}
 		\end{column}
 	\end{columns}
+	\textit{\small \href{https://phet.colorado.edu/pt_BR/simulations/vector-addition}{Utilize a animação para ver o vetor resultante a partir da regra do paralelogramo}.}
 \end{frame}
 
 \section{Multiplicação de vetores (2)}
@@ -1044,6 +1093,7 @@
 		\bibitem{halliday}D. Halliday, R. Resnick, J. Walker, Fundamentos de física. Mecânica, v.1, 10. ed., Rio de Janeiro, LTC (2016)
 		\bibitem{randall}R. D. Knight, Física: Uma abordagem estratégica, v.1, 2nd ed., Porto Alegre, Bookman (2009)
 		\bibitem{moyses}H. M. Nussenzveig, Curso de física básica. Mecânica, v.1, 5. ed., São Paulo, Blucher (2014)
+		\bibitem{phet} \href{https://phet.colorado.edu/pt_BR/}{Phet Colorado}
 	\end{thebibliography}
 \end{frame}
 

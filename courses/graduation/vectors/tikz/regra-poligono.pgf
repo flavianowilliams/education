@@ -1,0 +1,23 @@
+				\begin{tikzpicture}[scale=1.4,transform shape,font=\large]
+	
+				\tkzInit[xmin=0,xmax=10,ymin=0,ymax=10]
+				\tkzGrid[color=gray!20]
+				\tkzClip[space=1]
+	
+				\tkzDefPoints{2/4/A,4/6/B,6/4/C,6/2/D}
+	
+				\tkzAxeX{x}
+				\tkzAxeY{y}
+	
+				\tkzDefPointWith[colinear=at D](A,B)\tkzGetPoint{E}
+
+				\draw[->,line width=1.0pt,color=red] (A) -- (B) node [above left,midway] {$\vec{a}$};
+				\draw[->,line width=1.0pt,color=red] (B) -- (C) node [above,midway] {$\vec{b}$};
+				\draw[->,line width=1.0pt,color=red] (C) -- (D) node [right,midway] {$\vec{c}$};
+				\draw[->,line width=1.0pt,color=blue] (A) -- (D) node [above,midway] {$\vec{r}$};
+
+				\tkzDefPoints{8/8/t1}
+			
+				\tkzText[text centered,opacity=100,fill=gray!20](t1){$\vec{r}=\vec{a}+\vec{b}+\vec{c}$}
+
+				\end{tikzpicture}

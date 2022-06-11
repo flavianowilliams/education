@@ -70,12 +70,12 @@
 				\tkzDrawPoints[size=0.75cm,fill=blue](p1)
 				
 				%radiacao incidente
-				\draw[wave,->,line width=1.5pt] (5,-1) -- (-2,2.5);
+				\draw[wave,->,line width=1.5pt] ($(p1)+(0.4,0.4)$) -- (4.5,1);
 				
 				%radiacao emitida
-				\draw[wave,->,line width=1.5pt,color=red] (0,-3) --++ (0,-1.5) node [right=0.25,midway] {$\nu$};
-				\draw[wave,->,line width=1.5pt,color=red] (-3,0) --++ (-1.5,0) node [above=0.25,midway] {$\nu$};
-				\draw[wave,->,line width=1.5pt,color=red] (0,3) --++ (0,1.5) node [right=0.25,midway] {$\nu$};
+				\draw[wave,->,line width=1.5pt,color=red] (0,-4.5) --++ (0,1.5) node [right=0.25,midway] {$\nu$};
+				\draw[wave,->,line width=1.5pt,color=red] (-4.5,0) --++ (1.5,0) node [above=0.25,midway] {$\nu$};
+				\draw[wave,->,line width=1.5pt,color=red] (0,4.5) --++ (0,-1.5) node [right=0.25,midway] {$\nu$};
 				
 				\end{tikzpicture}
 				\caption*{\footnotesize Radiação emitida pelo corpo negro.}
@@ -295,7 +295,7 @@
 		Para determinar o valor médio da energia $\left<E\right>$, usamos a expressão abaixo
 		\begin{align*}
 			\left<E\right> & = \frac{\int_{0}^{\infty}Ef(E)}{\int_{0}^{\infty}f(E)}dE,\\
-			P(E) & = Ae^{-E/k_BT}dE.
+			P(E) & = Ae^{-E/k_BT}.
 		\end{align*}
 		onde $P(E)$ é conhecida como distribuição de Boltzmann e $k_B$ é chamado constante de Boltzmann.	Substituindo na expressão teremos
 		\begin{align*}

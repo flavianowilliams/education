@@ -7,7 +7,7 @@
 
 %Título
 
-\title[Física moderna-FIQ]{Física quântica}
+\title[Física moderna-FIQ]{Quantização da energia e dualidade onda-partícula}
 
 % The main document
 
@@ -562,11 +562,63 @@
 
 \subsection{}
 
-\begin{frame}{Observações\footnote{Este material está sujeito a modificações. Recomenda-se acompanhamento permanente.}}
+\begin{frame}{Apêndice A - Observações\footnote{Este material está sujeito a modificações. Recomenda-se acompanhamento permanente.}}
 	\begin{center}
 		Esta apresentação está disponível para download no endereço\\
 		\href{https://flavianowilliams.github.io/education}{\textcolor{blue}{https://flavianowilliams.github.io/education}}
 	\end{center}
+\end{frame}
+%
+\begin{frame}{Apêndice B - Demonstração do valor kT para a energia média.}
+	\begin{columns}
+		\begin{column}[t]{0.5\textwidth}
+			Considere a energia média $\left<E\right>$ onde definimos $\beta = 1/kT$,
+			\begin{align*}
+				\left<E\right> & = \frac{\int_{0}^{\infty}Ee^{-\beta E}dE}{\int_{0}^{\infty}e^{-\beta E}dE}
+			\end{align*}
+			Podemos ver que $-\frac{d}{d\beta}e^{-\beta E}=Ee^{-\beta E}$,
+			\begin{align*}
+				\left<E\right> & = \frac{\int_{0}^{\infty}\left(-\frac{d}{d\beta}e^{-\beta E}\right)dE}{\int_{0}^{\infty}e^{-\beta E}dE}
+			\end{align*}
+		\end{column}
+		\begin{column}[t]{0.5\textwidth}
+			\begin{align*}
+				\left<E\right> & = \frac{-\frac{d}{d\beta}\left(\int_{0}^{\infty}e^{-\beta E}dE\right)}{\int_{0}^{\infty}e^{-\beta E}dE}.
+			\end{align*}
+			Definindo $F(\beta)=\int_{0}^{\infty}e^{-\beta E}dE$ teremos
+			\begin{align*}
+				\left<E\right> & = -\frac{\frac{dF(\beta)}{d\beta}}{F(\beta)},
+			\end{align*}
+			Assim poderemos obter $\left<E\right>$ sem a necessidade de resolver a integral.
+		\end{column}
+	\end{columns}
+\end{frame}
+%
+\begin{frame}{Apêndice B - Demonstração do valor kT para a energia média.}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			Pela propriedade do logaritmo e empregando a regra da cadeia, temos que a sua derivada é dada por
+			\begin{align*}
+				\frac{d\ln\left[1/F(\beta)\right]}{d\beta} = \left(\frac{d\ln(1/F)}{dF}\right)\left(\frac{dF}{d\beta}\right)
+			\end{align*}
+			Porém, sabemos que $\frac{d\ln (1/F)}{dF}=1/F$, portanto
+			\begin{align*}
+				\frac{d\ln\left[1/F(\beta)\right]}{d\beta} = \left(\frac{1}{F}\right)\left(\frac{dF}{d\beta}\right)
+			\end{align*}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			Assim podemos ver que
+			\begin{align*}
+				\left<E\right> & = -\frac{d}{d\beta}\ln(1/F(\beta)),\\
+				& = -\frac{d}{d\beta}\ln\left[\frac{1}{\int_{0}^{\infty}e^{-\beta E}dE}\right].
+			\end{align*}
+			Resolvendo a integral teremos
+			\begin{align*}
+				\left<E\right> & = -\frac{d\ln(1/\beta)}{d\beta}=1/\beta,\\
+				\Aboxed{\left<E\right> & = kT.}
+			\end{align*}
+		\end{column}
+	\end{columns}
 \end{frame}
 %
 \begin{frame}{Referências}

@@ -42,21 +42,20 @@
 
 \subsection{}
 
-\begin{frame}{Força eletrostática}
+\begin{frame}{Lei de Coulomb}
 	\begin{columns}
-		\begin{column}{0.5\textwidth}
-			\begin{block}{Características}
-				\begin{itemize}
-					\item[\ding{51}] É uma força conservativa;
-					\item[\ding{51}] Curta distância (alguns metros);
-					\item[\ding{51}] Proporcional ao produto das cargas;
-					\item[\ding{51}] Inversamente proporcional ao quadrado da distância;
-					\item[\ding{51}] Pode ser atrativa ou repulsiva dependendo do produto das cargas;
-					\item[\ding{51}] Obedece as Leis de Newton do movimento.
-				\end{itemize}
-			\end{block}
+		\begin{column}{0.6\textwidth}
+			Características da força atuando entre as cargas $q_1$ e $q_2$:
+			\begin{itemize}
+				\item[\ding{51}] É uma força conservativa;
+				\item[\ding{51}] Curta distância (alguns metros);
+				\item[\ding{51}] Proporcional ao produto das cargas;					
+				\item[\ding{51}] Inversamente proporcional ao quadrado da distância;
+				\item[\ding{51}] Pode ser atrativa ou repulsiva dependendo do produto das cargas;
+				\item[\ding{51}] Obedece as Leis de Newton do movimento.
+			\end{itemize}
 		\end{column}
-		\begin{column}{0.5\textwidth}
+		\begin{column}{0.4\textwidth}
 			\begin{figure}
 				\begin{center}
 					\begin{tikzpicture}[scale=0.5, transform shape]
@@ -69,33 +68,57 @@
 					\tikzstyle{s2}=[circle, radius=0.10, ball color=gray!50];
 					
 					%exemplo 1
-					\draw [line width=1.0pt, ->] (5,0) -- (5.75,0) node [pos=0.5,above right] {$\hat{r}_{Qq}$};
-					\node [s1] (n1) at (0,0) {$Q$};
-					\node [s2] (n2) at (5,0) {$q$};
-					\node  at (7.5,0) {$\left(Qq < 0\right)$};
-					\node  at (7.5,-2) {$\left( Qq > 0\right)$};
+					\draw [line width=1.0pt, ->] (5,0) -- (5.75,0) node [pos=0.5,above right] {$\hat{r}_{12}$};
+					\node [s1] (n1) at (0,0) {$q_1$};
+					\node [s2] (n2) at (5,0) {$q_2$};
+					\node  at (7.5,0) {$\left(q_1q_2 < 0\right)$};
+					\node  at (7.5,-2) {$\left( q_1q_2 > 0\right)$};
 					\draw [dashed] (n1) -- (n2);
-					\draw [line width=1.0pt, ->, color=red] (0.25,0) -- (1,0) node [pos=0.5,above right] {$\vec{F}_{qQ}$};
-					\draw [line width=1.0pt, <-, color=red] (4,0) -- (4.75,0) node [pos=0.5,above left] {$\vec{F}_{Qq}$};
+					\draw [line width=1.0pt, ->, color=red] (0.25,0) -- (1,0) node [pos=0.5,above right] {$\vec{F}_{12}$};
+					\draw [line width=1.0pt, <-, color=red] (4,0) -- (4.75,0) node [pos=0.5,above left] {$\vec{F}_{21}$};
 					
 					%exemplo 2
-					\draw [line width=1.0pt, <-,color=red] (-1,-2) -- (-0.25,-2) node [pos=0.5,below] {$\vec{F}_{qQ}$};
-					\draw [line width=1.0pt, ->,color=red] (5,-2) -- (6.0,-2) node [pos=0.75,below] {$\vec{F}_{Qq}$};
-					\draw [line width=1.0pt, ->] (5,-2) -- (5.75,-2) node [pos=0.5,above right] {$\hat{r}_{Qq}$};
-					\node [s1] (n1) at (0,-2) {$Q$};
-					\node [s2] (n2) at (5,-2) {$q$};
+					\draw [line width=1.0pt, <-,color=red] (-1,-2) -- (-0.25,-2) node [pos=0.5,below] {$\vec{F}_{12}$};
+					\draw [line width=1.0pt, ->,color=red] (5,-2) -- (6.0,-2) node [pos=0.75,below] {$\vec{F}_{21}$};
+					\draw [line width=1.0pt, ->] (5,-2) -- (5.75,-2) node [pos=0.5,above right] {$\hat{r}_{12}$};
+					\node [s1] (n1) at (0,-2) {$q_1$};
+					\node [s2] (n2) at (5,-2) {$q_2$};
 					\draw [dashed] (n1) -- (n2);
 					
-					\draw (n1) to [dim arrow={label=$r_{Qq}$}] (n2);
+					\draw (n1) to [dim arrow={label=$r_{12}$}] (n2);
 
 					\end{tikzpicture}
 					%\input{tikz/forca-vetor.pgf}
 					\caption*{\footnotesize Sentido da força em relação ao sinal das cargas.}
 				\end{center}		
 			\end{figure}
-			\begin{block}{Lei de Coulomb}
-				\[F_{qQ} = k\frac{\left|Qq\right|}{r^{2}_{qQ}}\]
-			\end{block}
+			\textit{\small \href{https://phet.colorado.edu/sims/html/coulombs-law/latest/coulombs-law_pt_BR.html}{Utilize a animação para verificar a dependência da fora com as cargas e distância relativa}.}
+%			\begin{block}{Lei de Coulomb}
+%				\[F_{qQ} = k\frac{\left|Qq\right|}{r^{2}_{qQ}}\]
+%			\end{block}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Expressão matemática da lei de Coulomb}
+	\begin{columns}
+		\begin{column}[t]{0.5\textwidth}
+			A partir das características da força eletrostática F, podemos dizer que ela odebece as seguintes relações
+			\begin{align*}
+				F_{12} & \propto q_1q_2,\\
+				F_{12} & \propto \frac{1}{r^2_{12}}.
+			\end{align*}
+			Que podemos expressar em uma única relação
+			\begin{align*}
+				F_{12} \propto \frac{q_1q_2}{r^2_{12}}.
+			\end{align*}
+		\end{column}
+		\begin{column}[t]{0.5\textwidth}
+			Colocando em uma equação matemática aparece a constante de proporcionalidade K, onde
+			\begin{align*}
+				\boxed{F_{12} = K\frac{q_1q_2}{r^2_{12}}.}
+			\end{align*}
+			K é chamada de constante eletrostática no vácuo, cujo valor é aproximadamente $8,987551\times 10^{9}\;N\cdot m^2/C^2$, e diminuindo se as cargas estiverem inseridas em um meio material.
 		\end{column}
 	\end{columns}
 \end{frame}
@@ -104,10 +127,10 @@
 	\begin{columns}
 		\begin{column}[c]{0.5\textwidth}
 			Vetorialmente, a lei de Coulomb é definida como
-			\[\vec{F}_{Qq} = k\frac{Qq}{r^{2}_{Qq}}\hat{r}_{Qq}\]
-			Sabendo que $\vec{r}_{Qq}=-\vec{r}_{qQ}$ temos que a Lei de Coulomb satisfaz a Lei da ação e reação, onde
+			\[\vec{F}_{12} = K\frac{q_1q_2}{r^{2}_{12}}\hat{r}_{21}\]
+			Observando a figura ao lado, e independente do sinal das cargas $q_1$ e $q_2$, temos que a Lei de Coulomb satisfaz a Lei da ação e reação, onde
 			\begin{align*}
-				\Aboxed{\vec{F}_{Qq}=-\vec{F}_{qQ}}
+				\Aboxed{\vec{F}_{12}=-\vec{F}_{21}}
 			\end{align*}
 		\end{column}
 		\begin{column}[c]{0.5\textwidth}
@@ -123,21 +146,21 @@
 					\tikzstyle{s2}=[circle, radius=0.10, ball color=gray!50];
 	
 					%exemplo 1
-					\draw [line width=1.0pt, ->] (5,0) -- (5.75,0) node [pos=0.5,above right] {$\hat{r}_{Qq}$};
-					\node [s1] (n1) at (0,0) {$Q$};
-					\node [s2] (n2) at (5,0) {$q$};
+					\draw [line width=1.0pt, ->] (5,0) -- (5.75,0) node [pos=0.5,above right] {$\hat{r}_{12}$};
+					\node [s1] (n1) at (0,0) {$q_1$};
+					\node [s2] (n2) at (5,0) {$q_2$};
 					\draw [dashed] (n1) -- (n2);
-					\draw [line width=1.0pt, ->, color=red] (0.25,0) -- (1,0) node [pos=0.5,above right] {$\vec{F}_{qQ}$};
-					\draw [line width=1.0pt, <-, color=red] (4,0) -- (4.75,0) node [pos=0.5,above left] {$-\vec{F}_{Qq}$};
-					\node  at (7.5,0) {$\left(Qq < 0\right)$};
-					\node  at (7.5,-2) {$\left( Qq > 0\right)$};
+					\draw [line width=1.0pt, ->, color=red] (0.25,0) -- (1,0) node [pos=0.5,above right] {$\vec{F}_{12}$};
+					\draw [line width=1.0pt, <-, color=red] (4,0) -- (4.75,0) node [pos=0.5,above left] {$-\vec{F}_{12}$};
+					\node  at (7.5,0) {$\left(q_1q_2 < 0\right)$};
+					\node  at (7.5,-2) {$\left( q_1q_2 > 0\right)$};
 	
 					%exemplo 2
-					\draw [line width=1.0pt, <-, color=red] (-1,-2) -- (-0.25,-2) node [pos=0.5,below] {$-\vec{F}_{qQ}$};
-					\draw [line width=1.0pt, ->, color=red] (5,-2) -- (6.0,-2) node [pos=0.75,below] {$\vec{F}_{Qq}$};
-					\draw [line width=1.0pt, ->] (5,-2) -- (5.75,-2) node [pos=0.5,above right] {$\hat{r}_{Qq}$};
-					\node [s1] (n1) at (0,-2) {$Q$};
-					\node [s2] (n2) at (5,-2) {$q$};
+					\draw [line width=1.0pt, <-, color=red] (-1,-2) -- (-0.25,-2) node [pos=0.5,below] {$\vec{F}_{12}$};
+					\draw [line width=1.0pt, ->, color=red] (5,-2) -- (6.0,-2) node [pos=0.75,below] {$-\vec{F}_{12}$};
+					\draw [line width=1.0pt, ->] (5,-2) -- (5.75,-2) node [pos=0.5,above right] {$\hat{r}_{12}$};
+					\node [s1] (n1) at (0,-2) {$q_1$};
+					\node [s2] (n2) at (5,-2) {$q_2$};
 					\draw [dashed] (n1) -- (n2);
 	
 				\end{tikzpicture}
@@ -151,7 +174,8 @@
 		\end{corollary}
 		\end{column}
 	\end{columns}
-	\textit{\small \href{https://phet.colorado.edu/sims/html/coulombs-law/latest/coulombs-law_pt_BR.html}{Utilize a animação para verificar a dependência da fora com as cargas e distância relativa}.}\end{frame}
+\end{frame}
+
 \begin{frame}{Distribuição discreta de cargas}
 	\begin{columns}
 		\begin{column}[c]{0.6\textwidth}
@@ -187,15 +211,15 @@
 				
 				%vetores
 				\draw [line width=1.5pt, ->,color=red] (0.25,0) -- (1.5,0) node [above] {$\vec{F}_{i1}$};
-				\draw [line width=1.5pt, <-,color=red] (3.5,0) -- (4.75,0) node [above, at start] {$-\vec{F}_{1i}$};
+				\draw [line width=1.5pt, <-,color=red] (3.5,0) -- (4.75,0) node [above, at start] {$-\vec{F}_{i1}$};
 				\draw [line width=1.5pt, ->,color=red] (0.2,0.13) -- (1.25,0.83) node [above] {$\vec{F}_{i2}$};
-				\draw [line width=1.5pt, <-,color=red] (4.65,3.1) -- (5.79,3.86) node [above left, at start] {$-\vec{F}_{2i}$};
+				\draw [line width=1.5pt, <-,color=red] (4.65,3.1) -- (5.79,3.86) node [above left, at start] {$-\vec{F}_{i2}$};
 				\draw [line width=1.5pt, ->,color=red] (-0.15,0.2) -- (-0.9,1.2) node [above right] {$\vec{F}_{i3}$};
-				\draw [line width=1.5pt, <-,color=red] (-1.98,2.64) -- (-2.85,3.8) node [above right, at start] {$-\vec{F}_{3i}$};
+				\draw [line width=1.5pt, <-,color=red] (-1.98,2.64) -- (-2.85,3.8) node [above right, at start] {$-\vec{F}_{i3}$};
 				\draw [line width=1.5pt, ->,color=red] (-0.16,-0.2) -- (-0.625,-0.78) node [above left] {$\vec{F}_{i4}$};
-				\draw [line width=1.5pt, ->,color=red] (-3.84,-4.80) -- (-3.32,-4.15) node [above left] {$-\vec{F}_{4i}$};
+				\draw [line width=1.5pt, ->,color=red] (-3.84,-4.80) -- (-3.32,-4.15) node [above left] {$-\vec{F}_{i4}$};
 				\draw [line width=1.5pt, ->,color=red] (0.16,-0.2) -- (0.94,-1.17) node [above right] {$\vec{F}_{i5}$};
-				\draw [line width=1.5pt, ->,color=red] (3.84,-4.80) -- (2.99,-3.74) node [above right] {$-\vec{F}_{5i}$};
+				\draw [line width=1.5pt, ->,color=red] (3.84,-4.80) -- (2.99,-3.74) node [above right] {$-\vec{F}_{i5}$};
 				
 				%cargas
 				\node [s1] (n1) at (c1) {$q_i$};

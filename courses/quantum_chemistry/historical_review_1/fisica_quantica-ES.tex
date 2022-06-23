@@ -152,15 +152,14 @@
 		\begin{align*}
 			R(\nu) = \frac{c}{4} u(\nu),
 		\end{align*}
-		onde $u(\nu)$ é a energia da radiação emitida por volume. Neste caso, a densidade de energia na faixa de radiação com frequências entre $\nu$ e $\nu+d\nu$ vale $u(\nu)d\nu$. Portanto, a quantidade de radiação dR
+		onde $u(\nu)$ é a energia armazenada na cavidade por volume. Neste caso, a quantidade de energia na faixa de radiação com frequências entre $\nu$ e $\nu+d\nu$ vale $u(\nu)d\nu$. Portanto, a quantidade de radiação dR
 		\end{column}
 		\begin{column}[t]{0.5\textwidth}	
-			 neste intervalo vale
+			emitida neste intervalo vale
 	 		\begin{align*}
-				dR & = R(\nu)d\nu,\\
-				dR & = \frac{c}{4}u(\nu)d\nu.
+				dR = R(\nu)d\nu = \frac{c}{4}u(\nu)d\nu.
 			\end{align*}
-			Para determinar a radiação total emitida pelo corpo negro, integramos a equação acima,
+			Para determinar a radiação total emitida pelo corpo negro, integramos a equação acima (\alert{o que deve estar condizente com a lei de Stefan-Boltzman}),
 			\begin{align*}
 				R = \frac{c}{4}\int\limits_{0}^{\infty}u(\nu)d\nu.
 			\end{align*}
@@ -170,121 +169,18 @@
 
 \begin{frame}[fragile]{Relação entre energia e temperatura}
 	\begin{columns}
-		\begin{column}[c]{0.6\textwidth}
-			Pela termodinâmica, a energia de agitação dos elétrons por volume está associado estatisticamente com o valor médio da energia E multiplicado pelo número de elétrons,
+		\begin{column}[t]{0.5\textwidth}
+			Pela termodinâmica, a energia de agitação dos elétrons por volume está associado estatisticamente com o valor médio da energia E multiplicado pelo número de cargas elétricas oscilantes,
 			\begin{align*}
 				u(\nu) = \left<E\right>n(\nu),
 			\end{align*}
-			 No caso acima, cada elétron assume um modo normal de vibração $n(\nu)$. É possível demonstrar que para uma caixa cúbica de volume V teremos
-			 \begin{align*}
-				 \Aboxed{n(\nu) = \frac{8\pi\nu^2}{c^3}.}
-			 \end{align*}
+			 No caso acima, podemos dizer que cada elétron ao oscilar emite uma onda eletromagnética de frequência $\nu$. Essa onda eletromagnética confinada em uma cavidade se comporta como uma onda
 		\end{column}
-		\begin{column}[c]{0.4\textwidth}
-			\begin{figure}
-				\centering
-				%\input{tikz/modos-normais.pgf}
-				\begin{tikzpicture}[scale=0.35, auto, transform shape,font=\huge, samples=200]
-				
-				%parametros gerais
-				\def\t{-3}
-				\def\tt{2*\t}
-				\def\ttt{3*\t}
-				
-				\def\l{8}
-				\def\k{pi/\l}
-				\def\om{0.5*pi}
-				\def\xm{1}
-				
-				%definindo funcao
-				\pgfmathdeclarefunction{f}{2}{\pgfmathparse{\xm*cos(deg(\k*#1-\om*#2))}}
-				
-				%parede
-				\fill [pattern = north west lines] (-0.25,-\xm) rectangle (0,\xm);
-				\draw (0,-\xm) -- (0,\xm);
-				
-				%parede
-				\fill [pattern = north west lines] (\l,-\xm) rectangle (0.25+\l,\xm);
-				\draw (\l,-\xm) -- (\l,\xm);
-				
-				%curva
-				\draw[line width=1.5pt,domain=0:\l,variable=\x,color=gray] plot (\x,{f(\x,1)});
-				\draw[line width=1.5pt,domain=\l:0,variable=\x,color=gray,dashed] plot (\x,{f(\x,3)});
-				
-				%texto
-				\node[right] at (\l+0.25,0) {$n=1\quad (\textcolor{red}{1}\lambda = 2L)$};
-				
-				%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-				%		grafico 2
-				
-				%definindo funcao
-				\pgfmathdeclarefunction{ff}{2}{\pgfmathparse{\t+\xm*cos(deg(2*\k*#1-\om*#2))}}
-				
-				%parede
-				\fill [pattern = north west lines] (-0.25,\t-\xm) rectangle (0,\t+\xm);
-				\draw (0,\t-\xm) -- (0,\t+\xm);
-				
-				%parede
-				\fill [pattern = north west lines] (\l,\t-\xm) rectangle (0.25+\l,\t+\xm);
-				\draw (\l,\t-\xm) -- (\l,\t+\xm);
-				
-				%curva
-				\draw[line width=1.5pt,domain=0:\l,variable=\x,color=gray] plot (\x,{ff(\x,1)});
-				\draw[line width=1.5pt,domain=\l:0,variable=\x,color=gray,dashed] plot (\x,{ff(\x,3)});
-				
-				%texto
-				\node[right] at (\l+0.25,\t) {$n=2\quad (\textcolor{red}{2}\lambda = 2L)$};
-				
-				%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-				%		grafico 3
-				
-				%definindo funcao
-				\pgfmathdeclarefunction{fff}{2}{\pgfmathparse{\tt+\xm*cos(deg(3*\k*#1-\om*#2))}}
-				
-				%parede
-				\fill [pattern = north west lines] (-0.25,\tt-\xm) rectangle (0,\tt+\xm);
-				\draw (0,\tt-\xm) -- (0,\tt+\xm);
-				
-				%parede
-				\fill [pattern = north west lines] (\l,\tt-\xm) rectangle (0.25+\l,\tt+\xm);
-				\draw (\l,\tt-\xm) -- (\l,\tt+\xm);
-				
-				%curva
-				\draw[line width=1.5pt,domain=0:\l,variable=\x,color=gray] plot (\x,{fff(\x,1)});
-				\draw[line width=1.5pt,domain=\l:0,variable=\x,color=gray,dashed] plot (\x,{fff(\x,3)});
-				
-				%texto
-				\node[right] at (\l+0.25,\tt) {$n=3\quad (\textcolor{red}{3}\lambda = 2L)$};
-				
-				%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-				%		grafico 4
-				
-				%definindo funcao
-				\pgfmathdeclarefunction{ffff}{2}{\pgfmathparse{\ttt+\xm*cos(deg(4*\k*#1-\om*#2))}}
-				
-				%parede
-				\fill [pattern = north west lines] (-0.25,\ttt-\xm) rectangle (0,\ttt+\xm);
-				\draw (0,\ttt-\xm) -- (0,\ttt+\xm);
-				
-				%parede
-				\fill [pattern = north west lines] (\l,\ttt-\xm) rectangle (0.25+\l,\ttt+\xm);
-				\draw (\l,\ttt-\xm) -- (\l,\ttt+\xm);
-				
-				%curva
-				\draw[line width=1.5pt,domain=0:\l,variable=\x,color=gray] plot (\x,{ffff(\x,1)});
-				\draw[line width=1.5pt,domain=\l:0,variable=\x,color=gray,dashed] plot (\x,{ffff(\x,3)});
-				
-				%linguica
-				\draw (0,\ttt-\xm-0.1) -- (0,\ttt-\xm-1.1);
-				\draw (\l,\ttt-\xm-0.1) -- (\l,\ttt-\xm-1.1);
-				\draw (0,\ttt-\xm-1) -- (\l,\ttt-\xm-1) node [above,midway] {L};
-				
-				%texto
-				\node[right] at (\l+0.25,\ttt) {$n=4\quad (\textcolor{red}{4}\lambda = 2L)$};
-				
-				\end{tikzpicture}
-				\caption*{\footnotesize Modos normais de vibração.}
-			\end{figure}
+		\begin{column}[t]{0.5\textwidth}
+			 estacionária contendo um modo normal de vibração específico. Portanto, a onda eletromagnética produzida pelas cargas oscilantes podem escapar da cavidade, sendo em seguida captada pelo sensor como a radiância $R(\nu)$. É possível mostrar que a quantidade de modos de vibração por volume e por frequência é dado por (veja o apêndice C)
+			\begin{align*}
+				\Aboxed{n(\nu) = \frac{8\pi\nu^2}{c^3}.}
+			\end{align*}
 		\end{column}
 	\end{columns}
 \end{frame}
@@ -616,6 +512,171 @@
 			\begin{align*}
 				\left<E\right> & = -\frac{d\ln(1/\beta)}{d\beta}=1/\beta,\\
 				\Aboxed{\left<E\right> & = kT.}
+			\end{align*}
+		\end{column}
+	\end{columns}
+\end{frame}
+%
+\begin{frame}[fragile]{Apêndice C - Contagem dos modos normais de vibração em uma cavidade}
+	\begin{columns}
+		\begin{column}[c]{0.6\textwidth}
+			Considere ondas eletromagnéticas polarizadas e confinadas em uma cavidade de comprimento L. Uma onda confinada apresenta o comportamento de ondas estacionárias de função
+			\begin{align*}
+				E(x,t) = E_m\sin(kx)\sin(\omega t),
+			\end{align*}
+			onde temos
+			\begin{align*}
+				\nu = \frac{nc}{2L},
+			\end{align*}
+			e n representa os modos normais de vibração.
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}
+				\centering
+				%\input{tikz/modos-normais.pgf}
+				\begin{tikzpicture}[scale=0.35, auto, transform shape,font=\huge, samples=200]
+				
+				%parametros gerais
+				\def\t{-3}
+				\def\tt{2*\t}
+				\def\ttt{3*\t}
+				
+				\def\l{8}
+				\def\k{pi/\l}
+				\def\om{0.5*pi}
+				\def\xm{1}
+				
+				%definindo funcao
+				\pgfmathdeclarefunction{f}{2}{\pgfmathparse{\xm*cos(deg(\k*#1-\om*#2))}}
+				
+				%parede
+				\fill [pattern = north west lines] (-0.25,-\xm) rectangle (0,\xm);
+				\draw (0,-\xm) -- (0,\xm);
+				
+				%parede
+				\fill [pattern = north west lines] (\l,-\xm) rectangle (0.25+\l,\xm);
+				\draw (\l,-\xm) -- (\l,\xm);
+				
+				%curva
+				\draw[line width=1.5pt,domain=0:\l,variable=\x,color=gray] plot (\x,{f(\x,1)});
+				\draw[line width=1.5pt,domain=\l:0,variable=\x,color=gray,dashed] plot (\x,{f(\x,3)});
+				
+				%texto
+				\node[right] at (\l+0.25,0) {$n=1\quad (\textcolor{red}{1}\lambda = 2L)$};
+				
+				%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+				%		grafico 2
+				
+				%definindo funcao
+				\pgfmathdeclarefunction{ff}{2}{\pgfmathparse{\t+\xm*cos(deg(2*\k*#1-\om*#2))}}
+				
+				%parede
+				\fill [pattern = north west lines] (-0.25,\t-\xm) rectangle (0,\t+\xm);
+				\draw (0,\t-\xm) -- (0,\t+\xm);
+				
+				%parede
+				\fill [pattern = north west lines] (\l,\t-\xm) rectangle (0.25+\l,\t+\xm);
+				\draw (\l,\t-\xm) -- (\l,\t+\xm);
+				
+				%curva
+				\draw[line width=1.5pt,domain=0:\l,variable=\x,color=gray] plot (\x,{ff(\x,1)});
+				\draw[line width=1.5pt,domain=\l:0,variable=\x,color=gray,dashed] plot (\x,{ff(\x,3)});
+				
+				%texto
+				\node[right] at (\l+0.25,\t) {$n=2\quad (\textcolor{red}{2}\lambda = 2L)$};
+				
+				%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+				%		grafico 3
+				
+				%definindo funcao
+				\pgfmathdeclarefunction{fff}{2}{\pgfmathparse{\tt+\xm*cos(deg(3*\k*#1-\om*#2))}}
+				
+				%parede
+				\fill [pattern = north west lines] (-0.25,\tt-\xm) rectangle (0,\tt+\xm);
+				\draw (0,\tt-\xm) -- (0,\tt+\xm);
+				
+				%parede
+				\fill [pattern = north west lines] (\l,\tt-\xm) rectangle (0.25+\l,\tt+\xm);
+				\draw (\l,\tt-\xm) -- (\l,\tt+\xm);
+				
+				%curva
+				\draw[line width=1.5pt,domain=0:\l,variable=\x,color=gray] plot (\x,{fff(\x,1)});
+				\draw[line width=1.5pt,domain=\l:0,variable=\x,color=gray,dashed] plot (\x,{fff(\x,3)});
+				
+				%texto
+				\node[right] at (\l+0.25,\tt) {$n=3\quad (\textcolor{red}{3}\lambda = 2L)$};
+				
+				%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+				%		grafico 4
+				
+				%definindo funcao
+				\pgfmathdeclarefunction{ffff}{2}{\pgfmathparse{\ttt+\xm*cos(deg(4*\k*#1-\om*#2))}}
+				
+				%parede
+				\fill [pattern = north west lines] (-0.25,\ttt-\xm) rectangle (0,\ttt+\xm);
+				\draw (0,\ttt-\xm) -- (0,\ttt+\xm);
+				
+				%parede
+				\fill [pattern = north west lines] (\l,\ttt-\xm) rectangle (0.25+\l,\ttt+\xm);
+				\draw (\l,\ttt-\xm) -- (\l,\ttt+\xm);
+				
+				%curva
+				\draw[line width=1.5pt,domain=0:\l,variable=\x,color=gray] plot (\x,{ffff(\x,1)});
+				\draw[line width=1.5pt,domain=\l:0,variable=\x,color=gray,dashed] plot (\x,{ffff(\x,3)});
+				
+				%linguica
+				\draw (0,\ttt-\xm-0.1) -- (0,\ttt-\xm-1.1);
+				\draw (\l,\ttt-\xm-0.1) -- (\l,\ttt-\xm-1.1);
+				\draw (0,\ttt-\xm-1) -- (\l,\ttt-\xm-1) node [above,midway] {L};
+				
+				%texto
+				\node[right] at (\l+0.25,\ttt) {$n=4\quad (\textcolor{red}{4}\lambda = 2L)$};
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Modos normais de vibração.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+%
+\begin{frame}{Apêndice C - Contagem dos modos normais de vibração em uma cavidade}
+	\begin{columns}
+		\begin{column}[c]{0.6\textwidth}
+			Para uma cavidade cúbica devemos considerar modos normais de vibração nas direções x, y e z, e os valores possíveis para n podem ser representados em um gráfico como mostra a figura ao lado. Assim, para um dado valor n poderemos ter N modos de vibração diferentes, ou seja,
+			\begin{align*}
+				N(n) = \frac{4\pi n^2}{8},
+			\end{align*}
+			onde n é um número inteiro positivo e
+			\begin{align*}
+				n^2=n^2_x+n^2_y+n^2_z.
+			\end{align*}
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			conteúdo...
+		\end{column}
+	\end{columns}
+\end{frame}
+%
+\begin{frame}{Apêndice C - Contagem dos modos normais de vibração em uma cavidade}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			Sabendo que 
+			\begin{align*}
+				\nu & = \frac{c}{2L} n,\\
+				\Delta \nu & = \left(\frac{c}{2L}\right)\Delta n.
+			\end{align*}
+			podemos dizer que a cada intervalo de frequência $\Delta \nu$ teremos a seguinte quantidade de modos normais
+			\begin{align*}
+				N(\nu)\Delta \nu = \left(\frac{\pi}{2}\right)\left(\frac{2L\nu^2}{c}\right)^2\left(\frac{2L}{c}\right)\Delta \nu.
+			\end{align*}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{align*}
+				N(\nu)\Delta \nu = \frac{4\pi L^3\nu^2}{c^3}\Delta \nu.
+			\end{align*}
+			Esse valor representa a quantidade de modos de vibração em um intervalo $\Delta \nu$, para saber a quantidade por volume devemos dividir por $L^3$, e considerando o caso mais geral de uma onda não-polarizada devemos multiplicar por 2,
+			\begin{align*}
+				\boxed{n(\nu)\Delta \nu = \frac{8\pi\nu^2}{c^3}\Delta \nu.}
 			\end{align*}
 		\end{column}
 	\end{columns}

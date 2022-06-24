@@ -296,22 +296,19 @@
 		\begin{column}[t]{0.5\textwidth}
 			Considerando a emissão de radiação de altas frequências, onde $h\nu\gg kT$. Isso faz com que $e^{\frac{h\nu}{k_BT}}\gg 1$, portanto podemos dezprezar o valor 1 do denominador de $u(\nu)$. Temos assim
 			\begin{align*}
-				u(\nu) & \approx \frac{8\pi h\nu^{3}}{c^3e^{\frac{h\nu}{k_BT}}} \Rightarrow \left(\frac{8\pi h\nu^{3}}{c^3}\right)e^{\frac{k_BT}{h\nu}}.
+				u(\nu) & \approx \frac{8\pi h\nu^{3}}{c^3e^{\frac{h\nu}{k_BT}}} \Rightarrow \left(\frac{8\pi h\nu^{3}}{c^3}\right)e^{-\frac{h\nu}{k_BT}}.
 			\end{align*}
 		\end{column}
 		\begin{column}[t]{0.5\textwidth}
-			Sabendo que $e^{\frac{k_BT}{h\nu}}\approx 1$ para $h\nu\gg kT$,
+			Pela definição de radiância, onde $R(\nu)=cu(\nu)/4$ temos
 			\begin{align*}
-				u(\nu) & \approx \frac{8\pi\nu^3}{c^3},
+				R(\nu) & = \frac{2\pi\nu^3}{c^2}e^{-\frac{h\nu}{k_BT}}.
 			\end{align*}
-			o que corresponde a lei de Wien para frequências elevadas, onde
-			\begin{align*}
-				R(\nu) & = \left(\frac{c}{4}\right)u(\nu)=\frac{2\pi\nu^3}{c^2}.
-			\end{align*}
+			Sabendo que $e^{-\frac{h\nu}{k_BT}}\rightarrow 0$ para $h\nu\gg kT$, podemos dizer que $R(\nu\rightarrow\infty)\rightarrow 0$, concordando com o resultado experimental.
 		\end{column}
 	\end{columns}
 	\begin{corollary}
-		Para $h\nu/k_BT\gg 1$ a equação de Planck se resume na lei de Wien, onde $R(\nu)\propto \nu^3$.
+		Para $h\nu/k_BT\gg 1$ a equação de Planck se resume ao limite de Wien, onde $R(\nu\rightarrow\infty)\rightarrow 0$.
 	\end{corollary}
 \end{frame}
 

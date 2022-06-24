@@ -236,7 +236,7 @@
 		\item[\ding{51}] \textit{Valor da energia para cada modo vibracional está errado.}
 	\end{enumerate}
 	\begin{block}{Hipótese de Planck}
-		Como opção, Planck sugeriu que a energia das cargas oscilantes ao invés de assumir qualquer valor, ela deverá ter valores discretos bem definidos, e também deverá ser proporcional a frequência da radiação emitida,
+		Como opção, Planck sugeriu que a energia das cargas oscilantes, e consequentemente a radiância emitida por ela, ao invés de assumir qualquer valor, ela deverá ter valores discretos bem definidos, e deve também ser proporcional a frequência da radiação emitida,
 		\begin{align*}
 			E_n = nh\nu,\; n = 0,1,2,\cdots
 		\end{align*}
@@ -280,7 +280,7 @@
 		\end{column}
 		\begin{column}[t]{0.5\textwidth}
 		\begin{align*}
-			u(\nu) & \approx \frac{8\pi \bcancel{h}\nu^{\bcancel{3}}}{c^3\left(\bcancel{1}+\frac{\bcancel{h}\bcancel{\nu}}{k_BT}-\bcancel{1}\right)},\\
+			u(\nu) & \approx \frac{8\pi \bcancel{h}\nu^{\bcancel{3}}T}{c^3\left(\bcancel{1}+\frac{\bcancel{h}\bcancel{\nu}}{k_BT}-\bcancel{1}\right)},\\
 			u(\nu) & \approx \frac{8\pi k_BT\nu^2}{c^3},
 		\end{align*}
 		o que corresponde a lei de Rayleigh-Jeans da teoria clássica da radiação.
@@ -288,6 +288,30 @@
 	\end{columns}
 	\begin{corollary}
 		Para $h\nu/k_BT<<1$ a equação de Planck se resume na lei de Rayleigh-Jeans.
+	\end{corollary}
+\end{frame}
+
+\begin{frame}{Lei de Planck para frequências elevadas}
+	\begin{columns}
+		\begin{column}[t]{0.5\textwidth}
+			Considerando a emissão de radiação de altas frequências, onde $h\nu\gg kT$. Isso faz com que $e^{\frac{h\nu}{k_BT}}\gg 1$, portanto podemos dezprezar o valor 1 do denominador de $u(\nu)$. Temos assim
+			\begin{align*}
+				u(\nu) & \approx \frac{8\pi h\nu^{3}}{c^3e^{\frac{h\nu}{k_BT}}} \Rightarrow \left(\frac{8\pi h\nu^{3}}{c^3}\right)e^{\frac{k_BT}{h\nu}}.
+			\end{align*}
+		\end{column}
+		\begin{column}[t]{0.5\textwidth}
+			Sabendo que $e^{\frac{k_BT}{h\nu}}\approx 1$ para $h\nu\gg kT$,
+			\begin{align*}
+				u(\nu) & \approx \frac{8\pi\nu^3}{c^3},
+			\end{align*}
+			o que corresponde a lei de Wien para frequências elevadas, onde
+			\begin{align*}
+				R(\nu) & = \left(\frac{c}{4}\right)u(\nu)=\frac{2\pi\nu^3}{c^2}.
+			\end{align*}
+		\end{column}
+	\end{columns}
+	\begin{corollary}
+		Para $h\nu/k_BT\gg 1$ a equação de Planck se resume na lei de Wien, onde $R(\nu)\propto \nu^3$.
 	\end{corollary}
 \end{frame}
 
@@ -680,6 +704,33 @@
 			\end{align*}
 		\end{column}
 	\end{columns}
+\end{frame}
+%
+\begin{frame}{Apêndice D - A hipótese de Planck e a lei de Stefan-Boltzman}
+	\begin{columns}
+		\begin{column}[t]{0.5\textwidth}
+			Utilizando a expansão em série da função $1/(e^x+1)$ teremos
+			\begin{align*}
+				\frac{1}{\left(e^{\frac{h\nu}{k_BT}}-1\right)} & = \sum_{n=1}^{\infty}e^{-\frac{h\nu}{k_BT}}
+			\end{align*}
+			Substituindo na fórmula de $u(\nu)$ segundo Planck teremos
+			\begin{align*}
+			R = \frac{c}{4}\int_{0}^{\infty}u(\nu)d\nu.
+			\end{align*}
+		\end{column}
+		\begin{column}[t]{0.5\textwidth}
+			\begin{align*}
+			R & = \frac{2\pi h}{c^2}\int_{0}^{\infty}\nu^3\sum e^{-\frac{nh\nu}{k_BT}}d\nu,\\
+			R & = \frac{2\pi h}{c^2}\sum\int_{0}^{\infty}\nu^3e^{-\frac{nh\nu}{k_BT}}d\nu.
+			\end{align*}
+			Resolvendo a integral através do método de integração por partes chegamos a
+			\begin{align*}
+				R & = \left(\frac{12\pi k_B^4}{c^2h^3}\sum 1/n^4\right)T^4,\\
+				R & = \sigma T^4.
+			\end{align*}
+		\end{column}
+	\end{columns}
+	%	\end{multicols}
 \end{frame}
 %
 \begin{frame}{Referências}

@@ -177,7 +177,7 @@
 			 No caso acima, podemos dizer que cada elétron ao oscilar emite uma onda eletromagnética de frequência $\nu$. Essa onda eletromagnética confinada em uma cavidade se comporta como uma onda
 		\end{column}
 		\begin{column}[t]{0.5\textwidth}
-			 estacionária contendo um modo normal de vibração específico. Portanto, a onda eletromagnética produzida pelas cargas oscilantes podem escapar da cavidade, sendo em seguida captada pelo sensor como a radiância $R(\nu)$. É possível mostrar que a quantidade de modos de vibração por volume e por frequência é dado por (veja o apêndice C)
+			 estacionária contendo um modo normal de vibração específico. Portanto, a onda eletromagnética produzida pelas cargas oscilantes podem escapar da cavidade, sendo em seguida captada pelo sensor como a radiância $R(\nu)$. É possível mostrar que a quantidade de modos de vibração por volume e por frequência é dado por (veja o apêndice D)
 			\begin{align*}
 				\Aboxed{n(\nu) = \frac{8\pi\nu^2}{c^3}.}
 			\end{align*}
@@ -189,10 +189,10 @@
 	\begin{multicols*}{2}
 		Para determinar o valor médio da energia $\left<E\right>$, usamos a expressão abaixo
 		\begin{align*}
-			\left<E\right> & = \frac{\int_{0}^{\infty}Ef(E)}{\int_{0}^{\infty}f(E)}dE,\\
-			P(E) & = Ae^{-E/k_BT}.
+			\left<E\right> & = \frac{\int_{0}^{\infty}Ef(E)dE}{\int_{0}^{\infty}f(E)},\\
+			f(E) & = Ae^{-E/k_BT}.
 		\end{align*}
-		onde $P(E)$ é conhecida como distribuição de Boltzmann e $k_B$ é chamado constante de Boltzmann.	Substituindo na expressão teremos
+		onde $f(E)$ é conhecida como distribuição de Boltzmann e $k_B$ é chamado constante de Boltzmann.	Substituindo na expressão teremos
 		\begin{align*}
 			\left<E\right> & = \frac{\int_{0}^{\infty}\bcancel{A}Ee^{-E/k_BT}dE}{\int_{0}^{\infty}\bcancel{A}e^{-E/k_BT}dE},\\
 			\left<E\right> & = \frac{\int_{0}^{\infty}Ee^{-E/k_BT}dE}{\int_{0}^{\infty}e^{-E/k_BT}dE}.
@@ -486,7 +486,7 @@
 	\end{center}
 \end{frame}
 %
-\begin{frame}{Apêndice B - Demonstração do valor kT para a energia média.}
+\begin{frame}{Apêndice B - Demonstração do valor kT para a energia média}
 	\begin{columns}
 		\begin{column}[t]{0.5\textwidth}
 			Considere a energia média $\left<E\right>$ onde definimos $\beta = 1/kT$,
@@ -511,34 +511,61 @@
 	\end{columns}
 \end{frame}
 %
-\begin{frame}{Apêndice B - Demonstração do valor kT para a energia média.}
+\begin{frame}{Apêndice B - Demonstração do valor kT para a energia média}
 	\begin{columns}
 		\begin{column}[c]{0.5\textwidth}
 			Pela propriedade do logaritmo e empregando a regra da cadeia, temos que a sua derivada é dada por
 			\begin{align*}
 				\frac{d\ln\left[1/F(\beta)\right]}{d\beta} = \left(\frac{d\ln(1/F)}{dF}\right)\left(\frac{dF}{d\beta}\right)
 			\end{align*}
-			Porém, sabemos que $\frac{d\ln (1/F)}{dF}=1/F$, portanto
+			Porém, sabemos que $\frac{d\ln F}{dF}=1/F$, portanto
 			\begin{align*}
-				\frac{d\ln\left[1/F(\beta)\right]}{d\beta} = \left(\frac{1}{F}\right)\left(\frac{dF}{d\beta}\right)
+				\frac{d\ln\left[F(\beta)\right]}{d\beta} = \left(\frac{1}{F}\right)\left(\frac{dF}{d\beta}\right)
 			\end{align*}
 		\end{column}
 		\begin{column}[c]{0.5\textwidth}
 			Assim podemos ver que
 			\begin{align*}
-				\left<E\right> & = -\frac{d}{d\beta}\ln(1/F(\beta)),\\
-				& = -\frac{d}{d\beta}\ln\left[\frac{1}{\int_{0}^{\infty}e^{-\beta E}dE}\right].
+				\left<E\right> & = -\frac{d}{d\beta}\ln[F(\beta)],\\
+				& = -\frac{d}{d\beta}\ln\left(\int_{0}^{\infty}e^{-\beta E}dE\right).
 			\end{align*}
 			Resolvendo a integral teremos
 			\begin{align*}
-				\left<E\right> & = -\frac{d\ln(1/\beta)}{d\beta}=1/\beta,\\
+				\left<E\right> & = \frac{d\ln(\beta)}{d\beta}=1/\beta,\\
 				\Aboxed{\left<E\right> & = kT.}
 			\end{align*}
 		\end{column}
 	\end{columns}
 \end{frame}
 %
-\begin{frame}[fragile]{Apêndice C - Contagem dos modos normais de vibração em uma cavidade}
+\begin{frame}[fragile]{Apêndice C - Demonstração do valor médio da energia segundo Planck}
+	\begin{columns}
+		\begin{column}[t]{0.5\textwidth}
+			Segundo Planck, para o cálculo da energia média, devemos adotar a somatória ao invés de uma integral, assim
+			\begin{align*}
+				\left<E\right> & = -\frac{d}{d\beta}\ln\left(\sum e^{-\beta E}\right),
+			\end{align*}
+			Levando em consideração que
+			\begin{align*}
+				 \sum_{n=1}^{\infty}e^{-\beta E} & = \frac{1}{e^{\beta E}-1}
+			\end{align*}
+			teremos
+		\end{column}
+		\begin{column}[t]{0.5\textwidth}
+			\begin{align*}
+				\left<E\right> & = \frac{d}{d\beta}\ln\left(e^{\beta E}-1\right),\\
+				& = \frac{d}{dx}\ln x\left(\frac{dx}{d\beta}\right),\\
+				& = \frac{E}{e^{\beta E}-1}.
+			\end{align*}
+			Definindo $E=h\nu$ e $\beta = 1/k_BT$ teremos
+			\begin{align*}
+				\boxed{\left<E\right> = \frac{h\nu}{e^{h\nu/k_BT}-1}}
+			\end{align*}
+		\end{column}		
+	\end{columns}
+\end{frame}
+%
+\begin{frame}[fragile]{Apêndice D - Contagem dos modos normais de vibração em uma cavidade}
 	\begin{columns}
 		\begin{column}[c]{0.6\textwidth}
 			Considere ondas eletromagnéticas polarizadas e confinadas em uma cavidade de comprimento L. Uma onda confinada apresenta o comportamento de ondas estacionárias de função
@@ -660,7 +687,7 @@
 	\end{columns}
 \end{frame}
 %
-\begin{frame}{Apêndice C - Contagem dos modos normais de vibração em uma cavidade}
+\begin{frame}{Apêndice D - Contagem dos modos normais de vibração em uma cavidade}
 	\begin{columns}
 		\begin{column}[c]{0.6\textwidth}
 			Para uma cavidade cúbica devemos considerar modos normais de vibração nas direções x, y e z, e os valores possíveis para n podem ser representados em um gráfico como mostra a figura ao lado. Assim, para um dado valor n poderemos ter N modos de vibração diferentes, ou seja,
@@ -678,7 +705,7 @@
 	\end{columns}
 \end{frame}
 %
-\begin{frame}{Apêndice C - Contagem dos modos normais de vibração em uma cavidade}
+\begin{frame}{Apêndice D - Contagem dos modos normais de vibração em uma cavidade}
 	\begin{columns}
 		\begin{column}[c]{0.5\textwidth}
 			Sabendo que 
@@ -703,7 +730,7 @@
 	\end{columns}
 \end{frame}
 %
-\begin{frame}{Apêndice D - A hipótese de Planck e a lei de Stefan-Boltzman}
+\begin{frame}{Apêndice E - A hipótese de Planck e a lei de Stefan-Boltzman}
 	\begin{columns}
 		\begin{column}[t]{0.5\textwidth}
 			Utilizando a expansão em série da função $1/(e^x+1)$ teremos

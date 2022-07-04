@@ -1,0 +1,36 @@
+\begin{tikzpicture}[scale=2,transform shape,font=\large]
+
+	\tkzInit[xmin=-5,xmax=5,ymin=-5,ymax=5]
+%	\tkzGrid[color=gray!20]
+	\tkzClip[space=1]
+	
+	\tkzDefPoints{0/0/A,1.5/1.5/B,4.5/1.5/C,4.5/4.5/D, 1.5/4.5/E}
+	
+	\tkzDrawX{x}
+	\tkzDrawY{y}
+	
+%	\tkzDrawPoints(A,B,C,D,E)	
+	
+	\tkzDefPoints{1.45/1.45/B',4.55/1.45/C',4.55/4.55/D', 1.45/4.55/E'}
+
+	\tkzDrawPolygon[dashed](B',C',D',E')
+
+	\foreach \x in {0,1,...,5}{
+		\foreach \y in {0,1,...,5}{
+			\node[draw, rectangle, fill=gray!25] at ($(B)+(0.25+0.5*\x,0.25+0.5*\y)$) {\normalsize q};
+		}
+	}
+
+	\tkzDefPoints{3/-1/v2}
+	
+%	\draw[->,line width=3.0pt,color=red] (A) -- ($(B)+(0.3,0.3)$) node [above left,midway] {$\vec{r}_q$};
+%	\draw[->,line width=3.0pt,color=red] (A) -- (v2) node [below left,midway] {$\vec{r}_p$};
+	\draw[->,line width=3.0pt,color=red] ($(B)+(0.3,0.3)$) -- (v2) node [above right,midway] {$\vec{r}$};
+
+	\tkzDrawPoint[size=0.15cm, below right=0.05cm](v2)
+
+	\tkzDefPoints{3/5.25/t1}
+
+	\tkzText(t1){$q_\text{Total}=36\times q$}
+
+\end{tikzpicture}

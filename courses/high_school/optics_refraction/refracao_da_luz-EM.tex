@@ -693,13 +693,13 @@
 
 					%desenhando raios de luz
 					\draw[put arrow={at=0.5},line width=1pt,color=black] (A) -- (O);
-					\tkzMarkAngle[arc=lll,size=0.5,color=black](n1,O,A)\tkzLabelAngle[pos=1](n1,O,A){$\theta$}
+%					\tkzMarkAngle[arc=lll,size=0.5,color=black](n1,O,A)\tkzLabelAngle[pos=1](n1,O,A){$\theta$}
 					\draw[put arrow={at=0.5},line width=1pt,color=blue] (O) -- (b1);
-					\tkzMarkAngle[arc=lll,size=1.1,color=blue](n2,O,b1)
+%					\tkzMarkAngle[arc=lll,size=1.1,color=blue](n2,O,b1)
 					\draw[put arrow={at=0.5},line width=1pt,color=green] (O) -- (b2);
-					\tkzMarkAngle[arc=lll,size=1.5,color=green](n2,O,b2)
+%					\tkzMarkAngle[arc=lll,size=1.5,color=green](n2,O,b2)
 					\draw[put arrow={at=0.5},line width=1pt,color=red] (O) -- (b3);
-					\tkzMarkAngle[arc=lll,size=2.0,color=red](n2,O,b3)
+%					\tkzMarkAngle[arc=lll,size=2.0,color=red](n2,O,b3)
 
 					% Media names
 					\path[font=\tiny] (2.75,.25)  node {Ar} (2.75,-.25) node {Vidro};
@@ -837,13 +837,13 @@
 	
 	%montando lente
 	
-	%	\tkzTangent[from with R=O1](O2,4cm)\tkzGetPoints{A}{B}
+	\tkzDefTangent[from with R=O1](O2,4cm)\tkzGetPoints{A}{B}
 	
 	\tkzDefPointsBy[rotation=center O1 angle 90](O1,O2'){A,B}
 	\tkzDefPointsBy[rotation=center O1 angle -90](O1,O2'){A1,B1}
 	
-	\tkzTangent[from with R=B](O2,6cm)\tkzGetPoints{C}{D}
-	\tkzTangent[from with R=B1](O2,6cm)\tkzGetPoints{C1}{D1}
+	\tkzDefTangent[from with R=B](O2,6cm)\tkzGetPoints{C}{D}
+	\tkzDefTangent[from with R=B1](O2,6cm)\tkzGetPoints{C1}{D1}
 	
 	\tkzDefPointWith[linear,K=0.6](O1,B)\tkzGetPoint{A2}
 	\tkzDefPointWith[linear,K=-0.6](O1,B)\tkzGetPoint{B2}
@@ -890,8 +890,8 @@
 			\tkzDefPointsBy[rotation=center O1 angle 90](O1,O2'){A,B}
 			\tkzDefPointsBy[rotation=center O1 angle -90](O1,O2'){A1,B1}
 			
-			\tkzTangent[from with R=B](O2,6cm)\tkzGetPoints{C}{D}
-			\tkzTangent[from with R=B1](O2,6cm)\tkzGetPoints{C1}{D1}
+			\tkzDefTangent[from with R=B](O2,6cm)\tkzGetPoints{C}{D}
+			\tkzDefTangent[from with R=B1](O2,6cm)\tkzGetPoints{C1}{D1}
 			
 			\tkzDefPointWith[linear,K=0.6](O1,B)\tkzGetPoint{A2}
 			\tkzDefPointWith[linear,K=-0.6](O1,B)\tkzGetPoint{B2}
@@ -1077,7 +1077,7 @@
 				\draw[->-,line width=1.0pt] (X') -- (p1);
 				\draw[->-,line width=1.0pt] (p1) -- (K);
 				
-				\tkzDrawPoints[size=0.5cm](F1,F2)
+				\tkzDrawPoints[size=0.25cm](F1,F2)
 				\tkzLabelPoint[below=0.25cm](F1){$F_1$}
 				\tkzLabelPoint[below=0.25cm](F2){$F_2$}
 				
@@ -1133,7 +1133,7 @@
 				\draw[->-,line width=1.0pt] (X') -- (p1);
 				\draw[->-,line width=1.0pt] (p1) -- (K);
 				
-				\tkzDrawPoints[size=0.5cm](F1,F2)
+				\tkzDrawPoints[size=0.25cm](F1,F2)
 				\tkzLabelPoint[below=0.25cm](F1){$F_2$}
 				\tkzLabelPoint[below=0.25cm](F2){$F_1$}
 				
@@ -1182,7 +1182,7 @@
 				\draw[->-,line width=1.0pt] (X') -- (p1);
 				\draw[->-,line width=1.0pt] (p1) --+ (4,0);
 				
-				\tkzDrawPoints[size=0.5cm](F1,F2)
+				\tkzDrawPoints[size=0.25cm](F1,F2)
 				\tkzLabelPoints[below=0.25cm](F1,F2)
 				
 				\tkzClipCircle[R](O1,7cm)
@@ -1237,7 +1237,7 @@
 				\draw[->-,line width=1.0pt] (X') -- (p1);
 				\draw[->-,line width=1.0pt] (p1) --+ (4,0);
 				
-				\tkzDrawPoints[size=0.5cm](F1,F2)
+				\tkzDrawPoints[size=0.25cm](F1,F2)
 				\tkzLabelPoint[below=0.25cm](F1){$F_2$}
 				\tkzLabelPoint[below=0.25cm](F2){$F_1$}
 				
@@ -1299,7 +1299,7 @@
 				\draw[->-,line width=1.0pt] (B) -- (p2);
 				\draw[->-,line width=1.0pt] (p2) --+ (6,0);
 				
-				\tkzDrawPoints[size=0.5cm](F1,F2)
+				\tkzDrawPoints[size=0.25cm](F1,F2)
 				\tkzLabelPoint[below=0.25cm](F1){$F_1$}
 				\tkzLabelPoint[below=0.25cm](F2){$F_2$}
 				\tkzLabelPoint[above=0.25cm](B){$A$}
@@ -1320,7 +1320,7 @@
 				\tkzDefPoints{5/0/A',5/-2/B'}
 				\draw[->,line width=3.5pt,color=red] (A') -- (B');
 				
-				\tkzDrawPoints[size=0.5cm](A',B')
+				\tkzDrawPoints[size=0.25cm](A',B')
 				\tkzLabelPoint[below=0.25cm](B'){$A'$}
 				\tkzLabelPoint[above=0.25cm](A'){$B'$}
 				
@@ -1470,132 +1470,6 @@
 \section{Apêndice}
 
 \subsection{}
-
-\begin{frame}{Transformar um número em notação científica}
-	\begin{corollary}
-		\begin{enumerate}[leftmargin=1.75cm]
-			\item[Passo 1:] Escrever o número incluindo a vírgula.
-			\item[Passo 2:] Andar com a vírgula até que reste somente um número diferente de zero no lado esquerdo.
-			\item[Passo 3:] Colocar no expoente da potência de 10 o número de casas decimais que tivemos que "andar" com a vírgula. Se ao andar com a vírgula o valor do número diminuiu, o expoente ficará positivo, se aumentou o expoente ficará negativo.
-		\end{enumerate}
-	\end{corollary}
-	\begin{exampleblock}{Exemplo}
-		\begin{equation*}
-			6\; 590\; 000\; 000\; 000\; 000,0 = \SI{6,59e15}{}		
-		\end{equation*}
-	\end{exampleblock}
-\end{frame}
-
-\begin{frame}{Conversão de unidades em uma dimensão}
-	\begin{figure}
-		\begin{tikzpicture}[scale=0.65,transform shape,font=\Large]
-		
-		\tkzInit[xmin=-2,xmax=17,ymin=-6,ymax=3]
-		%\tkzGrid[color=gray!20]
-		\tkzClip
-		
-		\tikzset{compass style/.append style={->}}
-		
-		\foreach \x in {1,2,...,6}{
-			\tkzDefPoint(\x*3-3,0){\x}
-			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
-			\node at (\x*3-3,2) {$\times 10^{1}$};
-			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
-			\node at (\x*3-3,-2) {$\times 10^{-1}$};}
-		
-		\tkzDefPoints{-1.5/0/p1,1.5/0/p2,4.5/0/p3,7.5/-0.2/p4,10.5/0/p5,13.5/0/p6,16.5/0/p7}
-		
-		\tkzText(p1){m\_}
-		\tkzText(p2){c\_}
-		\tkzText(p3){d\_}
-		\tkzText(p4){\_}
-		\tkzText(p5){da\_}
-		\tkzText(p6){h\_}
-		\tkzText(p7){k\_}
-		
-		%exemplos
-		
-		\tkzText(3,-3.5){$1\;\text{mm}=1\times 10^{(-1)\times\alert{2}}\;\text{dm}\rightarrow 1\times 10^{-2}\;\text{dm}$}
-		\tkzText(3.1,-4.5){$2,5\;\text{kg}=2,5\times 10^{(1)\times\alert{6}}\;\text{mg}\rightarrow2,5\times 10^{6}\;\text{mg}$}
-		\tkzText(2.7,-5.5){$10\;\text{ms}=10\times 10^{(-1)\times\alert{3}}\;\text{s}\rightarrow 10\times 10^{-3}\;\text{s}$}
-		
-		\end{tikzpicture}
-	\end{figure}
-\end{frame}
-
-\begin{frame}{Conversão de unidades em duas dimensões}
-	\begin{figure}
-		\begin{tikzpicture}[scale=0.65,transform shape,font=\Large]
-	
-		\tkzInit[xmin=-2,xmax=17,ymin=-6,ymax=3]
-		%\tkzGrid[color=gray!20]
-		\tkzClip
-	
-		\tikzset{compass style/.append style={->}}
-	
-		\foreach \x in {1,2,...,6}{
-			\tkzDefPoint(\x*3-3,0){\x}
-			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
-			\node at (\x*3-3,2) {$\times 10^{2}$};
-			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
-			\node at (\x*3-3,-2) {$\times 10^{-2}$};}
-	
-		\tkzDefPoints{-1.5/0/p1,1.5/0/p2,4.5/0/p3,7.5/0/p4,10.5/0/p5,13.5/0/p6,16.5/0/p7}
-	
-		\tkzText(p1){$\text{m}\_^2$}
-		\tkzText(p2){$\text{c}\_^2$}
-		\tkzText(p3){$\text{d}\_^2$}
-		\tkzText(p4){$\_^2$}
-		\tkzText(p5){$\text{da}\_^2$}
-		\tkzText(p6){$\text{h}\_^2$}
-		\tkzText(p7){$\text{k}\_^2$}
-	
-		%exemplos
-	
-		\tkzText(3.3,-3.5){$1\;\text{mm}^2=1\times 10^{(-2)\times\alert{2}}\;\text{dm}^2\rightarrow 1\times 10^{-4}\;\text{dm}^2$}
-		\tkzText(3.6,-4.5){$2,5\;\text{m}^2=2,5\times 10^{(2)\times\alert{3}}\;\text{mm}^2\rightarrow2,5\times 10^{6}\;\text{mm}^2$}
-		\tkzText(3,-5.5){$10\;\text{ms}^2=10\times 10^{(-2)\times\alert{3}}\;\text{s}^2\rightarrow 10\times 10^{-6}\;\text{s}^2$}
-	
-		\end{tikzpicture}
-	\end{figure}
-\end{frame}
-
-\begin{frame}{Conversão de unidades em três dimensões}
-	\begin{figure}
-		\begin{tikzpicture}[scale=0.65,transform shape,font=\Large]
-	
-		\tkzInit[xmin=-2,xmax=17,ymin=-6,ymax=3]
-		%\tkzGrid[color=gray!20]
-		\tkzClip
-	
-		\tikzset{compass style/.append style={->}}
-	
-		\foreach \x in {1,2,...,6}{
-			\tkzDefPoint(\x*3-3,0){\x}
-			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
-			\node at (\x*3-3,2) {$\times 10^{3}$};
-			\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
-			\node at (\x*3-3,-2) {$\times 10^{-3}$};}
-	
-		\tkzDefPoints{-1.5/0/p1,1.5/0/p2,4.5/0/p3,7.5/0/p4,10.5/0/p5,13.5/0/p6,16.5/0/p7}
-	
-		\tkzText(p1){$\text{m}\_^3$}
-		\tkzText(p2){$\text{c}\_^3$}
-		\tkzText(p3){$\text{d}\_^3$}
-		\tkzText(p4){$\_^3$}
-		\tkzText(p5){$\text{da}\_^3$}
-		\tkzText(p6){$\text{h}\_^3$}
-		\tkzText(p7){$\text{k}\_^3$}
-	
-		%exemplos
-	
-		\tkzText(3.3,-3.5){$1\;\text{mm}^3=1\times 10^{(-3)\times\alert{2}}\;\text{dm}^3\rightarrow 1\times 10^{-6}\;\text{dm}^3$}
-		\tkzText(3.6,-4.5){$2,5\;\text{m}^3=2,5\times 10^{(3)\times\alert{3}}\;\text{mm}^3\rightarrow2,5\times 10^{9}\;\text{mm}^3$}
-		\tkzText(3.5,-5.5){$2,5\;\text{km}^3=2,5\times 10^{(3)\times\alert{6}}\;\text{mm}^3\rightarrow2,5\times 10^{18}\;\text{mm}^3$}
-
-		\end{tikzpicture}
-	\end{figure}
-\end{frame}
 
 \begin{frame}{Alfabeto grego}
 	\begin{columns}

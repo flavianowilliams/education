@@ -1,0 +1,33 @@
+﻿\begin{tikzpicture}[scale=1,transform shape,font=\Large]
+
+	\tkzInit[xmin=-2,xmax=17,ymin=-6,ymax=3]
+	\tkzGrid[color=gray!20]
+	\tkzClip
+
+	\tikzset{compass style/.append style={->}}
+
+	\foreach \x in {1,2,...,6}{
+	\tkzDefPoint(\x*3-3,0){\x}
+	\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(20,160)
+	\node at (\x*3-3,2) {$\times 10^{1}$};
+	\tkzDrawArc[R,line width=1.0pt](\x,1.5 cm)(200,340)
+	\tkzDrawPoint[size=0.1cm](\x)
+	\node at (\x*3-3,-2) {$\times 10^{-1}$};}
+
+	\tkzDefPoints{-1.5/0/p1,1.5/0/p2,4.5/0/p3,7.5/0/p4,10.5/0/p5,13.5/0/p6,16.5/0/p7}
+
+	\tkzText(p1){$m\_$}
+	\tkzText(p2){c\_}
+	\tkzText(p3){d\_}
+	\tkzText(p4){\_}
+	\tkzText(p5){da\_}
+	\tkzText(p6){h\_}
+	\tkzText(p7){k\_}
+
+	%exemplos
+	
+	\tkzText(2.5,-3.5){$1\;\text{mm}=1\times 10^{2\times(-1)}\;\text{dm}\rightarrow 1\times 10^{-2}\;\text{dm}$}
+	\tkzText(2.6,-4.5){$2,5\;\text{kg}=2,5\times 10^{3\times(1)}\;\text{mg}\rightarrow 2,5\times 10^{3}\;\text{mg}$}
+	\tkzText(2.0,-5.5){$10\;\text{ms}=10\times 10^{3\times(-1)}\;\text{s}\rightarrow 10\times 10^{-3}\;\text{s}$}
+
+\end{tikzpicture}

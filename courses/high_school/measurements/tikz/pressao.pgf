@@ -1,0 +1,24 @@
+﻿\begin{tikzpicture}[scale=1,transform shape]
+
+	\tkzInit[xmin=-2,xmax=5,ymin=-2,ymax=2]
+%	\tkzClip
+	\tkzGrid
+
+% cubo 1
+\pgfmathsetmacro{\cubex}{5}
+\pgfmathsetmacro{\cubey}{5}
+\pgfmathsetmacro{\cubez}{5}
+
+	\draw (0,0,0) -- ++(0,0,\cubez) -- ++(\cubex,0,0) -- ++(0,0,-\cubez) -- cycle;
+	\draw[gray,fill=gray!30] (0,0.5,0) -- ++(0,0,\cubez) -- ++(\cubex,0,0) -- ++(0,0,-\cubez) -- cycle;
+	\draw[gray,fill=gray!30] (0,0,\cubez) -- ++(\cubex,0,0) -- ++(0,0.5,0) -- ++(-\cubex,0,0) -- cycle;
+	\draw[gray,fill=gray!30] (\cubex,0,0) -- ++(0,0,\cubez) -- ++(0,0.5,0) -- ++(0,0,-\cubez) -- cycle;
+
+	\node[above,color=red,font=\large] at (0.5,1.5,0.5) {$\vec{F}$};
+
+	\foreach \dx in {1,2,3,4,5}{
+		\foreach \dz in {1,2,3,4,5}{
+		\draw[<-,line width=2pt,color=red] (-0.5+\dx,0.5,\dz-0.5) --++ (0,1,0);
+	\draw[blue] (0,0.5,0) -- ++(0,0,\dz) -- ++(\dx,0,0) -- ++(0,0,-\dz) -- cycle;}}
+
+\end{tikzpicture}

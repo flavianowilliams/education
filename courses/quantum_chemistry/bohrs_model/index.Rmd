@@ -222,19 +222,19 @@ Podemos ver que o termo entre parêntesis é uma constante e seu valor correspon
 * <font class="red">Cada órbita possui valor discreto de energia E<sub>n</sub>, onde E<sub>n</sub> ~ 1/n<sup>2</sup>, como mostra a equação acima.</font>
 ]
 .pull-right[
-```{r, echo=FALSE, fig.align='center',fig.cap='Movimento ondulatório do elétron de acordo com o número quântico n, demonstrando assim que o modelo de Bohr concorda com os postulados de de Broglie.',out.width="100%"}
+```{r, message=FALSE, echo=FALSE, fig.align='center',fig.cap='Movimento ondulatório do elétron de acordo com o número quântico n, demonstrando assim que o modelo de Bohr concorda com os postulados de de Broglie.',out.width="100%"}
 myfuncx <- function(A,n,t){
   (A+0.5*cos(n*t))*cos(t)
 }
 myfuncy <- function(A,n,t){
   (A+0.5*cos(n*t))*sin(t)
 }
-
-smpl=400
+#
+smpl=1000
 nt=9
 t=rep(0,nt*smpl)
 n=rep(0,nt*smpl)
-for (nx in 3:nt) {
+for (nx in 1:nt) {
   t[nx*smpl+1]=2*(nx+1)*pi/smpl
   n[nx*smpl+1]=nx
   for (i in 2:smpl) {
@@ -242,26 +242,38 @@ for (nx in 3:nt) {
     n[nx*smpl+i]=nx
   }
 }
-
+#
 smpl=0.5*smpl
 t2=rep(0,smpl)
 t2[1]=2*pi/smpl
 for (i in 2:smpl) {
   t2[i] = t2[i-1]+2*pi/smpl
 }
-
+#
 my_data2 = data.frame(t2) %>%
   mutate(x2=myfuncx(3.5,0,t2),y2=myfuncy(3.5,0,t2))
-
+#
 my_data <- data.frame(n,t) %>%
   mutate(x=myfuncx(4,n,t),y=myfuncy(4,n,t))
 
-  ggplot()+
-    geom_point(data=my_data2,mapping = aes(x=x2,y=y2),size=0.5,shape=21)+
-    geom_point(data=my_data,mapping=aes(x=x,y=y),color='red')+
-    theme(legend.position = "none")+
-    labs(title = 'n: {previous_state}',x='x',y='y')+
-    transition_states(as.factor(n))
+library(plotly)
+
+fig = plot_ly(type = 'scatter', mode = 'markers', width = 500, height = 450) %>%
+  add_markers(data = my_data2, x = ~x2, y = ~y2, name = 'n=1') %>%
+  add_markers(data = filter(my_data, n == 3), x = ~x, y = ~y, name = 'n=3') %>%
+  add_markers(data = filter(my_data, n == 5), x = ~x, y = ~y, name = 'n=5') %>%
+  add_markers(data = filter(my_data, n == 7), x = ~x, y = ~y, name = 'n=7') %>%
+  add_markers(data = filter(my_data, n == 9), x = ~x, y = ~y, name = 'n=9')
+
+fig
+
+#
+#  ggplot()+
+#    geom_point(data=my_data2,mapping = aes(x=x2,y=y2),size=0.5,shape=21)+
+#    geom_point(data=my_data,mapping=aes(x=x,y=y),color='red')+
+#    theme(legend.position = "none")+
+#    labs(title = 'n: {previous_state}',x='x',y='y')+
+#    transition_states(as.factor(n))
 ```
 ]
 

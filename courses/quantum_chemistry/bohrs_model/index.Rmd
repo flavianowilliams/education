@@ -258,7 +258,8 @@ my_data <- data.frame(n,t) %>%
 
 library(plotly)
 
-fig = plot_ly(type = 'scatter', mode = 'markers', width = 500, height = 450) %>%
+fig = plot_ly(type = 'scatter', mode = 'markers', width = 500, height = 450,
+              marker = list(size = 5)) %>%
   add_markers(data = my_data2, x = ~x2, y = ~y2, name = 'n=1') %>%
   add_markers(data = filter(my_data, n == 3), x = ~x, y = ~y, name = 'n=3') %>%
   add_markers(data = filter(my_data, n == 5), x = ~x, y = ~y, name = 'n=5') %>%

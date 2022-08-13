@@ -178,16 +178,12 @@ class: left, middle
 <div class="my-header"><span>Modelo de Bohr do átomo de hidrogênio - Quantização do momento angular</span></div>
 
 .pull-left[
-De acordo com Bohr, para que o modelo faça sentido, o elétron que se move ao redor do núcleo em órbitas circulares com velocidade v, não poderia assumir qualquer valor, ou seja, ele é <font class="red">quantizado</font>,
+De acordo com Bohr, o elétron que se move ao redor do núcleo em órbitas circulares possuindo um movimento ondulatório de acordo com a hipótese de de Brogile. Do movimento circular temos que L = rp. Da hipótese de de Broglie temos $\lambda = h/p$ e sabendo que o comprimento de cada órbita é dado por $C=2\pi r$, onde cada órbita somente pode corresponder a $n\lambda$, chegamos a
 \begin{aligned}
-  L = n\hbar,\quad n=1,2,3,\cdots,
+  L & \left(\frac{n\lambda}{2\pi}\right)\left(\frac{h}{\lambda}\right),\\
+  L & = n\hbar,\quad n=1,2,3,\cdots,
 \end{aligned}
-onde $\hbar = h/2\pi$ e h é a constante de Planck. Do movimento circular temos que
-\begin{aligned}
-  L & = \vec{r}\times\vec{p},\\\
-  L & = mvr.
-\end{aligned}
-Substituindo $v= \left(\frac{kze^2}{mr}\right)^{1/2}$ teremos
+onde $\hbar = h/2\pi$ e h é a constante de Planck. Substituindo $v= \left(\frac{kze^2}{mr}\right)^{1/2}$ teremos
 \begin{aligned}
   L & = mr\left(\frac{KZe^2}{mr}\right)^{1/2},\\\
   n\hbar & = mr\left(\frac{KZe^2}{mr}\right)^{1/2}.
@@ -266,7 +262,7 @@ library(plotly)
 #  add_markers(data = filter(my_data, n == 7), x = ~x, y = ~y, name = 'n=7') %>%
 #  add_markers(data = filter(my_data, n == 9), x = ~x, y = ~y, name = 'n=9')
 
-fig = plot_ly(data = my_data, type = 'scatter', mode = 'markers', width = 500, height = 500, marker = list(size = 5, color = 'red'),  x = ~x, y = ~y, frame = ~n, showlegend = FALSE) %>%
+fig = plot_ly(data = my_data, type = 'scatter', mode = 'markers', width = 450, height = 450, marker = list(size = 5, color = 'red'),  x = ~x, y = ~y, frame = ~n, showlegend = FALSE) %>%
   add_markers(data = my_data2, x = ~x2, y = ~y2, marker = list(color = 'gray', size = 2))
 
 fig %>%
@@ -349,12 +345,12 @@ Considerando que a transição ocorre entre grandes números quânticos, ou seja
   \nu & \approx \frac{E_0Z^2}{h}\left(\frac{2n}{n^3}\right),\\\
   \nu & \approx \left(\frac{mk^2Z^2e^4}{2\pi\hbar^3n^3}\right),
 \end{aligned}
-onde $E_0=\frac{mk^2e^4}{2\hbar^2}$ e $h=2\pi\hbar$. Mas vimos anteriormente que de acordo com o modelo de Bohr $r=\frac{\hbar^2n^2}{mKZe^2}$ e $v=\left(\frac{kze^2}{mr}\right)^{1/2}$, ou seja,
+onde $E_0=mk^2e^4/2\hbar^2$ e $h=2\pi\hbar$. Entretanto $r=\hbar^2n^2/mKZe^2$ e $v=\left(\frac{kze^2}{mr}\right)^{1/2}$, ou seja,
 \begin{aligned}
   \nu & = \left(\frac{1}{2\pi}\right)\underbrace{\left(\frac{mkZe^2}{\hbar^2n^2}\right)}_{1/r}\underbrace{\left(\frac{kZe^2}{\hbar n}\right)}_{v},\\\
   \nu & = \frac{v}{2\pi r}\Rightarrow r = \frac{v}{2\pi\nu}.
 \end{aligned}
-correspondendo a frequência na mecânica clássica.
+ou seja, a órbita pode assumir qualquer valor, e deve diminuir com a frequência da radiação emitida.
 ]
 
 ---

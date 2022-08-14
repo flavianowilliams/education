@@ -350,7 +350,7 @@ onde $E_0=mk^2e^4/2\hbar^2$ e $h=2\pi\hbar$. Entretanto $r=\hbar^2n^2/mKZe^2$ e 
   \nu & = \left(\frac{1}{2\pi}\right)\underbrace{\left(\frac{mkZe^2}{\hbar^2n^2}\right)}_{1/r}\underbrace{\left(\frac{kZe^2}{\hbar n}\right)}_{v},\\\
   \nu & = \frac{v}{2\pi r}\Rightarrow r = \frac{v}{2\pi\nu}.
 \end{aligned}
-ou seja, a órbita pode assumir qualquer valor, e deve diminuir com a frequência da radiação emitida.
+ou seja, a frequência da radiação emitida corresponde a frequência do movimento da carga elétrica.
 ]
 
 ---

@@ -322,32 +322,6 @@
 	\end{corollary}
 \end{frame}
 
-\begin{frame}{Campo el\'etrico a partir do potencial}
-	\begin{multicols}{2}
-		O trabalho necess\'ario para mover uma carga q em um deslocamento $d\vec{s}$ de uma superf\'icie equipotencial a outra \'e dado por $-qdV$, ou na forma $q\vec{E}\cdot d\vec{s}$, portanto
-		\begin{equation*}
-			-qdV=q\vec{E}\cdot d\vec{s}.
-		\end{equation*}
-		Usando a regra diferencial temos
-		\begin{equation*}
-			Ecos\theta = -\frac{dV}{ds}.
-		\end{equation*}
-%		Sendo $Ecos\theta$ a proje\c c\~ao de $\vec{E}$ em $d\vec{s}$ temos
-%		\begin{equation*}
-%			E_s=-\frac{dV}{ds}.
-%		\end{equation*}
-		Se considerarmos o vetor posi\c c\~ao como $\vec{s}=x\widehat{i}+y\widehat{j}+z\widehat{k}$ e $s=\sqrt{x^2+y^2+z^2}$ podemos determinar as componentes de $\vec{E}$ na dire\c c\~ao x usando a regra da cadeia,
-		\begin{align*}
-			\frac{\partial V}{\partial x} & =\frac{dV}{ds}\frac{\partial s}{\partial x}=\left(-Ecos\theta\right)\left(\frac{x}{s}\right),\\
-			\frac{\partial V}{\partial x} & =-\vec{E}\cdot\widehat{i}=-E_x.
-		\end{align*}
-		Usando o mesmo racioc\'inio nas dire\c c\~oes y e z temos
-	\begin{equation*}
-		\boxed{E_x=-\frac{\partial V}{\partial x},\quad E_y=-\frac{\partial V}{\partial y},\quad E_z=-\frac{\partial V}{\partial z}.}
-	\end{equation*}
-	\end{multicols}
-\end{frame}
-
 \section{Potencial de uma distribui\c c\~ao de cargas}
 
 \subsection{}
@@ -700,6 +674,32 @@
 \section{Ap\^endice}
 
 \subsection{}
+
+\begin{frame}{Campo el\'etrico a partir do potencial}
+	\begin{multicols}{2}
+		O trabalho necess\'ario para mover uma carga q em um deslocamento $d\vec{s}$ de uma superf\'icie equipotencial a outra \'e dado por $-qdV$, ou na forma $q\vec{E}\cdot d\vec{s}$, portanto
+		\begin{equation*}
+		-qdV=q\vec{E}\cdot d\vec{s}.
+		\end{equation*}
+		Usando a regra diferencial temos
+		\begin{equation*}
+		Ecos\theta = -\frac{dV}{ds}.
+		\end{equation*}
+		%		Sendo $Ecos\theta$ a proje\c c\~ao de $\vec{E}$ em $d\vec{s}$ temos
+		%		\begin{equation*}
+		%			E_s=-\frac{dV}{ds}.
+		%		\end{equation*}
+		Se considerarmos o vetor posi\c c\~ao como $\vec{s}=x\widehat{i}+y\widehat{j}+z\widehat{k}$ e $s=\sqrt{x^2+y^2+z^2}$ podemos determinar as componentes de $\vec{E}$ na dire\c c\~ao x usando a regra da cadeia,
+		\begin{align*}
+		\frac{\partial V}{\partial x} & =\frac{dV}{ds}\frac{\partial s}{\partial x}=\left(-Ecos\theta\right)\left(\frac{x}{s}\right),\\
+		\frac{\partial V}{\partial x} & =-\vec{E}\cdot\widehat{i}=-E_x.
+		\end{align*}
+		Usando o mesmo racioc\'inio nas dire\c c\~oes y e z temos
+		\begin{equation*}
+		\boxed{E_x=-\frac{\partial V}{\partial x},\quad E_y=-\frac{\partial V}{\partial y},\quad E_z=-\frac{\partial V}{\partial z}.}
+		\end{equation*}
+	\end{multicols}
+\end{frame}
 
 \begin{frame}{Transformar um n\'umero em nota\c c\~ao cient\'ifica}
 	\begin{corollary}

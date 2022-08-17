@@ -102,6 +102,96 @@ ou na forma
 	\end{columns}
 \end{frame}
 
+\section{Sistema métrico}
+
+\subsection{}
+
+\begin{frame}{Grandezas físicas}
+	Uma grandeza física é uma entidade física de um objeto que pode ser determinada quantitativamente (\alert{mensurada}) e qualitativamente (\alert{conceitualmente}).
+	\begin{enumerate}
+		\item [\ding{51}] Para investigar as leis que governam os fenômenos naturais, os cientistas devem realizar medidas das grandezas físicas envolvidas;
+		\item[\ding{51}] Para efetuar medidas é necessário escolher uma unidade de medida para cada grandeza, onde o valor é tomado em relação a um padrão de referência.
+	\end{enumerate}
+	\begin{exampleblock}{Exemplo de grandeza física}
+		\begin{equation*}
+			\text{Tempo} = 20\; \text{segundos}
+		\end{equation*}
+		\begin{enumerate}
+			\item [\ding{51}] Qualitativamente dizemos que o tempo é a duração de um evento ou fato;
+			\item [\ding{51}] Quantitativamente dizemos que o tempo pode ser 20 segundos, onde segundo é a unidade de medida.
+		\end{enumerate}
+	\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Grandezas fundamentais e derivadas}
+	Na natureza existe uma infinidade de grandezas físicas. Felizmente, não são todas independentes, ou seja, a maioria possui uma dependência com certas grandezas que chamamos de fundamentais. Assim foram escolhidas grandezas, por exemplo \alert{comprimento} e \alert{tempo}, como fundamentais e definidas a partir de um padrão universal, e cada uma foi associada uma unidade de medida. Outras grandezas são definidas a partir das fundamentais e são chamadas de grandezas derivadas.
+	\begin{exampleblock}{Exemplo de grandeza derivada}
+		\begin{equation*}
+			\overbracket{\text{velocidade}}^{\alert{\text{derivada}}} = \frac{\overbracket{\text{comprimento}}^{\alert{\text{fundamental}}}}{\underbracket{\text{Tempo}}_{\alert{\text{fundamental}}}}
+		\end{equation*}
+	\end{exampleblock}\end{frame}
+
+\begin{frame}{Origem histórica das medições}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			Antigamente as medições (unidades de medida) eram definidas de maneira bem arbitrária, e variava muito de um lugar para o outro. Como exemplo, as pessoas tomavam como padrão de referência partes do corpo, como o pé, polegada, jarda, etc. Isso dificultava muito as transações comerciais, pois esses valores mudavam de pessoa para pessoa.
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\centering
+			\begin{figure}
+				\includegraphics[scale=0.6]{figuras/sistema_metrico.jpg}
+				\caption*{\footnotesize Medições de volume, massa e comprimento feitos antes da adoção de um padrão universal \cite{sistemametrico}.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{O sistema métrico decimal}
+	As inconveniências econômicas que surgiram na França relacionadas a medições erradas, em 1789 desde a Revolução Francesa foi adotado um modelo formado por um conjunto de padrões considerado universal. Esse modelo foi chamado de sistema métrico decimal.
+	
+	Principais características de um sistema métrico:
+	\begin{enumerate}
+		\item[\ding{51}] O sistema é decimal, onde o valor pode ser representado por seus múltiplos e submúltiplos;
+		\item[\ding{51}] Múltiplos e submúltiplos são representados por prefixos gregos e latinos. Exemplo: quilo = $10^3$, mili = $10^{-3}$.
+		\item[\ding{51}] O padrão para medir o comprimento é o metro, que desde 1983 passou a ser definido como o comprimento do trajeto percorrido pela luz no vácuo durante 1/299792458 segundo.
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}{O sistema internacional de unidades}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			A partir de 1971, o sistema métrico foi redefinido e foram selecionadas como fundamentais sete grandezas físicas para constituir o Sistema Internacional de Unidades (SI). A intenção era que este sistema fosse adotado por todos os países, sem exceção. Entretanto, alguns países como Myammar, Libéria e Estados Unidos ficaram relutantes em segui-lo, preferindo adotar o seu próprio sistema.
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{table}
+				\begin{tabular}{ccc}
+					Grandeza & Unidade & Símbolo\\
+					\hline
+					Comprimento & metro & m\\
+					Massa & quilograma & kg\\
+					Tempo & segundo & s\\
+					Corrente elétrica & Ampere & A\\
+					Temperatura & Kelvin & K\\
+					Matéria & mol & mol\\
+					Intensidade & candela & cd\\
+					\hline
+				\end{tabular}
+				\caption*{\footnotesize Unidades fundamentais do SI.}
+			\end{table}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Mudança de um sistema de unidades para outro}
+	Muitas vezes, precisamos mudar as unidades nas quais uma grandeza física está expressa, o que pode ser feito usando um método conhecido como conversão em cadeia. Nesse método, multiplicamos o valor original por um \alert{fator de conversão}.
+	\begin{exampleblock}{Exemplo de fator de conversão}
+		Sabemos que 1 minutos corresponde ao mesmo valor de 60 segundos, portanto para converter o valor de minuto para segundo devemos multiplicar o valor correspondente pelo fator de conversão 60,
+		\begin{equation*}
+			1 min = \underbracket{60}_{\alert{\text{fator de}} \atop \alert{\text{conversão}}} s
+		\end{equation*}
+	\end{exampleblock}
+\end{frame}
+
 \begin{frame}{Conversão de unidades em uma dimensão}
 	\begin{figure}
 		\begin{tikzpicture}[scale=0.65,transform shape,font=\Large]
@@ -213,10 +303,6 @@ ou na forma
 	\end{figure}
 \end{frame}
 
-\section{Sistema métrico}
-
-\subsection{}
-
 \section{Apêndice}
 
 \subsection{}
@@ -266,6 +352,7 @@ ou na forma
 	\bibliographystyle{jurabib}
 	\begin{thebibliography}{9}
 		\bibitem{alvarenga}A. Máximo, B. Alvarenga, C. Guimarães, Física. Contexto e aplicações, v.1, 2.ed., São Paulo, Scipione (2016)
+		\bibitem{sistemametrico} \url{https://sistemametricodecimal.wordpress.com/2016/07/12/objetivos/}
 	\end{thebibliography}
 
 \vspace*{1cm}

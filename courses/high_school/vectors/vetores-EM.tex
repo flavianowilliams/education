@@ -233,6 +233,39 @@
 \end{frame}
 
 \begin{frame}{Componentes de um vetor}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			Consideremos o vetor $\vec{v}$, como mostra a figura ao lado. Traçamos a partir da origem os eixos perpendiculares Ox e Oy. Projetando o vetor $\vec{v}$
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{figure}
+				\begin{tikzpicture}[scale=0.65,transform shape,font=\huge]
+				
+				\tkzInit[xmin=0,xmax=5,ymin=0,ymax=5]
+%				\tkzGrid[color=gray!20]
+				\tkzClip[space=1.5]
+				
+				\tkzDefPoints{0/0/A,4/4/B,4/0/C,0/4/D}
+				
+				\tkzDrawX{x}
+				\tkzDrawY{y}
+				
+				\tkzPointShowCoord(B)
+				
+				\draw[->,line width=2.0pt,color=red] (A) -- (B) node [above left,midway] {$\vec{v}$};
+				\draw[->,line width=2.0pt,color=blue] (A) -- (C) node [below=0.4, midway] {$\vec{v}_x$};
+				\draw[->,line width=2.0pt,color=blue] (A) -- (D) node [left=0.4, midway] {$\vec{v}_y$};
+				
+				\tkzMarkAngle[size=1,<->](C,A,B)
+				\tkzMarkRightAngle[fill=blue!30](B,C,A)
+				
+				\tkzLabelAngle[pos=1.5](C,A,B){$\theta$}
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Componentes $v_x$ e $v_y$ do vetor $\vec{v}$.}
+			\end{figure}
+		\end{column}
+	\end{columns}
 \end{frame}
 
 \section{Apêndice}

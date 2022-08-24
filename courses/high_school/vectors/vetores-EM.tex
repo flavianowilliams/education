@@ -60,7 +60,7 @@
 		\begin{column}[c]{0.4\textwidth}
 			\begin{figure}
 				\centering
-				\includegraphics[scale=0.3]{figuras/distancia_percorrida.png}
+				\includegraphics[scale=0.26]{figuras/deslocamento.png}
 				\caption*{\footnotesize Deslocamento $\bar{AB}$ \cite{alvarenga}.}
 			\end{figure}
 		\end{column}
@@ -235,7 +235,10 @@
 \begin{frame}{Componentes de um vetor}
 	\begin{columns}
 		\begin{column}[c]{0.5\textwidth}
-			Consideremos o vetor $\vec{v}$, como mostra a figura ao lado. Traçamos a partir da origem os eixos perpendiculares Ox e Oy. Projetando o vetor $\vec{v}$
+			Consideremos o vetor $\vec{v}$, como mostra a figura ao lado. Traçamos a partir da origem os eixos perpendiculares Ox e Oy. Projetando o vetor $\vec{v}$ no eixo Ox teremos o vetor $\vec{v}_x$, e projetando $\vec{v}$ no eixo Oy teremos $\vec{v}_y$. Dizemos que $\vec{v}_x$ e $\vec{v}_y$ são as componentes de $\vec{v}$ nos eixos Ox e Oy.
+			\begin{corollary}
+				As componentes de um vetor em uma direção é a projeção ortogonal desse vetor nessa direção.
+			\end{corollary}
 		\end{column}
 		\begin{column}[c]{0.5\textwidth}
 			\begin{figure}
@@ -243,6 +246,46 @@
 				
 				\tkzInit[xmin=0,xmax=5,ymin=0,ymax=5]
 %				\tkzGrid[color=gray!20]
+				\tkzClip[space=1.5]
+				
+				\tkzDefPoints{0/0/A,4/4/B,4/0/C,0/4/D}
+				
+				\tkzDrawX{x}
+				\tkzDrawY{y}
+				
+				\tkzPointShowCoord(B)
+				
+				\draw[->,line width=2.0pt,color=red] (A) -- (B) node [above left,midway] {$\vec{v}$};
+				\draw[->,line width=2.0pt,color=blue] (A) -- (C) node [below=0.4, midway] {$\vec{v}_x$};
+				\draw[->,line width=2.0pt,color=blue] (A) -- (D) node [left=0.4, midway] {$\vec{v}_y$};
+				
+				\tkzMarkAngle[size=1,<->](C,A,B)
+				\tkzMarkRightAngle[fill=blue!30](B,C,A)
+				
+				\tkzLabelAngle[pos=1.5](C,A,B){$\theta$}
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Componentes $v_x$ e $v_y$ do vetor $\vec{v}$.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Determinando as componentes de um vetor usando trigonometria}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			Observando a figura ao lado, podemos perceber que $v_x$, $v_y$ e v formam um triângulo retângulo. Portanto, para calcular os valores dessas componentes poderemos usar as relações seno e cosseno,
+			\begin{align*}
+				\cos\theta & = \frac{v_x}{v}\;\therefore\;v_x = v\cos\theta,\\
+				\sin\theta & = \frac{v_y}{v}\;\therefore\;v_y = v\sin\theta.
+			\end{align*}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{figure}
+				\begin{tikzpicture}[scale=0.65,transform shape,font=\huge]
+				
+				\tkzInit[xmin=0,xmax=5,ymin=0,ymax=5]
+				%				\tkzGrid[color=gray!20]
 				\tkzClip[space=1.5]
 				
 				\tkzDefPoints{0/0/A,4/4/B,4/0/C,0/4/D}

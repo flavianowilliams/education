@@ -25,16 +25,101 @@
 
 \subsection{}
 
-\begin{frame}{Grandezas escalares}
+\begin{frame}{Grandezas escalares e vetoriais}
+	\textbf{Grandezas escalares}
+	
+	Quando dizemos, por exemplo, que uma garrafa de refrigerante tem o volume de 1 L, que o tempo gasto para chegar em tal lugar são de 2 horas e que a temperatura em Curitiba hoje são de $\SI{20}{\degreeCelsius}$, estamos informando o seu valor (módulo). E podemos perceber que \alert{essas grandezas ficam completamente determinadas apenas com o seu módulo}.
+	\\\
+		
+	\textbf{Grandezas vetoriais}
+	
+	Entretanto, existem grandezas que não ficam completamente determinadas apenas com o seu módulo, elas necessitam de mais informação. Essas grandezas são chamadas de \alert{grandezas vetoriais}.
+	
 \end{frame}
 
-\begin{frame}{Espaço percorrido}
-\end{frame}
-
-\begin{frame}{Grandezas vetoriais}
+\begin{frame}{Distância percorrida}
+	\begin{columns}
+		\begin{column}[c]{0.6\textwidth}
+			Considere uma pessoa que está em Brasília e pretende ir para Recife. Ela está viajando de carro, e durante o percurso ela terá que fazer várias curvas e entrar em várias outras cidades, assim como mostra a figura ao lado. Ao chegar em Brasília, no painel do carro irá marcar o quanto o automóvel andou, e será o comprimento da trajetória marcada em azul. Podemos perceber que a distância percorrida fica completamente determinada apenas com esse valor. Não importa se o viajante retornar pela mesma trajetória, o seu valor será o mesmo. Portanto, a distância percorrida pela pessoa é \alert{um exemplo de grandeza escalar}.
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.3]{figuras/distancia_percorrida.png}
+				\caption*{\footnotesize Distância percorrida (em azul) \cite{alvarenga}.}
+			\end{figure}
+		\end{column}
+	\end{columns}
 \end{frame}
 
 \begin{frame}{Deslocamento}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			Agora, queremos saber a menor distância entre Brasília e Recife, que seria o segmento de reta AB. Além disso, gostaríamos de saber o sentido que a pessoa está viajando (de Brasília para Recife ou o sentido inverso). O segmento AB seria o módulo da grandeza deslocamento, e podemos perceber que ela não fica completamente determinada apenas com o seu valor, ela precisa de uma direção e sentido.
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.3]{figuras/distancia_percorrida.png}
+				\caption*{\footnotesize Deslocamento $\bar{AB}$ \cite{alvarenga}.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Representação de uma grandeza vetorial}
+	\begin{columns}
+		\begin{column}[b]{0.6\textwidth}
+			Assim, para uma grandeza vetorial é necessário fornecer:
+			\begin{enumerate}
+				\item [\ding{51}] o seu módulo: o seu valor;
+				\item [\ding{51}] a sua direção: ângulo em relação a um eixo de referência;
+				\item [\ding{51}] o seu sentido: se foi de A para B ou de B para A.
+			\end{enumerate}
+			Graficamente, representamos uma grandeza vetorial por um \alert{vetor}, que seria uma seta com comprimento, direção e sentido (ponta da seta), assim como mostra a figura ao lado.
+		\end{column}
+		\begin{column}[b]{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.5,transform shape]
+				
+				\tkzInit[xmin=0,xmax=9.5,ymin=0,ymax=4]
+				%	\tkzGrid[color=gray!20]
+				\tkzClip[space=1]
+				
+				\tkzDefPoints{1/1/A,3/3/B,3/1/C}
+				
+				\tkzDrawX[label = Horizontal, below left= 0.25cm, line width=1pt]
+				%	\tkzAxeY
+				
+				\tkzLabelPoint[above](B){B}
+				\tkzLabelPoints[below left](A)
+				
+				%	\tkzPointShowCoord(A)
+				%	\tkzPointShowCoord(B)
+				
+				\draw[->,line width=1pt,color=black] (A) -- (B);
+				
+				\draw (A) to [dim arrow={label=modulo},sloped, line width=0.4pt] (B);
+				
+				%	\tkzDrawPoints(A,B)
+				
+				\tkzDefPoints{7/3/t1,5.8/2.5/t2}
+				
+				\tkzText(t1){Direcao: $30^o$ em relacao a horizontal}
+				\tkzText(t2){Sentido: de A para B}
+				
+				\draw[dashed] (A) -- (C);
+				
+				\tkzMarkAngle(C,A,B){theta}
+				\tkzLabelAngle[right=0.1cm](C,A,B){$30^o$}
+				
+				\end{tikzpicture}
+%				\includegraphics[scale=0.3]{figuras/vetor.jpeg}
+				\caption*{\footnotesize Representação de um vetor.}
+			\end{figure}
+		\end{column}
+	\end{columns}
 \end{frame}
 
 \section{Soma de vetores}
@@ -42,12 +127,106 @@
 \subsection{}
 
 \begin{frame}{Resultante de dois vetores}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			Considere um automóvel que parte do ponto A e pretende chegar em B. Ele pode seguir o trecho AB e depois BC. O deslocamento AB pode ser representado pelo vetor $\vec{a}$, e o deslocamento BC pelo vetor $\vec{b}$. Podemos ver que a soma dos deslocamentos AB e BC surte o mesmo efeito do deslocamento AC, representado pelo vetor $\vec{c}$. Dizemos que $\vec{c}$ é a soma ou resultante dos vetores $\vec{a}$ e $\vec{b}$, ou seja,
+			\begin{equation*}
+				\vec{c} = \vec{a}+\vec{b}.
+			\end{equation*}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.45]{figuras/vetor_resultante.png}
+				\caption*{\footnotesize Vetor resultante $\vec{c}$.}
+			\end{figure}
+		\end{column}
+	\end{columns}
 \end{frame}
 
 \begin{frame}{Resultante entre dois vetores e a regra do paralelogramo}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			conteúdo...
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{figure}
+				\begin{tikzpicture}[scale=0.4,transform shape,font=\huge]
+				
+				\tkzInit[xmin=0,xmax=10,ymin=0,ymax=10]
+				%				\tkzGrid[color=gray!20]
+				\tkzClip[space=1]
+				
+				\tkzDefPoints{0/0/A,2/4/B,3/0/C,4/1/D}
+				
+%				\tkzAxeX{x}
+%				\tkzAxeY{y}
+				%			\tkzLabelPoint[above](B){B}
+				%			\tkzLabelPoints[below left](A)
+				
+				%				\tkzPointShowCoord(B)
+				%				\tkzPointShowCoord(D)
+				
+				\tkzDefPointWith[colinear=at D](A,B)\tkzGetPoint{E}
+				
+				\tkzDrawSegment[dashed](B,E)
+				\tkzDrawSegment[dashed](D,E)
+				
+				\draw[->,line width=1.0pt,color=red] (A) -- (B) node [above left,midway] {$\vec{a}$};
+				\draw[->,line width=1.0pt,color=red] (A) -- (D) node [below right,midway] {$\vec{b}$};
+				\draw[->,line width=1.0pt,color=blue] (A) -- (E) node [above,midway] {$\vec{c}$};
+				
+				\tkzDrawPoints(A,B)
+				
+				\tkzDefPoints{7/7/a,8/9/b,9/7.5/c}
+				
+				\draw[->,line width=1.0pt,color=red] (a) -- (b) node [above left,midway] {$\vec{a}$};
+				\draw[->,line width=1.0pt,color=red] (a) -- (c) node [below right,midway] {$\vec{b}$};
+				
+				\tkzMarkAngle[size=1cm](c,a,b)
+				\tkzLabelAngle[pos=0.6mm](c,a,b){\huge $\theta$}
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Resultante de dois vetores $\vec{a}$ e $\vec{b}$ a partir da regra do paralelogramo.}
+			\end{figure}
+		\end{column}
+	\end{columns}
 \end{frame}
 
 \begin{frame}{Resultante de vários vetores e a regra do polígono fechado}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			conteúdo...
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{figure}
+				\begin{tikzpicture}[scale=0.45,transform shape,font=\huge]
+				
+				\tkzInit[xmin=0,xmax=10,ymin=0,ymax=9]
+				%				\tkzGrid[color=gray!20]
+				\tkzClip[space=1]
+				
+				\tkzDefPoints{2/4/A,4/6/B,6/4/C,6/2/D}
+				
+%				\tkzDrawX{x}
+%				\tkzDrawY{y}
+				
+				\tkzDefPointWith[colinear=at D](A,B)\tkzGetPoint{E}
+				
+				\draw[->,line width=1.0pt,color=red] (A) -- (B) node [above left,midway] {$\vec{a}$};
+				\draw[->,line width=1.0pt,color=red] (B) -- (C) node [above right,midway] {$\vec{b}$};
+				\draw[->,line width=1.0pt,color=red] (C) -- (D) node [right,midway] {$\vec{c}$};
+				\draw[->,line width=1.0pt,color=blue] (A) -- (D) node [below left,midway] {$\vec{d}$};
+				
+				\tkzDefPoints{8/8/t1}
+				
+				\tkzText[text centered,opacity=100,fill=gray!20](t1){$\vec{d}=\vec{a}+\vec{b}+\vec{c}$}
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Resultante de três vetores.}
+			\end{figure}
+		\end{column}
+	\end{columns}
 \end{frame}
 
 \begin{frame}{Componentes de um vetor}

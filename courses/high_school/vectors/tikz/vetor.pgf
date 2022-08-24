@@ -1,0 +1,34 @@
+\begin{tikzpicture}[scale=3,transform shape]
+
+	\tkzInit[xmin=0,xmax=9.5,ymin=0,ymax=4]
+%	\tkzGrid[color=gray!20]
+	\tkzClip[space=1]
+
+	\tkzDefPoints{1/1/A,3/3/B,3/1/C}
+	
+	\tkzDrawX[label = Horizontal, below left= 0.25cm, line width=2pt]
+%	\tkzAxeY
+
+	\tkzLabelPoint[above](B){B}
+	\tkzLabelPoints[below left](A)
+
+%	\tkzPointShowCoord(A)
+%	\tkzPointShowCoord(B)
+
+	\draw[->,line width=3pt,color=black] (A) -- (B);
+
+	\draw (A) to [dim arrow={label=modulo},sloped] (B);
+
+%	\tkzDrawPoints(A,B)
+
+	\tkzDefPoints{7/3/t1,5.8/2.5/t2}
+
+	\tkzText(t1){Direcao: $30^o$ em relacao a horizontal}
+	\tkzText(t2){Sentido: de A para B}
+
+	\draw[dashed] (A) -- (C);
+
+	\tkzMarkAngle(C,A,B){theta}
+	\tkzLabelAngle[right=0.1cm](C,A,B){$30^o$}
+
+\end{tikzpicture}

@@ -1,9 +1,18 @@
-﻿\begin{tikzpicture}[scale=1,transform shape, font=\Large]
+\begin{tikzpicture}[scale=2,transform shape, font=\Large]
 
-	\tkzInit[xmin=-4,xmax=4,ymin=0,ymax=4]
+	\tkzInit[xmin=-10,xmax=10,ymin=-10,ymax=10]
 	\tkzGrid[color=gray!50]
-	\tkzClip
+	\tkzClip[space=0.75]
 
-	\tkzDefPoints{0/0/O}
+	\begin{scope}[shift={(0,0)}]
+
+		\tkzDefPoints{0/0/O}
+
+		\tkzDrawX
+		\tkzDrawY
+		\tkzLabelX
+		\tkzLabelY
+
+	\end{scope}
 
 \end{tikzpicture}

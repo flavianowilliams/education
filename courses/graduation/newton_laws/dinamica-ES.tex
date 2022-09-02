@@ -83,15 +83,15 @@
 		\begin{column}[c]{0.5\textwidth}
 			Considerando o movimento de três pessoas, definimos a posição de Maria em relação ao João como
 			\begin{equation*}
-				\vec{r}_{JM}=\vec{r}_{MI}+\vec{r}_{JI}.
+				\vec{r}_{JM}=\vec{r}_{JI}+\vec{r}_{IM}.
 			\end{equation*}
 			Derivando temos a sua velocidade $\vec{v}_{JM}$,
 			\begin{equation*}
-				\vec{v}_{JM}=\vec{v}_{MI}+\vec{v}_{JI}.
+				\vec{v}_{JM}=\vec{v}_{JI}+\vec{v}_{IM}.
 			\end{equation*}
 			Derivando novamente temos
 			\begin{equation*}
-				\vec{a}_{JM}=\vec{a}_{MI}+\vec{a}_{JI}.
+				\vec{a}_{JM}=\vec{a}_{JI}+\vec{a}_{IM}.
 			\end{equation*}
 		\end{column}
 		\begin{column}[c]{0.5\textwidth}
@@ -116,13 +116,13 @@
 				\node[opacity=1] (fig2) at (B) {\includegraphics[scale=0.5]{figuras/homem_palito.png}};
 				\node[opacity=1] (fig3) at (C) {\includegraphics[scale=0.5]{figuras/homem_palito.png}};
 				
-				\tkzText[below=1.75cm](fig1){Joao}
+				\tkzText[below=1.75cm](fig1){João}
 				\tkzText[below=1.75cm](fig2){Maria}
-				\tkzText[below=2.25cm](fig3){Ines}
+				\tkzText[below=2.25cm](fig3){Inês}
 				
 				\draw[->, line width=2pt] (fig1) -- (fig2) node [above left, midway] {$\vec{r}_{JM}$};
-				\draw[->, line width=2pt] (fig1) -- (fig3) node [above, midway] {$\vec{r}_{MI}$};
-				\draw[->, line width=2pt] (fig3) -- (fig2) node [above right, midway] {$\vec{r}_{JI}$};
+				\draw[->, line width=2pt] (fig1) -- (fig3) node [above, midway] {$\vec{r}_{JI}$};
+				\draw[->, line width=2pt] (fig3) -- (fig2) node [above right, midway] {$\vec{r}_{IM}$};
 				
 				\end{scope}
 				

@@ -81,17 +81,13 @@
 \begin{frame}{Movimento relativo}
 	\begin{columns}
 		\begin{column}[c]{0.5\textwidth}
-			Considerando o movimento de três pessoas, definimos a posição de Maria em relação ao João como
+			Considerando o movimento de três pessoas, podemos dizer que João vê o movimento da Maria com velocidade \alert{$\vec{v}_{JM}$}. Além disso, João vê o movimento da Inês como \alert{$\vec{v}_{JI}$}. Vetorialmente, podemos dizer que
 			\begin{equation*}
-				\vec{r}_{JM}=\vec{r}_{JI}+\vec{r}_{IM}.
+				\vec{v}_{JI}=\vec{v}_{JM}+\vec{v}_{MI}.
 			\end{equation*}
-			Derivando temos a sua velocidade $\vec{v}_{JM}$,
+			Agora, como a Maria enxerga o movimento da Inês. Para isso, mudamos o referencial do João para Maria, ou seja,
 			\begin{equation*}
-				\vec{v}_{JM}=\vec{v}_{JI}+\vec{v}_{IM}.
-			\end{equation*}
-			Derivando novamente temos
-			\begin{equation*}
-				\vec{a}_{JM}=\vec{a}_{JI}+\vec{a}_{IM}.
+				\vec{v}_{MI}=\vec{v}_{JI}-\vec{v}_{JM}.
 			\end{equation*}
 		\end{column}
 		\begin{column}[c]{0.5\textwidth}
@@ -120,9 +116,9 @@
 				\tkzText[below=1.75cm](fig2){Maria}
 				\tkzText[below=2.25cm](fig3){Inês}
 				
-				\draw[->, line width=2pt] (fig1) -- (fig2) node [above left, midway] {$\vec{r}_{JM}$};
-				\draw[->, line width=2pt] (fig1) -- (fig3) node [above, midway] {$\vec{r}_{JI}$};
-				\draw[->, line width=2pt] (fig3) -- (fig2) node [above right, midway] {$\vec{r}_{IM}$};
+				\draw[->, line width=2pt] (fig1) -- (fig2) node [above left, midway] {$\vec{v}_{JM}$};
+				\draw[->, line width=2pt] (fig1) -- (fig3) node [above, midway] {$\vec{v}_{JI}$};
+				\draw[->, line width=2pt] (fig2) -- (fig3) node [above right, midway] {$\vec{v}_{MI}$};
 				
 				\end{scope}
 				

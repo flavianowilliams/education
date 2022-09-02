@@ -14,6 +14,7 @@
 \usepackage{ifthen}
 \usepackage{color}
 \usepackage{siunitx}
+\usepackage{graphicx}
 \usepackage[active,pdftex,tightpage]{preview}
 \usepackage[portuguese]{babel}
 \DeclareFontFamily{OMS}{mdbch}{\skewchar\font=48}

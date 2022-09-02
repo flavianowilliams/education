@@ -13,6 +13,8 @@
 		\tkzLabelX
 		\tkzLabelY
 
+		\node[opacity=1] (fig1) at (1,1) {\includegraphics[scale=0.25]{homem_palito.png}};
+
 	\end{scope}
 
 \end{tikzpicture}

@@ -21,7 +21,7 @@
   \tableofcontents
 \end{frame}
 
-\section{Primeira Lei de Newton}
+\section{Introdução}
 
 \subsection{}
 
@@ -37,48 +37,7 @@
 	\end{enumerate}
 \end{frame}
 
-\begin{frame}{Conceitos de força e aceleração}
-	\begin{block}{Primeira Lei de Newton}
-		Se nenhuma força resultante atua sobre um objeto, a velocidade não pode mudar, ou seja, o objeto não pode sofrer aceleração.
-	\end{block}
-	\begin{columns}
-		\begin{column}[c]{0.6\textwidth}
-			Na figura ao lado, se $F_1=F_2$ e  $F_3=F_4$ temos que a força resultante será zero, portanto o objeto permanecerá com a mesma velocidade $\vec{v}$.
-			\begin{corollary}
-				Mesmo que um objeto esteja submetido a várias forças, se a resultante das forças for zero, o objeto não sofrerá aceleração.
-			\end{corollary}
-		\end{column}
-		\begin{column}[c]{0.4\textwidth}
-			\begin{figure}
-				\centering
-				\begin{tikzpicture}[scale=0.35,transform shape,font=\Large]
-				
-				\tkzInit[xmin=-4,xmax=4,ymin=-4,ymax=4]
-				%\tkzGrid[color=gray!20]
-				
-				\tkzDefPoints{-2/-2/A,2/-2/B,-2/2/C,2/2/D}
-				
-				\tkzDrawPolygon(A,B,D,C)
-				
-				\tkzDefPoints{-2/0/a,2/0/b,0/-2/c,0/2/d}
-				
-				\draw[<-,line width=1.0pt,color=red] (a) --++ (-2,0) node [above,midway] {$\vec{F}_1$};
-				\draw[<-,line width=1.0pt,color=red] (b) --++ (2,0) node [above,midway] {$\vec{F}_2$};
-				\draw[<-,line width=1.0pt,color=red] (c) --++ (0,-2) node [left,midway] {$\vec{F}_3$};
-				\draw[<-,line width=1.0pt,color=red] (d) --++ (0,2) node [left,midway] {$\vec{F}_4$};
-				
-				\tkzDefPoints{-1/0/t1}
-				
-				\draw[->,line width=1.5pt,color=black] (t1) --++ (2,0) node [above,midway] {$\vec{v}$};
-				
-				\end{tikzpicture}
-				\caption*{\footnotesize Forças atuando em um objeto se movendo com velocidade constante.}
-			\end{figure}
-		\end{column}
-	\end{columns}
-\end{frame}
-
-\begin{frame}{Movimento relativo}
+\begin{frame}{Referencial e movimento relativo}
 	\begin{columns}
 		\begin{column}[c]{0.5\textwidth}
 			Considerando o movimento de três pessoas, podemos dizer que João vê o movimento da Maria com velocidade \alert{$\vec{v}_{JM}$}. Além disso, João vê o movimento da Inês como \alert{$\vec{v}_{JI}$}. Vetorialmente, podemos dizer que
@@ -129,17 +88,86 @@
 	\end{columns}
 \end{frame}
 
-\section{Segunda Lei de Newton}
+\begin{frame}{Referenciais inerciais}
+	\begin{block}{Referencial inercial}
+		Referencial no qual as Leis de Newton são válidas.
+	\end{block}
+	\begin{figure}
+		\begin{subfigure}[b]{0.45\textwidth}
+			\centering
+			\includegraphics[scale=0.16]{figuras/inercia-maior.jpg}
+			\caption*{\footnotesize Objeto com maior inércia.}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.45\textwidth}
+			\centering
+			\includegraphics[scale=0.075]{figuras/inercia-menor.jpg}
+			\caption*{\footnotesize Objeto com menor inércia.}
+		\end{subfigure}
+	\end{figure}
+	\begin{corollary}
+		A taxa de variação do estado de movimento de um objeto depende da massa desse objeto, definido como a inércia do movimento.
+	\end{corollary}
+\end{frame}
+
+\begin{frame}{Referenciais não inerciais}
+	\begin{figure}
+		\includegraphics[scale=0.5]{figuras/referenciais-nao-inerciais.JPG}
+		\caption*{\footnotesize O trem e a pessoa dentro dele são considerados referenciais não-inerciais para o observador exterior. Por isso a pessoa que está no vagão vê a bola inclinada, como se existisse uma força fictícia empurrando ela para trás, contradizendo as Leis de Newton do movimento.}
+	\end{figure}
+\end{frame}
+
+\section{As três leis de Newton}
 
 \subsection{}
 
-\begin{frame}{Conceito da Segunda Lei de Newton}
-	\begin{block}{Segunda Lei de Newton}
+\begin{frame}{Primeira Lei de Newton}
+	\begin{corollary}
+		Se nenhuma força resultante atua sobre um objeto, a velocidade não pode mudar, ou seja, o objeto não pode sofrer aceleração.
+	\end{corollary}
+	\begin{columns}
+		\begin{column}[c]{0.6\textwidth}
+			Na figura ao lado, se $F_1=F_2$ e  $F_3=F_4$ temos que a força resultante será zero, portanto o objeto permanecerá com a mesma velocidade $\vec{v}$.
+			\begin{corollary}
+				Mesmo que um objeto esteja submetido a várias forças, se a resultante das forças for zero, o objeto não sofrerá aceleração.
+			\end{corollary}
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.35,transform shape,font=\Large]
+				
+				\tkzInit[xmin=-4,xmax=4,ymin=-4,ymax=4]
+				%\tkzGrid[color=gray!20]
+				
+				\tkzDefPoints{-2/-2/A,2/-2/B,-2/2/C,2/2/D}
+				
+				\tkzDrawPolygon(A,B,D,C)
+				
+				\tkzDefPoints{-2/0/a,2/0/b,0/-2/c,0/2/d}
+				
+				\draw[<-,line width=1.0pt,color=red] (a) --++ (-2,0) node [above,midway] {$\vec{F}_1$};
+				\draw[<-,line width=1.0pt,color=red] (b) --++ (2,0) node [above,midway] {$\vec{F}_2$};
+				\draw[<-,line width=1.0pt,color=red] (c) --++ (0,-2) node [left,midway] {$\vec{F}_3$};
+				\draw[<-,line width=1.0pt,color=red] (d) --++ (0,2) node [left,midway] {$\vec{F}_4$};
+				
+				\tkzDefPoints{-1/0/t1}
+				
+				\draw[->,line width=1.5pt,color=black] (t1) --++ (2,0) node [above,midway] {$\vec{v}$};
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Forças atuando em um objeto se movendo com velocidade constante.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Segunda Lei de Newton}
+	\begin{corollary}
 		A força resultante que age sobre um objeto é igual ao produto da massa do objeto pela aceleração. Em termos matemáticos, podemos escrever como
 		\begin{equation*}
 			\vec{F}_{\text{res}}=m\vec{a}.
 		\end{equation*}
-	\end{block}
+	\end{corollary}
 	\begin{columns}
 		\begin{column}[c]{0.45\textwidth}
 			\begin{corollary}
@@ -233,11 +261,7 @@
 	\end{columns}
 \end{frame}
 
-\section{Terceira Lei de Newton}
-
-\subsection{}
-
-\begin{frame}{Ação e reação}
+\begin{frame}{Terceira Lei de Newton - Ação e reação}
 	\begin{columns}
 		\begin{column}[c]{0.6\textwidth}
 			\begin{block}{Terceira Lei de Newton}
@@ -257,34 +281,6 @@
 		\end{figure}
 		\end{column}
 	\end{columns}
-\end{frame}
-
-\begin{frame}{Referenciais inerciais}
-	\begin{block}{Referencial inercial}
-		Referencial no qual as Leis de Newton são válidas.
-	\end{block}
-	\begin{figure}
-		\begin{subfigure}[b]{0.45\textwidth}
-			\centering
-			\includegraphics[scale=0.16]{figuras/inercia-maior.jpg}
-			\caption*{\footnotesize Objeto com maior inércia.}
-		\end{subfigure}
-		\begin{subfigure}[b]{0.45\textwidth}
-			\centering
-			\includegraphics[scale=0.075]{figuras/inercia-menor.jpg}
-			\caption*{\footnotesize Objeto com menor inércia.}
-		\end{subfigure}
-	\end{figure}
-	\begin{corollary}
-		A taxa de variação do estado de movimento de um objeto depende da massa desse objeto, definido como a inércia do movimento.
-	\end{corollary}
-\end{frame}
-
-\begin{frame}{Referenciais não inerciais}
-	\begin{figure}
-		\includegraphics[scale=0.5]{figuras/referenciais-nao-inerciais.JPG}
-		\caption*{\footnotesize O trem e a pessoa dentro dele são considerados referenciais não-inerciais para o observador exterior. Por isso a pessoa que está no vagão vê a bola inclinada, como se existisse uma força fictícia empurrando ela para trás, contradizendo as Leis de Newton do movimento.}
-	\end{figure}
 \end{frame}
 
 \section{Algumas forças específicas}

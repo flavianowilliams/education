@@ -1,0 +1,329 @@
+% Aula de mecânica dos fluidos para o curso de Física II do ensino médio
+%
+\documentclass[brazil,aspectratio=169]{beamer}
+%
+%carregando preâmbulo
+\input{../../contrib/preamble}
+
+%Título
+
+\title[Mecânica-MRE]{Movimento retilíneo}
+
+% The main document
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Sumário}
+  \tableofcontents
+\end{frame}
+
+\section{Introdução}
+
+\subsection{}
+
+\begin{frame}{O que estuda a cinemática}
+	A cinemática é o ramo da Física que se preocupa em estudar os movimentos sem se preocupar com o que causou o seu movimento, ou sua mudança ao longo do tempo. Como exemplo, suponha um carro se movimentando em uma rodovia. Gostaríamos de saber algumas informações a respeito do movimento, como o quão rápido está se movimentando, ou a sua localização e como ela muda ao longo do tempo. Agora, não tempos até o momento interesse em saber as causas de cada um deles.
+\end{frame}
+
+\begin{frame}{O movimento dos objetos}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			Agora, para simplificar o nosso estudo poderemos tratar um objeto qualquer como se fosse uma partícula. A característica de uma partícula é que suas dimensões podem ser desconsideradas, e assim ela se torna um objeto pontual no espaço. A grande vantagem disso é que poderemos tratar cada parte desse objeto como se tivesse o mesmo movimento.
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.75]{figuras/objeto-pontual.png}
+				\caption*{\footnotesize Satélites como objetos pontuais ao redor da Terra.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Trajetória de um objeto}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			Trajetória é o caminho percorrido por algum objeto. Na figura ao lado temos como exemplo a trajetória registrada pelas luzes dos automóveis que trafegam em uma rodovia. Nesta aula trataremos movimentos de trajetórias retilíneas.
+		\begin{corollary}
+			Quando um objeto se desloca com velocidade constante ao longo de uma trajetória	retilínea, dizemos que o seu movimento é retilíneo e uniforme.
+		\end{corollary}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.1]{figuras/trajetoria.jpg}
+				\caption*{\footnotesize Trajetória registrada pelas luzes dos carros \cite{freepik}.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Movimento relativo e o referencial}
+	\begin{columns}
+		\begin{column}[c]{0.65\textwidth}
+			Quando dizemos que o movimento é relativo, significa que o movimento muda dependendo do ponto de vista de quem está vendo. Ou seja, para analisar o movimento de algo, primeiramente devemos adotar um referencial. Suponha um avião voando horizontalmente e em certo momento libera uma caixa. Para a pessoa no chão (referencial) ele verá a caixa cair em uma trajetória curvilínea, no entanto para o piloto (outro referencial), ele verá cair verticalmente.
+		\end{column}
+		\begin{column}[c]{0.35\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.18]{figuras/referencial-relativo.png}
+				\caption*{\footnotesize Trajetória de uma bomba \cite{alvarenga}.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+	\begin{corollary}
+		O movimento de um objeto, visto por um observador, depende do referencial no qual ele está situado.
+	\end{corollary}
+\end{frame}
+
+\section{Movimento Retilíneo Uniforme}
+
+\subsection{}
+
+\begin{frame}{Velocidade de um objeto}
+%	\begin{columns}
+%		\begin{column}[c]{0.5\textwidth}
+			Velocidade é uma grandeza física que está associado a rapidez do movimento. Quantitativamente, definimos a velocidade como a razão do deslocamento $\Delta S$ realizado pelo objeto pelo intervalo de tempo $\Delta t$ que ele está realizando o movimento,
+			\begin{align*}
+				v = \frac{\Delta S}{\Delta t}.
+			\end{align*}
+%		\end{column}
+%		\begin{column}[c]{0.5\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.3]{figuras/velocidade-media.png}
+				\caption*{\footnotesize Trajetória entre a posição inicial (Irati) e a posição final (Curitiba)}
+			\end{figure}
+%		\end{column}
+%	\end{columns}
+\end{frame}
+
+\begin{frame}{Posição de um objeto}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			\alert{Definimos a posição de um objeto como a sua localização em relação a um referencial adotado}, que está na origem e chamamos de marco zero. A posição poderá assumir valor negativo dependendo do sentido adotado para o movimento.
+			Sabendo que o deslocamento pode ser representado como a diferença da posições final e inicial, $\Delta S=S_2-S_1$, teremos. E a partir da velocidade temos
+			\begin{align*}
+				v = \frac{S_2-S_1}{t_2-t_1},
+			\end{align*}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{align*}
+				S_2-S_1 & =v(t_2-t_1),\\
+				S_2 & =S_1+v(t_2-t_1).
+			\end{align*}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.25]{figuras/posicao.png}
+				\caption*{\footnotesize Posições em relação ao referencial no marco zero \cite{brasilescola}.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Gráfico da posição em função do tempo}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			Da expressão $S_2=S_1+v(t_2-t_1)$, se definirmos que o instante inicial t\textsubscript{1} = 0 segundo, podemos dizer que S\textsubscript{1} é a posição final, e a equação se transforma em uma função do primeiro grau, onde S é a variável dependente da variável t,
+			\begin{align*}
+				S(t) = S_1+vt.
+			\end{align*}
+			Sabendo que uma função pode ser representada em um gráfico S(t) versus t, teremos
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.4,transform shape, font=\Large]
+				
+				\tkzInit[xmin=0,xmax=8,ymin=-3,ymax=7]
+				\tkzGrid[color=gray!50]
+				\tkzClip[space=1.5]
+				
+				\begin{scope}[shift={(0,0)}]
+				
+				\tkzDefPoints{0/0/O}
+				
+				\tkzDrawX[label={t (s)}, right]
+				\tkzDrawY[label={S (m)}, above]
+				\tkzLabelX
+				\tkzLabelY
+				
+				\def\A{1}
+				\def\B{-2}
+				
+				\tkzFct[samples=400,domain=0:8, line width=1pt, color=red]{\A*x+\B}
+				
+				\tkzDefPoints{3/1/A,7/5/B, 7/1/C}
+				
+				\tkzDrawPoints(A,B)
+				\tkzLabelPoints[above left](A,B)
+				
+				\draw (C) to[dim arrow'={label'=$\Delta S$}, color=black, line width=1pt] (B);
+				\draw (A) to[dim arrow'={label=$\Delta t$}, color=black, line width=1pt] (C);
+				
+				\end{scope}
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Gráfico da posição versus tempo.}
+				%				\includegraphics[scale=1]{imagefile}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Gráfico da velocidade em função do tempo}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			No caso da velocidade, como ela é constante ao longo do tempo, então o gráfico da velocidade versus tempo é uma reta horizontal, como mostra a figura ao lado. Além disso, poderemos obter o deslocamento a partir deste gráfico simplesmente determinando a área da figura geométrica formada abaixo da reta.
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.55,transform shape, font=\Large]
+				
+				\tkzInit[xmin=0,xmax=8,ymin=0,ymax=6]
+				%	\tkzGrid[color=gray!50]
+				\tkzClip[space=1.5]
+				
+				\begin{scope}[shift={(0,0)}]
+				
+				\tkzDefPoints{0/0/O}
+				
+				\tkzDrawX[label={t (s)}, right]
+				\tkzDrawY[label={v (m/s)}, above]
+				\tkzLabelX
+				\tkzLabelY
+				
+				\def\A{0}
+				\def\B{5}
+				
+				\tkzFct[samples=400,domain=1:7, line width=1pt, color=red]{\A*x+\B}
+				
+				\tkzDefPoints{1/5/A,7/5/B, 7/0/C, 1/0/D}
+				
+				\tkzDrawPoints(A,B)
+				\tkzLabelPoints[above left](A,B)
+				
+				\draw (C) to[dim arrow'={label'=$v$}, color=black, line width=1pt] (B);
+				
+				\tkzFillPolygon[color=gray!50, opacity=0.25](A,B,C,D)
+				
+				\tkzDefPoints{4/2.5/t1, 2.8/2/t2}
+				
+				\tkzText[color=black, align=left](t1){$\Delta S=(5-0)(7-1)\;m$}
+				\tkzText[color=black, align=left](t2){$\Delta S=30\;m$}
+				
+				\end{scope}
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Gráfico da velocidade versus tempo.}
+			%				\includegraphics[scale=1]{imagefile}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Velocidade negativa}
+	\begin{columns}
+		\begin{column}[t]{0.5\textwidth}
+			Quando um objeto se desloca em uma trajetória, costumamos convencionar que um dos sentidos do movimento é positivo e o outro negativo. Portanto, quando dizemos que a velocidade de um carro é -60 km/h, significa que ele está se movendo a 60 km/h no sentido convencionado como negativo, ou seja, no sentido contrário aquele orientado na trajetória. Como exemplo, na figura ao lado, podemos dizer que o carro vermelho possui velocidade positiva, enquanto que ambos
+		\end{column}
+		\begin{column}[t]{0.5\textwidth}
+			os carros brancos possuem velocidade negativa.
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.25]{figuras/posicao.png}
+\caption*{\footnotesize Sentido das velocidades de cada movimento \cite{brasilescola}.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\section{Movimento Uniformemente Variado}
+
+\subsection{}
+
+\begin{frame}{title}
+	conteúdo...
+\end{frame}
+
+\begin{frame}{Velocidade Instantânea}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			conteúdo...
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{figure}
+				\centering
+				%				\includegraphics[scale=1]{imagefile}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\section{Apêndice}
+
+\subsection{}
+
+\begin{frame}{Alfabeto grego}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{table}
+				\begin{tabular}[c]{ccc}
+					Alfa & $A$ & $\alpha$\\
+					Beta & $B$ & $\beta$\\
+					Gama & $\Gamma$ & $\gamma$\\
+					Delta & $\Delta$ & $\delta$\\
+					Epsílon & $E$ & $\epsilon$,$\varepsilon$\\
+					Zeta & $Z$ & $\zeta$\\
+					Eta & $H$ & $\eta$\\
+					Teta & $\Theta$ & $\theta$\\
+					Iota & $I$ & $\iota$\\
+					Capa & $K$ & $\kappa$\\
+					Lambda & $\Lambda$ & $\lambda$\\
+					Mi & $M$ & $\mu$
+				\end{tabular}
+			\end{table}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+	\begin{table}
+		\begin{tabular}[c]{ccc}
+			Ni & $N$ & $\nu$\\
+			Csi & $\Xi$ & $\xi$\\
+			ômicron & $O$ & $o$\\
+			Pi & $\Pi$ & $\pi$\\
+			Rô & $P$ & $\rho$\\
+			Sigma & $\Sigma$ & $\sigma$\\
+			Tau & $T$ & $\tau$\\
+			Ípsilon & $\Upsilon$ & $\upsilon$\\
+			Fi & $\Phi$ & $\phi$,$\varphi$\\
+			Qui & $X$ & $\chi$\\
+			Psi & $\Psi$ & $\psi$\\
+			Ômega & $\Omega$ & $\omega$
+		\end{tabular}
+	\end{table}
+\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Referências e observações\footnote{Este material está sujeito a modificações. Recomenda-se acompanhamento permanente.}}
+	\bibliographystyle{jurabib}
+	\begin{thebibliography}{9}
+		\bibitem{alvarenga}A. Máximo, B. Alvarenga, C. Guimarães, Física. Contexto e aplicações, v.1, 2.ed., São Paulo, Scipione (2016)
+		\bibitem{brasilescola}\url{https://brasilescola.uol.com.br/fisica/movimento-uniforme.htm}
+		\bibitem{freepik}\url{https://br.freepik.com/fotos-premium/rodovia-suburbana-no-final-da-noite-vestigios-de-farois-e-lanternas-traseiras-de-trafego-intenso-e-luzes-na-ponte_20424758.htm}
+	\end{thebibliography}
+
+\vspace*{1cm}
+\begin{center}
+	Esta apresentação está disponível para download no endereço\\
+	\href{https://flavianowilliams.github.io/education}{\textcolor{blue}{https://flavianowilliams.github.io/education}}
+\end{center}
+
+\end{frame}
+
+\end{document}

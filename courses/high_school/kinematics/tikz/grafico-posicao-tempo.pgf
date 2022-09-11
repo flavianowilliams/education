@@ -1,0 +1,31 @@
+\begin{tikzpicture}[scale=4,transform shape, font=\Large]
+
+	\tkzInit[xmin=0,xmax=8,ymin=-3,ymax=7]
+	\tkzGrid[color=gray!50]
+	\tkzClip[space=1.5]
+
+	\begin{scope}[shift={(0,0)}]
+
+		\tkzDefPoints{0/0/O}
+
+		\tkzDrawX[label={t (s)}, right]
+		\tkzDrawY[label={S (m)}, above]
+		\tkzLabelX
+		\tkzLabelY
+
+		\def\A{1}
+		\def\B{-2}
+
+		\tkzFct[samples=400,domain=0:8, line width=3pt, color=red]{\A*x+\B}
+
+		\tkzDefPoints{3/1/A,7/5/B, 7/1/C}
+
+		\tkzDrawPoints(A,B)
+		\tkzLabelPoints[above left](A,B)
+
+		\draw (C) to[dim arrow'={label'=$\Delta S$}, color=black, line width=3pt] (B);
+		\draw (A) to[dim arrow'={label=$\Delta t$}, color=black, line width=3pt] (C);
+
+	\end{scope}
+
+\end{tikzpicture}

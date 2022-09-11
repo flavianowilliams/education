@@ -15,6 +15,15 @@
 
 		\node[opacity=1] (fig1) at (1,1) {\includegraphics[scale=0.25]{homem_palito.png}};
 
+		\def\A{1}
+		\def\B{-4}
+
+		\tkzFct[samples=400,domain=0:10, line width=1pt]{\A*x+\B}
+
+		\tkzDefPoints{9/1/s1,9/5/s2}
+
+		\draw (s2) to[dim arrow={label=modulo},sloped] (s1);
+
 	\end{scope}
 
 \end{tikzpicture}

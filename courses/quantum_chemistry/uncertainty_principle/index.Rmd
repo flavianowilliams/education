@@ -263,7 +263,7 @@ Do ponto de vista do eletromagnetismo, a função de onda neste caso refere-se a
 ]
 .pull-right[
 As figuras de interferência também pode ser observado com a matéria, onde em 
-analogia com a luz, onde a probabilidade de localizar um fóton está relacionado com $E^2_m$, a grandeza $|\Psi|^2$ deve ser proporcional à probabilidade de que um elétron seja encontrado em uma certa região no espaço.
+analogia com a luz, onde a probabilidade de localizar um fóton está relacionado com $E^2_m$, a grandeza $\Psi^2$ deve ser proporcional à probabilidade de que um elétron seja encontrado em uma certa região no espaço.
 
 ```{r, echo=FALSE, message=FALSE, fig.align='center',fig.cap='Experimento da fenda dupla com baixa intensidade.',out.width="100%",fig.asp=1,fig.ncol=2}
   knitr::include_graphics("img/fenda-dupla.gif")
@@ -276,9 +276,9 @@ class: left, middle
 <div class="my-header"><span>Interpretação probabilística da função de onda - A relação com a mecânica estatística</span></div>
 
 .pull-left[
-De acordo com a interpretação probabilística da matéria, a probabilidade em localizar um elétron em uma certa região no espaço é dado por $|\Psi|^2$. Supondo um elétron propagando na direção x, podemos dizer que a probabilidade de ser encontrado no intevalo dx é dado por $|\Psi|^2dx$.
+Em analogia com o modelo de interferência mostrado anteriormente, a probabilidade em localizar um elétron em uma certa região no espaço deve ser algo dependente de $\Psi^2$. Supondo um elétron propagando na direção x, podemos dizer que a probabilidade de ser encontrado no intevalo dx pode ser dado por $\Psi^2dx$.
 
-Neste caso $\Psi$ pode ter partes complexas, com a intenção de representar a incerteza na medição. Portanto, não basta apenas fazer o produto $\Psi^2$, pois <font class="red">devemos multiplicar a função de onda pelo seu complexo conjugado. Isso é necessário, pois precisamos de um valor real para representar a localização do elétron</font>.
+Porém, $\Psi$ pode ter complexo, devido a natureza da incerteza na medição. Assim, não basta apenas calcular o produto $\Psi^2$, pois <font class="red">devemos multiplicar a função de onda pelo seu complexo conjugado. Isso é necessário, pois precisamos de um valor real para representar a localização do elétron</font>.
 
 Definimos a probabilidade em localizar o elétron no intervalo dx por $P(x)dx$ e $|\Psi|^2$, sendo P(x) a função chamada densidade de probabilidade,
 \begin{aligned}

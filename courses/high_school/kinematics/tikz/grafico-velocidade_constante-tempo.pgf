@@ -1,37 +1,39 @@
-\begin{tikzpicture}[scale=4,transform shape, font=\Large]
+				\begin{tikzpicture}[scale=3.55,transform shape, font=\Large]
+				
+				\tkzInit[xmin=0,xmax=8,ymin=0,ymax=6]
+				%	\tkzGrid[color=gray!50]
+				\tkzClip[space=1.5]
+				
+				\begin{scope}[shift={(0,0)}]
+				
+				\tkzDefPoints{0/0/O}
+				
+				\tkzDrawX[label={t (s)}, right]
+				\tkzDrawY[label={v (m/s)}, above]
+%				\tkzLabelX
+%				\tkzLabelY
+				
+				\def\A{0.4}
+				\def\B{3}
+				
+				\tkzFct[samples=400,domain=0:7, line width=1pt, color=red]{\A*x+\B}
+				\tkzDefPointByFct(0)\tkzGetPoint{A}
+				\tkzDefPointByFct(7)\tkzGetPoint{B}
 
-	\tkzInit[xmin=0,xmax=8,ymin=0,ymax=6]
-%	\tkzGrid[color=gray!50]
-	\tkzClip[space=1.5]
-
-	\begin{scope}[shift={(0,0)}]
-
-		\tkzDefPoints{0/0/O}
-
-		\tkzDrawX[label={t (s)}, right]
-		\tkzDrawY[label={v (m/s)}, above]
-		\tkzLabelX
-		\tkzLabelY
-
-		\def\A{0}
-		\def\B{5}
-
-		\tkzFct[samples=400,domain=1:7, line width=3pt, color=red]{\A*x+\B}
-
-		\tkzDefPoints{1/5/A,7/5/B, 7/0/C, 1/0/D}
-
-		\tkzDrawPoints(A,B)
-		\tkzLabelPoints[above left](A,B)
-
-		\draw (C) to[dim arrow'={label'=$v$}, color=black, line width=3pt] (B);
-
-		\tkzFillPolygon[color=gray!50, opacity=0.25](A,B,C,D)
-
-		\tkzDefPoints{4/2.5/t1, 2.8/2/t2}
-
-		\tkzText[color=black, align=left](t1){$\Delta S=(5-0)(7-1)\;m$}
-		\tkzText[color=black, align=left](t2){$\Delta S=30\;m$}
-
-	\end{scope}
-
-\end{tikzpicture}
+				\tkzDefPoints{7/0/C, 0/0/D, 7/\B/E}
+				
+				\tkzDrawPoints(A)
+				\tkzText[color=black, left](A){$v_1$}
+				
+				\draw (C) to[dim arrow'={label'=$v_2$}, color=black, line width=1pt] (B);
+				\draw (D) to[dim arrow'={label'=$t$}, color=black, line width=1pt] (C);
+				
+				\tkzFillPolygon[color=gray!50, opacity=0.25](A,B,C,D)
+				
+				\tkzDefPoints{4/2.5/t1, 2.8/2/t2}
+				
+				\tkzText[color=black, align=left](t1){$\Delta S=\frac{(v_2+v_1)t}{2}$}
+				
+				\end{scope}
+				
+				\end{tikzpicture}

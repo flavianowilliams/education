@@ -1,0 +1,29 @@
+		\begin{tikzpicture}[scale=2.4,transform shape, font=\Large]
+				
+				\tkzInit[xmin=0,xmax=7,ymin=-4,ymax=5]
+				\tkzGrid[color=gray!50]
+				\tkzClip[space=1.5]
+				
+				\begin{scope}[shift={(0,0)}]
+				
+					\tkzDefPoints{0/0/O}
+					
+					\tkzDrawX[label={t (s)}, right]
+					\tkzDrawY[label={S (m)}, above]
+					\tkzLabelX
+					\tkzLabelY
+					
+					\tkzFct[samples=400,domain=0:7, line width=1pt, color=red]{1*x**2-7*x+10}
+					\tkzDefPointByFct(3.5)\tkzGetPoint{v}
+
+					\tkzDefPoints{3/1/A,0/-2.25/B, 7/-2.25/C}
+					
+%					\tkzDrawPoints(A,B)
+%					\tkzLabelPoints[above left](A,B)
+					
+					\draw (v) to[dim arrow={label=Retr. retardado}, color=black, line width=1pt] (B);
+					\draw (C) to[dim arrow={label=Prog. acelerado}, color=black, line width=1pt] (v);
+				
+				\end{scope}
+				
+		\end{tikzpicture}

@@ -247,19 +247,222 @@
 
 \subsection{}
 
-\begin{frame}{title}
-	conteúdo...
+\begin{frame}{O que é aceleração}
+	\begin{columns}
+		\begin{column}[t]{0.4\textwidth}
+			Aceleração é uma grandeza física que indica o quanto movimento do objeto, ou seja, a sua velocidade, muda a cada segundo. Quantitativamente, definimos a velocidade como a razão da variação da velocidade $\Delta v$ realizado pelo objeto pelo intervalo de tempo $\Delta t$ que a velocidade está variando,
+			\begin{align*}
+				a = \frac{v_2-v_1}{t_2-t_1} = \frac{\Delta v}{\Delta t}.
+			\end{align*}
+		\end{column}
+		\begin{column}[t]{0.6\textwidth}
+			Lembrando que a aceleração também pode ser negativa, quando ($\Delta v<0$), ou seja, quando o objeto estiver desacelerando, por exemplo, ou quando ele estiver acelerando (com a velocidade aumentando em módulo) mas no movimento retrógrado.
+			\begin{table}
+				\small
+				\begin{tabular}{ccc}
+					\hline
+					Velocidade & Aceleração & Movimento\\
+					\hline
+					Positiva & Positiva & Progressivo acelerado\\
+					Positiva & Negativa & Progressivo retardado\\
+					Negativa & Positiva & Retrógrado retardado\\
+					Negativa & Negativa & Retrógrado acelerado\\
+					\hline
+				\end{tabular}
+			\end{table}
+		\end{column}
+	\end{columns}
 \end{frame}
 
-\begin{frame}{Velocidade Instantânea}
+\begin{frame}{Cálculo da velocidade a partir da aceleração}
+	\begin{columns}
+	\begin{column}[c]{0.5\textwidth}
+		Da expressão $v_2=v_1+a(t_2-t_1)$, se definirmos que o instante inicial t\textsubscript{1} = 0 segundo, podemos dizer que S\textsubscript{1} é a posição inicial, e a equação se transforma em uma função do primeiro grau, onde v é a variável dependente da variável t,
+		\begin{align*}
+		v(t) = v_1+vt.
+		\end{align*}
+		Sabendo que uma função pode ser representada em um gráfico v(t) versus t, teremos
+	\end{column}
+	\begin{column}[c]{0.5\textwidth}
+		\begin{figure}
+			\centering
+				\begin{tikzpicture}[scale=0.4,transform shape, font=\Large]
+
+				\tkzInit[xmin=0,xmax=8,ymin=-3,ymax=7]
+				\tkzGrid[color=gray!50]
+				\tkzClip[space=1.5]
+				
+				\begin{scope}[shift={(0,0)}]
+				
+				\tkzDefPoints{0/0/O}
+				
+				\tkzDrawX[label={t (s)}, right]
+				\tkzDrawY[label={v (m/s)}, above]
+				\tkzLabelX
+				\tkzLabelY
+				
+				\def\A{1}
+				\def\B{-2}
+				
+				\tkzFct[samples=400,domain=0:8, line width=1pt, color=red]{\A*x+\B}
+				
+				\tkzDefPoints{3/1/A,7/5/B, 7/1/C}
+				
+				\tkzDrawPoints(A,B)
+				\tkzLabelPoints[above left](A,B)
+				
+				\draw (C) to[dim arrow'={label'=$\Delta v$}, color=black, line width=1pt] (B);
+				\draw (A) to[dim arrow'={label=$\Delta t$}, color=black, line width=1pt] (C);
+				
+				\end{scope}
+				
+				\end{tikzpicture}
+			\caption*{\footnotesize Gráfico da posição versus tempo.}
+			%				\includegraphics[scale=1]{imagefile}
+		\end{figure}
+	\end{column}
+\end{columns}	
+\end{frame}
+
+\begin{frame}{Cálculo do deslocamento a partir da aceleração}
 	\begin{columns}
 		\begin{column}[c]{0.5\textwidth}
-			conteúdo...
+			Assim como vimos no movimento retilíneo uniforme, podemos determinar o deslocamento a partir da área sob o gráfico v(t) x t. No caso do MUV temos que o gráfico da função velocidade representa a figura de um trapézio, como mostra a figura ao lado. Pela área do trapézio temos
+			\begin{align*}
+				S_2-S_1 & = \frac{(v_2+v_1)t}{2} = \frac{(at+2v_1)t}{2},\\
+				S_2 & = S_1+v_1t+\frac{a}{2}t^2.
+			\end{align*}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{figure}
+				\begin{tikzpicture}[scale=0.55,transform shape, font=\Large]
+	
+				\tkzInit[xmin=0,xmax=8,ymin=0,ymax=6]
+				%	\tkzGrid[color=gray!50]
+				\tkzClip[space=1.5]
+				
+				\begin{scope}[shift={(0,0)}]
+				
+				\tkzDefPoints{0/0/O}
+				
+				\tkzDrawX[label={t (s)}, right]
+				\tkzDrawY[label={v (m/s)}, above]
+				%				\tkzLabelX
+				%				\tkzLabelY
+				
+				\def\A{0.4}
+				\def\B{3}
+				
+				\tkzFct[samples=400,domain=0:7, line width=1pt, color=red]{\A*x+\B}
+				\tkzDefPointByFct(0)\tkzGetPoint{A}
+				\tkzDefPointByFct(7)\tkzGetPoint{B}
+				
+				\tkzDefPoints{7/0/C, 0/0/D, 7/\B/E}
+				
+				\tkzDrawPoints(A)
+				\tkzText[color=black, left](A){$v_1$}
+				
+				\draw (C) to[dim arrow'={label'=$v_2$}, color=black, line width=1pt] (B);
+				\draw (D) to[dim arrow'={label'=$t$}, color=black, line width=1pt] (C);
+				
+				\tkzFillPolygon[color=gray!50, opacity=0.25](A,B,C,D)
+				
+				\tkzDefPoints{4/2.5/t1, 2.8/2/t2}
+				
+				\tkzText[color=black, align=left](t1){$\Delta S=\frac{(v_2+v_1)t}{2}$}
+				
+				\end{scope}
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Deslocamento como a área sob o gráfico.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Gráfico da posição no movimento uniformemente variado}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			Da expressão $S_2=S_1+v_1t+\frac{a}{2}t^2$, se definirmos que o instante inicial t\textsubscript{1} = 0 segundo, podemos dizer que S\textsubscript{1} é a posição inicial, e a equação se transforma em uma função do segundo grau, onde S é a variável dependente da variável t, ou seja, uma concavidade para cima (a>0) ou para baixo (a<0) dependendo do valor da aceleração a.
+
+
+			Se uma função pode ser representada em um gráfico S(t) versus t, teremos
 		\end{column}
 		\begin{column}[c]{0.5\textwidth}
 			\begin{figure}
 				\centering
+				\begin{tikzpicture}[scale=0.5,transform shape, font=\Large]
+
+					\tkzInit[xmin=0,xmax=7,ymin=-4,ymax=3]
+%					\tkzGrid[color=gray!50]
+					\tkzClip[space=1.5]
+					
+					\begin{scope}[shift={(0,0)}]
+					
+					\tkzDefPoints{0/0/O}
+					
+					\tkzDrawX[label={t (s)}, right]
+					\tkzDrawY[label={S (m)}, above]
+					\tkzLabelX
+					\tkzLabelY
+					
+					\tkzFct[samples=400,domain=0:7, line width=1pt, color=red]{1*x**2-7*x+10}
+					\tkzDefPointByFct(3.5)\tkzGetPoint{v}
+					
+					\tkzDefPoints{3/1/A,0/-2.25/B, 7/-2.25/C}
+					
+					%					\tkzDrawPoints(A,B)
+					%					\tkzLabelPoints[above left](A,B)
+					
+					\draw (v) to[dim arrow={label=Retr. ret.}, color=black, line width=0.5pt] (B);
+					\draw (C) to[dim arrow={label=Prog. acel.}, color=black, line width=0.5pt] (v);
+					
+					\end{scope}
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Gráfico da posição versus tempo.}
 				%				\includegraphics[scale=1]{imagefile}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Equação de Torricelli}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			Considerando as funções horárias da posição $x(t)$ e da velocidade $v(t)$ podemos combiná-las de modo a eliminar a variável tempo. Primeiramente isolamos t em $v(t)$,
+			\begin{align*}
+			v & = v_0+at,\\
+			t & = \frac{v-v_0}{a}.
+			\end{align*}
+			Substituindo em $x(t)$ temos
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{align*}
+			x & = x_0+v_0\left(\frac{v-v_0}{a}\right)+\frac{1}{2}a\left(\frac{v-v_0}{a}\right)^2,\\
+			x & = x_0+\frac{v_0\left(v-v_0\right)}{a}+\frac{\bcancel{a}\left(v-v_0\right)^2}{2\bcancel{a^2}},\\
+			x & = x_0+\bcancel{\frac{v_0v}{a}}-\frac{v_0^2}{a}+\frac{v^2}{2a}-\bcancel{\frac{v_0v}{a}}+\frac{v_0^2}{2a}.
+			\end{align*}
+			Somando os termos remanescentes, temos como opção
+			\begin{equation*}
+			\boxed{v^2=v^2_0+2a\Delta x.}
+			\end{equation*}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Movimento de queda livre}
+	\begin{columns}
+		\begin{column}[c]{0.7\textwidth}
+			Entre os vários exemplos de movimento retilíneo temos o movimento vertical de queda livre, onde os objetos caem em movimento progressivo acelerado, com aceleração constante de $10\;m/s^2$. Na prática, os objetos não caem em queda livre, devido a resistência do ar que impede o seu movimento. Mas se colocarmos dois objetos diferentes no vácuo, ambos chegarão ao mesmo tempo no chão.
+			\begin{corollary}
+				Abandonados de uma mesma altura, um objeto leve e outro pesado caem simultaneamente e atingem o chão no mesmo instante.
+			\end{corollary}
+		\end{column}
+		\begin{column}[c]{0.3\textwidth}
+			\begin{figure}
+				\includegraphics[scale=0.25]{figuras/queda-livre.jpg}
+				\caption*{\footnotesize Queda livre de uma pena e uma bola no vácuo.}
 			\end{figure}
 		\end{column}
 	\end{columns}

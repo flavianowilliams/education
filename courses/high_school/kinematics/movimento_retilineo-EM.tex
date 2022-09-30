@@ -265,8 +265,8 @@
 					\hline
 					Positiva & Positiva & Progressivo acelerado\\
 					Positiva & Negativa & Progressivo retardado\\
-					Negativa & Positiva & Retrógrado retardado\\
-					Negativa & Negativa & Retrógrado acelerado\\
+					Negativa & Positiva & Retrógrado acelerado\\
+					Negativa & Negativa & Retrógrado retardado\\
 					\hline
 				\end{tabular}
 			\end{table}
@@ -369,7 +369,7 @@
 				
 				\tkzDefPoints{4/2.5/t1, 2.8/2/t2}
 				
-				\tkzText[color=black, align=left](t1){$\Delta S=\frac{(v_2+v_1)t}{2}$}
+				\tkzText[color=black, align=left](t1){\huge $\Delta S=\frac{(v_2+v_1)t}{2}$}
 				
 				\end{scope}
 				
@@ -414,7 +414,7 @@
 					%					\tkzDrawPoints(A,B)
 					%					\tkzLabelPoints[above left](A,B)
 					
-					\draw (v) to[dim arrow={label=Retr. ret.}, color=black, line width=0.5pt] (B);
+					\draw (v) to[dim arrow={label=Retr. acel.}, color=black, line width=0.5pt] (B);
 					\draw (C) to[dim arrow={label=Prog. acel.}, color=black, line width=0.5pt] (v);
 					
 					\end{scope}
@@ -432,20 +432,20 @@
 		\begin{column}[c]{0.5\textwidth}
 			Considerando as funções horárias da posição $x(t)$ e da velocidade $v(t)$ podemos combiná-las de modo a eliminar a variável tempo. Primeiramente isolamos t em $v(t)$,
 			\begin{align*}
-			v & = v_0+at,\\
-			t & = \frac{v-v_0}{a}.
+			v & = v_1+at,\\
+			t & = \frac{v-v_1}{a}.
 			\end{align*}
-			Substituindo em $x(t)$ temos
+			Substituindo em $S(t)$ temos
 		\end{column}
 		\begin{column}[c]{0.5\textwidth}
 			\begin{align*}
-			x & = x_0+v_0\left(\frac{v-v_0}{a}\right)+\frac{1}{2}a\left(\frac{v-v_0}{a}\right)^2,\\
-			x & = x_0+\frac{v_0\left(v-v_0\right)}{a}+\frac{\bcancel{a}\left(v-v_0\right)^2}{2\bcancel{a^2}},\\
-			x & = x_0+\bcancel{\frac{v_0v}{a}}-\frac{v_0^2}{a}+\frac{v^2}{2a}-\bcancel{\frac{v_0v}{a}}+\frac{v_0^2}{2a}.
+				S & = S_1+v_1\left(\frac{v-v_1}{a}\right)+\frac{1}{2}a\left(\frac{v-v_1}{a}\right)^2,\\
+				S & = S_1+\frac{v_1\left(v-v_1\right)}{a}+\frac{\bcancel{a}\left(v-v_1\right)^2}{2\bcancel{a^2}},\\
+				S & = S_1+\bcancel{\frac{v_1v}{a}}-\frac{v_1^2}{a}+\frac{v^2}{2a}-\bcancel{\frac{v_1v}{a}}+\frac{v_1^2}{2a}.
 			\end{align*}
 			Somando os termos remanescentes, temos como opção
 			\begin{equation*}
-			\boxed{v^2=v^2_0+2a\Delta x.}
+			\boxed{v^2=v^2_1+2a\Delta S.}
 			\end{equation*}
 		\end{column}
 	\end{columns}

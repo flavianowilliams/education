@@ -269,87 +269,6 @@
 	\end{columns}
 \end{frame}
 
-\begin{frame}{Trabalho realizado ao longo de um caminho}
-	\begin{columns}
-		\begin{column}[c]{0.6\textwidth}
-			Cada deslocamento $d\vec{r}$ que a partícula realiza, a componente da força $\vec{F}$ paralela ao deslocamento realiza trabalho $dW$, onde
-			\begin{equation*}
-				dW = \vec{F}\cdot d\vec{r}.
-			\end{equation*}
-			Para determinar o trabalho total realizado por $\vec{F}$ durante a trajetória da partícula ao longo do caminho c, somamos cada contribuição $dW$ na forma de integral,
-			\begin{equation*}
-				\boxed{W = \int_{c} \vec{F}\cdot d\vec{r}.}
-			\end{equation*}
-		\end{column}
-		\begin{column}[c]{0.4\textwidth}
-			\begin{figure}
-				\centering
-				\begin{tikzpicture}[scale=0.45,transform shape,font=\Large]
-				
-				\tkzInit[xmin=0,xmax=8,ymin=0,ymax=10]
-%				\tkzGrid[color=gray!20]
-				\tkzClip
-				
-				\tkzDefPoints{1/9/i,7/1/f,1/4/c1,5.4/6/c2}
-				
-				\tkzDrawPoints(i,f)
-				\tkzLabelPoints[above](i)
-				\tkzLabelPoints(f)
-				
-				\draw (i) .. controls (c1) and (c2) .. (f);
-				
-				\tkzDefPoints{5/4/q,5.7/3.3/r,5/2/F}
-				
-				\tkzMarkAngle[size=0.6](F,q,r)
-				\tkzLabelAngle(F,q,r){$\theta$}
-
-				\draw[->,color=red,line width=1.5pt] (q) -- (F) node [below] {$\vec{F}$};
-				\draw[->,color=red,line width=1.5pt] (q) -- (r) node [above right] {$d\vec{r}$};
-				
-				\draw node [draw, circle,font=\normalsize,opacity=100,fill=white] at (q) {m};
-				
-				\tkzDefPoints{6/8/t1,2/6/p2}
-				
-				\draw[->] (t1) -- (p2);
-				
-				\tkzText[fill=white](t1){Trajetoria};
-				
-				\end{tikzpicture}
-				\caption*{\footnotesize Sentido do trabalho e deslocamento infinitesimal de uma partícula de massa m.}
-			\end{figure}
-		\end{column}
-	\end{columns}
-\end{frame}
-
-\begin{frame}{Trabalho e variação da energia cinética}
-%	\begin{multicols*}{2}
-	\begin{columns}
-		\begin{column}[t]{0.5\textwidth}
-		Substituindo $\vec{F}=m\frac{d\vec{v}}{dt}$ na expressão do trabalho temos
-		\begin{align*}
-			W & = \int_{c} \vec{F}\cdot d\vec{r},\\
-			W & = m\int_{c} \frac{d\vec{v}}{dt}\cdot d\vec{r}.
-		\end{align*}
-		No entanto, sabemos que $d\vec{r}=\frac{d\vec{v}}{dt}dt$. Substituindo temos
-		\begin{align*}
-			W & = \int \left(\frac{d\vec{v}}{dt}\right)\cdot\left(\frac{d\vec{r}}{dt}\right)dt.
-		\end{align*}
-	\end{column}
-	\begin{column}[t]{0.5\textwidth}
-		Mas podemos perceber também que $d\vec{v}=\frac{d\vec{v}}{dt}dt$.
-		\begin{equation*}
-			W = m\int \vec{v}\cdot d\vec{v}.
-		\end{equation*}
-		 Além disso, podemos dizer que $\vec{v}\cdot d\vec{v}\equiv vdv$, portanto
-		\begin{align*}
-			W & = m\int vdv,\\
-			\Aboxed{W & = \frac{1}{2}mv^2_f-\frac{1}{2}mv^2_i.}
-\end{align*}
-	\end{column}
-\end{columns}
-%	\end{multicols*}
-\end{frame}
-
 \section{Potência}
 
 \subsection{}
@@ -499,6 +418,87 @@
 \section{Apêndice}
 
 \subsection{}
+
+\begin{frame}{Trabalho realizado ao longo de um caminho}
+	\begin{columns}
+		\begin{column}[c]{0.6\textwidth}
+			Cada deslocamento $d\vec{r}$ que a partícula realiza, a componente da força $\vec{F}$ paralela ao deslocamento realiza trabalho $dW$, onde
+			\begin{equation*}
+			dW = \vec{F}\cdot d\vec{r}.
+			\end{equation*}
+			Para determinar o trabalho total realizado por $\vec{F}$ durante a trajetória da partícula ao longo do caminho c, somamos cada contribuição $dW$ na forma de integral,
+			\begin{equation*}
+			\boxed{W = \int_{c} \vec{F}\cdot d\vec{r}.}
+			\end{equation*}
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.45,transform shape,font=\Large]
+				
+				\tkzInit[xmin=0,xmax=8,ymin=0,ymax=10]
+				%				\tkzGrid[color=gray!20]
+				\tkzClip
+				
+				\tkzDefPoints{1/9/i,7/1/f,1/4/c1,5.4/6/c2}
+				
+				\tkzDrawPoints(i,f)
+				\tkzLabelPoints[above](i)
+				\tkzLabelPoints(f)
+				
+				\draw (i) .. controls (c1) and (c2) .. (f);
+				
+				\tkzDefPoints{5/4/q,5.7/3.3/r,5/2/F}
+				
+				\tkzMarkAngle[size=0.6](F,q,r)
+				\tkzLabelAngle(F,q,r){$\theta$}
+				
+				\draw[->,color=red,line width=1.5pt] (q) -- (F) node [below] {$\vec{F}$};
+				\draw[->,color=red,line width=1.5pt] (q) -- (r) node [above right] {$d\vec{r}$};
+				
+				\draw node [draw, circle,font=\normalsize,opacity=100,fill=white] at (q) {m};
+				
+				\tkzDefPoints{6/8/t1,2/6/p2}
+				
+				\draw[->] (t1) -- (p2);
+				
+				\tkzText[fill=white](t1){Trajetoria};
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Sentido do trabalho e deslocamento infinitesimal de uma partícula de massa m.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Trabalho e variação da energia cinética}
+	%	\begin{multicols*}{2}
+	\begin{columns}
+		\begin{column}[t]{0.5\textwidth}
+			Substituindo $\vec{F}=m\frac{d\vec{v}}{dt}$ na expressão do trabalho temos
+			\begin{align*}
+			W & = \int_{c} \vec{F}\cdot d\vec{r},\\
+			W & = m\int_{c} \frac{d\vec{v}}{dt}\cdot d\vec{r}.
+			\end{align*}
+			No entanto, sabemos que $d\vec{r}=\frac{d\vec{r}}{dt}dt$. Substituindo temos
+			\begin{align*}
+			W & = \int \left(\frac{d\vec{v}}{dt}\right)\cdot\left(\frac{d\vec{r}}{dt}\right)dt.
+			\end{align*}
+		\end{column}
+		\begin{column}[t]{0.5\textwidth}
+			Mas podemos perceber também que $d\vec{v}=\frac{d\vec{v}}{dt}dt$.
+			\begin{equation*}
+			W = m\int \vec{v}\cdot d\vec{v}.
+			\end{equation*}
+			Além disso, podemos dizer que $\vec{v}\cdot d\vec{v}\equiv vdv$, portanto
+			\begin{align*}
+			W & = m\int vdv,\\
+			\Aboxed{W & = \frac{1}{2}mv^2_f-\frac{1}{2}mv^2_i.}
+			\end{align*}
+		\end{column}
+	\end{columns}
+	%	\end{multicols*}
+\end{frame}
 
 \begin{frame}{Observações\footnote{Este material está sujeito a modificações. Recomenda-se acompanhamento permanente.}}
 	\begin{center}

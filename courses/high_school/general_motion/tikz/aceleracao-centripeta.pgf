@@ -1,0 +1,36 @@
+\begin{tikzpicture}[scale=2,transform shape, font=\Large]
+
+	\tkzInit[xmin=-10,xmax=10,ymin=-10,ymax=10]
+	\tkzGrid[color=gray!50]
+	\tkzClip[space=0.75]
+
+	\begin{scope}[shift={(0,0)}]
+
+		\tkzDefPoints{0/0/O}
+
+%		\tkzDrawX
+%		\tkzDrawY
+%		\tkzLabelX
+%		\tkzLabelY
+
+		\node[opacity=1] (fig1) at (O) {\includegraphics[scale=5]{aceleracao-centripeta.jpeg}};
+
+%		\def\A{1}
+%		\def\B{-4}
+
+%		\tkzFct[samples=400,domain=0:10, line width=1pt]{\A*x+\B}
+
+		\tkzDefPoints{6/1/t1}
+
+		\coordinate (t2) at ($(t1)+(0,-1)$);
+		\coordinate (t3) at ($(t2)+(0,-1)$);
+		\coordinate (t4) at ($(t3)+(0,-1)$);
+
+		\tkzText(t1){$v_1=v_2=v_3=\cdots$}
+		\tkzText(t2){$\vec{v}_1\neq \vec{v}_2\neq \vec{v}_3\neq \cdots$}
+
+%		\draw (s2) to[dim arrow={label=modulo},sloped] (s1);
+
+	\end{scope}
+
+\end{tikzpicture}

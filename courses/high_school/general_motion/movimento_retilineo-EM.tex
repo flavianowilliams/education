@@ -1,0 +1,565 @@
+% Aula de mecânica dos fluidos para o curso de Física II do ensino médio
+%
+\documentclass[brazil,aspectratio=169]{beamer}
+%
+%carregando preâmbulo
+\input{../../contrib/preamble}
+
+%Título
+
+\title[Mecânica-MRE]{Movimento curvilíneo}
+
+% The main document
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Sumário}
+  \tableofcontents
+\end{frame}
+
+\section{Vetores velocidade e aceleração}
+
+\subsection{}
+
+\begin{frame}{Introdução}
+	Nas aulas anteriores, estudamos movimentos retilíneos, porém existem movimentos mais complexos que esse. Como exemplo podemos citar o movimento aleatório de uma abelha, ou de um barco tentando atravessar a margem de um Rio. Esta aula será dedicada a tais movimentos que já não são mais considerados como retilíneos.
+	\begin{figure}
+		\begin{subfigure}[b]{0.3\textwidth}
+			\centering
+			\includegraphics[scale=0.1]{figuras/velocidade-instantanea.png}
+			\subcaption*{\footnotesize Movimento de uma abelha.}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.3\textwidth}
+			\centering
+			\includegraphics[scale=0.03]{figuras/rotatoria.jpg}
+			\subcaption*{\footnotesize Movimento em uma rotatória.}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.3\textwidth}
+			\centering
+			\includegraphics[scale=0.16]{figuras/barco-correnteza.jpg}
+			\subcaption*{\footnotesize Movimento de um barco.}
+		\end{subfigure}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Velocidade instantânea}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			Considere o movimento abelha ao longo de uma trajetória, como mostra a figura ao lado. A sua velocidade pode mudar de intensidade, direção e sentido, assim como mostra os vetores $\vec{v}_1$, $\vec{v}_2$, $\vec{v}_3$ e $\vec{v}_4$. Entretanto, apesar de mudar ao longo do tempo, a direção de cada velocidade será sempre tangente a trajetória.
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.25]{figuras/velocidade-instantanea.png}
+				\caption*{\footnotesize Velocidade instantânea da abelha.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Aceleração instantânea}
+	\begin{columns}
+		\begin{column}[c]{0.6\textwidth}
+			Uma análise parecida para a velocidade feita anteriormente, podemos dizer que a aceleração também pode mudar de intensidade, direção e sentido ao longo da trajetória. Além disso, a aceleração pode alterar a velocidade não somente sua intensidade, mas também a direção e sentido. Um exemplo seria a aceleração centrípeta, que não altera a intensidade da velocidade do automóvel, mas altera a sua direção e sentido (veja a figura ao lado).
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.4,transform shape, font=\Large]
+				
+					\tkzInit[xmin=-5,xmax=8,ymin=-5,ymax=5]
+	%				\tkzGrid[color=gray!50]
+					\tkzClip[space=0.75]
+					
+					\begin{scope}[shift={(0,0)}]
+					
+					\tkzDefPoints{-1/0/A}
+					
+					\node[opacity=1] (fig1) at (A) {\includegraphics[scale=5.5]{figuras/aceleracao-centripeta.jpeg}};
+					
+					\tkzDefPoints{6/1/t1}
+					
+					\coordinate (t2) at ($(t1)+(0,-1)$);
+					\coordinate (t3) at ($(t2)+(0,-1)$);
+					\coordinate (t4) at ($(t3)+(0,-1)$);
+					
+					\tkzText(t1){\huge $v_1=v_2=v_3=\cdots$}
+					\tkzText(t2){\huge $\vec{v}_1\neq \vec{v}_2\neq \vec{v}_3\neq \cdots$}
+					
+					\end{scope}
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Movimento circular em uma rotatória.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Aceleração centrípeta e tangencial}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{corollary}
+				Sempre que variar a direção do vetor velocidade de um objeto, este possuirá uma aceleração centrípeta. Sempre que variar o módulo do vetor velocidade de um objeto, este possuirá uma aceleração tangencial.
+			\end{corollary}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.4,transform shape, font=\Large]
+				
+					\tkzInit[xmin=0,xmax=10,ymin=0,ymax=10]
+%					\tkzGrid[color=gray!50]
+					\tkzClip[space=0.75]
+					
+					\begin{scope}[shift={(0,0)}]
+					
+%					\tkzDrawX
+%					\tkzDrawY
+%					\tkzLabelX
+%					\tkzLabelY
+					
+					\tkzDefPoints{0/0/O, 10/0/A}
+					
+					\tkzDefPointBy[rotation = center O angle 85](A)\tkzGetPoint{B}
+					\tkzDefPointBy[rotation = center O angle 45](A)\tkzGetPoint{C}
+					\tkzDefTangent[at=C](O)\tkzGetPoint{D}
+					\tkzDefPointBy[homothety=center C ratio 1.5](D)\tkzGetPoint{E}
+					\tkzDefPointBy[homothety=center C ratio 0.5](O)\tkzGetPoint{F}
+					\tkzDefPointBy[homothety=center C ratio 2.5](D)\tkzGetPoint{G}
+					
+					\tkzDrawArc[color=black, arrows=->](O,A)(B)
+					
+					%		\tkzDrawPoints(A, C, D, E,G)
+					%		\tkzLabelPoints(A, C, D, E)
+					
+					\draw[->, color=gray, line width=1.5pt] (C) -- (G) node [above right] {\huge $\vec{a}_t$};
+					\draw[->, color=red, line width=1.5pt] (C) -- (E) node [above right, midway] {\huge $\vec{v}$};
+					\draw[->, color=blue, line width=1.5pt] (C) -- (F) node [below right, midway] {\huge $\vec{a}_{c}$};
+					
+					\tkzMarkRightAngle[size=0.5](E,C,F)
+					
+					\tkzDefPoint(1,7){t1}
+					\tkzDefPointBy[rotation = center O angle 75](A)\tkzGetPoint{H}
+					\draw[->, line width=1pt] (t1) -- (H);
+					\tkzText[opacity=1, fill=white](t1){Trajetória}
+
+					\end{scope}
+
+				\end{tikzpicture}
+				\caption*{\footnotesize Velocidade instantânea da abelha.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\section{Movimento circular}
+
+\subsection{}
+
+\begin{frame}{Período}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			Dizemos que uma partícula está em movimento circular quando sua trajetória é uma circunferência. Neste movimento, o vetor velocidade tem módulo constante, entretanto a sua direção e sentido muda ao longo da trajetória.
+			
+			Assim, o tempo que a partícula gasta para percorrer uma trajetória de uma circunferência completa é chamada de \alert{período do movimento (T)}. O espaço percorrido seria o comprimento C da circunferência, onde $C=2\pi R$, e R é o seu raio.
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.4,transform shape, font=\Large]
+				
+				\tkzInit[xmin=-6,xmax=6,ymin=-6,ymax=6]
+				%					\tkzGrid[color=gray!50]
+				%				\tkzClip[space=0.75]
+				
+				\begin{scope}[shift={(0,0)}]
+				
+				%					\tkzDrawX
+				%					\tkzDrawY
+				%					\tkzLabelX
+				%					\tkzLabelY
+				
+				\tkzDefPoints{0/0/O, 5/0/A}
+				
+				\tkzDrawCircle(O,A)
+				
+				% vetores 1
+				
+				\tkzDefPointBy[rotation = center O angle 0](A)\tkzGetPoint{C}
+				\tkzDefTangent[at=C](O)\tkzGetPoint{D}
+				\tkzDefPointBy[homothety=center C ratio 1.5](D)\tkzGetPoint{E}
+				\tkzDefPointBy[homothety=center C ratio 0.5](O)\tkzGetPoint{F}				
+				
+				\draw[->, color=red, line width=1.5pt] (C) -- (E) node [right, midway] {\huge $\vec{v}$};
+				
+				\tkzDrawSegment[dashed,color=gray!50](O,C)
+
+				\tkzMarkRightAngle[size=0.5,color=gray!50](E,C,F)
+				
+				\tkzDrawPoint[size=0.5cm, fill=gray!50](C)
+				
+				% vetores 2
+				
+				\tkzDefPointBy[rotation = center O angle 90](A)\tkzGetPoint{C}
+				\tkzDefTangent[at=C](O)\tkzGetPoint{D}
+				\tkzDefPointBy[homothety=center C ratio 1.5](D)\tkzGetPoint{E}
+				\tkzDefPointBy[homothety=center C ratio 0.5](O)\tkzGetPoint{F}				
+				
+				\draw[->, color=red, line width=1.5pt] (C) -- (E) node [above, midway] {\huge $\vec{v}$};
+				
+				\tkzDrawSegment[dashed,color=gray!50](O,C)
+
+				\tkzMarkRightAngle[size=0.5,color=gray!50](E,C,F)
+				
+				\tkzDrawPoint[size=0.5cm, fill=gray!50](C)
+				
+				% vetores 3
+				
+				\tkzDefPointBy[rotation = center O angle 180](A)\tkzGetPoint{C}
+				\tkzDefTangent[at=C](O)\tkzGetPoint{D}
+				\tkzDefPointBy[homothety=center C ratio 1.5](D)\tkzGetPoint{E}
+				\tkzDefPointBy[homothety=center C ratio 0.5](O)\tkzGetPoint{F}				
+				
+				\draw[->, color=red, line width=1.5pt] (C) -- (E) node [left, midway] {\huge $\vec{v}$};
+				
+				\tkzDrawSegment[dashed,color=gray!50](O,C)
+
+				\tkzMarkRightAngle[size=0.5,color=gray!50](E,C,F)
+				
+				\tkzDrawPoint[size=0.5cm, fill=gray!50](C)
+				
+				% vetores 4
+				
+				\tkzDefPointBy[rotation = center O angle 270](A)\tkzGetPoint{C}
+				\tkzDefTangent[at=C](O)\tkzGetPoint{D}
+				\tkzDefPointBy[homothety=center C ratio 1.5](D)\tkzGetPoint{E}
+				\tkzDefPointBy[homothety=center C ratio 0.5](O)\tkzGetPoint{F}				
+				
+				\draw[->, color=red, line width=1.5pt] (C) -- (E) node [below, midway] {\huge $\vec{v}$};
+
+				\tkzDrawSegment[dashed,color=gray!50](O,C)
+									
+				\tkzMarkRightAngle[size=0.5,color=gray!50](E,C,F)
+				
+				\tkzDrawPoint[size=0.5cm, fill=gray!50](C)
+				
+				%raio
+				
+				\tkzDefPointBy[rotation = center O angle 45](A)\tkzGetPoint{C}
+				
+				\draw[<->](O) -- (C) node [above, midway, sloped] {R};
+
+				%texto
+				
+				\tkzDefPoint(-5,5){t1}
+				
+				\tkzDefPointBy[rotation = center O angle 130](A)\tkzGetPoint{C}
+				
+				\draw[->] (t1) -- (C);
+				\tkzText[fill=white](t1){$C=2\pi R$}
+				
+				\end{scope}
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Direção e sentido da aceleração centrípeta e velocidade.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Período e frequência}
+	\begin{columns}
+		\begin{column}[t]{0.5\textwidth}
+			Como o movimento é uniforme o valor da velocidade será dado por
+			\begin{align*}
+				v & = \frac{\text{espaço percorrido}}{\text{período}},\\
+				v & = \frac{2\pi R}{T}.
+			\end{align*}
+			
+			Agora, definimos a frequência como o número de voltas completas realizadas pela partícula por segundo
+		\end{column}
+		\begin{column}[t]{0.5\textwidth}
+			Assim, podemos imaginar que a frequência é o inverso do período, ou seja,
+			\begin{align*}
+				\text{frequência} = \frac{1}{\text{período}}.
+			\end{align*}
+			\begin{corollary}
+				A frequência f de um movimento circular é definida por
+				\begin{equation*}
+					f = \frac{\text{número de voltas efetuadas}}{\text{tempo gasto para efetuá-las}}
+				\end{equation*}
+			\end{corollary}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Velocidade angular}
+	\begin{columns}
+		\begin{column}[t]{0.6\textwidth}
+			Vamos supor que durante um intervalo de tempo $\Delta t$ uma partícula realiza uma trajetória como mostra o arco azul da figura. A relação entre o ângulo descrito pela trajetória e o intervalo de tempo é denominado velocidade angular $\omega$,
+			\begin{align*}
+				\omega = \frac{\Delta \theta}{\Delta t}.
+			\end{align*}
+			$\omega$ pode ser determinado com o ângulo medido em graus, porém é comum usar radianos, que seria o comprimento de um arco com o mesmo ângulo mas em uma circunferência de raio igual a 1.
+		\end{column}
+		\begin{column}[t]{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.4,transform shape, font=\Large]
+				
+				\tkzInit[xmin=-6,xmax=6,ymin=-6,ymax=6]
+				%					\tkzGrid[color=gray!50]
+				\tkzClip[space=0.75]
+				
+				\begin{scope}[shift={(0,0)}]
+				
+				%					\tkzDrawX
+				%					\tkzDrawY
+				%					\tkzLabelX
+				%					\tkzLabelY
+				
+				\tkzDefPoints{0/0/O, 5/0/A}
+				
+				\tkzDrawCircle(O,A)
+				
+				% vetores 1
+				
+				\tkzDefPointBy[rotation = center O angle 45](A)\tkzGetPoint{C}
+				\tkzDefTangent[at=C](O)\tkzGetPoint{D}
+				\tkzDefPointBy[homothety=center C ratio 2](D)\tkzGetPoint{E}
+				\tkzDefPointBy[homothety=center C ratio 1.0](O)\tkzGetPoint{F}				
+				
+				\draw[->, color=red, line width=1.5pt] (C) -- (E) node [above right, midway] {\huge $\vec{v}$};
+				\draw[dashed, color=black, line width=1pt] (C) -- (F);
+				
+				\tkzMarkRightAngle[size=0.5](E,C,F)
+				
+				% vetores 2
+				
+				\tkzDefPointBy[rotation = center O angle 125](A)\tkzGetPoint{C2}
+				\tkzDefTangent[at=C2](O)\tkzGetPoint{D}
+				\tkzDefPointBy[homothety=center C2 ratio 2](D)\tkzGetPoint{E}
+				\tkzDefPointBy[homothety=center C2 ratio 1.0](O)\tkzGetPoint{F}				
+				
+				\draw[->, color=red, line width=1.5pt] (C2) -- (E) node [above left, midway] {\huge $\vec{v}$};
+				\draw[dashed, color=black, line width=1pt] (C2) -- (F);
+				
+				\tkzMarkRightAngle[size=0.5](E,C2,F)
+				
+				% arco
+				
+				\tkzDrawArc[color=blue, line width=2pt](O,C)(C2)
+				\tkzDrawPoint[size=0.5cm, fill=gray!50](C2)
+				\tkzDrawPoint[size=0.5cm, fill=gray!50](C)
+		
+				%angulo
+				
+				\tkzMarkAngle[mark=none](C,O,C2)
+				\tkzLabelAngle[above](C,O,C2){$\Delta\theta$}
+				
+				%raio
+				
+				\tkzDefPointBy[rotation = center O angle 270](A)\tkzGetPoint{C}
+				
+				\draw[<->](O) -- (C) node [right, midway] {R};
+				
+				\end{scope}
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize ...}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Relação entre v e $\omega$}
+	\begin{columns}
+		\begin{column}[t]{0.5\textwidth}
+			Uma maneira de calcular a velocidade angular é considerar uma partícula efetuando uma volta completa em uma circunferência de raio 1, pois a sua velocidade angular será a mesma independente do raio da trajetória. Assim, o tempo gasto seria o período do movimento e o espaço percorrido o comprimento da circunferência $C=\SI{2\pi}{rad}$,
+			\begin{align*}
+				\omega = \frac{2\pi}{T}\;\text{rad/s}.
+			\end{align*}
+		\end{column}
+		\begin{column}[t]{0.5\textwidth}
+			Além disso, no movimento circular, a velocidade é definida como $v=2\pi R/T$ (veja o slide anterior), ou
+			\begin{align*}
+				v = \overbracket{\left(\frac{2\pi}{T}\right)}^{\alert{\omega}}R,
+				v = \omega R.
+			\end{align*}
+			\begin{corollary}
+				Lembrando que no SI, a unidade de medida da velocidade angular é radiano por segundo (rad/s).
+			\end{corollary}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Aceleração centrípeta e velocidade tangencial}
+	\begin{columns}
+		\begin{column}[c]{0.6\textwidth}
+			No movimento circular uniforme, consideramos que a aceleração tangencial é  zero. Assim, a única aceleração que existe neste movimento é a aceleração centrípeta, e sua relação com a velocidade é dado por
+			\begin{align*}
+				a_{c} = \frac{v^2}{R}.
+			\end{align*}
+			A aceleração centrípeta não altera o módulo da velocidade, somente a sua direção e sentido. Isso acontece porque a sua direção é perpendicular a direção da velocidade.
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.4,transform shape, font=\Large]
+				
+				\tkzInit[xmin=-6,xmax=6,ymin=-6,ymax=6]
+				%					\tkzGrid[color=gray!50]
+%				\tkzClip[space=0.75]
+				
+				\begin{scope}[shift={(0,0)}]
+				
+				%					\tkzDrawX
+				%					\tkzDrawY
+				%					\tkzLabelX
+				%					\tkzLabelY
+				
+				\tkzDefPoints{0/0/O, 5/0/A}
+				
+				\tkzDrawCircle(O,A)
+				
+				% vetores 1
+				
+				\tkzDefPointBy[rotation = center O angle 0](A)\tkzGetPoint{C}
+				\tkzDefTangent[at=C](O)\tkzGetPoint{D}
+				\tkzDefPointBy[homothety=center C ratio 1.5](D)\tkzGetPoint{E}
+				\tkzDefPointBy[homothety=center C ratio 0.5](O)\tkzGetPoint{F}				
+				
+				\draw[->, color=red, line width=1.5pt] (C) -- (E) node [right, midway] {\huge $\vec{v}$};
+				\draw[->, color=blue, line width=1.5pt] (C) -- (F) node [below, midway] {\huge $\vec{a}_{c}$};
+				
+				\tkzMarkRightAngle[size=0.5](E,C,F)
+				
+				\tkzDrawPoint[size=0.5cm, fill=gray!50](C)
+				
+				% vetores 2
+				
+				\tkzDefPointBy[rotation = center O angle 90](A)\tkzGetPoint{C}
+				\tkzDefTangent[at=C](O)\tkzGetPoint{D}
+				\tkzDefPointBy[homothety=center C ratio 1.5](D)\tkzGetPoint{E}
+				\tkzDefPointBy[homothety=center C ratio 0.5](O)\tkzGetPoint{F}				
+				
+				\draw[->, color=red, line width=1.5pt] (C) -- (E) node [above, midway] {\huge $\vec{v}$};
+				\draw[->, color=blue, line width=1.5pt] (C) -- (F) node [right, midway] {\huge $\vec{a}_{c}$};
+				
+				\tkzMarkRightAngle[size=0.5](E,C,F)
+				
+				\tkzDrawPoint[size=0.5cm, fill=gray!50](C)
+				
+				% vetores 3
+				
+				\tkzDefPointBy[rotation = center O angle 180](A)\tkzGetPoint{C}
+				\tkzDefTangent[at=C](O)\tkzGetPoint{D}
+				\tkzDefPointBy[homothety=center C ratio 1.5](D)\tkzGetPoint{E}
+				\tkzDefPointBy[homothety=center C ratio 0.5](O)\tkzGetPoint{F}				
+				
+				\draw[->, color=red, line width=1.5pt] (C) -- (E) node [left, midway] {\huge $\vec{v}$};
+				\draw[->, color=blue, line width=1.5pt] (C) -- (F) node [below, midway] {\huge $\vec{a}_{c}$};
+				
+				\tkzMarkRightAngle[size=0.5](E,C,F)
+				
+				\tkzDrawPoint[size=0.5cm, fill=gray!50](C)
+				
+				% vetores 4
+				
+				\tkzDefPointBy[rotation = center O angle 270](A)\tkzGetPoint{C}
+				\tkzDefTangent[at=C](O)\tkzGetPoint{D}
+				\tkzDefPointBy[homothety=center C ratio 1.5](D)\tkzGetPoint{E}
+				\tkzDefPointBy[homothety=center C ratio 0.5](O)\tkzGetPoint{F}				
+				
+				\draw[->, color=red, line width=1.5pt] (C) -- (E) node [below, midway] {\huge $\vec{v}$};
+				\draw[->, color=blue, line width=1.5pt] (C) -- (F) node [right, midway] {\huge $\vec{a}_{c}$};
+				
+				\tkzMarkRightAngle[size=0.5](E,C,F)
+				
+				\tkzDrawPoint[size=0.5cm, fill=gray!50](C)
+				
+				%raio
+				
+				\tkzDefPointBy[rotation = center O angle 45](A)\tkzGetPoint{C}
+				
+				\draw[<->](O) -- (C) node [above, midway, sloped] {R};
+				
+				\end{scope}
+				
+				\end{tikzpicture}
+				\caption*{\footnotesize Direção e sentido da aceleração centrípeta e da  velocidade.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\section{Composição de velocidades}
+
+\subsection{}
+
+\section{Apêndice}
+
+\subsection{}
+
+\begin{frame}{Alfabeto grego}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{table}
+				\begin{tabular}[c]{ccc}
+					Alfa & $A$ & $\alpha$\\
+					Beta & $B$ & $\beta$\\
+					Gama & $\Gamma$ & $\gamma$\\
+					Delta & $\Delta$ & $\delta$\\
+					Epsílon & $E$ & $\epsilon$,$\varepsilon$\\
+					Zeta & $Z$ & $\zeta$\\
+					Eta & $H$ & $\eta$\\
+					Teta & $\Theta$ & $\theta$\\
+					Iota & $I$ & $\iota$\\
+					Capa & $K$ & $\kappa$\\
+					Lambda & $\Lambda$ & $\lambda$\\
+					Mi & $M$ & $\mu$
+				\end{tabular}
+			\end{table}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+	\begin{table}
+		\begin{tabular}[c]{ccc}
+			Ni & $N$ & $\nu$\\
+			Csi & $\Xi$ & $\xi$\\
+			ômicron & $O$ & $o$\\
+			Pi & $\Pi$ & $\pi$\\
+			Rô & $P$ & $\rho$\\
+			Sigma & $\Sigma$ & $\sigma$\\
+			Tau & $T$ & $\tau$\\
+			Ípsilon & $\Upsilon$ & $\upsilon$\\
+			Fi & $\Phi$ & $\phi$,$\varphi$\\
+			Qui & $X$ & $\chi$\\
+			Psi & $\Psi$ & $\psi$\\
+			Ômega & $\Omega$ & $\omega$
+		\end{tabular}
+	\end{table}
+\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Referências e observações\footnote{Este material está sujeito a modificações. Recomenda-se acompanhamento permanente.}}
+	\bibliographystyle{jurabib}
+	\begin{thebibliography}{9}
+		\bibitem{alvarenga}A. Máximo, B. Alvarenga, C. Guimarães, Física. Contexto e aplicações, v.1, 2.ed., São Paulo, Scipione (2016)
+		\bibitem{brasilescola}\url{https://brasilescola.uol.com.br/fisica/movimento-uniforme.htm}
+		\bibitem{freepik}\url{https://br.freepik.com/fotos-premium/rodovia-suburbana-no-final-da-noite-vestigios-de-farois-e-lanternas-traseiras-de-trafego-intenso-e-luzes-na-ponte_20424758.htm}
+	\end{thebibliography}
+
+\vspace*{1cm}
+\begin{center}
+	Esta apresentação está disponível para download no endereço\\
+	\href{https://flavianowilliams.github.io/education}{\textcolor{blue}{https://flavianowilliams.github.io/education}}
+\end{center}
+
+\end{frame}
+
+\end{document}

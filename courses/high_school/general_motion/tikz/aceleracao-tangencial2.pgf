@@ -1,0 +1,82 @@
+				\begin{tikzpicture}[scale=0.4,transform shape, font=\Large]
+				
+					\tkzInit[xmin=-6,xmax=6,ymin=-6,ymax=6]
+%					\tkzGrid[color=gray!50]
+					\tkzClip[space=0.75]
+					
+					\begin{scope}[shift={(0,0)}]
+					
+%					\tkzDrawX
+%					\tkzDrawY
+%					\tkzLabelX
+%					\tkzLabelY
+					
+					\tkzDefPoints{0/0/O, 5/0/A}
+					
+					\tkzDrawCircle(O,A)
+
+					% vetores 1
+
+					\tkzDefPointBy[rotation = center O angle 0](A)\tkzGetPoint{C}
+					\tkzDefTangent[at=C](O)\tkzGetPoint{D}
+					\tkzDefPointBy[homothety=center C ratio 1.5](D)\tkzGetPoint{E}
+					\tkzDefPointBy[homothety=center C ratio 0.5](O)\tkzGetPoint{F}				
+
+					\draw[->, color=red, line width=1.5pt] (C) -- (E) node [right, midway] {\huge $\vec{v}$};
+					\draw[->, color=blue, line width=1.5pt] (C) -- (F) node [below, midway] {\huge $\vec{a}_{c}$};
+					
+					\tkzMarkRightAngle[size=0.5](E,C,F)
+
+					\tkzDrawPoint[size=0.5cm, fill=gray!50](C)
+
+					% vetores 2
+
+					\tkzDefPointBy[rotation = center O angle 90](A)\tkzGetPoint{C}
+					\tkzDefTangent[at=C](O)\tkzGetPoint{D}
+					\tkzDefPointBy[homothety=center C ratio 1.5](D)\tkzGetPoint{E}
+					\tkzDefPointBy[homothety=center C ratio 0.5](O)\tkzGetPoint{F}				
+
+					\draw[->, color=red, line width=1.5pt] (C) -- (E) node [above, midway] {\huge $\vec{v}$};
+					\draw[->, color=blue, line width=1.5pt] (C) -- (F) node [right, midway] {\huge $\vec{a}_{c}$};
+					
+					\tkzMarkRightAngle[size=0.5](E,C,F)
+
+					\tkzDrawPoint[size=0.5cm, fill=gray!50](C)
+
+					% vetores 3
+
+					\tkzDefPointBy[rotation = center O angle 180](A)\tkzGetPoint{C}
+					\tkzDefTangent[at=C](O)\tkzGetPoint{D}
+					\tkzDefPointBy[homothety=center C ratio 1.5](D)\tkzGetPoint{E}
+					\tkzDefPointBy[homothety=center C ratio 0.5](O)\tkzGetPoint{F}				
+
+					\draw[->, color=red, line width=1.5pt] (C) -- (E) node [left, midway] {\huge $\vec{v}$};
+					\draw[->, color=blue, line width=1.5pt] (C) -- (F) node [below, midway] {\huge $\vec{a}_{c}$};
+					
+					\tkzMarkRightAngle[size=0.5](E,C,F)
+
+					\tkzDrawPoint[size=0.5cm, fill=gray!50](C)
+
+					% vetores 4
+
+					\tkzDefPointBy[rotation = center O angle 270](A)\tkzGetPoint{C}
+					\tkzDefTangent[at=C](O)\tkzGetPoint{D}
+					\tkzDefPointBy[homothety=center C ratio 1.5](D)\tkzGetPoint{E}
+					\tkzDefPointBy[homothety=center C ratio 0.5](O)\tkzGetPoint{F}				
+
+					\draw[->, color=red, line width=1.5pt] (C) -- (E) node [below, midway] {\huge $\vec{v}$};
+					\draw[->, color=blue, line width=1.5pt] (C) -- (F) node [right, midway] {\huge $\vec{a}_{c}$};
+					
+					\tkzMarkRightAngle[size=0.5](E,C,F)
+
+					\tkzDrawPoint[size=0.5cm, fill=gray!50](C)
+
+					%raio
+
+					\tkzDefPointBy[rotation = center O angle 45](A)\tkzGetPoint{C}
+
+					\draw[<->](O) -- (C) node [above, midway, sloped] {R};
+
+					\end{scope}
+
+				\end{tikzpicture}

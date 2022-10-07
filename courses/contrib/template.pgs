@@ -6,9 +6,9 @@
 \usepackage[LGR,T1]{fontenc}
 \usepackage{tikz,pgfplots,tikz-3dplot,bm}
 \usepackage{circuitikz}
+\usepackage{tkz-base}
 \usepackage{tkz-euclide}
 \usepackage{tkz-fct}
-\usepackage{tkz-base}
 \usepackage{ragged2e}
 \usepackage{animate}
 \usepackage{ifthen}

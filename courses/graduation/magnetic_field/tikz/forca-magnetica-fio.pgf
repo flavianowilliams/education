@@ -1,0 +1,59 @@
+\begin{tikzpicture}[scale=0.4,transform shape, font=\Large]
+
+	\tkzInit[xmin=0,xmax=10,ymin=-3,ymax=4]
+	\tkzGrid[color=gray!50]
+	\tkzClip[space=0]
+
+	\begin{scope}[shift={(0,0)}]
+
+		\tkzDefPoints{0/0/O}
+
+%		\tkzDrawX
+%		\tkzDrawY
+%		\tkzLabelX
+%		\tkzLabelY
+
+%		\node[opacity=1] (fig1) at (1,1) {\includegraphics[scale=0.25]{homem_palito.png}};
+
+%		\def\A{1}
+%		\def\B{-4}
+
+%		\tkzFct[samples=400,domain=0:10, line width=1pt]{\A*x+\B}
+
+		\foreach \x in {0.5, 2.5, 4.5, 6.5, 8.5}{
+			\foreach \y in {-1.5, 0.5, 2.5}{
+				\coordinate (p1) at (\x,\y);
+				\node (B) at (p1) {X};
+			}
+		}
+
+		\tkzDefPoints{1/0/A,9/1/B}
+
+		\draw[fill=gray!25, opacity=0.25] (A) rectangle (B);
+
+		\foreach \x in {1.5,2.5,...,8.5}{
+			\coordinate (p) at (\x,0.5);
+			\draw[->,color=red] (p) --++ (0.75,0);
+			\draw[->,color=green] (p) --++ (0,0.75) node [above]  {$\vec{f}_B$};
+			\node[opacity=1, fill=blue!50] (q) at (p) {\small q};
+		}
+
+		\coordinate (t1) at ($(p)+(0.75,0)$);
+
+		\tkzText[right](t1){$\vec{v}_d$}
+
+		\coordinate (L) at ($(A)+(8,0)$);
+
+		\draw (A) to[dim arrow'={label=dL},sloped] (L);
+
+		\coordinate (E) at (2.5,-2.5);
+
+		\draw[->, line width=1pt] (E) --++(4,0) node [above, midway] {$\vec{E}$};
+
+		\coordinate (B) at (9,3);
+
+		\tkzText[above right](B){$\vec{B}$}
+
+	\end{scope}
+
+\end{tikzpicture}

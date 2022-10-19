@@ -14,13 +14,14 @@
 \usepackage{hyperref}
 \usepackage{cancel}
 \usepackage{pifont}
-\usepackage[output-decimal-marker={,}]{siunitx}
 %\usepackage{animate}
-\usepackage{tikz}
 %\usepackage{geometry}
+\usepackage{tikz, tikz-3dplot}
 \usepackage{tkz-base}
-\usepackage{tkz-euclide,tkz-fct}
-\usepackage{pgfplots,tikz-3dplot,circuitikz,bm}
+\usepackage{tkz-fct}
+\usepackage{tkz-euclide}
+\usepackage{pgfplots,circuitikz,bm}
+\usepackage[output-decimal-marker={,}]{siunitx}
 
 % Setup appearance:
 
@@ -37,6 +38,7 @@
     colorlinks = true,
     urlcolor = blue
 }
+\sisetup{detect-all}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
 \DeclareRobustCommand{\greektext}{%

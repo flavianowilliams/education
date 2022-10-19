@@ -7,8 +7,8 @@
 \usepackage{tikz,pgfplots,tikz-3dplot,bm}
 \usepackage{circuitikz}
 \usepackage{tkz-base}
-\usepackage{tkz-euclide}
 \usepackage{tkz-fct}
+\usepackage{tkz-euclide}
 \usepackage{ragged2e}
 \usepackage{animate}
 \usepackage{ifthen}

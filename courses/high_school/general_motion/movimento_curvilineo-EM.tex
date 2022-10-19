@@ -379,7 +379,7 @@
 \begin{frame}{Relação entre v e $\omega$}
 	\begin{columns}
 		\begin{column}[t]{0.5\textwidth}
-			Uma maneira de calcular a velocidade angular é considerar uma partícula efetuando uma volta completa em uma circunferência de raio 1, pois a sua velocidade angular será a mesma independente do raio da trajetória. Assim, o tempo gasto seria o período do movimento e o espaço percorrido o comprimento da circunferência $C=\SI{2\pi}{rad}$,
+			Uma maneira de calcular a velocidade angular é considerar uma partícula efetuando uma volta completa em uma circunferência de raio 1, pois a sua velocidade angular será a mesma independente do raio da trajetória. Assim, o tempo gasto seria o período do movimento e o espaço percorrido o comprimento da circunferência $C=\si{2\pi}{rad}$,
 			\begin{align*}
 				\omega = \frac{2\pi}{T}\;\text{rad/s}.
 			\end{align*}
@@ -501,6 +501,82 @@
 
 \subsection{}
 
+\begin{frame}{Velocidade resultante}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			Consideremos um barco tentando ir de uma margem a outra de um rio. Se não houver correntezas, o barco seguirá uma trajetória em linha reta, e será perpendicular ao rio. No entanto, se houver correnteza, ele seguirá uma trajetória em diagonal. Isso acontece porque a velocidade do barco observada por alguém na margem será a resultante das velocidades que ele possui, ou seja, a combinação da sua velocidade somado a velocidade da correnteza do rio.
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{figure}
+				\includegraphics[scale=0.1]{figuras/barco-correnteza-2.jpg}
+				\caption*{\footnotesize Barco tentando atravessar um rio com correnteza.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Independência das velocidades}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			Na figura ao lado podemos imaginar que o seu movimento será determinado pela sua velocidade resultante $\vec{v}_{res}$.
+			\begin{corollary}
+				Quando um objeto está animado, simultaneamente, por dois movimentos perpendiculares entre si, o deslocamento na direção de um deles é determinado apenas pela velocidade naquela direção.
+			\end{corollary}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{figure}
+				\includegraphics[scale=0.4]{figuras/composicao-velocidades-vetores.png}
+				\caption*{\footnotesize Movimento resultante do barco no rio.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Lançamento de projéteis}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			No caso de um lançamento oblíquo de um objeto, podemos considerar que o seu movimento resultante (que no caso é parabólico), é a combinação de dois movimentos perpendiculares:
+			\begin{enumerate}
+				\item [\ding{51}] Um movimento em queda livre na vertical;
+				\item[\ding{51}] Um movimento retilíneo e uniforme na horizontal.
+			\end{enumerate}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.5,transform shape,font=\Large]
+					
+					\tkzInit[xmin=0,xmax=8,ymin=0,ymax=6]
+					%\tkzGrid[color=gray!20]
+					\tkzClip[space=2]
+					
+					\tkzDrawX[right,label=Horiz.,noticks]
+					\tkzDrawY[above,label=Vertical,noticks]
+					
+					\def\theta{45}
+					\def\v0{9}
+					
+					\pgfmathsetmacro{\thetar}{\theta*3.14/180}
+					
+					\pgfmathdeclarefunction{y}{1}{\pgfmathparse{tan(\theta)*#1-0.5*10*#1^2/(\v0*cos(\theta))^2}}
+					\pgfmathdeclarefunction{vx}{1}{\pgfmathparse{0.2*\v0*cos(\theta)}}
+					\pgfmathdeclarefunction{vy}{1}{\pgfmathparse{0.2*\v0*sin(\theta)-0.2*10*#1/(\v0*cos(\theta))}}
+					
+					\foreach \t in {0,2,4,6,8}{
+						\tkzDefPoint(\t,-0.4){a}
+						\coordinate (b) at (-0.4,{y(\t)});
+						\coordinate (c) at (\t,{y(\t)});
+						\tkzDrawPoint[size=5mm,color=red,fill=white](b)
+						\tkzDrawPoint[size=5mm,color=green,fill=white](a)
+						\tkzDrawPoint[size=5mm,color=blue](c)}
+					
+				\end{tikzpicture}
+				\caption*{\footnotesize Movimento balístico da bolinha azul.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
 \section{Apêndice}
 
 \subsection{}
@@ -554,7 +630,6 @@
 		\bibitem{freepik}\url{https://br.freepik.com/fotos-premium/rodovia-suburbana-no-final-da-noite-vestigios-de-farois-e-lanternas-traseiras-de-trafego-intenso-e-luzes-na-ponte_20424758.htm}
 	\end{thebibliography}
 
-\vspace*{1cm}
 \begin{center}
 	Esta apresentação está disponível para download no endereço\\
 	\href{https://flavianowilliams.github.io/education}{\textcolor{blue}{https://flavianowilliams.github.io/education}}

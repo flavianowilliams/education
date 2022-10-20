@@ -144,44 +144,15 @@
 	\end{columns}
 \end{frame}
 
-\section{Segunda lei de Newton}
-
-\subsection{}
-
-\begin{frame}{Segunda Lei de Newton}
-	\begin{corollary}
-		A força resultante que age sobre um objeto é igual ao produto da massa do objeto pela aceleração. Em termos matemáticos, podemos escrever como
-		\begin{equation*}
-			\vec{F}_{\text{res}}=m\vec{a}.
-		\end{equation*}
-	\end{corollary}
-	\begin{columns}
-		\begin{column}[c]{0.45\textwidth}
-			\begin{corollary}
-				No SI a unidade de medida da força é Newton (N),
-				\begin{equation*}
-					\SI{1}{N}=\SI[per-mode=symbol]{1}{\kilogram\meter\per\square\second}
-				\end{equation*}
-			\end{corollary}
-		\end{column}
-		\begin{column}[c]{0.55\textwidth}
-			\begin{figure}
-				\centering
-				\includegraphics[scale=0.32]{figuras/segunda-lei-de-newton.jpg}
-				\caption*{\footnotesize Relação entre força, massa e aceleração.}
-			\end{figure}
-		\end{column}
-	\end{columns}
-\end{frame}
-
 \begin{frame}{Equilíbrio de uma partícula}
 	\begin{columns}
 		\begin{column}[c]{0.6\textwidth}
-			Sabendo que a segunda lei de Newton é uma equação vetorial, é conveniente separá-la em três equações, uma para cada eixo do sistema de coordenadas xyz,
-			\begin{equation*}
-				F_{\text{res},x}=ma_x;\quad F_{\text{res},y}=ma_y,
-			\end{equation*}
-			A componente da aceleração em relação a um dado eixo é causada apenas pela soma das componentes das forças em relação a esse eixo e não por componentes de forças em relação a qualquer outro eixo.
+			Dizemos que um objeto está em equilíbrio quando a força resultante atuando nele é zero. Para verificar se o objeto está em equilíbrio, primeiro identificamos todas as forças atuando no objeto e montamos um esquema chamado diagrama de objeto isolado:
+			\begin{enumerate}
+				\item[\ding{51}] Representar cada componente de cada força em um plano cartesiano;
+				\item[\ding{51}] Calcular cada componente;
+				\item[\ding{51}] Aplicar as condições de equilíbrio nas direções x e y separadamente.
+			\end{enumerate}
 		\end{column}
 		\begin{column}[c]{0.4\textwidth}
 			\begin{figure}
@@ -243,6 +214,111 @@
 					
 				\end{tikzpicture}
 				\caption*{\footnotesize Diagrama de objeto isolado da esfera M.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Equilíbrio de uma partícula (continuação)}
+	\begin{columns}
+		\begin{column}[c]{0.6\textwidth}
+			No caso do diagrama ao lado podemos dizer que
+			\begin{align*}
+				T_{2x} \alert{-}T_{1x} = 0 & \quad(\text{Horizontal}),\\
+				T_{2y} + T_{1y} \alert{-}P = 0 & \quad(\text{Vertical}).
+			\end{align*}
+			O sinal \alert{-} se deve ao fato que $T_{1x}$ está no sentido contrário ao eixo x, e $P$ está no sentido contrário ao eixo y.
+		\end{column}
+		\begin{column}[c]{0.4\textwidth}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.38,transform shape,font=\Large]
+					
+					\tkzInit[xmin=-4,xmax=4,ymin=-11,ymax=0]
+					%\tkzGrid[color=gray!20]
+					\tkzClip[space=1]
+					
+					\tkzDefPoints{0/-4/O,-4/0/A,4/0/B,0/-6/C}
+					
+					%parede
+					\fill [pattern = north west lines] ($(B)+(0,0.25)$) rectangle (A);
+					\draw (A) -- (B);
+					
+					\tkzMarkAngle(O,A,B)
+					\tkzLabelAngle[pos=1.5](O,A,B){$\theta_1$}
+					
+					\tkzMarkAngle(A,B,O)
+					\tkzLabelAngle[pos=-1.5](A,B,O){$\theta_2$}
+					
+					\draw (O) -- (A) node [below left, midway] {1};
+					\draw (O) -- (B) node [below right, midway] {2};
+					
+					\tkzDefPoints{-1/-6/a,1/-6/b,-1/-8/c,1/-8/d,0/-7/e}
+					
+					\tkzDrawCircle[R,fill=gray](O,0.25mm)
+					
+					\tkzText(O){M}
+					
+					\begin{scope}[shift={(0,-8.5)},font=\normalsize]
+						
+						\tkzInit[xmin=-2,xmax=2,ymin=-2,ymax=2]
+						
+						\tkzDrawX[label=x,noticks]
+						\tkzDrawY[label=y,above,noticks]
+						
+						\tkzDefPoints{0/0/O',-2/2/A',2/2/B',0/-2/C',-2/0/D',2/0/E',0/2/F'}
+						
+						\tkzMarkAngle[size=0.8cm](A',O',D')
+						\tkzLabelAngle[pos=1.1](A',O',D'){$\theta_1$}
+						
+						\tkzMarkAngle[size=0.8cm](E',O',B')
+						\tkzLabelAngle[pos=1.1](E',O',B'){$\theta_2$}
+						
+						\draw[->,color=red] (O') -- (A') node [above, midway] {$\vec{T}_1$};
+						\draw[->,color=red] (O') -- (B') node [above, midway] {$\vec{T}_2$};
+						\draw[->,color=blue] (O') -- (E') node [below left] {$\vec{T}_{2x}$};
+						\draw[->,color=blue] (O') -- (D') node [below right] {$\vec{T}_{1x}$};
+						\draw[->,color=blue] (O') -- (F') node [above left] {$\vec{T}_{1y}$};
+						\draw[->,color=blue] (O') -- (F') node [above right] {$\vec{T}_{2y}$};
+						\draw[->,color=red] (O') -- (C') node [below] {$\vec{P}$};
+						
+						\tkzPointShowCoord(A')
+						\tkzPointShowCoord(B')
+						
+					\end{scope}
+					
+				\end{tikzpicture}
+				\caption*{\footnotesize Diagrama de objeto isolado da esfera M.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\section{Segunda lei de Newton}
+
+\subsection{}
+
+\begin{frame}{Segunda Lei de Newton}
+	\begin{corollary}
+		A força resultante que age sobre um objeto é igual ao produto da massa do objeto pela aceleração. Em termos matemáticos, podemos escrever como
+		\begin{equation*}
+			\vec{F}_{\text{res}}=m\vec{a}.
+		\end{equation*}
+	\end{corollary}
+	\begin{columns}
+		\begin{column}[c]{0.45\textwidth}
+			\begin{corollary}
+				No SI a unidade de medida da força é Newton (N),
+				\begin{equation*}
+					\SI{1}{N}=\SI[per-mode=symbol]{1}{\kilogram\meter\per\square\second}
+				\end{equation*}
+			\end{corollary}
+		\end{column}
+		\begin{column}[c]{0.55\textwidth}
+			\begin{figure}
+				\centering
+				\includegraphics[scale=0.32]{figuras/segunda-lei-de-newton.jpg}
+				\caption*{\footnotesize Relação entre força, massa e aceleração.}
 			\end{figure}
 		\end{column}
 	\end{columns}

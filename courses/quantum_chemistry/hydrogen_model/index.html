@@ -26,7 +26,7 @@ class: center, middle, inverse, title-slide
 ### Instituto Federal do Paraná - Irati
 ]
 .date[
-### Atualizado em 06/02/2023
+### Atualizado em 10/02/2023
 ]
 
 ---
@@ -47,6 +47,8 @@ class: middle
 
 &lt;div class="my-header"&gt;&lt;span&gt;Sumário&lt;/span&gt;&lt;/div&gt;
 
+.pull-left[
+
 1. A equação de Schrodinger em coordenadas esféricas
 
 2. Solução da parte radial e número quântico principal
@@ -63,9 +65,17 @@ class: middle
 
 5. Funções hidrogenóides
 
-6. Aplicações
+]
 
-6. Bibliografia
+.pull-right[
+
+6. O spin do elétron
+
+7. Aplicações
+
+8. Bibliografia
+
+]
 
 &lt;div class="footnote"&gt;
   &lt;ul&gt;
@@ -82,34 +92,34 @@ class: middle
 
 .pull-left[
 
-Até o momento consideramos movimentos em apenas uma dimensão (no caso ao longo do eixo x). Mas a maioria dos casos reais, o movimento acontece nas três dimensões. Um exemplo é o movimento do elétron no átomo de hidrogênio .
+Até o momento consideramos movimentos em apenas uma dimensão (no caso ao longo do eixo x). Mas a maioria dos casos reais, o movimento acontece nas três dimensões. Um exemplo é o movimento do elétron no átomo de hidrogênio &lt;a name=cite-tipler&gt;&lt;/a&gt;([Tipler and Llewellyn, 2003](https://books.google.com.br/books?id=tpU18JqcSNkC)).
 
 Em coordenadas retangulares, a equação de Schrödinger pode ser escrito na forma
-`\begin{aligned}
+\begin{aligned}
   -\frac{\hbar^2}{2m}\left(\frac{\partial^2\Psi}{\partial x^2}+\frac{\partial^2\Psi}{\partial y^2}+\frac{\partial^2\Psi}{\partial z^2}\right)+V\Psi=i\hbar\frac{\partial\Psi}{\partial t},
-\end{aligned}`
+\end{aligned}
 onde `\(\Psi\equiv\Psi(x,y,z,t)\)`. Usando o método de separação de variáveis, onde consideramos
-`\begin{aligned}
+\begin{aligned}
   \Psi(x,y,z,t)=\psi(x,y,z)\phi(t)
-\end{aligned}`
+\end{aligned}
 podemos chegar de maneira equivalente ao método usado na equação de Schrödinger em uma dimensão para a equação de Schrödinger independente do tempo.
 
 ]
 .pull-right[
 
 A primeira equação abaixo depende das variáveis x, y e z, enquanto que a segunda depende da variável t.
-`\begin{aligned}
+\begin{aligned}
   -\frac{\hbar^2}{2m}\left(\frac{\partial^2\psi}{\partial x^2}+\frac{\partial^2\psi}{\partial y^2}+\frac{\partial^2\psi}{\partial z^2}\right)+V\psi &amp; = E\psi,\\
   i\hbar\frac{\partial\phi}{\partial t} &amp; = E\phi.
-\end{aligned}`
+\end{aligned}
 Podemos ver assim que a equação de Schrödinger independente do tempo em coordenadas retangulares é dada por
-`\begin{aligned}
+\begin{aligned}
   -\frac{\hbar^2}{2m}\left(\frac{\partial^2\psi}{\partial x^2}+\frac{\partial^2\psi}{\partial y^2}+\frac{\partial^2\psi}{\partial z^2}\right)+V\psi &amp; = E\psi.
-\end{aligned}`
+\end{aligned}
 Ou de maneira equivalente
-`\begin{aligned}
+\begin{aligned}
   -\frac{\hbar^2}{2m}\nabla^2\psi+V\psi &amp; = E\psi.
-\end{aligned}`
+\end{aligned}
 Chamamos `\(\nabla^2=\frac{\partial^2}{\partial x^2}+\frac{\partial^2}{\partial y^2}+\frac{\partial^2}{\partial z^2}\)` de Laplaciano.
 
 ]
@@ -122,24 +132,24 @@ class: middle
 .pull-left[
 
 No caso do átomo de hidrogênio, ocorre a interação entre o elétron e o núcleo governada pelas leis da eletrostática, onde a energia potencial é dada por
-`\begin{aligned}
+\begin{aligned}
   V(r) = -\frac{Ze^2}{r}.
-\end{aligned}`
+\end{aligned}
 Podemos ver a distância relativa entre o núcleo e o elétron é dado por `\(r=\sqrt{x^2+y^2+z^2}\)`. Substituindo na equação de Schrödinger, torna-se praticamente impossível separar as variáveis x, y e z em três equações distintas. Isso inviabiliza obter uma solução usando coordenadas retangulares. Outra maneira seria empregar outro sistema de coordenadas. Devido a simetria do potencial, vemos que o problema fica mais fácil de resolver em coordenadas esféricas `\(r\)`, `\(\theta\)` e `\(\phi\)`, onde
-`\begin{aligned}
+\begin{aligned}
   x &amp; = r\sin\theta\cos\phi,\\
   y &amp; = r\sin\theta\sin\phi,\\
   z &amp; = r\cos\theta.
-\end{aligned}`
+\end{aligned}
 
 ]
 .pull-right[
 
 Após a transformação para o sistema de coordenadas esféricas, ela se torna (veja o Apêndice A)
-`\begin{aligned}
+\begin{aligned}
   -\frac{\hbar^2}{2mr^2}\frac{\partial }{\partial r^2}\left(r^2\frac{\partial\psi}{\partial r}\right) &amp; -\frac{\hbar^2}{2mr^2}\frac{1}{\sin\theta}\frac{\partial}{\partial\theta}\left(\sin\theta\frac{\partial\psi}{\partial\theta}\right) - \\
   -\frac{\hbar^2}{2mr^2}\frac{1}{\sin^2\theta}\frac{\partial^2\psi}{\partial\phi^2} &amp; + V(r)\psi = E\psi.
-\end{aligned}`
+\end{aligned}
 
 &lt;div class="figure" style="text-align: center"&gt;
 &lt;img src="img/coordenadas_esfericas.jpeg" alt="Vetor posição em coordenadas esféricas." width="60%" /&gt;
@@ -154,21 +164,21 @@ class: middle
 &lt;div class="my-header"&gt;&lt;span&gt;A equação de Schrödinger em coordenadas esféricas - O método de separação de variáveis&lt;/span&gt;&lt;/div&gt;
 
 Para resolver a equação anterior, a melhor opção seria utilizar o método de separação de variáveis, onde
-`\begin{aligned}
+\begin{aligned}
   \psi(r,\theta,\phi) = R(r)\Theta(\theta)\Phi(\phi).
-\end{aligned}`
+\end{aligned}
 Substituindo a equação teremos
 
-`\begin{aligned}
+\begin{aligned}
   -\frac{\hbar^2}{2mr^2}\frac{\partial}{\partial r}\left[r^2\frac{\partial }{\partial r}R(r)\Theta(\theta)\Phi(\phi)\right]-\frac{\hbar^2}{2mr^2\sin\theta}\frac{\partial}{\partial\theta}\left[\sin\theta\frac{\partial}{\partial\theta}R(r)\Theta(\theta)\Phi(\phi)\right] &amp; -\\
   -\frac{\hbar^2}{2mr^2\sin^2\theta}\frac{\partial^2}{\partial\phi^2}R(r)\Theta(\theta)\Phi(\phi)+V(r)R(r)\Theta(\theta)\Phi(\phi) &amp; =ER(r)\Theta(\theta)\Phi(\phi),\\
   -\frac{\hbar^2\Theta(\theta)\Phi(\phi)}{2mr^2}\frac{\partial}{\partial r}\left[r^2\frac{\partial }{\partial r}R(r)\right]-\frac{\hbar^2R(r)\Phi(\phi)}{2mr^2\sin\theta}\frac{\partial}{\partial\theta}\left[\sin\theta\frac{\partial}{\partial\theta}\Theta(\theta)\right] &amp; -\\
   -\frac{\hbar^2R(r)\Theta(\theta)}{2mr^2\sin^2\theta}\frac{\partial^2}{\partial\phi^2}\Phi(\phi)+V(r)R(r)\Theta(\theta)\Phi(\phi) &amp; =ER(r)\Theta(\theta)\Phi(\phi).
-\end{aligned}`
+\end{aligned}
 Dividindo por `\(R\Theta\Phi\)` teremos
-`\begin{aligned}
+\begin{aligned}
   -\frac{\hbar^2}{2mr^2R(r)}\frac{\partial}{\partial r}\left[r^2\frac{\partial }{\partial r}R(r)\right]-\frac{\hbar^2}{2mr^2\sin\theta\Theta(\theta)}\frac{\partial}{\partial\theta}\left[\sin\theta\frac{\partial}{\partial\theta}\Theta(\theta)\right]-\frac{\hbar^2}{2mr^2\sin^2\theta\Phi(\phi)}\frac{\partial^2}{\partial\phi^2}\Phi(\phi)+V(r) =E.
-\end{aligned}`
+\end{aligned}
 
 ---
 class: middle
@@ -176,18 +186,18 @@ class: middle
 &lt;div class="my-header"&gt;&lt;span&gt;A equação de Schrödinger em coordenadas esféricas - Solução da parte radial&lt;/span&gt;&lt;/div&gt;
 
 Organizando os termos da equação anterior teremos
-`\begin{aligned}
+\begin{aligned}
   \frac{\hbar^2}{2mr^2R(r)}\frac{\partial}{\partial r}\left[r^2\frac{\partial }{\partial r}R(r)\right]+\frac{\hbar^2}{2mr^2\sin\theta\Theta(\theta)}\frac{\partial}{\partial\theta}\left[\sin\theta\frac{\partial}{\partial\theta}\Theta(\theta)\right]+\frac{\hbar^2}{2mr^2\sin^2\theta\Phi(\phi)}\frac{\partial^2}{\partial\phi^2}\Phi(\phi)+E-V(r) =0.
-\end{aligned}`
+\end{aligned}
 
 Podemos simplificar ainda mais a expressão anterior dividindo os termos por `\(\frac{\hbar^2}{2mr^2}\)`,
-`\begin{aligned}
+\begin{aligned}
   \frac{1}{R(r)}\frac{\partial}{\partial r}\left[r^2\frac{\partial }{\partial r}R(r)\right]+\frac{1}{\sin\theta\Theta(\theta)}\frac{\partial}{\partial\theta}\left[\sin\theta\frac{\partial}{\partial\theta}\Theta(\theta)\right]+\frac{1}{\sin^2\theta\Phi(\phi)}\frac{\partial^2}{\partial\phi^2}\Phi(\phi)+\frac{2mr^2}{\hbar}\left[E-V(r)\right]=0.
-\end{aligned}`
+\end{aligned}
 Após essa operação, podemos perceber que existem termos que dependem somente de R e termos que dependem somente de `\(\theta\)` e `\(\phi\)`. Isolando esses termos em lados opostos teremos
-`\begin{aligned}
+\begin{aligned}
   \frac{1}{R(r)}\frac{\partial}{\partial r}\left[r^2\frac{\partial }{\partial r}R(r)\right]+\frac{2mr^2}{\hbar}\left[E-V(r)\right]=-\frac{1}{\sin\theta\Theta(\theta)}\frac{\partial}{\partial\theta}\left[\sin\theta\frac{\partial}{\partial\theta}\Theta(\theta)\right]-\frac{1}{\sin^2\theta\Phi(\phi)}\frac{\partial^2}{\partial\phi^2}\Phi(\phi).
-\end{aligned}`
+\end{aligned}
 Como o lado direito da equação não possui dependência na variável r, o lado esquerdo enxerga o lado direito como uma constante. A mesma afirmação pode ser feito no sentido oposto, o lado direito enxerga o lado esquerdo como uma constante devido a ausência das variáveis `\(\theta\)` e `\(\phi\)`. No próximo slide será discutido sobre a solução da parte radial `\(R(r)\)` da função de onda `\(\psi(r,\theta,\phi)\)`, após a reestruturação da equação acima.
 
 ---
@@ -198,34 +208,34 @@ class: middle
 .pull-left[
 
 Portanto para a equação referente a R(r) pode ser escrito como
-`\begin{aligned}
+\begin{aligned}
   \frac{1}{R(r)}\frac{\partial}{\partial r}\left[r^2\frac{\partial }{\partial r}R(r)\right]+\frac{2mr^2}{\hbar}\left[E-V(r)\right]=C.
-\end{aligned}`
+\end{aligned}
 Chamando `\(C=\ell(\ell+1)\)`, sendo `\(\ell\)` um número inteiro positivo, teremos
-`\begin{aligned}
+\begin{aligned}
   \frac{\partial}{\partial r}\left[r^2\frac{\partial }{\partial r}R(r)\right]+\frac{2mr^2\left[E-V(r)\right]}{\hbar}R(r)=\ell(\ell+1)R(r)
-\end{aligned}`
+\end{aligned}
 Usando técnicas matemáticas, como o método de solução por série de potências, poderemos encontrar a solução para a equação acima, como
-`\begin{aligned}
+\begin{aligned}
   R_{n\ell}(r) = A_{n\ell}e^{-r/a_0n}r^\ell L_{n\ell}.
-\end{aligned}`
+\end{aligned}
 `\(L_{n\ell}\)` são chamados polinômios de Laguerre e depende dos valores inteiros n e `\(\ell\)`. `\(R_{n\ell}\)` depende de n que assume valores inteiros positivos e não-nulos.
 
 ]
 .pull-right[
 
 Pelos polinômios de Laguerre, os valores de `\(\ell\)` estão amarrados com os valores de n, ou seja,
-`\begin{aligned}
+\begin{aligned}
   n &amp; = 1,2,3,\cdots,\\
   \ell &amp; = 0,1,2,\cdots,(n-1).
-\end{aligned}`
+\end{aligned}
 n é chamada de número quântico principal e `\(\ell\)`, como veremos à seguir, é chamado número quântico angular. Abaixo mostramos algumas funções de Laguerre, para `\(n=1\)` e `\(n=2\)`.
-`\begin{eqnarray}
+\begin{eqnarray}
   (n = 1, \ell=0)&amp;\Rightarrow&amp; R_{10} = \frac{2}{\sqrt{a^3_0}}e^{-r/a_0},\\
   (n = 2, \ell=0)&amp;\Rightarrow&amp; R_{20} = \frac{1}{2a^3_0}\left(1-\frac{r}{2a_0}\right)e^{-r/2a_0},\\
   (n = 2, \ell=1)&amp;\Rightarrow&amp; R_{21}  =  \frac{1}{\sqrt{6a^3_0}}\frac{r}{a_0}e^{-r/2a_0},\\
    &amp; \vdots &amp;
-\end{eqnarray}`
+\end{eqnarray}
 
 ]
 
@@ -235,21 +245,21 @@ class: middle
 &lt;div class="my-header"&gt;&lt;span&gt;A equação de Schrödinger em coordenadas esféricas - Momento angular e potencial efetivo&lt;/span&gt;&lt;/div&gt;
 
 Agora, retornando a equação anterior,
-`\begin{aligned}
+\begin{aligned}
   \frac{1}{R(r)}\frac{\partial}{\partial r}\left[r^2\frac{\partial }{\partial r}R(r)\right]+\frac{2mr^2}{\hbar}\left[E-V(r)\right]=-\frac{1}{\sin\theta\Theta(\theta)}\frac{\partial}{\partial\theta}\left[\sin\theta\frac{\partial}{\partial\theta}\Theta(\theta)\right]-\frac{1}{\sin^2\theta\Phi(\phi)}\frac{\partial^2}{\partial\phi^2}\Phi(\phi).
-\end{aligned}`
+\end{aligned}
 Podemos escrever o lado direito como
-`\begin{aligned}
+\begin{aligned}
   -\frac{1}{\sin\theta\Theta(\theta)}\frac{\partial}{\partial\theta}\left[\sin\theta\frac{\partial}{\partial\theta}\Theta(\theta)\right]-\frac{1}{\sin^2\theta\Phi(\phi)}\frac{\partial^2}{\partial\phi^2}\Phi(\phi)=\ell(\ell+1).
-\end{aligned}`
+\end{aligned}
 Multiplicando ambos lados da equação por `\(-\sin^2\theta\)`, poderemos separar os termos em função das variáveis `\(\theta\)` e `\(\phi\)`,
-`\begin{aligned}
+\begin{aligned}
   \frac{1}{\Phi(\phi)}\frac{\partial^2}{\partial\phi^2}\Phi(\phi)=-\ell(\ell+1)\sin^2\theta-\frac{\sin\theta}{\Theta(\theta)}\frac{\partial}{\partial\theta}\left[\sin\theta\frac{\partial}{\partial\theta}\Theta(\theta)\right].
-\end{aligned}`
+\end{aligned}
 Assim como foi feito para `\(R(r)\)` temos que o lado esquerdo é independente do lado direito e vice-versa. Igualando ambos os lados por uma constante, que chamaremos convenientemente de `\(-m^2\)`, teremos para o lado esquerdo
-`\begin{aligned}
+\begin{aligned}
   \frac{1}{\Phi(\phi)}\frac{\partial^2}{\partial\phi^2}\Phi(\phi)=-m^2\Rightarrow\frac{\partial^2\Phi(\phi)}{\partial\phi^2}+m^2\Phi(\phi)=0.
-\end{aligned}`
+\end{aligned}
 
 ---
 class: middle
@@ -258,38 +268,38 @@ class: middle
 
 .pull-left[
 Como foi mostrado em aulas anteriores, a solução da equação acima seria
-`\begin{aligned}
+\begin{aligned}
   \Phi(\phi)\Rightarrow e^{im\phi}+e^{-im\phi}
-\end{aligned}`
+\end{aligned}
 Para o lado direito da equação, teremos
-`\begin{aligned}
+\begin{aligned}
   -\ell(\ell+1)\sin^2\theta-\frac{\sin\theta}{\Theta(\theta)}\frac{\partial}{\partial\theta}\left[\sin\theta\frac{\partial}{\partial\theta}\Theta(\theta)\right] &amp; =-m^2,\\
     -\ell(\ell+1)\sin^2\theta-\frac{\sin\theta}{\Theta(\theta)}\frac{\partial}{\partial\theta}\left[\sin\theta\frac{\partial}{\partial\theta}\Theta(\theta)\right] + m^2 &amp; = 0.
-\end{aligned}`
+\end{aligned}
 Para que a equação acima tenha solução para qualquer valor de `\(\theta\)`, obrigatoriamente deveremos impor a condição
-`\begin{aligned}
+\begin{aligned}
   |m| &amp; \le \ell,\\
   |m| &amp; = 0,\pm 1,\pm 2,\cdots,\pm\ell.
-\end{aligned}`
+\end{aligned}
 Sabendo que `\(\ell\)` assume valores inteiros positivos, isso faz com que m também seja um número inteiro.
 
 ]
 .pull-right[
 
 Em outras palavras, poderemos afirmar que para qualquer valor de `\(\ell\)`, teremos
-`\begin{aligned}
+\begin{aligned}
   m = -\ell, -\ell+1,-\ell+2,\cdots,0,\cdots,\ell-2,\ell-1, \ell,
-\end{aligned}`
+\end{aligned}
 ou seja, para cada valor de `\(\ell\)` teremos `\(2\ell+1\)` valores possíveis para m. Além do mais, sabendo que `\(|m|\le \pm \ell\)`, poderemos resumir a solução para `\(\Phi(\phi)\)` na forma
-`\begin{aligned}
+\begin{aligned}
   \Phi(\phi)\Rightarrow e^{im\phi},
-\end{aligned}`
+\end{aligned}
 pois seria redundante se `\(e^{-im\phi}\)` fosse considerado.
 
 Para `\(\Theta(\theta)\)` temos como solução da equação anterior os polinômios de Legendre, escrito na forma abaixo,
-`\begin{aligned}
+\begin{aligned}
   \Theta_{lm}(\theta) = \frac{\sin^{|m|}\theta}{2^\ell\ell!}\left[\frac{d}{d\cos\theta}\right]^{\ell+|m|}\left(\cos^2\theta-1\right)^\ell.
-\end{aligned}`
+\end{aligned}
 
 ]
 
@@ -301,20 +311,20 @@ class: middle
 .pull-left[
 
 Portanto, sabendo as funções `\(R(r)\)`, `\(\Theta(\theta)\)` e `\(\Phi(\phi)\)`, poderemos obter a função de onda `\(\phi(r,\theta,\phi)=R(r)\Theta(\theta)\Phi(\phi)\)`. Ou poderemos reescrever `\(\psi\)` em termos da solução da parte radial e da parte angular,
-`\begin{aligned}
+\begin{aligned}
   \psi_{n\ell m}(r,\theta,\phi) = R_{n\ell}(r)Y_{\ell m}(\theta,\phi).
-\end{aligned}`
+\end{aligned}
 `\(Y_{\ell m}\)` recebe o nome de **harmônicos esféricos**. Ao lado temos os harmônicos esféricos para os números quânticos `\(\ell=0,1,2\)`. Após a solução da função de onda, podemos ver que ela depende de três números quânticos: `\(n\)` chamado de número quântico principal, `\(\ell\)` de número angular e `\(m\)` de número magnético (seu significado será discutido a seguir). Abaixo mostra um resumo de valores para n, `\(\ell\)` e m,
-`\begin{aligned}
+\begin{aligned}
   n &amp; = 1, 2, 3, \cdots,\\
   \ell &amp; = 0, 1, 2, \cdots, (n-1),\\
   m &amp; = -\ell, -\ell+1, -2,-1,\cdots,0,1,2,\ell-1,\ell.
-\end{aligned}`
+\end{aligned}
 
 ]
 .pull-right[
 
-`\begin{eqnarray}
+\begin{eqnarray}
   (\ell = 0, m=0)&amp;\Rightarrow&amp; Y_{10} = \sqrt{\frac{1}{4\pi}},\\
   (\ell = 1, m=1)&amp;\Rightarrow&amp; Y_{11} = - \sqrt{\frac{3}{8\pi}}\sin\theta e^{i\phi},\\
   (\ell = 1, m=0)&amp;\Rightarrow&amp; Y_{10}  = \sqrt{\frac{3}{4\pi}}\cos\theta,\\
@@ -324,7 +334,7 @@ Portanto, sabendo as funções `\(R(r)\)`, `\(\Theta(\theta)\)` e `\(\Phi(\phi)\
   (\ell = 2, m=0)&amp;\Rightarrow&amp; Y_{20} = - \sqrt{\frac{5}{16\pi}}(3\cos^2\theta-1),\\
   (\ell = 2, m=-1)&amp;\Rightarrow&amp; Y_{2-1}  = \sqrt{\frac{15}{8\pi}}\sin\theta\cos\theta e^{-i\phi},\\
   (\ell = 2, m=-2)&amp;\Rightarrow&amp; Y_{2-2}  = \sqrt{\frac{15}{8\pi}}\sin^2\theta e^{-2i\phi}.
-\end{eqnarray}`
+\end{eqnarray}
 
 ]
 
@@ -336,19 +346,19 @@ class: middle
 .pull-left[
 Sabemos que a equação de Schrodinger deve satisfazer a equação da energia, ou seja,
 `\(\frac{p^2}{2m}+V(r)=E\)`. Porém, vamos supor que o elétron esteja se movendo em órbitas elípticas como mostra a figura ao lado. O momento angular deste elétron é dado por
-`\begin{aligned}
+\begin{aligned}
   \vec{L} &amp; = \vec{r}\times\vec{p},\\
   L &amp; = rp_\perp.
-\end{aligned}`
+\end{aligned}
 Considerando que `\(p^2=p^2_\perp+p^2_\|\)` teremos
-`\begin{aligned}
+\begin{aligned}
   \frac{p^2}{2m} &amp; = \frac{p^2_\perp+p^2_\|}{2m},\\
                  &amp; = \frac{p^2_\perp}{2m}+\frac{p^2_\|}{2m}.
-\end{aligned}`
+\end{aligned}
 Substituindo na equação da energia teremos
-`\begin{aligned}
+\begin{aligned}
   \frac{p^2_r}{2m}+\frac{L^2}{2mr^2}+V(r) = E.
-\end{aligned}`
+\end{aligned}
 
 ]
 .pull-right[
@@ -368,21 +378,21 @@ class: middle
 &lt;div class="my-header"&gt;&lt;span&gt; Momento angular - Relação entre o segundo número quântico e o momento angular&lt;/span&gt;&lt;/div&gt;
 
 Temos a equação de Schrödinger em coordenadas esféricas como foi mostrado anteriormente,
-`\begin{aligned}
+\begin{aligned}
   -\frac{\hbar^2}{2mr^2}\frac{\partial}{\partial r}\left(r^2\frac{\partial }{\partial r}\psi\right)-\frac{\hbar^2}{2mr^2\sin\theta}\frac{\partial}{\partial\theta}\left(\sin\theta\frac{\partial}{\partial\theta}\psi\right) -\frac{\hbar^2}{2mr^2\sin^2\theta}\frac{\partial^2}{\partial\phi^2}\psi+V(r)\psi &amp; =E\psi.
-\end{aligned}`
+\end{aligned}
 Analisando o termo `\(\frac{p^2_r}{2m}\)` podemos ver que das variáveis `\(r\)`, `\(\theta\)` e `\(\phi\)` ele somente deve depender de `\(r\)`. Como excessão do termo contendo `\(V(r)\)`, os demais termos da equação acima devem estar associados a `\(\frac{L^2}{2mr^2}\)`, portanto
-`\begin{aligned}
+\begin{aligned}
   \underbrace{-\frac{\hbar^2}{2mr^2}\frac{\partial}{\partial r}\left(r^2\frac{\partial }{\partial r}\psi\right)}_{\frac{p^2_r}{2m}}-\frac{1}{2mr^2}\underbrace{\left[\frac{\hbar^2}{\sin\theta}\frac{\partial}{\partial\theta}\left(\sin\theta\frac{\partial}{\partial\theta}\psi\right) +\frac{\hbar^2}{2mr^2\sin^2\theta}\frac{\partial^2}{\partial\phi^2}\psi\right]}_{L^2}+V(r)\psi &amp; =E\psi.
-\end{aligned}`
+\end{aligned}
 Podemos ver que o termo entre colchetes representa a parte angular da equação de Schrödinger, onde deduzimos que
-`\begin{aligned}
+\begin{aligned}
   \left[\frac{\hbar^2}{\sin\theta}\frac{\partial}{\partial\theta}\left(\sin\theta\frac{\partial}{\partial\theta}\psi\right) +\frac{\hbar^2}{2mr^2\sin^2\theta}\frac{\partial^2}{\partial\phi^2}\psi\right]Y_{\ell m}(\theta,\phi) = \hbar^2\ell(\ell+1)Y_{\ell m}(\theta,\phi) = L^2Y_{\ell m}(\theta,\phi)
-\end{aligned}`
+\end{aligned}
 Assim podemos concluir que
-`\begin{aligned}
+\begin{aligned}
   \boxed{L = \hbar\sqrt{\ell(\ell+1)},\quad (\ell=0,1,2,\cdots)}
-\end{aligned}`
+\end{aligned}
 
 .pull-left[
 
@@ -398,13 +408,13 @@ class: middle
 .pull-left[
 
 Para a componente `\(L_z\)` do momento angular, é possível provar que
-`\begin{aligned}
+\begin{aligned}
   L^2_z\Phi(\phi) = \hbar^2\frac{d^2\Phi(\phi)}{d\phi^2}.
-\end{aligned}`
+\end{aligned}
 A partir da parte angular da equação de Schrödinger, devemos também impor que a componente `\(L_z\)` de L também assume valores discretos, onde
-`\begin{aligned}
+\begin{aligned}
   L_z = \hbar m,\quad (m=0,\pm 1, \pm 2,\cdots)
-\end{aligned}`
+\end{aligned}
 
 A figura abaixo representa os possíveis valores do momento angular definido na forma vetorial, onde `\(\vec{L}=\vec{L_x}+\vec{L_y}+\vec{L_z}\)`. Sabemos que L e `\(L_z\)` devem assumir valores discretos, porém não há nenhuma restrição para `\(L_x\)` e `\(L_y\)`. Porém, a partir da relação `\(L^2=L^2_x+L^2_y+L^2_z\)` temos que `\(\sqrt{L^2_x+L^2_y}=\sqrt{L^2-L^2_z}\)`, sendo os raios das circunferências na figura ao lado.
 ]
@@ -425,13 +435,13 @@ class: middle
 .pull-left[
 
 Agora, uma prática muito é obter os valores da energia a partir da equação de Schrödinger. No caso do átomo de hidrogênio, a equação de Schrödinger seria
-`\begin{aligned}
+\begin{aligned}
   -\frac{\hbar^2}{2mr^2}\frac{\partial}{\partial r}\left(r^2\frac{\partial }{\partial r}\psi\right)-\frac{\hbar^2\ell(\ell+1)}{2mr^2}\psi+V(r)\psi &amp; =E\psi.
-\end{aligned}`
+\end{aligned}
 Substituindo `\(\psi\)` na equação acima, encontraremos os valores da energia `\(E_n\)`, onde
-`\begin{aligned}
+\begin{aligned}
   E_n=-\left(\frac{KmZe^2}{2\hbar}\right)^2\frac{1}{n^2}=-\frac{Z^2E_1}{n^2},
-\end{aligned}`
+\end{aligned}
 onde `\(E_1=-13,6\;\text{eV}\)` é a energia do estado fundamental do átomo de hidrogênio.
 
 A figura mostra os níveis de energia para `\(n=1,2,3,4\)`. Percebe-se que algumas transições são possíveis e outras não. Como exemplo temos que a transição `\(\psi_{210}\rightarrow\psi_{100}\)` pode acontecer mas `\(\psi_{200}\rightarrow\psi_{100}\)` não.
@@ -455,36 +465,36 @@ class: middle
 .pull-left[
 
 Podemos considerar que um elétron com carga `\(-e\)` em órbita ao redor do núcleo apresenta uma corrente elétrica dado por
-`\begin{aligned}
+\begin{aligned}
   i = -\frac{e}{T},
-\end{aligned}`
+\end{aligned}
 onde T é o período do movimento. Pela teoria do eletromagnetismo, uma corrente elétrica circular produz um momento de dipolo magnético dado por
-`\begin{aligned}
+\begin{aligned}
   \mu = iA,
-\end{aligned}`
+\end{aligned}
 onde A é a área de uma espira circular. O período do elétron é dado por `\(2\pi r/v\)`, onde v é a velocidade do elétron. Substituindo i e v teremos
-`\begin{aligned}
+\begin{aligned}
   \mu &amp; = -\frac{e}{\left(\frac{2\pi r}{v}\right)}\left(\pi r^2\right),\\
       &amp; = -\frac{erv}{2}.
-\end{aligned}`
+\end{aligned}
 
 ]
 .pull-right[
 
 Multiplicando e dividindo por m, teremos
-`\begin{aligned}
+\begin{aligned}
       \mu = -\frac{e}{2m}rmv.
-\end{aligned}`
+\end{aligned}
 Pela definição do momento angular, onde `\(L=rmv\)` teremos
-`\begin{aligned}
+\begin{aligned}
       \mu &amp; = -\frac{e}{2m}L,\\
       \vec{\mu} &amp; = -\frac{e}{2m}\vec{L}.
-\end{aligned}`
+\end{aligned}
 No caso do átomo de hidrogênio, onde `\(L=\hbar\sqrt{\ell(\ell+1)}\)` teremos
-`\begin{aligned}
+\begin{aligned}
       \mu &amp; = -\left(\frac{e\hbar}{2m}\right)\sqrt{\ell(\ell+1)},\\
           &amp; = -\sqrt{\ell(\ell+1)}\mu_B.
-\end{aligned}`
+\end{aligned}
 `\(\mu_B\)` é chamado de magneto de Bohr.
 
 ]
@@ -497,13 +507,13 @@ class: middle
 .pull-left[
 
 Agora, podemos também definir a componente z do momento de dipolo magnético, onde
-`\begin{aligned}
+\begin{aligned}
   \mu_z &amp; = -\frac{e}{2m}L_z.
-\end{aligned}`
+\end{aligned}
 No caso do átomo de hidrogênio temos `\(L_z=\hbar m\)`, portanto a componente z do dipolo magnético é dado por
-`\begin{aligned}
+\begin{aligned}
   \mu_z = -m\mu_B
-\end{aligned}`
+\end{aligned}
 Naturalmente, o dipolo magnético do átomo não possui uma orientação preferencial. Entretanto, na presença de um campo magnético externo `\(\vec{B}\)`, surge um torque `\(\vec{\tau}=\vec{\mu}\times\vec{B}\)` no elétron com a intenção de alinhar a componente `\(\mu_z\)` com o direção de `\(\vec{B}\)`. Como consequência, o campo `\(\vec{B}\)` é somado com o campo magnético gerado por `\(\mu_z\)` e o material se torna ferromagnético.
 
 ]
@@ -519,9 +529,136 @@ Naturalmente, o dipolo magnético do átomo não possui uma orientação prefere
 ---
 class: middle
 
+&lt;div class="my-header"&gt;&lt;span&gt; Spin do elétron - Experimento de Stern-Gerlach e o surgimento do spin.&lt;/span&gt;&lt;/div&gt;
+
+.pull-left[
+
+Em 1922 os físicos Otto Stern e Walther Gerlach realizaram uma experiência com átomos de prata. O átomo metálico após aquecido emite átomos de prata que atravessam um campo magnético como mostra a figura ao lado. A distribuição eletrônica do átomo de prata é dado por `\([Kr]4d^{10}5s^1\)`, ou seja, a camada de valência da prata é preenchida pelo subnível referente à `\(\ell = 0\)` e `\(m = 0\)`. Sabendo que `\(\mu_z = -\frac{e}{2m}L_z\)` podemos dizer que o momento dipolo magnético da prata é zero, assim naturalmente a prata não deveria interagir com o campo magnético e portanto deveria existir uma linha horizontal no anteparo à direita. Entretanto, a experiência mostrou que existe um desvio dividindo o feixe para cima e para baixo. Assim, a prata deveria possuir momento de dipolo magnético, mesmo no caso `\(m=0\)`.
+
+]
+
+.pull-right[
+
+A única explicação seria se o elétron no átomo possuir naturalmente um momento dipolo magnético. Seguindo a lógica de `\(\mu_z\)` mostrado anteriormente, o momento de dipolo deve ser equivalente à
+
+\begin{aligned}
+  \mu_z &amp; = -\frac{e}{2m}s_z.
+\end{aligned}
+
+onde `\(S_z\)` é a componente z do número quântico spin `\(s\)`.
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/stern-gerlach.gif" alt="Experimento de Stern-Gerlach. Fonte: http://plato.if.usp.br/1-2005/fnc0376n/na5/node4.html" width="90%" /&gt;
+&lt;p class="caption"&gt;Experimento de Stern-Gerlach. Fonte: http://plato.if.usp.br/1-2005/fnc0376n/na5/node4.html&lt;/p&gt;
+&lt;/div&gt;
+
+]
+
+---
+class: middle
+
+&lt;div class="my-header"&gt;&lt;span&gt; Spin do elétron - Valos possíveis para o spin e sua componente magnética&lt;/span&gt;&lt;/div&gt;
+
+.pull-left[
+
+A energia potencial do momento magnético `\(\vec{\mu}\)` na presença de um campo magnético `\(\vec{B}\)` é dado por `\(U=-\vec{\mu}\cdot\vec{B}\)`.. Portanto, para existir dois feixes em sentidos distintos na direção, a energia potencial produzida no experimento deve ser equivalente a `\(U=-\mu_zB\)`, onde \begin{align}
+  \mu_z = m_s\mu_B = \pm \frac{1}{2}\mu_B.
+\end{align}
+Dessa maneira, podemos dizer que o número quântico magnético do spin deve assumir os valores
+\begin{align}
+  s = \frac{1}{2}.
+\end{align}
+Utilizando o mesmo raciocínio do número quântico `\(\ell\)`, devemos ter os valores `\(m_s=-s,-s+1,\dots,0,\dots,s-1,s\)`.
+
+]
+
+.pull-right[
+
+ Assim, o único valor plausível para s seria
+\begin{align}
+  s = \frac{1}{2}.
+\end{align}
+Portanto, na presença de um campo magnético externo, o elétron pode assumir dois estados quânticos distintos de spin, de acordo com os valores `\(m_s=\pm\frac{1}{2}\)`. Assim, também é de se esperar que o spin também possui assim como `\(\ell\)` um momento angular orbital associado a ele, onde
+\begin{align}
+  S = \hbar\sqrt{s(s+1)}.
+\end{align}
+E no caso, o seu momento magnético pode ser definido, em analogia ao momento angular dado por `\(\ell\)`, como
+\begin{align}
+  \mu = \sqrt{s(s+1)}\mu_B.
+\end{align}
+
+
+]
+
+---
+class: middle
+
+&lt;div class="my-header"&gt;&lt;span&gt; Spin do elétron - Acoplamento spin-órbita&lt;/span&gt;&lt;/div&gt;
+
+.pull-left[
+
+No caso geral, um elétron deve um momento angular orbital descrito pelo número quântico `\(\ell\)`, e um momento angular intríseco ao movimento interno do elétron, descrito pelo número quântico s. Dessa maneira, sabendo que o momento angular é uma grandeza vetorial, é de se esperar que seus momentos angulares irão se somar gerando um momento angular total `\(\vec{J}\)` a partir das regras de adição vetorial, ou seja,
+\begin{align}
+  \vec{J} = \vec{L}+\vec{S}.
+\end{align}
+onde a soma vetorial deverá fornecer o módulo de J 
+\begin{aligned}
+  J &amp; = L+S,\\\
+  J &amp; = \left|L-S\right|,
+\end{aligned}
+Entretanto, pela mecânica quântica `\(\ell\)` e `\(s\)` assumem valores quantizados, onde os valores possíveis de j devem ser equivalentes à
+
+]
+
+.pull-right[
+\begin{aligned}
+  j &amp; = l+s,\\\
+  j &amp; = \left|l-s\right|,
+\end{aligned}
+
+O momento angular, em analogia ao número quântico `\(\ell\)`, em módulo de assumir o valor abaixo,
+\begin{aligned}
+  J = \hbar\sqrt{j(j+1)}.
+\end{aligned}
+E a componente `\(m_j\)` deverá ser
+\begin{aligned}
+  J_z = m_j\hbar,
+\end{aligned}
+onde
+\begin{aligned}
+  m_j = -j,-j+1,\dots,0,\dots,j-1,j.
+\end{aligned}
+
+]
+
+---
+class: middle
+
+&lt;div class="my-header"&gt;&lt;span&gt; Spin do elétron - Estrutura fina&lt;/span&gt;&lt;/div&gt;
+
+.pull-left[
+
+Como mencionado anteriormente, a energia potencial causada pela interação do spin do elétron com o campo magnético externo `\(\vec{B}\)` é dado por `\(U=\pm\frac{1}{2}\mu_BB\)`. Essa contribuição deverá ser adicionada na energia `\(E_n\)` do átomo de hidrogênio. Portanto é de se esperar que cada nível correspondente aos números quânticos n e `\(\ell\)` deverão ser desdobrados em dois subníveis não degenerados, assim como mostra a figura ao lado (a notação espectroscópica segue a seguinte simbologia: `\(n\ell_j\)`, seguindo os números quânticos n, `\(\ell\)` e j). Esse efeito pode ser observado experimentalmente através de uma análise espectroscópica através do apacerimento de novas linhas de comprimentos de onda, recebendo o nome de **estrutura fina do átomo de hidrogênio**.
+
+]
+
+.pull-right[
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/estrutura-fina.jpeg" alt="Desdobramento fino do nível 2P devido a interação spin-órbita." width="90%" /&gt;
+&lt;p class="caption"&gt;Desdobramento fino do nível 2P devido a interação spin-órbita.&lt;/p&gt;
+&lt;/div&gt;
+
+]
+
+---
+class: middle
+
 &lt;div class="my-header"&gt;&lt;span&gt;Bibliografia&lt;/span&gt;&lt;/div&gt;
 
-NULL
+&lt;a name=bib-tipler&gt;&lt;/a&gt;[Tipler, P. A. and R. Llewellyn](#cite-tipler)
+(2003). _Modern Physics_. W. H. Freeman. ISBN: 9780716743453. URL:
+[https://books.google.com.br/books?id=tpU18JqcSNkC](https://books.google.com.br/books?id=tpU18JqcSNkC).
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="libs/remark-latest.min.js"></script>

@@ -46,6 +46,8 @@ class: middle
 
 <div class="my-header"><span>Sumário</span></div>
 
+.pull-left[
+
 1. A equação de Schrodinger em coordenadas esféricas
 
 2. Solução da parte radial e número quântico principal
@@ -62,9 +64,17 @@ class: middle
 
 5. Funções hidrogenóides
 
-6. Aplicações
+]
 
-6. Bibliografia
+.pull-right[
+
+6. O spin do elétron
+
+7. Aplicações
+
+8. Bibliografia
+
+]
 
 <div class="footnote">
   <ul>
@@ -506,6 +516,129 @@ Naturalmente, o dipolo magnético do átomo não possui uma orientação prefere
 
 ```{r, echo=FALSE, fig.align='center',fig.cap='Alinhamento dos dipolos magnéticos do átomo na presença de um campo magnético externo.',out.width="70%",fig.asp=1}
   knitr::include_graphics("img/material_ferromagnetico.jpeg")
+```
+
+]
+
+---
+class: middle
+
+<div class="my-header"><span> Spin do elétron - Experimento de Stern-Gerlach e o surgimento do spin.</span></div>
+
+.pull-left[
+
+Em 1922 os físicos Otto Stern e Walther Gerlach realizaram uma experiência com átomos de prata. O átomo metálico após aquecido emite átomos de prata que atravessam um campo magnético como mostra a figura ao lado. A distribuição eletrônica do átomo de prata é dado por $[Kr]4d^{10}5s^1$, ou seja, a camada de valência da prata é preenchida pelo subnível referente à $\ell = 0$ e $m = 0$. Sabendo que $\mu_z = -\frac{e}{2m}L_z$ podemos dizer que o momento dipolo magnético da prata é zero, assim naturalmente a prata não deveria interagir com o campo magnético e portanto deveria existir uma linha horizontal no anteparo à direita. Entretanto, a experiência mostrou que existe um desvio dividindo o feixe para cima e para baixo. Assim, a prata deveria possuir momento de dipolo magnético, mesmo no caso $m=0$.
+
+]
+
+.pull-right[
+
+A única explicação seria se o elétron no átomo possuir naturalmente um momento dipolo magnético. Seguindo a lógica de $\mu_z$ mostrado anteriormente, o momento de dipolo deve ser equivalente à
+
+\begin{aligned}
+  \mu_z & = -\frac{e}{2m}s_z.
+\end{aligned}
+
+onde $S_z$ é a componente z do número quântico spin $s$.
+
+```{r, echo=FALSE, fig.align='center',fig.cap='Experimento de Stern-Gerlach. Fonte: http://plato.if.usp.br/1-2005/fnc0376n/na5/node4.html',out.width="90%",fig.asp=1}
+  knitr::include_graphics("img/stern-gerlach.gif")
+```
+
+]
+
+---
+class: middle
+
+<div class="my-header"><span> Spin do elétron - Valos possíveis para o spin e sua componente magnética</span></div>
+
+.pull-left[
+
+A energia potencial do momento magnético $\vec{\mu}$ na presença de um campo magnético $\vec{B}$ é dado por $U=-\vec{\mu}\cdot\vec{B}$.. Portanto, para existir dois feixes em sentidos distintos na direção, a energia potencial produzida no experimento deve ser equivalente a $U=-\mu_zB$, onde \begin{align}
+  \mu_z = m_s\mu_B = \pm \frac{1}{2}\mu_B.
+\end{align}
+Dessa maneira, podemos dizer que o número quântico magnético do spin deve assumir os valores
+\begin{align}
+  s = \frac{1}{2}.
+\end{align}
+Utilizando o mesmo raciocínio do número quântico $\ell$, devemos ter os valores $m_s=-s,-s+1,\dots,0,\dots,s-1,s$.
+
+]
+
+.pull-right[
+
+ Assim, o único valor plausível para s seria
+\begin{align}
+  s = \frac{1}{2}.
+\end{align}
+Portanto, na presença de um campo magnético externo, o elétron pode assumir dois estados quânticos distintos de spin, de acordo com os valores $m_s=\pm\frac{1}{2}$. Assim, também é de se esperar que o spin também possui assim como $\ell$ um momento angular orbital associado a ele, onde
+\begin{align}
+  S = \hbar\sqrt{s(s+1)}.
+\end{align}
+E no caso, o seu momento magnético pode ser definido, em analogia ao momento angular dado por $\ell$, como
+\begin{align}
+  \mu = \sqrt{s(s+1)}\mu_B.
+\end{align}
+
+
+]
+
+---
+class: middle
+
+<div class="my-header"><span> Spin do elétron - Acoplamento spin-órbita</span></div>
+
+.pull-left[
+
+No caso geral, um elétron deve um momento angular orbital descrito pelo número quântico $\ell$, e um momento angular intríseco ao movimento interno do elétron, descrito pelo número quântico s. Dessa maneira, sabendo que o momento angular é uma grandeza vetorial, é de se esperar que seus momentos angulares irão se somar gerando um momento angular total $\vec{J}$ a partir das regras de adição vetorial, ou seja,
+\begin{align}
+  \vec{J} = \vec{L}+\vec{S}.
+\end{align}
+onde a soma vetorial deverá fornecer o módulo de J 
+\begin{aligned}
+  J & = L+S,\\\
+  J & = \left|L-S\right|,
+\end{aligned}
+Entretanto, pela mecânica quântica $\ell$ e $s$ assumem valores quantizados, onde os valores possíveis de j devem ser equivalentes à
+
+]
+
+.pull-right[
+\begin{aligned}
+  j & = l+s,\\\
+  j & = \left|l-s\right|,
+\end{aligned}
+
+O momento angular, em analogia ao número quântico $\ell$, em módulo de assumir o valor abaixo,
+\begin{aligned}
+  J = \hbar\sqrt{j(j+1)}.
+\end{aligned}
+E a componente $m_j$ deverá ser
+\begin{aligned}
+  J_z = m_j\hbar,
+\end{aligned}
+onde
+\begin{aligned}
+  m_j = -j,-j+1,\dots,0,\dots,j-1,j.
+\end{aligned}
+
+]
+
+---
+class: middle
+
+<div class="my-header"><span> Spin do elétron - Estrutura fina</span></div>
+
+.pull-left[
+
+Como mencionado anteriormente, a energia potencial causada pela interação do spin do elétron com o campo magnético externo $\vec{B}$ é dado por $U=\pm\frac{1}{2}\mu_BB$. Essa contribuição deverá ser adicionada na energia $E_n$ do átomo de hidrogênio. Portanto é de se esperar que cada nível correspondente aos números quânticos n e $\ell$ deverão ser desdobrados em dois subníveis não degenerados, assim como mostra a figura ao lado (a notação espectroscópica segue a seguinte simbologia: $n\ell_j$, seguindo os números quânticos n, $\ell$ e j). Esse efeito pode ser observado experimentalmente através de uma análise espectroscópica através do apacerimento de novas linhas de comprimentos de onda, recebendo o nome de **estrutura fina do átomo de hidrogênio**.
+
+]
+
+.pull-right[
+
+```{r, echo=FALSE, fig.align='center',fig.cap='Desdobramento fino do nível 2P devido a interação spin-órbita.',out.width="90%",fig.asp=1}
+  knitr::include_graphics("img/estrutura-fina.jpeg")
 ```
 
 ]

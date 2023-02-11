@@ -1,0 +1,50 @@
+﻿\begin{tikzpicture}[scale=2,transform shape, font=\Large]
+
+	\tkzInit[xmin=0,xmax=13,ymin=0,ymax=10]
+%	\tkzGrid[color=gray!50]
+	\tkzClip[space=0.75]
+
+	\tkzDefPoints{0/0/s1, 10/0/s2}
+
+	\draw[line width=1.5pt](s1) -- (s2) node [above right, at start] {1S};
+
+	\tkzDefPoints{0/8/p1, 3/8/p2, 4/9/p3, 10/9/p4, 4/7/p5, 10/7/p6, 7/8/p7}
+
+	\draw[line width=1.5pt](p1) -- (p7) node [above right, at start] {2P};
+
+	\draw[line width=1.5pt](p2) -- (p3);
+
+	\draw[line width=1.5pt](p2) -- (p5);
+
+	\draw[line width=1.5pt, dashed](p5) -- (p6);
+
+	\draw[line width=1.5pt, dashed](p3) -- (p4);
+
+	\tkzDefPoints{7/7/p1,7/9/p2}
+
+	\draw (p2) to[dim arrow={label=$\Delta U$}, line width=2pt] (p1);
+
+	\tkzText[above left](p6) {$-\mu_B$}
+	\tkzText[above left](p4) {$\mu_B$}
+	\tkzText[above right](p3) {$2P_{3/2}$}
+	\tkzText[above right](p5) {$2P_{1/2}$}
+
+	\draw[->, line width=7pt] ($(p4)+(0.5,-0.5)$) --++ (0,1) node [right, midway] {$\vec{B}$};
+	\draw[->, line width=7pt] ($(p6)+(0.5,-0.5)$) --++ (0,1) node [right, midway] {$\vec{B}$};
+
+	\draw[->, line width=7pt] ($(p4)+(1.5,-0.5)$) --++ (0,1) node [right, midway] {$\vec{L}$};
+	\draw[->, line width=7pt] ($(p6)+(1.5,-0.5)$) --++ (0,1) node [right, midway] {$\vec{L}$};
+
+	\draw[->, line width=7pt] ($(p4)+(2.5,-0.5)$) --++ (0,1) node [right, midway] {$\vec{S}$};
+	\draw[<-, line width=7pt] ($(p6)+(2.5,-0.5)$) --++ (0,1) node [right, midway] {$\vec{S}$};
+
+	\tkzDefPoints{7/9/n1,7/0/n2, 6/7/n3, 6/0/n4}
+
+	\draw[->, line width=3pt, color=gray] (n1) -- (n2);
+	\draw[->, line width=3pt, color=gray] (n3) -- (n4);
+
+	\tkzDefPoints{11/3.5/t1}
+
+	\tkzText(t1){$\Delta U = 2\mu B$};
+
+\end{tikzpicture}

@@ -218,7 +218,7 @@ Chamando $C=\ell(\ell+1)$, sendo $\ell$ um número inteiro positivo, teremos
 
 Usando técnicas matemáticas, como o método de solução por série de potências, poderemos encontrar a solução para a equação acima, como
 \begin{aligned}
-  R_{n\ell}(r)=A_{n\ell}e^{-r/a_0n}r^{\ell}L_{n\ell}.
+  R_{n\ell}(r)=A_{n\ell}e^{-r/a_0n}r^{\ell}L^{n\ell}.
 \end{aligned}
 
 $L_{n\ell}$ são chamados polinômios de Laguerre e depende dos valores inteiros n e $\ell$. $R_{n\ell}$ depende de n que assume valores inteiros positivos e não-nulos.
@@ -236,9 +236,9 @@ Pelos polinômios de Laguerre, os valores de $\ell$ estão amarrados com os valo
 n é chamada de número quântico principal e $\ell$, como veremos à seguir, é chamado número quântico angular. Abaixo mostramos algumas funções de Laguerre, para $n=1$ e $n=2$.
 
 \begin{aligned}
-  (n = 1, \ell=0) & \Rightarrow R_{10} = \frac{2}{\sqrt{a^3_0}}e^{-r/a_0},\\\
-  (n = 2, \ell=0) & \Rightarrow R_{20} = \frac{1}{2a^3_0}\left(1-\frac{r}{2a_0}\right)e^{-r/2a_0},\\\
-  (n = 2, \ell=1) & \Rightarrow R_{21} =  \frac{1}{\sqrt{6a^3_0}}\frac{r}{a_0}e^{-r/2a_0}.
+  (n = 1, \ell=0) & \Rightarrow R^{10} = \frac{2}{\sqrt{a^3_0}}e^{-r/a_0},\\\
+  (n = 2, \ell=0) & \Rightarrow R^{20} = \frac{1}{2a^3_0}\left(1-\frac{r}{2a_0}\right)e^{-r/2a_0},\\\
+  (n = 2, \ell=1) & \Rightarrow R^{21} =  \frac{1}{\sqrt{6a^3_0}}\frac{r}{a_0}e^{-r/2a_0}.
    & \vdots
 \end{aligned}
 
@@ -317,7 +317,7 @@ class: middle
 
 Portanto, sabendo as funções $R(r)$, $\Theta(\theta)$ e $\Phi(\phi)$, poderemos obter a função de onda $\phi(r,\theta,\phi)=R(r)\Theta(\theta)\Phi(\phi)$. Ou poderemos reescrever $\psi$ em termos da solução da parte radial e da parte angular,
 \begin{aligned}
-  \psi_{n\ell m}(r,\theta,\phi) = R_{n\ell}(r)Y_{\ell m}(\theta,\phi).
+  \psi^{n\ell m}(r,\theta,\phi) = R^{n\ell}(r)Y^{\ell m}(\theta,\phi).
 \end{aligned}
 $Y_{\ell m}$ recebe o nome de **harmônicos esféricos**. Ao lado temos os harmônicos esféricos para os números quânticos $\ell=0,1,2$. Após a solução da função de onda, podemos ver que ela depende de três números quânticos: $n$ chamado de número quântico principal, $\ell$ de número angular e $m$ de número magnético (seu significado será discutido a seguir). Abaixo mostra um resumo de valores para n, $\ell$ e m,
 \begin{aligned}
@@ -564,40 +564,32 @@ class: middle
 
 .pull-left[
 
-A energia potencial do momento magnético $\vec{\mu}$ na presença de um campo magnético $\vec{B}$ é dado por $U=-\vec{\mu}\cdot\vec{B}$.. Portanto, para existir dois feixes em sentidos distintos na direção, a energia potencial produzida no experimento deve ser equivalente a $U=-\mu_zB$, onde 
-\begin{aligned}
+A energia potencial do momento magnético $\vec{\mu}$ na presença de um campo magnético $\vec{B}$ é dado por $U=-\vec{\mu}\cdot\vec{B}$.. Portanto, para existir dois feixes em sentidos distintos na direção, a energia potencial produzida no experimento deve ser equivalente a $U=-\mu_zB$, onde \begin{align}
   \mu_z = m_s\mu_B = \pm \frac{1}{2}\mu_B.
-\end{aligned}
-
+\end{align}
 Dessa maneira, podemos dizer que o número quântico magnético do spin deve assumir os valores
-
 \begin{align}
   s = \frac{1}{2}.
 \end{align}
-
 Utilizando o mesmo raciocínio do número quântico $\ell$, devemos ter os valores $m_s=-s,-s+1,\dots,0,\dots,s-1,s$.
 
 ]
 
 .pull-right[
 
-Assim, o único valor plausível para s seria
-
-\begin{aligned}
+ Assim, o único valor plausível para s seria
+\begin{align}
   s = \frac{1}{2}.
-\end{aligned}
-
+\end{align}
 Portanto, na presença de um campo magnético externo, o elétron pode assumir dois estados quânticos distintos de spin, de acordo com os valores $m_s=\pm\frac{1}{2}$. Assim, também é de se esperar que o spin também possui assim como $\ell$ um momento angular orbital associado a ele, onde
-
-\begin{aligned}
+\begin{align}
   S = \hbar\sqrt{s(s+1)}.
-\end{aligned}
-
+\end{align}
 E no caso, o seu momento magnético pode ser definido, em analogia ao momento angular dado por $\ell$, como
-
-\begin{aligned}
+\begin{align}
   \mu = \sqrt{s(s+1)}\mu_B.
-\end{aligned}
+\end{align}
+
 
 ]
 

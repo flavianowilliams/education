@@ -1,0 +1,37 @@
+\begin{tikzpicture}[scale=1,transform shape,font=\Large]
+			
+	\begin{scope}[shift={(0,0)}]
+
+	\tkzInit[xmin=-4,xmax=4, ymax=4]
+%	\tkzGrid[color=gray!20]
+	\tkzClip[space=1.1]
+	
+	\tkzDrawX[right,label=x, noticks]
+	\tkzDrawY[above,label=$|\psi(x)|^2$, noticks]
+	
+	\tkzDefPoints{-4/0/A, 0/0/B, 0/3/C, 4/3/D}
+					
+	\tkzDrawSegment[color=red, line width=2pt](A,B)
+	\tkzDrawSegment[dashed, color=red, line width=1pt](B,C)
+	\tkzDrawSegment[color=red, line width=2pt](C,D)
+
+	\tkzText[text centered,opacity=100,fill=gray!20, below=0.2](B){\small $x=0$}
+
+	\tkzDefPoints{-2/1.75/A, 2/1.75/B}
+	\tkzText[text centered,opacity=100,fill=gray!20, above=0.1](A){\small $|\psi(x)|^2_{x<0}$}
+	\tkzText[text centered,opacity=100,fill=gray!20, above=0.1](B){\small $|\psi(x)|^2_{x\ge 0}$}
+
+	\def\E{4}
+	\def\m{1}
+	\def\V{3.5}
+	\def\c{1.5}
+
+	\def\ka{sqrt(2*\m*\E)}
+	\def\kb{sqrt(2*\m*(\E-\V))}
+
+	\tkzFct[domain=-4:0, line width=1pt]{\c*(cos(\ka*x)**2+\kb**2*sin(\ka*x)**2/\ka**2)}
+	\tkzFct[domain=0:4, line width=1pt]{\c}
+
+	\end{scope}
+
+\end{tikzpicture}

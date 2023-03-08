@@ -1,0 +1,56 @@
+﻿\begin{tikzpicture}[scale=2,transform shape,font=\Large]
+			
+	\tkzInit[xmin=-4,xmax=4,ymin=0,ymax=8]
+%	\tkzGrid[color=gray!20]
+	\tkzClip[space=1.25]
+	
+	\tkzDrawX[right,label=x, noticks]
+	\tkzDrawY[above,label=V(x), noticks]
+	
+	\tkzDefPoints{0/0/A, -3/0/B, 3/0/C}
+					
+	\tkzText[text centered,opacity=100,fill=gray!20, below=0.2](A){\small $x=0$}
+	\tkzText[text centered,opacity=100,fill=gray!20, below=0.2](B){\small $x=-x_m$}
+	\tkzText[text centered,opacity=100,fill=gray!20, below=0.2](C){\small $x=x_m$}
+
+%	\tkzText[text centered,opacity=100,fill=gray!20, above=0.1](C){\small $\frac{1}{2}m\omega^2$}
+
+	\tkzFct[domain=-4:4, line width=1pt, color=gray]{0.5*x**2}
+
+	\tkzDefPointByFct(-1.1*0.71)\tkzGetPoint{p1}
+	\tkzDefPointByFct(1.1*0.71)\tkzGetPoint{p2}
+	\draw [line width=2pt](p1) -- (p2) node [right, color=black] {\small $E_0=0,5\hbar\omega$};
+
+	\tkzDefPointByFct(-1.1*1.22)\tkzGetPoint{p1}
+	\tkzDefPointByFct(1.1*1.22)\tkzGetPoint{p2}
+	\draw [line width=2pt](p1) -- (p2) node [right, color=black] {\small $E_1=1,5\hbar\omega$};
+
+	\tkzDefPointByFct(-1.1*1.58)\tkzGetPoint{p1}
+	\tkzDefPointByFct(1.1*1.58)\tkzGetPoint{p2}
+	\draw [line width=2pt](p1) -- (p2) node [right, color=black] {\small $E_2=2,5\hbar\omega$};
+
+	\tkzDefPointByFct(-1.1*1.87)\tkzGetPoint{p1}
+	\tkzDefPointByFct(1.1*1.87)\tkzGetPoint{p2}
+	\draw [line width=2pt](p1) -- (p2) node [right, color=black] {\small $E_3=3,5\hbar\omega$};
+
+	\tkzDefPointByFct(-1.1*2.12)\tkzGetPoint{p1}
+	\tkzDefPointByFct(1.1*2.12)\tkzGetPoint{p2}
+	\draw [line width=2pt](p1) -- (p2) node [right, color=black] {\small $E_4=4,5\hbar\omega$};
+
+	\tkzDefPointByFct(-1.1*2.35)\tkzGetPoint{p1}
+	\tkzDefPointByFct(1.1*2.35)\tkzGetPoint{p2}
+	\draw [line width=2pt](p1) -- (p2) node [right, color=black] {\small $E_5=5,5\hbar\omega$};
+
+	\tkzDefPointByFct(-1.1*2.55)\tkzGetPoint{p1}
+	\tkzDefPointByFct(1.1*2.55)\tkzGetPoint{p2}
+	\draw [line width=2pt](p1) -- (p2) node [right, color=black] {\small $E_6=6,5\hbar\omega$};
+
+	\tkzDefPointByFct(-1.1*2.74)\tkzGetPoint{p1}
+	\tkzDefPointByFct(1.1*2.74)\tkzGetPoint{p2}
+	\draw [line width=2pt](p1) -- (p2) node [right, color=black] {\small $E_7=7,5\hbar\omega$};
+
+	\tkzDefPointByFct(-1.1*2.92)\tkzGetPoint{p1}
+	\tkzDefPointByFct(1.1*2.92)\tkzGetPoint{p2}
+	\draw [line width=2pt](p1) -- (p2) node [right, color=black] {\small $E_8=8,5\hbar\omega$};
+
+\end{tikzpicture}

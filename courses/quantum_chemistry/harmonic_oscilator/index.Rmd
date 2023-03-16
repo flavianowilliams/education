@@ -277,7 +277,7 @@ fig
 ---
 class: middle
 
-<div class="my-header"><span>Oscilador quântico - A função de onda do oscilador quântico</span></div>
+<div class="my-header"><span>Oscilador quântico - Os níveis de energia do oscilador quântico</span></div>
 
 .pull-left[
 
@@ -304,6 +304,82 @@ Mas pelo sistema massa-mola temos que $\omega^2=k/\mu $. Substituindo teremos
 ```{r, echo=FALSE, fig.align='center',fig.cap='Níveis de energia do oscilador quântico.',out.width="100%",fig.asp=1}
   knitr::include_graphics("img/energia-mhs-quantico.jpeg")
 ```
+
+]
+
+---
+class: middle
+
+<div class="my-header"><span>Oscilador quântico - regra de seleção</span></div>
+
+.pull-left[
+Vimos no slide anterior que os níveis de energia do oscilador quântico, são quantizados na forma $E_n=\hbar\omega(n+1/2)$. Fisicamente a transição eletrônica do nível n para outro n' somente ocorre se a molécula interagir com a radiação eletromagnética (através do processo de absorção da radiação). Essa interação ocorre pelo acoplamento do momento dipolo elétrico da molécula com o campo elétrico da radiação eletromagnética,
+\begin{aligned}
+  H = \vec{\mu}\cdot \vec{E}
+\end{aligned}
+Assim é de se esperar que antes e após a absorção da radiação, deve ocorrer uma mudança no momento de dipolo elétrico da molécula. Na mecânica quântica, a mudança no momento de dipolo elétrico somente não irá se anular se o fóton absorvido tiver uma energia equivalente a diferença dos níveis de energia referente à transição $\Delta n=\pm 1$ do oscilador quântico.
+
+]
+
+.pull-right[
+
+```{r, echo=FALSE, fig.align='center',fig.cap='Níveis de energia do oscilador quântico.',out.width="100%",fig.asp=1}
+  knitr::include_graphics("img/energia-niveis.jpeg")
+```
+
+]
+
+---
+class: middle
+
+<div class="my-header"><span>Aplicação - Análise vibracional de moléculas diatômicas</span></div>
+
+.pull-left[
+Considerando que a interação intramolecular de uma molécula diatômica como um oscilador harmônico, os níveis de energia são dados por
+\begin{aligned}
+  E_n = \hbar\omega\left(n+1/2\right),\quad n=0,1,2,\cdots
+\end{aligned}
+
+
+]
+
+.pull-right[
+]
+
+---
+class: middle
+
+<div class="my-header"><span>Oscilador quântico - regra de seleção</span></div>
+
+.pull-left[
+Na mecânica quântica a mudança no momento de dipolo elétrico da molécula pode ser representada pela equação abaixo,
+\begin{aligned}
+  \mu_{nn'} = \int\psi_n(x)\mu(x)\psi_{n'}(x)
+\end{aligned}
+Expandindo $\mu$ em série de potências em torno da distância de equilíbrio $r_0$, ou seja,
+\begin{aligned}
+  \mu(r) = \mu(r_0)+\left(\frac{d\mu}{dr}\right)_{r_0}+\cdots
+\end{aligned}
+teremos
+\begin{aligned}
+  \mu_{nn'} = \int\psi_n(x)\psi_{n'}(x)+\left(\frac{d\mu}{dr}\right)_{r_0}\int\psi_n(x)x\psi_{n'}(x)+\cdots
+\end{aligned}
+A primeira equação se anula devido as condições de ortogonalidade da função de onda. Agora, em relação a segunda equação fazemos a substituição $\alpha^{1/2}x=\epsilon$
+
+]
+
+.pull-right[
+
+para aplicar a propriedade dos polinômios de Hermite
+\begin{aligned}
+  \epsilon H_n(\epsilon) = nH_{n-1}(\epsilon)+\frac{1}{2}H_{n+1}(\epsilon).
+\end{aligned}
+Assim teremos após a substituição $\psi(\epsilon)=H_n(\epsilon)e^{-\epsilon^2}$
+\begin{aligned}
+  \mu_{nn'} & = \frac{N_nN_{n'}}{\alpha}\left(\frac{d\mu}{dr}\right)_{r_0}\times\\
+  &\times\int H_{n'}(x)\left[H_{n-1}(\epsilon)+\frac{1}{2}H_{n+1}(\epsilon)\right]e^{-\epsilon^2}d\epsilon+\cdots
+\end{aligned}
+Podemos ver que pela propriedade da ortogonalidade das funções de onda, a integral somente não irá se anular, e consequentemente $\mu{nn'}$ se $n'=\pm n$.
 
 ]
 

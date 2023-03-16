@@ -1,5 +1,7 @@
 ﻿\begin{tikzpicture}[scale=2,transform shape,font=\Large]
-			
+
+	\tikzstyle{wave}=[decorate,decoration={snake,post length=2.5mm,amplitude=2mm, segment length=6mm},thick];
+
 	\tkzInit[xmin=-4,xmax=4,ymin=0,ymax=8]
 %	\tkzGrid[color=gray!20]
 	\tkzClip[space=1.25]
@@ -17,13 +19,13 @@
 
 	\tkzFct[domain=-4:4, line width=1pt, color=gray]{0.5*x**2}
 
-	\tkzDefPointByFct(-1.1*0.71)\tkzGetPoint{p1}
-	\tkzDefPointByFct(1.1*0.71)\tkzGetPoint{p2}
-	\draw [line width=2pt](p1) -- (p2) node [right, color=black] {\small $E_0=0,5\hbar\omega$};
+	\tkzDefPointByFct(-1.1*0.71)\tkzGetPoint{p1x}
+	\tkzDefPointByFct(1.1*0.71)\tkzGetPoint{p2x}
+	\draw [line width=2pt](p1x) -- (p2x) node [right, color=black] {\small $E_0=0,5\hbar\omega$};
 
-	\tkzDefPointByFct(-1.1*1.22)\tkzGetPoint{p1}
-	\tkzDefPointByFct(1.1*1.22)\tkzGetPoint{p2}
-	\draw [line width=2pt](p1) -- (p2) node [right, color=black] {\small $E_1=1,5\hbar\omega$};
+	\tkzDefPointByFct(-1.1*1.22)\tkzGetPoint{p1y}
+	\tkzDefPointByFct(1.1*1.22)\tkzGetPoint{p2y}
+	\draw [line width=2pt](p1y) -- (p2y) node [right, color=black] {\small $E_1=1,5\hbar\omega$};
 
 	\tkzDefPointByFct(-1.1*1.58)\tkzGetPoint{p1}
 	\tkzDefPointByFct(1.1*1.58)\tkzGetPoint{p2}
@@ -52,5 +54,11 @@
 	\tkzDefPointByFct(-1.1*2.92)\tkzGetPoint{p1}
 	\tkzDefPointByFct(1.1*2.92)\tkzGetPoint{p2}
 	\draw [line width=2pt](p1) -- (p2) node [right, color=black] {\small $E_8=8,5\hbar\omega$};
+
+	\draw[->, line width=5pt, color=red] (p1x) --++ (0,0.6);
+	\draw[<-, line width=5pt, color=red] (p2x) --++ (0,0.6);
+
+	\draw[-{Stealth[width=5mm]},wave,line width=2pt, color=red]($(p1x)+(-2.5,0.25)$) --++ (2,0);
+	\draw[-{Stealth[width=5mm]},wave,line width=2pt, color=red]($(p2x)+(0.5,0.25)$) --++ (2,0);
 
 \end{tikzpicture}

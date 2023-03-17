@@ -1,0 +1,52 @@
+﻿\begin{tikzpicture}[scale=1,transform shape,font=\Large]
+			
+	\tikzstyle{wave}=[decorate,decoration={snake,post length=2.5mm,amplitude=1.5mm, segment length=6mm},thick];
+
+	\tkzInit[xmin=0,xmax=11,ymin=0,ymax=5]
+%	\tkzGrid[color=gray!20]
+	\tkzClip[space=1]
+
+	\tkzDefPoints{3/0/A, 8/0/B, 8/5/C, 3/5/D}
+					
+	\tkzDrawPoints(A,B,C,D)
+
+	\tkzDrawPolygon(A,B,C,D)
+
+	\foreach \n in {0,1,...,50}{
+
+	\def\x{5.5+2.5*rand}
+	\def\y{2.5+2.5*rand}
+	\coordinate (p1) at (\x,\y);
+	\tkzDrawPoint[size=5pt, fill=gray, color=gray](p1)
+
+	}
+
+	\foreach \n in {0,1,...,5}{
+
+	\draw[-{Stealth[width=4mm]},wave,line width=1.5pt, color=red](0,\n) --++ (2.75,0);
+
+	}
+
+	\foreach \n in {0,1,3}{
+
+	\draw[-{Stealth[width=4mm]},wave,line width=1.5pt, color=red](8.25,0.5+\n) --++ (2.75,0);
+
+	}
+
+%	\tkzDrawX[right,label=r, noticks]
+%	\tkzDrawY[above,label=V(r), noticks]
+	
+%	\tkzText[text centered,opacity=100,fill=gray!20, below=0.2](A){\small $r=0$}
+%	\tkzText[text centered,opacity=100,fill=gray!20, below=0.2](B){\small $r=-r_m$}
+%	\tkzText[text centered,opacity=100,fill=gray!20, below=0.2](C){\small $r=r_m$}
+
+%	\tkzDefPoints{-4/4.5/A, 4/4.5/B, 4/8/C}
+%	\draw [line width=2pt](A) -- (B) node [right] {E};
+
+%	\tkzText[text centered,opacity=100,fill=gray!20, above=0.1](C){\small $\frac{1}{2}m\omega^2$}
+
+%	\tkzFct[domain=-4:4, line width=1pt, color=gray]{0.5*x**2}
+
+%	\tkzFct[domain=-3:3, line width=1pt, color=red]{0.5*x**2}
+
+\end{tikzpicture}

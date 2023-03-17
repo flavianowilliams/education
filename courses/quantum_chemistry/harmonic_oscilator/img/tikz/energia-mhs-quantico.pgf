@@ -6,14 +6,14 @@
 %	\tkzGrid[color=gray!20]
 	\tkzClip[space=1.25]
 	
-	\tkzDrawX[right,label=x, noticks]
-	\tkzDrawY[above,label=V(x), noticks]
+	\tkzDrawX[right,label=r, noticks]
+	\tkzDrawY[above,label=V(r), noticks]
 	
 	\tkzDefPoints{0/0/A, -3/0/B, 3/0/C}
 					
-	\tkzText[text centered,opacity=100,fill=gray!20, below=0.2](A){\small $x=0$}
-	\tkzText[text centered,opacity=100,fill=gray!20, below=0.2](B){\small $x=-x_m$}
-	\tkzText[text centered,opacity=100,fill=gray!20, below=0.2](C){\small $x=x_m$}
+	\tkzText[text centered,opacity=100,fill=gray!20, below=0.2](A){\small $r_0=0$}
+	\tkzText[text centered,opacity=100,fill=gray!20, below=0.2](B){\small $r=-r_m$}
+	\tkzText[text centered,opacity=100,fill=gray!20, below=0.2](C){\small $r=r_m$}
 
 %	\tkzText[text centered,opacity=100,fill=gray!20, above=0.1](C){\small $\frac{1}{2}m\omega^2$}
 

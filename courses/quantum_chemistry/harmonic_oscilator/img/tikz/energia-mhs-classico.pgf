@@ -4,14 +4,14 @@
 %	\tkzGrid[color=gray!20]
 	\tkzClip[space=1.25]
 	
-	\tkzDrawX[right,label=x, noticks]
-	\tkzDrawY[above,label=V(x), noticks]
+	\tkzDrawX[right,label=r, noticks]
+	\tkzDrawY[above,label=V(r), noticks]
 	
 	\tkzDefPoints{0/0/A, -3/0/B, 3/0/C}
 					
-	\tkzText[text centered,opacity=100,fill=gray!20, below=0.2](A){\small $x=0$}
-	\tkzText[text centered,opacity=100,fill=gray!20, below=0.2](B){\small $x=-x_m$}
-	\tkzText[text centered,opacity=100,fill=gray!20, below=0.2](C){\small $x=x_m$}
+	\tkzText[text centered,opacity=100,fill=gray!20, below=0.2](A){\small $r=0$}
+	\tkzText[text centered,opacity=100,fill=gray!20, below=0.2](B){\small $r=-r_m$}
+	\tkzText[text centered,opacity=100,fill=gray!20, below=0.2](C){\small $r=r_m$}
 
 	\tkzDefPoints{-4/4.5/A, 4/4.5/B, 4/8/C}
 	\draw [line width=2pt](A) -- (B) node [right] {E};

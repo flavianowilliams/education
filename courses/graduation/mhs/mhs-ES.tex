@@ -894,135 +894,192 @@
 		\begin{column}[c]{0.6\textwidth}
 			\begin{figure}[c]
 				%\input{tikz/mhs-movimento-circular.pgf}
-				\begin{tikzpicture}[scale=0.3, transform shape, font=\huge]
-				
-				%eixos
-				\draw[line width=1.0pt,->] (-5,0) -- (5,0) node[right] {$x$};
-				\draw[line width=1.0pt,->] (0,-5) -- (0,5) node[right] {};
-				
-				%circunferencia
-				\draw[line width=1pt,-stealth] (4,0) arc (0:180:4cm);
-				\draw[line width=1pt,-stealth] (-4,0) arc (180:360:4cm);
-				
-				%pontos
-				\filldraw[black] (0,0) circle (2pt) node[anchor=north east] {O};
-				\filldraw[black] (0,0) --++ (45:4) circle (2pt) node[anchor=south west] {};
-				
-				%coordenadas
-				\coordinate (c1) at ({4*cos(45)},0);
-				
-				%vetores
-				\draw[black] (0,0) --++ (45:4);
-				\draw[line width=1pt,red] (45:4) --++ (225:4) node [anchor=south east,midway]  {$x_{m}$};
-				\draw[line width=1pt,red] (0,0) --++ (c1) node [below,midway]  {$x(t)$};
-				
-				%arcos
-				\draw[line width=0.5pt,->] (1.5,0) arc (0:45:1.5cm) node [right=0.1cm,midway] {$\theta$};
-				
-				%linguica
-				\draw[black,dashed] (45:4) -- (c1);
-				
-				%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-				%sistema 1
-				
-				%transformacao coordenadas
-				\def\ta{7}
-				\def\tb{0}
-				
-				%parede
-				\fill [pattern = north west lines] (-0.2+\ta,-0.45+\tb) rectangle (\ta,1+\tb);
-				\draw (\ta,-0.45+\tb) -- (\ta,1+\tb);
-				
-				%chao
-				\draw (\ta,-0.45+\tb) -- (6+\ta,-0.45+\tb);
-				
-				%posicoes
-				\node[below] at (3+\ta,-0.45+\tb) {$0$};
-				\node[below] at (1+\ta,-0.45+\tb) {$-x_{m}$};
-				\node[below] at (5+\ta,-0.45+\tb) {$x_{m}$};
-				
-				% bloco
-				\node[rectangle,fill=gray,inner sep=3.5mm] (a) at (5+\ta,0+\tb) {\small{m}};
-				
-				%mola
-				\draw[decoration={aspect=0.3, segment length=2mm, amplitude=0.5mm,coil},decorate] (\ta,0+\tb) -- (a); 
-				
-				%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-				%sistema 2
-				
-				%transformacao coordenadas
-				\def\ta{-3}
-				\def\tb{7}
-				
-				%parede
-				\fill [pattern = north west lines] (-0.2+\ta,-0.45+\tb) rectangle (\ta,1+\tb);
-				\draw (\ta,-0.45+\tb) -- (\ta,1+\tb);
-				
-				%chao
-				\draw (\ta,-0.45+\tb) -- (6+\ta,-0.45+\tb);
-				
-				%posicoes
-				\node[below] at (3+\ta,-0.45+\tb) {$0$};
-				\node[below] at (1+\ta,-0.45+\tb) {$-x_{m}$};
-				\node[below] at (5+\ta,-0.45+\tb) {$x_{m}$};
-				
-				% bloco
-				\node[rectangle,fill=gray,inner sep=3.5mm] (a) at (3+\ta,0+\tb) {\small{m}};
-				
-				%mola
-				\draw[decoration={aspect=0.3, segment length=1mm, amplitude=1mm,coil},decorate] (\ta,0+\tb) -- (a); 
-				
-				%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-				%sistema 3
-				
-				%transformacao coordenadas
-				\def\ta{-12}
-				\def\tb{0}
-				
-				%parede
-				\fill [pattern = north west lines] (-0.2+\ta,-0.45+\tb) rectangle (\ta,1+\tb);
-				\draw (\ta,-0.45+\tb) -- (\ta,1+\tb);
-				
-				%chao
-				\draw (\ta,-0.45+\tb) -- (6+\ta,-0.45+\tb);
-				
-				%posicoes
-				\node[below] at (3+\ta,-0.45+\tb) {$0$};
-				\node[below] at (1+\ta,-0.45+\tb) {$-x_{m}$};
-				\node[below] at (5+\ta,-0.45+\tb) {$x_{m}$};
-				
-				% bloco
-				\node[rectangle,fill=gray,inner sep=3.5mm] (a) at (1+\ta,0+\tb) {\small{m}};
-				
-				%mola
-				\draw[decoration={aspect=0.3, segment length=0.5mm, amplitude=1mm,coil},decorate] (\ta,0+\tb) -- (a); 
-				
-				%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-				%sistema 4
-				
-				%transformacao coordenadas
-				\def\ta{-3}
-				\def\tb{-7}
-				
-				%parede
-				\fill [pattern = north west lines] (-0.2+\ta,-0.45+\tb) rectangle (\ta,1+\tb);
-				\draw (\ta,-0.45+\tb) -- (\ta,1+\tb);
-				
-				%chao
-				\draw (\ta,-0.45+\tb) -- (6+\ta,-0.45+\tb);
-				
-				%posicoes
-				\node[below] at (3+\ta,-0.45+\tb) {$0$};
-				\node[below] at (1+\ta,-0.45+\tb) {$-x_{m}$};
-				\node[below] at (5+\ta,-0.45+\tb) {$x_{m}$};
-				
-				% bloco
-				\node[rectangle,fill=gray,inner sep=3.5mm] (a) at (3+\ta,0+\tb) {\small{m}};
-				
-				%mola
-				\draw[decoration={aspect=0.3, segment length=1mm, amplitude=1mm,coil},decorate] (\ta,0+\tb) -- (a); 
-				
-				\end{tikzpicture}
+				\begin{tikzpicture}[scale=0.55,transform shape]
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	%sistema 2
+	
+	%transformacao coordenadas
+	\def\ta{0}
+	\def\tb{6}
+	
+	%parede
+	\fill [pattern = north west lines] (-0.2+\ta,-0.4+\tb) rectangle (0+\ta,1+\tb);
+	\draw (0+\ta,-0.45+\tb) -- (0+\ta,1+\tb);
+	
+	%chao
+	\draw (0+\ta,-0.45+\tb) -- (5+\ta,-0.45+\tb);
+	
+	%posicoes
+	\node[below] at (2.5+\ta,-0.45+\tb) {$x_{0}=0$};
+	\node[below] at (1+\ta,-0.45+\tb) {$-x_{m}$};
+	\node[below] at (4+\ta,-0.45+\tb) {$x_{m}$};
+	
+	\draw[dashed] (2.5+\ta,-0.45+\tb) -- (2.5+\ta,1+\tb);
+	
+	% bloco
+	\node[rectangle,fill=gray,inner sep=3.5mm] (a) at (4+\ta,0+\tb) {\small{m}};
+	
+	%mola
+	\draw[decoration={aspect=0.3, segment length=4mm, amplitude=0.5mm,coil},decorate] (0+\ta,0+\tb) -- (a);
+	
+	%vetores
+	\draw[line width=1pt,color=red,->] (a) -- ($(a)-(1.5,0)$) node [above,midway] {$\vec{F}_R$};
+	\draw[line width=1pt,color=red,->] (a) -- ($(a)+(1,0)$) node [above,midway] {$\vec{x}$};
+	
+	%tempo
+	\node[above] at (4+\ta,0.75+\tb) {$t=0\;\textrm{seg}$};
+	
+	%seta
+	\draw[->,line width=1.5pt,color=blue] (5.25+\ta,\tb) --++ (0.5,0);
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%sistema 3
+	
+	%transformacao coordenadas
+	\def\ta{6}
+	\def\tb{6}
+	
+	%parede
+	\fill [pattern = north west lines] (-0.2+\ta,-0.45+\tb) rectangle (\ta,1+\tb);
+	\draw (\ta,-0.45+\tb) -- (\ta,1+\tb);
+	
+	%chao
+	\draw (\ta,-0.45+\tb) -- (5+\ta,-0.45+\tb);
+	
+	%posicoes
+	\node[below] at (2.5+\ta,-0.45+\tb) {$x_{0}=0$};
+	\node[below] at (1+\ta,-0.45+\tb) {$-x_{m}$};
+	\node[below] at (4+\ta,-0.45+\tb) {$x_{m}$};
+	
+	\draw[dashed] (2.5+\ta,-0.45+\tb) -- (2.5+\ta,1+\tb);
+	
+	% bloco
+	\node[rectangle,fill=gray,inner sep=3.5mm] (a) at (2.5+\ta,0+\tb) {\small{m}};
+	
+	%mola
+	\draw[decoration={aspect=0.3, segment length=2mm, amplitude=1.0mm,coil},decorate] (\ta,0+\tb) -- (a); 
+	
+	%vetores
+	\draw[line width=1pt,color=red,->] (a) -- ($(a)-(1,0)$) node [above,midway] {$\vec{v}$};
+	
+	%tempo
+	\node[above] at (4+\ta,0.75+\tb) {$t=\frac{T}{4}\;\textrm{seg}$};
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	%sistema 4
+	
+	%transformacao coordenadas
+	\def\ta{6}
+	\def\tb{3}
+	
+	%parede
+	\fill [pattern = north west lines] (-0.2+\ta,-0.45+\tb) rectangle (\ta,1+\tb);
+	\draw (\ta,-0.45+\tb) -- (\ta,1+\tb);
+	
+	%chao
+	\draw (\ta,-0.45+\tb) -- (5+\ta,-0.45+\tb);
+	
+	%posicoes
+	\node[below] at (2.5+\ta,-0.45+\tb) {$x_{0}=0$};
+	\node[below] at (1+\ta,-0.45+\tb) {$-x_{m}$};
+	\node[below] at (4+\ta,-0.45+\tb) {$x_{m}$};
+	
+	\draw[dashed] (2.5+\ta,-0.45+\tb) -- (2.5+\ta,1+\tb);
+	
+	% bloco
+	\node[rectangle,fill=gray,inner sep=3.5mm] (a) at (1+\ta,0+\tb) {\small{m}};
+	
+	%mola
+	\draw[decoration={aspect=0.13, segment length=0.75mm, amplitude=1.0mm,coil},decorate] (\ta,0+\tb) -- (a); 
+	
+	%vetores
+	\draw[line width=1pt,color=red,->] (a) -- ($(a)+(1.5,0)$) node [above,midway] {$\vec{F}_R$};
+	\draw[line width=1pt,color=red,->] (a) -- ($(a)-(1,0)$) node [above,midway] {$\vec{x}$};
+	
+	%tempo
+	\node[above] at (4+\ta,0.75+\tb) {$t=\frac{T}{2}\;\textrm{seg}$};
+	
+	%seta
+	\draw[<-,line width=1.5pt,color=blue] (2.5+\ta,1.25+\tb) --++ (0,0.5);
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%sistema 5
+	
+	%transformacao coordenadas
+	\def\ta{0}
+	\def\tb{3}
+	
+	%parede
+	\fill [pattern = north west lines] (-0.2+\ta,-0.45+\tb) rectangle (\ta,1+\tb);
+	\draw (\ta,-0.45+\tb) -- (\ta,1+\tb);
+	
+	%chao
+	\draw (\ta,-0.45+\tb) -- (5+\ta,-0.45+\tb);
+	
+	%posicoes
+	\node[below] at (2.5+\ta,-0.45+\tb) {$x_{0}=0$};
+	\node[below] at (1+\ta,-0.45+\tb) {$-x_{m}$};
+	\node[below] at (4+\ta,-0.45+\tb) {$x_{m}$};
+	
+	\draw[dashed] (2.5+\ta,-0.45+\tb) -- (2.5+\ta,1+\tb);
+	
+	% bloco
+	\node[rectangle,fill=gray,inner sep=3.5mm] (a) at (2.5+\ta,0+\tb) {\small{m}};
+	
+	%mola
+	\draw[decoration={aspect=0.3, segment length=2mm, amplitude=1.0mm,coil},decorate] (\ta,0+\tb) -- (a); 
+	
+	%vetores
+	\draw[line width=1pt,color=red,->] (a) -- ($(a)+(1,0)$) node [above,midway] {$\vec{v}$};
+	
+	%tempo
+	\node[above] at (4+\ta,0.75+\tb) {$t=\frac{3T}{4}\;\textrm{seg}$};
+	
+	%seta
+	\draw[<-,line width=1.5pt,color=blue] (5.25+\ta,\tb) --++ (0.5,0);
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	%sistema 6
+	
+	%transformacao coordenadas
+	\def\ta{0}
+	\def\tb{0}
+	
+	%parede
+	\fill [pattern = north west lines] (-0.2+\ta,-0.4+\tb) rectangle (0+\ta,1+\tb);
+	\draw (0+\ta,-0.45+\tb) -- (0+\ta,1+\tb);
+	
+	%chao
+	\draw (0+\ta,-0.45+\tb) -- (5+\ta,-0.45+\tb);
+	
+	%posicoes
+	\node[below] at (2.5+\ta,-0.45+\tb) {$x_{0}=0$};
+	\node[below] at (1+\ta,-0.45+\tb) {$-x_{m}$};
+	\node[below] at (4+\ta,-0.45+\tb) {$x_{m}$};
+	
+	\draw[dashed] (2.5+\ta,-0.45+\tb) -- (2.5+\ta,1+\tb);
+	
+	% bloco
+	\node[rectangle,fill=gray,inner sep=3.5mm] (a) at (4+\ta,0+\tb) {\small{m}};
+	
+	%mola
+	\draw[decoration={aspect=0.3, segment length=4mm, amplitude=0.5mm,coil},decorate] (0+\ta,0+\tb) -- (a);
+	
+	%vetores
+	\draw[line width=1pt,color=red,->] (a) -- ($(a)-(1.5,0)$) node [above,midway] {$\vec{F}_R$};
+	\draw[line width=1pt,color=red,->] (a) -- ($(a)+(1,0)$) node [above,midway] {$\vec{x}$};
+	
+	%tempo
+	\node[above] at (4+\ta,0.75+\tb) {$t=T\;\textrm{seg}$};
+	
+	%seta
+	\draw[<-,line width=1.5pt,color=blue] (2.5+\ta,1.25+\tb) --++ (0,0.5);
+	
+\end{tikzpicture}
 				\caption*{\footnotesize Representação das quatro etapas do MHS no MCU.}
 			\end{figure}
 		\end{column}
@@ -1050,9 +1107,12 @@
 				%					\tkzLabelX[orig = false]
 				\tkzDrawY[above, label = x (t), noticks]
 				%					\tkzLabelY[orig = false]
-				
+
 				%definindo funcao
+%				\draw[line width=1.0pt,domain=-0:8*pi,variable=	\x,color=red] plot (\x,{\xm*cos(\om*x)}) node[anchor=south west] {$\frac{1}{2}kx^{2}$};
+
 				\tkzFct[domain=0:8*pi, color=red, line width=1pt]{\xm*cos(\om*x)}
+				
 				\tkzFct[domain=0:8*pi, color=blue, line width=1pt]{\xmb*cos(\om*x)}
 				
 				%textos
@@ -1145,7 +1205,7 @@
 				\frac{dx}{dt} & = v(t) = v_m\sin(\omega t-\phi),\\
 				\frac{d^2x}{dt^2} & = a(t) = a_m\cos(\omega t-\phi).
 			\end{align*}
-			Comparando as amplitudes das funções seno e cosseno com os valores obtidos das derivadas, podemos concluir que $v_m=-\omega x_m$ e $a_m=-\omega^2 x_m$.
+			Comparando as amplitudes das funções seno e cosseno com os valores obtidos das derivadas, podemos concluir que $v_m=\omega x_m$ e $a_m=\omega^2 x_m$.
 		\end{column}
 		\begin{column}[c]{0.55\textwidth}
 			\begin{figure}
@@ -1349,7 +1409,7 @@
 			\pgfmathdeclarefunction{ff}{1}{\pgfmathparse{\k*0.5*(#1)^2}}
 
 			%curva
-			\draw[line width=1.0pt,domain=-(\a+1):\a+1,variable=			\x,color=red,samples=50] plot (\x,{ff(\x)}) node[anchor=south west] {$\frac{1}{2}kx^{2}$};
+			\draw[line width=1.0pt,domain=-(\a+1):\a+1,variable=	\x,color=red,samples=50] plot (\x,{ff(\x)}) node[anchor=south west] {$\frac{1}{2}kx^{2}$};
 
 			%energia total
 			\draw[line width=1pt] (-\a,{ff(-\a)}) -- (\a,{ff(\a)}) node [right] {$E=\frac{1}{2}kx^{2}_{m}$};

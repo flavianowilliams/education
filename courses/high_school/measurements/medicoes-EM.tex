@@ -303,6 +303,77 @@ ou na forma
 	\end{figure}
 \end{frame}
 
+\section{Algarismos significativos}
+
+\subsection{}
+
+\begin{frame}{O que são algarismos significativos}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			Vimos que toda grandeza física é mensurável e seu valor quantitativo é obtido através de um instrumento de medição. Entretanto, no ato da medição o valor encontrado traz consigo erros que está diretamento associado a precisão do seu equipamento de medida. Algarismo significativo é o valor que se obtém comparando-se o objeto com o padrão da grandeza (dizemos que são algarismos significativos os números que temos plena certeza mais um duvidoso.)
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			Em uma medida o zero à esquerda não é significativo, pois seu papel é apenas ancorar a vírgula. Entretanto, zeros à direita devem ser considerados, pois fixa a exatidão da medida.
+			\begin{align*}
+				\underbracket{3}_{\text{exato}},\underbracket{2}_{\text{duvidoso}}\;\text{cm} & \quad\left(\text{2 a.s.}\right),\\
+				\underbracket{3}_{\text{exato}},\underbracket{0}_{\text{duvidoso}}\;\text{cm} & \quad\left(\text{2 a.s.}\right),\\
+				0,\underbracket{2}_{\text{duvidoso}}\;\text{cm} & \quad\left(\text{1 a.s.}\right).
+			\end{align*}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Representação de um algarismo significativo}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			Na figura abaixo temos total certeza que o tamanho da peça é de pelo menos 3 cm (valor exato), e poderíamos dizer que também há uma incerteza de cerca de mais ou menos 0,2 cm a mais. Assim, poderíamos representar o seu valor como 3,2 cm. o segundo número (2) seria o algarismo duvidoso e 3 o exato.
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			conteúdo...
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Regra de arredondamento}
+	Ao aplicar operações matemáticas com valores envolvendo algarismos significativos devemos fazer aproximações, implicando inevitavelmente em erros de aproximação. Contudo, o resultado obtido após a operação não deve refletir uma precisão maior que aquele medido através do seu instrumento. Portanto, devemos aplicar regras de arredondamento com esse fim.
+	\begin{enumerate}
+		\item [\ding{51}] Se $x\ge 5$, onde x é o numéro de influência, arredonde para cima.
+		\begin{equation*}
+			(1,\underbracket{5}_{\text{a.d.}}\underbracket{5}_{\text{x}}7 = 1,6)\quad (6,2\underbracket{3}_{\text{a.d.}}\underbracket{7}_{\text{x}} = 6,24)\quad (2,12\underbracket{5}_{\text{a.d.}}\underbracket{6}_{\text{x}}7 = 2,126)
+		\end{equation*}
+		\item[\ding{51}] Se $x<5$, onde x é o numéro de influência, o valor é mantido.
+		\begin{equation*}
+			(1,\underbracket{5}_{\text{a.d.}}\underbracket{4}_{\text{x}}7 = 1,5)\quad (6,2\underbracket{3}_{\text{a.d.}}\underbracket{1}_{\text{x}} = 6,23)\quad (2,12\underbracket{5}_{\text{a.d.}}\underbracket{2}_{\text{x}}7 = 2,125)
+		\end{equation*}
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}{Operações envolvendo dois algarismos significativos}
+	\begin{enumerate}
+		\item [\ding{51}] Em operações envolvendo adição e subtração, o resultado não deve conter mais dígitos após a vírgula do que o valor com menos dígitos após a vírgula.
+		\begin{align*}
+			4,371+\alert{302,5}?? = 306,871\approx 306,9\quad\text{(1 algarismo após a virgula)}
+		\end{align*}
+		\item[\ding{51}] Em operações envolvendo multiplicação e divisão, o resultado não deve conter mais algarismos significativos do que o fator menos preciso.
+		\begin{equation*}
+			3,142:\alert{8,05} = 0,39031\approx 0,390\quad\text{(3 algarismos significativos)}
+		\end{equation*}
+	\end{enumerate}
+	Dessa maneira podemos ver que o erro permanece apenas no algarismo duvidoso, preservando os algarismos exatos.
+\end{frame}
+
+\begin{frame}{Operações envolvendo apenas algarismo significativo}
+	Em operações envolvendo apenas um algarismo significativo, como potenciação, radiciação, logaritmação, funções trigonométricas, etc, o resultado arredondado deve manter o número de algarismos significativos do valor anterior.
+	\begin{align*}
+		\sqrt{148,51} & = 12,18646791 \approx 12,186\quad\text{(5 algarismos significativos)},\\
+		(12,186)^2 & = 148,498595 \approx 148,50\quad\text{(5 algarismos significativos)}
+	\end{align*}
+	Dessa maneira podemos ver que o erro permanece apenas no algarismo duvidoso, preservando os algarismos exatos.
+	\begin{corollary}
+		Ao realizar qualquer operação matemática, grande atenção deverá ser dada ao tratar as unidades de medida de cada grandeza física envolvida na operação.
+	\end{corollary}
+\end{frame}
+
 \section{Apêndice}
 
 \subsection{}

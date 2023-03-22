@@ -1,0 +1,42 @@
+﻿\begin{tikzpicture}[scale=2,transform shape,font=\Large]
+			
+	\tkzInit[xmin=0,xmax=8,ymin=-3,ymax=3]
+%	\tkzGrid[color=gray!20]
+	\tkzClip[space=1.25]
+	
+	\tikzstyle{s1}=[circle, radius=0.1, ball color=gray!25];
+	\tikzstyle{s2}=[circle, radius=0.2, ball color=gray!25];
+
+	\tkzDrawX[right,label=r, line width=2pt, noticks]
+	\tkzDrawY[above,label=V(r), line width=2pt, noticks]
+	
+	\def\D{2}
+	\def\beta{1}
+	\def\ro{1}
+
+	\tkzFct[domain=0:8, line width=2pt, color=red]{\D*(exp(-2*\beta*(x-\ro))-2*exp(-\beta*(x-\ro)))}
+	\tkzDefPointByFct(\ro)\tkzGetPoint{c}
+	\tkzPointShowCoord(c)
+
+	\tkzDefPoints{0/-\D/A, \ro/0/B}	
+	\tkzText[left, color=black](A){$D_0$}
+	\tkzText[above, color=black](B){$r_0$}
+
+	\tkzDefPoints{6/1.5/A, 8/1.5/B}
+
+		\draw[decoration={aspect=0.6, segment length=2mm, amplitude=2mm,coil},decorate, line width=1pt] (A) -- (B); 
+		\node [s1, color=black] at (A) {\tiny $m_1$};
+		\node [s2, color=black] at (B) {\small $m_2$};
+		\draw ($(A)+(0,0.5)$) to[dim arrow={label=$\ell_0$},sloped, color=black] ($(B)+(0,0.5)$);
+
+	\tkzDefPoints{1.5/2.5/A, 4/-1.75/B}
+					
+	\tkzText[text centered, color=black, above right](A){\small Repulsao coulombiana}
+	\tkzDefPointByFct(0.15)\tkzGetPoint{c}
+	\draw[->, line width=2pt] (A) -- (c);
+
+	\tkzText[text centered, color=black, right](B){\small Atracao}
+	\tkzDefPointByFct(2)\tkzGetPoint{c}
+	\draw[->, line width=2pt] (B) -- (c);
+
+\end{tikzpicture}

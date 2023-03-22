@@ -399,12 +399,50 @@ Entretanto a molécula $Cl_2$ que tem uma ligação covalente mais fraca entre o
 ---
 class: middle
 
-<div class="my-header"><span>Oscilador anarmônico - ...</span></div>
+<div class="my-header"><span>Oscilador anarmônico - Correções do oscilador quântico</span></div>
 
 .pull-left[
+
+Como vimos no slide anterior, o modelo do oscilador harmônico prevê que a molécula HCl absorve radiação de frequência equivalente a $2886\;cm^{-1}$. Essa previsão teórica concorda perfeitamente com os resultados experimentais. Entretanto, certas ocasiões produz desvios do resultado teórico em comparação ao experimental. Esses desvios geralmente são mais pronunciados em moléculas que possuem uma fraca constante de força k e nos caso onde o comprimento da ligação é consideravelmente elevado. Portanto, nesses casos devemos introduzir correções do potencial, responsável pelo modo de estiramento. Considere um potencial de ligação V(r) responsável pela ligação intramolecular. V(r) pode ser matematicamente representado como uma série de potência em torno da distância de equilíbrio $r_0$ com o recurso da série de Taylor,
+
 ]
 
 .pull-right[
+
+\begin{align*}
+  V(r) & = V(r_0)+\frac{1}{2!}\left(\frac{d^2V}{dr^2}\right)_{r=r_0}(r-r_0)^2+\\
+  & +\frac{1}{3!}\left(\frac{d^2V}{dr^2}\right)_{r=r_0}(r-r_0)^3+\cdots
+\end{align*}
+Identificando $k=\left(\frac{d^2V}{dr^2}\right)_{r=r_0}$, $\gamma_3=\left(\frac{d^3V}{dr^3}\right)_{r=r_0}$ teremos
+\begin{align*}
+  V(r) & = V(r_0)+\frac{1}{2}k(r-r_0)^2+\frac{1}{6}\gamma_3(r-r_0)^3+\cdots
+\end{align*}
+Identificamos o segundo termo como o potencial do oscilador harmônico e os demais termos a correção que deverá ser feita para alcançar o melhor resultado comparado com o valor experimental.
+
+]
+
+---
+class: middle
+
+<div class="my-header"><span>Oscilador anarmônico - O potencial de Morse</span></div>
+
+.pull-left[
+
+Entretanto, para obter a solução exata de V(r) deveríamos levar em consideração todos os termos da expansão, ou que seria inviável. Um outro caminho seria sugerir uma função que substituiria V(r) em sua integridade. À partir de uma análise comportamental da molécula, ou seja, como a interação se comporta ao aumentarmos ou diminuirmos a distância relativa. Bem, é de se esperar que para distâncias acima da distância de equilíbrio $r_0$ deve haver uma atração entre os átomos afim de manter a ligação permanente. Porém, à medida que a distância vai diminuindo para valores cada vez menores que $r_0$, o núcleo de cada átomo deve perceber a carga positiva do outro, produzindo uma repulsão de considerável intensidade. Morse propôs uma função que após uma análise empírica chegou na seguinte expressão abaixo,
+\begin{align*}
+V(r) = D_0\left[e^{-2\beta (r-r_0)}-2e^{-\beta (r-r_0)}\right]
+\end{align*}
+
+]
+
+.pull-right[
+
+A figura abaixo mostra a representação gráfica do potencial de Morse.
+
+```{r, echo=FALSE, fig.align='center',fig.cap='Potencial de Morse.',out.width="100%",fig.asp=1}
+  knitr::include_graphics("img/potencial-morse.jpeg")
+```
+
 ]
 
 ---

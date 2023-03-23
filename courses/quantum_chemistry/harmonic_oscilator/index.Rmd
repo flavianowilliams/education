@@ -448,6 +448,43 @@ A figura abaixo mostra a representação gráfica do potencial de Morse.
 ---
 class: middle
 
+<div class="my-header"><span>Oscilador anarmônico. Análise vibracional anarmônica</span></div>
+
+.pull-left[
+
+Agora, iremos obter a solução da equação de Schrödinger utilizando a função de Morse ao invés do potencial do oscilador harmônico. Da equação de Schrödinger
+\begin{align*}
+  -\frac{\hbar^2}{2\mu}\frac{d^2}{dr^2}\psi+V(r)\psi & =E\psi,\\
+  -\frac{\hbar^2}{2\mu}\frac{d^2}{dr^2}\psi+D_0\left[e^{-2\beta (r-r_0)}-2e^{-2\beta (r-r_0)}\right]\psi & =E\psi,\\
+%  -\frac{d^2}{dr^2}\psi+\frac{2\mu D_0}{\hbar^2}\left[e^{-2\beta (r-r_0)}-2e^{-2\beta (r-r_0)}\right]\psi & =\frac{2\mu E}{\hbar}\psi,
+\end{align*}
+Substituindo $x=\beta r$ teremos após aplicarmos a regra da cadeia
+\begin{align*}
+  \frac{d^2\psi}{dr^2}=\beta^2\frac{d^2\psi}{dx^2},
+\end{align*}
+
+]
+
+.pull-right[
+
+\begin{align*}
+  -\frac{\hbar^2\beta^2}{2\mu}\frac{d^2}{dr^2}\psi+D_0\left[e^{-2(x-x_0)}-2e^{-2 (x-x_0)}\right]\psi & =E\psi.
+\end{align*}
+Multiplicando a equação por $2\mu/\hbar^2\beta^2$ teremos
+\begin{align*}
+  -\frac{d^2}{dr^2}\psi+\frac{2\mu D_0}{\hbar^2\beta^2}\left[e^{-2(x-x_0)}-2e^{-2 (x-x_0)}\right]\psi & =\frac{2\mu E}{\hbar^2\beta^2}\psi,\\
+  -\frac{d^2}{dr^2}\psi+\delta\left[e^{-2(x-x_0)}-2e^{-2 (x-x_0)}\right]\psi & =\varepsilon\psi,
+\end{align*}
+onde definimos $\delta = \frac{2\mu D_0}{\hbar^2\beta^2}$ e $\varepsilon = \frac{2\mu E}{\hbar^2\beta^2}$. A equação acima somente possui solução se
+\begin{align*}
+  \varepsilon = \delta-\left(\sqrt{\delta} -n-\frac{1}{2}\right)^2
+\end{align*}
+
+]
+
+---
+class: middle
+
 <div class="my-header"><span>Apêndice A. Regra de seleção</span></div>
 
 .pull-left[
@@ -484,6 +521,17 @@ Retornando à $\psi_n(r)$ teremos
 \end{aligned}
 Podemos ver que pela propriedade da ortogonalidade das funções de onda, a integral somente não irá se anular, e consequentemente $\mu_{nn'}\neq 0$, se $n'=n\pm 1$.
 
+]
+
+---
+class: middle
+
+<div class="my-header"><span>Apêndice B. Função de Morse e o potencial de ligação</span></div>
+
+.pull-left[
+]
+
+.pull-right[
 ]
 
 ---

@@ -551,6 +551,15 @@ class: middle
 
 A figura ao lado mostra a diferença entre os potenciais harmônico e anarmônico. A comparação foi feita para 10 valores distintos do parâmetro $D_e$. Percebe-se que $D_e$ não representa a energia de dissociação da molécula, pois devemos considerar que a energia mínima da molécula corresponde ao estado n=0, onde a energia equivale à $E_0=\frac{\hbar\omega}{2}$.
 
+A Tabela abaixo mostra a frequência vibracional, a constante de força e a constante de anarmonicidade. Percebe-se a dependência de $\chi_e$ com a constante de força.
+
+| Molécula    | $\omega_e$/ $cm^{-1}$ | $\chi_e\omega_e$/ $cm^{-1}$     | k/ $N\cdot m^{-1}$  |
+| :---:       |    :----:   |         :---: | :---: |
+| $HF$      | 4138,32       | 89,88   | 920      |
+| $HCl$   | 2990,94        | 52,82      | 478      |
+| $HBr$   | 2648,97        | 45,22      | 381      |
+| $HI$   | 2309,01        | 39,64      | 291      |
+
 ]
 
 .pull-right[
@@ -565,7 +574,7 @@ morse = function(fr, de, beta, x, x0){
   valor = fr*de*(exp(-2*beta*(x-x0))-2*exp(-beta*(x-x0)))
   return(valor)
 }
-
+#
 smpl=200
 xm = 10
 de = 2.5

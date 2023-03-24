@@ -545,7 +545,7 @@ p = ggplot(df2, aes(x, y, frame=fr, colour=Potencial))+
 ---
 class: middle
 
-<div class="my-header"><span>Apêndice A. Regra de seleção</span></div>
+<div class="my-header"><span>Apêndice A. xxxxxxxxxxx</span></div>
 
 .pull-left[
 

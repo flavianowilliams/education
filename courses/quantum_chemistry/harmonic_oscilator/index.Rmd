@@ -49,17 +49,19 @@ class: middle
 
 <div class="my-header"><span>Sumário</span></div>
 
-1. Uma revisão sobre o oscilador harmômico clássico
+1. Oscilador harmônico clássico
 
 2. Oscilador quântico
 
-3. Função de onda do oscilador quântico
+3. Aplicações
 
-4. Níveis de energia do oscilador quântico
+4. Oscilador anarmônico
 
-5. Oscilador anarmônico
+5. Aplicações
 
-6. Aplicações
+6. Apêndice A. Regra de seleção
+
+7. Apêndice B. Função de Morse e o potencial de ligação
 
 <div class="footnote">
   <ul>
@@ -72,7 +74,7 @@ class: middle
 ---
 class: middle
 
-<div class="my-header"><span>Oscilador harmônico clássico - sistema de uma partícula</span></div>
+<div class="my-header"><span>Oscilador harmônico clássico. Sistema de uma partícula</span></div>
 
 .pull-left[
 
@@ -98,7 +100,7 @@ A figura abaixo mostra a energia potencial do oscilador harmônico simples. Nest
 ---
 class: middle
 
-<div class="my-header"><span>Oscilador harmônico clássico - sistema de duas partículas</span></div>
+<div class="my-header"><span>Oscilador harmônico clássico. Sistema de duas partículas</span></div>
 
 .pull-left[
 
@@ -145,7 +147,7 @@ Adotando $\mu = \frac{m_1m_2}{m_1+m_2}$, onde $\mu$ é a massa reduzida, teremos
 ---
 class: middle
 
-<div class="my-header"><span>Oscilador quântico - A função de onda do oscilador quântico</span></div>
+<div class="my-header"><span>Oscilador quântico. A função de onda do oscilador quântico</span></div>
 
 .pull-left[
 
@@ -196,7 +198,7 @@ Para alcançar a equação na forma desejada, ainda fazemos outra substituição
 ---
 class: middle
 
-<div class="my-header"><span>Oscilador quântico - A função de onda do oscilador quântico</span></div>
+<div class="my-header"><span>Oscilador quântico. A função de onda do oscilador quântico</span></div>
 
 .pull-left[
 
@@ -277,7 +279,7 @@ fig
 ---
 class: middle
 
-<div class="my-header"><span>Oscilador quântico - Os níveis de energia do oscilador quântico</span></div>
+<div class="my-header"><span>Oscilador quântico. Os níveis de energia do oscilador quântico</span></div>
 
 .pull-left[
 
@@ -310,7 +312,7 @@ Mas pelo sistema massa-mola temos que $\omega^2=k/\mu $. Substituindo teremos
 ---
 class: middle
 
-<div class="my-header"><span>Oscilador quântico - regra de seleção</span></div>
+<div class="my-header"><span>Oscilador quântico. Regra de seleção</span></div>
 
 .pull-left[
 Vimos no slide anterior que os níveis de energia do oscilador quântico, são quantizados na forma $E_n=\hbar\omega(n+1/2)$. Fisicamente a transição eletrônica do nível n para outro n' somente ocorre se a molécula interagir com a radiação eletromagnética (através do processo de absorção da radiação). Essa interação ocorre pelo acoplamento do momento dipolo elétrico da molécula com o campo elétrico da radiação eletromagnética,
@@ -332,7 +334,7 @@ Assim é de se esperar que antes e após a absorção da radiação, deve ocorre
 ---
 class: middle
 
-<div class="my-header"><span>Aplicação - Análise vibracional de moléculas diatômicas</span></div>
+<div class="my-header"><span>Aplicação. Análise vibracional de moléculas diatômicas</span></div>
 
 .pull-left[
 A nível subatômico o período de vibração de um modo de estiramento é da ordem de $10^{-15}\;s$, o que corresponde a uma frequência vibracional de $10^{14}\;\text{Hz}$. No espectro eletromagnético, essa frequência estaria na faixa do infravermelho ( $3\times 10^{12}$ à $4\times 10^{14}\;\text{Hz}$ ).
@@ -361,7 +363,7 @@ ou seja, a frequência independe de n.
 ---
 class: middle
 
-<div class="my-header"><span>Aplicação - Análise vibracional de moléculas diatômicas</span></div>
+<div class="my-header"><span>Aplicação. Análise vibracional de moléculas diatômicas</span></div>
 
 .pull-left[
 
@@ -399,7 +401,7 @@ Entretanto a molécula $Cl_2$ que tem uma ligação covalente mais fraca entre o
 ---
 class: middle
 
-<div class="my-header"><span>Oscilador anarmônico - Correções do oscilador quântico</span></div>
+<div class="my-header"><span>Oscilador anarmônico. Correções do oscilador quântico</span></div>
 
 .pull-left[
 
@@ -424,7 +426,7 @@ Identificamos o segundo termo como o potencial do oscilador harmônico e os dema
 ---
 class: middle
 
-<div class="my-header"><span>Oscilador anarmônico - O potencial de Morse</span></div>
+<div class="my-header"><span>Oscilador anarmônico. O potencial de Morse</span></div>
 
 .pull-left[
 
@@ -545,7 +547,7 @@ p = ggplot(df2, aes(x, y, frame=fr, colour=Potencial))+
 ---
 class: middle
 
-<div class="my-header"><span>Apêndice A. xxxxxxxxxxx</span></div>
+<div class="my-header"><span>Aplicação. Energia de dissociação</span></div>
 
 .pull-left[
 
@@ -553,7 +555,7 @@ A figura ao lado mostra a diferença entre os potenciais harmônico e anarmônic
 
 A Tabela abaixo mostra a frequência vibracional, a constante de força e a constante de anarmonicidade. Percebe-se a dependência de $\chi_e$ com a constante de força.
 
-| Molécula    | $\omega_e$/ $cm^{-1}$ | $\chi_e\omega_e$/ $cm^{-1}$     | k/ $N\cdot m^{-1}$  |
+| Molécula    | $\omega_e$ $(cm^{-1})$ | $\chi_e\omega_e$ $(cm^{-1})$     | k $(N\cdot m^{-1})$  |
 | :---:       |    :----:   |         :---: | :---: |
 | $HF$      | 4138,32       | 89,88   | 920      |
 | $HCl$   | 2990,94        | 52,82      | 478      |

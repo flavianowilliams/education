@@ -1,0 +1,43 @@
+﻿\begin{tikzpicture}[scale=2,transform shape,font=\Large]
+			
+	\tkzInit[xmin=0,xmax=8,ymin=-3,ymax=3]
+%	\tkzGrid[color=gray!20]
+	\tkzClip[space=1.25]
+	
+	\tikzstyle{s1}=[circle, radius=0.1, ball color=gray!25];
+	\tikzstyle{s2}=[circle, radius=0.2, ball color=gray!25];
+
+	\tkzDrawX[right,label=r, line width=2pt, noticks]
+	\tkzDrawY[above,label=V(r), line width=2pt, noticks]
+	
+	\def\D{2.5}
+	\def\beta{1.6}
+	\def\ro{1.5}
+
+	\tkzFct[domain=0:8, line width=2pt, color=red]{\D*(exp(-2*\beta*(x-\ro))-2*exp(-\beta*(x-\ro)))}
+%	\tkzDefPointByFct(\ro)\tkzGetPoint{c}
+%	\tkzPointShowCoord(c)
+
+%	\tkzDefPoints{0/-\D/A, \ro/0/B}	
+%	\tkzText[left, color=black](A){$D_0$}
+%	\tkzText[above, color=black](B){$\ell_0$}
+
+	\tkzDefPoints{6/1.5/A, 8/1.5/B}
+
+		\draw[decoration={aspect=0.6, segment length=2mm, amplitude=2mm,coil},decorate, line width=1pt] (A) -- (B); 
+		\node [s1, color=black] at (A) {\tiny $m_1$};
+		\node [s2, color=black] at (B) {\small $m_2$};
+		\draw ($(A)+(0,0.5)$) to[dim arrow={label=$\ell_0$},sloped, color=black] ($(B)+(0,0.5)$);
+
+	\def\k{\beta**2*\D}
+	\def\omega{\beta*sqrt{2*\D}}
+
+	\tkzFct[domain=0:8, line width=2pt, color=blue, dashed]{-1.0*\D+0.5*\k*(x-\ro)**2}
+%	\tkzDefPointByFct[draw, with=a](1.0)\tkzGetPoint{p1}
+%	\tkzDefPointByFct[draw, with=a](2.0)\tkzGetPoint{p2}
+%	\draw [line width=1pt](p1) -- (p2);
+	
+
+%	\tkzDefPoints{1.5/2.5/A, 4/-1.75/B}
+					
+\end{tikzpicture}

@@ -222,7 +222,7 @@ A densidade de probabilidade é obtida aplicando a famosa operação $|\psi(x)|^
 
 .pull-right[
 
-```{r, message=FALSE, echo=FALSE, fig.align='center',fig.cap='Densidade de probabilidade do estado fundamental e dos três primeiros estados excitados do oscilador.',out.width="100%"}
+```{r, message=FALSE, echo=FALSE, fig.align='center',fig.cap='Densidade de probabilidade do estado fundamental e dos três primeiros estados excitados do oscilador.'}
 
 myfunc1 <- function(k,x0,x){
   0.5*k*(x-x0)**2
@@ -430,7 +430,7 @@ class: middle
 
 Entretanto, para obter a solução exata de V(r) deveríamos levar em consideração todos os termos da expansão, ou que seria inviável. Um outro caminho seria sugerir uma função que substituiria V(r) em sua integridade. À partir de uma análise comportamental da molécula, ou seja, como a interação se comporta ao aumentarmos ou diminuirmos a distância relativa. Bem, é de se esperar que para distâncias acima da distância de equilíbrio $r_0$ deve haver uma atração entre os átomos afim de manter a ligação permanente. Porém, à medida que a distância vai diminuindo para valores cada vez menores que $r_0$, o núcleo de cada átomo deve perceber a carga positiva do outro, produzindo uma repulsão de considerável intensidade. Morse propôs uma função que após uma análise empírica chegou na seguinte expressão abaixo,
 \begin{align*}
-V(r) = D_0\left[e^{-2\beta (r-r_0)}-2e^{-\beta (r-r_0)}\right]
+U(r) = D_0\left[e^{-2\beta (r-r_0)}-2e^{-\beta (r-r_0)}\right]
 \end{align*}
 
 ]
@@ -462,23 +462,84 @@ Substituindo $x=\beta r$ teremos após aplicarmos a regra da cadeia
 \begin{align*}
   \frac{d^2\psi}{dr^2}=\beta^2\frac{d^2\psi}{dx^2},
 \end{align*}
+temos
+\begin{align*}
+  -\frac{\hbar^2\beta^2}{2\mu}\frac{d^2}{dx^2}\psi+D_0\left[e^{-2(x-x_0)}-2e^{-2 (x-x_0)}\right]\psi & =E\psi.
+\end{align*}
 
 ]
 
 .pull-right[
 
-\begin{align*}
-  -\frac{\hbar^2\beta^2}{2\mu}\frac{d^2}{dr^2}\psi+D_0\left[e^{-2(x-x_0)}-2e^{-2 (x-x_0)}\right]\psi & =E\psi.
-\end{align*}
 Multiplicando a equação por $2\mu/\hbar^2\beta^2$ teremos
 \begin{align*}
-  -\frac{d^2}{dr^2}\psi+\frac{2\mu D_0}{\hbar^2\beta^2}\left[e^{-2(x-x_0)}-2e^{-2 (x-x_0)}\right]\psi & =\frac{2\mu E}{\hbar^2\beta^2}\psi,\\
-  -\frac{d^2}{dr^2}\psi+\delta\left[e^{-2(x-x_0)}-2e^{-2 (x-x_0)}\right]\psi & =\varepsilon\psi,
+  -\frac{d^2}{dx^2}\psi+\frac{2\mu D_0}{\hbar^2\beta^2}\left[e^{-2(x-x_0)}-2e^{-2 (x-x_0)}\right]\psi & =\frac{2\mu E}{\hbar^2\beta^2}\psi,\\
+  -\frac{d^2}{dx^2}\psi+\delta\left[e^{-2(x-x_0)}-2e^{-2 (x-x_0)}\right]\psi & =\varepsilon\psi,
 \end{align*}
-onde definimos $\delta = \frac{2\mu D_0}{\hbar^2\beta^2}$ e $\varepsilon = \frac{2\mu E}{\hbar^2\beta^2}$. A equação acima somente possui solução se
+onde definimos $\delta = \frac{2\mu D_0}{\hbar^2\beta^2}$ e $\varepsilon = \frac{2\mu E}{\hbar^2\beta^2}$. A equação acima somente tem solução se
 \begin{align*}
   \varepsilon = \delta-\left(\sqrt{\delta} -n-\frac{1}{2}\right)^2
 \end{align*}
+Substituindo $\delta$ e $\varepsilon$ e isolando a energia E teremos
+\begin{align*}
+  E_n = \hbar\beta\sqrt{\frac{2D_e}{\mu}}\left(n+\frac{1}{2}\right)-\frac{\hbar^2\beta^2}{2\mu}\left(n+\frac{1}{2}\right)^2
+\end{align*}
+Mostraremos à seguir que a energia pode ser representada em função da frequência de oscilação.
+
+]
+
+---
+class: middle
+
+<div class="my-header"><span>Oscilador anarmônico. Energia de ligação segundo o potencial de Morse</span></div>
+
+.pull-left[
+
+Como mostra o Apêncice B, podemos definir $\omega_e = \beta\sqrt{\frac{2D_e}{\mu}}$. Sendo assim teremos para a energia
+\begin{align*}
+  E_n & = \hbar\omega_e\left(n+\frac{1}{2}\right)-(\hbar\omega_e)\left(\frac{\hbar}{\sqrt{8\mu D_e}}\right)\left(n+\frac{1}{2}\right)^2,\\
+  & = \hbar\omega_e\left(n+\frac{1}{2}\right)-\hbar\omega_e\chi_e\left(n+\frac{1}{2}\right)^2,
+\end{align*}
+onde definimos $\chi_e = \frac{\hbar}{\sqrt{8\mu D_e}}$ como a constante de anarmonicidade do oscilador quântico. Assim, podemos dizer que $\chi_e$ define o grau de anarmoticidade do oscilador quântico, onde para oscilações puramente harmônicas podemos considerar $\chi_e\approx 0$. A figura ao lado mostra a comparação dos níveis de energia obtidos pelos potenciais harmônico e anarmônico. Podemos ver que o termo negativo na equação acima produz valores menores de energia comparado aos níveis harmônico, principalmente para níveis mais elevados de energia.
+
+]
+
+.pull-right[
+
+```{r, echo=FALSE, message=FALSE, fig.align='center', fig.cap='Comparação entre os potenciais harmônico e Morse.', out.width="100%"}
+harmonico = function(fr, de, beta, x, x0){
+  valor = fr*(-de+0.5*de*beta**2*(x-x0)**2)
+  return(valor)
+}
+
+morse = function(fr, de, beta, x, x0){
+  valor = fr*de*(exp(-2*beta*(x-x0))-2*exp(-beta*(x-x0)))
+  return(valor)
+}
+
+smpl=200
+xm = 10
+de = 2.5
+beta = 1.5
+x0 = 2.0
+x=seq(0,xm,2*xm/(smpl-1))
+#
+df = data.frame(x=x, fr=1, Harmônico = harmonico(0.25, de, beta, x, x0), Morse = morse(0.25, de, beta, x, x0))
+
+for (i in 1:10) {
+  df = rbind(df, data.frame(x=x, fr=i, Harmônico = harmonico(0.25*i, de, beta, x, x0), Morse = morse(0.25*i, de, beta, x, x0)))
+}
+
+df = df %>%
+  gather("Harmônico", "Morse", key = "Potencial", value = "y")
+
+p = ggplot(df, aes(x, y, frame=fr, colour=Potencial))+
+  geom_line()+
+  ylim(-7, 4)+
+  geom_hline(yintercept=0)
+
+  ggplotly(p)
+```
 
 ]
 
@@ -529,9 +590,41 @@ class: middle
 <div class="my-header"><span>Apêndice B. Função de Morse e o potencial de ligação</span></div>
 
 .pull-left[
+
+Vimos anteriormente que a função exata do potencial de ligação, pode ser representado pela expansão abaixo
+\begin{align*}
+  U(r) & = U(r_0)+\frac{1}{2!}\left(\frac{d^2U}{dr^2}\right)_{r=r_0}(r-r_0)^2+\\
+  & +\frac{1}{3!}\left(\frac{d^2U}{dr^2}\right)_{r=r_0}(r-r_0)^3+\cdots
+\end{align*}
+
+Veremos agora se o potencial de Morse representa a função exata do potencial de ligação. Expandindo os termos do potencial de Morse teremos
+\begin{align*}
+  e^{-2\beta (r-r_0)} & = 1+\frac{1}{2}\left(4\beta^2\right)(r-r_0)^2+\\
+  & -\frac{1}{6}\left(8\beta^3\right)(r-r_0)^3+\cdots\\
+  e^{-\beta (r-r_0)} & = 1+\frac{1}{2}\left(\beta^2\right)(r-r_0)^2+\\
+  & -\frac{1}{6}\left(\beta^3\right)(r-r_0)^3+\cdots
+\end{align*}
+
 ]
 
 .pull-right[
+
+Temos assim
+\begin{align*}
+  U(r) & = D_0\left[e^{-2\beta (r-r_0)}-2e^{-\beta (r-r_0)}\right],\\
+  & = D_0+2\beta^2D_0(r-r_0)^2-\frac{8\beta^3D_0}{6}(r-r_0)^3+\\
+  & -2D_0-\beta^2D_0(r-r_0)^2+\frac{\beta^3D_0}{6}(r-r_0)^3+\cdots\\
+  & = -D_0+\beta^2D_0(r-r_0)^2+\cdots
+\end{align*}
+Do potencial do oscilador harmônico $U(r)=\frac{k}{2}(r-r_0)^2$, temos
+\begin{align*}
+  \frac{1}{2!}\left(\frac{d^2U}{dr^2}\right)_{r=r_0} = \frac{k}{2}\Rightarrow\frac{\mu\omega^2}{2}.
+\end{align*}
+Portanto, podemos dizer que
+\begin{align*}
+  \beta^2D_0 = \frac{\mu\omega^2}{2}\Rightarrow \beta\sqrt{\frac{2D_0}{\mu}} = \omega.
+\end{align*}
+
 ]
 
 ---

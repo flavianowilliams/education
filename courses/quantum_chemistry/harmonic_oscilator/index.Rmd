@@ -510,33 +510,66 @@ onde definimos $\chi_e = \frac{\hbar}{\sqrt{8\mu D_e}}$ como a constante de anar
 
 ```{r, echo=FALSE, message=FALSE, fig.align='center', fig.cap='Comparação entre os níveis de energia do oscilador harmônico e anarmônico.', out.width="100%"}
 
-harmonico = function(fr, de, beta, n){
-  valor = beta*sqrt(2*de*fr)*(n+0.5)
+potencial = function(de, beta, x, x0){
+  valor = 0.5*de*beta**2*(x-x0)**2
   return(valor)
 }
 
-morse = function(fr, de, beta, n){
-  valor = beta*sqrt(2*de*fr)*((n+0.5)-(n+0.5)**2/sqrt(8*de*fr))
+x_max = function(e, de, beta, x0){
+  valor = x0+sqrt(e/de)/beta
+}
+
+harmonico = function(de, beta, n){
+  valor = beta*sqrt(2*de)*(n+0.5)
   return(valor)
 }
 
-smpl=10
+morse = function(de, beta, n){
+  valor = beta*sqrt(2*de)*((n+0.5)-(n+0.5)**2/sqrt(8*de))
+  return(valor)
+}
+
+smpl=100
 xm = 5
 de = 200
 beta = 3.5
-x0 = 2.0
-x=seq(0,xm,2*xm/(smpl-1))
+x0 = 2.5
+x=seq(0,xm,2*xm/smpl)
 #
-df2 = data.frame(x=x, fr=1, Harmônico = harmonico(1, de, beta, 1), Morse = morse(1, de, beta, 1))
+
+df2 = data.frame(x=x, fr=1, Harmônico = harmonico(de, beta, 1), Morse = morse(de, beta, 1))
+
+df2 = df2 %>%
+  gather("Harmônico", "Morse", key = "Potencial", value = "y") %>%
+  filter(
+      x >= -x_max(harmonico(de, beta, 1), de, beta, -x0) & x <= x_max(harmonico(de, beta, 1), de, beta, x0)
+  )
+
+df2 = rbind(df2,
+            data.frame(x=x, fr=1, Potencial="Harm", y = potencial(de, beta, x, x0))
+            )
 
 for (i in 2:10) {
-   df2 = rbind(df2, data.frame(x=x, fr=i, Harmônico = harmonico(1, de, beta, i), Morse = morse(1, de, beta, i)))
+    df0 = data.frame(x=x, fr=i, Harmônico = harmonico(de, beta, i), Morse = morse(de, beta, i)) %>%
+  gather("Harmônico", "Morse", key = "Potencial", value = "y") %>%
+  filter(
+      x >= -sqrt(2*harmonico(de, beta, i)/de)/beta+x0 & x <= sqrt(2*harmonico(de, beta, i)/de)/beta+x0
+  )
+df2 = rbind(df2,
+            df0,
+            data.frame(x=x, fr=i, Potencial="Harm", y = potencial(de, beta, x, x0))
+            )
 }
-df2 = df2 %>%
-  gather("Harmônico", "Morse", key = "Potencial", value = "y")
+
+#df2 = df2 %>%
+#  gather("Harmônico", "Morse", key = "Potencial", value = "y") %>%
+#  filter(
+#      x > -sqrt(2*harmonico(1, de, beta, 1)/de)/beta+x0 & x < sqrt(2*harmonico(1, de, beta, 1)/de)/beta+x0
+#  )
 
 p = ggplot(df2, aes(x, y, frame=fr, colour=Potencial))+
-  geom_line()
+  geom_line()+
+  ylim(-200,1000)
 
   ggplotly(p)
 
@@ -567,13 +600,19 @@ A Tabela abaixo mostra a frequência vibracional, a constante de força e a cons
 .pull-right[
 
 ```{r, echo=FALSE, message=FALSE, fig.align='center', fig.cap='Comparação entre os potenciais harmônico e Morse.', out.width="100%"}
-harmonico = function(fr, de, beta, x, x0){
-  valor = fr*(-de+0.5*de*beta**2*(x-x0)**2)
+
+harmonico = function(n, de, beta, x, x0){
+  valor = n*(-de+0.5*de*beta**2*(x-x0)**2)
   return(valor)
 }
 
-morse = function(fr, de, beta, x, x0){
-  valor = fr*de*(exp(-2*beta*(x-x0))-2*exp(-beta*(x-x0)))
+morse = function(n, de, beta, x, x0){
+  valor = n*de*(exp(-2*beta*(x-x0))-2*exp(-beta*(x-x0)))
+  return(valor)
+}
+energy = function(n, de, beta){
+  valor = n*de
+#  valor = beta*sqrt(2*de*n)*((n+0.5)-(n+0.5)**2/sqrt(8*de*n))
   return(valor)
 }
 #
@@ -584,21 +623,24 @@ beta = 1.5
 x0 = 2.0
 x=seq(0,xm,2*xm/(smpl-1))
 #
-df = data.frame(x=x, fr=1, Harmônico = harmonico(0.25, de, beta, x, x0), Morse = morse(0.25, de, beta, x, x0))
+df = data.frame(x=x, n=1, Harmônico = harmonico(0.25, de, beta, x, x0), Morse = morse(0.25, de, beta, x, x0))
 
 for (i in 1:10) {
-  df = rbind(df, data.frame(x=x, fr=i, Harmônico = harmonico(0.25*i, de, beta, x, x0), Morse = morse(0.25*i, de, beta, x, x0)))
+  df = rbind(df, data.frame(x=x, n=i, Harmônico = harmonico(0.25*i, de, beta, x, x0), Morse = morse(0.25*i, de, beta, x, x0)))
 }
 
 df = df %>%
   gather("Harmônico", "Morse", key = "Potencial", value = "y")
 
-p = ggplot(df, aes(x, y, frame=fr, colour=Potencial))+
+en_df = data.frame(x1 = 3, y1 = 0, x2 = 3, y2 = energy(2.5, de, beta), n = 10)
+
+p = ggplot(data=df, aes(x=x, y=y, frame=n, colour=Potencial))+
   geom_line()+
   ylim(-7, 4)+
   geom_hline(yintercept=0)
 
-  ggplotly(p)
+ggplotly(p)
+
 ```
 
 ]

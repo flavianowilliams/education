@@ -516,7 +516,7 @@ potencial = function(de, beta, x, x0){
 }
 
 x_max = function(e, de, beta, x0){
-  valor = x0+sqrt(e/de)/beta
+  valor = x0+sqrt(2*e/de)/beta
 }
 
 harmonico = function(de, beta, n){
@@ -529,45 +529,53 @@ morse = function(de, beta, n){
   return(valor)
 }
 
-smpl=100
-xm = 5
+smpl=200
+rm = 5
 de = 200
-beta = 3.5
-x0 = 2.5
-x=seq(0,xm,2*xm/smpl)
+beta = 2.5
+r0 = 2.5
+r=seq(0,rm,2*rm/smpl)
 #
 
-df2 = data.frame(x=x, fr=1, Harmônico = harmonico(de, beta, 1), Morse = morse(de, beta, 1))
+df2 = data.frame(r=c(), n=c(), Potencial=c(), Energia=c())
 
-df2 = df2 %>%
-  gather("Harmônico", "Morse", key = "Potencial", value = "y") %>%
+# Potencial harmônico
+
+for (i in 1:10) {
+
+    df0 = data.frame(r=r, n=i, Potencial = "Harmônico", Energia = harmonico(de, beta, i))
+
+    df0 = df0 %>%
+    filter(
+      r >= -x_max(harmonico(de, beta, i), de, beta, -r0) & r <= x_max(harmonico(de, beta, i), de, beta, r0)
+      )
+  
+  df2 = rbind(df2,df0)
+  
+  }
+
+# Potencial Morse
+
+for (i in 1:10) {
+  
+  df0 = data.frame(r=r, n=i, Potencial = "Morse", Energia = morse(de, beta, i)) %>%
   filter(
-      x >= -x_max(harmonico(de, beta, 1), de, beta, -x0) & x <= x_max(harmonico(de, beta, 1), de, beta, x0)
-  )
+      r >= -x_max(morse(de, beta, i), de, beta, -r0) & r <= x_max(morse(de, beta, i), de, beta, r0)
+      )
+  
+df2 = rbind(df2,df0)
 
-df2 = rbind(df2,
-            data.frame(x=x, fr=1, Potencial="Harm", y = potencial(de, beta, x, x0))
-            )
+}
 
-for (i in 2:10) {
-    df0 = data.frame(x=x, fr=i, Harmônico = harmonico(de, beta, i), Morse = morse(de, beta, i)) %>%
-  gather("Harmônico", "Morse", key = "Potencial", value = "y") %>%
-  filter(
-      x >= -sqrt(2*harmonico(de, beta, i)/de)/beta+x0 & x <= sqrt(2*harmonico(de, beta, i)/de)/beta+x0
-  )
+# Curva
+
+for (i in 1:10) {
 df2 = rbind(df2,
-            df0,
-            data.frame(x=x, fr=i, Potencial="Harm", y = potencial(de, beta, x, x0))
+            data.frame(r=r, n=i, Potencial="Harm", Energia = potencial(de, beta, r, r0))
             )
 }
 
-#df2 = df2 %>%
-#  gather("Harmônico", "Morse", key = "Potencial", value = "y") %>%
-#  filter(
-#      x > -sqrt(2*harmonico(1, de, beta, 1)/de)/beta+x0 & x < sqrt(2*harmonico(1, de, beta, 1)/de)/beta+x0
-#  )
-
-p = ggplot(df2, aes(x, y, frame=fr, colour=Potencial))+
+p = ggplot(df2, aes(x=r, y=Energia, frame=n, colour=Potencial))+
   geom_line()+
   ylim(-200,1000)
 

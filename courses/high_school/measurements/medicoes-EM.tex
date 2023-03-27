@@ -374,6 +374,74 @@ ou na forma
 	\end{corollary}
 \end{frame}
 
+\section{Incerteza na medição}
+
+\subsection{}
+
+\begin{frame}{Representação de um valor medido}
+	Definimos valor verdadeiro aquele obtido através de um processo de medida exato e o resultado comparado com a unidade padrão. Entretanto, toda medida traz consigo erros intrínsecos, cujas causas são as mais variadas. Portanto, qualquer resultado deve sempre ser representado ao lado do seu valor medido a incerteza na medição,
+	\begin{equation*}
+		\text{(Resultado)} = \text{(Valor)} \pm \text{(Incerteza)}.
+	\end{equation*}
+	O sinal $pm$ significa que o erro pode contribuir tanto positivamente quanto negativamente. Como exemplo, imaginemos que ao medir a massa \textbf{m} de um objeto encontramos um valor de 3g e uma incerteza de 0,5g, assim a completa representação do valor seria
+	\begin{equation*}
+		m = (3\pm 0,5)\;g
+	\end{equation*}
+	Isso quer dizer que o valor provável da massa m pode estar entre 2,5g a 3,5g.
+\end{frame}
+
+\begin{frame}{Valor médio}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			Considere que numa segunda-feira medimos a massa m de um objeto e encontramos o valor de 2,5g. Na terça tentamos medir novamente e encontramos outro valor de 3,0g, e na quarta outro valor de 3,5g. Podemos ver que por algum motivo o valor está variando entre 2,5g e 3,5g, o que causa uma incerteza de 0,5g para cima e para baixo. 
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			Agora, como obter a medida mais provável, uma vez que ela está mudando a cada medida. Um método bastante eficaz é representar o seu valor médio $<m>$, onde 
+			\begin{align*}
+				<m> & = \frac{2,5g+3,0g+3,5g}{3},\\
+				<m> & = 3g
+			\end{align*}
+		\end{column}
+	\end{columns}
+	\begin{block}{Valor médio}
+		Definimos valor médio ou média como a somatória dos valores dividido pelo número de medidas.
+	\end{block}
+\end{frame}
+
+\begin{frame}{Incerteza na medição}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			Agora, como podemos obter a interteza na medição de N medidas, que também chamamos de intervalo de confiança? Uma estratégia é utilizar a seguinte fórmula abaixo, chamado erro padrão ou desvio padrão,
+			\begin{align*}
+				\Delta s = \sqrt{\frac{\sum(<m>-m)^2}{N-1}},
+			\end{align*}
+			onde
+			\begin{align*}
+				m = <m>\pm \Delta s.
+			\end{align*}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{table}
+				\small
+				\caption{\footnotesize Valores calculados para três medidas.}
+				\begin{tabular}{ccc}
+					\hline
+					Medida & Valor (g) & $(<m>-m)^2$ ($g^2$)\\
+					\hline
+					1 & 2,5 & 0,25 \\
+					2 & 3,0 & 0,00 \\
+					3 & 3,5 & 0,25 \\
+					\hline
+				\end{tabular}
+			\end{table}
+			O desvio padrão calculado foi 0,5 g. Assim podemos representar o número com a sua incerteza na forma abaixo,
+			\begin{align*}
+				m = (3\pm 0,5)\;g
+			\end{align*}
+		\end{column}
+	\end{columns}
+\end{frame}
+
 \section{Apêndice}
 
 \subsection{}

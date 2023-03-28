@@ -1,2 +1,2 @@
 set table "ondas_eletromagneticas-ES.tkzfonct.table"; set format "%.5f"
-set samples 200.0; plot [x=0:10.000000000000000000] (0)/1
+set samples 200.0; plot [x=7.850000000000000000:12.000000000000000000] ((1*cos(3*x-21.98))-0)/1

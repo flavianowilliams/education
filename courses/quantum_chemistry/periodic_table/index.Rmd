@@ -1,0 +1,122 @@
+---
+title: "Introdução a química quântica"
+subtitle: "A tabela periódica"
+author: "Flaviano Williams Fernandes"
+institute: "Instituto Federal do Paraná - Irati"
+date: "16 de março de 2021 (atualizado em `r format(Sys.Date(), format='%d/%m/%Y')`)"
+encoding: "UTF-8"
+output:
+  xaringan::moon_reader:
+    css: [css/default.css, css/my-theme.css, css/my-fonts.css]
+    chakra: libs/remark-latest.min.js
+    lib_dir: libs
+    nature:
+      ratio: "16:9"
+      slideNumberFormat: "%current% de %total%,"
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      countdown: 60000
+---
+layout: true
+background-size: contain
+
+<div class="my-footer"><span>Flaviano Williams Fernandes</span></div>
+
+```{r, include=FALSE, eval=FALSE, echo=FALSE}
+  xaringan::inf_mr()
+```
+
+```{r setup, include=FALSE}
+  options(htmltools.dir.version = FALSE)
+  library("ggplot2")
+  library("gganimate")
+  library("latex2exp")
+  library("tidyverse")
+  library("plotly")
+#  knitr::opts_chunk$set(fig.path = 'img')
+```
+
+```{r, load_refs, echo=FALSE, message=FALSE}
+  library(RefManageR)
+  BibOptions(check.entries = FALSE, bib.style = "authoryear", style = "markdown",
+           dashed = TRUE)
+  bib <- ReadBib("references.bib", check = FALSE)
+```
+
+---
+class: middle
+
+<div class="my-header"><span>Sumário</span></div>
+
+1. Sistema de partículas idênticas
+
+<div class="footnote">
+  <ul>
+  <hr>
+  <li> Esta apresentação está disponível para download em <a href="https://flavianowilliams.github.io/education">flavianowilliams.github.io/education</a>;
+  <li> Este material está sujeito a modificações. Recomenda-se acompanhamento permanente.
+  </ul>
+</div>
+
+---
+class: middle
+
+<div class="my-header"><span>Sistema de partículas idênticas. Comparação entre colisões clássicas e quânticas</span></div>
+
+.pull-left[
+
+]
+
+.pull-right[
+
+```{r, echo=FALSE, fig.align='center',fig.cap='A) Modelo clássico de colisão. B) Colisão entre elétrons.',out.width="75%",fig.asp=1}
+  knitr::include_graphics("img/colisao-eletrons.jpeg")
+```
+
+]
+
+---
+class: middle
+
+<div class="my-header"><span>Sistema de partículas idênticas. Função de onda do sistema de duas partículas</span></div>
+
+
+.pull-left[
+
+
+]
+
+.pull-right[
+
+```{r, echo=FALSE, fig.align='center',fig.cap='Gráfico da energia do oscilador harmônico clássico.',out.width="60%",fig.asp=1}
+#  knitr::include_graphics("img/mhs-classico.jpeg")
+```
+
+]
+
+---
+class: middle
+
+<div class="my-header"><span>Sistema de partículas idênticas. Determinante de Slater</span></div>
+
+
+.pull-left[
+
+
+]
+
+.pull-right[
+
+
+]
+
+---
+class: middle
+
+<div class="my-header"><span>Bibliografia</span></div>
+
+```{r, results='asis', echo=FALSE, message=FALSE}
+PrintBibliography(bib)
+```
+

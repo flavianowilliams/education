@@ -5,6 +5,8 @@
 %carregando preâmbulo
 \input{../../contrib/preamble}
 
+\usepackage{tkz-linknodes}
+
 %Título
 
 \title[Eletromagnetismo-OEM]{Ondas eletromagnéticas}
@@ -31,7 +33,7 @@
 		\begin{align*}
 			S = \left(\frac{\text{energia/tempo}}{\text{área}}\right).
 		\end{align*}
-		Porém, energia/área = potência, assim
+		Porém, energia/tempo = potência, assim
 		\begin{align*}
 			S =\left(\frac{\text{potência}}{\text{área}}\right).
 		\end{align*}
@@ -1034,13 +1036,13 @@
 
 					%desenhando raios de luz
 					\draw[put arrow={at=0.5},line width=1pt,color=black] (A) -- (O);
-					\tkzMarkAngle[arc=lll,size=0.5,color=black](n1,O,A)\tkzLabelAngle[pos=1](n1,O,A){$\theta$}
+					\tkzMarkAngle[arc=l,size=0.5,color=black](n1,O,A)\tkzLabelAngle[pos=1](n1,O,A){$\theta$}
 					\draw[put arrow={at=0.5},line width=1pt,color=blue] (O) -- (b1);
-					\tkzMarkAngle[arc=lll,size=1.1,color=blue](n2,O,b1)
+					\tkzMarkAngle[arc=l,size=1.5,color=blue](n2,O,b1)
 					\draw[put arrow={at=0.5},line width=1pt,color=green] (O) -- (b2);
-					\tkzMarkAngle[arc=lll,size=1.5,color=green](n2,O,b2)
+					\tkzMarkAngle[arc=l,size=2.0,color=green](n2,O,b2)
 					\draw[put arrow={at=0.5},line width=1pt,color=red] (O) -- (b3);
-					\tkzMarkAngle[arc=lll,size=2.0,color=red](n2,O,b3)
+					\tkzMarkAngle[arc=l,size=2.5,color=red](n2,O,b3)
 
 					% Media names
 					\path[font=\tiny] (2.75,.25)  node {Ar} (2.75,-.25) node {Vidro};

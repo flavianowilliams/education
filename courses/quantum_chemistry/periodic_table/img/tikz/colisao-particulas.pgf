@@ -1,0 +1,32 @@
+﻿\begin{tikzpicture}[scale=2,transform shape,font=\Large]
+			
+	\tkzInit[xmin=-5,xmax=5,ymin=-5,ymax=5]
+%	\tkzGrid[color=gray!20]
+	\tkzClip[space=0.5]
+	
+	\tikzstyle{s1}=[circle, radius=0.1, ball color=gray!25];
+	\tikzstyle{s2}=[circle, radius=0.2, ball color=gray!25];
+
+	\tkzDefPoints{-5/0/A, 5/0.75/B, 0/0/C, 0.5/0.5/D}
+
+	\draw[->, color=red, line width=5pt] (A) --++ (1,0);
+	\draw[->, color=red, line width=5pt] (B) --++ (-1,0);
+
+	\node [s1, color=black] at (A) {\tiny $m_1$};
+	\node [s2, color=black] at (B) {\small $m_2$};
+
+	\draw[->, dashed, color=black, line width=5pt] (C) --++ (-0.75,-0.75);
+	\draw[->, dashed, color=black, line width=5pt] (D) --++ (0.75,0.75);
+
+	\draw[dashed, line width=1.5pt] (C) circle(7.5pt);
+	\draw[dashed, line width=1.5pt] (D) circle(10pt);
+
+	\tkzDefPoints{-4/-4/A, 4/4/B}
+
+	\draw[->, color=red, line width=5pt] (A) --++ (-0.75,-0.75);
+	\draw[->, color=red, line width=5pt] (B) --++ (0.75,0.75);
+
+	\node [s1, color=black] at (A) {\tiny $m_1$};
+	\node [s2, color=black] at (B) {\small $m_2$};
+
+\end{tikzpicture}

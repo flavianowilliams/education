@@ -334,7 +334,7 @@ Assim é de se esperar que antes e após a absorção da radiação, deve ocorre
 ---
 class: middle
 
-<div class="my-header"><span>Aplicação. Análise vibracional de moléculas diatômicas</span></div>
+<div class="my-header"><span>Aplicação. A técnica de espectroscopia por absorção (espectrofotometria)</span></div>
 
 .pull-left[
 A nível subatômico o período de vibração de um modo de estiramento é da ordem de $10^{-15}\;s$, o que corresponde a uma frequência vibracional de $10^{14}\;\text{Hz}$. No espectro eletromagnético, essa frequência estaria na faixa do infravermelho ( $3\times 10^{12}$ à $4\times 10^{14}\;\text{Hz}$ ).
@@ -405,19 +405,19 @@ class: middle
 
 .pull-left[
 
-Como vimos no slide anterior, o modelo do oscilador harmônico prevê que a molécula HCl absorve radiação de frequência equivalente a $2886\;cm^{-1}$. Essa previsão teórica concorda perfeitamente com os resultados experimentais. Entretanto, certas ocasiões produz desvios do resultado teórico em comparação ao experimental. Esses desvios geralmente são mais pronunciados em moléculas que possuem uma fraca constante de força k e nos caso onde o comprimento da ligação é consideravelmente elevado. Portanto, nesses casos devemos introduzir correções do potencial, responsável pelo modo de estiramento. Considere um potencial de ligação V(r) responsável pela ligação intramolecular. V(r) pode ser matematicamente representado como uma série de potência em torno da distância de equilíbrio $r_0$ com o recurso da série de Taylor,
+Como vimos no slide anterior, o modelo do oscilador harmônico prevê que a molécula HCl absorve radiação de frequência equivalente a $2886\;cm^{-1}$. Essa previsão teórica concorda perfeitamente com os resultados experimentais. Entretanto, certas ocasiões produz desvios do resultado teórico em comparação ao experimental. Esses desvios geralmente são mais pronunciados em moléculas que possuem uma fraca constante de força k e nos caso onde o comprimento da ligação é consideravelmente elevado. Portanto, nesses casos devemos introduzir correções do potencial, responsável pelo modo de estiramento. Considere um potencial de ligação U(r) responsável pela ligação intramolecular. U(r) pode ser matematicamente representado como uma série de potência em torno da distância de equilíbrio $r_0$ com o recurso da série de Taylor,
 
 ]
 
 .pull-right[
 
 \begin{align*}
-  V(r) & = V(r_0)+\frac{1}{2!}\left(\frac{d^2V}{dr^2}\right)_{r=r_0}(r-r_0)^2+\\
-  & +\frac{1}{3!}\left(\frac{d^2V}{dr^2}\right)_{r=r_0}(r-r_0)^3+\cdots
+  U(r) & = U(r_0)+\frac{1}{2!}\left(\frac{d^2U}{dr^2}\right)_{r=r_0}(r-r_0)^2+\\
+  & +\frac{1}{3!}\left(\frac{d^2U}{dr^2}\right)_{r=r_0}(r-r_0)^3+\cdots
 \end{align*}
-Identificando $k=\left(\frac{d^2V}{dr^2}\right)_{r=r_0}$, $\gamma_3=\left(\frac{d^3V}{dr^3}\right)_{r=r_0}$ teremos
+Identificando $k=\left(\frac{d^2U}{dr^2}\right)_{r=r_0}$, $\gamma_3=\left(\frac{d^3U}{dr^3}\right)_{r=r_0}$ teremos
 \begin{align*}
-  V(r) & = V(r_0)+\frac{1}{2}k(r-r_0)^2+\frac{1}{6}\gamma_3(r-r_0)^3+\cdots
+  U(r) & = U(r_0)+\frac{1}{2}k(r-r_0)^2+\frac{1}{6}\gamma_3(r-r_0)^3+\cdots
 \end{align*}
 Identificamos o segundo termo como o potencial do oscilador harmônico e os demais termos a correção que deverá ser feita para alcançar o melhor resultado comparado com o valor experimental.
 
@@ -655,24 +655,24 @@ energy = function(n, de, beta){
 }
 #
 smpl=200
-xm = 10
+rm = 10
 de = 2.5
 beta = 1.5
-x0 = 2.0
-x=seq(0,xm,2*xm/(smpl-1))
+r0 = 2.0
+r=seq(0,rm,2*rm/(smpl-1))
 #
-df = data.frame(x=x, n=1, Harmônico = harmonico(0.25, de, beta, x, x0), Morse = morse(0.25, de, beta, x, x0))
+df = data.frame(r=r, n=1, Harmônico = harmonico(0.25, de, beta, r, r0), Morse = morse(0.25, de, beta, r, r0))
 
 for (i in 1:10) {
-  df = rbind(df, data.frame(x=x, n=i, Harmônico = harmonico(0.25*i, de, beta, x, x0), Morse = morse(0.25*i, de, beta, x, x0)))
+  df = rbind(df, data.frame(r=r, n=i, Harmônico = harmonico(0.25*i, de, beta, r, r0), Morse = morse(0.25*i, de, beta, r, r0)))
 }
 
 df = df %>%
-  gather("Harmônico", "Morse", key = "Potencial", value = "y")
+  gather("Harmônico", "Morse", key = "Potencial", value = "Energia")
 
 en_df = data.frame(x1 = 3, y1 = 0, x2 = 3, y2 = energy(2.5, de, beta), n = 10)
 
-p = ggplot(data=df, aes(x=x, y=y, frame=n, colour=Potencial))+
+p = ggplot(data=df, aes(x=r, y=Energia, frame=n, colour=Potencial))+
   geom_line()+
   ylim(-7, 4)+
   geom_hline(yintercept=0)

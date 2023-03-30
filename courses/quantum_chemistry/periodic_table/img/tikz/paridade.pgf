@@ -1,0 +1,58 @@
+﻿\begin{tikzpicture}[scale=2,transform shape,font=\Large]
+			
+	\tkzInit[xmin=0,xmax=18,ymin=-3,ymax=3]
+%	\tkzGrid[color=gray!20]
+	\tkzClip[space=0.5]
+	
+	\tikzstyle{s1}=[circle, radius=0.1, ball color=gray!25];
+
+	\begin{scope}[shift={(0,0)}]
+
+%	\tkzDefPoint(3,-3){t1}
+
+%	\tkzText(t1){\huge \textbf{$(r_1,r_2)$}}
+
+	\tkzDefPoints{0/0/A, 6/0/B, 2.75/-2.5/C, 3/2.5/D, 3/0/E, 5.75/0/F, 0.25/0/G}
+
+	\draw[->, line width=2pt] (E) -- (G) node [above, midway] {$\vec{r}_1$};
+	\draw[->, color=red, line width=5pt] ($(A)+(0,0.5)$) --++ (0,-1.25);
+	\node [s1, color=black] at (A) {\small $e$};
+	\tkzText[below=0.75cm](A) {$\psi_{(m_s=-\frac{1}{2})}$}
+
+	\fill [pattern = north east lines] (D) rectangle (C);
+	\draw (D) --++ (0,-5);
+
+	\draw[->, line width=2pt] (E) -- (F) node [above, midway] {$\vec{r}_2$};
+	\draw[->, color=red, line width=5pt] ($(B)-(0,0.5)$) --++ (0,1.25);
+	\node [s1, color=black] at (B) {\small $e$};
+	\tkzText[below=0.75cm](B) {$\psi_{(m_s=+\frac{1}{2})}$}
+
+	\end{scope}
+
+	\tkzDefPoint(8.5,0){t}
+	\tkzText(t){\huge $\Longleftrightarrow$}
+
+	\begin{scope}[shift={(11,0)}]
+
+%		\tkzDefPoint(3,-3){t1}
+	
+%		\tkzText(t1){\huge \textbf{$(r_1,r_2)$}}
+	
+		\tkzDefPoints{0/0/A, 6/0/B, 2.75/-2.5/C, 3/2.5/D, 3/0/E, 5.75/0/F, 0.25/0/G}
+	
+		\draw[->, line width=2pt] (E) -- (G) node [above, midway] {$\vec{r}_1$};
+		\draw[->, color=red, line width=5pt] ($(A)-(0,0.5)$) --++ (0,1.25);
+		\node [s1, color=black] at (A) {\small $e$};
+		\tkzText[below=0.75cm](A) {$\psi_{(m_s=+\frac{1}{2})}$}
+	
+		\fill [pattern = north east lines] (D) rectangle (C);
+		\draw (D) --++ (0,-5);
+	
+		\draw[->, line width=2pt] (E) -- (F) node [above, midway] {$\vec{r}_2$};
+		\draw[->, color=red, line width=5pt] ($(B)+(0,0.5)$) --++ (0,-1.25);
+		\node [s1, color=black] at (B) {\small $e$};
+		\tkzText[below=0.75cm](B) {$\psi_{(m_s=-\frac{1}{2})}$}
+
+	\end{scope}
+
+\end{tikzpicture}

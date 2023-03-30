@@ -1,0 +1,64 @@
+﻿\begin{tikzpicture}[scale=2,transform shape,font=\Large]
+			
+	\tkzInit[xmin=-5,xmax=5,ymin=-10,ymax=5]
+%	\tkzGrid[color=gray!20]
+	\tkzClip[space=0.5]
+	
+	\begin{scope}[shift={(0,0)}]
+
+	\tikzstyle{s1}=[circle, radius=0.1, ball color=gray!25];
+	\tikzstyle{s2}=[circle, radius=0.2, ball color=gray!25];
+
+	\tkzDefPoint(-4,4){t1}
+
+	\tkzText(t1){\huge \textbf{(A)}}
+
+	\tkzDefPoints{-5/0/A, 5/0.75/B, 0/0/C, 0.5/0.5/D}
+
+	\draw[->, color=red, line width=5pt] (A) --++ (1,0);
+	\draw[->, color=red, line width=5pt] (B) --++ (-1,0);
+
+	\node [s1, color=black] at (A) {\tiny $m_1$};
+	\node [s2, color=black] at (B) {\small $m_2$};
+
+	\draw[->, dashed, color=black, line width=5pt] (C) --++ (-0.75,-0.75);
+	\draw[->, dashed, color=black, line width=5pt] (D) --++ (0.75,0.75);
+
+	\draw[dashed, line width=1.5pt] (C) circle(7.5pt);
+	\draw[dashed, line width=1.5pt] (D) circle(10pt);
+
+	\tkzDefPoints{-4/-4/A, 4/4/B}
+
+	\draw[->, color=red, line width=5pt] (A) --++ (-0.75,-0.75);
+	\draw[->, color=red, line width=5pt] (B) --++ (0.75,0.75);
+
+	\node [s1, color=black] at (A) {\tiny $m_1$};
+	\node [s2, color=black] at (B) {\small $m_2$};
+
+	\draw[dotted] (-5,-6) -- (5,-6);
+
+	\end{scope}
+
+	\begin{scope}[shift={(0,-9)}]
+
+	\tikzstyle{wave}=[decorate,decoration={snake,post length=2.5mm,amplitude=2mm, segment length=6mm},thick];
+
+	\tikzstyle{s1}=[circle, radius=0.1, ball color=gray!25];
+
+	\tkzDefPoint(-4,2){t1}
+
+	\tkzText(t1){\huge \textbf{(B)}}
+
+	\tkzDefPoints{-5/0/A, 5/0.75/B, 0/0/C, 0.5/0.5/D}
+
+	\draw[->, wave, color=red, line width=3pt] (A) --++ (1.5,0);
+	\draw[->, wave, color=red, line width=3pt] (B) --++ (-1.5,0);
+
+	\node [s1, color=black] at (A) {\small $e$};
+	\node [s1, color=black] at (B) {\small $e$};
+
+	\node(C) {\includegraphics[scale=0.15]{pensando.png}};
+
+	\end{scope}
+
+\end{tikzpicture}

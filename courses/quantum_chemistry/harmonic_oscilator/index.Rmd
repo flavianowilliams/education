@@ -660,10 +660,11 @@ de = 2.5
 beta = 1.5
 r0 = 2.0
 r=seq(0,rm,2*rm/(smpl-1))
+frames = 1:10
 #
 df = data.frame(r=r, n=1, Harmônico = harmonico(0.25, de, beta, r, r0), Morse = morse(0.25, de, beta, r, r0))
 
-for (i in 1:10) {
+for (i in frames) {
   df = rbind(df, data.frame(r=r, n=i, Harmônico = harmonico(0.25*i, de, beta, r, r0), Morse = morse(0.25*i, de, beta, r, r0)))
 }
 

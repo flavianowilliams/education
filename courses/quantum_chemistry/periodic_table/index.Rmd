@@ -66,11 +66,19 @@ class: middle
 
 .pull-left[
 
+No modelo clássico, ao colidirmos duas partículas, mesmo que sejam idênticas, é possível sem alguma dificuldade identificar cada partícula após a colisão.
+
+```{r, echo=FALSE, fig.align='center',fig.cap='Modelo clássico de colisão.',out.width="75%",fig.asp=1}
+  knitr::include_graphics("img/colisao-particulas.jpeg")
+```
+
 ]
 
 .pull-right[
 
-```{r, echo=FALSE, fig.align='center',fig.cap='A) Modelo clássico de colisão. B) Colisão entre elétrons.',out.width="75%",fig.asp=1}
+Devido ao princípio da incerteza de Heisenberg, é praticamente impossível conhecer com total exatidão a localização de uma partícula. Assim, dois elétrons (partículas idênticas), no ato do encontro (colisão) não poderemos saber qual é qual durante a colisão. Isso torna impossível identificar cada uma das partículas.
+
+```{r, echo=FALSE, fig.align='center',fig.cap='Colisão entre elétrons.',out.width="60%",fig.asp=1}
   knitr::include_graphics("img/colisao-eletrons.jpeg")
 ```
 
@@ -84,13 +92,27 @@ class: middle
 
 .pull-left[
 
+Como exemplo, imaginemos uma colisão como mostra a figura ao lado. Apoś a colisão, o elétron que sai à esquerda para baixo poderá ser tanto o elétron 1 quanto 2. O mesmo pode ser dito a respeito do elétron que sai à direita para cima. Similarmente nada pode ser dito a respeito do encontro no ato da colisão. Portanto, em um sistema contendo dois elétrons, onde definimos $\psi_1$ e $\psi_2$ referente a cada elétron, a função de onda deve ser uma função que engloba a possibilidade de troca das partículas. Supondo segundo as resgras da estatística, em um sistema com duas partículas, a função que representa a probabilidade do conjunto deve ser o produto das funções individuais, ou seja,
+\begin{align*}
+  \psi_{mn}(r_1,r_2) = \psi_m(r_1)\psi_n(r_2)
+\end{align*}
+m e n referem-se aos estados ocupados por cada partícula. Sabendo que $\psi$ deve considerar a probabilidade de troca das partículas, uma representação mais correta seria `r Citep(bib, c("tipler"))`
 
 ]
 
 .pull-right[
 
-```{r, echo=FALSE, fig.align='center',fig.cap='Gráfico da energia do oscilador harmônico clássico.',out.width="60%",fig.asp=1}
-#  knitr::include_graphics("img/mhs-classico.jpeg")
+\begin{align*}
+  \psi_{mn}(r_1,r_2) = \psi_m(r_1)\psi_n(r_2)+\psi_m(r_2)\psi_n(r_1)
+\end{align*}
+Assim podemos ver que ao fazer a troca da posição das partículas 1 e 1, o mesmo resultado obtemos para $\psi_{mn}$,
+\begin{align*}
+  \psi_{mn}(r_2,r_1) & = \psi_m(r_2)\psi_n(r_1)+\psi_m(r_1)\psi_n(r_2),\\
+  \psi_{mn}(r_2,r_1) & = \psi_{mn}(r_1,r_2).
+\end{align*}
+
+```{r, echo=FALSE, fig.align='center',fig.cap='Colisão entre elétrons.',out.width="60%",fig.asp=1}
+  knitr::include_graphics("img/colisao-eletrons.jpeg")
 ```
 
 ]
@@ -98,16 +120,85 @@ class: middle
 ---
 class: middle
 
-<div class="my-header"><span>Sistema de partículas idênticas. Determinante de Slater</span></div>
+<div class="my-header"><span>Sistema de partículas idênticas. Paridade da função de onda</span></div>
 
 
 .pull-left[
 
+Entretanto, além do fato da indistinguibilidade das partículas (que também chamamos efeito de troca), existe o comportamento chamado paridade da partícula. A paridade ou simetria da partícula refere-se ao fato da função de onda mudar o seu sinal ao trocar a posição do elétron de r para -r, ou seja, como a função de onda altera o seu valor em relação ao elétron e sua imagem vista em um espelho (veja a figura ao lado). O efeito de paridade torna-se perceptível quando levamos em consideração o estado de spin da partícula.
+
+```{r, echo=FALSE, fig.align='center',fig.cap='Exemplo de paridade antissimétrica entre dois elétrons.',out.width="100%",fig.asp=1}
+  knitr::include_graphics("img/paridade.jpeg")
+```
 
 ]
 
 .pull-right[
 
+Ao trocarmos os elétrons 1 e 2 nos estados m e n, ou seja, $(r_1, r_2)\Leftrightarrow (r_2, r_1)$, teremos a inversão na função $\psi_{mn}$, equivalente a uma função ímpar, onde f(-r)=-f(r). **Portanto, partículas com função de onda simétrica possuem spin inteiro, enquanto que antissimétricas possuem spin semi-inteiro.** Segue abaixo o esquema de paridade da função de onda.
+\begin{align*}
+  \psi_{mn}(r_1, r_2) & = +\psi_{mn}(r_2, r_1),\quad\text{(simétrica)},\\
+  \psi_{mn}(r_1, r_2) & = -\psi_{mn}(r_2, r_1),\quad\text{(antissimétrica)}.
+\end{align*}
+Para que a função de onda $\psi_{mn}$ seja antissimétrica devemos impor a seguinte regra
+\begin{align*}
+  \psi_{mn}(r_1,r_2) & = \psi_m(r_1)\psi_n(r_2)-\psi_m(r_2)\psi_n(r_1).
+\end{align*}
+Temos portanto que
+\begin{align*}
+  \psi_{mn}^{(S)}(r_1,r_2) & = \psi_m(r_1)\psi_n(r_2)+\psi_m(r_2)\psi_n(r_1),\\
+  \psi_{mn}^{(A)}(r_1,r_2) & = \psi_m(r_1)\psi_n(r_2)-\psi_m(r_2)\psi_n(r_1).
+\end{align*}
+
+]
+
+---
+class: middle
+
+<div class="my-header"><span>Sistema de partículas idênticas. Princípio de exclusão de Linus Pauli</span></div>
+
+
+.pull-left[
+
+Uma das grandes consequências do efeito de paridade das funções acontece quando as funções de onda de partículas idênticas assumem o mesmo estado quântico. Considere o caso m=n, teremos para a função de onda simétrica
+\begin{align*}
+  \psi_{mm}(r_1, r_2) & = \psi_m(r_1)\psi_m(r_2)+\psi_m(r_2)\psi_m(r_1),\\
+  \psi_{mm}(r_1, r_2) & = 2\psi_m(r_1)\psi_m(r_2),
+\end{align*}
+enquanto que para funções antissimétrica resulta em
+\begin{align*}
+  \psi_{mm}(r_1, r_2) & = \psi_m(r_1)\psi_m(r_2)-\psi_m(r_2)\psi_m(r_1),\\
+  \psi_{mm}(r_1, r_2) & = 0.
+\end{align*}
+Ou seja, **não existe alguma probabilidade de dois elétrons estarem no mesmo estado quântico. Essa regra é chamada de princípio de exclusão de Linus Pauling.**
+
+]
+
+.pull-right[
+
+Agora, observando a equação anterior, é possível perceber que o lado direito da equação pode ser representando como o determinante da matriz
+\begin{align*}
+  \psi_{mm}(r_1, r_2) & \Rightarrow \text{Det}
+  \left[
+  \begin{array}{cc}
+  \psi_m(r_1) & \psi_m(r_2)\\
+  \psi_n(r_1) & \psi_n(r_2)
+  \end{array}
+  \right].
+\end{align*}
+Para um sistema com N elétrons ocupando M estados distintos, temos para a função de onda
+\begin{align*}
+  & \psi(r_1, r_2,\dots , r_N) \Rightarrow\\
+  & \Rightarrow\text{Det}\left[
+  \begin{array}{cccc}
+  \psi_m(r_1) & \psi_m(r_2) &\cdots & \psi_m(r_N)\\
+  \psi_n(r_1) & \psi_n(r_2) &\cdots & \psi_n(r_N)\\
+  \vdots & \vdots & \ddots & \vdots\\
+  \psi_M(r_1) & \psi_M(r_2) &\cdots & \psi_M(r_N)
+  \end{array}
+  \right].
+\end{align*}
+**O determinante acima é chamado determinante de Slater `r Citep(bib, c("mcquarrie","braga"))`.**
 
 ]
 

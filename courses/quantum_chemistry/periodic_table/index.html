@@ -26,7 +26,7 @@ class: center, middle, inverse, title-slide
 ### Instituto Federal do Paraná - Irati
 ]
 .date[
-### 16 de março de 2021 (atualizado em 29/03/2023)
+### 16 de março de 2021 (atualizado em 31/03/2023)
 ]
 
 ---
@@ -42,12 +42,16 @@ background-size: contain
 
 
 
+
+
 ---
 class: middle
 
 &lt;div class="my-header"&gt;&lt;span&gt;Sumário&lt;/span&gt;&lt;/div&gt;
 
 1. Sistema de partículas idênticas
+
+2. A tabela periódica
 
 &lt;div class="footnote"&gt;
   &lt;ul&gt;
@@ -159,7 +163,6 @@ class: middle
 
 &lt;div class="my-header"&gt;&lt;span&gt;Sistema de partículas idênticas. Princípio de exclusão de Linus Pauli&lt;/span&gt;&lt;/div&gt;
 
-
 .pull-left[
 
 Uma das grandes consequências do efeito de paridade das funções acontece quando as funções de onda de partículas idênticas assumem o mesmo estado quântico. Considere o caso m=n, teremos para a função de onda simétrica
@@ -207,10 +210,129 @@ Para um sistema com N elétrons ocupando M estados distintos, temos para a funç
 ---
 class: middle
 
+&lt;div class="my-header"&gt;&lt;span&gt;A tabela periódica. Sistema de unidades atômicas&lt;/span&gt;&lt;/div&gt;
+
+.pull-left[
+
+Como vimos no modelo de Bohr, o raio atômico e a energia do átomo de hidrogênio são definidos por
+`\begin{align*}
+  r_n &amp; = \left(\frac{\hbar^2}{mKe^2}\right)\frac{n^2}{Z},\\
+  E_n &amp; = -\left(\frac{mK^2e^4}{2\hbar^2}\right)\frac{n^2}{Z^2}.
+\end{align*}`
+Adotaremos aqui um sistema de unidades chamado *unidades atômicas* (a.u.). Nesse sistema de unidades a carga do elétron, a massa e a constante reduzida de Planck assumem valores unitários. A intenção desse sistema é simplificar as expressões, deixando de carregar constantes como aquelas mencionadas anteriormente. A tabela abaixo mostra as principais unidades de medida em a.u.
+
+Em unidades a.u., as expressões para o raio e a energia tornam-se
+
+]
+
+.pull-right[
+
+`\begin{align*}
+  r_n &amp; = \frac{n^2}{Z},\\
+  E_n &amp; = -\frac{n^2}{2Z}.
+\end{align*}`
+Entretanto, Bohr pensou no modelo do átomo de hidrogênio constuído apenas para o sistema de uma particula sujeita a um potencial coulombiano, ou seja, um elétron. No caso de sistema formados por mais de um elétron, que no caso seria quase todos os elementos químicos da tabela periódica exceto hidrogênio, vimos que o princípio da indistinguibilidade impede a descrição completa da interação existente entre elétrons. Isso inviabiliza qualquer modelo teórico exato que possui solução analítica, como por exemplo o modelo de Bohr. Contudo, veremos que com algumas correções o modelo de Bohr pode de certa maneira explicar alguns comportamentos de átomos, como He, Li, etc...
+
+]
+
+---
+class: middle
+
+&lt;div class="my-header"&gt;&lt;span&gt;A tabela periódica. Raio atômico&lt;/span&gt;&lt;/div&gt;
+
+.pull-left[
+
+Para calcular o raio atômico segundo o modelo de Bohr, devemos considerar o valor de n referente ao número quântico principal do elétron da camada mais externa do átomo. Como exemplo, podemos supor que para o Lítio temos n=2, pois a sua configuração eletrônica é `\([Li]: 1s^22s^2\)`. O mesmo para o Sódio, `\([Na]: [Ne]3s^1\)`, onde n = 3, e assim para os demais. A figura ao lado mostra o raio atômico obtido através do modelo de Bohr e o valor experimental. ([Braga, 2007](https://www.editoraufv.com.br/produto/fundamentos-de-quimica-quantica/1108949)). Podemos ver uma discrepância do ponto de vista quantitativo à medida que o número atômico aumenta, Porém qualitativamente os resultados concordam em alguns aspectos, onde de acordo com a tabela periódica
+
+* *o raio atômico diminui gradualmente da esquerda para a direita entre átomos no mesmo período;*
+* *o raio atômico aumenta substancialmente para os metais alcalinos (família IA).*
+
+]
+
+.pull-right[
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="index_files/figure-html/unnamed-chunk-6-1.png" alt="Raio atômico do átomo de acordo com o seu número atômico." width="100%" /&gt;
+&lt;p class="caption"&gt;Raio atômico do átomo de acordo com o seu número atômico.&lt;/p&gt;
+&lt;/div&gt;
+
+]
+
+---
+class: middle
+
+&lt;div class="my-header"&gt;&lt;span&gt;A tabela periódica. Energia de ionização&lt;/span&gt;&lt;/div&gt;
+
+.pull-left[
+
+Definimos energia de ionização como a energia necessária para remover um elétron de um átomo X qualquer, ou seja,
+`\begin{align*}
+  I = E^+-E
+\end{align*}`
+No modelo de Bohr a energia de ionização diverge absurdamente do experimental do ponto de vista quantitativo. Entretanto, o seu valor assume valor positivo e os picos de máximo valor local ocorrem na mesma posição. A figura ao lado mostra a comparação entre os modelos teórico segundo Bohr e experimental ([Braga, 2007](https://www.editoraufv.com.br/produto/fundamentos-de-quimica-quantica/1108949)).
+
+]
+
+.pull-right[
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="index_files/figure-html/unnamed-chunk-7-1.png" alt="Raio atômico do átomo de acordo com o seu número atômico." width="100%" /&gt;
+&lt;p class="caption"&gt;Raio atômico do átomo de acordo com o seu número atômico.&lt;/p&gt;
+&lt;/div&gt;
+
+]
+
+---
+class: middle
+
+&lt;div class="my-header"&gt;&lt;span&gt;A tabela periódica. Afinidade eletrônica&lt;/span&gt;&lt;/div&gt;
+
+.pull-left[
+
+Definimos afinidade eletrônica como a capacidade do átomo receber um elétron, ou seja, a diferença de energia do ânion e o átomo neutro qualquer,
+`\begin{align*}
+  A = E_{(-)}-E
+\end{align*}`
+A afinidade eletrônica, assim como no caso da energia de ionização falha do ponto de vista quantitativo, porém os picos de máximo ocorrem na mesma posição comparado com experimental. A figura ao lado mostra a comparação entre os modelos teórico e experimental para a afinidade eletrônica dos vinte primeiros átomos da tabela periódica ([Braga, 2007](https://www.editoraufv.com.br/produto/fundamentos-de-quimica-quantica/1108949)).
+
+]
+
+.pull-right[
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="index_files/figure-html/unnamed-chunk-8-1.png" alt="Raio atômico do átomo de acordo com o seu número atômico." width="100%" /&gt;
+&lt;p class="caption"&gt;Raio atômico do átomo de acordo com o seu número atômico.&lt;/p&gt;
+&lt;/div&gt;
+
+]
+
+---
+class: middle
+
+&lt;div class="my-header"&gt;&lt;span&gt;A tabela periódica. Carga efetiva (EDITAR)&lt;/span&gt;&lt;/div&gt;
+
+.pull-left[
+
+...
+
+]
+
+.pull-right[
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="index_files/figure-html/unnamed-chunk-9-1.png" alt="Raio atômico do átomo de acordo com o seu número atômico." width="100%" /&gt;
+&lt;p class="caption"&gt;Raio atômico do átomo de acordo com o seu número atômico.&lt;/p&gt;
+&lt;/div&gt;
+
+]
+
+---
+class: middle
+
 &lt;div class="my-header"&gt;&lt;span&gt;Bibliografia&lt;/span&gt;&lt;/div&gt;
 
 &lt;a name=bib-braga&gt;&lt;/a&gt;[Braga, J. P.](#cite-braga) (2007). _Fundamentos
-de Química Quântica_. Editora UFV, p. 272. ISBN: 8572692673. URL:
+de Qu\'imica Quântica_. Editora UFV, p. 272. ISBN: 8572692673. URL:
 [https://www.editoraufv.com.br/produto/fundamentos-de-quimica-quantica/1108949](https://www.editoraufv.com.br/produto/fundamentos-de-quimica-quantica/1108949).
 
 &lt;a name=bib-mcquarrie&gt;&lt;/a&gt;[McQuarrie, D. A.](#cite-mcquarrie) (2008).

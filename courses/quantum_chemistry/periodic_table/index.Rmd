@@ -37,6 +37,17 @@ background-size: contain
 #  knitr::opts_chunk$set(fig.path = 'img')
 ```
 
+```{r dataframes, include=FALSE}
+
+elementos_df = data.frame(Z = seq(1,20,1), raio_atomico = c(0.53, 0.31, 1.67, 1.12, 0.87, 0.67, 0.56, 0.48, 0.42, 0.38, 1.90, 1.45, 1.18, 1.11, 0.98, 0.88, 0.79, 0.71, 2.43, 1.94))
+
+elementos_df = elementos_df %>%
+  mutate(carga_nuclear = c(1.00, 1.69, 2.69, 3.68, 4.68, 5.67, 6.66, 7.66, 8.65, 9.64, 10.63, 11.61, 12.59, 13.57, 14.58, 15.54, 16.52, 17.51, 3.49, 4.40)) %>%
+  mutate(energia_ionizacao = c(13.5984, 24.5874, 5.3917, 9.3227, 8.2980, 11.2603, 14.5341, 13.6181, 17.4228, 21.5645, 5.1391, 7.6462, 5.9858, 8.1517, 10.4867, 10.3600, 12.9676, 15.7596, 4.3407, 6.1132)) %>%
+  mutate(afinidade_eletronica = c(-0.75676, 0.21769, -0.62199, 0.19697, -0.27989, -1.2647, 0.072566, -1.4616, -3.4002, 0.30063, -0.54942, 0.19696, -0.44576, -1.3891, -0.74639, -2.0733, -2.4776, 0.36283, -0.49759, 0.103665))
+
+```
+
 ```{r, load_refs, echo=FALSE, message=FALSE}
   library(RefManageR)
   BibOptions(check.entries = FALSE, bib.style = "authoryear", style = "markdown",
@@ -50,6 +61,8 @@ class: middle
 <div class="my-header"><span>Sumário</span></div>
 
 1. Sistema de partículas idênticas
+
+2. A tabela periódica
 
 <div class="footnote">
   <ul>
@@ -157,7 +170,6 @@ class: middle
 
 <div class="my-header"><span>Sistema de partículas idênticas. Princípio de exclusão de Linus Pauli</span></div>
 
-
 .pull-left[
 
 Uma das grandes consequências do efeito de paridade das funções acontece quando as funções de onda de partículas idênticas assumem o mesmo estado quântico. Considere o caso m=n, teremos para a função de onda simétrica
@@ -199,6 +211,303 @@ Para um sistema com N elétrons ocupando M estados distintos, temos para a funç
   \right].
 \end{align*}
 **O determinante acima é chamado determinante de Slater `r Citep(bib, c("mcquarrie","braga"))`.**
+
+]
+
+---
+class: middle
+
+<div class="my-header"><span>A tabela periódica. Sistema de unidades atômicas</span></div>
+
+.pull-left[
+
+Como vimos no modelo de Bohr, o raio atômico e a energia do átomo de hidrogênio são definidos por
+\begin{align*}
+  r_n & = \left(\frac{\hbar^2}{mKe^2}\right)\frac{n^2}{Z},\\
+  E_n & = -\left(\frac{mK^2e^4}{2\hbar^2}\right)\frac{n^2}{Z^2}.
+\end{align*}
+Adotaremos aqui um sistema de unidades chamado *unidades atômicas* (a.u.). Nesse sistema de unidades a carga do elétron, a massa e a constante reduzida de Planck assumem valores unitários. A intenção desse sistema é simplificar as expressões, deixando de carregar constantes como aquelas mencionadas anteriormente. A tabela abaixo mostra as principais unidades de medida em a.u.
+
+Em unidades a.u., as expressões para o raio e a energia tornam-se
+
+]
+
+.pull-right[
+
+\begin{align*}
+  r_n & = \frac{n^2}{Z},\\
+  E_n & = -\frac{n^2}{2Z}.
+\end{align*}
+Entretanto, Bohr pensou no modelo do átomo de hidrogênio constuído apenas para o sistema de uma particula sujeita a um potencial coulombiano, ou seja, um elétron. No caso de sistema formados por mais de um elétron, que no caso seria quase todos os elementos químicos da tabela periódica exceto hidrogênio, vimos que o princípio da indistinguibilidade impede a descrição completa da interação existente entre elétrons. Isso inviabiliza qualquer modelo teórico exato que possui solução analítica, como por exemplo o modelo de Bohr. Contudo, veremos que com algumas correções o modelo de Bohr pode de certa maneira explicar alguns comportamentos de átomos, como He, Li, etc...
+
+]
+
+---
+class: middle
+
+<div class="my-header"><span>A tabela periódica. Raio atômico</span></div>
+
+.pull-left[
+
+Para calcular o raio atômico segundo o modelo de Bohr, devemos considerar o valor de n referente ao número quântico principal do elétron da camada mais externa do átomo. Como exemplo, podemos supor que para o Lítio temos n=2, pois a sua configuração eletrônica é $[Li]: 1s^22s^2$. O mesmo para o Sódio, $[Na]: [Ne]3s^1$, onde n = 3, e assim para os demais. A figura ao lado mostra o raio atômico obtido através do modelo de Bohr e o valor experimental. `r Citep(bib, c("braga"))`. Podemos ver uma discrepância do ponto de vista quantitativo à medida que o número atômico aumenta, Porém qualitativamente os resultados concordam em alguns aspectos, onde de acordo com a tabela periódica
+
+* *o raio atômico diminui gradualmente da esquerda para a direita entre átomos no mesmo período;*
+* *o raio atômico aumenta substancialmente para os metais alcalinos (família IA).*
+
+]
+
+.pull-right[
+
+```{r, echo=FALSE, fig.align='center',fig.cap='Raio atômico do átomo de acordo com o seu número atômico.',out.width="100%",fig.asp=1}
+
+rn = function(n,Z){
+  valor = n**2/Z
+  valor = valor*0.529177249
+  return(valor)
+}
+
+for (Z in 1:2){
+  raio_atomico_df = data.frame(Z=Z, Teórico = rn(1, Z))
+}
+for (Z in 3:10){
+  raio_atomico_df = rbind(
+    raio_atomico_df,
+    data.frame(Z=Z, Teórico = rn(2, Z))
+    )
+}
+for (Z in 11:18){
+  raio_atomico_df = rbind(
+    raio_atomico_df,
+    data.frame(Z=Z, Teórico = rn(3, Z))
+    )
+}
+for (Z in 19:20){
+  raio_atomico_df = rbind(
+    raio_atomico_df,
+    data.frame(Z=Z, Teórico = rn(4, Z))
+    )
+}
+
+raio_atomico_df = raio_atomico_df %>%
+  inner_join(elementos_df, by = "Z") %>%
+  rename(Experimental = raio_atomico) %>%
+  select(Z, Teórico, Experimental)
+
+raio_atomico_df = raio_atomico_df %>%
+  gather("Teórico", "Experimental", key="Modelo", value= "Raio")
+
+fig = ggplot(raio_atomico_df, aes(x = Z, y = Raio, color = Modelo))+
+  geom_line()+
+  geom_point()+
+  annotate("text", x = 3, y = elementos_df$raio_atomico[3]+0.1, label = "IA")+
+  annotate("text", x = 11, y = elementos_df$raio_atomico[11]+0.1, label = "IA")+
+  annotate("text", x = 19, y = elementos_df$raio_atomico[19]+0.1, label = "IA")+
+  annotate("segment", x = 3, xend = 11, y = elementos_df$raio_atomico[19]+0.2, yend = elementos_df$raio_atomico[19]+0.2, arrow = arrow(ends = "both", angle = 90, length = unit(.2,"cm")))+
+  annotate("text", x = 7, y = elementos_df$raio_atomico[19]+0.4, label = "Período 1")+
+  annotate("segment", x = 11, xend = 19, y = elementos_df$raio_atomico[19]+0.2, yend = elementos_df$raio_atomico[19]+0.2, arrow = arrow(ends = "both", angle = 90, length = unit(.2,"cm")))+
+  annotate("text", x = 15, y = elementos_df$raio_atomico[19]+0.4, label = "Período 2")
+
+fig
+```
+
+]
+
+---
+class: middle
+
+<div class="my-header"><span>A tabela periódica. Energia de ionização</span></div>
+
+.pull-left[
+
+Definimos energia de ionização como a energia necessária para remover um elétron de um átomo X qualquer, ou seja,
+\begin{align*}
+  I = E^+-E
+\end{align*}
+No modelo de Bohr a energia de ionização diverge absurdamente do experimental do ponto de vista quantitativo. Entretanto, o seu valor assume valor positivo e os picos de máximo valor local ocorrem na mesma posição. A figura ao lado mostra a comparação entre os modelos teórico segundo Bohr e experimental `r Citep(bib, c("braga"))`.
+
+]
+
+.pull-right[
+
+```{r, echo=FALSE, fig.align='center',fig.cap='Raio atômico do átomo de acordo com o seu número atômico.',out.width="100%",fig.asp=1}
+
+rn = function(n,Z){
+  valor = 0.5*(Z/n)**2
+  valor = valor/27.211407953
+  return(valor)
+}
+
+for (Z in 1:2){
+  energia_ionizacao_df = data.frame(Z=Z, Teórico = rn(1, Z))
+}
+for (Z in 3:10){
+  energia_ionizacao_df = rbind(
+    energia_ionizacao_df,
+    data.frame(Z=Z, Teórico = rn(2, Z))
+    )
+}
+for (Z in 11:18){
+  energia_ionizacao_df = rbind(
+    energia_ionizacao_df,
+    data.frame(Z=Z, Teórico = rn(3, Z))
+    )
+}
+for (Z in 19:20){
+  energia_ionizacao_df = rbind(
+    energia_ionizacao_df,
+    data.frame(Z=Z, Teórico = rn(2, Z))
+    )
+}
+
+energia_ionizacao_df = energia_ionizacao_df %>%
+  inner_join(elementos_df, by = "Z") %>%
+  rename(Experimental = energia_ionizacao) %>%
+  select(Z, Teórico, Experimental)
+
+energia_ionizacao_df = energia_ionizacao_df %>%
+  gather("Teórico", "Experimental", key="Modelo", value= "Energia")
+
+fig = ggplot(energia_ionizacao_df, aes(x = Z, y = Energia, color = Modelo))+
+  geom_line()+
+  geom_point()#+
+#  annotate("segment", x = 3, xend = 11, y = elementos_df$energia_ionizacao[19], yend = elementos_df$energia_ionizacao[19], arrow = arrow(ends = "both", angle = 90, length = unit(.2,"cm")))+
+#  annotate("text", x = 7, y = elementos_df$energia_ionizacao[19], label = "Período 1")+
+#  annotate("segment", x = 11, xend = 19, y = elementos_df$energia_ionizacao[19], yend = elementos_df$energia_ionizacao[19], arrow = arrow(ends = "both", angle = 90, length = unit(.2,"cm")))+
+#  annotate("text", x = 15, y = elementos_df$energia_ionizacao[19], label = "Período 2")
+
+fig
+```
+
+]
+
+---
+class: middle
+
+<div class="my-header"><span>A tabela periódica. Afinidade eletrônica</span></div>
+
+.pull-left[
+
+Definimos afinidade eletrônica como a capacidade do átomo receber um elétron, ou seja, a diferença de energia do ânion e o átomo neutro qualquer,
+\begin{align*}
+  A = E_{(-)}-E
+\end{align*}
+A afinidade eletrônica, assim como no caso da energia de ionização falha do ponto de vista quantitativo, porém os picos de máximo ocorrem na mesma posição comparado com experimental. A figura ao lado mostra a comparação entre os modelos teórico e experimental para a afinidade eletrônica dos vinte primeiros átomos da tabela periódica `r Citep(bib, c("braga"))`.
+
+]
+
+.pull-right[
+
+```{r, echo=FALSE, fig.align='center',fig.cap='Raio atômico do átomo de acordo com o seu número atômico.',out.width="100%",fig.asp=1}
+
+rn = function(n,Z){
+  valor = n**2/Z
+  return(valor)
+}
+
+for (Z in 1:2){
+  afinidade_eletronica_df = data.frame(Z=Z, Teórico = rn(1, Z))
+}
+for (Z in 3:10){
+  afinidade_eletronica_df = rbind(
+    afinidade_eletronica_df,
+    data.frame(Z=Z, Teórico = rn(2, Z))
+    )
+}
+for (Z in 11:18){
+  afinidade_eletronica_df = rbind(
+    afinidade_eletronica_df,
+    data.frame(Z=Z, Teórico = rn(3, Z))
+    )
+}
+for (Z in 19:20){
+  afinidade_eletronica_df = rbind(
+    afinidade_eletronica_df,
+    data.frame(Z=Z, Teórico = rn(4, Z))
+    )
+}
+
+afinidade_eletronica_df = afinidade_eletronica_df %>%
+  inner_join(elementos_df, by = "Z") %>%
+  rename(Energia = afinidade_eletronica)
+
+#afinidade_eletronica_df = afinidade_eletronica_df %>%
+#  gather("Teórico", "Experimental", key="Modelo", value= "Energia")
+
+fig = ggplot(afinidade_eletronica_df, aes(x = Z, y = Energia))+
+  geom_line()+
+  geom_point()#+
+#  annotate("segment", x = 3, xend = 11, y = elementos_df$afinidade_eletronica[19]+0.2, yend = elementos_df$afinidade_eletronica[19]+0.2, arrow = arrow(ends = "both", angle = 90, length = unit(.2,"cm")))+
+#  annotate("text", x = 7, y = elementos_df$afinidade_eletronica[19]+0.4, label = "Período 1")+
+#  annotate("segment", x = 11, xend = 19, y = elementos_df$afinidade_eletronica[19]+0.2, yend = elementos_df$afinidade_eletronica[19]+0.2, arrow = arrow(ends = "both", angle = 90, length = unit(.2,"cm")))+
+#  annotate("text", x = 15, y = elementos_df$afinidade_eletronica[19]+0.4, label = "Período 2")
+
+fig
+```
+
+]
+
+---
+class: middle
+
+<div class="my-header"><span>A tabela periódica. Carga efetiva (EDITAR)</span></div>
+
+.pull-left[
+
+...
+
+]
+
+.pull-right[
+
+```{r, echo=FALSE, fig.align='center',fig.cap='Raio atômico do átomo de acordo com o seu número atômico.',out.width="100%",fig.asp=1}
+
+rn = function(n,Z){
+  valor = n**2/Z
+  return(valor)
+}
+
+for (Z in 1:2){
+  raio_atomico_df = data.frame(Z=Z, Teórico = rn(1, elementos_df$carga_nuclear[Z]))
+}
+for (Z in 3:10){
+  raio_atomico_df = rbind(
+    raio_atomico_df,
+    data.frame(Z=Z, Teórico = rn(2, elementos_df$carga_nuclear[Z]))
+    )
+}
+for (Z in 11:18){
+  raio_atomico_df = rbind(
+    raio_atomico_df,
+    data.frame(Z=Z, Teórico = rn(3, elementos_df$carga_nuclear[Z]))
+    )
+}
+for (Z in 19:20){
+  raio_atomico_df = rbind(
+    raio_atomico_df,
+    data.frame(Z=Z, Teórico = rn(4, elementos_df$carga_nuclear[Z]))
+    )
+}
+
+raio_atomico_df = raio_atomico_df %>%
+  inner_join(elementos_df, by = "Z") %>%
+  rename(Experimental = raio_atomico)
+
+raio_atomico_df = raio_atomico_df %>%
+  gather("Teórico", "Experimental", key="Modelo", value= "Raio")
+
+fig = ggplot(raio_atomico_df, aes(x = Z, y = Raio, color = Modelo))+
+  geom_line()+
+  geom_point()+
+  annotate("text", x = 3, y = elementos_df$raio_atomico[3]+0.1, label = "IA")+
+  annotate("text", x = 11, y = elementos_df$raio_atomico[11]+0.1, label = "IA")+
+  annotate("text", x = 19, y = elementos_df$raio_atomico[19]+0.1, label = "IA")+
+  annotate("segment", x = 3, xend = 11, y = elementos_df$raio_atomico[19]+0.2, yend = elementos_df$raio_atomico[19]+0.2, arrow = arrow(ends = "both", angle = 90, length = unit(.2,"cm")))+
+  annotate("text", x = 7, y = elementos_df$raio_atomico[19]+0.4, label = "Período 1")+
+  annotate("segment", x = 11, xend = 19, y = elementos_df$raio_atomico[19]+0.2, yend = elementos_df$raio_atomico[19]+0.2, arrow = arrow(ends = "both", angle = 90, length = unit(.2,"cm")))+
+  annotate("text", x = 15, y = elementos_df$raio_atomico[19]+0.4, label = "Período 2")
+
+fig
+```
 
 ]
 

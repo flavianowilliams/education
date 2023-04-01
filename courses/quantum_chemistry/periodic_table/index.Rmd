@@ -42,7 +42,7 @@ background-size: contain
 elementos_df = data.frame(Z = seq(1,20,1), raio_atomico = c(0.53, 0.31, 1.67, 1.12, 0.87, 0.67, 0.56, 0.48, 0.42, 0.38, 1.90, 1.45, 1.18, 1.11, 0.98, 0.88, 0.79, 0.71, 2.43, 1.94))
 
 elementos_df = elementos_df %>%
-  mutate(carga_nuclear = c(1.00, 1.69, 2.69, 3.68, 4.68, 5.67, 6.66, 7.66, 8.65, 9.64, 10.63, 11.61, 12.59, 13.57, 14.58, 15.54, 16.52, 17.51, 3.49, 4.40)) %>%
+  mutate(carga_nuclear = c(1.00, 1.69, 1.28, 1.91, 2.42, 3.14, 3.83, 4.45, 5.10, 5.77, 2.51, 3.31, 4.07, 4.28, 4.89, 5.48, 6.12, 6.76, 4.40, 12.9)) %>%
   mutate(energia_ionizacao = c(13.5984, 24.5874, 5.3917, 9.3227, 8.2980, 11.2603, 14.5341, 13.6181, 17.4228, 21.5645, 5.1391, 7.6462, 5.9858, 8.1517, 10.4867, 10.3600, 12.9676, 15.7596, 4.3407, 6.1132)) %>%
   mutate(afinidade_eletronica = c(-0.75676, 0.21769, -0.62199, 0.19697, -0.27989, -1.2647, 0.072566, -1.4616, -3.4002, 0.30063, -0.54942, 0.19696, -0.44576, -1.3891, -0.74639, -2.0733, -2.4776, 0.36283, -0.49759, 0.103665))
 
@@ -238,7 +238,7 @@ Em unidades a.u., as expressões para o raio e a energia tornam-se
   r_n & = \frac{n^2}{Z},\\
   E_n & = -\frac{n^2}{2Z}.
 \end{align*}
-Entretanto, Bohr pensou no modelo do átomo de hidrogênio constuído apenas para o sistema de uma particula sujeita a um potencial coulombiano, ou seja, um elétron. No caso de sistema formados por mais de um elétron, que no caso seria quase todos os elementos químicos da tabela periódica exceto hidrogênio, vimos que o princípio da indistinguibilidade impede a descrição completa da interação existente entre elétrons. Isso inviabiliza qualquer modelo teórico exato que possui solução analítica, como por exemplo o modelo de Bohr. Contudo, veremos que com algumas correções o modelo de Bohr pode de certa maneira explicar alguns comportamentos de átomos, como He, Li, etc...
+Entretanto, Bohr pensou no modelo do átomo de hidrogênio constuído apenas para o sistema de uma particula sujeita a um potencial coulombiano, *desprezando a interação elétron-elétron*. No caso de sistema formados por mais de um elétron, que no caso seria quase todos os elementos da tabela periódica, exceto hidrogênio, vimos que o princípio da indistinguibilidade impede a descrição completa da interação existente entre elétrons. Isso inviabiliza qualquer modelo teórico exato que possui solução analítica, como por exemplo o modelo de Bohr. Contudo, veremos que com algumas correções o modelo de Bohr pode de certa maneira explicar alguns comportamentos de átomos, como He, Li, etc...
 
 ]
 
@@ -315,145 +315,11 @@ fig
 ---
 class: middle
 
-<div class="my-header"><span>A tabela periódica. Energia de ionização</span></div>
+<div class="my-header"><span>A tabela periódica. Carga efetiva</span></div>
 
 .pull-left[
 
-Definimos energia de ionização como a energia necessária para remover um elétron de um átomo X qualquer, ou seja,
-\begin{align*}
-  I = E^+-E
-\end{align*}
-No modelo de Bohr a energia de ionização diverge absurdamente do experimental do ponto de vista quantitativo. Entretanto, o seu valor assume valor positivo e os picos de máximo valor local ocorrem na mesma posição. A figura ao lado mostra a comparação entre os modelos teórico segundo Bohr e experimental `r Citep(bib, c("braga"))`.
-
-]
-
-.pull-right[
-
-```{r, echo=FALSE, fig.align='center',fig.cap='Raio atômico do átomo de acordo com o seu número atômico.',out.width="100%",fig.asp=1}
-
-rn = function(n,Z){
-  valor = 0.5*(Z/n)**2
-  valor = valor/27.211407953
-  return(valor)
-}
-
-for (Z in 1:2){
-  energia_ionizacao_df = data.frame(Z=Z, Teórico = rn(1, Z))
-}
-for (Z in 3:10){
-  energia_ionizacao_df = rbind(
-    energia_ionizacao_df,
-    data.frame(Z=Z, Teórico = rn(2, Z))
-    )
-}
-for (Z in 11:18){
-  energia_ionizacao_df = rbind(
-    energia_ionizacao_df,
-    data.frame(Z=Z, Teórico = rn(3, Z))
-    )
-}
-for (Z in 19:20){
-  energia_ionizacao_df = rbind(
-    energia_ionizacao_df,
-    data.frame(Z=Z, Teórico = rn(2, Z))
-    )
-}
-
-energia_ionizacao_df = energia_ionizacao_df %>%
-  inner_join(elementos_df, by = "Z") %>%
-  rename(Experimental = energia_ionizacao) %>%
-  select(Z, Teórico, Experimental)
-
-energia_ionizacao_df = energia_ionizacao_df %>%
-  gather("Teórico", "Experimental", key="Modelo", value= "Energia")
-
-fig = ggplot(energia_ionizacao_df, aes(x = Z, y = Energia, color = Modelo))+
-  geom_line()+
-  geom_point()#+
-#  annotate("segment", x = 3, xend = 11, y = elementos_df$energia_ionizacao[19], yend = elementos_df$energia_ionizacao[19], arrow = arrow(ends = "both", angle = 90, length = unit(.2,"cm")))+
-#  annotate("text", x = 7, y = elementos_df$energia_ionizacao[19], label = "Período 1")+
-#  annotate("segment", x = 11, xend = 19, y = elementos_df$energia_ionizacao[19], yend = elementos_df$energia_ionizacao[19], arrow = arrow(ends = "both", angle = 90, length = unit(.2,"cm")))+
-#  annotate("text", x = 15, y = elementos_df$energia_ionizacao[19], label = "Período 2")
-
-fig
-```
-
-]
-
----
-class: middle
-
-<div class="my-header"><span>A tabela periódica. Afinidade eletrônica</span></div>
-
-.pull-left[
-
-Definimos afinidade eletrônica como a capacidade do átomo receber um elétron, ou seja, a diferença de energia do ânion e o átomo neutro qualquer,
-\begin{align*}
-  A = E_{(-)}-E
-\end{align*}
-A afinidade eletrônica, assim como no caso da energia de ionização falha do ponto de vista quantitativo, porém os picos de máximo ocorrem na mesma posição comparado com experimental. A figura ao lado mostra a comparação entre os modelos teórico e experimental para a afinidade eletrônica dos vinte primeiros átomos da tabela periódica `r Citep(bib, c("braga"))`.
-
-]
-
-.pull-right[
-
-```{r, echo=FALSE, fig.align='center',fig.cap='Raio atômico do átomo de acordo com o seu número atômico.',out.width="100%",fig.asp=1}
-
-rn = function(n,Z){
-  valor = n**2/Z
-  return(valor)
-}
-
-for (Z in 1:2){
-  afinidade_eletronica_df = data.frame(Z=Z, Teórico = rn(1, Z))
-}
-for (Z in 3:10){
-  afinidade_eletronica_df = rbind(
-    afinidade_eletronica_df,
-    data.frame(Z=Z, Teórico = rn(2, Z))
-    )
-}
-for (Z in 11:18){
-  afinidade_eletronica_df = rbind(
-    afinidade_eletronica_df,
-    data.frame(Z=Z, Teórico = rn(3, Z))
-    )
-}
-for (Z in 19:20){
-  afinidade_eletronica_df = rbind(
-    afinidade_eletronica_df,
-    data.frame(Z=Z, Teórico = rn(4, Z))
-    )
-}
-
-afinidade_eletronica_df = afinidade_eletronica_df %>%
-  inner_join(elementos_df, by = "Z") %>%
-  rename(Energia = afinidade_eletronica)
-
-#afinidade_eletronica_df = afinidade_eletronica_df %>%
-#  gather("Teórico", "Experimental", key="Modelo", value= "Energia")
-
-fig = ggplot(afinidade_eletronica_df, aes(x = Z, y = Energia))+
-  geom_line()+
-  geom_point()#+
-#  annotate("segment", x = 3, xend = 11, y = elementos_df$afinidade_eletronica[19]+0.2, yend = elementos_df$afinidade_eletronica[19]+0.2, arrow = arrow(ends = "both", angle = 90, length = unit(.2,"cm")))+
-#  annotate("text", x = 7, y = elementos_df$afinidade_eletronica[19]+0.4, label = "Período 1")+
-#  annotate("segment", x = 11, xend = 19, y = elementos_df$afinidade_eletronica[19]+0.2, yend = elementos_df$afinidade_eletronica[19]+0.2, arrow = arrow(ends = "both", angle = 90, length = unit(.2,"cm")))+
-#  annotate("text", x = 15, y = elementos_df$afinidade_eletronica[19]+0.4, label = "Período 2")
-
-fig
-```
-
-]
-
----
-class: middle
-
-<div class="my-header"><span>A tabela periódica. Carga efetiva (EDITAR)</span></div>
-
-.pull-left[
-
-...
+Vimos que o modelo de Bohr falha miseravelmente quantitativamente comparado ao resultado experimental. Contudo, algumas modificações pode ser feitas afim de obter um melhor resultado comparativo. Podemos imaginar que elétrons de camadas mais internas podem blindar eletronicamente a carga do núcleo. Assim, ao invés de considerar o número Z substituímos por valor menor $Z_{ef}$. Determinar a carga efetiva não é uma tarefa fácil, e esforços vem sendo feitos neste sentido, entre eles a regra de Slater, onde consideramos $Z_{ef} = Z-B$, e B é chamada constante de blindagem. A figura ao lado mostra novamente o raio atômico teórico e experimental. No caso teórico a carga nuclear foi substituída por $Z_{ef}$, percebido pelo átomo da camada mais externa. Apesar da diferença permanecer, podemos ver uma melhora dos resultados teóricos perante o experimental.
 
 ]
 
@@ -497,15 +363,155 @@ raio_atomico_df = raio_atomico_df %>%
 
 fig = ggplot(raio_atomico_df, aes(x = Z, y = Raio, color = Modelo))+
   geom_line()+
-  geom_point()+
-  annotate("text", x = 3, y = elementos_df$raio_atomico[3]+0.1, label = "IA")+
-  annotate("text", x = 11, y = elementos_df$raio_atomico[11]+0.1, label = "IA")+
-  annotate("text", x = 19, y = elementos_df$raio_atomico[19]+0.1, label = "IA")+
-  annotate("segment", x = 3, xend = 11, y = elementos_df$raio_atomico[19]+0.2, yend = elementos_df$raio_atomico[19]+0.2, arrow = arrow(ends = "both", angle = 90, length = unit(.2,"cm")))+
-  annotate("text", x = 7, y = elementos_df$raio_atomico[19]+0.4, label = "Período 1")+
-  annotate("segment", x = 11, xend = 19, y = elementos_df$raio_atomico[19]+0.2, yend = elementos_df$raio_atomico[19]+0.2, arrow = arrow(ends = "both", angle = 90, length = unit(.2,"cm")))+
-  annotate("text", x = 15, y = elementos_df$raio_atomico[19]+0.4, label = "Período 2")
+  geom_point()
 
+fig
+```
+
+]
+
+---
+class: middle
+
+<div class="my-header"><span>A tabela periódica. Energia de ionização</span></div>
+
+.pull-left[
+
+Definimos energia de ionização como a energia necessária para remover um elétron de um átomo X qualquer, ou seja,
+\begin{align*}
+  I = E^{(+)}-E
+\end{align*}
+No caso do lítio por exemplo temos
+\begin{align*}
+  E & = 2E_{1s}+E_{2s} \approx -49,73\;\text{eV} \\
+  E^{(+)} & = 2E_{1s} \approx -44,2\;\text{eV} 
+\end{align*}
+ou seja, a energia de ionização do lítio é I = 5,6 eV.
+
+No modelo de Bohr a energia de ionização diverge absurdamente do experimental do ponto de vista quantitativo. Entretanto, o seu valor assume valor positivo e os picos de máximo valor local ocorrem na mesma posição. A figura ao lado mostra a comparação entre os modelos teórico segundo Bohr e experimental `r Citep(bib, c("braga"))`.
+
+]
+
+.pull-right[
+
+```{r, echo=FALSE, fig.align='center',fig.cap='Raio atômico do átomo de acordo com o seu número atômico.',out.width="100%",fig.asp=1}
+
+rn = function(n,Z){
+  valor = 0.5*(Z/n)**2
+  valor = valor*27.211407953
+  return(valor)
+}
+
+ein = function(ni, Z) {
+  valor = 0.0
+  for (i in 1:ni) {
+    if (i <= 2) {
+      n = 1
+    } else if (i <= 8) {
+      n = 2
+    } else if (i <= 18) {
+      n = 3
+    }
+    valor = valor-0.5*(Z/n)**2
+    valor = valor*27.211407953
+  }
+  return(valor)
+}
+
+for (Z in 1:2){
+  energia_ionizacao_df = data.frame(Z=Z, Teórico = rn(1, elementos_df$carga_nuclear[Z]))
+}
+for (Z in 3:10){
+  energia_ionizacao_df = rbind(
+    energia_ionizacao_df,
+    data.frame(Z=Z, Teórico = rn(2, elementos_df$carga_nuclear[Z]))
+    )
+}
+for (Z in 11:18){
+  energia_ionizacao_df = rbind(
+    energia_ionizacao_df,
+    data.frame(Z=Z, Teórico = rn(3, elementos_df$carga_nuclear[Z]))
+    )
+}
+for (Z in 19:20){
+  energia_ionizacao_df = rbind(
+    energia_ionizacao_df,
+    data.frame(Z=Z, Teórico = rn(2, elementos_df$carga_nuclear[Z]))
+    )
+}
+
+energia_ionizacao_df = energia_ionizacao_df %>%
+  inner_join(elementos_df, by = "Z") %>%
+  rename(Experimental = energia_ionizacao) %>%
+  select(Z, Teórico, Experimental)
+
+energia_ionizacao_df = energia_ionizacao_df %>%
+  gather("Teórico", "Experimental", key="Modelo", value= "Energia")
+
+fig = ggplot(energia_ionizacao_df, aes(x = Z, y = Energia, color = Modelo))+
+  geom_line()+
+  geom_point()
+fig
+```
+
+]
+
+---
+class: middle
+
+<div class="my-header"><span>A tabela periódica. Afinidade eletrônica</span></div>
+
+.pull-left[
+
+Definimos afinidade eletrônica como a diferença de energia do ânion e o átomo neutro qualquer,
+\begin{align*}
+  A = E_{(-)}-E
+\end{align*}
+A afinidade eletrônica, assim como no caso da energia de ionização falha do ponto de vista quantitativo, porém os picos de máximo ocorrem na mesma posição comparado com experimental. A figura ao lado mostra a comparação entre os modelos teórico e experimental para a afinidade eletrônica dos vinte primeiros átomos da tabela periódica `r Citep(bib, c("braga"))`.
+
+]
+
+.pull-right[
+
+```{r, echo=FALSE, fig.align='center',fig.cap='Raio atômico do átomo de acordo com o seu número atômico.',out.width="100%",fig.asp=1}
+
+rn = function(n,Z){
+  valor = n**2/Z
+  return(valor)
+}
+
+for (Z in 1:2){
+  afinidade_eletronica_df = data.frame(Z=Z, Teórico = rn(1, elementos_df$carga_nuclear[Z]))
+}
+for (Z in 3:10){
+  afinidade_eletronica_df = rbind(
+    afinidade_eletronica_df,
+    data.frame(Z=Z, Teórico = rn(2, elementos_df$carga_nuclear[Z]))
+    )
+}
+for (Z in 11:18){
+  afinidade_eletronica_df = rbind(
+    afinidade_eletronica_df,
+    data.frame(Z=Z, Teórico = rn(3, elementos_df$carga_nuclear[Z]))
+    )
+}
+for (Z in 19:20){
+  afinidade_eletronica_df = rbind(
+    afinidade_eletronica_df,
+    data.frame(Z=Z, Teórico = rn(4, elementos_df$carga_nuclear[Z]))
+    )
+}
+
+afinidade_eletronica_df = afinidade_eletronica_df %>%
+  inner_join(elementos_df, by = "Z") %>%
+  rename(Energia = afinidade_eletronica)
+
+#afinidade_eletronica_df = afinidade_eletronica_df %>%
+#  gather("Teórico", "Experimental", key="Modelo", value= "Energia")
+
+fig = ggplot(afinidade_eletronica_df, aes(x = Z, y = Energia))+
+  geom_line()+
+  geom_point()
 fig
 ```
 

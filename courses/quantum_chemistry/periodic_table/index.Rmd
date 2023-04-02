@@ -236,7 +236,7 @@ Em unidades a.u., as expressões para o raio e a energia tornam-se
 
 \begin{align*}
   r_n & = \frac{n^2}{Z},\\
-  E_n & = -\frac{n^2}{2Z}.
+  E_n & = -\frac{n^2}{2Z^2}.
 \end{align*}
 Entretanto, Bohr pensou no modelo do átomo de hidrogênio constuído apenas para o sistema de uma particula sujeita a um potencial coulombiano, *desprezando a interação elétron-elétron*. No caso de sistema formados por mais de um elétron, que no caso seria quase todos os elementos da tabela periódica, exceto hidrogênio, vimos que o princípio da indistinguibilidade impede a descrição completa da interação existente entre elétrons. Isso inviabiliza qualquer modelo teórico exato que possui solução analítica, como por exemplo o modelo de Bohr. Contudo, veremos que com algumas correções o modelo de Bohr pode de certa maneira explicar alguns comportamentos de átomos, como He, Li, etc...
 
@@ -303,9 +303,9 @@ fig = ggplot(raio_atomico_df, aes(x = Z, y = Raio, color = Modelo))+
   annotate("text", x = 11, y = elementos_df$raio_atomico[11]+0.1, label = "IA")+
   annotate("text", x = 19, y = elementos_df$raio_atomico[19]+0.1, label = "IA")+
   annotate("segment", x = 3, xend = 11, y = elementos_df$raio_atomico[19]+0.2, yend = elementos_df$raio_atomico[19]+0.2, arrow = arrow(ends = "both", angle = 90, length = unit(.2,"cm")))+
-  annotate("text", x = 7, y = elementos_df$raio_atomico[19]+0.4, label = "Período 1")+
+  annotate("text", x = 7, y = elementos_df$raio_atomico[19]+0.4, label = "Período 2")+
   annotate("segment", x = 11, xend = 19, y = elementos_df$raio_atomico[19]+0.2, yend = elementos_df$raio_atomico[19]+0.2, arrow = arrow(ends = "both", angle = 90, length = unit(.2,"cm")))+
-  annotate("text", x = 15, y = elementos_df$raio_atomico[19]+0.4, label = "Período 2")
+  annotate("text", x = 15, y = elementos_df$raio_atomico[19]+0.4, label = "Período 3")
 
 fig
 ```

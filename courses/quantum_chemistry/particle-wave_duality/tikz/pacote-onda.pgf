@@ -1,0 +1,26 @@
+﻿\begin{tikzpicture}[scale=1,transform shape,font=\Large]
+			
+	\tkzInit[xmin=0,xmax=12,ymin=0,ymax=4]
+%	\tkzGrid[color=gray!20]
+	\tkzClip[space=0.5]
+	
+	\tikzstyle{s2}=[circle, radius=0.2, ball color=gray!25];
+
+	\tkzDefPoints{0/1/A, 10/2/B, 9/1/C}
+
+	\tkzFct[domain=0:10, line width=1.5pt] {1+0.5*cos(2*pi*x/2-pi/2)}
+
+	\tkzDefPoints{9/3.5/t1, 9/2/p1}
+	
+	\draw[->] (t1) -- (p1);
+
+	\draw[fill=gray!50, opacity=0.5] (B) rectangle (8,0);
+	\node[s2] at (C) {e};
+
+	\tkzText[fill=white](t1) {Pacote de onda}
+
+	\tkzDefPoints{10.5/1/v1}
+
+	\draw[->, line width=2pt, color=red] (v1) --++ (1,0) node [above, midway] {\huge $\vec{v}$};
+
+\end{tikzpicture}

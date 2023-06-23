@@ -572,7 +572,7 @@
 		\begin{column}[t]{0.5\textwidth}
 			Utilizando a expansão em série da função $1/(e^x+1)$ teremos
 			\begin{align*}
-				\frac{1}{\left(e^{\frac{h\nu}{k_BT}}-1\right)} & = \sum_{n=1}^{\infty}e^{-\frac{h\nu}{k_BT}}
+				\frac{1}{\left(e^{\frac{h\nu}{k_BT}}-1\right)} & = \sum_{n=1}^{\infty}e^{-\frac{nh\nu}{k_BT}}
 			\end{align*}
 			Substituindo na fórmula de $u(\nu)$ segundo Planck teremos
 			\begin{align*}
@@ -599,21 +599,21 @@
 		\begin{column}[c]{0.5\textwidth}
 			Considere a expressão da radiância de acordo com a hipótese de Planck. Considerando $c=\lambda\nu$, podemos expressá-la em função de comprimento de onda da radiação,
 			\begin{align*}
-				R(\lambda) = \frac{2\pi hc}{\lambda^3\left(e^{\frac{hc}{\lambda k_BT}}-1\right)}.				
+				R(\lambda)d\lambda = \frac{2\pi hc^2}{\lambda^5\left(e^{\frac{hc}{\lambda k_BT}}-1\right)}d\lambda.				
 			\end{align*}
 			Considerando a situação onde $hc/k_BT$, podemos dizer que $e^{hc/k_BT}>>1$. Portanto podemos fazer a aproximação
 		\end{column}
 		\begin{column}[c]{0.5\textwidth}
 			\begin{align*}
-				R(\lambda) \approx 2\pi hc\lambda^{-3}e^{\frac{hc}{\lambda k_BT}}.
+				R(\lambda) \approx 2\pi hc^2\lambda^{-5}e^{-\frac{hc}{\lambda k_BT}}.
 			\end{align*}
 			O comprimento de onda da máxima radiância é obtida através de $\frac{dR}{d\lambda}=0$,
 			\begin{align*}
-				\frac{dR}{d\lambda} = \frac{2\pi hce^{\frac{hc}{\lambda k_BT}}}{\lambda^{-3}}\left(-3\lambda^{-1}+\frac{hc}{\lambda^2k_BT}\right) = 0
+				\frac{dR}{d\lambda} = \frac{2\pi hce^{-\frac{hc}{\lambda k_BT}}}{\lambda^{5}}\left(-5\lambda^{-1}+\frac{hc}{\lambda^2k_BT}\right) = 0
 			\end{align*}
 			Isolando $\lambda$ na equação teremos
 			\begin{align*}
-				\Aboxed{\lambda T = \frac{hc}{3k_B} = \num{2.89e6}\;nm\cdot K.}
+				\Aboxed{\lambda T = \frac{hc}{5k_B} = \num{2.89e6}\;nm\cdot K.}
 			\end{align*}
 		\end{column}
 	\end{columns}

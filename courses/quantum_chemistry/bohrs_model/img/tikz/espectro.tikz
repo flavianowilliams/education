@@ -36,10 +36,10 @@
 		\def\pb{1.5};
 		\def\pbx{1.0};
 
-		\draw[->,line width=2pt] ($(e5)+(\pbx,0)$) -- ($(e1)+(\pbx,0)$);
-		\draw[->,line width=2pt] ($(e4)+(\pb,0)$) -- ($(e1)+(\pb,0)$);
-		\draw[->,line width=2pt] ($(e3)+(\pa,0)$) -- ($(e1)+(\pa,0)$);
-		\draw[->,line width=2pt] ($(e2)+(\p1,0)$) -- ($(e1)+(\p1,0)$) node [right, midway] {$K_{\alpha}$};
+		\draw[->,line width=2.5pt, color=violet] ($(e5)+(\pbx,0)$) -- ($(e1)+(\pbx,0)$);
+		\draw[->,line width=2.5pt, color=violet] ($(e4)+(\pb,0)$) -- ($(e1)+(\pb,0)$);
+		\draw[->,line width=2.5pt, color=violet] ($(e3)+(\pa,0)$) -- ($(e1)+(\pa,0)$);
+		\draw[->,line width=2.5pt, color=violet] ($(e2)+(\p1,0)$) -- ($(e1)+(\p1,0)$) node [right, midway] {$Lyman \atop (ultravioleta)$};
 
 		%serie balmer
 		\def\pc{11};
@@ -47,10 +47,10 @@
 		\def\pe{9.5};
 		\def\pex{9.0};
 
-		\draw[->,line width=2pt] ($(e7)+(\pex,0)$) -- ($(e2)+(\pex,0)$);
-		\draw[->,line width=2pt] ($(e5)+(\pe,0)$) -- ($(e2)+(\pe,0)$);
-		\draw[->,line width=2pt] ($(e4)+(\pd,0)$) -- ($(e2)+(\pd,0)$);
-		\draw[->,line width=2pt] ($(e3)+(\pc,0)$) -- ($(e2)+(\pc,0)$) node [right, midway] {$L_{\alpha}$};
+		\draw[->,line width=2.5pt, color=orange] ($(e7)+(\pex,0)$) -- ($(e2)+(\pex,0)$);
+		\draw[->,line width=2.5pt, color=orange] ($(e5)+(\pe,0)$) -- ($(e2)+(\pe,0)$);
+		\draw[->,line width=2.5pt, color=orange] ($(e4)+(\pd,0)$) -- ($(e2)+(\pd,0)$);
+		\draw[->,line width=2.5pt, color=orange] ($(e3)+(\pc,0)$) -- ($(e2)+(\pc,0)$) node [right, midway] {$Balmer \atop (visível)$};
 
 		%serie paschen
 		\def\ph{13.25};
@@ -58,10 +58,10 @@
 		\def\pf{14.1};
 		\def\pk{13.0};
 
-		\draw[->,line width=2pt] ($(e7)+(\pk,0)$) -- ($(e3)+(\pk,0)$);
-		\draw[->,line width=2pt] ($(e7)+(\ph,0)$) -- ($(e3)+(\ph,0)$);
-		\draw[->,line width=2pt] ($(e5)+(\pg,0)$) -- ($(e3)+(\pg,0)$);
-		\draw[->,line width=2pt] ($(e4)+(\pf,0)$) -- ($(e3)+(\pf,0)$);
+		\draw[->,line width=2.5pt, color=red] ($(e7)+(\pk,0)$) -- ($(e3)+(\pk,0)$);
+		\draw[->,line width=2.5pt, color=red] ($(e7)+(\ph,0)$) -- ($(e3)+(\ph,0)$);
+		\draw[->,line width=2.5pt, color=red] ($(e5)+(\pg,0)$) -- ($(e3)+(\pg,0)$);
+		\draw[->,line width=2.5pt, color=red] ($(e4)+(\pf,0)$) -- ($(e3)+(\pf,0)$) node [above = 1.25, midway] {$Balmer \atop (infravermelho)$};
 
 		\begin{scope}[shift={(0,-17)}]
 

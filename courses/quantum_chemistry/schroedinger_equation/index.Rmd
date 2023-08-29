@@ -164,7 +164,7 @@ class: middle
 <div class="my-header"><span>Equação de Scrödinger independente do tempo - Solução da parte dependente do tempo</span></div>
 
 .pull-left[
-A equação referente a parte temporal pode ser reescrita na forma abaixo
+A parte temporal pode ser reescrita na forma abaixo
 \begin{aligned}
   i\hbar\frac{1}{\phi(t)}\frac{d\phi(t)}{dt} & = C,\\
   i\hbar\frac{d\phi(t)}{dt} & = C\phi(t),\\
@@ -176,9 +176,10 @@ Uma possível solução para a equação acima seria se $\phi(t)=e^{-iCt/\hbar}$
   i\hbar\left(\frac{-iC}{\hbar}e^{-iCt/\hbar}\right) - Ce^{-iCt/\hbar} & = 0,\\
   Ce^{-iCt/\hbar} - Ce^{-iCt/\hbar} & = 0.
 \end{aligned}
+Podemos ver claramente que a opção $\phi(t)=e^{-iCt/\hbar}$
 ]
 .pull-right[
-Podemos ver claramente que a opção $\phi(t)=e^{-iCt/\hbar}$ é a solução da parte temporal da função de onda. Agora, para completar a solução da parte de temporal basta obter a expressão de C. Podemos dizer que
+é a solução mais viável para a equação ao lado. Agora, para completar a solução da parte temporal basta obter o valor C. Podemos dizer que
 \begin{aligned}
   e^{-iCt/\hbar}=\cos\left(-\frac{C}{\hbar}t\right)+i\sin\left(-\frac{C}{\hbar}t.\right)
 \end{aligned}
@@ -186,11 +187,12 @@ Comparando com a função da onda progressiva, $y(x,t)=y_m\cos(kx-\omega t)$, po
 \begin{aligned}
   \phi(t)=e^{-iEt/\hbar}.
 \end{aligned}
-Assim chegamos na solução da parte dependente do tempo de $\Psi(x,t)$. Entretanto, para obter a densidade de probabilidade basta sabermos $|\psi(x)|^2$, pois
+Assim $\Psi(x,t)=\psi(x)e^{-iEt/\hbar}$, porém a densidade de probabilidade $|\psi(x)|^2$ é dado por
 \begin{aligned}
   \Psi^*(x,t)\Psi(x,t) & = \psi^*(x)\psi(x)e^{iEt/\hbar}e^{-iEt/\hbar},\\
-  \Psi^*(x,t)\Psi(x,t) & = \psi^*(x)\psi(x)\Rightarrow|\psi(x)|^2.
+  \Psi^*(x,t)\Psi(x,t) & = \psi^*(x)\psi(x)\Rightarrow|\psi(x)|^2,
 \end{aligned}
+onde $\Psi$ representa estados estacionários invariantes no tempo.
 ]
 
 ---

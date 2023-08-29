@@ -13,11 +13,21 @@
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
+.title[
 # Introdução a química quântica
+]
+.subtitle[
 ## A equação de Schrödinger
+]
+.author[
 ### Flaviano Williams Fernandes
+]
+.institute[
 ### Instituto Federal do Paraná - Irati
-### 16 de março de 2021 (atualizado em 18/04/2022)
+]
+.date[
+### 16 de março de 2021 (atualizado em 29/08/2023)
+]
 
 ---
 
@@ -154,7 +164,7 @@ class: middle
 &lt;div class="my-header"&gt;&lt;span&gt;Equação de Scrödinger independente do tempo - Solução da parte dependente do tempo&lt;/span&gt;&lt;/div&gt;
 
 .pull-left[
-A equação referente a parte temporal pode ser reescrita na forma abaixo
+A parte temporal pode ser reescrita na forma abaixo
 `\begin{aligned}
   i\hbar\frac{1}{\phi(t)}\frac{d\phi(t)}{dt} &amp; = C,\\
   i\hbar\frac{d\phi(t)}{dt} &amp; = C\phi(t),\\
@@ -166,9 +176,10 @@ Uma possível solução para a equação acima seria se `\(\phi(t)=e^{-iCt/\hbar
   i\hbar\left(\frac{-iC}{\hbar}e^{-iCt/\hbar}\right) - Ce^{-iCt/\hbar} &amp; = 0,\\
   Ce^{-iCt/\hbar} - Ce^{-iCt/\hbar} &amp; = 0.
 \end{aligned}`
+Podemos ver claramente que a opção `\(\phi(t)=e^{-iCt/\hbar}\)`
 ]
 .pull-right[
-Podemos ver claramente que a opção `\(\phi(t)=e^{-iCt/\hbar}\)` é a solução da parte temporal da função de onda. Agora, para completar a solução da parte de temporal basta obter a expressão de C. Podemos dizer que
+é a solução mais viável para a equação ao lado. Agora, para completar a solução da parte temporal basta obter o valor C. Podemos dizer que
 `\begin{aligned}
   e^{-iCt/\hbar}=\cos\left(-\frac{C}{\hbar}t\right)+i\sin\left(-\frac{C}{\hbar}t.\right)
 \end{aligned}`
@@ -176,11 +187,12 @@ Comparando com a função da onda progressiva, `\(y(x,t)=y_m\cos(kx-\omega t)\)`
 `\begin{aligned}
   \phi(t)=e^{-iEt/\hbar}.
 \end{aligned}`
-Assim chegamos na solução da parte dependente do tempo de `\(\Psi(x,t)\)`. Entretanto, para obter a densidade de probabilidade basta sabermos `\(|\psi(x)|^2\)`, pois
+Assim `\(\Psi(x,t)=\psi(x)e^{-iEt/\hbar}\)`, porém a densidade de probabilidade `\(|\psi(x)|^2\)` é dado por
 `\begin{aligned}
   \Psi^*(x,t)\Psi(x,t) &amp; = \psi^*(x)\psi(x)e^{iEt/\hbar}e^{-iEt/\hbar},\\
-  \Psi^*(x,t)\Psi(x,t) &amp; = \psi^*(x)\psi(x)\Rightarrow|\psi(x)|^2.
+  \Psi^*(x,t)\Psi(x,t) &amp; = \psi^*(x)\psi(x)\Rightarrow|\psi(x)|^2,
 \end{aligned}`
+onde `\(\Psi\)` representa estados estacionários invariantes no tempo.
 ]
 
 ---
@@ -339,6 +351,19 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     deleted = true;
   });
 })();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
 (function() {
   "use strict"
   // Replace <script> tags in slides area to make them executable

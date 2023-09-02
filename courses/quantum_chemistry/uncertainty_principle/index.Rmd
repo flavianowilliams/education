@@ -81,7 +81,7 @@ Dividindo por p teremos
 \end{aligned}
 ou seja, 
 \begin{aligned}
-  v_{\text{partícula}} = \frac{E}{2p}
+  v_{\text{partícula}} = \frac{2E}{p}
 \end{aligned}
 Sabemos desde os postulados de de Broglie [`r Cite(bib, c("nussenzveig","tipler","mcquarrie","braga","eisberg"))`] que
 \begin{aligned}
@@ -94,8 +94,8 @@ Sabemos desde os postulados de de Broglie [`r Cite(bib, c("nussenzveig","tipler"
 \end{aligned}
 Substituindo na equação da velocidade acima encontramos
 \begin{aligned}
-  v & = \frac{h\nu}{2\left(\frac{h}{\lambda}\right)},\\\
-    & = \frac{\lambda\nu}{2}.
+  v & = \frac{2h\nu}{\left(\frac{h}{\lambda}\right)},\\\
+    & = 2\lambda\nu.
 \end{aligned}
 A velocidade de uma onda progressiva é dado por
 \begin{aligned}

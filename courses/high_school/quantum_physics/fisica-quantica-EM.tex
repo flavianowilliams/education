@@ -31,7 +31,7 @@
 			Um corpo negro é um material que absorve toda a radiação que incide sobre ele. Após absorver a radiação, o corpo negro aquece e emite radiação própria, que por sua vez depende da temperatura.
 			\begin{corollary}
 				\begin{equation*}
-					\text{Radiação} = \frac{\text{Energia}}{\text{(Área)}\text{(Tempo)}}
+					\text{Radiação} = \frac{\text{Energia}}{\text{(Área)}\text{(Tempo)}} = \frac{\text{Potência}}{\text{Área}}
 				\end{equation*}
 			\end{corollary}
 		\end{column}
@@ -57,20 +57,23 @@
 				%\tkzLabelPoints(A,B,E,F,G,H,a,b,c,d,C,D)
 				
 				%carga oscilando
-				\tkzFct[domain=-2.5:2.5]{0.25*sin(3*2*pi*(x+2.5)/5)-2}
-				\tkzFct[domain=-2.5:2.5,dashed]{0.25*sin(3*2*pi*(x+2.5)/5-pi)-2}
+%				\tkzFct[domain=-2.5:2.5]{0.25*sin(3*2*pi*(x+2.5)/5)-2}
+%				\tkzFct[domain=-2.5:2.5,dashed]{0.25*sin(3*2*pi*(x+2.5)/5-pi)-2}
 				
-				\tkzDefPointByFct[with=a](-0.5)\tkzGetPoint{p1}
+%				\tkzDefPointByFct[with=a](-0.5)\tkzGetPoint{p1}
+
+				\tkzDefPoints{-1/-2/p1}
 				
+				\draw[<->, line width=1.5pt] (-2,-2) --++ (2,0);
 				\tkzDrawPoints[size=0.75cm,fill=blue](p1)
 				
 				%radiacao incidente
-				\draw[wave,->,line width=1.5pt] (5,-1) -- (-2,2.5);
+				\draw[wave,->,line width=1.5pt] {(p1)+(0.5,0.5)} -- (4,0.5);
 				
 				%radiacao emitida
-				\draw[wave,->,line width=1.5pt,color=red] (0,-3) --++ (0,-1.5) node [right=0.25,midway] {$\nu$};
-				\draw[wave,->,line width=1.5pt,color=red] (-3,0) --++ (-1.5,0) node [above=0.25,midway] {$\nu$};
-				\draw[wave,->,line width=1.5pt,color=red] (0,3) --++ (0,1.5) node [right=0.25,midway] {$\nu$};
+				\draw[wave,->,line width=1.5pt,color=red] (0,-4.5) --++ (0,1.5) node [right=0.25,midway] {$\nu$};
+				\draw[wave,->,line width=1.5pt,color=red] (-4.5,0) --++ (1.5,0) node [above=0.25,midway] {$\nu$};
+				\draw[wave,->,line width=1.5pt,color=red] (0,4.5) --++ (0,-1.5) node [right=0.25,midway] {$\nu$};
 				
 				\end{tikzpicture}
 				\caption*{\footnotesize Representação de um corpo negro.}
@@ -257,6 +260,13 @@ efeito fotoelétrico..}
 			\end{figure}
 		\end{column}
 	\end{columns}
+\end{frame}
+
+\section{Incerteza na física quântica}
+
+\subsection{}
+
+\begin{frame}{Princípio da incerteza de Heisenberg}
 \end{frame}
 
 \section{Aplicações}

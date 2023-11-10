@@ -1,0 +1,12 @@
+name: wave_packet
+title:
+username: flaviano-fernandes
+account: flaviano-fernandes
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 10486849
+bundleId: 7912546
+url: https://flaviano-fernandes.shinyapps.io/wave_packet/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE

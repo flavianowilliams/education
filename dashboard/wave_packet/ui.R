@@ -9,6 +9,7 @@
 
 library(shiny)
 library(tidyverse)
+library(plotly)
 
 # Define UI for application that draws a histogram
 fluidPage(
@@ -28,7 +29,7 @@ fluidPage(
 
         # Show a plot of the generated distribution
         mainPanel(
-            plotOutput("distPlot")
+            plotlyOutput("distPlot")
         )
     )
 )

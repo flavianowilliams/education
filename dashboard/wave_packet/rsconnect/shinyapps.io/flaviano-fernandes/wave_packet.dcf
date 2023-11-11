@@ -5,7 +5,7 @@ account: flaviano-fernandes
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 10486849
-bundleId: 7912546
+bundleId: 7913105
 url: https://flaviano-fernandes.shinyapps.io/wave_packet/
 version: 1
 asMultiple: FALSE

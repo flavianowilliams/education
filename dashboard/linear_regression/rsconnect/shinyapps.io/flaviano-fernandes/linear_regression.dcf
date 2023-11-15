@@ -1,0 +1,12 @@
+name: linear_regression
+title: linear_regression
+username: flaviano-fernandes
+account: flaviano-fernandes
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 10539006
+bundleId: 7932335
+url: https://flaviano-fernandes.shinyapps.io/linear_regression/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE

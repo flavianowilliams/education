@@ -5,7 +5,7 @@ account: flaviano-fernandes
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 10539006
-bundleId: 7932335
+bundleId: 7932444
 url: https://flaviano-fernandes.shinyapps.io/linear_regression/
 version: 1
 asMultiple: FALSE

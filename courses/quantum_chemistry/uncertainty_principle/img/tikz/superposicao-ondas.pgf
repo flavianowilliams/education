@@ -14,8 +14,8 @@
 			\begin{scope}[shift={(0,0)}]
 				\tkzDrawX{label=x}
 				\tkzDrawY{label=y(x,t)}
-				\tkzFct[domain=0:7*pi,line width=2pt,samples=500]{\y0*cos(\ka*x)}
-				\tkzFct[domain=0:7*pi,color=red,line width=2pt,samples=500]{\y0*cos(\kb*x)}
+				\tkzFct[domain=0:7*pi,color=gray, line width=2pt,samples=500]{\y0*cos(\ka*x)}
+				\tkzFct[domain=0:7*pi,color=black, line width=2pt,samples=500]{\y0*cos(\kb*x)}
 				\tkzDefPointByFct(pi)\tkzGetPoint{p1}
 				\tkzDefPointByFct(2*pi)\tkzGetPoint{p1a}
 				\tkzDefPointByFct(3*pi)\tkzGetPoint{p2a}
@@ -40,7 +40,12 @@
 				\draw[dashed] (p2a) -- (p2b);
 				\draw[dashed] (p3a) -- (p3b);
 				\draw[dashed] (p4a) -- (p4b);
-				
+			
+				\tkzText[below = 0.5](p2){A}
+				\tkzText[below = 2.5](p1b){B}
+				\tkzText[below = 0.5](p2b){C}
+				\tkzText[below = 2.5](p3b){D}
+
 			\end{scope}
 
 \end{tikzpicture}

@@ -299,7 +299,7 @@
 			
 			%curva
 			\draw[line width=1.5pt,domain=0:\lambdax,variable=\x,color=gray] plot (\x,{ff(\x,1)});
-			\draw[line width=1.5pt,domain=\lambdax:0,variable=\x,color=gray,dashed] plot (\x,{ff(\x,0.5)});
+			\draw[line width=1.5pt,domain=0:\lambdax,variable=\x,color=gray, dashed] plot ({\x-0.2},{ff(\x,1)});
 			
 			%vetores
 			\draw[color=red,line width=1.5pt,->] (\lambdax+0.2,\a+\xm) --++ (0,1);
@@ -311,8 +311,9 @@
 			%anel
 			\filldraw[fill=gray, draw=black] (\lambdax,\a+\xm-0.1) rectangle (\lambdax+0.4,\a+\xm+0.1);
 			
-			%comprimento de onda
-			\draw[<->] (0,3.5*\xm) -- (0.5*\lambdax,3.5*\xm) node [above,midway] {$\lambda$};
+			%velocidade da onda
+			\draw[->] (0,3.5*\xm) --++ (1,0) node [above,midway] {$\vec{v}$};
+			\draw[->] (\lambdax,3.5*\xm) --++ (-1,0) node [above,midway] {$-\vec{v}$};
 			
 			\end{tikzpicture}
 			\caption*{\footnotesize Extremidade móvel. A onda se propaga livremente na corda, e para manter o seu movimento ela é refletida para a esquerda.}
@@ -347,7 +348,7 @@
 			\draw (\lambdax,1) -- (\lambdax,3);
 			
 			%vetores
-			\draw[color=red,line width=1.5pt,->] (\lambdax,\a) --++ (-0.5,1) node[above] {$\text{Reação}$};
+			\draw[color=red,line width=1.5pt,->] (\lambdax,\a) --++ (0.5,1) node[above] {$\text{Reação}$};
 			\draw[color=red,line width=1.5pt,->] (\lambdax,\a) --++ (-0.5,-1)  node[below] {$\text{Ação}$};
 			
 			%ponto
@@ -356,8 +357,12 @@
 			%linha de referencia
 			\draw[dashed] (0,\a) -- (\lambdax,\a);
 			
+			%velocidade da onda
+			\draw[->] (0,3.5*\xm) --++ (1,0) node [above,midway] {$\vec{v}$};
+			\draw[->] (0.95*\lambdax,3.5*\xm) --++ (-1,0) node [above,midway] {$-\vec{v}$};
+
 			%comprimento de onda
-			\draw[<->] (0,3.5*\xm) -- (0.5*\lambdax,3.5*\xm) node [above,midway] {$\lambda$};
+%			\draw[<->] (0,3.5*\xm) -- (0.5*\lambdax,3.5*\xm) node [above,midway] {$\lambda$};
 			
 			\end{tikzpicture}
 			\caption*{\footnotesize Extremidade fixa. Afim de satisfazer a conservação do momento, a onda refletida deve estar em sentido oposto ao onda incidente.}

@@ -269,7 +269,7 @@
 				
 				\tkzDrawLine[dotted, add=0.2cm and 0.2cm](a',c')
 
-				\tkzText[left=0.01cm](a1){$p_0$}
+				\tkzText[left=0.01cm](a1){$p_{atm}$}
 				\tkzText[left=0.01cm](a'){$p$}
 				
 				\end{tikzpicture}
@@ -277,7 +277,7 @@
 			\end{figure}
 			Pela Lei de Stevin a pressão nos pontos 1 e 2 equivale a
 			\begin{align*}
-				p & = p_0+\rho g h.
+				p & = p_{atm}+\rho g h.
 			\end{align*}
 		\end{column}
 		\begin{column}[b]{0.5\textwidth}
@@ -317,7 +317,7 @@
 				
 				\draw (c') to [dim arrow'={label'=$h$},brown] (c1);
 				
-				\tkzText[left=0.01cm](a1){$p'_0$}
+				\tkzText[left=0.01cm](a1){$p'_{atm}$}
 				\tkzText[left=0.01cm](a'){$p'$}
 				
 				\tkzDrawLine[dotted, add=0.2cm and 0.2cm](a',c')
@@ -329,7 +329,7 @@
 			\end{figure}
 			Pela Lei de Stevin a pressão nos pontos 1 e 2 equivale a
 			\begin{align*}
-				p' & = p'_0+\rho g h.
+				p' & = p'_{atm}+\rho g h.
 			\end{align*}
 		\end{column}
 	\end{columns}	
@@ -341,9 +341,9 @@
 			Caculando o quanto a pressão na posição 1 aumenta temos
 			\begin{align*}
 				\Delta p & = p'-p,\\
-				\Delta p & = (p'_0+\rho g h)-(p_0+\rho g h),\\
-				\Delta p & = p'_0+\cancel{\rho g h}-p_0-\cancel{\rho g h},\\
-				\Aboxed{\Delta p & = \Delta p_0.}
+				\Delta p & = (p'_{atm}+\rho g h)-(p_{atm}+\rho g h),\\
+				\Delta p & = p'_{atm}+\cancel{\rho g h}-p_{atm}-\cancel{\rho g h},\\
+				\Aboxed{\Delta p & = \Delta p_{atm}.}
 			\end{align*}
 		\end{column}
 		\begin{column}{0.5\textwidth}
@@ -562,28 +562,23 @@
 				\draw[->,line width=3pt,color=brown] (O) --++(0,4) node [above] {$\vec{E}$};
 				\draw[->,line width=3pt,color=brown] (O) --++(0,-4) node [below] {$\vec{P}$};
 
-				\tkzDrawCircle[R,fill=white](O,2cm)
-				
 				\tkzInterLC(O,m)(O,c)\tkzGetPoints{G}{H}
 				
-				\foreach \x in {1,2,...,5}{
-					\tkzDefPointBy[rotation=center O angle 30*\x](H)\tkzGetPoint{X}
-					\tkzInterLC(O,X)(O1,c1)\tkzGetPoints{Z}{W}
-					\draw[<-,line width=1.5pt] (X) -- (Z);}
-				
-				\tkzDefPointBy[rotation=center O angle 0](H)\tkzGetPoint{x1}
-				\tkzInterLC(O,x1)(O1,c1)\tkzGetPoints{z1}{w1}
-				\draw[<-,line width=1.5pt] (x1) -- (w1);
-				
-				\foreach \x in {7,8,9,10,11}{
-					\tkzDefPointBy[rotation=center O angle 30*\x](H)\tkzGetPoint{X}
+				\foreach \x in {0,1,...,6}{
+					\tkzDefPointBy[rotation=center O angle 30*\x](H)
+					\tkzGetPoint{X}
 					\tkzInterLC(O,X)(O1,c1)\tkzGetPoints{Z}{W}
 					\draw[<-,line width=1.5pt] (X) -- (W);}
 				
-				\tkzDefPointBy[rotation=center O angle 180](H)\tkzGetPoint{x2}
-				\draw[<-,line width=1.5pt] (x2) -- (z1);
-				
-				\tkzText[text width=2.5cm,align=center](O){Volume de água em repouso}
+				\foreach \x in {7,8,...,11}{
+					\tkzDefPointBy[rotation=center O angle 30*\x](H)
+					\tkzGetPoint{X}
+					\tkzInterLC(O,X)(O1,c1)\tkzGetPoints{Z}{W}
+					\draw[<-,line width=1.5pt] (X) -- (Z);}
+%				
+				\filldraw[color=white] (O) circle (2 cm);
+%
+				\tkzText[text width=2.5cm,align=center](O){Volume de água deslocada}
 				
 				\end{tikzpicture}
 				%\includegraphics[scale=0.7]{figuras/empuxo.png}

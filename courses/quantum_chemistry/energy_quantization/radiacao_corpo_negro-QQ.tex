@@ -122,10 +122,10 @@
 				\tkzDrawY[noticks,above,label=$R(\nu)$]
 				
 				\tkzFct[domain=0:5,color=red,line width=1pt]{x**2}
+				\tkzDefPointByFct(2)\tkzGetPoint{p1}
+
 				\tkzFct[domain=0:10,color=blue,line width=1pt]{x**3/(exp(x)-1)}
-				
-				\tkzDefPointByFct[with=a](2)\tkzGetPoint{p1}
-				\tkzDefPointByFct[with=b](5)\tkzGetPoint{p2}
+				\tkzDefPointByFct(5)\tkzGetPoint{p2}
 				
 				\tkzDefPoints{3.5/4/t1,7.5/2/t2}
 				

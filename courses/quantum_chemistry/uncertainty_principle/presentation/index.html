@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Introdução a química quântica</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Flaviano Williams Fernandes" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link rel="stylesheet" href="css/default.css" type="text/css" />
+    <link rel="stylesheet" href="css/my-theme.css" type="text/css" />
+    <link rel="stylesheet" href="css/my-fonts.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Introdução a química quântica
+]
+.subtitle[
+## Princípio da incerteza de Heisenberg
+]
+.author[
+### Flaviano Williams Fernandes
+]
+.institute[
+### Instituto Federal do Paraná - Irati
+]
+.date[
+### xx de xxxxx de 2021 (atualizado em 01/09/2023)
+]
+
+---
+
+layout: true
+background-size: contain
+
+&lt;div class="my-footer"&gt;&lt;span&gt;Flaviano Williams Fernandes&lt;/span&gt;&lt;/div&gt;
+
+
+
+
+
+
+
+---
+class: middle
+
+&lt;div class="my-header"&gt;&lt;span&gt;Sumário&lt;/span&gt;&lt;/div&gt;
+
+1. Discrepâncias no modelo de de Broglie
+
+2. Pacotes de onda
+
+2. Interpretação probabilística da função de onda
+
+3. Princípio filosófico da física quântica
+
+6. Bibliografia
+
+&lt;div class="footnote"&gt;
+  &lt;ul&gt;
+  &lt;hr&gt;
+  &lt;li&gt; Esta apresentação está disponível para download em &lt;a href="https://flavianowilliams.github.io/education"&gt;flavianowilliams.github.io/education&lt;/a&gt;;
+  &lt;li&gt; Este material está sujeito a modificações. Recomenda-se acompanhamento permanente.
+  &lt;/ul&gt;
+&lt;/div&gt;
+
+---
+class: left, middle
+
+&lt;div class="my-header"&gt;&lt;span&gt;Discrepâncias no modelo de de Broglie&lt;/span&gt;&lt;/div&gt;
+
+.pull-left[
+A energia de uma partícula livre é dada por
+`\begin{aligned}
+  E = \frac{1}{2}mv^2=\frac{p^2}{2m}.
+\end{aligned}`
+Dividindo por p teremos
+`\begin{aligned}
+  \frac{E}{p} = \frac{mv^2}{2mv},
+\end{aligned}`
+ou seja, 
+`\begin{aligned}
+  v_{\text{partícula}} = \frac{2E}{p}
+\end{aligned}`
+Sabemos desde os postulados de de Broglie [&lt;a name=cite-nussenzveig&gt;&lt;/a&gt;&lt;a name=cite-tipler&gt;&lt;/a&gt;&lt;a name=cite-mcquarrie&gt;&lt;/a&gt;&lt;a name=cite-braga&gt;&lt;/a&gt;&lt;a name=cite-eisberg&gt;&lt;/a&gt;([Nussenzveig, 2003](https://books.google.com.br/books?id=KjHjAAAACAAJ); [Tipler and Llewellyn, 2003](https://books.google.com.br/books?id=tpU18JqcSNkC); [McQuarrie, 2008](https://books.google.com.br/books?id=zzxLTIljQB4C); [Braga, 2007](https://www.editoraufv.com.br/produto/fundamentos-de-quimica-quantica/1108949); [Eisberg, Eisberg, Resnick, Caldwell, Derringh, Christman, and Sons, 1985](https://books.google.com.br/books?id=mv5QAAAAMAAJ))] que
+`\begin{aligned}
+  E &amp; = h\nu;
+\end{aligned}`
+]
+.pull-right[
+`\begin{aligned}
+  p &amp; = \frac{h}{\lambda}.
+\end{aligned}`
+Substituindo na equação da velocidade acima encontramos
+`\begin{aligned}
+  v &amp; = \frac{2h\nu}{\left(\frac{h}{\lambda}\right)},\\\
+    &amp; = 2\lambda\nu.
+\end{aligned}`
+A velocidade de uma onda progressiva é dado por
+`\begin{aligned}
+  v_{\text{onda}} = \lambda\nu,
+\end{aligned}`
+portanto, &lt;font class="red"&gt;podemos perceber que se adotarmos o movimento da partícula equivalente a apenas o movimento de uma onda progressiva, a sua velocidade não irá coincidir com a velocidade da onda&lt;/font&gt;.
+]
+
+---
+class: left, middle
+
+&lt;div class="my-header"&gt;&lt;span&gt;Pacotes de onda - Definição&lt;/span&gt;&lt;/div&gt;
+
+.pull-left[
+Considere duas ondas harmônicas que possuem números de onda `\(k_1\)` e `\(k_2\)` e frequência angular `\(\omega_1\)` e `\(\omega_2\)`, respectivamente. A superposição do encontro dessas duas ondas é dado por
+`\begin{aligned}
+  \Psi(x,t) &amp; = y_1(x,t)+y_2(x,t),\\\
+         &amp; = y_m\cos(k_1x-\omega_1t)+y_m\cos(k_2x-\omega_2t).
+\end{aligned}`
+Definindo as diferenças `\(\Delta k=k_2-k_1\)` e `\(\Delta \omega = \omega_2-\omega_1\)`, e os valores médios `\(\bar{k}=(k_1+k_2)/2\)` e  `\(\bar{\omega}=(\omega_1+\omega_2)/2\)` encontramos o valor do pacote de onda, como mostra a figura ao lado (para maiores detalhes, veja a aula sobre "Ondas"),
+`\begin{aligned}
+  \Psi(x,t) = 2y_m\cos\left(\frac{\Delta k}{2}x-\frac{\Delta \omega}{2}t\right)\cos\left(\bar{k}x-\bar{\omega}t\right).
+\end{aligned}`
+Lembrando que
+`\begin{aligned}
+  k = \frac{2\pi}{\lambda};\quad  \omega = 2\pi\nu.
+\end{aligned}`
+]
+.pull-right[
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/superposicao-ondas.jpg" alt="Superposição de duas ondas harmônicas com números de onda e frequências angulares diferentes." width="100%" /&gt;
+&lt;p class="caption"&gt;Superposição de duas ondas harmônicas com números de onda e frequências angulares diferentes.&lt;/p&gt;
+&lt;/div&gt;
+]
+
+---
+class: left, middle
+
+&lt;div class="my-header"&gt;&lt;span&gt;Pacotes de onda - Velocidade de um pacote de onda&lt;/span&gt;&lt;/div&gt;
+
+.pull-left[
+Da velocidade de uma onda temos que
+`\begin{aligned}
+  v_{\text{onda}} &amp; = \lambda\nu,\\
+    &amp; = \left(\frac{2\pi}{k}\right)\left(\frac{\omega}{2\pi}\right),\\
+    &amp; = \frac{\omega}{k}.
+\end{aligned}`
+No caso do pacote de onda formado por duas ondas harmônicas, pela expressão da função de onda podemos dizer que
+`\begin{aligned}
+  v_{\text{pacote}} &amp; = \frac{\Delta \omega}{\Delta k}.
+\end{aligned}`
+Expandindo a definição para um pacote de onda formado por uma inifinidade de ondas harmônicas, onde o número de onda varia por um valor `\(\Delta k &lt;&lt; 1\)`,
+`\begin{aligned}
+  \boxed{v_{\text{pacote}} = \lim_{\Delta k\rightarrow 0} \frac{\Delta \omega}{\Delta k} = \frac{d\omega}{dk}.}
+\end{aligned}`
+]
+.pull-right[
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/superposicao-ondas-2.jpg" alt="Pacote de onda formado pela superposição de três ondas harmômicas, cujo número de onda k de cada onda varia por um intervalo &amp;amp;Delta; k." width="100%" /&gt;
+&lt;p class="caption"&gt;Pacote de onda formado pela superposição de três ondas harmômicas, cujo número de onda k de cada onda varia por um intervalo &amp;Delta; k.&lt;/p&gt;
+&lt;/div&gt;
+]
+
+---
+class: left, middle
+
+&lt;div class="my-header"&gt;&lt;span&gt;Pacotes de onda - Pacotes de onda da matéria&lt;/span&gt;&lt;/div&gt;
+
+.pull-left[
+Pelos postulados de de Broglie, temos para a energia do elétron
+`\begin{aligned}
+  E &amp; = h\nu,\\
+  E &amp; = \left(2\pi\hbar\right)\left(\frac{\omega}{2\pi}\right),\\
+  E &amp; = \hbar\omega.
+\end{aligned}`
+Para o momento do elétron temos a seguinte expressão
+`\begin{aligned}
+  p &amp; = \frac{h}{\lambda},\\
+  p &amp; = \frac{2\pi\hbar}{2\pi/k},\\
+  p &amp; = \hbar k.
+\end{aligned}`
+Da equação acima podemos dizer que `\(\omega(k)=E(k)/\hbar\)`. Calculando a derivada de `\(\omega\)` encontramos a velocidade do pacote de onda para um elétron que se propaga livremente com velocidade v,
+]
+.pull-right[
+`\begin{aligned}
+  v_{\text{pacote}} &amp; = \frac{d\omega(k)}{dk},\\
+  v_{\text{pacote}} &amp; = \frac{d\omega}{dE}\frac{dE}{dk},\\
+  v_{\text{pacote}} &amp; = \underbrace{\frac{d\omega}{dE}}_{1/\hbar}\underbrace{\frac{dE}{dp}}_{2p/2m}\underbrace{\frac{dp}{dk}}_{\hbar},\\
+  v_{\text{pacote}} &amp; = \left(\frac{1}{\hbar}\right)\left(\frac{2p}{2m}\right)\left(\hbar\right),\\
+  v_{\text{pacote}} &amp; = \frac{p}{m},\\
+  v_{\text{pacote}} &amp; \equiv v.
+\end{aligned}`
+Portanto, o pacote de onda `\(\Psi\)` se propaga com a velocidade do elétron. &lt;font class="red"&gt;Isso demonstra o fato que o movimento ondulatório da matéria devemos tratá-lo como um pacote de ondas, ao invés de apenas uma onda progressiva.&lt;/font&gt;
+]
+
+---
+class: justify, middle
+
+&lt;div class="my-header"&gt;&lt;span&gt;Interpretação probabilística da função de onda - A incerteza no momento e posição &lt;/span&gt;&lt;/div&gt;
+
+Para entender melhor a incerteza na medição ao adotar a função de onda para representar o elétron, analisemos dois casos extremos.
+
+Para diminuir a incerteza na localização da partícula deveremos ter um pacote de onda curto, bem localizado, cujo comprimento `\(\Delta x\)` é o menor possível. Isso se deve ao fato que a localização do elétron está associado a amplitude da onda. No entanto, para obter um pacote de onda bem localizado, deveríamos ter uma quantidade infinita de ondas, cuja onda resultante produziria tal pacote. Isso por sua vez acarreta no aumento da incerteza do número de onda, ou seja, se `\(\Delta x\rightarrow 0\)` acarreta em `\(\Delta k\rightarrow\infty\)`,
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/pacotes-onda.jpg" alt="Formação de pacotes de onda para diversos valores &amp;amp;Delta; k." width="90%" /&gt;
+&lt;p class="caption"&gt;Formação de pacotes de onda para diversos valores &amp;Delta; k.&lt;/p&gt;
+&lt;/div&gt;
+
+---
+class: justify, middle
+
+&lt;div class="my-header"&gt;&lt;span&gt;Interpretação probabilística da função de onda - A incerteza no tempo e energia &lt;/span&gt;&lt;/div&gt;
+
+A mesma análise pode ser feita para o pacote de onda formado por diversos valores de frequência.
+
+A figura abaixo mostra a formação do pacote de onda a partir da superposição de diversas funções de onda com frequências diferentes. Podemos perceber que a largura do pacote diminui à medida que aumentamos os valores possíveis de frequência. Isso por sua vez está associado em um aumento na incerteza no seu valor. A hipótese de de Broglie sugere que a frequência no movimento da partícula está associado a sua energia. Assim, podemos concluir que a incerteza na frequência reflete na incerteza na energia.
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/pacotes-onda-frequencia.jpeg" alt="Formação de pacotes de onda para diversos valores &amp;amp;Delta; &amp;amp;omega;." width="100%" /&gt;
+&lt;p class="caption"&gt;Formação de pacotes de onda para diversos valores &amp;Delta; &amp;omega;.&lt;/p&gt;
+&lt;/div&gt;
+
+---
+class: left, middle
+
+&lt;div class="my-header"&gt;&lt;span&gt;Interpretação probabilística da função de onda - O princípio da incerteza &lt;/span&gt;&lt;/div&gt;
+
+.pull-left[
+Entretanto, se tivermos apenas uma única onda progressiva com número de onda k para representar o movimento do elétron, teríamos `\(\Delta k = 0\)`, assim o número de onda do elétron seria totalmente determinado. Porém, consequentemente também teríamos `\(\Delta x\rightarrow\infty\)`, pois assim não teríamos um pacote de onda sendo formado. Assim, é impossível obter com total certeza a localização e o número de onda do elétron simultaneante. A total certeza de um acarreta na completa incerteza de outro. Porém, para qualquer pacote de onda podemos observar que
+`\begin{aligned}
+  \Delta x\Delta k \approx 1.
+\end{aligned}`
+Podemos obter algo semelhante analisando a incerteza na frequência angular e o intervalo de tempo `\(\Delta t\)`, ao invés de `\(\Delta k\)` na figura anterior, onde
+`\begin{aligned}
+  \Delta \omega\Delta t \approx 1.
+\end{aligned}`
+]
+.pull-right[
+Agora, qual é a relação entre a incerteza nas medições da posição, número de onda e momento do elétron? Sabemos a partir dos postulados de de Broglie que `\(p=\hbar k\)`, assim
+`\begin{aligned}
+  \Delta p = \hbar\Delta k.
+\end{aligned}`
+Multiplicando os dois lados da relação anterior e identificando `\(\Delta p\)` da equação acima teremos
+`\begin{aligned}
+    \hbar\Delta x\Delta k \approx \hbar,\\
+    \Delta x(\hbar\Delta k) \approx \hbar,\\
+    \Delta x\Delta p \approx \hbar.
+\end{aligned}`
+Para a frequência angular temos que `\(E=\hbar\omega\)`, assim
+`\begin{aligned}
+  \Delta E = \hbar\Delta\omega.
+\end{aligned}`
+Multiplicando `\(\Delta\omega\Delta t\approx 1\)` por `\(\hbar\)` teremos
+`\begin{aligned}
+  \Delta E\Delta t\approx \hbar.
+\end{aligned}`
+]
+
+---
+class: left, middle
+
+&lt;div class="my-header"&gt;&lt;span&gt;Interpretação probabilística da função de onda - O caso da fenda dupla&lt;/span&gt;&lt;/div&gt;
+
+.pull-left[
+Considere o experimento da fenda dupla. Explicando o fenômeno usando o conceito de fótons dado pelo efeito fotoelétrico. Ao incidir na fenda um feixe de luz de baixa intensidade I, ou seja, com uma quantidade razoável de fótons, podemos ver a formação de pontos localizados nas regiões de interferências construtivas. Assim deve haver uma relação com a probabilidade de localizar um fóton com o quadrado da amplitude do campo elétrico, já que `\(I \sim E^2_m\)` (veja a figura ao lado &lt;a name=cite-myles&gt;&lt;/a&gt;([Myles, 2020](https://mylespsherman.medium.com/the-basics-of-the-double-slit-experiment-10ce3ca91794))).
+
+Do ponto de vista do eletromagnetismo, a função de onda neste caso refere-se a função da onda eletromagnética `\(\Psi(x,t)=E_m\cos(kx-\omega t)\)`, mas à medida que a intensidade da luz aumenta, a sobreposição dos fótons impede a observação de pontos localizados, estando no lugar as franjas de interferência de acordo com a teoria ondulatória. Neste caso os efeitos quânticos já não são mais observados.
+]
+.pull-right[
+As figuras de interferência também pode ser observado com a matéria, onde em 
+analogia com a luz, onde a probabilidade de localizar um fóton está relacionado com `\(E^2_m\)`, a grandeza `\(\Psi^2\)` deve ser proporcional à probabilidade de que um elétron seja encontrado em uma certa região no espaço.
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/fenda-dupla.gif" alt="Experimento da fenda dupla com baixa intensidade." width="100%" /&gt;
+&lt;p class="caption"&gt;Experimento da fenda dupla com baixa intensidade.&lt;/p&gt;
+&lt;/div&gt;
+]
+
+---
+class: left, middle
+
+&lt;div class="my-header"&gt;&lt;span&gt;Interpretação probabilística da função de onda - A relação com a mecânica estatística&lt;/span&gt;&lt;/div&gt;
+
+.pull-left[
+Em analogia com o modelo de interferência mostrado anteriormente, a probabilidade em localizar um elétron em uma certa região no espaço deve ser algo dependente de `\(\Psi^2\)`. Supondo um elétron propagando na direção x, podemos dizer que a probabilidade de ser encontrado no intevalo dx pode ser dado por `\(\Psi^2dx\)`.
+
+Porém, `\(\Psi\)` pode ter complexo, devido a natureza da incerteza na medição. Assim, não basta apenas calcular o produto `\(\Psi^2\)`, pois &lt;font class="red"&gt;devemos multiplicar a função de onda pelo seu complexo conjugado. Isso é necessário, pois precisamos de um valor real para representar a localização do elétron&lt;/font&gt;.
+
+Definimos a probabilidade em localizar o elétron no intervalo dx por `\(P(x)dx\)` e `\(|\Psi|^2\)`, sendo P(x) a função chamada densidade de probabilidade,
+`\begin{aligned}
+  P(x)dx = |\Psi|^2dx.
+\end{aligned}`
+]
+.pull-right[
+O vídeo abaixo mostra a comparação do experimento da fenda dupla realizado com ondas luminosas e elétrons. Percebe-se claramente o comportamento onda-partícula do elétron ao formar franjas de interferência, idêntico a teoria ondulatória da luz.
+
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/UtPf0XYQzfI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
+]
+
+---
+class: left, middle
+
+&lt;div class="my-header"&gt;&lt;span&gt;Princípio filosófico da física quântica - A interpretação de Copenhague&lt;/span&gt;&lt;/div&gt;
+
+.pull-left[
+Foi defendido por Niels Bohr e Wener Heisenberg em 1927, logo após a conferência de Solvay, a interpretação de Copenhague, que consistia dos seguintes preceitos:
+* Na mecânica quântica os resultados são indeterminísticos;
+* A física é a ciência onde os resultados são obtidos através de um processo de medida;
+* O simples ato de observar destrói a certeza da medição, causando o colapso da função de onda.
+
+Para entender como o observador interfere na medição, vamos supor que gostaríamos de medir a posição de um elétron, e para isso emitimos um feixe de luz que possui um determinado comprimento de onda `\(\lambda_1\)`. Ao incidir a luz no elétron, ocorre troca de momento entre o fóton e o elétron, alterando o comprimento de onda da luz refletida e o momento do elétron.
+]
+.pull-right[
+A localização do elétron pode ser determinada a partir do ângulo de espalhamento `\(\theta\)`, obtido a partir da equação de Compton abaixo,
+`\begin{aligned}
+  \lambda_2-\lambda_1 = \frac{h}{mc}(1-\cos\theta).
+\end{aligned}`
+Portanto, a simples intenção de obter a sua posição alterou substancialmente o momento do elétron, perdendo a informação do seu valor antes da colisão.
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/efeito-compton.jpg" alt="Espalhamento Compton." width="65%" /&gt;
+&lt;p class="caption"&gt;Espalhamento Compton.&lt;/p&gt;
+&lt;/div&gt;
+]
+
+---
+class: middle
+
+&lt;div class="my-header"&gt;&lt;span&gt;Princípio filosófico da física quântica - Conferência de Solvay&lt;/span&gt;&lt;/div&gt;
+
+A figura abaixo mostra a ilustre Conferência de Solvay, em 1927 (a princípio, uma das mais famosas imagens da física moderna). Nesta conferência Bohr e Heisenberg defenderam as suas idéias a respeito da incerteza na medição, no qual serviram como base para a formulação da equação de Schroedinger e o surgimento da mecânica quântica moderna.
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/copenhague.jpg" alt="Participantes da Quinta Conferência de Solvay. Destaca-se a presença da única mulher no grupo: Marie Curie." width="100%" /&gt;
+&lt;p class="caption"&gt;Participantes da Quinta Conferência de Solvay. Destaca-se a presença da única mulher no grupo: Marie Curie.&lt;/p&gt;
+&lt;/div&gt;
+
+---
+class: middle
+
+&lt;div class="my-header"&gt;&lt;span&gt;Bibliografia&lt;/span&gt;&lt;/div&gt;
+
+&lt;a name=bib-braga&gt;&lt;/a&gt;[Braga, J. P.](#cite-braga) (2007). _Fundamentos
+de Qu\'imica Quântica_. Editora UFV, p. 272. ISBN: 8572692673. URL:
+[https://www.editoraufv.com.br/produto/fundamentos-de-quimica-quantica/1108949](https://www.editoraufv.com.br/produto/fundamentos-de-quimica-quantica/1108949).
+
+&lt;a name=bib-eisberg&gt;&lt;/a&gt;[Eisberg, R., R. M. Eisberg, R. Resnick, et
+al.](#cite-eisberg) (1985). _Quantum Physics of Atoms, Molecules,
+Solids, Nuclei, and Particles_. Quantum Physics of Atoms, Molecules,
+Solids, Nuclei and Particles. Wiley. ISBN: 9780471873730. URL:
+[https://books.google.com.br/books?id=mv5QAAAAMAAJ](https://books.google.com.br/books?id=mv5QAAAAMAAJ).
+
+&lt;a name=bib-mcquarrie&gt;&lt;/a&gt;[McQuarrie, D. A.](#cite-mcquarrie) (2008).
+_Quantum Chemistry_. University Science Books. ISBN: 9781891389504.
+URL:
+[https://books.google.com.br/books?id=zzxLTIljQB4C](https://books.google.com.br/books?id=zzxLTIljQB4C).
+
+&lt;a name=bib-myles&gt;&lt;/a&gt;[Myles, S.](#cite-myles) (2020). _The Basics of
+the Double Slit Experiment_. URL:
+[https://mylespsherman.medium.com/the-basics-of-the-double-slit-experiment-10ce3ca91794](https://mylespsherman.medium.com/the-basics-of-the-double-slit-experiment-10ce3ca91794).
+
+&lt;a name=bib-nussenzveig&gt;&lt;/a&gt;[Nussenzveig, H. M.](#cite-nussenzveig)
+(2003). _Curso de física básica: ótica, relatividade, física quântica_.
+Curso de física básica. Edgard Blucher. ISBN: 9788521201632. URL:
+[https://books.google.com.br/books?id=KjHjAAAACAAJ](https://books.google.com.br/books?id=KjHjAAAACAAJ).
+
+&lt;a name=bib-tipler&gt;&lt;/a&gt;[Tipler, P. A. and R. Llewellyn](#cite-tipler)
+(2003). _Modern Physics_. W. H. Freeman. ISBN: 9780716743453. URL:
+[https://books.google.com.br/books?id=tpU18JqcSNkC](https://books.google.com.br/books?id=tpU18JqcSNkC).
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="libs/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"ratio": "16:9",
+"slideNumberFormat": "%current% de %total%,",
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+(function(time) {
+  var d2 = function(number) {
+    return ('0' + number).slice(-2); // left-pad 0 to minutes/seconds
+  },
+
+  time_format = function(total) {
+    var secs = Math.abs(total) / 1000;
+    var h = Math.floor(secs / 3600);
+    var m = Math.floor(secs % 3600 / 60);
+    var s = Math.round(secs % 60);
+    var res = d2(m) + ':' + d2(s);
+    if (h > 0) res = h + ':' + res;
+    return res;  // [hh:]mm:ss
+  },
+
+  slide_number_div = function(i) {
+    return document.getElementsByClassName('remark-slide-number').item(i);
+  },
+
+  current_page_number = function(i) {
+    return slide_number_div(i).firstChild.textContent;  // text "i / N"
+  };
+
+  var timer = document.createElement('span'); timer.id = 'slide-time-left';
+  var time_left = time, k = slideshow.getCurrentSlideIndex(),
+      last_page_number = current_page_number(k);
+
+  setInterval(function() {
+    time_left = time_left - 1000;
+    timer.innerHTML = ' ' + time_format(time_left);
+    if (time_left < 0) timer.style.color = 'red';
+  }, 1000);
+
+  slide_number_div(k).appendChild(timer);
+
+  slideshow.on('showSlide', function(slide) {
+    var i = slide.getSlideIndex(), n = current_page_number(i);
+    // reset timer when a new slide is shown and the page number is changed
+    if (last_page_number !== n) {
+      time_left = time; last_page_number = n;
+      timer.innerHTML = ' ' + time_format(time); timer.style.color = null;
+    }
+    slide_number_div(i).appendChild(timer);
+  });
+})(277000);
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

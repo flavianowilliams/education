@@ -354,6 +354,21 @@ ou seja, a frequência da radiação emitida corresponde a frequência do movime
 ]
 
 ---
+class: left, middle
+
+<div class="my-header"><span>Aplicações - O teste da chama</span></div>
+
+.pull-left[
+xxxxxxxxxxxxx
+
+]
+.pull-right[
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/5aX46i91ktM?si=EbhBY_15fPbzitc_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+]
+
+---
 class: middle
 
 <div class="my-header"><span>Bibliografia</span></div>

@@ -12,9 +12,11 @@ ui = fluidPage(
     fileInput("file","Upload your dataset",accept = ".csv"),
     textInput("x", h4("Informe a coluna com os valores de x"), value = "X"),
     textInput("y", h4("Informe a coluna com os valores de y"), value = "Y"),
+    checkboxInput("checkbox", label = "Separador ponto e vírgula.", value = FALSE),
+    numericInput("num", label = "Escolha um valor acima de zero para o dado que gostaria de excluir.", value = 0),
     br(),
-    actionButton("apply", label="Apply")),
-#    br(),
+    actionButton("apply", label="Aplicar")),
+  #    br(),
 #    downloadButton("download", label="Download")),
     mainPanel(
       navbarPage("Analysis",
@@ -42,50 +44,59 @@ server = function(input, output) {
     ext = tools::file_ext(file$datapath)
     req(file)
     validate(need(ext == "csv", "Please, upload a csv file!"))
-    read_csv(file$datapath)
+    
+    if (input$checkbox) {
+      read_csv2(file$datapath)
+    } else {
+      read.csv(file$datapath)
+    }
   })
 
   output$dataframe = renderTable({currentFile()})
-  
+
   observeEvent(input$apply, {
 
+    x = input$x
+    y = input$y
+    i = input$num
+    
     data = currentFile() %>%
-      mutate(x = get(input$x)) %>%
-      mutate(y = get(input$y))
+      mutate(x = get(x)) %>%
+      mutate(y = get(y))
+
+    if (i > 0) {
+      data = data[-i,]
+    }
     
-    regressao = lm(y ~ x, data = data)
-    summary(regressao)
-    stats_df = summary(regressao)$coefficients
-    
-    v$A = stats_df["x", "Estimate"]
-    v$B = stats_df["(Intercept)", "Estimate"]
+    v$data = data
+    v$x = x
+    v$y = y
 
   })
   
   output$stats = renderText({
     
-    if (is.null(v$A)) return()
-      sprintf("y = %e x + %e", v$A, v$B)
-      
+    if (is.null(v$data$y)) return()
+      sprintf("Valor médio: %f; Desvio padrão: %f", mean(v$data$y), sd(v$data$y))
+
     })
 
     plotreact = eventReactive(input$apply, {
-      
-    x = input$x
-    y = input$y
-    
-    p = ggplot(data=currentFile(),aes(x=get(x),y=get(y)))+
-    geom_point()+
-      geom_abline(intercept = v$B, slope = v$A, colour = "red")+
-      xlab(x)+
-      ylab(y)
+
+    p = ggplot(data=v$data,aes(x=x,y=y))+
+      xlab(v$x)+
+      ylab(v$y)+
+      geom_point()+
+      annotate("segment", x = "A", xend = "J", y = mean(v$data$y), yend = mean(v$data$y), colour = "red")+
+      geom_errorbar(ymin = mean(v$data$y)-0.5*sd(v$data$y), ymax = mean(v$data$y)
+                    +0.5*sd(v$data$y), colour = "orange")
     
     ggplotly(p)
     
   })
   
   output$plot = renderPlotly({
-      if (is.null(v$A)) return()
+      if (is.null(v$data$y)) return()
       plotreact()
   })
 

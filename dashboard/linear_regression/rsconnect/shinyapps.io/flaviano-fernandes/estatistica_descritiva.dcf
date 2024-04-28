@@ -5,7 +5,7 @@ account: flaviano-fernandes
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 11799891
-bundleId: 8511557
+bundleId: 8551250
 url: https://flaviano-fernandes.shinyapps.io/estatistica_descritiva/
 version: 1
 asMultiple: FALSE

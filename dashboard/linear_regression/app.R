@@ -10,21 +10,18 @@ ui = fluidPage(
                  a("wiki documentation",href="https://github.com/flavianowilliams/analysis"),
                  " in the GitHub page."),
     fileInput("file","Upload your dataset",accept = ".csv"),
-    textInput("x", h4("Informe a coluna com os valores de x"), value = "X"),
-    textInput("y", h4("Informe a coluna com os valores de y"), value = "Y"),
     checkboxInput("checkbox", label = "Separador ponto e vírgula.", value = FALSE),
-    numericInput("num", label = "Escolha um valor acima de zero para o dado que gostaria de excluir.", value = 0),
+    numericInput("num_x", label = "Escolha um valor acima de zero para o dado que gostaria de excluir.", value = 0),
+    textInput("num_y", label = "Escolha a variável que gostaria de excluir.", value = NULL),
     br(),
     actionButton("apply", label="Aplicar")),
-  #    br(),
-#    downloadButton("download", label="Download")),
     mainPanel(
       navbarPage("Analysis",
                  tabPanel("Dataframe",
                           tableOutput("dataframe")
                  ),
                  tabPanel("Statistics",
-                          textOutput("stats")
+                          tableOutput("stats")
                  ),
                  tabPanel("Plot",
                             plotlyOutput("plot")
@@ -56,57 +53,43 @@ server = function(input, output) {
 
   observeEvent(input$apply, {
 
-    x = input$x
-    y = input$y
-    i = input$num
-    
+    i = input$num_x
+    j = input$num_y
+
     data = currentFile() %>%
-      mutate(x = get(x)) %>%
-      mutate(y = get(y))
+      gather(everything(), key = "Experimento", value = "valor", na.rm = TRUE) %>%
+      mutate(valor = as.numeric(valor)) %>%
+      filter(Experimento != j)
 
     if (i > 0) {
-      data = data[-i,]
+      data = data[-i, ]
     }
     
     v$data = data
-    v$x = x
-    v$y = y
 
   })
   
-  output$stats = renderText({
-    
-    if (is.null(v$data$y)) return()
-      sprintf("Valor médio: %f; Desvio padrão: %f", mean(v$data$y), sd(v$data$y))
-
-    })
-
+  statsreact = eventReactive(input$apply, {
+    data = v$data %>%
+      group_by(Experimento) %>%
+      summarise(media = mean(valor), desvio_padrao = sd(valor))
+  })
+  
+  output$stats = renderTable({statsreact()})
+  
     plotreact = eventReactive(input$apply, {
 
-    p = ggplot(data=v$data,aes(x=x,y=y))+
-      xlab(v$x)+
-      ylab(v$y)+
-      geom_point()+
-      annotate("segment", x = "A", xend = "J", y = mean(v$data$y), yend = mean(v$data$y), colour = "red")+
-      geom_errorbar(ymin = mean(v$data$y)-0.5*sd(v$data$y), ymax = mean(v$data$y)
-                    +0.5*sd(v$data$y), colour = "orange")
-    
+      p = ggplot(data = v$data, aes(x = Experimento, y = valor, fill = Experimento))+
+        geom_violin()+
+        theme(legend.position = "none")
+
     ggplotly(p)
     
   })
   
   output$plot = renderPlotly({
-      if (is.null(v$data$y)) return()
       plotreact()
   })
-
-#  output$download = downloadHandler(
-#    filename = function() {
-#      paste(input$x, "_", input$y, "-", Sys.Date(), ".pdf", sep = "")
-#    },
-#    content = function(file) {
-#    ggsave(file,plot = plotreact())
-#  })
 
 }
 

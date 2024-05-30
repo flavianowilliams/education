@@ -7,11 +7,11 @@ Updated: xx/xx/xxxx
 .wrapper { 
   overflow: hidden; 
 } 
-.sliding-background {
+.sliding-background { 
   background: url("css/img/logo.jpg") repeat-x; 
   height: 960px; 
   width: 6000px; 
-}
+} 
 
 .pull-left {
   text-align: justify;
@@ -74,9 +74,17 @@ div.my-footer {
 div.my-footer span {
     font-size: 12pt;
     color: #FFFFFF;
-    position: absolute;
-    left: 15px;
-    bottom: 6px;
+    position: relative;
+    left: 40%;
+    top: 20%;
+}
+
+div.my-footer img {
+  position: relative;
+  z-index: 1;
+  left: 1%;
+  height: 25px;
+  top: 2px;
 }
 
 /*configurando cabeçalho*/
@@ -216,7 +224,7 @@ thead, tfoot, tr:nth-child(even) { background: none; }
 /* Add image and change bg color */
 .title-slide {
   background-image: url(img/logo.jpg);
-  background-position: 50% 20%;
+  background-position: 50% 10%;
   background-size: 400px;
   background-color: #fff;
   padding-left: 100px;  /* delete this for 4:3 aspect ratio */

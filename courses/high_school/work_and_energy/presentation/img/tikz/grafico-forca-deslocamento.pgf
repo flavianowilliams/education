@@ -1,0 +1,32 @@
+﻿\begin{tikzpicture}[scale=2,transform shape, font=\Large]
+
+	\tkzInit[xmin=0,xmax=10,ymin=0,ymax=-6]
+%    \tkzGrid[color=gray!50]
+%	\tkzClip[space=-1]
+
+	\begin{scope}[shift={(0,0)}]
+
+		\tkzDefPoints{0/0/O, 10/0/A, 10/0/B, 10/-5/C}
+
+		\tkzDrawX[noticks, line width=3pt, above right=0.5mm]
+		\tkzDrawY[label=F(x), below, line width=3pt]
+%		\tkzLabelX
+%		\tkzLabelY
+
+		\def\A{-0.5}
+		\def\B{0}
+
+		\tkzDefPoints{7/-1.5/t1}
+
+		\draw (O) to[dim arrow={label=$x$}, sloped] (A);
+		\draw (B) to[dim arrow={label=$-kx$}] (C);
+
+		\tkzFct[samples=400,domain=0:10, line width=5pt, color=black]{\A*x+\B}
+
+		\tkzDrawPolygon[fill=blue!50](O,A,C)
+
+		\tkzText[color=black, opacity=1](t1){\huge $\tau$}
+
+	\end{scope}
+
+\end{tikzpicture}

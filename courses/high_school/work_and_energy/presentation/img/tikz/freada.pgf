@@ -1,0 +1,38 @@
+﻿\begin{tikzpicture}[scale=2,transform shape, font=\Large]
+
+	\tkzInit[xmin=0,xmax=15,ymin=-1,ymax=4]
+%   \tkzGrid[color=gray!50]
+	\tkzClip[space=0.75]
+
+	\begin{scope}[shift={(0,0)}]
+
+		\tkzDefPoints{0/0/O}
+
+%		\tkzDrawX
+%		\tkzDrawY
+%		\tkzLabelX
+%		\tkzLabelY
+
+		\node[opacity=1] (fig1) at (7.5,2) {\includegraphics[scale=0.22]{freada-brusca.jpg}};
+
+		\tkzDefPoints{4/-1/s1,12/-1/s2}
+
+%		\tkzDrawPoints(s1, s2)
+%		\tkzLabelPoints(s1, s2)
+
+		\draw[->, line width=5pt] (s1) -- (s2) node [above, midway] {$\vec{\Delta S}$};
+
+		\tkzDefPoints{4/4/t1, 11.5/4/t2}
+
+		\tkzText(t1){$E_c \neq 0$}
+		\tkzText(t2){$E_c = 0$}
+
+		\tkzDefPoints{7.5/1.5/a1, 4.5/0/a2, 12/0/a3}
+
+		\draw[<-, color=blue, line width=10pt] (a1) --++(-1,0) node [above, midway] {$\vec{v}$};
+		\draw[<-, color=blue, line width=10pt] (a2) --++(1,0) node [below, midway] {$\vec{F}_{atrito}$};
+		\draw[<-, color=blue, line width=10pt] (a3) --++(1,0) node [below, midway] {$\vec{F}_{atrito}$};
+
+	\end{scope}
+
+\end{tikzpicture}

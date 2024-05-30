@@ -1,0 +1,44 @@
+﻿\begin{tikzpicture}[scale=2,transform shape, font=\Large]
+
+	\tkzInit[xmin=0,xmax=15,ymin=-1,ymax=5]
+%   \tkzGrid[color=gray!50]
+	\tkzClip[space=0.75]
+
+	\begin{scope}[shift={(0,0)}]
+
+		\tkzDefPoints{0/0/O}
+
+%		\tkzDrawX
+%		\tkzDrawY
+%		\tkzLabelX
+%		\tkzLabelY
+
+		\node[opacity=1] (fig1) at (1,2) {\includegraphics[scale=0.6]{pessoa-carrinho.png}};
+
+		\node[opacity=1] (fig1) at (12,2) {\includegraphics[scale=0.4]{pessoa-carrinho.jpg}};
+
+%		\def\A{1}
+%		\def\B{-4}
+
+%		\tkzFct[samples=400,domain=0:10, line width=1pt]{\A*x+\B}
+
+		\tkzDefPoints{1/-1/s1,13/-1/s2}
+
+%		\tkzDrawPoints(s1, s2)
+%		\tkzLabelPoints(s1, s2)
+
+		\draw[->, line width=5pt] (s1) -- (s2) node [above, midway] {$\vec{\Delta S}$};
+
+		\tkzDefPoints{2/4/t1, 13/4/t2}
+
+		\tkzText(t1){$E_c = 0$}
+		\tkzText(t2){$E_c \neq 0$}
+
+		\tkzDefPoints{1/1.5/a1, 12.5/1.5/a2}
+
+		\draw[<-, color=green, line width=15pt] (a1) --++(-1,0) node [above, midway] {$\vec{F}$};
+		\draw[<-, color=green, line width=15pt] (a2) --++(-1,0) node [above, midway] {$\vec{F}$};
+
+	\end{scope}
+
+\end{tikzpicture}

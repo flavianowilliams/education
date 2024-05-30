@@ -1,0 +1,66 @@
+﻿\begin{tikzpicture}[scale=2,transform shape, font=\Large]
+
+	\tkzInit[xmin=0,xmax=15,ymin=0,ymax=9]
+%   \tkzGrid[color=gray!50]
+	\tkzClip[space=0.75]
+
+	\begin{scope}[shift={(0,0)}]
+
+%		\tkzDrawX
+%		\tkzDrawY
+%		\tkzLabelX
+%		\tkzLabelY
+
+		\node[opacity=1] (fig1) at (7.5,4.5) {\includegraphics[scale=3.2]{trabalho-em-equipe.jpg}};
+
+		\fill[gray, opacity=1] (5,4.85) circle (1.5);
+
+		\draw[->, color=black, line width=7pt] (5,4.85) --++ (3,0) node [below, midway] {$\vec{\Delta S}$};
+
+		\tkzDefPoints{3.5/4.5/a}
+
+		\def\teta1{196}
+		\def\fra{1.5}
+
+		\coordinate (ax) at ($(a)+(2,0)$);
+		\coordinate (b) at ($(a)+({\fra*cos(\teta1)},{\fra*sin(\teta1)})$);
+
+		\draw[dashed, color=black, line width=3pt] (a) --++ (1,0);
+		\draw[->, color=red, line width=7pt] (a) --++ ({\fra*cos(\teta1)},{\fra*sin(\teta1)}) node [above, midway] {$\vec{F}_1$};
+
+		\tkzMarkAngle[arrows=<->, arc=l, line width=3pt, size=0.5, color=red](b,a,ax)
+		\tkzLabelAngle[pos=0.9, color=red](b,a,ax){\large $\theta_1$}
+
+		\tkzDefPoints{7.5/5.5/a}
+
+		\def\tetab{16}
+		\def\frb{4.5}
+
+		\coordinate (ax) at ($(a)+(2,0)$);
+		\coordinate (b2) at ($(a)+({\frb*cos(\tetab)},{\frb*sin(\tetab)})$);
+
+		\draw[dashed, color=red, line width=3pt] (a) --++ (1,0);
+		\draw[->, color=red, line width=7pt] (a) --++ ({\frb*cos(\tetab)},{\frb*sin(\tetab)}) node [above] {$\vec{F}_2$};
+
+		\tkzMarkAngle[arrows=<->, arc=l, line width=3pt, size=1.8, color=red](ax,a,b2)
+		\tkzLabelAngle[pos=2.2, color=red](ax,a,b2){\large $\theta_2$}
+
+		\tkzDefPoints{5.3/1.25/ta, 9.5/0.5/tb}
+
+		\tkzText[color=white](ta){$\vec{F}_R=\vec{F}_2-\vec{F}_1$}
+		\tkzText[color=white](tb){$\tau = F_R\Delta S\cos\theta_R$ ou $\tau=F_1\Delta S\cos\theta_1+F_2\Delta S\cos\theta_2$}
+
+		\tkzDefPoints{1/7.5/a}
+
+		\coordinate (b) at ($(a)+({(\frb-\fra)*cos(\tetab)},{(\frb-\fra)*sin(\tetab)})$);
+		\coordinate (b2) at ($(a)+(3,0)$);
+
+		\draw[->, line width=7pt] (a) -- (b) node [above, midway] {$\vec{F}_R$};
+		\draw[->, line width=7pt] (a) -- (b2) node [below, midway] {$\vec{\Delta S}$};
+
+		\tkzMarkAngle[arrows=<->, arc=l, line width=3pt, size=1.8, color=black](b2,a,b)
+		\tkzLabelAngle[pos=2.2, color=black](b2,a,b){\large $\theta_R$}
+
+	\end{scope}
+
+\end{tikzpicture}

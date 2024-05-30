@@ -1,0 +1,54 @@
+﻿\begin{tikzpicture}[scale=3,transform shape,font=\Large]
+
+	\tkzInit[xmin=-0.5,xmax=11,ymin=0,ymax=7]
+	%\tkzGrid[color=gray!20]
+	\tkzClip[space=0.25]
+	
+	%chao
+	\fill [pattern = north west lines] (10,1.75) rectangle (9,2);
+	\draw (9,2) -- (10,2);
+	
+	\fill (0,6) rectangle (1,6.5);
+	
+	\draw[dashed,fill=gray!10, line width=2pt] (9,6) rectangle (10,6.5);
+	
+	\tkzFct[domain=1:10, line width=2pt]{2+4*exp(-(x-1)**2)-2*exp(-(x-3.5)**2)+2*exp(-(x-7)**2)}
+
+	\coordinate (B) at (9.5,6);
+	\coordinate (C) at (9.5,2);
+	
+	\draw[dashed, line width=1pt] (B) -- (C);
+	
+	\draw[->,line width=5.0pt, color=red] (9.5,6) --++ (0,-1);
+	\draw[->,line width=5.0pt, color=red] (9.5,4) --++ (0,-1);
+	
+	\tkzFct[domain=1.5:2.0,->,line width=5pt, color=blue]{2+4*exp(-(x-1.25)**2)-2*exp(-(x-3.75)**2)+2*exp(-(x-7.25)**2)}
+	
+	\tkzFct[domain=2.25:2.75,->,line width=5pt, color=blue]{2+4*exp(-(x-1.25)**2)-2*exp(-(x-3.75)**2)+2*exp(-(x-7.25)**2)}
+	
+	\tkzFct[domain=3:4,->,line width=5pt, color=blue]{2.4+4*exp(-(x-1)**2)-2*exp(-(x-3.5)**2)+2*exp(-(x-7)**2)}
+	
+	\tkzFct[domain=4.5:5.75,->,line width=5pt, color=blue]{2.4+4*exp(-(x-1)**2)-2*exp(-(x-3.5)**2)+2*exp(-(x-7)**2)}
+	
+	\tkzFct[domain=6.5:7.5,->,line width=5pt, color=blue]{2.4+4*exp(-(x-1)**2)-2*exp(-(x-3.5)**2)+2*exp(-(x-7)**2)}
+	
+	\tkzFct[domain=7.75:8.5,->,line width=5pt, color=blue]{2.4+4*exp(-(x-1)**2)-2*exp(-(x-3.5)**2)+2*exp(-(x-7)**2)}
+
+	\coordinate (A) at (0,6);
+	\coordinate (B') at ($(B)+(1,0)$);
+	\coordinate (C') at ($(C)+(1,0)$);
+
+	\draw[<->, color=black](B') -- (C') node [right, midway] {h};
+
+	\tkzText[above left, color=black](A){A}
+	\tkzText[above, color=black](B'){B}
+	\tkzText[below, color=black](C'){C}
+
+	\coordinate (B') at (0.5,6);
+	\coordinate (C') at (0.5,2);
+
+	\draw[<->, color=black](B') -- (C') node [right, midway] {h};
+
+	\draw[->, line width=5pt, color=red] ($(B')+(0.75,0.25)$) -- ($(B)+(-0.75,0.25)$);
+
+\end{tikzpicture}

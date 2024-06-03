@@ -1,0 +1,60 @@
+﻿\begin{tikzpicture}[scale=3,transform shape,font=\large]
+
+	\tkzInit[xmin=0,xmax=12,ymin=-0.5,ymax=2]
+%	\tkzGrid[color=gray!20]
+	\tkzClip[space=0.75]
+	
+%	\tkzDrawX
+%	\tkzAxeX
+%	\tkzDrawY
+%	\tkzAxeY
+	
+	\begin{scope}[shift={(0,0)}]
+
+		%chao
+		\fill [pattern = north west lines] (5,-0.25) rectangle (0,0);
+		\draw (-4,0) -- (4,0);
+	
+		\tkzDefPoint(2.5,-1){t}
+
+		\tkzText(t){\Large (Antes)}
+
+		\tkzDefPoints{1/0.75/m1, 5/0.4/m2}
+	
+		\draw[->, color=red, line width=7pt] (m1) --++ (1.5,0) node [above] {$\vec{v}_{1A}$};
+		\draw[->, color=red, line width=7pt] (m2) --++ (-1.5,0) node [above] {$\vec{v}_{2A}$};
+
+		\node[ball color=gray!50, circle] at (m1) {\Huge $m_1$};
+		\node[ball color=gray!50, circle] at (m2) {\small $m_2$};
+		
+%		\tkzDefPoint(3,2){t}
+
+%		\tkzText(t){$Q_{Total}=4kg\cdot m/s$}
+
+	\end{scope}
+
+	\begin{scope}[shift={(7,0)}]
+
+		%chao
+		\fill [pattern = north west lines] (5,-0.25) rectangle (0,0);
+		\draw (-4,0) -- (4,0);
+	
+		\tkzDefPoint(2.5,-1){t}
+
+		\tkzText(t){\Large (Depois)}
+
+		\tkzDefPoints{1/0.75/m1, 4/0.4/m2}
+	
+		\draw[->, color=red, line width=7pt] (m1) --++ (1.5,0) node [above] {$\vec{v}_{1D}$};
+		\draw[->, color=red, line width=7pt] (m2) --++ (1.5,0) node [above] {$\vec{v}_{2D}$};
+
+		\node[ball color=gray!50, circle] at (m1) {\Huge $m_1$};
+		\node[ball color=gray!50, circle] at (m2) {\small $m_2$};
+		
+%		\tkzDefPoint(3,2){t}
+
+%		\tkzText(t){$Q_{Total}=4kg\cdot m/s$}
+
+	\end{scope}
+
+\end{tikzpicture}

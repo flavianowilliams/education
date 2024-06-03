@@ -1,0 +1,60 @@
+﻿\begin{tikzpicture}[scale=2,transform shape, font=\Large]
+
+	\tkzInit[xmin=-10,xmax=12,ymin=-6.5,ymax=8.5]
+	\tkzGrid[color=gray!50]
+	\tkzClip[space=0.5]
+
+	\begin{scope}[shift={(0,0)}]
+
+		\node[opacity=1] (fig1) at (1,1) {\includegraphics[scale=1]{sinuca.jpg}};
+
+%		\tkzDrawX
+%		\tkzDrawY
+%		\tkzLabelX
+%		\tkzLabelY
+
+		\tkzDefPoints{-0.5/1.3/p}
+
+		\def\teta{-35}
+		\def\vr{2}
+
+		\draw[->, line width=15pt, color=white] (p) --++ ({\vr*cos(\teta)}, {\vr*sin(\teta)}) node [above right, midway] {\huge $-\vec{F}_{12}$};
+
+		\tkzDefPoints{-5.5/4/p}
+
+		\def\teta{145}
+		\def\vr{2}
+
+		\draw[->, line width=15pt, color=white] (p) --++ ({\vr*cos(\teta)}, {\vr*sin(\teta)}) node [above right, midway] {\huge $\vec{F}_{12}$};
+
+		\tkzDefPoints{-7/-3/p}
+
+		\def\teta{135}
+		\def\vr{1.5}
+
+		\draw[->, line width=15pt, color=white] (p) --++ ({\vr*cos(\teta)}, {\vr*sin(\teta)}) node [above right, midway] {\huge $\vec{F}_{23}$};
+
+		\tkzDefPoints{-4/-6/p}
+
+		\def\teta{-45}
+		\def\vr{1.5}
+
+		\draw[->, line width=15pt, color=white] (p) --++ ({\vr*cos(\teta)}, {\vr*sin(\teta)}) node [above, midway] {\huge $-\vec{F}_{23}$};
+
+		\tkzDefPoints{7.8/2/p}
+
+		\def\teta{210}
+		\def\vr{1.75}
+
+		\draw[->, line width=15pt, color=white] (p) --++ ({\vr*cos(\teta)}, {\vr*sin(\teta)}) node [above left, midway] {\huge $\vec{F}_{45}$};
+
+		\tkzDefPoints{12/4.5/p}
+
+		\def\teta{30}
+		\def\vr{2.5}
+
+		\draw[->, line width=15pt, color=white] (p) --++ ({\vr*cos(\teta)}, {\vr*sin(\teta)}) node [below] {\huge $\vec{q}_3$};
+
+	\end{scope}
+
+\end{tikzpicture}

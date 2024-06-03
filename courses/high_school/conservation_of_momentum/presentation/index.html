@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Curso de Física</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Flaviano Williams Fernandes" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link rel="stylesheet" href="css/default.css" type="text/css" />
+    <link rel="stylesheet" href="css/my-theme.css" type="text/css" />
+    <link rel="stylesheet" href="css/my-fonts.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Curso de Física
+]
+.subtitle[
+## Conservação da quantidade de movimento
+]
+.author[
+### Flaviano Williams Fernandes
+]
+.institute[
+### Instituto Federal do Paraná - Irati
+]
+.date[
+### Atualizado em 03/06/2024
+]
+
+---
+
+layout: true
+background-size: contain
+
+&lt;div class="my-footer"&gt;
+  &lt;img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Creative_commons_license_with_attribution.png"&gt;
+&lt;/div&gt;
+
+&lt;div class="my-footer"&gt;&lt;span&gt;Flaviano Williams Fernandes&lt;/span&gt;&lt;/div&gt;
+
+
+
+
+
+
+
+---
+class: middle
+
+&lt;div class="my-header"&gt;&lt;span&gt;Sumário&lt;/span&gt;&lt;/div&gt;
+
+1. Quantidade de movimento
+
+2. Conservação da quantidade de movimento
+
+3. Aplicações
+
+4. Bibliografia
+
+&lt;div class="footnote"&gt;
+  &lt;ul&gt;
+  &lt;hr&gt;
+  &lt;li&gt; Esta apresentação está disponível para download em &lt;a href="https://flavianowilliams.github.io/education"&gt;flavianowilliams.github.io/education&lt;/a&gt;;
+  &lt;li&gt; Este material está sujeito a modificações. Recomenda-se acompanhamento permanente.
+  &lt;/ul&gt;
+&lt;/div&gt;
+
+---
+class: middle
+
+&lt;div class="my-header"&gt;&lt;span&gt;Quantidade de movimento - O que é a quantidade de movimento?&lt;/span&gt;&lt;/div&gt;
+
+.pull-left[
+
+Em física desejamos sempre definir uma grandeza física através do seu conceito e de maneira quantitativa, sendo obtida através de uma fórmula matemática. Mas como podemos quantificar a quantidade de movimento de um objeto? A fórmula da quantidade de movimento p é definida como
+`\begin{equation}
+  \boxed{\vec{q} = m\vec{v}.}
+\end{equation}`
+Mas como poderemos chegar nessa expressão? Conhecemos a segunda lei de Newton na forma `\(F=ma\)`. No entanto, a forma original seria
+`\begin{equation}
+  \vec{F} = \frac{\Delta \vec{q}}{\Delta t}.
+\end{equation}`
+onde `\(\Delta p\)` é a variação da quantidade de movimento.
+"*Outro fato importante é que o movimento pode mudar dependendo da sua orientação, portanto a quantidade de movimento é uma grandeza vetorial.*"
+
+]
+.pull-right[
+
+A variação da quantidade de movimento desse objeto é dado por
+`\begin{aligned}
+  \Delta q &amp; = q_{final}-q_{inicial},\\
+           &amp; = m\left(v_{final}-v_{inicial}\right).
+\end{aligned}`
+Substituindo na segunda lei de Newton teremos
+`\begin{equation}
+  F = m\frac{\left(v_{final}-v_{inicial}\right)}{\Delta t}.
+\end{equation}`
+E sabendo que `\(\Delta V=v_{final}-v_{inicial}\)` teremos
+`\begin{equation}
+  F = m\frac{\Delta v}{\Delta t}.
+\end{equation}`
+E pela definição da aceleração `\(a=\frac{\Delta v}{\Delta t}\)` chegamos a expressão conhecida da segunda lei de Newton.
+`\begin{equation}
+  F = ma.
+\end{equation}`
+
+]
+
+---
+class: middle
+
+&lt;div class="my-header"&gt;&lt;span&gt;Quantidade de movimento - Impulso&lt;/span&gt;&lt;/div&gt;
+
+.pull-left[
+
+Definimos impulso como a rapidez que uma força consegue alterar a quantidade de movimento de um objeto, ou seja,
+`\begin{equation}
+  \vec{I} = \Delta \vec{q}.
+\end{equation}`
+Agora, qual é a relação do impulso com a força e o tempo? Para isso, usaremos a expressão da força demonstrada anteriormente,
+`\begin{equation}
+  F = \frac{\Delta p}{\Delta t}.
+\end{equation}`
+Isolando `\(\Delta V\)` nessa equação chegamos à
+`\begin{equation}
+  I = F\Delta t.
+\end{equation}`
+No entanto, a quantidade de movimento é grandeza vetorial, então a sua variação também será, portanto o impulso também será uma grandeza vetorial. A maneira correta de representar a equação acima seria
+
+]
+.pull-right[
+
+`\begin{equation}
+  \vec{I} = \vec{F}\cdot\Delta t.
+\end{equation}`
+E graficamente, como poderíamos determinar o impulso aplicado em um objeto por uma força? Assim como no trabalho, basta determinar a área entre a linha que representa a força e o eixo das abscissas. A diferença em relação ao caso do trabalho é que o eixo das abscissas representa a evolução no tempo ao invés do deslocamento.
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/grafico-forca-tempo.jpeg" alt="Gráfico de uma força constante em função do tempo." width="70%" /&gt;
+&lt;p class="caption"&gt;Gráfico de uma força constante em função do tempo.&lt;/p&gt;
+&lt;/div&gt;
+
+]
+
+---
+class: middle
+
+&lt;div class="my-header"&gt;&lt;span&gt;Quantidade de movimento - sistema de partículas&lt;/span&gt;&lt;/div&gt;
+
+.pull-left[
+Vimos anteriormente que a quantidade de movimento de um objeto vale `\(q=mv\)`. Mas se tivermos um sistema contendo vários objetos, como mostra a figura abaixo.
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/sistema-particulas.jpeg" alt="Representação de um sistema de particulas." width="63%" /&gt;
+&lt;p class="caption"&gt;Representação de um sistema de particulas.&lt;/p&gt;
+&lt;/div&gt;
+
+A quantidade de movimento desse sistema, ou seja, a quantidade de movimento total, é obtida pela soma vetorial das quantidades de movimento de cada objeto que compõem o sistema. Portanto
+`\begin{equation}
+  \vec{Q} = \vec{q}_1+\vec{q}_1+\vec{q}_1+\therefore \vec{Q} = \sum\vec{q}.
+\end{equation}`
+
+]
+.pull-right[
+
+No entanto, as partículas podem interagir entre elas, através de colisões ou de outras formas. As interações que o ocorrem entre partículas que pertencem a esse sistema são chamadas de forças internas, enquanto as interações que ocorrem entre os objeto do sistemas com aqueles fora dele são chamadas de forças externas.
+
+Agora, um fato curioso é que a resultante das forças internas do sistema assume valor igual a zero. Por quê isso acontece? Imagine a figura abaixo. Quando a partícula 1 colide com a partícula 2, ocorre duas forças de mesma intensidade mas direção e sentido opostos, como mostra a terceira lei de Newton. Assim, apesar de cada uma assumir valor não nulo para cada partícula, ao somar todos os pares, eles irão se anular mutuamente, resultando em uma força resultante nula,
+`\begin{equation}
+  \vec{F}_R = \vec{F}_{12}-\vec{F}_{12}+\vec{F}_{23}-\vec{F}_{23}+\cdots = \vec{0}.
+\end{equation}`
+
+]
+
+---
+class: middle
+
+&lt;div class="my-header"&gt;&lt;span&gt;Conservação da quantidade movimento&lt;/span&gt;&lt;/div&gt;
+
+.pull-left[
+
+Vimos pela segunda lei de Newton que `\(\vec{F}_R=\frac{\Delta q}{\Delta t}\)`. Com isso podemos dizer que somente haverá uma variação da quantidade de movimento total do sistema se houver uma força resultante não nula atuando nele. Entretanto, vimos que a somatória das forças internas de um sistema de partículas é zero, portanto podemos dizer o seguinte:
+
+"**As forças internas podem provocar variações nas quantidades de movimento de cada partícula de um sistema, mas não provocam variação na quantidade de movimento total do sistema.**"
+
+]
+.pull-right[
+
+Portanto, podemos dizer que somente haverá variação na quantidade de movimento total de um sistema se houver forças externas. Com isso chegamos ao enunciado da lei da conservação da quantidade de movimento &lt;a name=cite-Alvarenga2000&gt;&lt;/a&gt;([Alvarenga and Máximo, 2000](#bib-Alvarenga2000))`:
+
+"**Se for nula a resultante das forças externas que atuam em um sistema de partículas, a quantidade de movimento total desse sistema se conserva.**"
+
+]
+
+---
+class: middle
+
+&lt;div class="my-header"&gt;&lt;span&gt;Aplicações - colisões&lt;/span&gt;&lt;/div&gt;
+
+.pull-left[
+
+Neste slide iremos aplicar os conceitos vistos anteriormente em um sistema de partículas contendo dois objetos. Além disso, esses objetos estarão se movendo em apenas uma direção. Esse é um exemplo clássico de aplicação da lei de conservação da quantidade de movimento de um sistema de partículas.
+
+A figura abaixo mostra dois estados das duas partículas antes e depois de colidirem entre sim. Podemos ver que a resultante das forças externas é zero, pois a reação normal se anula com a força peso, portanto a quantidade de movimento total Q deve ser igual antes e depois da colisão.
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/colisoes.jpeg" alt="Colisão envolvendo duas particulas." width="85%" /&gt;
+&lt;p class="caption"&gt;Colisão envolvendo duas particulas.&lt;/p&gt;
+&lt;/div&gt;
+
+]
+.pull-right[
+
+Consideremos `\(m_1=2\;kg\)` e `\(m_2=1\;kg\)`. Se as velocidades antes da colisão são dadas por `\(v_{1A}=3\;m/s\)` e `\(v_{2A}=-2\;m/s\)`, poderemos dizer que a quantidade de movimento total é dado por
+`\begin{align}
+  \vec{Q} &amp; = \vec{q}_1+\vec{q}_2,\\
+  \vec{Q} &amp; = m_1\vec{v}_1+m_2\vec{v}_2,\\
+  \vec{Q} &amp; = 2\cdot 3+1\cdot (-2),\\
+  \vec{Q} &amp; = 4\;kg\cdot m/s.
+\end{align}`
+Consideremos que após a colisão as velocidades mudaram para `\(v_{1D}=0,5\;m/s\)` e `\(v_{2D}=3\;m/s\)`
+`\begin{align}
+  \vec{Q} &amp; = 2\cdot 0,5+1\cdot (3),\\
+  \vec{Q} &amp; = 4\;kg\cdot m/s.
+\end{align}`
+Não necessariamente `\(v_{1D}\)` e `\(v_{2D}\)` sempre assumirão esses valores, mas o importante é que a quantidade de movimento se mantenha constante.
+
+]
+
+---
+class: middle
+
+&lt;div class="my-header"&gt;&lt;span&gt;Aplicações - colisões elásticas e inelásticas&lt;/span&gt;&lt;/div&gt;
+
+.pull-left[
+
+Agora, consideremos a colisão mostrada anteriormente, como mostra a figura abaixo,
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="img/colisoes-2.jpeg" alt="Colisão envolvendo duas particulas." width="85%" /&gt;
+&lt;p class="caption"&gt;Colisão envolvendo duas particulas.&lt;/p&gt;
+&lt;/div&gt;
+
+Determinamos anteriormente a quantidade de movimento total, mas e a energia cinética desse sistema? Definimos a energia cinética total do sistema como a soma das energias cinéticas de cada partícula, ou seja,
+`\begin{equation}
+  E_c = E^{(1)}_c+E^{(2)}_c.
+\end{equation}`
+Considerandos os valores antes da colisão teremos
+
+]
+.pull-right[
+
+`\begin{align}
+  E_c &amp; = \frac{1}{2}m_1v^2_{1A}+\frac{1}{2}m_2v^2_{2A},\\
+  E_c &amp; = \frac{1}{2}\cdot 2\cdot 3^2+\frac{1}{2}\cdot 1\cdot 2^2,\\
+  E_c &amp; = 11\;J.
+\end{align}`
+Agora, depois da colisão teremos
+`\begin{align}
+  E_c &amp; = \frac{1}{2}m_1v^2_{1D}+\frac{1}{2}m_2v^2_{2D},\\
+  E_c &amp; = \frac{1}{2}\cdot 2\cdot 0,5^2+\frac{1}{2}\cdot 1\cdot 3^2,\\
+  E_c &amp; = 4,75\;J.
+\end{align}`
+Podemos ver que a energia cinética depois da colisão é **MENOR** que a energia cinética antes da colisão, pois parte da energia cinética foi perdida no ato da colisão e convertida outra forma de energia, calor, energia sonora, etc. Essas colisões são chamadas de **colisões inelásticas**. As colisões onde a energia cinética também é conservada são chamadas de **colisões elásticas**.
+
+]
+
+---
+class: middle
+
+&lt;div class="my-header"&gt;&lt;span&gt;Bibliografia&lt;/span&gt;&lt;/div&gt;
+
+&lt;a name=bib-Alvarenga2000&gt;&lt;/a&gt;[Alvarenga, B. and A.
+Máximo](#cite-Alvarenga2000) (2000). _Curso de Física Volume 1_. Vol.
+1. Editora Scipione.
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="libs/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"ratio": "16:9",
+"slideNumberFormat": "%current% de %total%,",
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+(function(time) {
+  var d2 = function(number) {
+    return ('0' + number).slice(-2); // left-pad 0 to minutes/seconds
+  },
+
+  time_format = function(total) {
+    var secs = Math.abs(total) / 1000;
+    var h = Math.floor(secs / 3600);
+    var m = Math.floor(secs % 3600 / 60);
+    var s = Math.round(secs % 60);
+    var res = d2(m) + ':' + d2(s);
+    if (h > 0) res = h + ':' + res;
+    return res;  // [hh:]mm:ss
+  },
+
+  slide_number_div = function(i) {
+    return document.getElementsByClassName('remark-slide-number').item(i);
+  },
+
+  current_page_number = function(i) {
+    return slide_number_div(i).firstChild.textContent;  // text "i / N"
+  };
+
+  var timer = document.createElement('span'); timer.id = 'slide-time-left';
+  var time_left = time, k = slideshow.getCurrentSlideIndex(),
+      last_page_number = current_page_number(k);
+
+  setInterval(function() {
+    time_left = time_left - 1000;
+    timer.innerHTML = ' ' + time_format(time_left);
+    if (time_left < 0) timer.style.color = 'red';
+  }, 1000);
+
+  slide_number_div(k).appendChild(timer);
+
+  slideshow.on('showSlide', function(slide) {
+    var i = slide.getSlideIndex(), n = current_page_number(i);
+    // reset timer when a new slide is shown and the page number is changed
+    if (last_page_number !== n) {
+      time_left = time; last_page_number = n;
+      timer.innerHTML = ' ' + time_format(time); timer.style.color = null;
+    }
+    slide_number_div(i).appendChild(timer);
+  });
+})(60000);
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

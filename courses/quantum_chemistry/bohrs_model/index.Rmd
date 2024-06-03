@@ -360,7 +360,7 @@ class: left, middle
 
 .pull-left[
 
-Uma prática experimental que pode ser utilizada como exemplo da teoria da transição eletrônica abordada pelo modelo atômico de Bohr seria o teste da chama, onde é possível identificar o elemento químico a partir da cor emitida pela chama (veja a figura ao lado).
+Uma prática experimental que pode ser utilizada como exemplo da teoria da transição eletrônica abordada pelo modelo atômico de Bohr seria o teste da chama. Neste teste é possível identificar o elemento químico a partir da cor emitida pela chama (veja a figura ao lado).
 
 ]
 .pull-right[

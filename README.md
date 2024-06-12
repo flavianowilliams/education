@@ -1,6 +1,6 @@
-![CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)
+![CC BY 4.0](https://img.shields.io/badge/license-CC--BY--NC--SA--4.0-lightgrey)
 
 # contents
 Education contents about physics, chemistry, programming, etc...
 
-<img src="cc.logo.png" height="20"/> This work is licensed under a [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).
+<img src="cc.logo.png" height="20"/> This work is licensed under a [Creative Commons ATRIBUTION-NONCOMMERCIAL-SHAREALIKE 4.0 INTERNATIONAL](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.en/).

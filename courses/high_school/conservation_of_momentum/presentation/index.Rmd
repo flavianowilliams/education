@@ -22,7 +22,7 @@ layout: true
 background-size: contain
 
 <div class="my-footer">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Creative_commons_license_with_attribution.png">
+  <img src="http://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-nc-sa.png">
 </div>
 
 <div class="my-footer"><span>Flaviano Williams Fernandes</span></div>

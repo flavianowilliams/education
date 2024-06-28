@@ -1,0 +1,138 @@
+﻿\begin{tikzpicture}[scale=1.25,transform shape,font=\Huge, samples=900, background rectangle/.style={fill=black}, show background rectangle]
+			
+			\def\y0{0.5}
+
+			\def\k{1}
+			\def\om{6}
+			\def\dk{0.5}
+			\def\dom{0.5}
+			\def\t{3.14}
+			\def\xi{3.14}
+
+			\begin{scope}[shift={(0,0)}]
+				\tkzDefPoint(2.75*pi,0){O}
+				\tkzText[above=0.75, color=white](O){$(\Delta \omega)$}
+				\tkzInit[xmin=4,xmax=20,ymin=-13,ymax=1]
+%				\tkzGrid[color=gray!20]
+				\tkzClip[space=1]
+
+				\tkzDrawX[label=t]
+				\tkzFct[domain=pi:7*pi,line width=2pt,samples=500, color=white]{\y0*cos(\k*\xi-\om*x)}
+			\end{scope}
+
+			\begin{scope}[shift={(0,-2)}]
+				\tkzInit[xmin=4,xmax=20,ymin=-11,ymax=1]
+%				\tkzGrid[color=gray!20]
+				\tkzClip[space=1]
+
+				\tkzDrawX[label=t]
+				\tkzFct[domain=pi:7*pi,line width=2pt,samples=500, color=white]{\y0*cos(\k*\xi-(\om+\dom)*x)}
+			\end{scope}
+
+			\begin{scope}[shift={(0,-10)}]
+				\tkzInit[xmin=4,xmax=20,ymin=-2,ymax=3]
+
+				\tkzDrawX[label=t]
+
+				\tkzFct[domain=pi:7*pi,line width=2pt,samples=500, color=white]{\y0*cos(\k*\xi-\om*x)+\y0*cos(\k*\xi-(\om+\dom)*x)}
+
+				\coordinate (p1) at (2.5,-2.5);
+				\coordinate (p2) at (14.5,-2.5);
+				\draw (p1.center) to[dim arrow'={label=$\Delta t$}] (p2.center);
+
+			\end{scope}
+
+			\begin{scope}[shift={(18,0)}]
+				\tkzDefPoint(2.75*pi,0){O}
+				\tkzText[above=0.75, color=white](O){$(2\Delta \omega)$}
+				\tkzInit[xmin=4,xmax=20,ymin=-2,ymax=1]
+%				\tkzGrid[color=gray!20]
+				\tkzClip[space=1]
+
+				\tkzDrawX[label=t]
+				\tkzFct[domain=pi:7*pi,line width=2pt,samples=500, color=white]{\y0*cos(\k*\xi-\om*x)}
+			\end{scope}
+
+			\begin{scope}[shift={(18,-2)}]
+				\tkzInit[xmin=4,xmax=20,ymin=-11,ymax=1]
+%				\tkzGrid[color=gray!20]
+				\tkzClip[space=1]
+
+				\tkzDrawX[label=t]
+				\tkzFct[domain=pi:7*pi,line width=2pt,samples=500, color=white]{\y0*cos(\k*\xi-(\om+\dom)*x)}
+			\end{scope}
+
+			\begin{scope}[shift={(18,-4)}]
+				\tkzInit[xmin=4,xmax=20,ymin=-2,ymax=1]
+%				\tkzGrid[color=gray!20]
+				\tkzClip[space=1]
+
+				\tkzDrawX[label=t]
+				\tkzFct[domain=pi:7*pi,line width=2pt,samples=500, color=white]{\y0*cos(\k*\xi-(\om+2*\dom)*x)}
+			\end{scope}
+
+			\begin{scope}[shift={(18,-10)}]
+				\tkzInit[xmin=4,xmax=20,ymin=-2,ymax=3]
+
+				\tkzDrawX[label=t]
+
+				\tkzFct[domain=pi:7*pi,line width=2pt,samples=500, color=white]{\y0*(cos(\k*\xi-\om*x)+cos(\k*\xi-(\om+\dom)*x)+cos(\k*\xi-(\om+2*\dom)*x))}
+
+				\coordinate (p1) at (4.5,-2.5);
+				\coordinate (p2) at (12.5,-2.5);
+				\draw (p1.center) to[dim arrow'={label=$\Delta t$}] (p2.center);
+
+			\end{scope}
+
+			\begin{scope}[shift={(36,0)}]
+				\tkzDefPoint(2.75*pi,0){O}
+				\tkzText[above=0.75, color=white](O){$(3\Delta \omega)$}
+				\tkzInit[xmin=4,xmax=20,ymin=-2,ymax=1]
+%				\tkzGrid[color=gray!20]
+				\tkzClip[space=1]
+
+				\tkzDrawX[label=t]
+				\tkzFct[domain=pi:7*pi,line width=2pt,samples=500, color=white]{\y0*cos(\k*\xi-\om*x)}
+			\end{scope}
+
+			\begin{scope}[shift={(36,-2)}]
+				\tkzInit[xmin=4,xmax=20,ymin=-11,ymax=1]
+%				\tkzGrid[color=gray!20]
+				\tkzClip[space=1]
+
+				\tkzDrawX[label=t]
+				\tkzFct[domain=pi:7*pi,line width=2pt,samples=500, color=white]{\y0*cos(\k*\xi-(\om+\dom)*x)}
+			\end{scope}
+
+			\begin{scope}[shift={(36,-4)}]
+				\tkzInit[xmin=4,xmax=20,ymin=-2,ymax=1]
+%				\tkzGrid[color=gray!20]
+				\tkzClip[space=1]
+
+				\tkzDrawX[label=t]
+				\tkzFct[domain=pi:7*pi,line width=2pt,samples=500, color=white]{\y0*cos(\k*\xi-(\om+2*\dom)*x)}
+			\end{scope}
+
+			\begin{scope}[shift={(36,-6)}]
+				\tkzInit[xmin=4,xmax=20,ymin=-2,ymax=1]
+%				\tkzGrid[color=gray!20]
+				\tkzClip[space=1]
+
+				\tkzDrawX[label=t]
+				\tkzFct[domain=pi:7*pi,line width=2pt,samples=500, color=white]{\y0*cos(\k*\xi-(\om+3*\dom)*x)}
+			\end{scope}
+
+			\begin{scope}[shift={(36,-10)}]
+				\tkzInit[xmin=4,xmax=20,ymin=-2,ymax=3]
+
+				\tkzDrawX[label=t]
+
+				\tkzFct[domain=pi:7*pi,line width=2pt,samples=500, color=white]{\y0*(cos(\k*\xi-\om*x)+cos(\k*\xi-(\om+\dom)*x)+cos(\k*\xi-(\om+2*\dom)*x)+cos(\k*\xi-(\om+3*\dom)*x))}
+
+				\coordinate (p1) at (5.5,-2.5);
+				\coordinate (p2) at (11.5,-2.5);
+				\draw (p1.center) to[dim arrow'={label=$\Delta t$}] (p2.center);
+
+			\end{scope}
+
+\end{tikzpicture}

@@ -55,6 +55,8 @@ class: middle
 
 3. Princípio filosófico da física quântica
 
+4. Aplicações - O gato de Schrödinger
+
 6. Bibliografia
 
 <div class="footnote">
@@ -326,6 +328,27 @@ A figura abaixo mostra a ilustre Conferência de Solvay, em 1927 (a princípio, 
 ```{r, echo=FALSE, message=FALSE, fig.align='center',fig.cap='Participantes da Quinta Conferência de Solvay. Destaca-se a presença da única mulher no grupo: Marie Curie.',out.width="100%",fig.asp=1}
   knitr::include_graphics("img/copenhague.jpg")
 ```
+
+---
+class: middle
+
+<div class="my-header"><span>Aplicações - O gato de Schrödinger</span></div>
+
+.pull-left60[
+
+A figura ao lado mostra a experiência mental do gato de Schrödinger proposto por Erwin Schrödinger no esforço de ilustrar um exemplo dos postulados da interpretação de Copenhague. Neste exemplo um gato estaria dentro de uma caixa contendo um frasco com veneno. Esse frasco seria quebrado liberando o veneno caso alguém tentasse abrir a caixa para observar o que está acontecendo lá dentro. De acordo com Schrödinger, enquanto a caixa estiver fechada o estado físico do gato seria representado pela superposição de dois estados quânticos: vivo e morto,
+\begin{aligned}
+\Psi_{\text{gato}} = \Psi_{\text{vivo}} + \Psi_{\text{morto}}.
+\end{aligned}
+Poderíamos dizer em probabilidades mas não saberíamos com total exatidão se ele estaria vivo ou morto. Porém ao interagir com o sistema, abrindo a caixa para observar qual estado o gato se encontra, destruiríamos esse estado de superposição $(\Psi_{\text{gato}})$, assim não saberíamos dizer se anteriormente ele estava vivo ou morto pois causamos o colapso da sua função de onda.
+
+]
+.pull-right40[
+
+```{r, echo=FALSE, message=FALSE, fig.align='center',fig.cap='Ilustração do gato de Schrödinger.',out.width="90%",fig.asp=1}
+  knitr::include_graphics("img/montagem.jpg")
+```
+]
 
 ---
 class: middle

@@ -27,6 +27,14 @@ Updated: xx/xx/xxxx
   top: 0.1cm;
   width: 47%;
 }
+.pull-left60 {
+  margin-bottom: 0.1cm;
+  margin-top: 0.1cm;
+  text-align: justify;
+  float: left;
+  position: relative;
+  width: 59%;
+}
 .pull-left70 {
   margin-bottom: 0.1cm;
   margin-top: 0.1cm;
@@ -42,6 +50,14 @@ Updated: xx/xx/xxxx
   float: left;
   position: relative;
   width: 29%;
+}
+.pull-right40 {
+  margin-bottom: 0.1cm;
+  margin-top: 0.1cm;
+  text-align: justify;
+  float: right;
+  position: relative;
+  width: 39%;
 }
 .pull-right30 {
   margin-bottom: 0.1cm;

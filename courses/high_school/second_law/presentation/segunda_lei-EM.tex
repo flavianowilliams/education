@@ -497,13 +497,13 @@
 \begin{frame}[fragile]{O esquema de um refrigerador}
 \begin{columns}
 	\begin{column}{0.65\textwidth}
-		O objetivo de um refrigerador é remover calor de uma fonte fria e transferí-la para uma fonte mais quente. Nesse processo inevitavelmente ele realiza trabalho. Portanto, um refrigerador seria uma máquina térmica funcionando no sentido contrário. O rendimento é medido pela capacidade de transferir calor $Q_2$ em relação ao trabalho $\tau$ que ele realiza,
+		O objetivo de um refrigerador é remover calor de uma fonte fria e transferí-la para uma fonte mais quente. E para isso algo de fora (vizinhança) deve realizar trabalho sobre o gás empurrando o calor para a fonte quente. Portanto, um refrigerador seria uma máquina térmica funcionando no sentido contrário. O rendimento seria a capacidade de transferir calor $Q_2$ em relação ao trabalho $\tau$ associado a ele,
 		\begin{NodesList}[margin=3cm]
 			\begin{align*}
 				R & = \frac{Q_2}{\tau},\AddNode\\
 				R & = \frac{Q_2}{Q_1-Q_2}.\AddNode
 			\end{align*}
-			\LinkNodes{\tiny$(\tau=Q_1-Q_2)$}
+			\LinkNodes{\tiny$(\tau=Q_2-Q_1)$}
 		\end{NodesList}
 	\end{column}
 	\begin{column}{0.35\textwidth}
@@ -546,8 +546,9 @@
 			\draw[line width=1pt,color=red,->] (nc) -- (2,{0.5*\p});
 			
 			%texto
-			\node at (1.5,2) {$Q_{2}<Q_{1}$};
-			\node [text width=3.5cm] (t1) at (3,{0.5*\p+2}) {Trabalho produzido pelo motor termico};
+			\node at (1.5,2) {$Q_{1}<0$};
+			\node at (1.5,1.5) {$Q_{2}>0$};
+			\node [text width=3.5cm] (t1) at (3,{0.5*\p+2}) {Trabalho feito pela vizinhança};
 			\draw [red,->,line width=1.5pt] (t1) -- (nc);
 			
 			\end{tikzpicture}
@@ -637,20 +638,24 @@
 	\end{corollary}
 \end{frame}
 
-\begin{frame}{Terceira lei da Termodinâmica}
-	\begin{columns}
-		\begin{column}[c]{0.5\textwidth}
-			conteúdo...
-		\end{column}
-		\begin{column}[c]{0.5\textwidth}
-			conteúdo...
-		\end{column}
-	\end{columns}
-\end{frame}
-
 \section{Apêndice}
 
 \subsection{}
+
+\begin{frame}{Terceira lei da Termodinâmica}
+	\begin{block}{Terceira lei da termodinâmica}
+		A entropia de qualquer sistema somente se anula no zero absoluto.
+	\end{block}
+	\vspace*{0.25cm}
+	\begin{columns}
+		\begin{column}[t]{0.5\textwidth}
+			A entropia está associado com o grau de desordem de um sistema, ou seja, em um sistema constituído por átomos, a entropia aumenta com o seu grau de movimentação. Em T = 0 K as vibrações cessariam, o que causaria um valor praticamente nulo para a entropia. Porém, \alert{pelas leis da física quântica tal estado é impossível de ser alcançado}.
+		\end{column}
+		\begin{column}[t]{0.5\textwidth}
+			Como consequência da terceira lei da Termodinâmica, se S = 0 em T = 0 K, então $\Delta S$ também será zero para qualquer processo que ocorre nessa temperatura, portanto qualquer máquina térmica ao atingir o zero absoluto conseguiria converter todo o calor que recebe em trabalho e o seu rendimento seria 100\%.
+		\end{column}
+	\end{columns}
+\end{frame}
 
 \begin{frame}{Alfabeto grego}
 	\begin{columns}

@@ -292,7 +292,7 @@ No butadieno, o níveis n=1 e 2 encontram-se ocupados por dois elétrons cada (c
 \end{aligned}
 Para o elétron, teríamos
 \begin{aligned}
-  \lambda = \frac{32,97}{2n+1}a^2.
+  \lambda = \frac{329,7}{2n+1}a^2.
 \end{aligned}
 Considerando o comprimento do butadieno de 5,6 A teremos $\lambda=207\;nm$. onde o valor experimental é de $210\;nm$ com erro percentual de 1,4 %.
 

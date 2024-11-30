@@ -1,0 +1,32 @@
+﻿\begin{tikzpicture}[scale=3,transform shape, font=\Large]
+
+	\tikzstyle{s1}=[circle, radius=0.5, ball color=gray!25];
+	\tikzstyle{s2}=[circle, radius=1, ball color=gray!25];
+	\tikzstyle{s3}=[circle, radius=0.75, ball color=gray!25];
+
+	\tkzInit[xmin=0,xmax=11,ymin=-1,ymax=1]
+%	\tkzGrid[color=gray!50]
+	\tkzClip[space=0.75]
+
+	\begin{scope}[shift={(0,0)}]
+
+		\tkzDefPoints{0/0/O, 2/0/A, 10/0/B, 7/0/C}
+
+		\tkzDrawX[line width=4pt]
+
+		\draw[decoration={aspect=0.6, segment length=6mm, amplitude=5mm,coil},decorate, line width=2pt] (A) -- (B); 
+
+		\draw[color=red, line width=7pt, ->] (A) --++ (1.5,0) node [above, midway] {\huge $-\vec{F}$};
+		\draw[color=red, line width=7pt, ->] (B) --++ (-1.5,0) node [above] {\huge $\vec{F}$};
+
+		\node [s1] at (A) {$m_1$};
+		\node [s2] at (B) {\Huge $m_2$};
+		\node [s2] at (C) {\huge M};
+
+		\draw ($(O)+(0,0.5)$) to[dim arrow={label=$x_{cm}$},sloped, line width=4pt] ($(C)+(0,0.5)$);
+		\draw ($(A)+(0,-0.5)$) to[dim arrow={label=$x_1$},sloped, line width=4pt] ($(O)+(0,-0.5)$);
+		\draw ($(B)+(0,-1)$) to[dim arrow={label=$x_2$},sloped, line width=4pt] ($(O)+(0,-1)$);
+
+	\end{scope}
+
+\end{tikzpicture}

@@ -1,4 +1,4 @@
-﻿\begin{tikzpicture}[scale=1,transform shape, font=\Large]
+﻿\begin{tikzpicture}[scale=3,transform shape, font=\Large]
 
 	\tikzstyle{s1}=[circle, radius=0.5, ball color=gray!25];
 	\tikzstyle{s2}=[circle, radius=1, ball color=gray!25];
@@ -9,22 +9,22 @@
 
 	\begin{scope}[shift={(0,0)}]
 
-		\tkzDefPoints{0/0/O, 2/0/A, 10/0/B}
+		\tkzDefPoints{0/0/O, 10/0/B}
 
 		\tkzDrawX
 
-		\draw[decoration={aspect=0.6, segment length=6mm, amplitude=3mm,coil},decorate, line width=1pt] (A) -- (B); 
+		\draw[decoration={aspect=0.6, segment length=6mm, amplitude=5mm,coil},decorate, line width=1pt] (O) -- (B); 
 
-		\node [s1] at (A) {$m_1$};
-		\node [s2] at (B) {\Huge $m_2$};
+		\draw[color=red, line width=7pt, ->] (B) --++ (-1.5,0) node [above] {\huge $\vec{F_{\mu}}$};
 
-		\draw ($(A)+(0,0.5)$) to[dim arrow={label=$\ell_0$},sloped] ($(B)+(0,0.5)$);
-		\draw ($(A)+(0,-0.5)$) to[dim arrow={label=$x_1$},sloped] ($(O)+(0,-0.5)$);
-		\draw ($(B)+(0,-1)$) to[dim arrow={label=$x_2$},sloped] ($(O)+(0,-1)$);
+		\node [s2] at (B) {\Huge $\mu$};
 
-		\draw[color=red, line width=5pt, ->] (A) --++ (1.5,0) node [above, midway] {\huge $\vec{F}$};
-		\draw[color=red, line width=5pt, ->] (B) --++ (-1.5,0) node [above] {\huge $-\vec{F}$};
+		\draw ($(B)+(0,-1)$) to[dim arrow={label=$r$},sloped, line width=4pt] ($(O)+(0,-1)$);
 
 	\end{scope}
+
+	\tkzDefPoint(5,1){t1}
+
+	\tkzText(t1){$\vec{F_{\mu}}=-k\left(\vec{r}-\vec{\ell_0}\right)$}
 
 \end{tikzpicture}

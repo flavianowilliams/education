@@ -111,16 +111,67 @@ Considerando o referencial na origem (x=0), podemos dizer que pela lei de Hooke
   m_2\frac{d^2x_2}{dt^2} & = F = -k(x_2-x_1-\ell_0).
 \end{aligned}
 
-$\ell_0$ seria neste caso a distância relativa de equilíbrio entre as partículas, onde a energia potencial é nula. Dividindo a primeira equação por $m_1$ e a segunda por $m_2$, encontraremos
+$\ell_0$ seria neste caso a distância relativa de equilíbrio entre as partículas, onde a energia potencial é nula. Somando ambas as equações teremos
+
+\begin{equation}
+  m_1\frac{d^2x_1}{dt^2} + m_2\frac{d^2x_2}{dt^2} = -F+F = 0.
+\end{equation}
+
+Aplicando as propriedades inversas de derivação teremos
+
+\begin{equation}
+  \frac{d^2(m_1x_1)}{dt^2} + \frac{d^2(m_2x_2)}{dt^2} = 0,
+\end{equation}
+
+]
+
+.pull-right[
+
+Agora, sabendo que $\frac{d^2(F+G)}{dt^2}=\frac{d^2F}{dt^2}+\frac{d^2G}{dt^2}$ teremos
+
+\begin{equation}
+  \frac{d^2(m_1x_1+m_2x_2)}{dt^2} = 0,
+\end{equation}
+
+Entretanto, pela definição do centro de massa, temos que $x_{cm}=\frac{m_1x_1+m_2x_2}{M}$, onde $M=m_1+m_2$, portanto
+
+\begin{equation}
+  M\frac{d^2x_{cm}}{dt^2} = 0,
+\end{equation}
+
+ou seja, a contribuição do centro de massa para o MHS é nula.
+
+```{r, echo=FALSE, fig.align='center',fig.cap='Sistema de duas partículas.',out.width="100%",fig.asp=1}
+  knitr::include_graphics("img/mhs-2particulas-cms.jpeg")
+```
+
+]
+
+---
+class: middle
+
+<div class="my-header"><span>Oscilador harmônico clássico. Sistema de duas partículas</span></div>
+
+.pull-left[
+
+Agora, dividindo ambas as equações por $m_1$ e $m_2$ teremos
 
 \begin{aligned}
-  \frac{d^2x_2}{dt^2} - \frac{d^2x_1}{dt^2} & =-k\left[\frac{(x_2-x_1-\ell_0)}{m_2}+\frac{(x_2-x_1-\ell_0)}{m_1}\right].
+  \frac{d^2x_1}{dt^2} & = -\frac{F}{m_1},\\
+  \frac{d^2x_2}{dt^2} & = \frac{F}{m_2}.
 \end{aligned}
 
-Aplicando as propriedades de derivação teremos
+Subtraindo e aplicando as regras de derivação teremos
 
 \begin{aligned}
-  \frac{d^2}{dt^2}(x_2-x_1) & = -k\left[\frac{(x_2-x_1-\ell_0)}{m_2}+\frac{(x_2-x_1-\ell_0)}{m_1}\right],
+  \frac{d^2(x_2)}{dt^2} - \frac{d^2(x_1)}{dt^2}  & = F\left(\frac{1}{m_1}+\frac{1}{m_2}\right),\\
+  \frac{d^2(x_2-x_1)}{dt^2}  & = -\left(\frac{1}{m_1}+\frac{1}{m_2}\right)k(x_2-x_1-\ell_0).
+\end{aligned}
+
+Identificando $r=x_2-x_1$ como a coordenada relativa entre $m_1$ e $m_2$, teremos
+
+\begin{aligned}
+  \frac{d^2r}{dt^2}  & = -\left(\frac{1}{m_1}+\frac{1}{m_2}\right)k(r-\ell_0).
 \end{aligned}
 
 ]
@@ -128,15 +179,16 @@ Aplicando as propriedades de derivação teremos
 .pull-right[
 
 \begin{aligned}
-  \frac{d^2}{dt^2}(x_2-x_1) & =-k\left(\frac{1}{m_1}+\frac{1}{m_2}\right)(x_2-x_1-\ell_0),\\
-  \frac{d^2}{dt^2}(x_2-x_1) & =-k\left(\frac{1}{m_1}+\frac{1}{m_2}\right)(x_2-x_1-\ell_0).
+  \frac{d^2r}{dt^2}  & = -\left(\frac{m_1+m_2}{m_1m_2}\right)k(r-\ell_0).
 \end{aligned}
 
-Adotando $\mu = \frac{m_1m_2}{m_1+m_2}$, onde $\mu$ é a massa reduzida, teremos a equação do oscilador harmônico no sistema de coordenadas do centro de massa, e r é a coordenada relativa entre as partículas,
+Adotando $\mu = \frac{m_1m_2}{m_1+m_2}$, onde $\mu$ é a chamada massa reduzida teremos
 
 \begin{aligned}
-  \mu\frac{d^2r}{dt^2} +kr = 0.
+  \mu\frac{d^2r}{dt^2} +k(r-\ell_0) = 0.
 \end{aligned}
+
+Dessa maneira, conseguimos reduzir o problema de dois corpos ao problema de um corpo, onde teremos o MHS realizado por apenas um objeto de massa $\mu$.
 
 ```{r, echo=FALSE, fig.align='center',fig.cap='Duas partículas conectadas por uma mola de constante elástica k.',out.width="100%",fig.asp=1}
   knitr::include_graphics("img/mhs-2particulas.jpeg")

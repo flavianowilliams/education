@@ -482,9 +482,9 @@ class: middle
 
 .pull-left[
 
-Entretanto, para obter a solução exata de V(r) deveríamos levar em consideração todos os termos da expansão, ou que seria inviável. Um outro caminho seria sugerir uma função que substituiria V(r) em sua integridade. À partir de uma análise comportamental da molécula, ou seja, como a interação se comporta ao aumentarmos ou diminuirmos a distância relativa. Bem, é de se esperar que para distâncias acima da distância de equilíbrio $r_0$ deve haver uma atração entre os átomos afim de manter a ligação permanente. Porém, à medida que a distância vai diminuindo para valores cada vez menores que $r_0$, o núcleo de cada átomo deve perceber a carga positiva do outro, produzindo uma repulsão de considerável intensidade. Morse propôs uma função que após uma análise empírica chegou na seguinte expressão abaixo,
+Entretanto, para obter a solução exata de V(r) deveríamos levar em consideração todos os termos da expansão, ou que seria inviável. Um outro caminho seria sugerir uma função que substituiria V(r) em sua integridade. À partir de uma análise comportamental da molécula, ou seja, como a interação se comporta ao aumentarmos ou diminuirmos a distância relativa. Bem, é de se esperar que para distâncias acima da distância de equilíbrio $\ell_0$ deve haver uma atração entre os átomos afim de manter a ligação permanente. Porém, à medida que a distância vai diminuindo para valores cada vez menores que $\ell_0$, o núcleo de cada átomo deve perceber a carga positiva do outro, produzindo uma repulsão de considerável intensidade. Morse propôs uma função que após uma análise empírica chegou na seguinte expressão abaixo,
 \begin{align*}
-U(r) = D_0\left[e^{-2\beta (r-r_0)}-2e^{-\beta (r-r_0)}\right]
+U(r) = D_0\left[e^{-2\beta (r-\ell_0)}-2e^{-\beta (r-\ell_0)}\right]
 \end{align*}
 
 ]
@@ -509,8 +509,8 @@ class: middle
 Agora, iremos obter a solução da equação de Schrödinger utilizando a função de Morse ao invés do potencial do oscilador harmônico. Da equação de Schrödinger
 \begin{align*}
   -\frac{\hbar^2}{2\mu}\frac{d^2}{dr^2}\psi+V(r)\psi & =E\psi,\\
-  -\frac{\hbar^2}{2\mu}\frac{d^2}{dr^2}\psi+D_0\left[e^{-2\beta (r-r_0)}-2e^{-2\beta (r-r_0)}\right]\psi & =E\psi,\\
-%  -\frac{d^2}{dr^2}\psi+\frac{2\mu D_0}{\hbar^2}\left[e^{-2\beta (r-r_0)}-2e^{-2\beta (r-r_0)}\right]\psi & =\frac{2\mu E}{\hbar}\psi,
+  -\frac{\hbar^2}{2\mu}\frac{d^2}{dr^2}\psi+D_e\left[e^{-2\beta (r-\ell_0)}-2e^{-2\beta (r-\ell_0)}\right]\psi & =E\psi,\\
+%  -\frac{d^2}{dr^2}\psi+\frac{2\mu D_e}{\hbar^2}\left[e^{-2\beta (r-\ell_0)}-2e^{-2\beta (r-\ell_0)}\right]\psi & =\frac{2\mu E}{\hbar}\psi,
 \end{align*}
 Substituindo $x=\beta r$ teremos após aplicarmos a regra da cadeia
 \begin{align*}
@@ -518,7 +518,7 @@ Substituindo $x=\beta r$ teremos após aplicarmos a regra da cadeia
 \end{align*}
 temos
 \begin{align*}
-  -\frac{\hbar^2\beta^2}{2\mu}\frac{d^2}{dx^2}\psi+D_0\left[e^{-2(x-x_0)}-2e^{-2 (x-x_0)}\right]\psi & =E\psi.
+  -\frac{\hbar^2\beta^2}{2\mu}\frac{d^2}{dx^2}\psi+D_e\left[e^{-2(x-x_0)}-2e^{-2 (x-x_0)}\right]\psi & =E\psi.
 \end{align*}
 
 ]
@@ -674,7 +674,7 @@ class: middle
 
 .pull-left[
 
-A figura ao lado mostra a diferença entre os potenciais harmônico e anarmônico. A comparação foi feita para 10 valores distintos do parâmetro $D_e$. Percebe-se que $D_e$ não representa a energia de dissociação da molécula, pois devemos considerar que a energia mínima da molécula corresponde ao estado n=0, onde a energia equivale à $E_0=\frac{\hbar\omega}{2}$.
+A figura ao lado mostra a diferença entre os potenciais harmônico e anarmônico. A comparação foi feita para 10 valores distintos do parâmetro $D_0$. Percebe-se que $D_0$ não representa a energia de dissociação da molécula, pois devemos considerar que a energia mínima da molécula corresponde ao estado n=0, onde a energia equivale à $E_0=\frac{\hbar\omega}{2}$.
 
 A Tabela abaixo mostra a frequência vibracional, a constante de força e a constante de anarmonicidade. Percebe-se a dependência de $\chi_e$ com a constante de força.
 

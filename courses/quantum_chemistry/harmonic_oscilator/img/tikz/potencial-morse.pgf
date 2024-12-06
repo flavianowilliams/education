@@ -19,8 +19,8 @@
 	\tkzPointShowCoord(c)
 
 	\tkzDefPoints{0/-\D/A, \ro/0/B}	
-	\tkzText[left, color=black](A){$D_0$}
-	\tkzText[above, color=black](B){$r_0$}
+	\tkzText[left, color=black](A){$D_e$}
+	\tkzText[above, color=black](B){$\ell_0$}
 
 	\tkzDefPoints{6/1.5/A, 8/1.5/B}
 

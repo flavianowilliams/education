@@ -604,51 +604,23 @@
 \end{frame}
 
 \begin{frame}{Pressão, velocidade e altura de um fluido em duas regiões distintas (continuação)}
-	\begin{multicols}{2}
-		\alert{Se não houver perdas de energia}, a energia mecânica do fluido permanece inalterada, de modo que o trabalho total realizado deve ser igual a variação das energias cinéticas e potenciais,
-		\begin{align*}
-			\tau_1+\tau_2 = \Delta E_m = \Delta E_c+\Delta E_p,
-		\end{align*}
-		mas
-		\begin{align*}
-			\Delta E_c & = \frac{1}{2}mv^2_2-\frac{1}{2}mv^2_1,\\
-			\Delta E_p & = mgh_2-mgh_1,
-		\end{align*}
-		portanto
-		\begin{align*}
-			\tau_1+\tau_2 & = \overbracket{\left(\frac{1}{2}mv^2_2-\frac{1}{2}mv^2_1\right)}^{\alert{\Delta E_c}}+\\
-			& +\overbracket{\left(mgh_2-mgh_1\right)}^{\alert{\Delta E_p}},\\
-			\tau_1+\tau_2 & = \frac{1}{2}mv^2_2+mgh_2-\frac{1}{2}mv^2_1-mgh_1,\\
-			\tau_1+\tau_2 & = \frac{1}{2}mv^2_2+mgh_2-\left(\frac{1}{2}mv^2_1+mgh_1\right).
-		\end{align*}
-	\end{multicols}
-\end{frame}
-
-\begin{frame}{Pressão, velocidade e altura de um fluido em duas regiões distintas (continuação)}
 	\begin{columns}
-		\begin{column}[t]{0.45\textwidth}
-			Separando os termos da região 1 da região 2 temos a equação
+		\begin{column}[t]{0.5\textwidth}
+			\alert{Se não houver perdas de energia}, a energia mecânica do fluido permanece inalterada, de modo que o trabalho total realizado deve ser igual a variação das energias cinéticas e potenciais,
 			\begin{align*}
-				\tau_1 + \frac{1}{2}mv^2_1+mgh_1 & = \alert{-}\tau_2 + \frac{1}{2}mv^2_2+\\
-				& + mgh_2.
+				\tau_1+\tau_2 = \Delta E_m = \Delta E_c+\Delta E_p,
 			\end{align*}
-			Mas mostramos que
+			mas
 			\begin{align*}
-				\tau_1 & = p_1V,\\
-				\tau_2 & = -p_2V.
+				\Delta E_c & = \frac{1}{2}mv^2_2-\frac{1}{2}mv^2_1,\\
+				\Delta E_p & = mgh_2-mgh_1,
 			\end{align*}
 		\end{column}
-		\begin{column}[t]{0.55\textwidth}
-			Substituindo na equação acima temos
-			\begin{align*}
-				\alert{p_1V} + \frac{1}{2}mv^2_1+mgh_1 & = -\left(\alert{-p_2V}\right) + \\
-				& + \frac{1}{2}mv^2_2 + mgh_2,
-			\end{align*}
-			mas sabemos que $V=\frac{m}{\rho},$
-			\begin{align*}
-				p_1\alert{\frac{\bcancel{m}}{\rho}} + \frac{1}{2}\bcancel{m}v^2_1+\bcancel{m}gh_1 & = p_2\alert{\frac{\bcancel{m}}{\rho}} + \frac{1}{2}\bcancel{m}v^2_2 + \bcancel{m}gh_2,\\
-				\frac{p_1}{\rho} + \frac{v^2_1}{2}+gh_1 & = \frac{p_2}{\rho} + \frac{v^2_2}{2} + gh_2.
-			\end{align*}
+		\begin{column}[t]{0.5\textwidth}
+			Substituindo $\Delta E_m$ e $\Delta E_p$ chegaremos na equação abaixo, onde podemos perceber que a soma dos termos abaixo é invariante para qualquer região do tubo. A dedução abaixo exige muita dedução algébrica, portanto deixaremos a sua dedução no Apêndice B.
+			\begin{equation*}
+				\frac{p_1}{\rho} + \frac{v^2_1}{2}+gh_1 = \frac{p_2}{\rho} + \frac{v^2_2}{2} + gh_2.
+			\end{equation*}
 		\end{column}
 	\end{columns}
 \end{frame}
@@ -926,7 +898,7 @@
 
 \subsection{}
 
-\begin{frame}{Alfabeto grego}
+\begin{frame}{Apêndice A. Alfabeto grego}
 	\begin{columns}
 		\begin{column}[c]{0.5\textwidth}
 			\begin{table}
@@ -964,6 +936,35 @@
 		\end{tabular}
 	\end{table}
 \end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Apêndice B. Dedução da equação de Bernoulli}
+	\begin{columns}
+		\begin{column}[t]{0.45\textwidth}
+			Substituindo $\Delta E_c$ e $\Delta E_p$ e separando os termos da região 1 da região 2 temos a equação
+			\begin{align*}
+				\tau_1 + \frac{1}{2}mv^2_1+mgh_1 & = \alert{-}\tau_2 + \frac{1}{2}mv^2_2+\\
+				& + mgh_2.
+			\end{align*}
+			Mas mostramos que
+			\begin{align*}
+				\tau_1 & = p_1V,\\
+				\tau_2 & = -p_2V.
+			\end{align*}
+		\end{column}
+		\begin{column}[t]{0.55\textwidth}
+			Substituindo na equação acima temos
+			\begin{align*}
+				\alert{p_1V} + \frac{1}{2}mv^2_1+mgh_1 & = -\left(\alert{-p_2V}\right) + \\
+				& + \frac{1}{2}mv^2_2 + mgh_2,
+			\end{align*}
+			mas sabemos que $V=\frac{m}{\rho},$
+			\begin{align*}
+				p_1\alert{\frac{\bcancel{m}}{\rho}} + \frac{1}{2}\bcancel{m}v^2_1+\bcancel{m}gh_1 & = p_2\alert{\frac{\bcancel{m}}{\rho}} + \frac{1}{2}\bcancel{m}v^2_2 + \bcancel{m}gh_2,\\
+				\frac{p_1}{\rho} + \frac{v^2_1}{2}+gh_1 & = \frac{p_2}{\rho} + \frac{v^2_2}{2} + gh_2.
+			\end{align*}
+		\end{column}
 	\end{columns}
 \end{frame}
 

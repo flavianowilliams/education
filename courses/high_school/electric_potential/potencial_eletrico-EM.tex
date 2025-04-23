@@ -32,9 +32,9 @@
 			\begin{equation*}
 				F=K\frac{Qq}{r^2}.
 			\end{equation*}
-			O trabalho necessário para trazer a carga q do ponto A ao ponto B é igual a diferença de energia potencial entre esses pontos,
+			O trabalho necessário para trazer a carga q do ponto B ao ponto A é igual a diferença de energia potencial entre esses pontos,
 			\begin{equation*}
-				\tau_{AB} = U_{A}-U_{B}.
+				\tau_{BA} = U_{B}-U_{A}.
 			\end{equation*}		
 		\end{column}
 		\begin{column}[c]{0.4\textwidth}
@@ -62,14 +62,14 @@
 				\node [s1] at (n1) {$Q$};
 				\node [s1] at (n2) {$q$};
 				\node [s2] at (n3) {$q$};
-				
-				\tkzDrawCircle[R,dotted](n3,0.3cm)
+
+%				\tkzDrawCircle[R,dotted](n3, 0.3)
 				
 				\draw (n1) to [dim arrow={label=$r_{A}$}] (n2);
 				\draw (n1) to [dim arrow'={label'=$r_{B}$}] (n3);
 				
-				\tkzText[above right=0.2cm](n2){A}
-				\tkzText[above right=0.2cm](n3){B}
+				\tkzText[above right=0.2 cm](n2){A}
+				\tkzText[above right=0.2 cm](n3){B}
 				
 				\end{tikzpicture}
 				
@@ -89,20 +89,20 @@
 			\end{equation*}
 			 onde $\Delta r$ é o deslocamento realizado por q de A até B, $\Delta r = r_A-r_B$. Assim
 			\begin{equation*}
-				\tau \Rightarrow F_Ar_A-F_Br_B.
+				\tau \Rightarrow Fr_A-Fr_B.
 			\end{equation*}
-			Se $F=K\frac{Qq}{r^2}$, substituímos acima
+			Se $F=K\frac{Qq}{r^2}$, podemos imaginar que
 			\begin{equation*}
-				\tau \Rightarrow  \left(\frac{KQq}{\bcancel{r^2_A}}\right)\left(\bcancel{r_A}\right)-\left(\frac{KQq}{\bcancel{r^2_B}}\right)\left(\bcancel{r_B}\right),
+				\tau \Rightarrow  \left(\frac{KQq}{\bcancel{r^2}}\right)\left(\bcancel{r_B}\right)-\left(\frac{KQq}{\bcancel{r^2}}\right)\left(\bcancel{r_A}\right),
 			\end{equation*}
 		\end{column}
 		\begin{column}[t]{0.5\textwidth}
 			\begin{equation*}
-				\tau \Rightarrow \frac{KQq}{r_A}-\frac{KQq}{r_B}.
+				\tau \Rightarrow \frac{KQq}{r_B}-\frac{KQq}{r_A}.
 			\end{equation*}
 			Definimos $U_A$ a energia potencial no ponto A e $U_B$ a energia no ponto B,
 			\begin{equation*}
-				\tau = U_A-U_B = \frac{KQq}{r_A}-\frac{KQq}{r_B},
+				\tau = U_B-U_A = \frac{KQq}{r_B}-\frac{KQq}{r_A},
 			\end{equation*}
 			Chegando assim na energia potencial
 			\begin{align*}
@@ -114,7 +114,7 @@
 \end{frame}
 
 \begin{frame}{Diferença de potencial}
-%	\begin{multicols}{2}
+	\begin{multicols}{2}
 	\begin{columns}
 		\begin{column}[t]{0.5\textwidth}
 			Supondo um conjunto de carga elétrica q, o trabalho necessário para deslocar do ponto A até B cada portador de carga elementar dividimos o trabalho total pela quantidade de carga elétrica q
@@ -134,7 +134,7 @@
 			\end{align*}
 		\end{column}
 	\end{columns}
-%	\end{multicols}
+	\end{multicols}
 	\begin{block}{Diferença de potencial (d.d.p.)}
 		Trabalho necessário para deslocar cada carga elementar de um ponto a outro.
 	\end{block}
@@ -175,7 +175,7 @@
 				\node [s1] at (n2) {$q$};
 				\node [s2] at (n3) {$q$};
 				
-				\tkzDrawCircle[R,dotted](n3,0.3cm)
+%				\tkzDrawCircle[R,dotted](n3,0.3cm)
 				
 				\draw (n1) to [dim arrow={label=$r_{A}$}] (n2);
 				\draw (n1) to [dim arrow'={label'=$r_{B}$}] (n3);
@@ -210,7 +210,7 @@
 			\tkzDrawX[label=r,below,noticks]
 			\tkzDrawY[label=V(r),pos=1.01,above,noticks]
 			
-			\tkzFct[domain=0:12,color=red,line width=1.0pt]{1/x}
+			\tkzFct[domain=0:6,color=red,line width=1.0pt]{1/x}
 			\tkzDefPointByFct(3)\tkzGetPoint{A}
 			
 			\tkzDefPoint(4,3){t1}
@@ -492,8 +492,9 @@
 			
 			\tikzstyle{s1}=[circle, radius=0.25, ball color=gray!50];
 			
-			\foreach \x in {1,2,3}{			
-				\tkzDrawCircle[R,dashed](O,\x cm)}
+			\foreach \x in {1,2,3}{
+				\tkzDefCircle[R](O,2*\x)\tkzGetPoint{p}			
+				\tkzDrawCircle[dashed](O, p)}
 			
 			\foreach \x in {30,60,...,360}{
 				\tkzDefPointsBy[rotation=center O angle \x](O,A){C,B}
@@ -533,7 +534,8 @@
 			\tikzstyle{s1}=[circle, radius=0.25, ball color=gray!50];
 			
 			\foreach \x in {1,2,3}{
-				\tkzDrawCircle[R,dashed](O,\x cm)}
+			\tkzDefCircle[R](O,2*\x)\tkzGetPoint{p}			
+			\tkzDrawCircle[dashed](O, p)}
 			
 			\foreach \x in {30,60,...,360}{
 				\tkzDefPointsBy[rotation=center O angle \x](O,A){C,B}
@@ -632,7 +634,7 @@
 	\end{figure}
 \end{frame}
 
-\begin{frame}{Diferença de potencial e deslocamento de cargas no condutor}
+\begin{frame}{Diferença de potencial e equilíbrio eletrostático}
 	Se dois condutores estiverem em contato haverá transferência de cargas de um para outro até que o potencial de ambos se igualem.
 	\begin{figure}
 		\begin{subfigure}{0.5\textwidth}
@@ -644,13 +646,15 @@
 			
 			\tkzDefPoints{0/0/O,2.25/0/A,6/0/O'}
 			
-			\tkzDrawCircle[R,line width=1.5pt,fill=gray!25](O,2 cm)
+			\tkzDefCircle[R](O, 3.75)\tkzGetPoint{c1}
+			\tkzDrawCircle[R,line width=1.5pt,fill=gray!25](O, c1)
 			
 			\foreach \x in {10,20,...,360}{
 				\tkzDefPointsBy[rotation=center O angle \x](O,A){p1,p1'}
 				\tkzText[font=\small](p1'){+}}
 			
-				\tkzDrawCircle[R,line width=1.5pt,fill=gray!25](O',0.75 cm)
+				\tkzDefCircle[R](O', 1.5)\tkzGetPoint{c2}
+				\tkzDrawCircle[R,line width=1.5pt,fill=gray!25](O', c2)
 			
 				\node at (O) {1};
 				\node at (O') {2};
@@ -674,13 +678,15 @@
 			
 			\draw[wave,line width=0.5pt] (O) -- (O');
 
-			\tkzDrawCircle[R,line width=1.5pt,fill=gray!25](O,2 cm)
+			\tkzDefCircle[R](O, 3.75)\tkzGetPoint{c1}
+			\tkzDrawCircle[R,line width=1.5pt,fill=gray!25](O, c1)
 			
 			\foreach \x in {20,40,...,360}{
 				\tkzDefPointsBy[rotation=center O angle \x](O,A){p1,p1'}
 				\tkzText[font=\small](p1'){+}}
 			
-			\tkzDrawCircle[R,line width=1.5pt,fill=gray!25](O',0.75 cm)
+				\tkzDefCircle[R](O', 1.5)\tkzGetPoint{c2}
+				\tkzDrawCircle[R,line width=1.5pt,fill=gray!25](O', c2)
 			
 			\foreach \x in {40,80,...,360}{
 			\tkzDefPointsBy[rotation=center O' angle \x](O',A'){p1,p1'}

@@ -1,4 +1,4 @@
-\begin{tikzpicture}[scale=2,transform shape, font=\Large]
+﻿\begin{tikzpicture}[scale=2,transform shape, font=\Large]
 
 	\tkzInit[xmin=-10,xmax=10,ymin=-10,ymax=10]
 	\tkzGrid[color=gray!50]
@@ -24,6 +24,10 @@
 
 		\tkzDrawPoints(s1, s2)
 		\tkzLabelPoints(s1, s2)
+
+		\tkzDefPoints{1/0/pa}
+		\tkzDefCircle[R](O, 1cm)\tkzGetPoint{x}
+		\tkzDrawCircle(O, x)
 
 		\draw (s2) to[dim arrow={label=modulo},sloped] (s1);
 

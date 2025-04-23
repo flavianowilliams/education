@@ -16,12 +16,17 @@
 \usepackage{pifont}
 %\usepackage{animate}
 %\usepackage{geometry}
-\usepackage{tikz, tikz-3dplot}
+%\usepackage{tikz, tikz-3dplot}
+%\usepackage{tkz-base}
+%\usepackage{tkz-fct}
+%\usepackage{tkz-euclide}
+%\usepackage{tkz-linknodes}
+%\usepackage{pgfplots,circuitikz,bm}
+\usepackage{tikz,pgfplots,tikz-3dplot,bm}
+\usepackage{circuitikz}
 \usepackage{tkz-base}
 \usepackage{tkz-fct}
 \usepackage{tkz-euclide}
-\usepackage{tkz-linknodes}
-\usepackage{pgfplots,circuitikz,bm}
 \usepackage[output-decimal-marker={,}]{siunitx}
 
 % Setup appearance:
@@ -76,7 +81,6 @@
 \usepgfplotslibrary{fillbetween}
 \usetikzlibrary{arrows,3d,calc,shadows,patterns,math,fit,shapes,optics,hobby}
 \usetikzlibrary{automata,positioning,math,fit}
-\usepgfplotslibrary{fillbetween}
 
 \tikzset{>=stealth, thick, global scale/.style={scale=#1,every node/.style={scale=#1}}}
 \tikzset{mid arrow/.style={postaction={decorate,decoration={markings,mark=at position .5 with {\arrow[#1]{stealth}}}}}}

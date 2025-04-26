@@ -536,7 +536,7 @@
 		\end{equation*}
 		Eliminando t na primeira equação e substituindo na segunda temos
 		\begin{align*}
-			\Aboxed{R & = \frac{v_0^2}{2g}sen2\theta_0.}
+			\Aboxed{R & = \frac{v_0^2}{g}sen2\theta_0.}
 		\end{align*}
 	\end{multicols}
 	\begin{corollary}
@@ -571,7 +571,7 @@
 				
 				\tkzDefPoints{0/0/O,4/0/A,0/4/B}
 				
-				\tkzDrawCircle[dashed](O,A)
+				\tkzDrawCircle[R, dashed](O,8)
 				
 				\tkzDefPointsBy[rotation=center O angle 45](O,A){p1,p2}
 				
@@ -662,7 +662,7 @@
 					
 					\tkzDefPoints{0/0/O,4/0/A,0/4/B}
 					
-					\tkzDrawCircle[dashed](O,A)
+					\tkzDrawCircle[R, dashed](O, 8)
 					
 					\tkzDefPointsBy[rotation=center O angle 45](O,A){p1,p2}
 					
@@ -682,7 +682,7 @@
 					\draw[->,color=red,line width=1.0pt] (p2) -- (p6) node [below] {$\vec{a}_y$};
 					
 					\tkzMarkAngle[size=0.7](p8,p2,p3)
-					\tkzLabelAngle[pos=-1](p8,p2,p3){$\theta$}
+					\tkzLabelAngle[pos=-1](p3,p2,p8){$\theta$}
 					
 					\tkzMarkAngle[size=0.7](A,O,p2)
 					\tkzLabelAngle(A,O,p2){$\theta$}

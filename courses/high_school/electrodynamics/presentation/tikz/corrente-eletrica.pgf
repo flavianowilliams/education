@@ -1,0 +1,53 @@
+﻿				\begin{tikzpicture}[scale=0.8,transform shape,font=\large]
+
+				\tkzInit[xmin=0,xmax=7,ymin=-2.5,ymax=2]
+				%\tkzGrid[color=gray!20]
+				\tkzClip[space=0.1]
+
+				\tkzDefPoints{1/0/A,6/0/B,6/1/C,1/1/D}
+
+				\tkzDefPointsBy[rotation=center B angle 0](B,C){a,b}
+				\tkzDefPointsBy[rotation=center B angle -180](B,C){c,d}
+				\tkzDefPointsBy[rotation=center B angle 90](B,d){i,j}
+				\tkzDefPointsBy[rotation=center A angle 0](A,D){e,f}
+				\tkzDefPointsBy[rotation=center A angle -180](A,D){g,h}
+
+				\draw[rotate=0,fill=gray!30] (B)ellipse (0.5cm and 1cm);
+				\draw[rotate=-90,dashed] (h) arc (0:180:1cm and 0.5cm);
+				\draw[rotate=90] (h) arc (180:0:1cm and 0.5cm);
+
+				\draw (f) -- (b);
+				\draw (h) -- (d);
+
+				\tkzDefPoints{6/0.2/t1}
+
+				\tkzText[font=\scriptsize](t1){$A=\pi R^2$}
+
+				\tkzDefPoints{2.5/-1.75/v1,2.5/-2.5/v2}
+
+				\draw[->] (v1) --++ (1.5,0) node [above,midway,font=\normalsize] {$\vec{E}$};
+
+				%configurando estilo das cargas
+				\tikzstyle{s1}=[tdplot_screen_coords, circle, radius=0.001, ball color=gray!50,font=\tiny];
+
+				\tkzDefPoints{2/0.5/q1,4/0.5/q2,2.5/0/q3,4.5/0/q4,2/-0.5/q5,4/-0.5/q6}
+
+				\draw[->] (q1) --++ (0.5,0);
+				\node[s1] at (q1) {+};
+
+				\draw[->] (q2) --++ (0.5,0);
+				\node[s1] at (q2) {+};
+
+				\draw[->] (q3) --++ (0.5,0);
+				\node[s1] at (q3) {+};
+
+				\draw[->] (q4) --++ (0.5,0);
+				\node[s1] at (q4) {+};
+
+				\draw[->] (q5) --++ (0.5,0);
+				\node[s1] at (q5) {+};
+
+				\draw[->] (q6) --++ (0.5,0);
+				\node[s1] at (q6) {+};
+
+				\end{tikzpicture}

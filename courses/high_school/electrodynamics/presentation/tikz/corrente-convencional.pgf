@@ -1,0 +1,44 @@
+﻿\begin{tikzpicture}[scale=1,transform shape, font=\Large]
+
+	\tkzInit[xmin=-3,xmax=8,ymin=0,ymax=8]
+%	\tkzGrid[color=gray!50]
+	\tkzClip[space=0.1]
+
+	\begin{scope}[shift={(0,0)}]
+
+		\tkzDefPoints{0/3/p1, 0/5/p2, -3/5/p3, -3/3/p4}
+
+		\tkzDrawPolygon[fill=gray!25](p1, p2, p3, p4)
+
+		\filldraw[fill=gray, draw=black] (0, 4.5) rectangle (0.3, 4.9) node [midway] {+};
+		\filldraw[fill=gray, draw=black] (0, 3.1) rectangle (0.3, 3.5) node [midway] {-};
+
+		\tkzDefPoint(-1.5, 4){t1}
+
+		\tkzText(t1){Bateria}
+
+		\tkzDefPoints{0.3/4.7/c0, 0.5/4.7/c1, 0.5/7/c2, 7/7/c3, 7/1/c4, 0.5/1/c5, 0.5/3.3/c6, 0.3/3.3/c7}
+
+		\draw (c0) -- (c1) -- (c2) -- (c3) -- (c4) -- (c5) -- (c6) -- (c7);
+
+		\tikzstyle{s1}=[circle, radius=0.001, ball color=gray!50, font=\tiny, at start];
+
+		\tkzDefPoints{0.1/6/e1, 3.5/7.25/e2, 7.25/4/e3, 3.5/0.75/e4, 0.1/1.5/e5}
+
+		\draw[->] (e1) --++ (0, 0.75) node [s1] {+};
+		\draw[->] (e2) --++ (0.75, 0) node [s1] {+};
+		\draw[->] (e3) --++ (0, -0.75) node [s1] {+};
+		\draw[->] (e4) --++ (-0.75, 0) node [s1] {+};
+		\draw[->] (e5) --++ (0, 0.75) node [s1] {+};
+
+		\tkzDefPoints{1/5.5/e1, 3.5/6.5/e2, 6.5/4/e3, 3.5/1.5/e4, 1/1.5/e5}
+
+		\draw[->, color=red] (e1) --++ (0, 0.75) node [right, midway] {$\vec{E}$};
+		\draw[->, color=red] (e2) --++ (0.75, 0) node [below, midway]  {$\vec{E}$};
+		\draw[->, color=red] (e3) --++ (0, -0.75) node [left, midway] {$\vec{E}$};
+		\draw[->, color=red] (e4) --++ (-0.75, 0) node [above, midway] {$\vec{E}$};
+		\draw[->, color=red] (e5) --++ (0, 0.75) node [right, midway] {$\vec{E}$};
+
+	\end{scope}
+
+\end{tikzpicture}

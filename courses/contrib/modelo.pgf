@@ -18,7 +18,10 @@
 		\def\A{1}
 		\def\B{-4}
 
-		\tkzFct[samples=400,domain=0:10, line width=1pt]{\A*x+\B}
+%		\tkzFct[samples=400,domain=0:10, line width=1pt]{\A*x+\B}
+		\tkzFct[samples=400,domain=0:10, line width=1pt]{1*x-4}
+		\tkzDefPointByFct(2)\tkzGetPoint{p1}
+		\tkzPointShowCoord[xlabel = $\alpha$, ylabel = $\beta$](p1)
 
 		\tkzDefPoints{9/1/s1,9/5/s2}
 

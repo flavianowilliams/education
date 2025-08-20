@@ -498,13 +498,13 @@
 \begin{columns}
 	\begin{column}{0.65\textwidth}
 		O objetivo de um refrigerador é remover calor de uma fonte fria e transferí-la para uma fonte mais quente. E para isso algo de fora (vizinhança) deve realizar trabalho sobre o gás empurrando o calor para a fonte quente. Portanto, um refrigerador seria uma máquina térmica funcionando no sentido contrário. O rendimento seria a capacidade de transferir calor $Q_2$ em relação ao trabalho $\tau$ associado a ele,
-		\begin{NodesList}[margin=3cm]
+%		\begin{NodesList}[margin=3cm]
 			\begin{align*}
-				R & = \frac{Q_2}{\tau},\AddNode\\
-				R & = \frac{Q_2}{Q_1-Q_2}.\AddNode
+				R & = \frac{Q_2}{\tau},\\
+				R & = \frac{Q_2}{\left|Q_1-Q_2\right|}.
 			\end{align*}
-			\LinkNodes{\tiny$(\tau=Q_2-Q_1)$}
-		\end{NodesList}
+%			\LinkNodes{\tiny$(\tau=Q_2-Q_1)$}
+%		\end{NodesList}
 	\end{column}
 	\begin{column}{0.35\textwidth}
 		\begin{figure}
@@ -652,7 +652,7 @@
 			A entropia está associado com o grau de desordem de um sistema, ou seja, em um sistema constituído por átomos, a entropia aumenta com o seu grau de movimentação. Em T = 0 K as vibrações cessariam, o que causaria um valor praticamente nulo para a entropia. Porém, \alert{pelas leis da física quântica tal estado é impossível de ser alcançado}.
 		\end{column}
 		\begin{column}[t]{0.5\textwidth}
-			Como consequência da terceira lei da Termodinâmica, se S = 0 em T = 0 K, então $\Delta S$ também será zero para qualquer processo que ocorre nessa temperatura, portanto qualquer máquina térmica ao atingir o zero absoluto conseguiria converter todo o calor que recebe em trabalho e o seu rendimento seria 100\%.
+			No caso da máquina de Carnot, se $S\rightarrow 0$ teremos $\Delta S = Q/T\rightarrow 0$, e assim poderemos ter  $Q_2\rightarrow 0$ se $T_2\rightarrow 0$. Portanto qualquer máquina térmica ao atingir o zero absoluto conseguiria converter todo o calor que recebe em trabalho, e o seu rendimento seria 100\%.
 		\end{column}
 	\end{columns}
 \end{frame}

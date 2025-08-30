@@ -1,4 +1,4 @@
-﻿\begin{tikzpicture}[scale=2,transform shape, font=\Large]
+﻿\begin{tikzpicture}[scale=1,transform shape, font=\Large]
 
 	\tkzInit[xmin=-10,xmax=10,ymin=-10,ymax=10]
 	\tkzGrid[color=gray!50]

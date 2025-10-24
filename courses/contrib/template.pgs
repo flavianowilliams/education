@@ -2,7 +2,8 @@
 \documentclass[brazil]{book}
 \usepackage{amsmath}
 \usepackage[charter]{mathdesign}
-\usepackage[latin1]{inputenc}
+%\usepackage[latin1]{inputenc}
+\usepackage[utf8]{inputenc}
 \usepackage[LGR,T1]{fontenc}
 \usepackage{tikz,pgfplots,tikz-3dplot,bm}
 \usepackage{circuitikz}

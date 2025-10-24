@@ -370,63 +370,81 @@
 	\end{figure}
 \end{frame}
 
-\begin{frame}[fragile]{Refração}
+\begin{frame}[fragile]{Refração (meio mais denso)}
 	\begin{itemize}
 		\footnotesize
-		\item[\ding{51}] A velocidade de uma onda diminui quando ela atravessa o meio 1 (mais fino) para o meio 2 (mais grosso) $(v_2<v_1)$;
-		\item[\ding{51}] O comprimento de onda também diminui quando ela atravessa um meio mais fino para o mais grosso, $\lambda_2<\lambda_1$;
-		\item[\ding{51}] Parte do pulso é refratado e parte é refletido;
+		\item[\ding{51}] A velocidade de uma onda diminui quando ela atravessa o meio 1 (mais fino) para o meio 2 (mais denso);
+		\item[\ding{51}] O comprimento de onda também diminui quando ela atravessa um meio mais fino para o mais grosso;
+		\item[\ding{51}] Parte do pulso é refratado e parte é refletido de maneira invertida;
 		\item[\ding{51}] A frequência é a mesma da fonte geradora do pulso, portanto ela não se altera no processo.
 	\end{itemize}
 	\begin{figure}
-		%\input{tikz/onda-estacionaria1.pgf}
-		\begin{tikzpicture}[scale=0.5,transform shape,samples=100]
-		
-		%parametros
-		\def\lambdax{8}
-		\def\lambday{4}
-		\def\a{2}
-		\def\k{4*pi/\lambdax}
-		\def\kb{4*pi/\lambday}
-		\def\om{0.5*pi}
-		\def\xm{1}
-		
-		%setup styles
-		\tikzstyle{s1}=[circle, radius=0.25, ball color=gray];
-		
-		%definindo funcao
-		\pgfmathdeclarefunction{f}{2}{\pgfmathparse{\a+\xm*cos(deg(\kb*#1-\om*#2))}}
-		\pgfmathdeclarefunction{ff}{2}{\pgfmathparse{\a+\xm*cos(deg(\k*#1-\om*#2))}}
-		
-		%curva
-		\draw[line width=1.5pt,domain=0:\lambdax,variable=\x,color=gray] plot (\x,{ff(\x,1)});
-		\draw[line width=4.5pt,domain=\lambdax:2*\lambdax,variable=\x,color=gray] plot (\x,{f(\x,1)});
-		\draw[line width=1.5pt,domain=\lambdax:0,variable=\x,color=gray,dashed] plot (\x,{ff(\x,3)});
-		
-		%linha de referencia
-		\draw[dashed] (0,\a) -- (4*\lambday,\a);
-		
-		%comprimento de onda
-		\draw[<->,color=gray] (0,3.5*\xm) -- (0.5*\lambdax,3.5*\xm) node [above,midway] {$\lambda_1$};
-		\draw[<->,color=gray] (\lambdax,3.5*\xm) -- (\lambdax+0.5*\lambday,3.5*\xm) node [above,midway] {$\lambda_2$};
-		
-		%texto
-		\node[text width=1cm] (t1) at (0.5*\lambdax,-0.5) {$\text{Onda incidente}$};
-		\draw[->]	(t1) -- (0.4*\lambdax,\xm);
-		
-		\node[text width=1cm] (t2) at (1.5*\lambdax,-0.5) {$\text{Onda refratada}$};
-		\draw[->]	(t2) -- (1.45*\lambdax,\xm);
-		
-		\node[text width=1cm] (t3) at (0.1*\lambdax,-0.5) {$\text{Onda refletida}$};
-		\draw[->]	(t3) -- (0.1*\lambdax,\xm);
-		
-		%velocidades
-		\draw[->,color=gray] (0.5*\lambdax+0.5,3.5*\xm) --++ (1,0) node[above,midway] {$\vec{v}_1$};	
-		\draw[<-,color=gray] (0.5*\lambdax+0.5,+\a-\xm-0.7) --++ (1,0) node[above,midway] {$-\vec{v}_1$};	
-		\draw[->,color=gray] (\lambdax+0.5*\lambday+2,3.5*\xm) --++ (1,0) node[above,midway] {$\vec{v}_2$};	
-		
+		\begin{tikzpicture}[scale=0.35,transform shape, font=\Large]
+			
+			\tkzInit[xmin=-10,xmax=10,ymin=-3,ymax=4]
+			%	\tkzGrid[color=gray!50]
+			\tkzClip[space=0.75]
+			
+			\begin{scope}[shift={(0,0)}]
+				
+				\tkzDefPoints{-10/2/pa, 4/2/pb, -4/3.5/pc}
+				
+				\draw[<-, line width=1pt, color=red] (pa) --++ (2,0) node [above, midway] {\huge $\vec{v}_{\text{refletido}}$};
+				
+				\draw[->, line width=1pt] (pb) --++ (2,0) node [above, midway] {\huge $\vec{v}_{\text{refratado}}$};
+				
+				\draw[->, line width=1pt] (pc) --++ (2,0) node [above, midway] {\huge $\vec{v}_{\text{incidente}}$};
+				
+				\def\A{5}
+				\def\B{5}
+				
+				\tkzFct[samples=400,domain=-10:0, line width=1pt]{3*cos(0.5*3.14*x-3.14/2)}
+				\tkzFct[samples=400,domain=0:10, line width=5pt]{1.5*cos(3.14*x-3.14/2)}
+				\tkzFct[samples=400,domain=-10:0, line width=1pt, dashed, color=red]{1.5*cos(0.5*3.14*x+3.14/2)}
+				
+			\end{scope}
+			
 		\end{tikzpicture}
-		\caption*{\footnotesize Passagem de uma onda de um meio para outro.}
+		\caption*{\footnotesize Refração da onda no meio mais denso.}
+	\end{figure}
+\end{frame}
+
+\begin{frame}[fragile]{Refração (meio menos denso)}
+	\begin{itemize}
+		\footnotesize
+		\item[\ding{51}] A velocidade de uma onda aumenta quando ela atravessa o meio 1 (mais fino) para o meio 2 (mais denso);
+		\item[\ding{51}] O comprimento de onda também aumenta quando ela atravessa um meio mais fino para o mais grosso;
+		\item[\ding{51}] A onda é refletida de maneira direta e não invertida;
+		\item[\ding{51}] A frequência é a mesma da fonte geradora do pulso, portanto ela não se altera no processo.
+	\end{itemize}
+	\begin{figure}
+		\begin{tikzpicture}[scale=0.35,transform shape, font=\Large]
+			
+			\tkzInit[xmin=-10,xmax=10,ymin=-3,ymax=4]
+			%	\tkzGrid[color=gray!50]
+			\tkzClip[space=0.75]
+			
+			\begin{scope}[shift={(0,0)}]
+				
+				\tkzDefPoints{-10/3.5/pa, 4/2/pb, -4/3.5/pc}
+				
+				\draw[<-, line width=1pt, color=red] (pa) --++ (2,0) node [above, midway] {\huge $\vec{v}_{\text{refletido}}$};
+				
+				\draw[->, line width=1pt] (pb) --++ (2,0) node [above, midway] {\huge $\vec{v}_{\text{refratado}}$};
+				
+				\draw[->, line width=1pt] (pc) --++ (2,0) node [above, midway] {\huge $\vec{v}_{\text{incidente}}$};
+				
+				\def\A{5}
+				\def\B{5}
+				
+				\tkzFct[samples=400,domain=-10:0, line width=5pt]{3*cos(3.14*x-3.14/2)}
+				\tkzFct[samples=400,domain=0:10, line width=1pt]{1.5*cos(0.5*3.14*x-3.14/2)}
+				\tkzFct[samples=400,domain=-10:0, line width=5pt, color=red]{1.5*cos(3.14*x-3.14/2)}
+				
+			\end{scope}
+			
+		\end{tikzpicture}
+		\caption*{\footnotesize Refração da onda no meio menos denso.}
 	\end{figure}
 \end{frame}
 

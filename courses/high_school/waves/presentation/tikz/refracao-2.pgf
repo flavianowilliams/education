@@ -1,0 +1,26 @@
+﻿\begin{tikzpicture}[scale=0.4,transform shape, font=\Large]
+
+	\tkzInit[xmin=-10,xmax=10,ymin=-3,ymax=4]
+%	\tkzGrid[color=gray!50]
+	\tkzClip[space=0.75]
+
+	\begin{scope}[shift={(0,0)}]
+
+		\tkzDefPoints{-10/3.5/pa, 4/2/pb, -4/3.5/pc}
+
+		\draw[<-, line width=1pt, color=red] (pa) --++ (2,0) node [above, midway] {\huge $\vec{v}_{\text{refletido}}$};
+
+		\draw[->, line width=1pt] (pb) --++ (2,0) node [above, midway] {\huge $\vec{v}_{\text{refratado}}$};
+
+		\draw[->, line width=1pt] (pc) --++ (2,0) node [above, midway] {\huge $\vec{v}_{\text{incidente}}$};
+
+		\def\A{5}
+		\def\B{5}
+
+		\tkzFct[samples=400,domain=-10:0, line width=5pt]{3*cos(3.14*x-3.14/2)}
+		\tkzFct[samples=400,domain=0:10, line width=1pt]{1.5*cos(0.5*3.14*x-3.14/2)}
+		\tkzFct[samples=400,domain=-10:0, line width=5pt, color=red]{1.5*cos(3.14*x-3.14/2)}
+
+	\end{scope}
+
+\end{tikzpicture}

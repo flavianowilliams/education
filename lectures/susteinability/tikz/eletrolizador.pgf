@@ -1,0 +1,72 @@
+﻿\begin{tikzpicture}[scale=2,transform shape, font=\Large]
+
+	\tkzInit[xmin=-3,xmax=3,ymin=0,ymax=11]
+	\tkzClip[space=0.75]
+
+	\tkzDefPoints{-2/11/A, 2/11/B, -2/10/C, 2/10/D}
+
+	\draw (B) to [american, battery, v^=$\varepsilon$] (A);
+	\draw (A) -- (C);
+	\draw (B) -- (D);
+
+	\tkzDefPoints{-3/9/A, 3/9/B, -3/1/C, 3/1/D}
+
+	\tkzDrawPolygon(B, A, C, D)
+
+	\tkzDefPoints{-2.25/2/A, -1.75/2/B, -2.25/10/C, -1.75/10/D}
+
+	\tkzDrawPolygon[fill=gray](B, A, C, D)
+
+	\tkzDefPoints{2.25/2/A, 1.75/2/B, 2.25/10/C, 1.75/10/D}
+
+	\tkzDrawPolygon[fill=gray](B, A, C, D)
+
+	\tkzDefPoints{-2/0/A, 2/0/B}
+
+	\draw(A) to [R=$R$, *-*] (B);
+
+	\tkzDefPoints{-3/8/A, 3/8/B, -3/1/C, 3/1/D}
+
+	\foreach \x in {1,...,20}{
+		\pgfmathparse{random(2.3,3)}\pgfmathresult
+		\draw (-1.25+0.25*rand, 5+3*rand) circle (1mm);
+	}
+
+	\foreach \x in {1,...,10}{
+		\pgfmathparse{random(2.3,3)}\pgfmathresult
+		\draw (1.25+0.25*rand, 5+3*rand) circle (1mm);
+	}
+
+	\draw[decorate, decoration={snake, amplitude=0.5mm, segment length=6mm}, line width=1pt] (A) -- (B);
+
+	\tkzDrawPolygon[fill=blue!50, opacity=0.5, color=blue!50](B, A, C, D)
+
+	\tkzDefPoint(0, 4){A}
+
+	\draw[->, line width=3pt] (-0.4, 4) --++ (-0.5, 0)  node [right, at start] {$H^+$};
+
+	\tkzDefPoint(0, 6){A}
+
+	\draw[->, line width=3pt] (0.6, 6) --++ (0.5, 0) node [left, at start] {$OH^-$};
+
+	\tkzDefPoints{-0.5/11/A}
+
+	\draw[->, line width=2pt] (-1, 11.25) --++ (-1, 0) node [right, at start] {$e^-$};
+
+	\draw[->, line width=2pt] (-1, 11.25) --++ (-1, 0);
+
+	\draw[->, line width=2pt] (-2.25, 11) --++ (0, -0.75);
+
+	\draw[<-, line width=2pt] (2.25, 11) --++ (0, -0.75);
+
+	\draw[->, line width=2pt] (1.25, 11.25) --++ (-0.5, 0)  node [right, at start] {$e^-$};
+
+	\tkzDefPoints{-3.25/10.5/A}
+	\draw[->, line width=2pt] (A) -- (-2.25, 10);
+	\tkzText[fill=white, above](A){\normalsize Cátodo}
+
+	\tkzDefPoints{3.25/10.5/A}
+	\draw[->, line width=2pt] (A) -- (2.25, 10);
+	\tkzText[fill=white, above](A){\normalsize Ânodo}
+
+\end{tikzpicture}

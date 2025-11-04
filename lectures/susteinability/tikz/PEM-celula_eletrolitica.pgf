@@ -1,0 +1,90 @@
+﻿\begin{tikzpicture}[scale=3,transform shape, font=\Large]
+
+	\tkzInit[xmin=-1.5,xmax=19, ymin=-1, ymax=9]
+%	\tkzGrid[color=gray!50]
+	\tkzClip[space=1]
+
+	\begin{scope}[shift={(-1, -1)}]
+
+		\tkzDefPoints{2/10/A, 7/10/B, 2/9/C, 7/9/D}
+	
+		\draw (A) to [american, battery, v=$\varepsilon$, line width=2pt] (B);
+		\draw[line width=2pt] (A) -- (C);
+		\draw[line width=2pt] (B) -- (D);
+	
+		\draw[fill=gray!50] (1, 1) rectangle (3.5, 9);
+
+		\draw[fill=gray!50] (5.5, 1) rectangle (8, 9);
+
+		\draw[fill=red!50] (3.5, 1) rectangle (5.5, 9);
+
+		\draw[->, line width=2pt] (2.5, 10.25) --++ (1, 0) node [above, midway] {$e^-$};
+
+		\draw[->, line width=2pt] (5.5, 10.25) --++ (1, 0) node [above, midway] {$e^-$};
+
+		\tkzDefPoints{1/1.5/A, 1/8/B, 8/8/C}
+
+		\draw[fill=black!50] (A) rectangle (0.75, 2);
+		\draw[fill=black!50] (B) rectangle (0.75, 8.5);
+		\draw[fill=black!50] (C) rectangle (8.25, 8.5);
+
+		\draw[->, line width=7pt] (-0.5, 1.75) --++ (1, 0) node [above, midway] {$H_2O$};
+		\draw[<-, line width=7pt] (-0.5, 8.25) --++ (1, 0) node [above, midway] {$\frac{1}{2}O_2$};
+		\draw[->, line width=7pt] (8.5, 8.25) --++ (1, 0) node [above, midway] {$H_2$};
+
+		\tkzText[below](2.25, 1){Anodo};
+		\tkzText[below](4.5, 1){PEM};
+		\tkzText[below](6.75, 1){Catodo};
+
+		\draw[->, line width=7pt] (3, 5) --++ (3, 0) node [above, midway] {$2H^+$};
+
+		\tkzText(4.5, 0){$H_2O\rightarrow H_2+\frac{1}{2}O_2$}
+		\tkzText(4.5, -0.75){$(\Delta H > 0)$}
+
+	\end{scope}
+
+	\begin{scope}[shift={(10, -1)}]
+
+		\tkzDefPoints{2/10/A, 7/10/B, 2/9/C, 7/9/D, 4.5/10/E}
+	
+		\draw[line width=2pt] (A) -- (C);
+		\draw[line width=2pt] (B) -- (D);
+	
+		\draw[fill=gray!50] (1, 1) rectangle (3.5, 9);
+
+		\draw[fill=gray!50] (5.5, 1) rectangle (8, 9);
+
+		\draw[fill=red!50] (3.5, 1) rectangle (5.5, 9);
+
+		\draw (A) -- (B);
+
+		\tkzText[fill=gray!30](E){\huge Work}
+
+		\draw[->, line width=2pt] (2.5, 10.25) --++ (1, 0) node [above, midway] {$e^-$};
+
+		\draw[->, line width=2pt] (5.5, 10.25) --++ (1, 0) node [above, midway] {$e^-$};
+
+		\tkzDefPoints{8/1.5/A, 1/8/B, 8/8/C}
+
+		\draw[fill=black!50] (A) rectangle (8.25, 2);
+		\draw[fill=black!50] (B) rectangle (0.75, 8.5);
+		\draw[fill=black!50] (C) rectangle (8.25, 8.5);
+
+		\draw[->, line width=7pt] (8.5, 1.75) --++ (1, 0) node [above, midway] {$H_2O$};
+		\draw[->, line width=7pt] (-0.5, 8.25) --++ (1, 0) node [above, midway] {$H_2$};
+		\draw[<-, line width=7pt] (8.5, 8.25) --++ (1, 0) node [above, midway] {$\frac{1}{2}O_2$};
+
+		\tkzText[below](2.25, 1){Anodo};
+		\tkzText[below](4.5, 1){PEM};
+		\tkzText[below](6.75, 1){Catodo};
+
+		\draw[->, line width=7pt] (3, 5) --++ (3, 0) node [above, midway] {$2H^+$};
+
+		\tkzText(4.5, 0){$H_2+\frac{1}{2}O_2\rightarrow H_2O$}
+		\tkzText(4.5, -0.75){$(\Delta H < 0)$}
+
+	\end{scope}
+
+	\fill[blue!25, opacity=0.25] (-2.5, -2) rectangle (20, 10);
+
+\end{tikzpicture}

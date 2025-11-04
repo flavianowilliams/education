@@ -1,0 +1,53 @@
+﻿\begin{tikzpicture}[scale=1,transform shape, font=\Large]
+
+	\tkzInit[xmin=-10,xmax=10,ymin=-10,ymax=10]
+	\tkzGrid[color=gray!50]
+	\tkzClip[space=0.75]
+
+	\begin{scope}[shift={(0,0)}]
+
+		\tkzDefPoints{0/0/O}
+
+		\tkzDrawX[label = x, right]
+		\tkzDrawY[label = y, above]
+		\tkzLabelX
+		\tkzLabelY
+
+		\node[opacity=1] (fig1) at (1,1) {\includegraphics[scale=0.25]{homem_palito.png}};
+
+		\def\A{1}
+		\def\B{-4}
+
+%		\tkzFct[samples=400,domain=0:10, line width=1pt]{\A*x+\B}
+		\tkzFct[samples=400,domain=0:10, line width=1pt]{1*x-4}
+		\tkzDefPointByFct(2)\tkzGetPoint{p1}
+		\tkzPointShowCoord[xlabel = $\alpha$, ylabel = $\beta$](p1)
+
+		\tkzDefPoints{9/1/s1,9/5/s2}
+
+		\tkzDrawPoints(s1, s2)
+		\tkzLabelPoints(s1, s2)
+
+		\tkzDefPoints{1/0/pa}
+		\tkzDefCircle[R](O, 1cm)\tkzGetPoint{x}
+		\tkzDrawCircle(O, x)
+
+		\draw (s2) to[dim arrow={label=modulo},sloped] (s1);
+
+	\end{scope}
+
+	\begin{scope}[shift={(-9,3)}]
+
+		\tkzDefPoints{0/0/O, 0/3/p0, 1/3/p1, 2/3/p2, 4/3/p3, 7/0/p4, 7/3/p5, 1/4.5/p6, 4/4.5/p7}
+
+		\draw (O) -- (p0) to (p1);
+		\draw(p2) to [/tikz/circuitikz/bipoles/length=15pt,R,l_=$r$] (p1);
+		\draw (p3) to [american, battery, v_>=$\varepsilon$] (p2);
+		\draw(O) to [R=$R$, *-*] (p4);
+		\draw(p3) to [ospst, *-*] (p5);
+		\draw (p4) to[ammeter] (p5);
+		\draw (p1) -- (p6) to [voltmeter] (p7) to (p3);
+
+	\end{scope}
+
+\end{tikzpicture}

@@ -1,0 +1,26 @@
+﻿\begin{tikzpicture}[scale=1,transform shape, font=\Large]
+
+	\tkzInit[xmin=0,xmax=10,ymin=0,ymax=10]
+%	\tkzGrid[color=gray!50]
+	\tkzClip[space=0.75]
+
+	\begin{scope}[shift={(0,0)}]
+
+		\tkzDefPoints{0/0/O}
+
+		\tkzDrawX[label = Reacao, below, midway, sloped, noticks, line width=2pt]
+		\tkzDrawY[label = Energia, above, midway, sloped, noticks, line width=2pt]
+
+		\tkzDefPoints{10/2/A,10/4/B}
+
+		\draw[dashed] (0, 2) -- (10, 2);
+		\draw[line width=2pt, color=red] (0, 2) -- (2.5, 2) .. controls (4, 2) and (5, 16) .. (7, 6) .. controls (7.5, 4) .. (10, 4);
+
+		\draw (A) to[dim arrow'={label=$\Delta G$},sloped] (B);
+
+		\tkzText[above](1.5, 2){$H_2O$}
+		\tkzText[above](9, 4){$\frac{1}{2}O_2+H_2$}
+
+	\end{scope}
+
+\end{tikzpicture}

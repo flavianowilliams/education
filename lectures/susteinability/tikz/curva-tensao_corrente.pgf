@@ -1,0 +1,53 @@
+﻿\begin{tikzpicture}[scale=2,transform shape, font=\Large]
+
+	\tkzInit[xmin=0,xmax=10,ymin=0,ymax=5]
+%	\tkzGrid[color=gray!50]
+	\tkzClip[space=1.25]
+
+	\begin{scope}[shift={(0,0)}]
+
+		\tkzDefPoints{0/0/O}
+
+		\tkzDrawX[label = Densidade de corrente, below, midway, noticks, line width=2pt]
+		\tkzDrawY[label = Tensão, above = 1mm, midway, sloped, noticks, line width=2pt]
+
+		\def\B{1.23}
+
+		\def\A{1}
+
+		\tkzText[left](0, \B){\normalsize 1,48 V}
+
+		\tkzText[right](10, 2.9){\normalsize $\epsilon_{\text{eletrólito}}$}
+		\tkzText[right](10, 3.9){\normalsize $\epsilon_{\text{cátodo}}$}
+		\tkzText[right](10, 4.2){\normalsize $\epsilon_{\text{ânodo}}$}
+		\tkzText[right](10, 4.5){\normalsize $\epsilon_{\text{eletrodo}}$}
+
+		\tkzFct[samples=400,domain=0:10, line width=2pt, color=red]{\A*x**0.5+\B}
+
+		\def\A{0.95}
+
+		\tkzFct[samples=400,domain=0:10, line width=2pt, color=red]{\A*x**0.5+\B}
+
+		\def\A{0.8}
+
+		\tkzFct[samples=400,domain=0:10, line width=2pt, color=red]{\A*x**0.5+\B}
+
+		\def\A{0.5}
+
+		\tkzFct[samples=400,domain=0:10, line width=2pt, color=red]{\A*x**0.5+\B}
+
+		\draw[dashed] (0, \B) -- (10, \B);
+
+%		\tkzDefPointByFct(2)\tkzGetPoint{p1}
+%		\tkzPointShowCoord[xlabel = $\alpha$, ylabel = $\beta$](p1)
+
+%		\tkzDefPoints{9/1/s1,9/5/s2}
+
+%		\tkzDrawPoints(s1, s2)
+%		\tkzLabelPoints(s1, s2)
+
+%		\draw (s2) to[dim arrow={label=modulo},sloped] (s1);
+
+	\end{scope}
+
+\end{tikzpicture}

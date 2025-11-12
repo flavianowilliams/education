@@ -1057,13 +1057,220 @@
 	\end{columns}
 \end{frame}
 
-\begin{frame}{Ondas estacionárias}
+\begin{frame}[fragile]{Ondas estacionárias}
 	\begin{columns}
 		\begin{column}[c]{0.5\textwidth}
-			conteúdo...
+			Uma onda estacionária é formada quando duas ondas com a mesma amplitude, número de onda e frequência se encontram em sentidos contrários. O resultado é uma onda que não se propaga no espaço. A onda estacionária pode ser obtida em instrumentos de corda. Nesses instrumentos, a onda progressiva sofre reflexão nas extremidades da corda e retorna invertida com a mesma amplitude e comprimento de onda.
 		\end{column}
 		\begin{column}[c]{0.5\textwidth}
-			conteúdo...
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.3, auto, samples=70, transform shape, font=\Large]
+					
+					%parametros gerais
+					\def\xm{1.2}
+					\def\ta{3.14}
+					\def\tb{6.28}
+					\def\ty{-5}
+					\def\om{1.5}
+					\def\k{1}
+					
+					%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+					%grafico 1
+					
+					%definindo funcao
+					\pgfmathdeclarefunction{ff}{2}{\pgfmathparse{\xm*cos(deg(\k*#1-\om*#2))}}
+					
+					%eixo
+					\draw[line width=1.0pt,->] (0,-{(\xm+1)}) -- (0,{(\xm+1)}) node[above] {};
+					\draw[line width=1.0pt] (0,0) -- (5*\ta,0);
+					
+					%curva
+					\draw[line width=1.0pt,domain=0:5*\ta,variable=\x,color=red] plot (\x,{ff(\x,1)});
+					
+					%velocidade
+					\draw[->, line width=1pt] (4.1*\ta,1.5*\xm) -- (4.6*\ta,1.5*\xm) node[above,midway] {$\vec{v}$};
+					
+					%periodicidade
+					\node at (5.5*\ta,0) {$\large{\cdots}$};
+					
+					%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+					%grafico 2
+					
+					%definindo funcao
+					\pgfmathdeclarefunction{ff2}{2}{\pgfmathparse{\ty+\xm*cos(deg(\k*#1+\om*#2+\tb))}}
+					
+					%eixo
+					\draw[line width=1.0pt,->] (0,-{(\xm+1)+\ty}) -- (0,{(\xm+1)+\ty}) node[above] {};
+					\draw[line width=1.0pt] (0,0+\ty) -- (5*\ta,0+\ty);
+					
+					%curva
+					\draw[line width=1.0pt,domain=0:5*\ta,variable=\x,color=red] plot (\x,{ff2(\x,1)});
+					
+					%velocidade
+					\draw[<-, line width=1pt] (4.1*\ta,1.5*\xm+\ty) -- (4.6*\ta,1.5*\xm+\ty) node[above,midway] {$-\vec{v}$};
+					
+					%periodicidade
+					\node at (5.5*\ta,0+\ty) {$\large{\cdots}$};
+					
+					%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+					%grafico 3
+					
+					%parede
+					\fill [pattern = north west lines] (-0.2,-1+2.25*\ty) rectangle (0,1+2.25*\ty);
+					\draw (0,-1+2.25*\ty) -- (0,1+2.25*\ty);
+					
+					\fill [pattern = north west lines] (5*\ta+0.2,-1+2.25*\ty) rectangle (5*\ta,1+2.25*\ty);
+					\draw (5*\ta,-1+2.25*\ty) -- (5*\ta,1+2.25*\ty);
+					
+					%definindo funcao
+					\pgfmathdeclarefunction{ff4}{2}{\pgfmathparse{2.25*\ty+2*\xm*sin(deg(-\k*#1))*sin(deg(\om*#2))}}
+					\pgfmathdeclarefunction{ff3}{2}{\pgfmathparse{2.25*\ty+2*\xm*sin(deg(\k*#1))*sin(deg(\om*#2))}}
+					
+					%eixo
+					%		\draw[line width=1.0pt,->] (0,-{(2*\xm+1)+2.25*\ty}) -- (0,{(2*\xm+1)+2.25*\ty}) node[above] {};
+					\draw[line width=1.0pt,dashed] (0,0+2.25*\ty) -- (5*\ta,0+2.25*\ty);
+					
+					%curva
+					\draw[line width=1.0pt,domain=0:5*\ta,variable=\x,color=red] plot (\x,{ff3(\x,1)});
+					\draw[line width=1.0pt,domain=0:5*\ta,variable=\x,color=red] plot (\x,{ff4(\x,1)});
+					
+					%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+					
+					\foreach \x in {0.5,1,...,15}
+					\draw[<->, line width=1pt] (\x,{ff3(\x,1)}) -- (\x,{ff4(\x,1)});
+					
+					\coordinate (t1a) at (6.28,2.25*\ty);
+					\coordinate (t1b) at (6.28,2.5+2.25*\ty);
+					
+					\draw[color=blue, line width=1pt](t1a) circle (7pt);
+					\draw[<-, line width=1pt, color=blue]($(t1a)+(0,0.3)$) -- (t1b);
+					\tkzText[color=black, opacity=100,fill=gray!20](t1b){no}
+					
+				\end{tikzpicture}
+				\caption*{\footnotesize Ondas estacionárias.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Modos normais de vibração}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			Considerando que na ida e vinda o percurso completo da onda seria 2L, onde L é o comprimento da corda, teremos
+			\begin{align*}
+				n\lambda & = 2L,
+			\end{align*}
+			onde n representa o modo normal de vibração (veja a figura ao lado). Sabendo que $v = \lambda f$, teremos
+			\begin{align*}
+				\boxed{\nu = \frac{nv}{2L}\quad (n=1,2,3,\cdots).}
+			\end{align*}
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{figure}
+				\centering
+				%\input{tikz/modos-normais.pgf}
+				\begin{tikzpicture}[scale=0.4, auto, transform shape,font=\huge, samples=200]
+					
+					%parametros gerais
+					\def\t{-3}
+					\def\tt{2*\t}
+					\def\ttt{3*\t}
+					
+					\def\l{8}
+					\def\k{pi/\l}
+					\def\om{0.5*pi}
+					\def\xm{1}
+					
+					%definindo funcao
+					\pgfmathdeclarefunction{f}{2}{\pgfmathparse{\xm*cos(deg(\k*#1-\om*#2))}}
+					
+					%parede
+					\fill [pattern = north west lines] (-0.25,-\xm) rectangle (0,\xm);
+					\draw (0,-\xm) -- (0,\xm);
+					
+					%parede
+					\fill [pattern = north west lines] (\l,-\xm) rectangle (0.25+\l,\xm);
+					\draw (\l,-\xm) -- (\l,\xm);
+					
+					%curva
+					\draw[line width=1.5pt,domain=0:\l,variable=\x,color=gray] plot (\x,{f(\x,1)});
+					\draw[line width=1.5pt,domain=\l:0,variable=\x,color=gray,dashed] plot (\x,{f(\x,3)});
+					
+					%texto
+					\node[right] at (\l+0.25,0) {$n=1\quad (\textcolor{red}{1}\lambda = 2L)$};
+					
+					%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+					%		grafico 2
+					
+					%definindo funcao
+					\pgfmathdeclarefunction{ff}{2}{\pgfmathparse{\t+\xm*cos(deg(2*\k*#1-\om*#2))}}
+					
+					%parede
+					\fill [pattern = north west lines] (-0.25,\t-\xm) rectangle (0,\t+\xm);
+					\draw (0,\t-\xm) -- (0,\t+\xm);
+					
+					%parede
+					\fill [pattern = north west lines] (\l,\t-\xm) rectangle (0.25+\l,\t+\xm);
+					\draw (\l,\t-\xm) -- (\l,\t+\xm);
+					
+					%curva
+					\draw[line width=1.5pt,domain=0:\l,variable=\x,color=gray] plot (\x,{ff(\x,1)});
+					\draw[line width=1.5pt,domain=\l:0,variable=\x,color=gray,dashed] plot (\x,{ff(\x,3)});
+					
+					%texto
+					\node[right] at (\l+0.25,\t) {$n=2\quad (\textcolor{red}{2}\lambda = 2L)$};
+					
+					%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+					%		grafico 3
+					
+					%definindo funcao
+					\pgfmathdeclarefunction{fff}{2}{\pgfmathparse{\tt+\xm*cos(deg(3*\k*#1-\om*#2))}}
+					
+					%parede
+					\fill [pattern = north west lines] (-0.25,\tt-\xm) rectangle (0,\tt+\xm);
+					\draw (0,\tt-\xm) -- (0,\tt+\xm);
+					
+					%parede
+					\fill [pattern = north west lines] (\l,\tt-\xm) rectangle (0.25+\l,\tt+\xm);
+					\draw (\l,\tt-\xm) -- (\l,\tt+\xm);
+					
+					%curva
+					\draw[line width=1.5pt,domain=0:\l,variable=\x,color=gray] plot (\x,{fff(\x,1)});
+					\draw[line width=1.5pt,domain=\l:0,variable=\x,color=gray,dashed] plot (\x,{fff(\x,3)});
+					
+					%texto
+					\node[right] at (\l+0.25,\tt) {$n=3\quad (\textcolor{red}{3}\lambda = 2L)$};
+					
+					%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+					%		grafico 4
+					
+					%definindo funcao
+					\pgfmathdeclarefunction{ffff}{2}{\pgfmathparse{\ttt+\xm*cos(deg(4*\k*#1-\om*#2))}}
+					
+					%parede
+					\fill [pattern = north west lines] (-0.25,\ttt-\xm) rectangle (0,\ttt+\xm);
+					\draw (0,\ttt-\xm) -- (0,\ttt+\xm);
+					
+					%parede
+					\fill [pattern = north west lines] (\l,\ttt-\xm) rectangle (0.25+\l,\ttt+\xm);
+					\draw (\l,\ttt-\xm) -- (\l,\ttt+\xm);
+					
+					%curva
+					\draw[line width=1.5pt,domain=0:\l,variable=\x,color=gray] plot (\x,{ffff(\x,1)});
+					\draw[line width=1.5pt,domain=\l:0,variable=\x,color=gray,dashed] plot (\x,{ffff(\x,3)});
+					
+					%linguica
+					\draw (0,\ttt-\xm-0.1) -- (0,\ttt-\xm-1.1);
+					\draw (\l,\ttt-\xm-0.1) -- (\l,\ttt-\xm-1.1);
+					\draw (0,\ttt-\xm-1) -- (\l,\ttt-\xm-1) node [above,midway] {L};
+					
+					%texto
+					\node[right] at (\l+0.25,\ttt) {$n=4\quad (\textcolor{red}{4}\lambda = 2L)$};
+					
+				\end{tikzpicture}
+				\caption*{\footnotesize Modos normais de vibração.}
+			\end{figure}
 		\end{column}
 	\end{columns}
 \end{frame}

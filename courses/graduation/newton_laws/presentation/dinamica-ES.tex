@@ -3,7 +3,7 @@
 \documentclass[brazil,10.5pt,aspectratio=169]{beamer}
 %
 %carregando preâmbulo
-\input{../../contrib/preamble}
+\input{../../../contrib/preamble}
 
 %Título
 
@@ -31,6 +31,7 @@
 		\item[\ding{51}] A mecânica newtoniana pode ser aplicado no estudo dos mais diversos objetos;
 		\item[\ding{51}] A mecânica newtoniana não se aplica a todos os casos:
 		\begin{enumerate}
+			\item [\ding{55}] Referenciais não-inerciais;
 			\item [\ding{55}] Para velocidades muito elevadas, se comparadas a velocidade da luz, a mecânica newtoniana é substituída pela teoria da relatividade restrita; 
 			\item [\ding{55}] Para objetos muito pequenos, de dimensões subatômicas, a mecânica newtoniana é substituída pela mecânica quântica. 
 		\end{enumerate}
@@ -86,6 +87,26 @@
 			\end{figure}
 		\end{column}
 	\end{columns}
+\end{frame}
+
+\begin{frame}{Transformada de Galileu}
+	\begin{columns}
+		\begin{column}[c]{0.5\textwidth}
+			Podemos supor que João se encontra em um referencial representado graficamente pelo sistema de coordenadas S(x, y, z, t) e Maria no sistema de coordenadas S'(x', y', z', t'). Considerando o movimento e supondo que o referencial da Maria é inercial (não acelerado), temos o seguinte conjunto de equações ao lado.
+		\end{column}
+		\begin{column}[c]{0.5\textwidth}
+			\begin{align*}
+				x' & = x -vt,\\
+				y' & = y,\\
+				z' & = z,\\
+				t' & = t.
+			\end{align*}
+			Estas transformações de S para S' são chamadas de \alert{transformadas de Galileu}.
+		\end{column}
+	\end{columns}
+	\begin{corollary}
+		Na mecânica newtoniana temos que t' = t, consideramos que o tempo é absoluto e independe do referencial.
+	\end{corollary}
 \end{frame}
 
 \begin{frame}{Referenciais inerciais}
@@ -222,8 +243,9 @@
 			
 				\tkzDefPoints{-1/-6/a,1/-6/b,-1/-8/c,1/-8/d,0/-7/e}
 			
-				\tkzDrawCircle[R,fill=gray](O,0.25mm)
-			
+				\tkzDefCircle[R](O,0.1cm)\tkzGetPoint{p}			
+				\tkzDrawCircle[dashed, fill=gray](O, p)
+
 				\tkzText(O){M}
 			
 				\begin{scope}[shift={(0,-8.5)},font=\normalsize]

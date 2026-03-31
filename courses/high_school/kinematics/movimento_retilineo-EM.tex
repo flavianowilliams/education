@@ -279,7 +279,7 @@
 	\begin{column}[c]{0.5\textwidth}
 		Da expressão $v_2=v_1+a(t_2-t_1)$, se definirmos que o instante inicial t\textsubscript{1} = 0 segundo, podemos dizer que S\textsubscript{1} é a posição inicial, e a equação se transforma em uma função do primeiro grau, onde v é a variável dependente da variável t,
 		\begin{align*}
-		v(t) = v_1+vt.
+		v(t) = v_1+at.
 		\end{align*}
 		Sabendo que uma função pode ser representada em um gráfico v(t) versus t, teremos
 	\end{column}
@@ -335,7 +335,7 @@
 		\end{column}
 		\begin{column}[c]{0.5\textwidth}
 			\begin{figure}
-				\begin{tikzpicture}[scale=0.55,transform shape, font=\Large]
+				{\begin{tikzpicture}[scale=0.55,transform shape, font=\Large]
 	
 				\tkzInit[xmin=0,xmax=8,ymin=0,ymax=6]
 				%	\tkzGrid[color=gray!50]
@@ -347,8 +347,8 @@
 				
 				\tkzDrawX[label={t (s)}, right]
 				\tkzDrawY[label={v (m/s)}, above]
-				%				\tkzLabelX
-				%				\tkzLabelY
+%				\tkzLabelX
+%				\tkzLabelY
 				
 				\def\A{0.4}
 				\def\B{3}
@@ -373,7 +373,7 @@
 				
 				\end{scope}
 				
-				\end{tikzpicture}
+				\end{tikzpicture}}
 				\caption*{\footnotesize Deslocamento como a área sob o gráfico.}
 			\end{figure}
 		\end{column}
@@ -394,7 +394,6 @@
 				\begin{tikzpicture}[scale=0.5,transform shape, font=\Large]
 
 					\tkzInit[xmin=0,xmax=7,ymin=-4,ymax=3]
-%					\tkzGrid[color=gray!50]
 					\tkzClip[space=1.5]
 					
 					\begin{scope}[shift={(0,0)}]
@@ -410,9 +409,6 @@
 					\tkzDefPointByFct(3.5)\tkzGetPoint{v}
 					
 					\tkzDefPoints{3/1/A,0/-2.25/B, 7/-2.25/C}
-					
-					%					\tkzDrawPoints(A,B)
-					%					\tkzLabelPoints[above left](A,B)
 					
 					\draw (v) to[dim arrow={label=Retr. acel.}, color=black, line width=0.5pt] (B);
 					\draw (C) to[dim arrow={label=Prog. acel.}, color=black, line width=0.5pt] (v);

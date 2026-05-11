@@ -80,7 +80,65 @@
 	\end{corollary}
 \end{frame}
 
-\begin{frame}{Conservação da carga elétrica}
+\begin{frame}{Lei da conservação da carga elétrica}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			Considerando uma corrente estacionária, ou seja, um fluxo de carga elétrica invariante no tempo, podemos dizer que a taxa de variação da carga que atravessa a seção transversal é dada por
+			\begin{equation*}
+				\boxed{\frac{dq}{dt} = \int \vec{J}\cdot d\vec{A}.}
+			\end{equation*}
+			A equação acima é chamada de lei de conservação da carga elétrica, onde definimos a densidade de corrente $\vec{J}$ como a quantidade de carga elétrica que atravessa cada unidade de área da seção transversal por unidade de tempo.
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{equation*}
+				\boxed{J = \frac{i}{A}.}
+			\end{equation*}
+			\begin{figure}
+				\centering
+				\begin{tikzpicture}[scale=0.7,transform shape,font=\Large]
+					
+					\tkzInit[xmin=0,xmax=8,ymin=-2,ymax=2]
+					%\tkzGrid[color=gray!20]
+					\tkzClip
+					
+					\tkzDefPoints{1/0/A,6/0/B,6/1/C,1/1/D}
+					
+					\tkzDefPointsBy[rotation=center B angle 25](B,C){a,b}
+					\tkzDefPointsBy[rotation=center B angle -155](B,C){c,d}
+					\tkzDefPointsBy[rotation=center B angle 90](B,d){i,j}
+					\tkzDefPointsBy[rotation=center A angle 25](A,D){e,f}
+					\tkzDefPointsBy[rotation=center A angle -155](A,D){g,h}
+					
+					\draw[rotate=30,fill=gray!30] (B)ellipse (0.5cm and 1cm);
+					\draw[rotate=-60,dashed] (h) arc (0:180:1cm and 0.5cm);
+					\draw[rotate=120] (h) arc (180:0:1cm and 0.5cm);
+					
+					\draw (f) -- (b);
+					\draw (h) -- (d);
+					
+					\draw[->,color=red,line width=1.5pt] (B) -- (j) node [above] {$\widehat{n}$};
+					
+					\tkzMarkRightAngle(j,B,d)
+					
+					\draw[dashed] (B) -- (d);
+					
+					\tkzDefPoints{5.75/0.5/t1}
+					
+					\tkzText[font=\small](t1){dA}
+					
+					\tkzDefPoints{2.5/0.15/v1,2.5/-0.6/v2}
+					
+					\draw[->] (v1) --++ (1.5,0) node [above,midway] {$\vec{J}$};
+					\draw[->] (v2) --++ (1.5,0) node [above,midway] {$\vec{v}$};
+					
+				\end{tikzpicture}
+				\caption*{\footnotesize Cilindro de carga.}
+			\end{figure}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Distribuição da corrente em pontos de ramificação}
 	\begin{columns}
 		\begin{column}{0.6\textwidth}
 			No regime estacionário, a quantidade de carga que atravessa a seção 0 é a mesma que atravessa as seções i e 2 juntas. Pela conservação da carga elétrica, a soma das correntes nos dois ramos deve ser igual a corrente inicial, ou seja,
@@ -96,67 +154,6 @@
 				\centering
 				\includegraphics[scale=0.4]{figuras/corrente-divisao.png}
 				\caption*{\footnotesize Corrente inicial $i_0$ separada pelas correntes $i_1$ e $i_2$ após atravessar a ramificação no ponto a.}
-			\end{figure}
-		\end{column}
-	\end{columns}
-\end{frame}
-
-\begin{frame}{Densidade de corrente}
-	\begin{columns}
-		\begin{column}{0.6\textwidth}
-			Para descrever o fluxo de cargas usamos a densidade de corrente J, que tem a mesma direção e sentido da velocidade das cargas positivas. Portanto, a corrente que atravessa perpendicularmente o elemento de área dA é dado por
-			\begin{equation*}
-				\boxed{i = \int \vec{J}\cdot d\vec{A}.}
-			\end{equation*}
-			Se a corrente é uniforme e paralela a $\widehat{n}$ teremos
-			\begin{equation*}
-				i = \int JdA = J\int dA = JA.
-			\end{equation*}
-		\end{column}
-		\begin{column}{0.4\textwidth}
-			\begin{equation*}
-				\boxed{J = \frac{i}{A}.}
-			\end{equation*}
-			\begin{figure}
-				\centering
-				\begin{tikzpicture}[scale=0.7,transform shape,font=\Large]
-
-				\tkzInit[xmin=0,xmax=8,ymin=-2,ymax=2]
-				%\tkzGrid[color=gray!20]
-				\tkzClip
-
-				\tkzDefPoints{1/0/A,6/0/B,6/1/C,1/1/D}
-
-				\tkzDefPointsBy[rotation=center B angle 25](B,C){a,b}
-				\tkzDefPointsBy[rotation=center B angle -155](B,C){c,d}
-				\tkzDefPointsBy[rotation=center B angle 90](B,d){i,j}
-				\tkzDefPointsBy[rotation=center A angle 25](A,D){e,f}
-				\tkzDefPointsBy[rotation=center A angle -155](A,D){g,h}
-
-				\draw[rotate=30,fill=gray!30] (B)ellipse (0.5cm and 1cm);
-				\draw[rotate=-60,dashed] (h) arc (0:180:1cm and 0.5cm);
-				\draw[rotate=120] (h) arc (180:0:1cm and 0.5cm);
-
-				\draw (f) -- (b);
-				\draw (h) -- (d);
-
-				\draw[->,color=red,line width=1.5pt] (B) -- (j) node [above] {$\widehat{n}$};
-
-				\tkzMarkRightAngle(j,B,d)
-
-				\draw[dashed] (B) -- (d);
-
-				\tkzDefPoints{5.75/0.5/t1}
-
-				\tkzText[font=\small](t1){dA}
-
-				\tkzDefPoints{2.5/0.15/v1,2.5/-0.6/v2}
-
-				\draw[->] (v1) --++ (1.5,0) node [above,midway] {$\vec{J}$};
-				\draw[->] (v2) --++ (1.5,0) node [above,midway] {$\vec{v}$};
-
-				\end{tikzpicture}
-				\caption*{\footnotesize Cilindro de carga.}
 			\end{figure}
 		\end{column}
 	\end{columns}

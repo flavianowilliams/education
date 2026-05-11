@@ -1,7 +1,7 @@
 ﻿				\begin{tikzpicture}[scale=1,transform shape,font=\large]
 				
 				\tkzInit[xmin=-4,xmax=4,ymin=-4,ymax=4]
-				\tkzGrid[color=gray!20]
+%				\tkzGrid[color=gray!20]
 				\tkzClip
 				
 				\tkzDefPoints{2/2/a,-3/-3/b,1/3/c,3/-3/d,3/2/e,-3/3/f}
@@ -40,7 +40,8 @@
 				\tkzDefPointWith[linear, K=.4](a,e)\tkzGetPoint{v5'}
 				\draw[->,line width=0.75pt,red] (a) -- (v5');
 
-				\tkzDrawPoints[size=0.75cm](a,b,c,d,e,f,g,h,i,j,k,l)
+				\tkzDrawPoints[size=0.25cm, fill = blue, color=black](a,b,c,d,e,f,h,k)
+				\tkzDrawPoints[size=0.25cm, fill = blue, color=blue](l, g, h, i, k)
 
 				\tkzDefPoints{0/0/O,2/0/O'}
 

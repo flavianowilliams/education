@@ -157,7 +157,7 @@ knitr::include_graphics("img/sistema-particulas.jpeg")
 
 A quantidade de movimento desse sistema, ou seja, a quantidade de movimento total, é obtida pela soma vetorial das quantidades de movimento de cada objeto que compõem o sistema. Portanto
 \begin{equation}
-  \vec{Q} = \vec{q}_1+\vec{q}_1+\vec{q}_1+\therefore \vec{Q} = \sum\vec{q}.
+  \vec{Q} = \vec{q}_1+\vec{q}_2+\vec{q}_3+\therefore \vec{Q} = \sum\vec{q}.
 \end{equation}
 
 ]
@@ -183,10 +183,15 @@ Vimos pela segunda lei de Newton que $\vec{F}_R=\frac{\Delta q}{\Delta t}$. Com 
 
 "**As forças internas podem provocar variações nas quantidades de movimento de cada partícula de um sistema, mas não provocam variação na quantidade de movimento total do sistema.**"
 
+Portanto, podemos dizer que somente haverá variação na quantidade de movimento total de um sistema se houver forças externas. A figura ao lado mostra um sistema isolado formado por cinco partículas de cor azul. Perceba que as bolas pretas não interagem com as bolas azuis.
 ]
 .pull-right[
 
-Portanto, podemos dizer que somente haverá variação na quantidade de movimento total de um sistema se houver forças externas. Com isso chegamos ao enunciado da lei da conservação da quantidade de movimento `r Citep(bib, "Alvarenga2000")``:
+```{r, echo=FALSE, fig.align='center', fig.cap='Representação de um sistema isolado.', out.width='85%'}
+knitr::include_graphics("img/sistema-isolado.jpeg")
+```
+
+Com isso chegamos ao enunciado da lei da conservação da quantidade de movimento `r Citep(bib, "Alvarenga2000")``:
 
 "**Se for nula a resultante das forças externas que atuam em um sistema de partículas, a quantidade de movimento total desse sistema se conserva.**"
 

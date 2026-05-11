@@ -363,7 +363,7 @@ A equação acima mostra que a soma das energias encontradas no posição A tem 
 
 Esse valor constante chamamos de energia mecânica $E_m$.
 \begin{equation}
-  \boxed{E_m = E_c-E_p.}
+  \boxed{E_m = E_c+E_p.}
 \end{equation}
 "*Se apenas forças conservativas atuam sobre um objeto em movimento, sua energia mecânica permanece constante para qualquer posição da trajetória, ou seja, a energia mecânica do objeto se conserva.*"
 

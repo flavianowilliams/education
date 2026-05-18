@@ -81,22 +81,56 @@
 	\end{figure}
 \end{frame}
 
-\begin{frame}{Condução de calor em uma barra sólida}
-	\begin{columns}
+\begin{frame}{Fluxo de calor em um sólido}
+	\begin{columns}[c]
 		\begin{column}{0.6\textwidth}
-			\justifying
-			Se a variação da temperatura não for muito alta, podemos supor que a dilatação de uma barra ($\Delta L$) é proporcional a variação da temperatura e ao comprimento da barra ($L_0$),
-			\begin{align*}
-				\Delta L & \alpha \Delta T,\\
-				\Delta L & \alpha L_0.
-			\end{align*}
-			Portanto, podemos dizer que
-			\begin{align*}
-				\Delta L & \alpha L_0\Delta T,\\
-				\Aboxed{\Delta L & = \alpha L_0\Delta T,}
-			\end{align*}
+			A quantidade de calor por segundo que é transferida entre dois pontos no interior de sólidos é chamada de \alert{fluxo de calor}. Podemos dizer que esse fluxo aumenta proporcionalmente com a área e a diferença de temperatura entre esses pontos e diminui com a distância L entre esses pontos. Colocando em uma equação teremos
+			\begin{equation*}
+				\boxed{\frac{\Delta Q}{\Delta t} = \frac{kA\Delta T}{L},}
+			\end{equation*}
+			onde definimos k como sendo o coeficiente de condutividade térmica do material.
 		\end{column}
 		\begin{column}{0.4\textwidth}
+			\begin{figure}
+				\begin{tikzpicture}[scale=0.35,transform shape, font=\Large]
+					
+					\tkzInit[xmin=0,xmax=16,ymin=-6,ymax=5]
+	%				\tkzGrid[color=gray!50]
+					\tkzClip[space=0.75]
+					
+					\tikzstyle{cilindro_quente}=[cylinder, fill = red, color = red, opacity=0.25, line width=2pt, shape aspect=4, draw]
+					\tikzstyle{cilindro_frio}=[cylinder, fill = blue, color = blue, opacity=0.25, line width=2pt, shape aspect=4, draw]
+					
+					\tkzDefPoints{0/0/O}
+					
+	%				\tkzDrawX[label = x, right]
+	%				\tkzDrawY[label = y, above]
+	%				\tkzLabelX
+	%				\tkzLabelY
+					
+					% parte quente
+					\node[cilindro_quente, minimum height=2cm, minimum width=10cm, shape aspect=9] at (1, 0) {};
+					\node[cilindro_quente, minimum height=7cm, minimum width=4cm] at (5, 0) {};
+					
+					% parte fria
+					\node[cilindro_frio, minimum height=2cm, minimum width=10cm, shape aspect=9] at (14, 0) {};
+					\node[cilindro_frio, minimum height=7.5cm, minimum width=4cm] at (11.5, 0) {};
+					
+					\tkzDefPoints{2/-5/s1,14/-5/s2}
+					
+					\draw (s2) to[dim arrow={label=L},sloped, line width=1pt] (s1);
+					
+					\node[above] (ta) at (8.25, 4) {\huge Área A};
+					\draw[->, line width=1pt] (ta) --++ (0, -2.3);
+					
+					\node[above] (t2) at (2.25, 3) {\huge $\text{Fonte}\atop \text{quente}$};
+					\node[above] (t1) at (15.25, 3) {\huge $\text{Fonte}\atop \text{fria}$};
+					
+					\draw[->, line width=4pt] (5, -4) --++ (7, 0) node [above, midway] (Q) {\huge Calor};
+					
+				\end{tikzpicture}
+			\caption*{\footnotesize Transferência de calor em um sólido de área A e comprimento L.}
+			\end{figure}
 		\end{column}
 	\end{columns}
 \end{frame}

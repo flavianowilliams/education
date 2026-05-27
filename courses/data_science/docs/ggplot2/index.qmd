@@ -1,8 +1,11 @@
 ---
-title: "R. Visualização de dados"
+title: "Visualização de dados com a linguagem R"
 author: "Flaviano Williams Fernandes"
+institute: "Instituto Federal do Paraná, câmpus Irati"
+date: today
+date-format: "DD/MM/YYYY"
 format: revealjs
-editor: visual
+editor: source
 ---
 
 ## Quarto

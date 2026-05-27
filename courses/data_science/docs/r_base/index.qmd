@@ -1,6 +1,9 @@
 ---
-title: "R. Conceitos básicos"
+title: "Conceitos básicos da linguagem R"
 author: "Flaviano Williams Fernandes"
+institute: "Instituto Federal do Paraná, câmpus Irati"
+date: today
+date-format: "DD/MM/YYYY"
 format: revealjs
 editor: source
 ---

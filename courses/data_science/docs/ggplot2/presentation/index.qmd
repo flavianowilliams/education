@@ -1,28 +1,244 @@
 ---
 title: "Visualização de dados com a linguagem R"
-author: "Flaviano Williams Fernandes"
-institute: "Instituto Federal do Paraná, câmpus Irati"
-date: today
-date-format: "DD/MM/YYYY"
-format: revealjs
-editor: source
 ---
 
-## Quarto
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE,
+  fig.align = "center",
+  fig.topcaption = TRUE,
+  out.width = "100%"
+  )
+```
 
-Quarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see <https://quarto.org/docs/presentations/>.
+## Estrutura lógica do ggplot2
 
-## Bullets
+:::: {.columns}
 
-When you click the **Render** button a document will be generated that includes:
+::: {.column}
+Inspirado na obra "The grammar of graphics" de Leland Wilkinson [@springer2005], Hadley Wickham publicou o seu artigo "A layered Grammar of Graphics" [@Wickham2010], onde menciona a lógica de construção de gráficos por camadas. A figura ao lado mostra os principais compomentes que podem formar cada camada.
+:::
 
-- Content authored with markdown
-- Output from executable code
-
-## Code
-
-When you click the **Render** button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:
+::: {.column}
 
 ```{r}
-1 + 1
+#| label: x
+#| fig-align: center
+#| fig-alt: "Estrutura de camadas do ggplot2"
+#| fig-cap: "Fonte: The Grammar of Graphics."
+knitr::include_graphics(path = "../../../img/ggplot_layers.jpg")
 ```
+
+:::
+
+::::
+
+## Dados
+
+::::{.columns}
+
+:::{.column}
+
+xxx
+
+:::
+
+:::{.column}
+
+```{r}
+library(ggplot2)
+#
+dados <- readr::read_csv(file = "../../../data/input/nota.csv")
+#
+dados <- dados |> 
+  dplyr::select(registration, turma, presenca, conceito_ip, conceito_prova, conceito) |> 
+  dplyr::mutate(turma = factor(turma, ordered = FALSE),
+                conceito_ip = factor(conceito_ip, ordered = FALSE),
+                conceito_prova = factor(conceito_prova, ordered = FALSE),
+                conceito = factor(conceito, ordered = FALSE),
+                presenca = as.integer(presenca)
+                )
+#
+dados[1:10, ] |> 
+  dplyr::filter(!is.na(registration)) |> 
+  kableExtra::kable(col.names = c("Matrícula", "Turma", "Presença", "Exercícios", "Prova", "Conceito"),
+                    align = "lccccc"
+                    ) |> 
+  kableExtra::kable_styling(font_size = 9,
+                            bootstrap_options = c("striped", "hoover")
+                            )
+```
+
+:::
+
+::::
+
+## grafico <- Dados
+
+:::: {.columns}
+
+::: {.column}
+
+```{r, echo=TRUE, eval=FALSE}
+ggplot(data = dados)
+```
+
+```{r, echo=FALSE, eval=TRUE}
+ggplot(data = dados)
+```
+
+:::
+
+::: {.column}
+
+```{r}
+knitr::include_graphics(path = "../../../img/ggplot_layers.jpg")
+```
+
+:::
+
+::::
+
+## Atributos estéticos
+
+x
+
+## grafico + Atributos estéticos
+
+:::: {.columns}
+
+::: {.column}
+
+```{r, echo=TRUE, eval=FALSE}
+ggplot(data = dados, 
+       aes(x = conceito)
+       )
+```
+
+```{r, echo=FALSE, eval=TRUE}
+ggplot(data = dados, 
+       aes(x = conceito)
+       )
+```
+
+:::
+
+::: {.column}
+
+```{r}
+knitr::include_graphics(path = "../../../img/ggplot_layers.jpg")
+```
+
+:::
+
+::::
+
+## Elementos geométricos
+
+## grafico + (Elementos geométricos + estatística)
+
+:::: {.columns}
+
+::: {.column}
+
+```{r, echo=TRUE, eval=FALSE}
+ggplot(data = dados, 
+       aes(x = conceito)
+       )+
+  geom_bar(stat = "count")
+```
+
+```{r, echo=FALSE, eval=TRUE}
+ggplot(data = dados, 
+       aes(x = conceito)
+       )+
+  geom_bar(stat = "count")
+```
+
+:::
+
+::: {.column}
+
+```{r}
+knitr::include_graphics(path = "../../../img/ggplot_layers.jpg")
+```
+
+:::
+
+::::
+
+## Coordenadas
+
+## grafico + coordenadas
+
+:::: {.columns}
+
+::: {.column}
+
+```{r, echo=TRUE, eval=FALSE}
+ggplot(data = dados, 
+       aes(x = conceito)
+       )+
+  geom_bar(stat = "count")+
+  coord_flip()
+```
+
+```{r, echo=FALSE, eval=TRUE}
+ggplot(data = dados, 
+       aes(x = conceito)
+       )+
+  geom_bar(stat = "count")+
+  coord_flip()
+```
+
+:::
+
+::: {.column}
+
+```{r}
+knitr::include_graphics(path = "../../../img/ggplot_layers.jpg")
+```
+
+:::
+
+::::
+
+## Facetas
+
+## grafico + facetas
+
+:::: {.columns}
+
+::: {.column}
+
+```{r, echo=TRUE, eval=FALSE}
+ggplot(data = dados, 
+       aes(x = conceito)
+       )+
+  geom_bar(stat = "count")+
+  coord_flip()+
+  facet_wrap(~ turma)
+```
+
+```{r, echo=FALSE, eval=TRUE}
+ggplot(data = dados, 
+       aes(x = conceito)
+       )+
+  geom_bar(stat = "count")+
+  coord_flip()+
+  facet_wrap(~ turma)
+```
+
+:::
+
+::: {.column}
+
+```{r}
+knitr::include_graphics(path = "../../../img/ggplot_layers.jpg")
+```
+
+:::
+
+::::
+
+## Bibliografia

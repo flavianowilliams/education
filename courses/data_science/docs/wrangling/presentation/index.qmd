@@ -1,11 +1,5 @@
 ---
 title: "Manipulação de dados com a linguagem R"
-author: "Flaviano Williams Fernandes"
-institute: "Instituto Federal do Paraná, câmpus Irati"
-date: today
-date-format: "DD/MM/YYYY"
-format: revealjs
-editor: source
 ---
 
 ## Quarto
@@ -19,10 +13,47 @@ When you click the **Render** button a document will be generated that includes:
 - Content authored with markdown
 - Output from executable code
 
-## Code
+## Operador pipe (|> ou %>%)
 
-When you click the **Render** button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:
+:::: {.columns}
 
-```{r}
-1 + 1
+::: {.column width="50%"}
+### Definindo função Fibonacci
+
+```{r, echo=TRUE}
+fibonacci <- function(dataframe, x) {
+  vetor <- dataframe[, x]
+  soma <- rep(0, length(vetor))
+  for (j in 1:length(vetor)) {
+    a <- 0
+    b <- 1
+    num <- a+b
+    soma[j] <- 0
+    for (i in 1:vetor[j]) {
+      num <- a+b
+      a <- b
+      b <- num
+      soma[j] <- soma[j]+a
+    }
+  }
+  return(soma)
+}
 ```
+:::
+
+::: {.column width="50%"}
+### Aplicando operador pipe
+
+```{r, echo=TRUE}
+# dataframe
+dados <- data.frame(a = seq(1, 5))
+str(dados)
+# aplicando a função fibonacci
+fibonacci(dados, "a")
+# aplicando a função com o operador pipe
+dados |> 
+  fibonacci("a")
+```
+:::
+
+::::

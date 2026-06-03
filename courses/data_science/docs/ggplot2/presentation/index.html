@@ -239,7 +239,7 @@ Flaviano Williams Fernandes
 <h2>Estrutura lógica do ggplot2</h2>
 <div class="columns">
 <div class="column">
-<p>Inspirado na obra “The grammar of graphics” de Leland Wilkinson <span class="citation" data-cites="springer2005">(<a href="#/bibliografia" role="doc-biblioref" onclick="">Wilkinson et al., 2005</a>)</span>, Hadley Wickham publicou o seu artigo “A layered Grammar of Graphics” <span class="citation" data-cites="Wickham2010">(<a href="#/bibliografia" role="doc-biblioref" onclick="">Wickham, 2010</a>)</span>, onde menciona a lógica de construção de gráficos por camadas <span class="citation" data-cites="stat20web qcbsweb">(<a href="#/bibliografia" role="doc-biblioref" onclick=""><span>“Stat 20 - A Grammar of Graphics”</span>, <em>[S.d.]</em></a>; <a href="#/bibliografia" role="doc-biblioref" onclick=""><span>“Workshop 3”</span>, <em>[S.d.]</em></a>)</span>. A figura ao lado mostra os principais compomentes que podem formar cada camada.</p>
+<p>Inspirado na obra “The grammar of graphics” de Leland Wilkinson <span class="citation" data-cites="springer2005">(<a href="#/bibliografia" role="doc-biblioref" onclick="">Wilkinson et al., 2005</a>)</span>, Hadley Wickham publicou o seu artigo “A layered Grammar of Graphics” <span class="citation" data-cites="Wickham2010 Wickham2009">(<a href="#/bibliografia" role="doc-biblioref" onclick="">Wickham, 2010</a>; <a href="#/bibliografia" role="doc-biblioref" onclick="">Wickham, 2009</a>)</span>, onde menciona a lógica de construção de gráficos por camadas <span class="citation" data-cites="stat20web qcbsweb">(<a href="#/bibliografia" role="doc-biblioref" onclick=""><span>“Stat 20 - A Grammar of Graphics”</span>, <em>[S.d.]</em></a>; <a href="#/bibliografia" role="doc-biblioref" onclick=""><span>“Workshop 3”</span>, <em>[S.d.]</em></a>)</span>. A figura ao lado mostra os principais componentes que podem formar cada camada.</p>
 </div><div class="column">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -257,7 +257,7 @@ Flaviano Williams Fernandes
 <h2>Dados</h2>
 <div class="columns">
 <div class="column">
-<p>xxx</p>
+<p>Por questões óbvias, o primeiro passo para a construção de um gráfico seria os dados. <span style="color:red;">ggplot reconhece estruturas de dados do tipo dataframes</span>. Contudo, é recomendável que os dados sejam preparados utilizando técnicas de pré-processamento como limpeza, manipulação, transformação e organização da base de dados. Pacotes do ambiente tidyverse podem auxiliar nessa tarefa.</p>
 </div><div class="column">
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -389,7 +389,7 @@ Flaviano Williams Fernandes
 </section>
 <section id="atributos-estéticos" class="slide level2">
 <h2>Atributos estéticos</h2>
-<p>x</p>
+<p>A camada referente aos atributos estéticos é responsável por transformar valores numéricos em valores visuais. Nessa camada também faz parte as funções escala que possui a tarefa de fazer personalizações nesses valores visuais. O inverso das funções escala são as funções guia que convertem valores visuais em numéricos.</p>
 </section>
 <section id="grafico-atributos-estéticos" class="slide level2">
 <h2>grafico + Atributos estéticos</h2>
@@ -535,6 +535,9 @@ Flaviano Williams Fernandes
 </div>
 <div id="ref-Wickham2010" class="csl-entry" role="listitem">
 WICKHAM, Hadley. <a href="https://doi.org/10.1198/jcgs.2009.07098">A Layered Grammar of Graphics</a>. 2010.
+</div>
+<div id="ref-Wickham2009" class="csl-entry" role="listitem">
+WICKHAM, Hadley. <strong>Ggplot2 : elegant graphics for data analysis</strong>. <em>[S.l.]</em>: Springer, 2009. p. 212
 </div>
 <div id="ref-springer2005" class="csl-entry" role="listitem">
 WILKINSON, Leland <em>et al.</em> <strong>The Grammar of Graphics {Statistics and Computing; 2nd Ed.}</strong>. <em>[S.l.]</em>: Springer, 2005.

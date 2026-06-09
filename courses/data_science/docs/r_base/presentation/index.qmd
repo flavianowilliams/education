@@ -1,28 +1,223 @@
 ---
 title: "Conceitos básicos da linguagem R"
-author: "Flaviano Williams Fernandes"
-institute: "Instituto Federal do Paraná, câmpus Irati"
-date: today
-date-format: "DD/MM/YYYY"
-format: revealjs
-editor: source
 ---
 
-## Quarto
+## Sobre o R
 
-Quarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see <https://quarto.org/docs/presentations/>.
+xxx
 
-## Bullets
+## RStudio: A principal IDE do R
 
-When you click the **Render** button a document will be generated that includes:
+xxx
 
-- Content authored with markdown
-- Output from executable code
+## Objetos e função no R
 
-## Code
+* Objeto é tudo que pode ser criado e armazenado na memória (vetor, lista, função, gráfico, modelo estatístico, etc).
 
-When you click the **Render** button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:
+* Um objeto pode ser criado utilizando o operador de atribuição `<-`,
 
-```{r}
-1 + 1
+```r
+objeto <- função
 ```
+
+Exemplo:
+
+```{r, echo=TRUE}
+valor <- function(x) {return(x)}
+print(valor)
+```
+
+## Estrutura de dados principais no R
+
+:::: {.columns}
+
+::: {.column}
+
+* Vetores atômicos: Formado por elementos do mesmo tipo.
+
+```{r, echo=TRUE}
+  vetor_letras <- c("a", "b", "c", "d")
+  vetor_letras
+  vetor_numeros <- c(1, 2, 3, 4)
+  vetor_numeros
+```
+
+:::
+
+::: {.column}
+
+* Vetores recursivos (listas): Podem ser formados por elementos de tipos distintos.
+
+```{r, echo=TRUE}
+  lista <- list("a", 1, TRUE, NA)
+  lista
+```
+
+:::
+
+::::
+
+## Lista nomeada
+
+Os elementos de uma lista podem ser nomeados
+
+```{r, echo=TRUE}
+  lista_nomeada <- list(caracter = "a", numero = 2, logico = TRUE, dado_faltante = NA)
+  lista_nomeada
+```
+
+## Lista nomeada
+
+Para acessar um item da lista, basta usar o operador `$`.
+
+```{r, echo=TRUE}
+  lista_nomeada$caracter
+  is.na(lista_nomeada$dado_faltante)
+  as.character(lista_nomeada$numero)
+  lista_nomeada$logico <- FALSE
+  lista_nomeada$logico
+```
+
+## Exercício
+
+Construa uma lista com os seguintes dados de uma pessoa:
+
+* Nome: João Carlos Silveira
+
+* Endereço: Rua Pedro Koppe, 100, Irati-PR
+
+* Escolaridade: Ensino médio completo
+
+* Estado civil: Solteiro
+
+Em seguida, atualize esta lista mudando o endereço desta pessoa para Rua Trajano Grácia, 240 - Centro, Irati-PR.
+
+## Exercício
+
+Construa uma lista com os seguintes elementos:
+
+* score: 1, 2, 3
+
+* nome:João, Leticia, Marcos
+
+* pontuação: 100, 90, 75
+
+Em seguida, acesse o score da Letícia à partir desta lista.
+
+## Vetores e listas aumentadas
+
+Vetores e listas aumentadas são vetores ou listas que possuem atributos. Os atributos podem ser acessados a partir do comando `attributes`.
+
+```{r, echo=TRUE}
+data <- as.Date("2026/06/09")
+attributes(data)
+```
+
+## Atributos de vetores aumentados
+
+* Nome: Usados para nomear os elementos de uma lista ou um vetor.
+
+```{r, echo=TRUE}
+scores <- c(88, 92, 79)
+names(scores) <- c("Alice", "Bob", "Charlie")
+attributes(scores)
+```
+
+## Atributos de vetores aumentados
+
+* Dimensão: Define a dimensão de matrizes e arrays que são construídos a partir de um vetor.
+
+:::: {.columns}
+
+::: {.column}
+
+```{r, echo=TRUE}
+vec <- c(1, 2, 3, 4)
+matriz <- matrix(vec, ncol = 2)
+matriz
+attributes(matriz)
+```
+
+:::
+
+::: {.column}
+
+No comando ao lado, construimos uma matriz com o comando matrix a partir do vetor vec, em seguida acessamos o seu atributo dim, que no caso indica a ordem da matriz de 2 linhas e 2 colunas.
+
+:::
+
+::::
+
+## Exercício
+
+Construa a matriz abaixo no R.
+
+\begin{pmatrix}
+  1 & 4 & 7 \\
+  2 & 5 & 8 \\
+  3 & 6 & 9
+\end{pmatrix}
+
+## Exercício
+
+Faça o produto vetorial abaixo (Dica: utilize o operador `%*%`).
+
+\begin{equation}
+\begin{pmatrix}
+  1 & 4 & 7 \\
+  2 & 5 & 8 \\
+  3 & 6 & 9
+\end{pmatrix}
+\begin{pmatrix}
+  1 \\
+  0 \\
+  0
+\end{pmatrix}
+= ?
+\end{equation}
+
+## Exercício
+
+Construa a mesma matriz anterior a partir de um array e com a utilização do atributo *dim*.
+
+## Atributos de vetores aumentados
+
+* Classe: Usado para implementar atributos e métodos da programação orientada a objetos.
+
+```{r, echo=TRUE}
+  dados <- data.frame(nome = c("Roberto", "Vanessa", "Carlos"),
+                      idade = c(12, 17, 21)
+                      )
+#
+  class(dados)
+```
+
+É possível acessar os métodos de uma função a partir da classe com o comando `methods`.
+
+```{r, echo=TRUE}
+methods("as.Date")
+```
+
+## Exercício
+
+Acesse a documentação da função methods utilizando o comando `?methods`.
+
+## Funções
+
+Uma função é definida pelo comando `function`
+
+```{r, echo=TRUE}
+funcao <- function(x) return(x)
+funcao(4)
+```
+
+A princípio o R possui um repertório imenso de funções para diversos tipos de tarefas
+
+```{r, echo=TRUE}
+exp(1)
+sqrt(2500)
+```
+
+## Exercício
+
+Use a função `polyroot` para obter as raízes do polinômio $f(x) = x²-3x+2$ (Dica: Utilize a função `Re` para extrair somente a parte real da solução).

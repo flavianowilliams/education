@@ -10,7 +10,7 @@ xxx
 
 xxx
 
-## Objetos e função no R
+## Objetos e funções no R
 
 * Objeto é tudo que pode ser criado e armazenado na memória (vetor, lista, função, gráfico, modelo estatístico, etc).
 
@@ -111,6 +111,8 @@ Vetores e listas aumentadas são vetores ou listas que possuem atributos. Os atr
 ```{r, echo=TRUE}
 data <- as.Date("2026/06/09")
 attributes(data)
+vetor_atomico <- c(1, 2, 3, 4)
+attributes(vetor_atomico)
 ```
 
 ## Atributos de vetores aumentados
@@ -119,7 +121,9 @@ attributes(data)
 
 ```{r, echo=TRUE}
 scores <- c(88, 92, 79)
-names(scores) <- c("Alice", "Bob", "Charlie")
+attr(scores, "names") <- c("Alice", "Bob", "Charlie")
+names(scores)
+scores
 attributes(scores)
 ```
 
@@ -135,7 +139,7 @@ attributes(scores)
 vec <- c(1, 2, 3, 4)
 matriz <- matrix(vec, ncol = 2)
 matriz
-attributes(matriz)
+dim(matriz)
 ```
 
 :::
@@ -221,3 +225,47 @@ sqrt(2500)
 ## Exercício
 
 Use a função `polyroot` para obter as raízes do polinômio $f(x) = x²-3x+2$ (Dica: Utilize a função `Re` para extrair somente a parte real da solução).
+
+## Vetorização
+
+Permite aplicar funções a um vetor inteiro de uma só vez. Isso permite realizar o cálculo de maneira mais limpa e rápida, ou seja, mais eficiente.
+
+:::: {.columns}
+
+::: {.column}
+
+```{r, echo=TRUE}
+  vetor_real <- -2:2
+  vetor_real
+  vetor_complexo <- as.complex(vetor_real)
+  vetor_complexo
+  sqrt(vetor_complexo)
+```
+
+:::
+
+::: {.column}
+
+```{r, echo=TRUE}
+  vetor_fracoes <- 1:4
+  vetor_fracoes
+  vetor_angulo <- pi*vetor_fracoes/2
+  vetor_angulo
+  cos(vetor_angulo)**2+sin(vetor_angulo)**2
+```
+
+:::
+
+::::
+
+## Exercícios
+
+A massa em gramas de cinco amostras foram coletadas e armazenadas em um vetor, amostra =  (112, 127, 108, 99, 115). Considerando que a balança não está calibrada, superestimando o valor da massa em 2,5 gramas, gostaríamos de calcular o peso de cada amostra em Newtons. Construa uma função que realiza esta tarefa em uma única operação.
+
+## Blocos de repetição
+
+xx
+
+## Blocos de condição
+
+xx

@@ -215,6 +215,13 @@ funcao <- function(x) return(x)
 funcao(4)
 ```
 
+Também é possível obter uma função com o comando `\(x, y, ...)`.
+
+```{r, echo=TRUE}
+funcao <- \(x, y) x+y
+funcao(4, 5)
+```
+
 A princípio o R possui um repertório imenso de funções para diversos tipos de tarefas
 
 ```{r, echo=TRUE}

@@ -103,7 +103,7 @@ knitr::include_graphics(path = "../../../img/ggplot_layers.jpg")
 
 A camada referente aos atributos estéticos é responsável por transformar valores numéricos em valores visuais. Nessa camada também faz parte as funções escala que possui a tarefa de fazer personalizações nesses valores visuais. O inverso das funções escala são as funções guia que convertem valores visuais em numéricos.
 
-## grafico + Atributos estéticos
+## grafico <- (Dados + atributos estéticos)
 
 :::: {.columns}
 
@@ -132,6 +132,8 @@ knitr::include_graphics(path = "../../../img/ggplot_layers.jpg")
 :::
 
 ::::
+
+## Escala
 
 ## Elementos geométricos
 

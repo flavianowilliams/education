@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="pt-BR"><head>
 <script src="index_files/libs/clipboard/clipboard.min.js"></script>
 <script src="index_files/libs/quarto-html/tabby.min.js"></script>
 <script src="index_files/libs/quarto-html/popper.min.js"></script>
 <script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="index_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.9.37">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.38">
 
   <meta name="author" content="Flaviano Williams Fernandes">
-  <title>Manipulação de dados com a linguagem R</title>
+  <meta name="dcterms.date" content="2026-03-07">
+  <title>Manipulação de dados com o pacote tidyverse</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -97,8 +98,28 @@
     code span.va { color: #111111; } /* Variable */
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
-  </style>
-  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto-73e11d3bac5c0efb182824055076330d.css">
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+      margin-bottom: 1em;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto-d42e8ec7d9257b591d324596ede6850f.css">
   <link href="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -198,7 +219,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Manipulação de dados com a linguagem R</h1>
+  <h1 class="title">Manipulação de dados com o pacote tidyverse</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -211,19 +232,53 @@ Flaviano Williams Fernandes
     </div>
 </div>
 
-  <p class="date">28/05/2026</p>
+  <p class="date">03/07/2026</p>
 </section>
-<section id="quarto" class="slide level2">
-<h2>Quarto</h2>
-<p>Quarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see <a href="https://quarto.org/docs/presentations/" class="uri">https://quarto.org/docs/presentations/</a>.</p>
-</section>
-<section id="bullets" class="slide level2">
-<h2>Bullets</h2>
-<p>When you click the <strong>Render</strong> button a document will be generated that includes:</p>
+<section id="o-que-é-o-tidyverse" class="slide level2">
+<h2>O que é o tidyverse?</h2>
+<p>Tidyverse é um ecossistema contendo diversos pacotes especializados na manipulação de dados estatísticos <span class="citation" data-cites="Wickham2019">(<a href="#/bibliografia" role="doc-biblioref" onclick="">Wickham et al., 2019</a>)</span>.</p>
+
+<img data-src="../../../img/workflow.png" alt="Fluxo de trabalho em ciência de dados." class="r-stretch quarto-figure-center"><p class="caption">Fonte: R for Data Science <span class="citation" data-cites="Wickham">(<a href="#/bibliografia" role="doc-biblioref" onclick=""><span>“R for Data Science (2e)”</span>, <em>[S.d.]</em></a>)</span>.</p></section>
+<section id="a-importância-na-preparação-dos-dados" class="slide level2">
+<h2>A importância na preparação dos dados</h2>
+<p>Cerca de 60% do trabalho em ciência de dados é gasto na limpeza, transformação e organização dos dados. O que inclui tarefas como…</p>
+<div class="columns">
+<div class="column">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="../../../img/spend_time.jpg" width="320"></p>
+<figcaption>Fonte: <span class="citation" data-cites="Sarih2019">(<a href="#/bibliografia" role="doc-biblioref" onclick="">Sarih et al., 2019</a>)</span></figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column">
 <ul>
-<li>Content authored with markdown</li>
-<li>Output from executable code</li>
+<li><p>Verificação de outliers;</p></li>
+<li><p>Dados faltantes;</p></li>
+<li><p>Dados duplicados;</p></li>
+<li><p>Valores invariantes;</p></li>
+<li><p>Correta atribuição do tipo de dados;</p></li>
+<li><p>Dados não utilizados.</p></li>
 </ul>
+</div></div>
+</section>
+<section id="tipos-de-variáveis-em-estatística" class="slide level2">
+<h2>Tipos de variáveis em estatística</h2>
+</section>
+<section id="dataframes-e-tibbles" class="slide level2">
+<h2>Dataframes e tibbles</h2>
+</section>
+<section id="importação-de-dados-readr" class="slide level2">
+<h2>Importação de dados (readr)</h2>
+</section>
+<section id="transformação-de-dados-dplyr" class="slide level2">
+<h2>Transformação de dados (dplyr)</h2>
+</section>
+<section id="organização-de-dados-tidyr" class="slide level2">
+<h2>Organização de dados (tidyr)</h2>
 </section>
 <section id="operador-pipe-ou" class="slide level2">
 <h2>Operador pipe (|&gt; ou %&gt;%)</h2>
@@ -247,32 +302,46 @@ Flaviano Williams Fernandes
 <span id="cb1-14"><a href=""></a>    }</span>
 <span id="cb1-15"><a href=""></a>  }</span>
 <span id="cb1-16"><a href=""></a>  <span class="fu">return</span>(soma)</span>
-<span id="cb1-17"><a href=""></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-17"><a href=""></a>}</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div><div class="column" style="width:50%;">
 <h3 id="aplicando-operador-pipe">Aplicando operador pipe</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a><span class="co"># dataframe</span></span>
 <span id="cb2-2"><a href=""></a>dados <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">a =</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">5</span>))</span>
-<span id="cb2-3"><a href=""></a><span class="fu">str</span>(dados)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-3"><a href=""></a><span class="fu">str</span>(dados)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   5 obs. of  1 variable:
  $ a: int  1 2 3 4 5</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a><span class="co"># aplicando a função fibonacci</span></span>
-<span id="cb4-2"><a href=""></a><span class="fu">fibonacci</span>(dados, <span class="st">"a"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb4-2"><a href=""></a><span class="fu">fibonacci</span>(dados, <span class="st">"a"</span>)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  1  2  4  7 12</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a><span class="co"># aplicando a função com o operador pipe</span></span>
 <span id="cb6-2"><a href=""></a>dados <span class="sc">|&gt;</span> </span>
-<span id="cb6-3"><a href=""></a>  <span class="fu">fibonacci</span>(<span class="st">"a"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb6-3"><a href=""></a>  <span class="fu">fibonacci</span>(<span class="st">"a"</span>)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  1  2  4  7 12</code></pre>
 </div>
 </div>
 </div></div>
+</section>
+<section id="bibliografia" class="slide level2 smaller scrollable">
+<h2>Bibliografia</h2>
 
+<div id="refs" class="references csl-bib-body" data-entry-spacing="1" role="list">
+<div id="ref-Wickham" class="csl-entry" role="listitem">
+<strong>R for Data Science (2e)</strong>., <em>[S.d.]</em>. Disponível em: &lt;<a href="https://r4ds.hadley.nz/">https://r4ds.hadley.nz/</a>&gt;
+</div>
+<div id="ref-Sarih2019" class="csl-entry" role="listitem">
+SARIH, Houda <em>et al.</em> <a href="https://doi.org/10.1109/CoDIT.2019.8820370">Data preparation and preprocessing for broadcast systems monitoring in PHM framework</a>. <em>In</em>: IEEE, abr. 2019.
+</div>
+<div id="ref-Wickham2019" class="csl-entry" role="listitem">
+WICKHAM, Hadley <em>et al.</em> <a href="https://doi.org/10.21105/joss.01686">Welcome to the Tidyverse</a>. <strong>Journal of Open Source Software</strong>, v. 4, p. 1686, nov. 2019.
+</div>
+</div>
 </section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
@@ -457,12 +526,12 @@ Flaviano Williams Fernandes
         // The "normal" size of the presentation, aspect ratio will be preserved
         // when the presentation is scaled to fit different resolutions. Can be
         // specified using percentage units.
-        width: 1050,
+        width: 600,
 
-        height: 700,
+        height: 300,
 
         // Factor of the display size that should remain empty around the content
-        margin: 0.1,
+        margin: 4.0e-2,
 
         math: {
           mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
@@ -551,12 +620,12 @@ Flaviano Williams Fernandes
           // flash "checked"
           button.classList.add('code-copy-button-checked');
           var currentTitle = button.getAttribute("title");
-          button.setAttribute("title", "Copied!");
+          button.setAttribute("title", "Copiada");
           let tooltip;
           if (window.bootstrap) {
             button.setAttribute("data-bs-toggle", "tooltip");
             button.setAttribute("data-bs-placement", "left");
-            button.setAttribute("data-bs-title", "Copied!");
+            button.setAttribute("data-bs-title", "Copiada");
             tooltip = new bootstrap.Tooltip(button, 
               { trigger: "manual", 
                 customClass: "code-copy-button-tooltip",

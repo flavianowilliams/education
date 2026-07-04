@@ -2,16 +2,62 @@
 title: "Manipulação de dados com o pacote tidyverse"
 ---
 
-## Quarto
+## O que é o tidyverse?
 
-Quarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see <https://quarto.org/docs/presentations/>.
+Tidyverse é um ecossistema contendo diversos pacotes especializados na manipulação de dados estatísticos [@Wickham2019].
 
-## Bullets
+```{r}
+#| label: x
+#| fig-align: center
+#| fig-alt: "Fluxo de trabalho em ciência de dados."
+#| fig-cap: "Fonte: R for Data Science [@Wickham]."
+knitr::include_graphics(path = "../../../img/workflow.png")
+```
 
-When you click the **Render** button a document will be generated that includes:
+## A importância na preparação dos dados
 
-- Content authored with markdown
-- Output from executable code
+Cerca de 60% do trabalho em ciência de dados é gasto na limpeza, transformação e organização dos dados. O que inclui tarefas como...
+
+:::: {.columns}
+
+::: {.column}
+
+```{r}
+#| label: ds
+#| fig-align: center
+#| fig-cap: "Fonte: [@Sarih2019]"
+knitr::include_graphics(path = "../../../img/spend_time.jpg")
+```
+
+:::
+
+::: {.column}
+
+* Verificação de outliers;
+
+* Dados faltantes;
+
+* Dados duplicados;
+
+* Valores invariantes;
+
+* Correta atribuição do tipo de dados;
+
+* Dados não utilizados.
+
+:::
+
+::::
+
+## Tipos de variáveis em estatística
+
+## Dataframes e tibbles
+
+## Importação de dados (readr)
+
+## Transformação de dados (dplyr)
+
+## Organização de dados (tidyr)
 
 ## Operador pipe (|> ou %>%)
 
@@ -57,3 +103,5 @@ dados |>
 :::
 
 ::::
+
+## Bibliografia

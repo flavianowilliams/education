@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 :::: {.columns}
 
 ::: {.column}
-Inspirado na obra "The grammar of graphics" de Leland Wilkinson [@springer2005], Hadley Wickham publicou o seu artigo "A layered Grammar of Graphics" [@Wickham2010; @Wickham2009], onde menciona a lógica de construção de gráficos por camadas [@stat20web; @qcbsweb]. A figura ao lado mostra os principais componentes que podem formar cada camada.
+Inspirado na obra "The grammar of graphics" de Leland Wilkinson [@Wilkinson2005], Hadley Wickham publicou o seu artigo "A layered Grammar of Graphics" [@Wickham2010; @Wickham2009], onde menciona a lógica de construção de gráficos por camadas [@stat20web; @qcbsweb]. A figura ao lado mostra os principais componentes que podem formar cada camada.
 :::
 
 ::: {.column}

@@ -2,13 +2,81 @@
 title: "Conceitos básicos da linguagem R"
 ---
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE,
+  fig.align = "center",
+  fig.topcaption = TRUE,
+  out.width = "100%"
+  )
+```
+
 ## Sobre o R
 
-xxx
+```{css, echo=FALSE}
+figcaption {
+  margin: auto;
+  text-align: center;
+}
+```
+
+> "R é uma linguagem de programação dinâmica em um desenvolvimento em tempo real. Especialmente voltada para trabalhos em análises estatísticas, como a manipulação, análise e visualização de dados."
+>
+> "Seu nome surge das iniciais dos seus criadores (<span style="color:red;">R</span>oss Ihaka e <span style="color:red;">R</span>obert Gentleman)."
+>
+><p style = "text-align:right;">[@cranweb]</p>
+
+
+## Aspectos gerais
+
+* Fundamentalmente forte em análises estatísticas (teste de hipóteses, análises descritivas, desenvolvimento de modelos estatísticos robustos);
+
+* Excelente para a produção de gráficos e relatórios;
+
+* É uma das linguagens mais utilizadas em ciência de dados, especialmente em trabalhos que envolvam análise exploratória [@Morettin2025]. Entretanto, python ainda é a preferida em trabalhos envolvendo aprendizado de máquina;
+
+* Perde desempenho em trabalhos que envolvam grande volume de dados (como alternativa a linguagem possui recursos extras, como data.tables ou a integração com outras ferramentas como Apache Spark).
+
+* Muito utilizado no meio acadêmico, especialmente em pesquisas experimentais.
+
+* Possui um grande repertório de pacotes e funções, onde muitos são focados em análises estatísticas.
 
 ## RStudio: A principal IDE do R
 
-xxx
+:::: {.columns}
+
+::: {.column}
+
+```{r}
+#| fig-cap: "Fonte: [@curso-rweb]"
+#| out-width: 85%
+  knitr::include_graphics("https://curso-r.github.io/livro-material/assets/img/rstudio/rstudio-editor.png")
+```
+
+:::
+
+::: {.column}
+
+* **Editor**: Onde o código é escrito;
+
+* **Console**: Onde o R é executado;
+
+* **Environment**: Painel com todos os objetos armazenados na memória;
+
+* **Output**: Painel contendo navegador de arquivos, lista pacotes instalados, ajuda e visualização de relatórios, apresentações e dashboards.
+
+:::
+
+::::
+
+## RStudio online
+
+* A versão Open Source do RStudio pode ser baixado e instalado gratuitamente nas plataformas windows ou linux, ambas disponíveis na página da Posit [@positweb]. 
+
+* A versão online está disponível na página da Posit Cloud [@positcloudweb].
+
+> <p style="color:red;">Atenção!</p>
+> O "R base" deverá estar previamente instalado no computador.
 
 ## Objetos e funções no R
 
@@ -276,3 +344,5 @@ xx
 ## Blocos de condição
 
 xx
+
+## Bibliografia

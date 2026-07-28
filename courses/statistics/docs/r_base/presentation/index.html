@@ -97,8 +97,28 @@
     code span.va { color: #111111; } /* Variable */
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
-  </style>
-  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto-d42e8ec7d9257b591d324596ede6850f.css">
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+      margin-bottom: 1em;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto-e599b26cbfe42b758cfe35afd2528387.css">
   <link href="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -215,11 +235,68 @@ Flaviano Williams Fernandes
 </section>
 <section id="sobre-o-r" class="slide level2">
 <h2>Sobre o R</h2>
-<p>xxx</p>
+<div class="cell" data-layout-align="center">
+<style type="text/css">
+figcaption {
+  margin: auto;
+  text-align: center;
+}
+</style>
+</div>
+<blockquote>
+<p>“R é uma linguagem de programação dinâmica em um desenvolvimento em tempo real. Especialmente voltada para trabalhos em análises estatísticas, como a manipulação, análise e visualização de dados.”</p>
+<p>“Seu nome surge das iniciais dos seus criadores (<span style="color:red;">R</span>oss Ihaka e <span style="color:red;">R</span>obert Gentleman).”</p>
+<p style="text-align:right;">
+<span class="citation" data-cites="cranweb">(<a href="#/bibliografia" role="doc-biblioref" onclick="">Hornik; R Core Team, 2026</a>)</span>
+</p>
+</blockquote>
+</section>
+<section id="aspectos-gerais" class="slide level2">
+<h2>Aspectos gerais</h2>
+<ul>
+<li><p>Fundamentalmente forte em análises estatísticas (teste de hipóteses, análises descritivas, desenvolvimento de modelos estatísticos robustos);</p></li>
+<li><p>Excelente para a produção de gráficos e relatórios;</p></li>
+<li><p>É uma das linguagens mais utilizadas em ciência de dados, especialmente em trabalhos que envolvam análise exploratória <span class="citation" data-cites="Morettin2025">(<a href="#/bibliografia" role="doc-biblioref" onclick="">Morettin; Motta Singer, 2025</a>)</span>. Entretanto, python ainda é a preferida em trabalhos envolvendo aprendizado de máquina;</p></li>
+<li><p>Perde desempenho em trabalhos que envolvam grande volume de dados (como alternativa a linguagem possui recursos extras, como data.tables ou a integração com outras ferramentas como Apache Spark).</p></li>
+<li><p>Muito utilizado no meio acadêmico, especialmente em pesquisas experimentais.</p></li>
+<li><p>Possui um grande repertório de pacotes e funções, onde muitos são focados em análises estatísticas.</p></li>
+</ul>
 </section>
 <section id="rstudio-a-principal-ide-do-r" class="slide level2">
 <h2>RStudio: A principal IDE do R</h2>
-<p>xxx</p>
+<div class="columns">
+<div class="column">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="https://curso-r.github.io/livro-material/assets/img/rstudio/rstudio-editor.png" style="width:85.0%"></p>
+<figcaption>Fonte: <span class="citation" data-cites="curso-rweb">(<a href="#/bibliografia" role="doc-biblioref" onclick=""><span>“Ciência de Dados em R”</span>, <em>[S.d.]</em></a>)</span></figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column">
+<ul>
+<li><p><strong>Editor</strong>: Onde o código é escrito;</p></li>
+<li><p><strong>Console</strong>: Onde o R é executado;</p></li>
+<li><p><strong>Environment</strong>: Painel com todos os objetos armazenados na memória;</p></li>
+<li><p><strong>Output</strong>: Painel contendo navegador de arquivos, lista pacotes instalados, ajuda e visualização de relatórios, apresentações e dashboards.</p></li>
+</ul>
+</div></div>
+</section>
+<section id="rstudio-online" class="slide level2">
+<h2>RStudio online</h2>
+<ul>
+<li><p>A versão Open Source do RStudio pode ser baixado e instalado gratuitamente nas plataformas windows ou linux, ambas disponíveis na página da Posit <span class="citation" data-cites="positweb">(<a href="#/bibliografia" role="doc-biblioref" onclick=""><span>“Posit | Data Science Platform for Enterprise Teams”</span>, <em>[S.d.]</em></a>)</span>.</p></li>
+<li><p>A versão online está disponível na página da Posit Cloud <span class="citation" data-cites="positcloudweb">(<a href="#/bibliografia" role="doc-biblioref" onclick=""><span>“Posit Cloud”</span>, <em>[S.d.]</em></a>)</span>.</p></li>
+</ul>
+<blockquote>
+<p style="color:red;">
+Atenção!
+</p>
+<p>O “R base” deverá estar previamente instalado no computador.</p>
+</blockquote>
 </section>
 <section id="objetos-e-funções-no-r" class="slide level2">
 <h2>Objetos e funções no R</h2>
@@ -229,7 +306,7 @@ Flaviano Williams Fernandes
 </ul>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a>objeto <span class="ot">&lt;-</span> função</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Exemplo:</p>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a>valor <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {<span class="fu">return</span>(x)}</span>
 <span id="cb2-2"><a href=""></a><span class="fu">print</span>(valor)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -247,7 +324,7 @@ Flaviano Williams Fernandes
 <ul>
 <li>Vetores atômicos: Formado por elementos do mesmo tipo.</li>
 </ul>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a>  vetor_letras <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>, <span class="st">"d"</span>)</span>
 <span id="cb4-2"><a href=""></a>  vetor_letras</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -263,7 +340,7 @@ Flaviano Williams Fernandes
 <ul>
 <li>Vetores recursivos (listas): Podem ser formados por elementos de tipos distintos.</li>
 </ul>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a>  lista <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="st">"a"</span>, <span class="dv">1</span>, <span class="cn">TRUE</span>, <span class="cn">NA</span>)</span>
 <span id="cb8-2"><a href=""></a>  lista</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -285,7 +362,7 @@ Flaviano Williams Fernandes
 <section id="lista-nomeada" class="slide level2">
 <h2>Lista nomeada</h2>
 <p>Os elementos de uma lista podem ser nomeados</p>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href=""></a>  lista_nomeada <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">caracter =</span> <span class="st">"a"</span>, <span class="at">numero =</span> <span class="dv">2</span>, <span class="at">logico =</span> <span class="cn">TRUE</span>, <span class="at">dado_faltante =</span> <span class="cn">NA</span>)</span>
 <span id="cb10-2"><a href=""></a>  lista_nomeada</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -306,7 +383,7 @@ $dado_faltante
 <section id="lista-nomeada-1" class="slide level2">
 <h2>Lista nomeada</h2>
 <p>Para acessar um item da lista, basta usar o operador <code>$</code>.</p>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href=""></a>  lista_nomeada<span class="sc">$</span>caracter</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "a"</code></pre>
@@ -350,7 +427,7 @@ $dado_faltante
 <section id="vetores-e-listas-aumentadas" class="slide level2">
 <h2>Vetores e listas aumentadas</h2>
 <p>Vetores e listas aumentadas são vetores ou listas que possuem atributos. Os atributos podem ser acessados a partir do comando <code>attributes</code>.</p>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href=""></a>data <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="st">"2026/06/09"</span>)</span>
 <span id="cb20-2"><a href=""></a><span class="fu">attributes</span>(data)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -369,7 +446,7 @@ $dado_faltante
 <ul>
 <li>Nome: Usados para nomear os elementos de uma lista ou um vetor.</li>
 </ul>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href=""></a>scores <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">88</span>, <span class="dv">92</span>, <span class="dv">79</span>)</span>
 <span id="cb24-2"><a href=""></a><span class="fu">attr</span>(scores, <span class="st">"names"</span>) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Alice"</span>, <span class="st">"Bob"</span>, <span class="st">"Charlie"</span>)</span>
 <span id="cb24-3"><a href=""></a><span class="fu">names</span>(scores)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
@@ -395,7 +472,7 @@ $dado_faltante
 </ul>
 <div class="columns">
 <div class="column">
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href=""></a>vec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span>
 <span id="cb30-2"><a href=""></a>matriz <span class="ot">&lt;-</span> <span class="fu">matrix</span>(vec, <span class="at">ncol =</span> <span class="dv">2</span>)</span>
 <span id="cb30-3"><a href=""></a>matriz</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
@@ -448,7 +525,7 @@ $dado_faltante
 <ul>
 <li>Classe: Usado para implementar atributos e métodos da programação orientada a objetos.</li>
 </ul>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href=""></a>  dados <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">nome =</span> <span class="fu">c</span>(<span class="st">"Roberto"</span>, <span class="st">"Vanessa"</span>, <span class="st">"Carlos"</span>),</span>
 <span id="cb34-2"><a href=""></a>                      <span class="at">idade =</span> <span class="fu">c</span>(<span class="dv">12</span>, <span class="dv">17</span>, <span class="dv">21</span>)</span>
 <span id="cb34-3"><a href=""></a>                      )</span>
@@ -459,7 +536,7 @@ $dado_faltante
 </div>
 </div>
 <p>É possível acessar os métodos de uma função a partir da classe com o comando <code>methods</code>.</p>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href=""></a><span class="fu">methods</span>(<span class="st">"as.Date"</span>)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] as.Date.character as.Date.default   as.Date.factor    as.Date.numeric  
@@ -475,7 +552,7 @@ see '?methods' for accessing help and source code</code></pre>
 <section id="funções" class="slide level2">
 <h2>Funções</h2>
 <p>Uma função é definida pelo comando <code>function</code></p>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href=""></a>funcao <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">return</span>(x)</span>
 <span id="cb38-2"><a href=""></a><span class="fu">funcao</span>(<span class="dv">4</span>)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -483,7 +560,7 @@ see '?methods' for accessing help and source code</code></pre>
 </div>
 </div>
 <p>Também é possível obter uma função com o comando <code>\(x, y, ...)</code>.</p>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href=""></a>funcao <span class="ot">&lt;-</span> \(x, y) x<span class="sc">+</span>y</span>
 <span id="cb40-2"><a href=""></a><span class="fu">funcao</span>(<span class="dv">4</span>, <span class="dv">5</span>)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -491,7 +568,7 @@ see '?methods' for accessing help and source code</code></pre>
 </div>
 </div>
 <p>A princípio o R possui um repertório imenso de funções para diversos tipos de tarefas</p>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href=""></a><span class="fu">exp</span>(<span class="dv">1</span>)</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2.718282</code></pre>
@@ -511,7 +588,7 @@ see '?methods' for accessing help and source code</code></pre>
 <p>Permite aplicar funções a um vetor inteiro de uma só vez. Isso permite realizar o cálculo de maneira mais limpa e rápida, ou seja, mais eficiente.</p>
 <div class="columns">
 <div class="column">
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href=""></a>  vetor_real <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">2</span><span class="sc">:</span><span class="dv">2</span></span>
 <span id="cb46-2"><a href=""></a>  vetor_real</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -529,7 +606,7 @@ see '?methods' for accessing help and source code</code></pre>
 </div>
 </div>
 </div><div class="column">
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href=""></a>  vetor_fracoes <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span></span>
 <span id="cb52-2"><a href=""></a>  vetor_fracoes</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -558,7 +635,27 @@ see '?methods' for accessing help and source code</code></pre>
 <section id="blocos-de-condição" class="slide level2">
 <h2>Blocos de condição</h2>
 <p>xx</p>
+</section>
+<section id="bibliografia" class="slide level2 smaller scrollable">
+<h2>Bibliografia</h2>
 
+<div id="refs" class="references csl-bib-body" data-entry-spacing="1" role="list">
+<div id="ref-curso-rweb" class="csl-entry" role="listitem">
+<strong>Ciência de Dados em R</strong>., <em>[S.d.]</em>. Disponível em: &lt;<a href="https://curso-r.github.io/livro-material/index.html">https://curso-r.github.io/livro-material/index.html</a>&gt;
+</div>
+<div id="ref-cranweb" class="csl-entry" role="listitem">
+HORNIK, Kurt; R CORE TEAM, the. <strong>R FAQ</strong>., 2026. Disponível em: &lt;<a href="https://CRAN.R-project.org/doc/manuals/R-FAQ.html">https://CRAN.R-project.org/doc/manuals/R-FAQ.html</a>&gt;
+</div>
+<div id="ref-Morettin2025" class="csl-entry" role="listitem">
+MORETTIN, Pedro Alberto; MOTTA SINGER, Julio da. <strong>Estatística e Ciência de Dados</strong>. 2. ed. <em>[S.l.]</em>: LTC, 2025.
+</div>
+<div id="ref-positweb" class="csl-entry" role="listitem">
+<strong>Posit | Data Science Platform for Enterprise Teams</strong>., <em>[S.d.]</em>. Disponível em: &lt;<a href="https://posit.co/">https://posit.co/</a>&gt;
+</div>
+<div id="ref-positcloudweb" class="csl-entry" role="listitem">
+<strong>Posit Cloud</strong>., <em>[S.d.]</em>. Disponível em: &lt;<a href="https://posit.cloud/">https://posit.cloud/</a>&gt;
+</div>
+</div>
 </section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">

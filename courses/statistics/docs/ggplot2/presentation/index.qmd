@@ -11,6 +11,13 @@ knitr::opts_chunk$set(
   )
 ```
 
+```{css, echo=FALSE}
+figcaption {
+  margin: auto;
+  text-align: center;
+}
+```
+
 ## Estrutura lógica do ggplot2
 
 :::: {.columns}

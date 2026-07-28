@@ -2,6 +2,22 @@
 title: "Manipulação de dados com o pacote tidyverse"
 ---
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE,
+  fig.align = "center",
+  fig.topcaption = TRUE,
+  out.width = "100%"
+  )
+```
+
+```{css, echo=FALSE}
+figcaption {
+  margin: auto;
+  text-align: center;
+}
+```
+
 ## O que é o tidyverse?
 
 Tidyverse é um ecossistema contendo diversos pacotes especializados na manipulação de dados estatísticos [@Wickham2019].

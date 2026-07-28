@@ -8,7 +8,7 @@ format:
     width: 600
     height: 300
     chalkboard: true
-    fontsize: 12pt
+    fontsize: 10pt
     slide-number: c/t
     margin: 0.04
     fig-cap-location: bottom

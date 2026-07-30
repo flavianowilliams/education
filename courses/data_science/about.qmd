@@ -1,19 +1,12 @@
 ---
-title: "About"
-image: profile.jpg
+title: "Sobre"
+image: profile.jpeg
 about:
   template: jolla
   links:
-    - icon: bluesky
-      text: Bluesky
-      href: https://bsky.app/
-    - icon: linkedin
-      text: LinkedIn
-      href: https://linkedin.com
     - icon: github
       text: Github
-      href: https://github.com
-
+      href: https://github.com/flavianowilliams/education/
 ---
 
-About this blog
+Sobre mim

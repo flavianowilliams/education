@@ -4,21 +4,21 @@
     "href": "index.html",
     "title": "Estatística",
     "section": "",
-    "text": "Planejamento de uma pesquisa científica\n\n\n\nestatistica\n\n\n\n\n\n\n\nFlaviano Williams Fernandes\n\n\nJul 27, 2026\n\n\n\n\n\n\nNo matching items"
+    "text": "Amostragem\n\n\n\ninferencia_estatistica\n\n\n\n\n\n\n\nFlaviano Williams Fernandes\n\n\n30/07/2026\n\n\n\n\n\n\n\n\n\n\n\nPlanejamento de uma pesquisa científica\n\n\n\nestatistica_descritiva\n\n\n\n\n\n\n\nFlaviano Williams Fernandes\n\n\n27/07/2026\n\n\n\n\n\n\nSem itens correspondentes"
   },
   {
     "objectID": "posts/planejamento_pesquisa/index.html",
     "href": "posts/planejamento_pesquisa/index.html",
     "title": "Planejamento de uma pesquisa científica",
     "section": "",
-    "text": "Parte da matemática responsável pela coleta, organização, descrição, análise e interpretação de dados e sua utilização na tomada de decisão (Crespo 2009)."
+    "text": "Parte da matemática responsável pela coleta, organização, descrição, análise e interpretação de dados e sua utilização na tomada de decisão (Crespo, 2009)."
   },
   {
     "objectID": "about.html",
     "href": "about.html",
-    "title": "About",
+    "title": "Sobre",
     "section": "",
-    "text": "About this blog"
+    "text": "Sobre mim"
   },
   {
     "objectID": "posts/planejamento_pesquisa/index.html#o-que-são-variáveis-em-estatística",
@@ -31,6 +31,27 @@
     "objectID": "posts/planejamento_pesquisa/index.html#o-que-é-estatística-descritiva",
     "href": "posts/planejamento_pesquisa/index.html#o-que-é-estatística-descritiva",
     "title": "Planejamento de uma pesquisa científica",
+    "section": "O que é estatística descritiva?",
+    "text": "O que é estatística descritiva?\nEmprega métodos numéricos afim de descrever e resumir um conjunto de dados obtidos a partir de uma amostra ou população."
+  },
+  {
+    "objectID": "posts/amostragem/index.html",
+    "href": "posts/amostragem/index.html",
+    "title": "Amostragem",
+    "section": "",
+    "text": "População versus amostra\n\nPopulação: Conjunto de todos os indivíduos de interesse do pesquisador;\nAmostra: Subconjunto representativo da população."
+  },
+  {
+    "objectID": "posts/amostragem/index.html#o-que-são-variáveis-em-estatística",
+    "href": "posts/amostragem/index.html#o-que-são-variáveis-em-estatística",
+    "title": "Amostragem",
+    "section": "O que são variáveis em estatística?",
+    "text": "O que são variáveis em estatística?\nSão características do indivíduo da população e que podem assumir valores diferentes de um indivíduo para o outro."
+  },
+  {
+    "objectID": "posts/amostragem/index.html#o-que-é-estatística-descritiva",
+    "href": "posts/amostragem/index.html#o-que-é-estatística-descritiva",
+    "title": "Amostragem",
     "section": "O que é estatística descritiva?",
     "text": "O que é estatística descritiva?\nEmprega métodos numéricos afim de descrever e resumir um conjunto de dados obtidos a partir de uma amostra ou população."
   }

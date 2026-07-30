@@ -13,10 +13,10 @@ website:
 format:
   html:
     theme:
-      - cosmo
+      - sketchy
       - brand
     css: styles.css
 bibliography: bibliografia.bib
-
-
-
+csl: abnt.csl
+lang: "pt-BR"
+date-format: DD/MM/YYYY

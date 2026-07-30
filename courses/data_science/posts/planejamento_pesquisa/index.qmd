@@ -2,7 +2,8 @@
 title: "Planejamento de uma pesquisa científica"
 author: "Flaviano Williams Fernandes"
 date: "2026-07-27"
-categories: [estatistica]
+date-modified: today
+categories: [estatistica_descritiva]
 ---
 
 # O que é a estatística?

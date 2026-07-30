@@ -2,7 +2,7 @@
 title: "Flaviano Williams Fernandes"
 image: profile.jpeg
 about:
-  template: trestles
+  template: jolla
   links:
     - icon: github
       text: Github

@@ -1,0 +1,253 @@
+---
+title: "Visualização de dados com ggplot2"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE,
+  fig.align = "center",
+  fig.topcaption = TRUE,
+  out.width = "100%"
+  )
+```
+
+```{css, echo=FALSE}
+figcaption {
+  margin: auto;
+  text-align: center;
+}
+```
+
+## Estrutura lógica do ggplot2
+
+:::: {.columns}
+
+::: {.column}
+Inspirado na obra "The grammar of graphics" de Leland Wilkinson [@Wilkinson2005], Hadley Wickham publicou o seu artigo "A layered Grammar of Graphics" [@Wickham2010; @Wickham2009], onde menciona a lógica de construção de gráficos por camadas [@stat20web; @qcbsweb]. A figura ao lado mostra os principais componentes que podem formar cada camada.
+:::
+
+::: {.column}
+
+```{r}
+#| label: x
+#| fig-align: center
+#| fig-alt: "Estrutura de camadas do ggplot2"
+#| fig-cap: "Fonte: The Grammar of Graphics."
+knitr::include_graphics(path = "../../../img/ggplot_layers.jpg")
+```
+
+:::
+
+::::
+
+## Dados
+
+::::{.columns}
+
+:::{.column}
+
+Por questões óbvias, o primeiro passo para a construção de um gráfico seria os dados. <span style="color:red;">ggplot reconhece estruturas de dados do tipo dataframes</span>. Contudo, é recomendável que os dados sejam preparados utilizando técnicas de pré-processamento como limpeza, manipulação, transformação e organização da base de dados. Pacotes do ambiente tidyverse podem auxiliar nessa tarefa.
+
+:::
+
+:::{.column}
+
+```{r}
+library(ggplot2)
+#
+dados <- readr::read_csv(file = "../../../data/input/nota.csv")
+#
+dados <- dados |> 
+  dplyr::select(registration, turma, presenca, conceito_ip, conceito_prova, conceito) |> 
+  dplyr::mutate(turma = factor(turma, ordered = FALSE),
+                conceito_ip = factor(conceito_ip, ordered = FALSE),
+                conceito_prova = factor(conceito_prova, ordered = FALSE),
+                conceito = factor(conceito, ordered = FALSE),
+                presenca = as.integer(presenca)
+                )
+#
+dados[1:10, ] |> 
+  dplyr::filter(!is.na(registration)) |> 
+  kableExtra::kable(col.names = c("Matrícula", "Turma", "Presença", "Exercícios", "Prova", "Conceito"),
+                    align = "lccccc"
+                    ) |> 
+  kableExtra::kable_styling(font_size = 9,
+                            bootstrap_options = c("striped", "hoover")
+                            )
+```
+
+:::
+
+::::
+
+## grafico <- Dados
+
+:::: {.columns}
+
+::: {.column}
+
+```{r, echo=TRUE, eval=FALSE}
+ggplot(data = dados)
+```
+
+```{r, echo=FALSE, eval=TRUE}
+ggplot(data = dados)
+```
+
+:::
+
+::: {.column}
+
+```{r}
+knitr::include_graphics(path = "../../../img/ggplot_layers.jpg")
+```
+
+:::
+
+::::
+
+## Atributos estéticos
+
+A camada referente aos atributos estéticos é responsável por transformar valores numéricos em valores visuais. Nessa camada também faz parte as funções escala que possui a tarefa de fazer personalizações nesses valores visuais. O inverso das funções escala são as funções guia que convertem valores visuais em numéricos.
+
+## grafico <- (Dados + atributos estéticos)
+
+:::: {.columns}
+
+::: {.column}
+
+```{r, echo=TRUE, eval=FALSE}
+ggplot(data = dados, 
+       aes(x = conceito)
+       )
+```
+
+```{r, echo=FALSE, eval=TRUE}
+ggplot(data = dados, 
+       aes(x = conceito)
+       )
+```
+
+:::
+
+::: {.column}
+
+```{r}
+knitr::include_graphics(path = "../../../img/ggplot_layers.jpg")
+```
+
+:::
+
+::::
+
+## Escala
+
+## Elementos geométricos
+
+## grafico + (Elementos geométricos + estatística)
+
+:::: {.columns}
+
+::: {.column}
+
+```{r, echo=TRUE, eval=FALSE}
+ggplot(data = dados, 
+       aes(x = conceito)
+       )+
+  geom_bar(stat = "count")
+```
+
+```{r, echo=FALSE, eval=TRUE}
+ggplot(data = dados, 
+       aes(x = conceito)
+       )+
+  geom_bar(stat = "count")
+```
+
+:::
+
+::: {.column}
+
+```{r}
+knitr::include_graphics(path = "../../../img/ggplot_layers.jpg")
+```
+
+:::
+
+::::
+
+## Coordenadas
+
+## grafico + coordenadas
+
+:::: {.columns}
+
+::: {.column}
+
+```{r, echo=TRUE, eval=FALSE}
+ggplot(data = dados, 
+       aes(x = conceito)
+       )+
+  geom_bar(stat = "count")+
+  coord_flip()
+```
+
+```{r, echo=FALSE, eval=TRUE}
+ggplot(data = dados, 
+       aes(x = conceito)
+       )+
+  geom_bar(stat = "count")+
+  coord_flip()
+```
+
+:::
+
+::: {.column}
+
+```{r}
+knitr::include_graphics(path = "../../../img/ggplot_layers.jpg")
+```
+
+:::
+
+::::
+
+## Facetas
+
+## grafico + facetas
+
+:::: {.columns}
+
+::: {.column}
+
+```{r, echo=TRUE, eval=FALSE}
+ggplot(data = dados, 
+       aes(x = conceito)
+       )+
+  geom_bar(stat = "count")+
+  coord_flip()+
+  facet_wrap(~ turma)
+```
+
+```{r, echo=FALSE, eval=TRUE}
+ggplot(data = dados, 
+       aes(x = conceito)
+       )+
+  geom_bar(stat = "count")+
+  coord_flip()+
+  facet_wrap(~ turma)
+```
+
+:::
+
+::: {.column}
+
+```{r}
+knitr::include_graphics(path = "../../../img/ggplot_layers.jpg")
+```
+
+:::
+
+::::
+
+## Bibliografia

@@ -1,0 +1,18 @@
+author: "Flaviano Williams Fernandes"
+institute: "Instituto Federal do Paraná, câmpus Irati"
+date: last-modified
+date-format: "DD/MM/YYYY"
+format:
+  revealjs:
+    theme: [default, custom.scss]
+    width: 600
+    height: 300
+    chalkboard: true
+    fontsize: 10pt
+    slide-number: c/t
+    margin: 0.04
+    fig-cap-location: bottom
+editor: source
+bibliography: bibliografia.bib
+csl: abnt.csl
+lang: "pt-BR"

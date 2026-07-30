@@ -1,0 +1,348 @@
+---
+title: "Conceitos básicos da linguagem R"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE,
+  fig.align = "center",
+  fig.topcaption = TRUE,
+  out.width = "100%"
+  )
+```
+
+## Sobre o R
+
+```{css, echo=FALSE}
+figcaption {
+  margin: auto;
+  text-align: center;
+}
+```
+
+> "R é uma linguagem de programação dinâmica em um desenvolvimento em tempo real. Especialmente voltada para trabalhos em análises estatísticas, como a manipulação, análise e visualização de dados."
+>
+> "Seu nome surge das iniciais dos seus criadores (<span style="color:red;">R</span>oss Ihaka e <span style="color:red;">R</span>obert Gentleman)."
+>
+><p style = "text-align:right;">[@cranweb]</p>
+
+
+## Aspectos gerais
+
+* Fundamentalmente forte em análises estatísticas (teste de hipóteses, análises descritivas, desenvolvimento de modelos estatísticos robustos);
+
+* Excelente para a produção de gráficos e relatórios;
+
+* É uma das linguagens mais utilizadas em ciência de dados, especialmente em trabalhos que envolvam análise exploratória [@Morettin2025]. Entretanto, python ainda é a preferida em trabalhos envolvendo aprendizado de máquina;
+
+* Perde desempenho em trabalhos que envolvam grande volume de dados (como alternativa a linguagem possui recursos extras, como data.tables ou a integração com outras ferramentas como Apache Spark).
+
+* Muito utilizado no meio acadêmico, especialmente em pesquisas experimentais.
+
+* Possui um grande repertório de pacotes e funções, onde muitos são focados em análises estatísticas.
+
+## RStudio: A principal IDE do R
+
+:::: {.columns}
+
+::: {.column}
+
+```{r}
+#| fig-cap: "Fonte: [@curso-rweb]"
+#| out-width: 85%
+  knitr::include_graphics("https://curso-r.github.io/livro-material/assets/img/rstudio/rstudio-editor.png")
+```
+
+:::
+
+::: {.column}
+
+* **Editor**: Onde o código é escrito;
+
+* **Console**: Onde o R é executado;
+
+* **Environment**: Painel com todos os objetos armazenados na memória;
+
+* **Output**: Painel contendo navegador de arquivos, lista pacotes instalados, ajuda e visualização de relatórios, apresentações e dashboards.
+
+:::
+
+::::
+
+## RStudio online
+
+* A versão Open Source do RStudio pode ser baixado e instalado gratuitamente nas plataformas windows ou linux, ambas disponíveis na página da Posit [@positweb]. 
+
+* A versão online está disponível na página da Posit Cloud [@positcloudweb].
+
+> <p style="color:red;">Atenção!</p>
+> O "R base" deverá estar previamente instalado no computador.
+
+## Objetos e funções no R
+
+* Objeto é tudo que pode ser criado e armazenado na memória (vetor, lista, função, gráfico, modelo estatístico, etc).
+
+* Um objeto pode ser criado utilizando o operador de atribuição `<-`,
+
+```r
+objeto <- função
+```
+
+Exemplo:
+
+```{r, echo=TRUE}
+valor <- function(x) {return(x)}
+print(valor)
+```
+
+## Estrutura de dados principais no R
+
+:::: {.columns}
+
+::: {.column}
+
+* Vetores atômicos: Formado por elementos do mesmo tipo.
+
+```{r, echo=TRUE}
+  vetor_letras <- c("a", "b", "c", "d")
+  vetor_letras
+  vetor_numeros <- c(1, 2, 3, 4)
+  vetor_numeros
+```
+
+:::
+
+::: {.column}
+
+* Vetores recursivos (listas): Podem ser formados por elementos de tipos distintos.
+
+```{r, echo=TRUE}
+  lista <- list("a", 1, TRUE, NA)
+  lista
+```
+
+:::
+
+::::
+
+## Lista nomeada
+
+Os elementos de uma lista podem ser nomeados
+
+```{r, echo=TRUE}
+  lista_nomeada <- list(caracter = "a", numero = 2, logico = TRUE, dado_faltante = NA)
+  lista_nomeada
+```
+
+## Lista nomeada
+
+Para acessar um item da lista, basta usar o operador `$`.
+
+```{r, echo=TRUE}
+  lista_nomeada$caracter
+  is.na(lista_nomeada$dado_faltante)
+  as.character(lista_nomeada$numero)
+  lista_nomeada$logico <- FALSE
+  lista_nomeada$logico
+```
+
+## Exercício
+
+Construa uma lista com os seguintes dados de uma pessoa:
+
+* Nome: João Carlos Silveira
+
+* Endereço: Rua Pedro Koppe, 100, Irati-PR
+
+* Escolaridade: Ensino médio completo
+
+* Estado civil: Solteiro
+
+Em seguida, atualize esta lista mudando o endereço desta pessoa para Rua Trajano Grácia, 240 - Centro, Irati-PR.
+
+## Exercício
+
+Construa uma lista com os seguintes elementos:
+
+* score: 1, 2, 3
+
+* nome:João, Leticia, Marcos
+
+* pontuação: 100, 90, 75
+
+Em seguida, acesse o score da Letícia à partir desta lista.
+
+## Vetores e listas aumentadas
+
+Vetores e listas aumentadas são vetores ou listas que possuem atributos. Os atributos podem ser acessados a partir do comando `attributes`.
+
+```{r, echo=TRUE}
+data <- as.Date("2026/06/09")
+attributes(data)
+vetor_atomico <- c(1, 2, 3, 4)
+attributes(vetor_atomico)
+```
+
+## Atributos de vetores aumentados
+
+* Nome: Usados para nomear os elementos de uma lista ou um vetor.
+
+```{r, echo=TRUE}
+scores <- c(88, 92, 79)
+attr(scores, "names") <- c("Alice", "Bob", "Charlie")
+names(scores)
+scores
+attributes(scores)
+```
+
+## Atributos de vetores aumentados
+
+* Dimensão: Define a dimensão de matrizes e arrays que são construídos a partir de um vetor.
+
+:::: {.columns}
+
+::: {.column}
+
+```{r, echo=TRUE}
+vec <- c(1, 2, 3, 4)
+matriz <- matrix(vec, ncol = 2)
+matriz
+dim(matriz)
+```
+
+:::
+
+::: {.column}
+
+No comando ao lado, construimos uma matriz com o comando matrix a partir do vetor vec, em seguida acessamos o seu atributo dim, que no caso indica a ordem da matriz de 2 linhas e 2 colunas.
+
+:::
+
+::::
+
+## Exercício
+
+Construa a matriz abaixo no R.
+
+\begin{pmatrix}
+  1 & 4 & 7 \\
+  2 & 5 & 8 \\
+  3 & 6 & 9
+\end{pmatrix}
+
+## Exercício
+
+Faça o produto vetorial abaixo (Dica: utilize o operador `%*%`).
+
+\begin{equation}
+\begin{pmatrix}
+  1 & 4 & 7 \\
+  2 & 5 & 8 \\
+  3 & 6 & 9
+\end{pmatrix}
+\begin{pmatrix}
+  1 \\
+  0 \\
+  0
+\end{pmatrix}
+= ?
+\end{equation}
+
+## Exercício
+
+Construa a mesma matriz anterior a partir de um array e com a utilização do atributo *dim*.
+
+## Atributos de vetores aumentados
+
+* Classe: Usado para implementar atributos e métodos da programação orientada a objetos.
+
+```{r, echo=TRUE}
+  dados <- data.frame(nome = c("Roberto", "Vanessa", "Carlos"),
+                      idade = c(12, 17, 21)
+                      )
+#
+  class(dados)
+```
+
+É possível acessar os métodos de uma função a partir da classe com o comando `methods`.
+
+```{r, echo=TRUE}
+methods("as.Date")
+```
+
+## Exercício
+
+Acesse a documentação da função methods utilizando o comando `?methods`.
+
+## Funções
+
+Uma função é definida pelo comando `function`
+
+```{r, echo=TRUE}
+funcao <- function(x) return(x)
+funcao(4)
+```
+
+Também é possível obter uma função com o comando `\(x, y, ...)`.
+
+```{r, echo=TRUE}
+funcao <- \(x, y) x+y
+funcao(4, 5)
+```
+
+A princípio o R possui um repertório imenso de funções para diversos tipos de tarefas
+
+```{r, echo=TRUE}
+exp(1)
+sqrt(2500)
+```
+
+## Exercício
+
+Use a função `polyroot` para obter as raízes do polinômio $f(x) = x²-3x+2$ (Dica: Utilize a função `Re` para extrair somente a parte real da solução).
+
+## Vetorização
+
+Permite aplicar funções a um vetor inteiro de uma só vez. Isso permite realizar o cálculo de maneira mais limpa e rápida, ou seja, mais eficiente.
+
+:::: {.columns}
+
+::: {.column}
+
+```{r, echo=TRUE}
+  vetor_real <- -2:2
+  vetor_real
+  vetor_complexo <- as.complex(vetor_real)
+  vetor_complexo
+  sqrt(vetor_complexo)
+```
+
+:::
+
+::: {.column}
+
+```{r, echo=TRUE}
+  vetor_fracoes <- 1:4
+  vetor_fracoes
+  vetor_angulo <- pi*vetor_fracoes/2
+  vetor_angulo
+  cos(vetor_angulo)**2+sin(vetor_angulo)**2
+```
+
+:::
+
+::::
+
+## Exercícios
+
+A massa em gramas de cinco amostras foram coletadas e armazenadas em um vetor, amostra =  (112, 127, 108, 99, 115). Considerando que a balança não está calibrada, superestimando o valor da massa em 2,5 gramas, gostaríamos de calcular o peso de cada amostra em Newtons. Construa uma função que realiza esta tarefa em uma única operação.
+
+## Blocos de repetição
+
+xx
+
+## Blocos de condição
+
+xx
+
+## Bibliografia

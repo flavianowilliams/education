@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss  xmlns:atom="http://www.w3.org/2005/Atom" 
+      xmlns:media="http://search.yahoo.com/mrss/" 
+      xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+      xmlns:dc="http://purl.org/dc/elements/1.1/" 
+      version="2.0">
+<channel>
+<title>Ciência de dados</title>
+<link>https://your-website-url.example.com/</link>
+<atom:link href="https://your-website-url.example.com/index.xml" rel="self" type="application/rss+xml"/>
+<description>A blog built with Quarto</description>
+<generator>quarto-1.9.38</generator>
+<lastBuildDate>Mon, 27 Jul 2026 03:00:00 GMT</lastBuildDate>
+<item>
+  <title>Planejamento de uma pesquisa científica</title>
+  <dc:creator>Flaviano Williams Fernandes</dc:creator>
+  <link>https://your-website-url.example.com/posts/planejamento_pesquisa/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<section id="o-que-é-a-estatística" class="level1">
+<h1>O que é a estatística?</h1>
+<blockquote class="blockquote">
+<p>Parte da matemática responsável pela coleta, organização, descrição, análise e interpretação de dados e sua utilização na tomada de decisão <span class="citation" data-cites="Crespo2009">(Crespo 2009)</span>.</p>
+</blockquote>
+<p><img src="https://your-website-url.example.com/posts/planejamento_pesquisa/plano_acao.jpg" class="img-fluid" style="width:80.0%"></p>
+</section>
+<section id="o-método-científico" class="level1">
+<h1>O método científico</h1>
+<p><img src="https://your-website-url.example.com/posts/planejamento_pesquisa/metodo_cientifico.jpg" class="img-fluid" style="width:80.0%"></p>
+</section>
+<section id="estabelecendo-os-objetivos-da-pesquisa" class="level1">
+<h1>Estabelecendo os objetivos da pesquisa</h1>
+<ol type="1">
+<li><p>Qual é a pergunta da pesquisa?</p>
+<ul>
+<li>Aulas demonstrativas auxiliam na aprendizagem dos alunos?</li>
+<li>Caso sim, a aprendizagem melhora com a idade ou gênero dos alunos?</li>
+</ul></li>
+<li><p>Qual é o sujeito de interesse?</p>
+<ul>
+<li><p>Alunos do ensino médio no Brasil;</p></li>
+<li><p>Alunos do IFPR, campus Irati.</p></li>
+</ul></li>
+<li><p>Qual é a população desse sujeito?</p>
+<ul>
+<li><p>Todos os alunos do ensino médio no Brasil;</p></li>
+<li><p>Alunos do IFPR, campus Irati.</p></li>
+</ul></li>
+<li><p>Existe a necessidade de fazer amostram?</p>
+<ul>
+<li>Sim</li>
+<li>Não</li>
+</ul></li>
+<li><p>Quantos dados devo obter? Qual o tamanho da amostra?</p></li>
+<li><p>Como devo obter os dados?</p></li>
+<li><p>Quais características de interesse dos indivíduos (variáveis) serão obtidas?</p>
+<ul>
+<li>Nota dos alunos</li>
+</ul></li>
+<li><p>Quais informações da população devo obter?</p>
+<ul>
+<li>Média, mediana, moda, variância, proporção e frequência</li>
+</ul></li>
+</ol>
+</section>
+<section id="variáveis" class="level1">
+<h1>Variáveis</h1>
+<section id="o-que-são-variáveis-em-estatística" class="level2">
+<h2 class="anchored" data-anchor-id="o-que-são-variáveis-em-estatística">O que são variáveis em estatística?</h2>
+<p>São características do indivíduo da população e que podem assumir valores diferentes de um indivíduo para o outro.</p>
+<p><img src="https://your-website-url.example.com/posts/planejamento_pesquisa/tipo_variaveis.jpg" class="img-fluid" style="width:80.0%"></p>
+</section>
+</section>
+<section id="estatística-descritiva" class="level1">
+<h1>Estatística descritiva</h1>
+<p><img src="https://your-website-url.example.com/posts/planejamento_pesquisa/areas_estatistica.jpg" class="img-fluid" style="width:80.0%"></p>
+<section id="o-que-é-estatística-descritiva" class="level2">
+<h2 class="anchored" data-anchor-id="o-que-é-estatística-descritiva">O que é estatística descritiva?</h2>
+<p>Emprega métodos numéricos afim de descrever e resumir um conjunto de dados obtidos a partir de uma amostra ou população.</p>
+
+
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-Crespo2009" class="csl-entry">
+Crespo, Antônio A. 2009. <em>Estatística Fácil</em>. Savaiva Uni.
+</div>
+</div></section></div> ]]></description>
+  <category>estatistica</category>
+  <guid>https://your-website-url.example.com/posts/planejamento_pesquisa/</guid>
+  <pubDate>Mon, 27 Jul 2026 03:00:00 GMT</pubDate>
+</item>
+</channel>
+</rss>
